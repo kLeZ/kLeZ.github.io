@@ -1,0 +1,6 @@
+@charset 'UTF-8';
+
+.footer.sticky-bottom {
+	position: fixed;
+	bottom: 0;
+}
