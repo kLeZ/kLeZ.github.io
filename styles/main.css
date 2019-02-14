@@ -1,9 +1,0 @@
-@charset "utf-8";
-
-.footer.sticky-bottom {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	padding-top: 15px;
-	padding-bottom: 15px;
-}
