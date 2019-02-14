@@ -4,5 +4,6 @@
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	background-color: #dad5d2; /* https://www.colorhexa.com/dad5d2 */
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
