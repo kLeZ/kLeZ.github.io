@@ -11,7 +11,7 @@
 	<body>
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-				<a class="navbar-brand" href="#">kLeZ</a>
+				<a class="navbar-brand" href="/">kLeZ</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -32,7 +32,7 @@
 				<article class="col">
 					<header>
 						<h2>The kLeZ's Den, home of a linux user, grown with bread and free software</h2>
-						<p>Posted on <time datetime="2019-02-14T10:47:15+01:00">February 14th 2019</time> by <a href="#">Author</a> - <a href="#comments">0 comments</a></p>
+						<p>Posted on <time datetime="2019-02-14T10:47:15+01:00">February 14th 2019</time> by <a href="https://github.com/kLeZ">Author</a></p>
 					</header>
 					<p>
 						Today it's free software day! Let's celebrate!<br />
