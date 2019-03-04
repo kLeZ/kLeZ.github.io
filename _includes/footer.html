@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<small class="text-muted float-right">{{ site.copyright }}</small>
+				{%- include social.html -%}
 			</div>
 		</div>
 		<div class="row">
@@ -22,10 +22,8 @@
 				{%- endif -%}
 				</ul>
 			</div>
-		</div>
-		<div class="row">
 			<div class="col">
-				{%- include social.html -%}
+				<small class="text-muted float-right">{{ site.copyright }}</small>
 			</div>
 		</div>
 	</div>

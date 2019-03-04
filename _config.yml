@@ -26,9 +26,10 @@ author:
     twitter_username: kLeZhAcK
     github_username: kLeZ
 
+rss: RSS
+
 # Build settings
 markdown: kramdown
-#theme: minima
 plugins:
     - jekyll-feed
 sass:

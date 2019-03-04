@@ -3,23 +3,22 @@ layout: default
 ---
 
 {%- if site.posts.size > 0 -%}
-<h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
-<ul class="post-list">
+<h2>{{ page.list_title | default: "Posts" }}</h2>
+<div class="post-list">
 	{%- for post in site.posts -%}
-	<li>
 	{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-	<span class="post-meta">{{ post.date | date: date_format }}</span>
-	<h3>
-		<a class="post-link" href="{{ post.url | relative_url }}">
-		{{ post.title | escape }}
-		</a>
-	</h3>
-	{%- if site.show_excerpts -%}
-		{{ post.excerpt }}
-	{%- endif -%}
-	</li>
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">{{ post.title | escape }}</h5>
+			<h6 class="card-subtitle mb-2 text-muted">{{ post.date | date: date_format }}</h6>
+			<p class="card-text">
+			{%- if site.show_excerpts -%}
+				{{ post.excerpt }}
+			{%- endif -%}
+			</p>
+			<a href="{{ post.url | relative_url }}" class="card-link">Go to</a>
+		</div>
+	</div>
 	{%- endfor -%}
-</ul>
-
-<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+</div>
 {%- endif -%}
