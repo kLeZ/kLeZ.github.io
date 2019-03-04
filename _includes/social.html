@@ -1,0 +1,98 @@
+<ul class="social-media-list">
+	{%- if site.author.dribbble_username -%}
+	<li>
+		<a href="https://dribbble.com/{{ site.author.dribbble_username| cgi_escape | escape }}">
+			<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#dribbble' | relative_url }}"></use></svg>
+			<span class="username">{{ site.author.dribbble_username| escape }}</span>
+		</a>
+	</li>
+	{%- endif -%}
+	{%- if site.author.facebook_username -%}
+	<li>
+		<a href="https://www.facebook.com/{{ site.author.facebook_username| cgi_escape | escape }}">
+			<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#facebook' | relative_url }}"></use></svg>
+			<span class="username">{{ site.author.facebook_username| escape }}</span>
+		</a>
+	</li>
+	{%- endif -%}
+	{%- if site.author.flickr_username -%}
+	<li>
+		<a href="https://www.flickr.com/photos/{{ site.author.flickr_username| cgi_escape | escape }}">
+			<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#flickr' | relative_url }}"></use></svg>
+			<span class="username">{{ site.author.flickr_username| escape }}</span>
+		</a>
+	</li>
+	{%- endif -%}
+	{%- if site.author.github_username -%}
+	<li>
+		<a href="https://github.com/{{ site.author.github_username| cgi_escape | escape }}">
+			<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use></svg>
+			<span class="username">{{ site.author.github_username| escape }}</span>
+		</a>
+	</li>
+	{%- endif -%}
+	{%- if site.author.instagram_username -%}
+	<li>
+		<a href="https://instagram.com/{{ site.author.instagram_username| cgi_escape | escape }}">
+			<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#instagram' | relative_url }}"></use></svg>
+			<span class="username">{{ site.author.instagram_username| escape }}</span>
+		</a>
+	</li>
+	{%- endif -%}
+	{%- if site.author.linkedin_username -%}
+	<li>
+		<a href="https://www.linkedin.com/in/{{ site.author.linkedin_username| cgi_escape | escape }}">
+			<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#linkedin' | relative_url }}"></use></svg>
+			<span class="username">{{ site.author.linkedin_username| escape }}</span>
+		</a>
+	</li>
+	{%- endif -%}
+	{%- if site.author.pinterest_username -%}
+	<li>
+		<a href="https://www.pinterest.com/{{ site.author.pinterest_username| cgi_escape | escape }}">
+			<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#pinterest' | relative_url }}"></use></svg>
+			<span class="username">{{ site.author.pinterest_username| escape }}</span>
+		</a>
+	</li>
+	{%- endif -%}
+	{%- for mst in site.author.mastodon -%}
+		{%- if mst.username and mst.instance -%}
+		<li>
+			<a href="https://{{ mst.instance| cgi_escape | escape}}/@{{mst.username}}"><svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon">	<use xlink:href="{{ '/assets/minima-social-icons.svg#mastodon' | relative_url }}"></use></svg></div><span class="username">{{ mst.username|escape }}</span>
+			</a>
+		</li>
+		{%- endif -%}
+	{%- endfor -%}
+	{%- if site.author.twitter_username -%}
+	<li>
+		<a href="https://www.twitter.com/{{ site.author.twitter_username| cgi_escape | escape }}">
+			<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#twitter' | relative_url }}"></use></svg>
+			<span class="username">{{ site.author.twitter_username| escape }}</span>
+		</a>
+	</li>
+	{%- endif -%}
+	{%- if site.author.youtube_username -%}
+	<li>
+		<a href="https://youtube.com/{{ site.author.youtube_username| cgi_escape | escape }}">
+			<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#youtube' | relative_url }}"></use></svg>
+			<span class="username">{{ site.author.youtube_username| escape }}</span>
+		</a>
+	</li>
+	{%- endif -%}
+	{%- if site.author.googleplus_username -%}
+	<li>
+		<a href="https://plus.google.com/{{ site.author.googleplus_username| escape }}">
+			<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#googleplus' | relative_url }}"></use></svg>
+			<span class="username">{{ site.author.googleplus_username| escape }}</span>
+		</a>
+	</li>
+	{%- endif -%}
+	{%- if site.rss -%}
+	<li>
+		<a href="{{ 'feed.xml' | relative_url }}">
+			<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#rss' | relative_url }}"></use></svg>
+			<span>{{ site.rss | escape }}</span>
+		</a>
+	</li>
+	{%- endif -%}
+</ul>

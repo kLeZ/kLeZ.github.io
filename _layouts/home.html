@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+{%- if site.posts.size > 0 -%}
+<h2>{{ page.list_title | default: "Posts" }}</h2>
+<div class="post-list">
+	{%- for post in site.posts -%}
+	{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">{{ post.title | escape }}</h5>
+			<h6 class="card-subtitle mb-2 text-muted">{{ post.date | date: date_format }}</h6>
+			<p class="card-text">
+			{%- if site.show_excerpts -%}
+				{{ post.excerpt }}
+			{%- endif -%}
+			</p>
+			<a href="{{ post.url | relative_url }}" class="card-link">Go to</a>
+		</div>
+	</div>
+	{%- endfor -%}
+</div>
+{%- endif -%}
