@@ -1,14 +1,29 @@
+main {
+	&.container {
+		padding-top: 1rem;
+		padding-bottom: #{$footer-height + 1rem};
+	}
+}
+
 .contact-list,
 .social-media-list {
 	list-style: none;
 	display: flex;
 	align-items: center;
+
 	li {
 		margin: 0 15px;
 	}
 }
+
 .post-list {
-	> div {
+	>div {
 		margin: 1.5rem 0;
+	}
+}
+
+footer {
+	&.fixed-bottom {
+		height: $footer-height;
 	}
 }
