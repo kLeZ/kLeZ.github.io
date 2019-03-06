@@ -1,26 +1,5 @@
-/**
- * Links
- */
-a {
-	text-decoration: none;
-	&:hover {
-		text-decoration: underline;
-	}
-	.social-media-list &:hover {
-		text-decoration: none;
-		.username {
-			text-decoration: underline;
-		}
-	}
-}
-
-/**
- * Icons
- */
 .svg-icon {
 	width: 22px;
 	height: 22px;
-	display: inline-block;
-	vertical-align: text-top;
 	fill: #{$grey-color};
 }

@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "Primo post da smartphone"
 date: 2019-02-15 20:53:10 +0100
-categories: github travisci jekyll android markor mgit
-author: kLeZ
+tags: [github, travisci, jekyll, android, markor, mgit]
 ---
 Questo post viene direttamente dallo smartphone. Neanche uno particolarmente moddato, né tanto meno sono stato così "_hacky_" da portarmi dietro un ambiente ruby+jekyll.  
 Ma allora come ho fatto? L'ho compilato sul PC per poi pubblicarlo?  
