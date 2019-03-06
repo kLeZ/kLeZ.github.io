@@ -2,20 +2,20 @@
 layout: default
 ---
 <section class="row">
-	<article class="col post" itemscope itemtype="http://schema.org/BlogPosting">
+	<article class="col" itemscope itemtype="http://schema.org/BlogPosting">
 		<header>
 			<h2>{{ page.title | escape }}</h2>
-			<p>Posted on 
+			<small class="text-muted">Posted on 
 				<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
 					{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
 					{{ page.date | date: date_format }}
-				</time> by 
+				</time> by&nbsp;
 				{%- if page.author -%}
 				• <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-					<span class="p-author h-card" itemprop="name">{{ page.author }}</span>
+					<span class="font-italic" itemprop="name">{{ page.author }}</span>
 				</span>
 				{%- endif -%}
-			</p>
+			</small>
 		</header>
 		<div class="content" itemprop="articleBody">
 			{{ content }}
