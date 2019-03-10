@@ -1,0 +1,36 @@
+// Styling for the footer
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	margin-bottom: $footer-height;
+	/* Margin bottom by footer height */
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	height: $footer-height;
+	/* Set the fixed height of the footer here */
+	padding: 50px 0 65px;
+
+	.list-inline {
+		margin: 0;
+		padding: 0;
+	}
+
+	.copyright {
+		font-size: 14px;
+		margin-bottom: 0;
+		text-align: center;
+	}
+
+	.svg-icon {
+		width: 22px;
+		height: 22px;
+		fill: #{$grey-650};
+		color: #{$grey-650};
+	}
+}
