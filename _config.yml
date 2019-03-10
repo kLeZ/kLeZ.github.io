@@ -9,8 +9,26 @@ copyright: Copyright © Alessandro 'kLeZ' Accardo 2019
 author:
     name: Alessandro 'kLeZ' Accardo
     email: klez@pm.me
-    twitter_username: kLeZhAcK
-    github_username: kLeZ
+    social:
+        - name: twitter
+          username: kLeZhAcK
+          display: ""
+          icon:
+              type: fa
+              value: fa-twitter
+        - name: github
+          username: kLeZ
+          display: ""
+          icon:
+              type: fa
+              value: fa-github
+        - name: rss
+          instance: /feed.xml
+          username: ""
+          display: ""
+          icon:
+              type: fa
+              value: fa-rss
 
 rss: RSS feed
 
@@ -35,7 +53,6 @@ excerpt_separator: "<!--more-->"
 
 plugins:
     - jekyll-feed
-
 # Defaults. IF you want to change the exclude make sure you keep those sane defaults
 # exclude:
 #     - Gemfile
