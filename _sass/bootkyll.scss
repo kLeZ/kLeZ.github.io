@@ -1,9 +1,13 @@
 @charset "utf-8";
 
-$footer-height:		7.5rem;
-$grey-color:		#828282 !default;
-
 // Import partials.
 @import
-	"bootkyll/base",
-	"bootkyll/layout";
+	"bootkyll/variables",
+	"bootkyll/mixins",
+	"bootkyll/global",
+	"bootkyll/navbar",
+	"bootkyll/masthead",
+	"bootkyll/post",
+	"bootkyll/contact",
+	"bootkyll/footer",
+	"bootkyll/bootstrap-overrides";

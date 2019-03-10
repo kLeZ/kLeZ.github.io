@@ -8,7 +8,7 @@
 			{%- assign social_conf = site.data.social | where: "name", acct.name -%}
 			{%- assign base_url = social_conf.first.url -%}
 		{%- endif -%}
-		{%- assign url = base_url | append: "/" | append: acct.username -%}
+		{%- assign url = base_url | append: acct.username -%}
 			<a href="{{ url }}">
 			{%- if acct.icon -%}
 				{%- if acct.icon.type == "fa" -%}
