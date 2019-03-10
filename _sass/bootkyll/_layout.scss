@@ -1,11 +1,16 @@
-main {
-	&.container {
-		padding-bottom: #{$footer-height + 1rem};
-	}
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	margin-bottom: $footer-height;
+	/* Margin bottom by footer height */
 }
 
 footer {
-	&.fixed-bottom {
-		height: $footer-height;
-	}
+	position: absolute;
+	bottom: 0;
+	height: $footer-height;
+	/* Set the fixed height of the footer here */
 }
