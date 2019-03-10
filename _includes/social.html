@@ -1,6 +1,6 @@
-<ul class="list-unstyled d-flex align-items-center">
+<ul class="list-inline text-center">
 	{%- for acct in site.author.social -%}
-		<li class="mx-2">
+		<li class="list-inline-item">
 		{%- assign base_url = "" -%}
 		{%- if acct.instance -%}
 			{%- assign base_url = acct.instance -%}
@@ -12,7 +12,7 @@
 			<a href="{{ url }}">
 			{%- if acct.icon -%}
 				{%- if acct.icon.type == "fa" -%}
-					<span class="svg-icon fa {{ acct.icon.value }}"></span>
+					<span class="svg-icon {{ acct.icon.value }}"></span>
 				{%- endif -%}
 			{%- else -%}
 				<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon align-text-top d-inline-block">

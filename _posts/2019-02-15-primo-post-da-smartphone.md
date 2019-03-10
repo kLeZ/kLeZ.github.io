@@ -6,6 +6,7 @@ tags: [github, travisci, jekyll, android, markor, mgit]
 Questo post viene direttamente dallo smartphone. Neanche uno particolarmente moddato, né tanto meno sono stato così "_hacky_" da portarmi dietro un ambiente ruby+jekyll.  
 Ma allora come ho fatto? L'ho compilato sul PC per poi pubblicarlo?  
 No! Ovviamente. Altrimenti che lo scriverei a fare: i post servono per raccontare qualcosa di nuovo o di diverso, le banalità ci vergogniamo a pubblicarle (per fortuna!).  
+<!--more-->
 
 ## L'idea
 Ieri è stato il **Free Software Day**, non sapevo che lo fosse, per me è sempre stato _San Valentino_, come per tutti.  

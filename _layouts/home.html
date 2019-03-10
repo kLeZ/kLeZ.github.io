@@ -3,22 +3,24 @@ layout: default
 ---
 
 {%- if site.posts.size > 0 -%}
-<h2>{{ page.list_title | default: "Posts" }}</h2>
-<div class="post-list">
-	{%- for post in site.posts -%}
-	{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-	<div class="card my-5 mx-0">
-		<div class="card-body">
-			<h5 class="card-title">{{ post.title | escape }}</h5>
-			<h6 class="card-subtitle mb-2 text-muted">{{ post.date | date: date_format }}</h6>
-			<p class="card-text">
-			{%- if site.show_excerpts -%}
-				{{ post.excerpt }}
-			{%- endif -%}
-			</p>
-			<a href="{{ post.url | relative_url }}" class="card-link">Go to</a>
+<div class="post-list row">
+	<div class="col-lg-8 col-md-10 mx-auto">
+		{%- for post in site.posts -%}
+		{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+		<div class="card my-5 mx-0">
+			<div class="card-body">
+				<a href="{{ post.url | relative_url }}" class="card-link">
+					<h2 class="card-title">{{ post.title | escape }}</h2>
+					<h3 class="card-subtitle mb-2 text-muted">{{ post.date | date: date_format }}</h3>
+					<p class="card-text">
+					{%- if site.show_excerpts -%}
+						{{ post.excerpt }}
+					{%- endif -%}
+					</p>
+				</a>
+			</div>
 		</div>
+		{%- endfor -%}
 	</div>
-	{%- endfor -%}
 </div>
 {%- endif -%}

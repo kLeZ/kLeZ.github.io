@@ -13,25 +13,30 @@ author:
     social:
         - name: twitter
           username: kLeZhAcK
-          display: ""
+          display:
           icon:
               type: fa
-              value: fa-twitter
+              value: fab fa-twitter
         - name: github
           username: kLeZ
-          display: ""
+          display:
           icon:
               type: fa
-              value: fa-github
+              value: fab fa-github
         - name: rss
           instance: /feed.xml
-          username: ""
-          display: ""
+          username:
+          display:
           icon:
               type: fa
-              value: fa-rss
-
-rss: RSS feed
+              value: fa fa-rss
+        - name: email
+          instance: "mailto:"
+          username: klez@pm.me
+          display:
+          icon:
+              type: fa
+              value: fa fa-envelope
 
 sass:
     sass_dir: _sass
@@ -50,6 +55,7 @@ defaults:
       values:
           layout: "post"
 
+show_excerpts: true
 excerpt_separator: "<!--more-->"
 
 plugins:
