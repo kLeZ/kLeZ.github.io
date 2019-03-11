@@ -4,7 +4,7 @@ layout: post
 slug: mi-piace-come-ragiona
 title: '...mi piace come ragiona'
 categories:
-- Riflessioni/Thoughts
+- Riflessioni
 tags:
 - divertente
 - importato dal vecchio blog

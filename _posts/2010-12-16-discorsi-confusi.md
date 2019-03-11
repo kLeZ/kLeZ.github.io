@@ -4,7 +4,7 @@ layout: post
 slug: discorsi-confusi
 title: Discorsi confusi
 categories:
-- Riflessioni (filosofiche?)/(Philosofical?) Thoughts
+- Riflessioni
 tags:
 - cordoglio
 - importato dal vecchio blog

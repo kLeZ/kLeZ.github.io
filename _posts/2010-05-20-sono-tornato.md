@@ -4,7 +4,7 @@ layout: post
 slug: sono-tornato
 title: Sono tornato!!!
 categories:
-- Diario/Diary
+- Diario
 tags:
 - importato dal vecchio blog
 - stato

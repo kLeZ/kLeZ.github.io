@@ -4,7 +4,7 @@ layout: post
 slug: vacanze-ravennati
 title: Vacanze Ravennati
 categories:
-- Diario/Diary
+- Diario
 tags:
 - importato dal vecchio blog
 ---

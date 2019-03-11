@@ -4,7 +4,7 @@ layout: post
 slug: ahhhh-che-caldo
 title: Ahhhh che caldo!!!
 categories:
-- Diario/Diary
+- Diario
 - Package Management
 tags:
 - Freax

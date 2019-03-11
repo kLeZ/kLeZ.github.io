@@ -6,7 +6,7 @@ title: Narrativa per tutti! – Il D&D parte 3
 categories:
 - RPG
 tags:
-- d&amp;d
+- d&d
 - importato dal vecchio blog
 - narrativa
 ---

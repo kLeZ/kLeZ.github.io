@@ -4,7 +4,7 @@ layout: post
 slug: voglia-di-rivoluzione
 title: Voglia di Rivoluzione
 categories:
-- Diario/Diary
+- Diario
 tags:
 - importato dal vecchio blog
 - politica

@@ -4,10 +4,10 @@ layout: post
 slug: altre-idee-per-fpm
 title: Altre idee per FPM
 categories:
-- Diario/Diary
+- Diario
 - Linux
 - Package Management
-- Riflessioni/Thoughts
+- Riflessioni
 tags:
 - Freax
 - importato dal vecchio blog

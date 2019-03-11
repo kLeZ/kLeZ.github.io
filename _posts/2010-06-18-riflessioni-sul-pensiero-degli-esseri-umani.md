@@ -4,8 +4,7 @@ layout: post
 slug: riflessioni-sul-pensiero-degli-esseri-umani
 title: Riflessioni sul pensiero degli esseri umani
 categories:
-- Riflessioni (filosofiche?)/(Philosofical?) Thoughts
-- Riflessioni/Thoughts
+- Riflessioni
 tags:
 - evoluzione
 - importato dal vecchio blog

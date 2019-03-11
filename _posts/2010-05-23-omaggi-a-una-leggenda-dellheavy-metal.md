@@ -4,7 +4,7 @@ layout: post
 slug: omaggi-a-una-leggenda-dellheavy-metal
 title: Omaggi a una leggenda dell'Heavy Metal
 categories:
-- Diario/Diary
+- Diario
 tags:
 - cordoglio
 - importato dal vecchio blog

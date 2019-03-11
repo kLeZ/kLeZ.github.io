@@ -4,7 +4,7 @@ layout: post
 slug: le-ultime-elezioni-fanno-schifo
 title: Le ultime elezioni fanno schifo...
 categories:
-- Diario/Diary
+- Diario
 tags:
 - importato dal vecchio blog
 - politica

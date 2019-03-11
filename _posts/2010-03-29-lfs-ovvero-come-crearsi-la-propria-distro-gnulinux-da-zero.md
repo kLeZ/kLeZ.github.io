@@ -4,7 +4,7 @@ layout: post
 slug: lfs-ovvero-come-crearsi-la-propria-distro-gnulinux-da-zero
 title: LFS ovvero come crearsi la propria distro GNU/Linux da zero
 categories:
-- Diario/Diary
+- Diario
 tags:
 - importato dal vecchio blog
 - informatica

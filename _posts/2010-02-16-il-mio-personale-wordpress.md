@@ -4,7 +4,7 @@ layout: post
 slug: il-mio-personale-wordpress
 title: Il mio personale WordPress
 categories:
-- Diario/Diary
+- Diario
 tags:
 - importato dal vecchio blog
 ---

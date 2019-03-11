@@ -4,7 +4,7 @@ layout: post
 slug: babbo-natale-non-esiste-dimostrazione-scientifica-o-quasi
 title: BABBO NATALE NON ESISTE (Dimostrazione scientifica.... o quasi)
 categories:
-- Riflessioni/Thoughts
+- Riflessioni
 tags:
 - divertente
 - importato dal vecchio blog
