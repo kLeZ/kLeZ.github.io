@@ -5,6 +5,9 @@ description: >-
 baseurl: ""
 url: "https://klez.me"
 copyright: Copyright © Alessandro 'kLeZ' Accardo 2019
+build:
+    server: https://travis-ci.org/kLeZ/kLeZ.github.io
+    status: https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev
 
 author:
     name: Alessandro 'kLeZ' Accardo
