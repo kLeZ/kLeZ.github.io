@@ -14,7 +14,7 @@ tags:
 ---
 
 Hey all, this is the very first post of my blog and I want to thank myself for having decided, finally.
-
+<!--more-->
 Today I needed to send a text message (S[mall]M[essage]S[ervice]) to my girlfriend, in order to instruct her on how to go somewhere in Rome (Italy) and grab a little thing for me.
 There were a lot of informations to aggregate and I used EMACS, as I usually do, to keep them together. Grepped all the data from the Internet, placed on an EMACS new buffer, and cleaned some bytes here and there and the file is ready to be sent to her.
 

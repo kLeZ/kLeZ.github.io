@@ -10,7 +10,7 @@ tags:
 - importato dal vecchio blog
 - riportato da altri
 ---
-
+<!--more-->
 La maestra chiede a Gianni: "Ci sono 5 uccelli
 appollaiati su un ramo.
 Se si spara ad uno degli uccelli, quanti ne rimangono?"
@@ -23,7 +23,7 @@ La maestra: "Va bene.
 Gianni: "Allora:ci sono tre donne sedute su una
 panchina che mangiano il gelato.
 Una lo lecca delicatamente ai lati, la seconda lo
-ingoia tutto fino al cono,mentre la terza da piccoli
+ingoia tutto fino al cono, mentre la terza da piccoli
 morsi in cima al gelato.
 Quale delle tre è sposata?"
 L'insegnante arrossisce e risponde: "Suppongo la
