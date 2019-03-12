@@ -8,13 +8,10 @@ categories:
 - Package Management
 ---
 
-This article is written in my native language, Italian, but you will find a translation ASAP (As Soon As Possible). Sorry for this.Questo argomento è, a dire la verità, credo tra i più discussi e spinosi in assoluto, io qui tenterò di dare forma alla nebulosa che compone questa tematica e getterò una base (spero) per qualcosa di più ampio.
-
-<!-- more -->
-
+This article is written in my native language, Italian, but you will find a translation ASAP (As Soon As Possible). Sorry for this. Questo argomento è, a dire la verità, credo tra i più discussi e spinosi in assoluto, io qui tenterò di dare forma alla nebulosa che compone questa tematica e getterò una base (spero) per qualcosa di più ampio.
+<!--more-->
 
 # La confusione parte dalle basi
-
 
 La base di tutto è il formato da usare. Se ne sono dette di tutti i colori su quale sia il formato migliore in assoluto, mentre la Linux Foundation standardizzava il formato RPM, prima Red Hat Package Manager e ora RPM Package Manager (ricorsivo).
 Si potrebbe anche qui discutere delle ere sui due formati _faggot_ per eccellenza: RPM e DEB, ma non lo farò. Mi limiterò a dire che ognuno dei due formati introduce novità sull'argomento ma che porta anche gravi danni allo stesso. Per RPM il danno è più concettuale che sistemistico: RPM è l'estensione del file (.rpm), ma è anche il nome del formato (RPM), ed è anche il nome del Package Manager (sempre, rpm), senza contare gli innumerevoli usi impropri dell'acronimo. Insomma quando si parla di RPM non si sa mai se si sta parlando del file, del formato, del programma o di qualcos'altro. Il formato DEB dal canto suo introduce un problema ben più grave dal mio punto di vista: la frammentazione. Da quando il formato è nato, per opera della "bastian contrario" comunità di Debian, questo formato ha tentato sempre di _rubare_ adozioni a RPM mettendo in atto una vera e propria guerra, per nulla salutare ai formati o a Linux e al mondo libero in generale, tutto solo per "essere diversi". Ogni volta c'era qualche Debian-enthusiast che voleva necessariamente coinvolgere tutto il mondo linux nella loro totalitaria visione debian-centrica dell'universo, a partire dal loro package manager, dpkg. C'è da dire che non ci vuole uno scienziato a capire che il formato è perfetto sotto certi aspetti (lato utente medio) ma totalmente privo di funzionalità basilari se lo si guarda dal punto di vista di chi sa cosa diamine sia veramente la gestione del software, come i bonzi utilizzatori di slackware (i quali sanno **veramente** cosa sia gestire un pacchetto).

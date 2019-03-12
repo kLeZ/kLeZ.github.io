@@ -56,7 +56,7 @@ defaults:
           layout: "post"
 
 show_excerpts: true
-excerpt_separator: "<!--more-->"
+excerpt_separator: <!--more-->
 
 plugins:
     - jekyll-feed

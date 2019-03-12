@@ -11,6 +11,7 @@ tags:
 - riportato da altri
 ---
 <!--more-->
+
 La maestra chiede a Gianni: "Ci sono 5 uccelli
 appollaiati su un ramo.
 Se si spara ad uno degli uccelli, quanti ne rimangono?"
