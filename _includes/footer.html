@@ -6,8 +6,11 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col">
-				<small class="text-muted float-right">{{ site.copyright }}</small>
+			<div class="col text-left">
+				<small class="text-muted">Last build on <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date_to_rfc822 }}</time></small>
+			</div>
+			<div class="col text-right">
+				<small class="text-muted">{{ site.copyright }}</small>
 			</div>
 		</div>
 	</div>

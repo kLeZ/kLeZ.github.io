@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+{{ content }}
+
+{%- if site.posts.size > 0 -%}
+<div class="row">
+	<div class="col-lg-8 col-md-10 mx-auto">
+		{%- for post in site.posts -%}
+		{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+		<div class="card my-5 mx-0">
+			<div class="card-body">
+				<a href="{{ post.url | relative_url }}" class="card-link">
+					<h2 class="card-title">{{ post.title | escape }}</h2>
+				</a>
+				<cite class="card-subtitle mb-2 text-muted">Posted by {{ page.author | escape }} on {{ post.date | date_to_string }}</cite>
+			{%- if site.show_excerpts -%}
+				<p class="card-text">
+					{{ post.excerpt | strip | remove: '<p>' | remove: '</p>' }}
+				</p>
+			{%- endif -%}
+			</div>
+		{%- unless post.tags.size == 0 -%}
+			<div class="card-footer">
+				<small class="text-muted">Tags: {{ post.tags | sort | join: ", " }}</small>
+			</div>
+		{%- endunless -%}
+		</div>
+		{%- endfor -%}
+	</div>
+</div>
+{%- endif -%}
