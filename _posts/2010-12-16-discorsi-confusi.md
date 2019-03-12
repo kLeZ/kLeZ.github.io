@@ -11,6 +11,7 @@ tags:
 - sfogo
 ---
 <!--more-->
+
 Sto blog sta diventando sempre più macabro, gira gira lo chiudo, tanto ho notato che non so tenerlo...
 E' veramente troppo difficile da spiegare, nessuno, in qualsiasi contesto con qualsiasi mezzo compresa religione e filosofia, riuscirà mai a spiegare perché nasciamo con dolore, moriamo con dolore e viviamo una vita fatta di dolore.
 Ed è a volte questo che caratterizza la vita, la realizzazione è in fondo la ricerca di una felicità interiore, che per ognuno è diversa.

@@ -9,6 +9,7 @@ No! Ovviamente. Altrimenti che lo scriverei a fare: i post servono per raccontar
 <!--more-->
 
 ## L'idea
+
 Ieri è stato il **Free Software Day**, non sapevo che lo fosse, per me è sempre stato _San Valentino_, come per tutti.  
 Invece l'amata [FSFE] ha tirato fuori dal cilindro una iniziativa interessante e stimolante, a cui ho voluto partecipare nel mio piccolo: il Free Software Day.  
 Si trattava (o almeno è stato così per me) di esprimere il tuo _amore_ verso gli sviluppatori dei software che utilizzi, sostanzialmente come avviene per San Valentino. Un piccolo gesto per te ma, e lo dico da sviluppatore, enorme per chi sviluppa, dal punto di vista della motivazione.  
