@@ -2,8 +2,7 @@
 date: 2013-07-29 17:38:37+00:00
 layout: post
 slug: nerditure-of-a-tech-nerd-prologue-how-to-use-adb-on-a-working-android-phone-to-send-sms-through-a-pc
-title: 'Nerditure of a tech-nerd: Prologue [How to use ADB on a working Android phone
-  to send sms through a PC]'
+title: 'Nerditure of a tech-nerd: Prologue [How to use ADB on a working Android phone to send sms through a PC]'
 categories:
 - Android
 tags:
@@ -16,7 +15,7 @@ tags:
 Hey all, this is the very first post of my blog and I want to thank myself for having decided, finally.
 <!--more-->
 
-Today I needed to send a text message (S[mall]M[essage]S[ervice]) to my girlfriend, in order to instruct her on how to go somewhere in Rome (Italy) and grab a little thing for me.
+Today I needed to send a text message (S[hort]M[essage]S[ervice]) to my girlfriend, in order to instruct her on how to go somewhere in Rome (Italy) and grab a little thing for me.
 There were a lot of informations to aggregate and I used EMACS, as I usually do, to keep them together. Grepped all the data from the Internet, placed on an EMACS new buffer, and cleaned some bytes here and there and the file is ready to be sent to her.
 
 Now I have to copy all the text by hand on the phone and send the text... No wait! I'm a smart tech-nerd so I have to find a better way to do so. Well, Unix fan, a bash under my fingers, an android phone connected to my laptop.... "Can I send an SMS through an Android Intent by hitting some adb shell commands?" I thought and I replied instantly "YES!".

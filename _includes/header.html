@@ -8,42 +8,54 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				{% assign links = site.data.navigation %}
-				{% for link in links %}
-					{% assign class = nil %}
-					{% if page.url contains link.url %}
-						{% assign class = 'active' %}
-					{% endif %}
-					{% if link.sublinks %}
+				{%- assign links = site.data.navigation -%}
+				{%- for link in links -%}
+					{%- assign class = nil -%}
+					{%- if page.url contains link.url -%}
+						{%- assign class = 'active' -%}
+					{%- endif -%}
+					{%- assign url = link.url -%}
+					{%- if link.relative -%}
+						{%- assign url = link.url | relative_url -%}
+					{%- endif -%}
+					{%- if link.sublinks -%}
 						<li class="nav-item dropdown {{ class }}">
-							<a href="{{ site.baseurl }}{{ link.url }}" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ link.title }} <span class="caret"></span></a>
+							<a href="{{ url }}" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ link.title }} <span class="caret"></span></a>
 							<div class="dropdown-menu">
-								{% for sublink in link.sublinks %}
-									{% if sublink.title == 'separator' %}
+								{%- for sublink in link.sublinks -%}
+									{%- if sublink.title == 'separator' -%}
 										<div role="separator" class="dropdown-divider"></div>
-									{% else %}
-										<a class="dropdown-item" href="{{ site.baseurl }}{{ sublink.url }}">{{ sublink.title }}</a>
-									{% endif %}
-								{% endfor %}
+									{%- else -%}
+										{%- assign suburl = sublink.url -%}
+										{%- if sublink.relative -%}
+											{%- assign suburl = sublink.url | relative_url -%}
+										{%- endif -%}
+										<a class="dropdown-item" href="{{ suburl }}">{{ sublink.title }}</a>
+									{%- endif -%}
+								{%- endfor -%}
 							</div>
 						</li>
-					{% else %}
-						{% if link.disabled %}
+					{%- else -%}
+						{%- if link.disabled -%}
 							<li class="nav-item {{ class }}">
 								<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{{ link.title }}</a>
 							</li>
-						{% else %}
+						{%- else -%}
 							<li class="nav-item {{ class }}">
-								<a class="nav-link" href="{{ site.baseurl }}{{ link.url }}">{{ link.title }}</a>
+								<a class="nav-link" href="{{ url }}">{{ link.title }}</a>
 							</li>
-						{% endif %}
-					{% endif %}
-				{% endfor %}
+						{%- endif -%}
+					{%- endif -%}
+				{%- endfor -%}
 			</ul>
 		</div>
 	</div>
 </nav>
-<header class="masthead" style="background-image: url('{{ '/assets/img/home-bg.jpg' | relative_url }}')">
+{%- assign style = '' -%}
+{%- unless page.header_background_url == blank or page.header_background_url == nil -%}
+	{%- assign style = 'background-image: url(' | append: page.header_background_url | relative_url | append: ')' -%}
+{%- endunless -%}
+<header class="masthead" style="{{ style }}">
 	<div class="overlay"></div>
 	<div class="container-fluid">
 		<div class="row">

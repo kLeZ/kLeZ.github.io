@@ -51,7 +51,8 @@ defaults:
     - scope:
           path: ""
       values:
-          author: Alessandro 'kLeZ' Accardo
+          author: kLeZ
+          header_background_url: /assets/img/home-bg.jpg
     - scope:
           path: ""
           type: "posts"
@@ -61,8 +62,13 @@ defaults:
 show_excerpts: true
 excerpt_separator: <!--more-->
 
+jekyll_tidy:
+    compress_html: false
+
 plugins:
     - jekyll-feed
+    - jekyll-tidy
+
 # Defaults. IF you want to change the exclude make sure you keep those sane defaults
 # exclude:
 #     - Gemfile

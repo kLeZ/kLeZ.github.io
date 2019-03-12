@@ -1,8 +1,9 @@
 ---
 layout: page
-title: About
 permalink: /about/
 ---
+
+# About me
 
 Questo è il mio sito. "_E vorrei ben vedere_" dirai, "_ci sono venuto apposta_".  
 Inizio dalle basi che è sempre bene farlo. Mi chiamo **Alessandro**, come si legge praticamente ovunque in queste pagine. Al momento in cui scrivo sono dotato di ben un paio di occhi, uno di orecchie, ho anche un paio di mani e piedi, e tutto questo alla veneranda età di **32 anni** (quasi suonati).  

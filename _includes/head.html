@@ -4,11 +4,15 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="author" content="{{ site.author.name }}" />
-	<title>{{ page.title | default: site.title }}</title>
+	{% assign title = site.title %}
+	{%- unless page.title == blank or page.title == nil -%}
+		{%- assign title = site.title | append: ' - ' | append: page.title -%}
+	{%- endunless -%}
+	<title>{{ title }}</title>
 	<link rel="stylesheet" href="{{ '/assets/bootstrap/bootstrap-reboot.min.css' | relative_url }}" />
 	<link rel="stylesheet" href="{{ '/assets/bootstrap/bootstrap-grid.min.css' | relative_url }}" />
 	<link rel="stylesheet" href="{{ '/assets/bootstrap/bootstrap.min.css' | relative_url }}" />
 	<link rel="stylesheet" href="{{ '/assets/fontawesome-free/css/all.min.css' | relative_url }}" />
 	<link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}" />
-	{%- feed_meta -%}
+	{% feed_meta %}
 </head>

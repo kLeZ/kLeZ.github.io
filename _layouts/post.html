@@ -6,12 +6,10 @@ layout: default
 		<header>
 			<h2>{{ page.title | escape }}</h2>
 			<small class="text-muted">Posted on 
-				<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-					{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-					{{ page.date | date: date_format }}
-				</time> by&nbsp;
+				{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+				<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date_to_string }}</time>
 				{%- if page.author -%}
-				• <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+				by • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
 					<span class="font-italic" itemprop="name">{{ page.author }}</span>
 				</span>
 				{%- endif -%}
