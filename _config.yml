@@ -55,7 +55,7 @@ defaults:
       values:
           layout: "post"
 
-show_excerpts: false
+show_excerpts: true
 excerpt_separator: "<!--more-->"
 
 plugins:
