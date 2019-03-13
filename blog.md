@@ -1,6 +1,6 @@
 ---
 layout: page
-body_class: home-page
+title: Blog
 ---
 
 {% include posts.html posts=site.posts %}

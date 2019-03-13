@@ -16,3 +16,7 @@
   url: https://twitter.com/
 - name: youtube
   url: https://youtube.com/
+- name: telegram
+  url: https://telegram.me/
+- name: email
+  url: "mailto:"

@@ -9,38 +9,6 @@ build:
     server: https://travis-ci.org/kLeZ/kLeZ.github.io
     status: https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev
 
-author:
-    name: Alessandro 'kLeZ' Accardo
-    brand: kLeZ
-    email: klez@pm.me
-    social:
-        - name: twitter
-          username: kLeZhAcK
-          display:
-          icon:
-              type: fa
-              value: fab fa-twitter
-        - name: github
-          username: kLeZ
-          display:
-          icon:
-              type: fa
-              value: fab fa-github
-        - name: rss
-          instance: /feed.xml
-          username:
-          display:
-          icon:
-              type: fa
-              value: fa fa-rss
-        - name: email
-          instance: "mailto:"
-          username: klez@pm.me
-          display:
-          icon:
-              type: fa
-              value: fa fa-envelope
-
 sass:
     sass_dir: _sass
 
@@ -58,6 +26,7 @@ defaults:
           type: "posts"
       values:
           layout: "post"
+          permalink: /:year/:month/:day/:title/
 
 show_excerpts: true
 excerpt_separator: <!--more-->
@@ -70,11 +39,15 @@ plugins:
     - jekyll-tidy
 
 # Defaults. IF you want to change the exclude make sure you keep those sane defaults
-# exclude:
-#     - Gemfile
-#     - Gemfile.lock
-#     - node_modules
-#     - vendor/bundle/
-#     - vendor/cache/
-#     - vendor/gems/
-#     - vendor/ruby/
+exclude:
+    - Gemfile
+    - Gemfile.lock
+    - node_modules
+    - vendor/bundle/
+    - vendor/cache/
+    - vendor/gems/
+    - vendor/ruby/
+    - CNAME
+    - LICENSE
+    - README.md
+    - blog-vector-icon-27.jpg
