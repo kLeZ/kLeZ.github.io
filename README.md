@@ -7,6 +7,12 @@ Jekyll is a very simple but powerful software to build public websites in, and t
 
 Thanks [Jekyll], thanks [TravisCI], thanks [GitHub], for making it possible.
 
+Double licensing is provided: [GNU GPL v3] for the site code which you can freely use and modify, and [CC-BY-NC-ND 4.0] for the contents of the site, which are my personal knowledge and life experience, and represent an intellectual property of mine.
+
+Please be gentle :-)
+
 [Jekyll]: https://jekyllrb.com/
 [TravisCI]: https://travis-ci.org/
 [GitHub]: https://github.com
+[GNU GPL v3]: http://www.gnu.org/licenses/gpl.html
+[CC-BY-NC-ND 4.0]: https://creativecommons.org/licenses/by-nc-nd/4.0/
