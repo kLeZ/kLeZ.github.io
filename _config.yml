@@ -34,10 +34,6 @@ excerpt_separator: <!--more-->
 jekyll_tidy:
     compress_html: false
 
-plugins:
-    - jekyll-feed
-    - jekyll-tidy
-
 # Defaults. IF you want to change the exclude make sure you keep those sane defaults
 exclude:
     - Gemfile
