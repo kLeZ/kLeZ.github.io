@@ -5,7 +5,7 @@
 	"tasks": [{
 			"label": "Serve",
 			"type": "shell",
-			"command": "bundle exec jekyll serve --livereload",
+			"command": "bundle exec jekyll serve --livereload --drafts",
 			"group": {
 				"kind": "test",
 				"isDefault": true
@@ -16,7 +16,7 @@
 		{
 			"label": "Build",
 			"type": "shell",
-			"command": "bundle exec jekyll build",
+			"command": "bundle exec jekyll build --drafts",
 			"problemMatcher": ["$jekyll-error", "$jekyll-warning"],
 			"group": {
 				"kind": "build",
