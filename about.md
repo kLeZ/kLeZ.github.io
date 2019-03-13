@@ -3,8 +3,6 @@ layout: page
 permalink: /about/
 ---
 
-# About me
-
 Questo è il mio sito. "_E vorrei ben vedere_" dirai, "_ci sono venuto apposta_".  
 Inizio dalle basi che è sempre bene farlo. Mi chiamo **Alessandro**, come si legge praticamente ovunque in queste pagine. Al momento in cui scrivo sono dotato di ben un paio di occhi, uno di orecchie, ho anche un paio di mani e piedi, e tutto questo alla veneranda età di **32 anni** (quasi suonati).  
 Caso mai te lo stessi chiedendo, il momento in cui scrivo è l'_11 marzo 2019_. Alle _8 di sera_. Sul treno. Tornando a casa dal lavoro. E i 32 suoneranno il **7 di aprile**, giorno in cui, in quel di **Civitavecchia**, sono stato dato alla luce, gioia e dolore non solo della madre che m'ha partorito ma di tutti quelli che mi hanno sopportato e che mi sopportano. Un paio ancora devono farli santi.
