@@ -1,5 +1,11 @@
+- title: Blog
+  url: /blog
+  relative: true
 - title: About
   url: /about
+  relative: true
+- title: Contatti
+  url: /contatti
   relative: true
 - title: Repository
   url: https://github.com/kLeZ/kLeZ.github.io

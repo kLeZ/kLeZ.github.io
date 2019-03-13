@@ -1,6 +1,6 @@
-<ul class="list-inline text-center">
+<ul class="list-unstyled">
 	{%- for acct in include.networks -%}
-		<li class="list-inline-item">
+		<li>
 		{%- assign base_url = "" -%}
 		{%- if acct.instance -%}
 			{%- assign base_url = acct.instance -%}
@@ -12,14 +12,16 @@
 			<a href="{{ url }}">
 			{%- if acct.icon -%}
 				{%- if acct.icon.type == "fa" -%}
-					<i class="svg-icon {{ acct.icon.value }}"></i>
+					<span><i class="svg-icon {{ acct.icon.value }}"></i> {{ acct.name }}</span>
 				{%- endif -%}
 			{%- else -%}
 				<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon align-text-top d-inline-block">
 					<use xlink:href="{{ '/assets/minima-social-icons.svg#' | append: acct.name | relative_url }}"></use>
 				</svg>
 			{%- endif -%}
+			{%- if acct.display -%}
 				<span class="username">{{ acct.display | escape }}</span>
+			{%- endif -%}
 			</a>
 		</li>
 	{%- endfor -%}

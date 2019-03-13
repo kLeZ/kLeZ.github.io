@@ -1,6 +1,7 @@
 ---
 layout: page
-body_class: home-page
+title: Blog
+permalink: /blog/
 ---
 
 {% include posts.html posts=site.posts %}

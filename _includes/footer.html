@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 col-md-10 mx-auto">
-				{%- include social.html -%}
+				{%- include social.html networks=site.data.author.social -%}
 			</div>
 		</div>
 		<div class="row">
@@ -11,6 +11,14 @@
 			</div>
 			<div class="col text-right">
 				<small class="text-muted">{{ site.copyright }}</small>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col text-center">
+				<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />
+				<small class="text-muted">
+					This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+				</small>
 			</div>
 		</div>
 	</div>

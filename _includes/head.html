@@ -3,7 +3,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<meta name="author" content="{{ site.author.name }}" />
+	<meta name="author" content="{{ site.data.author.name }}" />
 	{% assign title = site.title %}
 	{%- unless page.title == blank or page.title == nil -%}
 		{%- assign title = site.title | append: ' - ' | append: page.title -%}
