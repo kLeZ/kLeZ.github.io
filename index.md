@@ -1,6 +1,6 @@
 ---
 layout: page
-body_class: home-page
+landing: true
 ---
 
 {% include posts.html posts=site.posts %}

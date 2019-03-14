@@ -1,11 +1,7 @@
 <!doctype html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 	{% include head.html %}
-{%- unless page.body_class == blank or page.body_class == nil -%}
-	<body class="{{ page.body_class }}">
-{%- else -%}
-	<body>
-{%- endunless -%}
+	<body class="{%- if page.landing == true -%}landing-page{%- endif -%}">
 		{% include header.html %}
 		<main class="container pt-3 pb-3" aria-label="Content">
 			{{ content }}
