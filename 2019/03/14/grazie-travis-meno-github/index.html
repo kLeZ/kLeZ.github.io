@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="author" content="Alessandro 'kLeZ' Accardo" />
-    <title>Alessandro 'kLeZ' Accardo personal website - ...mi piace come ragiona</title>
+    <title>Alessandro 'kLeZ' Accardo personal website - Grazie Travis CI, meno grazie a GitHub</title>
     <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
     <link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" />
@@ -60,34 +60,22 @@
     <main class="container pt-3 pb-3" aria-label="Content">
       <article itemscope itemtype="http://schema.org/BlogPosting">
         <header>
-          <h2>...mi piace come ragiona</h2>
-          <small class="text-muted">Posted on<time datetime="2010-06-27T01:08:11+02:00" itemprop="datePublished">27 Jun 2010</time>by • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <h2>Grazie Travis CI, meno grazie a GitHub</h2>
+          <small class="text-muted">Posted on<time datetime="2019-03-14T00:00:00+01:00" itemprop="datePublished">14 Mar 2019</time>by • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
               <span class="font-italic" itemprop="name">kLeZ</span>
             </span></small>
         </header>
         <section itemprop="articleBody">
-          <!--more-->
-          <p>La maestra chiede a Gianni: “Ci sono 5 uccelli
-            appollaiati su un ramo.
-            Se si spara ad uno degli uccelli, quanti ne rimangono?”
-            Il bambino risponde: “Nessuno perché con il rumore
-            dello sparo voleranno via tutti.”
-            La maestra:”Beh, la risposta giusta era 4 ma mi piace
-            come ragioni.”
-            Allora Gianni dice:”Posso farle io una domanda adesso?”
-            La maestra: “Va bene.
-            Gianni: “Allora:ci sono tre donne sedute su una
-            panchina che mangiano il gelato.
-            Una lo lecca delicatamente ai lati, la seconda lo
-            ingoia tutto fino al cono, mentre la terza da piccoli
-            morsi in cima al gelato.
-            Quale delle tre è sposata?”
-            L’insegnante arrossisce e risponde: “Suppongo la
-            seconda quella che ingoia il gelato fino al cono.”
-            E Gianni: “Beh, la risposta corretta sarebbe quella
-            con la fede, ma mi piace come ragiona!!!”</p>
+          <p>Sta sera ho quasi avuto il <em>panico</em>, quello che si prova quando <strong>sminchi</strong>[^] produzione, quello che hai quando sai di averla fatta te la <em>cazzata</em>, il commit maledetto che non ci doveva stare.</p>
+          <p>Fortunatamente Travis CI è un ottimo prodotto. GitHub Pages lo è un po’ meno.</p>
+          <p>Non sapere il perché la build fallisce <strong>dentro GitHub</strong>, perché lui comunque effettua una build del tuo sito già bello e costruito dal buon Travis, non è una bella cosa, lo è ancora meno quando cerchi l’informazione e non la trovi.</p>
+          <p>Si perché se c’è una cosa che ci insegnano da piccoli a noi informatici è che devi cercare i log per capire cosa non va. E i log non c’erano, nemmeno l’ombra. Maledetto, mi dici che ti fallisce la build e non mi dici perché.</p>
+          <p>A questo punto ho avuto l’illuminazione: posso escludere GitHub dalla build e fargli mangiare il sito già cotto da TravisCI? Fortunatamente la risposta a questa domanda era si, GitHub permette di pubblicare siti statici direttamente su master.<br />
+            Quindi potevo semplicemente riconfigurare TravisCI in modo da fargli fare il deploy solo della cartella di output e non di tutto il repo come facevo prima.</p>
+          <p>1 a 1 palla al centro, che dalla mia parte ho avuto un buon assist di TravisCI ma un pessimo autogol di GitHub.</p>
+          <p>Anche oggi produzione è salva e mi sono meritato la cena, buona notte.</p>
         </section>
-        <a href="/2010/06/27/mi-piace-come-ragiona/" hidden></a>
+        <a href="/2019/03/14/grazie-travis-meno-github/" hidden></a>
       </article>
     </main>
     <footer class="site-footer bg-light w-100 py-3">
