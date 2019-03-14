@@ -1,149 +1,148 @@
 <!doctype html>
 <html lang="en">
-	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<meta name="author" content="Alessandro 'kLeZ' Accardo" />
-	<title>Alessandro 'kLeZ' Accardo personal website - The kLeZ reboot: an infinite journey</title>
-	<link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
-	<link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css" />
-	<link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" />
-	<link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" />
-	<link rel="stylesheet" href="/assets/main.css" />
-	<link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro 'kLeZ' Accardo personal website" />
-</head>
-<body class="">
-		<header class="masthead" style="background-image: url(/assets/img/home-bg.jpg)">
-	<div class="overlay"></div>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-8 col-md-10 mx-auto">
-				<div class="site-heading">
-					<h1>Alessandro 'kLeZ' Accardo personal website</h1>
-					<span class="subheading">This is the personal website of an Italian developer once called 'kLeZ'.</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</header>
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-	<div class="container">
-		<a class="navbar-brand" href="/">kLeZ</a>
-		<a class="navbar-brand" href="https://travis-ci.org/kLeZ/kLeZ.github.io"><img src="https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev" alt="build status badge" /></a>
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			Menu
-			<i class="fa fa-bars"></i>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ml-auto"><li class="nav-item ">
-								<a class="nav-link" href="/blog">Blog</a>
-							</li><li class="nav-item ">
-								<a class="nav-link" href="/about">About</a>
-							</li><li class="nav-item ">
-								<a class="nav-link" href="/contatti">Contatti</a>
-							</li><li class="nav-item ">
-								<a class="nav-link" href="https://github.com/kLeZ/kLeZ.github.io">Repository</a>
-							</li><li class="nav-item ">
-								<a class="nav-link" href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
-							</li></ul>
-		</div>
-	</div>
-</nav>
-
-		<main class="container pt-3 pb-3" aria-label="Content">
-			<article itemscope itemtype="http://schema.org/BlogPosting">
-	<header>
-		<h2>The kLeZ reboot: an infinite journey</h2>
-		<small class="text-muted">Posted on<time datetime="2019-03-13T00:00:00+01:00" itemprop="datePublished">13 Mar 2019</time>by • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-				<span class="font-italic" itemprop="name">kLeZ</span>
-			</span></small>
-	</header>
-	<section itemprop="articleBody">
-		<h2 id="tl-dr">TL; DR</h2>
-
-<p>Penso e spero di tenere in piedi questo sito a lungo, e penso e spero che gli articoli che scriverò saranno interessanti, utili, o spunti di riflessione per chi legge. Se vuoi seguire, ti consiglio la sottoscrizione <a href="https://it.wikipedia.org/wiki/RSS">RSS</a>​<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, perché non penso che sarò regolare nei “rilasci”.
-<!--more--></p>
-
-<h2 id="the-journey-begins">The journey begins</h2>
-
-<p>Lo so, sono come l’<a href="https://it.wikipedia.org/wiki/Olandese_Volante">Olandese Volante</a>, che vuoi farci. È il <em>bello della diretta</em> direbbero alcuni, e in effetti la vita è un po’ una diretta, non si torna indietro e non si può rifare a richiesta.</p>
-
-<p>Ancora una volta torno su un blog, sta volta spero per sempre (o almeno mai più); fatto sta che un blog lo voglio, e l’ho sempre voluto ed è difficile poi però mantenerlo perché sono particolarmente <em>lazy</em> come dicono gli inglesi (thanks <a href="https://it.wikipedia.org/wiki/Deep_Purple#I_classici_(1970-1975)">Deep Purple MKII</a>).<br />
-Questa volta ho preso una serie di decisioni non da poco: non usare tecnologie che mi potrebbero portare a un <em>lock-in</em>, usare una tecnologia che in futuro posso ospitare con poco sforzo a casa, usare una tecnologia che mi fornisca qualcosa di molto semplice e flessibile e usare una tecnologia che renda semplice l’editing offline e la scrittura dei post. Questa tecnologia a mio avviso si chiama <a href="https://jekyllrb.com/">Jekyll</a>.</p>
-
-<p>Ho già ampiamente spiegato <a href="/2019/02/15/primo-post-da-smartphone/">qui</a> come e perché di molte cose, quindi non sto troppo a dilungarmi.<br />
-Fortunatamente per Jekyll esistono una marea di plugin e programmi utili, tra cui un <a href="https://github.com/thomasf/exitwp">importatore da <em>wordpress</em> molto efficiente e completo, scritto in python</a>. Questo ottimo tool mi ha permesso di importare diversi post provenienti dai miei vecchi blog wordpress.</p>
-
-<p>Storicamente, ho sempre apprezzato wordpress, e continuo ad apprezzarlo, ma volevo qualcosa di un po’ diverso, e soprattutto più <strong>sicuro</strong>, wordpress a volte mi fa dubitare della capacità degli sviluppatori che lo portano avanti da questo punto di vista.<br />
-Un sito generato con Jekyll per sua definizione <strong>non ha vulnerabilità</strong>, proprio perché quello che poi viene caricato sul web server alla fine è un sito statico, tante pagine html che potrebbero essere eseguite anche offline da un browser senza neanche l’ausilio di un web server.<br />
-E questo riduce molto la <em>superficie d’attacco</em>, come direbbe qualche amico del settore.</p>
-
-<p>Come storico quindi, trovi già dei post vecchi(ssimi) risalenti quasi tutti al 2010, quando ancora avevo voglia di scrivere, o forse quando ero galvanizzato dall’avere il mio server personale nel pc di casa, esposto su internet (in maniera alquanto poco cosciente) e con parecchi servizi attivi ed esposti (tra cui, si legge nei post di quel periodo, SSH, SVN e Apache 2). Fortunatamente anche dal punto di vista della sicurezza sono cresciuto, e difficilmente mi verrà di nuovo in mente di fare una cosa del genere, almeno non in quel modo.</p>
-
-<p>Ecco: ho voluto importare tutto per ricominciare ma allo stesso tempo dare continuità a un qualcosa che è cominciato ormai 9 anni fa (quando ero un piccolo sviluppatore junior allocato in Poste Italiane).<br />
-Ma con una grossa differenza: maggiori competenze, più consapevolezza di me stesso, del mondo, della tecnologia, maturità del mondo verso certe tecnologie che già in tempi non sospetti apprezzavo e consigliavo.<br />
-Forse anche un progetto implicito, quello che il web non è più così mio nemico come lo consideravo una volta (a ragione, ci arrivo dopo) e che quindi si <em>merita</em> che il mio sito sia qualcosa di etico, bello e sostenibile. Ma soprattutto etico.</p>
-
-<p>Andando indietro trovo post in cui sono galvanizzato per aver messo i miei siti e i miei servizi a casa mia, altri post in cui si evince che ho iniziato progetti che poi purtroppo sono morti (FPM), altri post invece sono un po’ più personali perché in quel momento mi sentivo di condividere le mie parole col mondo (mondo che in realtà probabilmente non ha mai letto queste cose, all’infuori forse di amici e parenti stretti).</p>
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p><a href="https://www.espertoweb.it/articolo.php?id_articolo=rss">Cosa sono e come si usano i feed RSS</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-
-	</section>
-	<a href="/2019/03/13/an-infinite-journey/" hidden></a>
-</article>
-
-		</main>
-		<footer class="site-footer bg-light w-100 py-3">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-md-10 mx-auto"><ul class="list-inline text-center"><li class="list-inline-item"><a href="https://github.com/kLeZ"><i class="svg-icon fab fa-github"></i><span class="username"></span>
-			</a>
-		</li><li class="list-inline-item"><a href="https://twitter.com/kLeZhAcK"><i class="svg-icon fab fa-twitter"></i><span class="username"></span>
-			</a>
-		</li><li class="list-inline-item"><a href="https://www.linkedin.com/in/alessandroaccardo"><i class="svg-icon fab fa-linkedin"></i><span class="username"></span>
-			</a>
-		</li><li class="list-inline-item"><a href="https://telegram.me/kLeZ"><i class="svg-icon fab fa-telegram"></i><span class="username"></span>
-			</a>
-		</li><li class="list-inline-item"><a href="/feed.xml"><i class="svg-icon fa fa-rss"></i><span class="username"></span>
-			</a>
-		</li><li class="list-inline-item"><a href="mailto:klez@pm.me"><i class="svg-icon fa fa-envelope"></i><span class="username"></span>
-			</a>
-		</li></ul>
-</div>
-		</div>
-		<div class="row">
-			<div class="col text-left">
-				<small class="text-muted">Last build on <time datetime="2019-03-14T20:34:08+01:00">Thu, 14 Mar 2019 20:34:08 +0100</time></small>
-			</div>
-			<div class="col text-right">
-				<small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col text-center">
-				<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />
-				<small class="text-muted">
-					This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
-				</small>
-			</div>
-		</div>
-	</div>
-</footer>
-
-		<script src="/assets/jquery/jquery-3.3.1.min.js"></script>
-<script src="/assets/popper/popper.min.js"></script>
-<script src="/assets/popper/tooltip.min.js"></script>
-<script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="/assets/fontawesome-free/js/all.min.js"></script>
-<script src="/assets/main.js"></script>
-
-	</body>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="author" content="Alessandro 'kLeZ' Accardo" />
+    <title>Alessandro 'kLeZ' Accardo personal website - The kLeZ reboot: an infinite journey</title>
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/main.css" />
+    <link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro 'kLeZ' Accardo personal website" />
+  </head>
+  <body class="">
+    <header class="masthead" style="background-image: url(/assets/img/home-bg.jpg)">
+      <div class="overlay"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Alessandro 'kLeZ' Accardo personal website</h1>
+              <span class="subheading">This is the personal website of an Italian developer once called 'kLeZ'.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="/">kLeZ</a>
+        <a class="navbar-brand" href="https://travis-ci.org/kLeZ/kLeZ.github.io"><img src="https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev" alt="build status badge" /></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/blog">Blog</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/contatti">Contatti</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="https://github.com/kLeZ/kLeZ.github.io">Repository</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container pt-3 pb-3" aria-label="Content">
+      <article itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+          <h2>The kLeZ reboot: an infinite journey</h2>
+          <small class="text-muted">Posted on<time datetime="2019-03-13T00:00:00+01:00" itemprop="datePublished">13 Mar 2019</time>by • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <span class="font-italic" itemprop="name">kLeZ</span>
+            </span></small>
+        </header>
+        <section itemprop="articleBody">
+          <h2 id="tl-dr">TL; DR</h2>
+          <p>Penso e spero di tenere in piedi questo sito a lungo, e penso e spero che gli articoli che scriverò saranno interessanti, utili, o spunti di riflessione per chi legge. Se vuoi seguire, ti consiglio la sottoscrizione <a href="https://it.wikipedia.org/wiki/RSS">RSS</a>​<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, perché non penso che sarò regolare nei “rilasci”.
+            <!--more--></p>
+          <h2 id="the-journey-begins">The journey begins</h2>
+          <p>Lo so, sono come l’<a href="https://it.wikipedia.org/wiki/Olandese_Volante">Olandese Volante</a>, che vuoi farci. È il <em>bello della diretta</em> direbbero alcuni, e in effetti la vita è un po’ una diretta, non si torna indietro e non si può rifare a richiesta.</p>
+          <p>Ancora una volta torno su un blog, sta volta spero per sempre (o almeno mai più); fatto sta che un blog lo voglio, e l’ho sempre voluto ed è difficile poi però mantenerlo perché sono particolarmente <em>lazy</em> come dicono gli inglesi (thanks <a href="https://it.wikipedia.org/wiki/Deep_Purple#I_classici_(1970-1975)">Deep Purple MKII</a>).<br />
+            Questa volta ho preso una serie di decisioni non da poco: non usare tecnologie che mi potrebbero portare a un <em>lock-in</em>, usare una tecnologia che in futuro posso ospitare con poco sforzo a casa, usare una tecnologia che mi fornisca qualcosa di molto semplice e flessibile e usare una tecnologia che renda semplice l’editing offline e la scrittura dei post. Questa tecnologia a mio avviso si chiama <a href="https://jekyllrb.com/">Jekyll</a>.</p>
+          <p>Ho già ampiamente spiegato <a href="/2019/02/15/primo-post-da-smartphone/">qui</a> come e perché di molte cose, quindi non sto troppo a dilungarmi.<br />
+            Fortunatamente per Jekyll esistono una marea di plugin e programmi utili, tra cui un <a href="https://github.com/thomasf/exitwp">importatore da <em>wordpress</em> molto efficiente e completo, scritto in python</a>. Questo ottimo tool mi ha permesso di importare diversi post provenienti dai miei vecchi blog wordpress.</p>
+          <p>Storicamente, ho sempre apprezzato wordpress, e continuo ad apprezzarlo, ma volevo qualcosa di un po’ diverso, e soprattutto più <strong>sicuro</strong>, wordpress a volte mi fa dubitare della capacità degli sviluppatori che lo portano avanti da questo punto di vista.<br />
+            Un sito generato con Jekyll per sua definizione <strong>non ha vulnerabilità</strong>, proprio perché quello che poi viene caricato sul web server alla fine è un sito statico, tante pagine html che potrebbero essere eseguite anche offline da un browser senza neanche l’ausilio di un web server.<br />
+            E questo riduce molto la <em>superficie d’attacco</em>, come direbbe qualche amico del settore.</p>
+          <p>Come storico quindi, trovi già dei post vecchi(ssimi) risalenti quasi tutti al 2010, quando ancora avevo voglia di scrivere, o forse quando ero galvanizzato dall’avere il mio server personale nel pc di casa, esposto su internet (in maniera alquanto poco cosciente) e con parecchi servizi attivi ed esposti (tra cui, si legge nei post di quel periodo, SSH, SVN e Apache 2). Fortunatamente anche dal punto di vista della sicurezza sono cresciuto, e difficilmente mi verrà di nuovo in mente di fare una cosa del genere, almeno non in quel modo.</p>
+          <p>Ecco: ho voluto importare tutto per ricominciare ma allo stesso tempo dare continuità a un qualcosa che è cominciato ormai 9 anni fa (quando ero un piccolo sviluppatore junior allocato in Poste Italiane).<br />
+            Ma con una grossa differenza: maggiori competenze, più consapevolezza di me stesso, del mondo, della tecnologia, maturità del mondo verso certe tecnologie che già in tempi non sospetti apprezzavo e consigliavo.<br />
+            Forse anche un progetto implicito, quello che il web non è più così mio nemico come lo consideravo una volta (a ragione, ci arrivo dopo) e che quindi si <em>merita</em> che il mio sito sia qualcosa di etico, bello e sostenibile. Ma soprattutto etico.</p>
+          <p>Andando indietro trovo post in cui sono galvanizzato per aver messo i miei siti e i miei servizi a casa mia, altri post in cui si evince che ho iniziato progetti che poi purtroppo sono morti (FPM), altri post invece sono un po’ più personali perché in quel momento mi sentivo di condividere le mie parole col mondo (mondo che in realtà probabilmente non ha mai letto queste cose, all’infuori forse di amici e parenti stretti).</p>
+          <div class="footnotes">
+            <ol>
+              <li id="fn:1">
+                <p><a href="https://www.espertoweb.it/articolo.php?id_articolo=rss">Cosa sono e come si usano i feed RSS</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+              </li>
+            </ol>
+          </div>
+        </section>
+        <a href="/2019/03/13/an-infinite-journey/" hidden></a>
+      </article>
+    </main>
+    <footer class="site-footer bg-light w-100 py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item"><a href="https://github.com/kLeZ"><i class="svg-icon fab fa-github"></i><span class="username"></span>
+                </a>
+              </li>
+              <li class="list-inline-item"><a href="https://twitter.com/kLeZhAcK"><i class="svg-icon fab fa-twitter"></i><span class="username"></span>
+                </a>
+              </li>
+              <li class="list-inline-item"><a href="https://www.linkedin.com/in/alessandroaccardo"><i class="svg-icon fab fa-linkedin"></i><span class="username"></span>
+                </a>
+              </li>
+              <li class="list-inline-item"><a href="https://telegram.me/kLeZ"><i class="svg-icon fab fa-telegram"></i><span class="username"></span>
+                </a>
+              </li>
+              <li class="list-inline-item"><a href="/feed.xml"><i class="svg-icon fa fa-rss"></i><span class="username"></span>
+                </a>
+              </li>
+              <li class="list-inline-item"><a href="mailto:klez@pm.me"><i class="svg-icon fa fa-envelope"></i><span class="username"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-left">
+            <small class="text-muted">Last build on <time datetime="2019-03-14T20:51:48+01:00">Thu, 14 Mar 2019 20:51:48 +0100</time></small>
+          </div>
+          <div class="col text-right">
+            <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />
+            <small class="text-muted">
+              This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+            </small>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="/assets/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/assets/popper/popper.min.js"></script>
+    <script src="/assets/popper/tooltip.min.js"></script>
+    <script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/assets/fontawesome-free/js/all.min.js"></script>
+    <script src="/assets/main.js"></script>
+  </body>
 </html>

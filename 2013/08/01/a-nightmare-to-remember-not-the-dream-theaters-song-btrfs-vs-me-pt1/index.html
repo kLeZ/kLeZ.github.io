@@ -1,185 +1,160 @@
 <!doctype html>
 <html lang="en">
-	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<meta name="author" content="Alessandro 'kLeZ' Accardo" />
-	<title>Alessandro 'kLeZ' Accardo personal website - A nightmare to remember -- not the Dream Theater's song -- [BTRFS vs. me - pt1]</title>
-	<link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
-	<link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css" />
-	<link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" />
-	<link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" />
-	<link rel="stylesheet" href="/assets/main.css" />
-	<link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro 'kLeZ' Accardo personal website" />
-</head>
-<body class="">
-		<header class="masthead" style="background-image: url(/assets/img/home-bg.jpg)">
-	<div class="overlay"></div>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-8 col-md-10 mx-auto">
-				<div class="site-heading">
-					<h1>Alessandro 'kLeZ' Accardo personal website</h1>
-					<span class="subheading">This is the personal website of an Italian developer once called 'kLeZ'.</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</header>
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-	<div class="container">
-		<a class="navbar-brand" href="/">kLeZ</a>
-		<a class="navbar-brand" href="https://travis-ci.org/kLeZ/kLeZ.github.io"><img src="https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev" alt="build status badge" /></a>
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			Menu
-			<i class="fa fa-bars"></i>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ml-auto"><li class="nav-item ">
-								<a class="nav-link" href="/blog">Blog</a>
-							</li><li class="nav-item ">
-								<a class="nav-link" href="/about">About</a>
-							</li><li class="nav-item ">
-								<a class="nav-link" href="/contatti">Contatti</a>
-							</li><li class="nav-item ">
-								<a class="nav-link" href="https://github.com/kLeZ/kLeZ.github.io">Repository</a>
-							</li><li class="nav-item ">
-								<a class="nav-link" href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
-							</li></ul>
-		</div>
-	</div>
-</nav>
-
-		<main class="container pt-3 pb-3" aria-label="Content">
-			<article itemscope itemtype="http://schema.org/BlogPosting">
-	<header>
-		<h2>A nightmare to remember -- not the Dream Theater&#39;s song -- [BTRFS vs. me - pt1]</h2>
-		<small class="text-muted">Posted on<time datetime="2013-08-01T19:42:35+02:00" itemprop="datePublished">01 Aug 2013</time>by • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-				<span class="font-italic" itemprop="name">kLeZ</span>
-			</span></small>
-	</header>
-	<section itemprop="articleBody">
-		<p>Today I want to say a few words about BTRFS. Firstly I want to say that <strong>this filesystem is awesome for functionalities</strong>, I will use it as my filesystem again as soon as it will become stable. But, It is not yet stable, I tried and I fallen in front of his horrible performances.
-<!--more--></p>
-
-<p>Actually there are some problems on this filesystem that developers know in fact but, they are much more complicated to solve because most of them are normal behaviors of other functionalities. As an example in order to understand much better and quickly: there is a known issue of (obviously) horrible performances that I experimented by myself, it makes performance decrease whenever you use it because he want to write down all the data in the same time, he want also manage all the metadata at the same time, only because those data are in the same transaction (!!), and you cannot do anything to fix that behavior because it is not customizable AND this is the normal behavior of work for btrfs. Result: you have an awesome filesystem that decreases its performances more quickly than Windows, so it is hardly unusable, especially if you use it for the root partition.</p>
-
-<p>A system cannot be so slow in 2013 so I ended up in a solution: I have to migrate my filesystem. I’m not a fan of passing data from a disk to another, I make a few bckups sometimes but not always, in fact this is a bad attitude, but that’s me. SO.</p>
-
-<p>In order to migrate the root filesystem (yes I had BTRFS for the root – and home – filesystem, I used to be a bad guy, huh) I used a slooooow but simple universal and powerful solution. The situation was aggravated by the fact that my laptop has secure boot and then the boot partition was very touchy. I used the well known live distro (any live distro could do this work, I used the openSuSE recovery system for that purpose) and so I logged in a shell. The rest are some commands, a cp, some other commands.</p>
-
-<p>Anyway, here is what I typed:</p>
-
-<p>I had to make a new partition of the same size or even better, so I resized the btrfs home partition of -200G in order to keep root filesystem very large.</p>
-
-<p><em>btrfs filesystem resize -200G /dev/sda4</em></p>
-
-<p>Then I created the new filesystem and after that I mounted old (as read only) and new root filesystems.</p>
-
-<p>So I ran this command: __</p>
-
-<p><em>cp -bfrdvx –preserve=all –suffix=~-bak-newfs -t /newfs/ /old/{bin,boot,etc,lib,lib64,media,mnt,opt,root,run,sbin,selinux,srv,tmp,usr,var}</em></p>
-
-<p>It took a few to complete but as it finished I had all my old root copied in the new one. I omitted copy the home folder because I have a separate partition for that, but I copied boot because even if I have a partition for that some files needs to be copied in any case.</p>
-
-<p>Explination:</p>
-
-<p><em>-b:</em> means backup, cp makes a backup if it has to overwrite a file, as described in the man “<em>it works better with -f [force] and -r [recurse]</em>”</p>
-
-<p><em>-f &amp; -r:</em> means recurse and force overwriting if you find the same file on destination</p>
-
-<p><em>-d:</em> this is the combination of two other switches, it means that cp cannot ever follow any link in the source and it should preserve the link attribute on the new filesystem, it is useful in our case because we want to keep everything even links to system libraries, kernels configurations and so on. We have a user friendly distro, not slackware, so we want to preserve the configurations made by the packagers of our precompiled software.</p>
-
-<p><em>-v:</em> verbose, no words.</p>
-
-<p><em>-x:</em> stay on this filesystem but, as described by man “<em>mount points are not worth</em>” [read that as if you were David Letterman].</p>
-
-<p><em>–preserve=all:</em> means preserve all attributes, other than links (remember <em>-d__ switch?</em>)</p>
-
-<p><em>–suffix=~-bak-newfs:</em> I chose only a suffix that I can remember of, later.</p>
-
-<p><em>-t /newfs/:</em> oh well, I’m explaining cp, but you should know of the -t option, it sets the destination folder.</p>
-
-<p><em>/old/{bin,boot,etc,lib,lib64,media,mnt,opt,root,run,sbin,selinux,srv,tmp,usr,var}:</em> the filesystem, without volatile folders. This a bash expansion, so it is not fully trusted to use it on a different shell.</p>
-
-<p>Ended now?! No! You should go across other commands in order to recover your poor system. As it i now your new root don’t knows how to start itself, it knows only how to start the old root. There are some files you have to edit in order to let the new root know about itself.</p>
-
-<p><strong>/etc/fstab</strong></p>
-
-<p>You have to edit the /etc/fstab of the new root because you have to change the mount device for / (root) mount point.</p>
-
-<p>I assume you know how to modify fstab.</p>
-
-<p>Then for the rest of configuration you have to chroot into the new root, so I bounded volatile filesystems (dev sys proc) and chrooted into the new root.</p>
-
-<p>You have to fix two main things that are broken because of their reference to the old filesystem: bootloader and kernel, you mind that if you do not do that part, the system will not boot up.</p>
-
-<p>In order to fix grub2 (I have grub2-efi so I make a guide on that, do not try to ask of lilo grub legacy or other BLs) I had to fire the command below:</p>
-
-<p><em>grub2-mkconfig -o /boot/grub2/grub.cfg</em></p>
-
-<p>So easy? Yes! Grub2 is composed of a bunch of useful scripts that detect automagically all the systems installed in the mounted partitions, and writes all the data into the grub.cfg. It’s handy isn’t it?</p>
-
-<p>For kernel you have to pray all goes smooth as it did for me, in othre cases, <em>I saw errors that you humans will never see in your lives</em>.</p>
-
-<p>This is the command: <em>mkinitrd</em>, if it works, good, anyway pray god it will autofix itself.</p>
-
-<p>Once fstab, init ramdisk, and grub2 are all fixed you can try to exit the chroot and reboot your machine, optionally you can also delete the old root partition.</p>
-
-<p>If it ended up smooth you should see grub2 loading, kernel loading and launching init, and the rest of the system run as normal, but with greater performance.</p>
-
-<p>I hope they will fix those errors and make btrfs ready for the prime time as soon as possible, anyway I have btrfs for the home partition yet, so I have chances to try it out more and more.</p>
-
-	</section>
-	<a href="/2013/08/01/a-nightmare-to-remember-not-the-dream-theaters-song-btrfs-vs-me-pt1/" hidden></a>
-</article>
-
-		</main>
-		<footer class="site-footer bg-light w-100 py-3">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-md-10 mx-auto"><ul class="list-inline text-center"><li class="list-inline-item"><a href="https://github.com/kLeZ"><i class="svg-icon fab fa-github"></i><span class="username"></span>
-			</a>
-		</li><li class="list-inline-item"><a href="https://twitter.com/kLeZhAcK"><i class="svg-icon fab fa-twitter"></i><span class="username"></span>
-			</a>
-		</li><li class="list-inline-item"><a href="https://www.linkedin.com/in/alessandroaccardo"><i class="svg-icon fab fa-linkedin"></i><span class="username"></span>
-			</a>
-		</li><li class="list-inline-item"><a href="https://telegram.me/kLeZ"><i class="svg-icon fab fa-telegram"></i><span class="username"></span>
-			</a>
-		</li><li class="list-inline-item"><a href="/feed.xml"><i class="svg-icon fa fa-rss"></i><span class="username"></span>
-			</a>
-		</li><li class="list-inline-item"><a href="mailto:klez@pm.me"><i class="svg-icon fa fa-envelope"></i><span class="username"></span>
-			</a>
-		</li></ul>
-</div>
-		</div>
-		<div class="row">
-			<div class="col text-left">
-				<small class="text-muted">Last build on <time datetime="2019-03-14T20:34:08+01:00">Thu, 14 Mar 2019 20:34:08 +0100</time></small>
-			</div>
-			<div class="col text-right">
-				<small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col text-center">
-				<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />
-				<small class="text-muted">
-					This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
-				</small>
-			</div>
-		</div>
-	</div>
-</footer>
-
-		<script src="/assets/jquery/jquery-3.3.1.min.js"></script>
-<script src="/assets/popper/popper.min.js"></script>
-<script src="/assets/popper/tooltip.min.js"></script>
-<script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="/assets/fontawesome-free/js/all.min.js"></script>
-<script src="/assets/main.js"></script>
-
-	</body>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="author" content="Alessandro 'kLeZ' Accardo" />
+    <title>Alessandro 'kLeZ' Accardo personal website - A nightmare to remember -- not the Dream Theater's song -- [BTRFS vs. me - pt1]</title>
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/main.css" />
+    <link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro 'kLeZ' Accardo personal website" />
+  </head>
+  <body class="">
+    <header class="masthead" style="background-image: url(/assets/img/home-bg.jpg)">
+      <div class="overlay"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Alessandro 'kLeZ' Accardo personal website</h1>
+              <span class="subheading">This is the personal website of an Italian developer once called 'kLeZ'.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="/">kLeZ</a>
+        <a class="navbar-brand" href="https://travis-ci.org/kLeZ/kLeZ.github.io"><img src="https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev" alt="build status badge" /></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/blog">Blog</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/contatti">Contatti</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="https://github.com/kLeZ/kLeZ.github.io">Repository</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container pt-3 pb-3" aria-label="Content">
+      <article itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+          <h2>A nightmare to remember -- not the Dream Theater&#39;s song -- [BTRFS vs. me - pt1]</h2>
+          <small class="text-muted">Posted on<time datetime="2013-08-01T19:42:35+02:00" itemprop="datePublished">01 Aug 2013</time>by • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <span class="font-italic" itemprop="name">kLeZ</span>
+            </span></small>
+        </header>
+        <section itemprop="articleBody">
+          <p>Today I want to say a few words about BTRFS. Firstly I want to say that <strong>this filesystem is awesome for functionalities</strong>, I will use it as my filesystem again as soon as it will become stable. But, It is not yet stable, I tried and I fallen in front of his horrible performances.
+            <!--more--></p>
+          <p>Actually there are some problems on this filesystem that developers know in fact but, they are much more complicated to solve because most of them are normal behaviors of other functionalities. As an example in order to understand much better and quickly: there is a known issue of (obviously) horrible performances that I experimented by myself, it makes performance decrease whenever you use it because he want to write down all the data in the same time, he want also manage all the metadata at the same time, only because those data are in the same transaction (!!), and you cannot do anything to fix that behavior because it is not customizable AND this is the normal behavior of work for btrfs. Result: you have an awesome filesystem that decreases its performances more quickly than Windows, so it is hardly unusable, especially if you use it for the root partition.</p>
+          <p>A system cannot be so slow in 2013 so I ended up in a solution: I have to migrate my filesystem. I’m not a fan of passing data from a disk to another, I make a few bckups sometimes but not always, in fact this is a bad attitude, but that’s me. SO.</p>
+          <p>In order to migrate the root filesystem (yes I had BTRFS for the root – and home – filesystem, I used to be a bad guy, huh) I used a slooooow but simple universal and powerful solution. The situation was aggravated by the fact that my laptop has secure boot and then the boot partition was very touchy. I used the well known live distro (any live distro could do this work, I used the openSuSE recovery system for that purpose) and so I logged in a shell. The rest are some commands, a cp, some other commands.</p>
+          <p>Anyway, here is what I typed:</p>
+          <p>I had to make a new partition of the same size or even better, so I resized the btrfs home partition of -200G in order to keep root filesystem very large.</p>
+          <p><em>btrfs filesystem resize -200G /dev/sda4</em></p>
+          <p>Then I created the new filesystem and after that I mounted old (as read only) and new root filesystems.</p>
+          <p>So I ran this command: __</p>
+          <p><em>cp -bfrdvx –preserve=all –suffix=~-bak-newfs -t /newfs/ /old/{bin,boot,etc,lib,lib64,media,mnt,opt,root,run,sbin,selinux,srv,tmp,usr,var}</em></p>
+          <p>It took a few to complete but as it finished I had all my old root copied in the new one. I omitted copy the home folder because I have a separate partition for that, but I copied boot because even if I have a partition for that some files needs to be copied in any case.</p>
+          <p>Explination:</p>
+          <p><em>-b:</em> means backup, cp makes a backup if it has to overwrite a file, as described in the man “<em>it works better with -f [force] and -r [recurse]</em>”</p>
+          <p><em>-f &amp; -r:</em> means recurse and force overwriting if you find the same file on destination</p>
+          <p><em>-d:</em> this is the combination of two other switches, it means that cp cannot ever follow any link in the source and it should preserve the link attribute on the new filesystem, it is useful in our case because we want to keep everything even links to system libraries, kernels configurations and so on. We have a user friendly distro, not slackware, so we want to preserve the configurations made by the packagers of our precompiled software.</p>
+          <p><em>-v:</em> verbose, no words.</p>
+          <p><em>-x:</em> stay on this filesystem but, as described by man “<em>mount points are not worth</em>” [read that as if you were David Letterman].</p>
+          <p><em>–preserve=all:</em> means preserve all attributes, other than links (remember <em>-d__ switch?</em>)</p>
+          <p><em>–suffix=~-bak-newfs:</em> I chose only a suffix that I can remember of, later.</p>
+          <p><em>-t /newfs/:</em> oh well, I’m explaining cp, but you should know of the -t option, it sets the destination folder.</p>
+          <p><em>/old/{bin,boot,etc,lib,lib64,media,mnt,opt,root,run,sbin,selinux,srv,tmp,usr,var}:</em> the filesystem, without volatile folders. This a bash expansion, so it is not fully trusted to use it on a different shell.</p>
+          <p>Ended now?! No! You should go across other commands in order to recover your poor system. As it i now your new root don’t knows how to start itself, it knows only how to start the old root. There are some files you have to edit in order to let the new root know about itself.</p>
+          <p><strong>/etc/fstab</strong></p>
+          <p>You have to edit the /etc/fstab of the new root because you have to change the mount device for / (root) mount point.</p>
+          <p>I assume you know how to modify fstab.</p>
+          <p>Then for the rest of configuration you have to chroot into the new root, so I bounded volatile filesystems (dev sys proc) and chrooted into the new root.</p>
+          <p>You have to fix two main things that are broken because of their reference to the old filesystem: bootloader and kernel, you mind that if you do not do that part, the system will not boot up.</p>
+          <p>In order to fix grub2 (I have grub2-efi so I make a guide on that, do not try to ask of lilo grub legacy or other BLs) I had to fire the command below:</p>
+          <p><em>grub2-mkconfig -o /boot/grub2/grub.cfg</em></p>
+          <p>So easy? Yes! Grub2 is composed of a bunch of useful scripts that detect automagically all the systems installed in the mounted partitions, and writes all the data into the grub.cfg. It’s handy isn’t it?</p>
+          <p>For kernel you have to pray all goes smooth as it did for me, in othre cases, <em>I saw errors that you humans will never see in your lives</em>.</p>
+          <p>This is the command: <em>mkinitrd</em>, if it works, good, anyway pray god it will autofix itself.</p>
+          <p>Once fstab, init ramdisk, and grub2 are all fixed you can try to exit the chroot and reboot your machine, optionally you can also delete the old root partition.</p>
+          <p>If it ended up smooth you should see grub2 loading, kernel loading and launching init, and the rest of the system run as normal, but with greater performance.</p>
+          <p>I hope they will fix those errors and make btrfs ready for the prime time as soon as possible, anyway I have btrfs for the home partition yet, so I have chances to try it out more and more.</p>
+        </section>
+        <a href="/2013/08/01/a-nightmare-to-remember-not-the-dream-theaters-song-btrfs-vs-me-pt1/" hidden></a>
+      </article>
+    </main>
+    <footer class="site-footer bg-light w-100 py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item"><a href="https://github.com/kLeZ"><i class="svg-icon fab fa-github"></i><span class="username"></span>
+                </a>
+              </li>
+              <li class="list-inline-item"><a href="https://twitter.com/kLeZhAcK"><i class="svg-icon fab fa-twitter"></i><span class="username"></span>
+                </a>
+              </li>
+              <li class="list-inline-item"><a href="https://www.linkedin.com/in/alessandroaccardo"><i class="svg-icon fab fa-linkedin"></i><span class="username"></span>
+                </a>
+              </li>
+              <li class="list-inline-item"><a href="https://telegram.me/kLeZ"><i class="svg-icon fab fa-telegram"></i><span class="username"></span>
+                </a>
+              </li>
+              <li class="list-inline-item"><a href="/feed.xml"><i class="svg-icon fa fa-rss"></i><span class="username"></span>
+                </a>
+              </li>
+              <li class="list-inline-item"><a href="mailto:klez@pm.me"><i class="svg-icon fa fa-envelope"></i><span class="username"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-left">
+            <small class="text-muted">Last build on <time datetime="2019-03-14T20:51:48+01:00">Thu, 14 Mar 2019 20:51:48 +0100</time></small>
+          </div>
+          <div class="col text-right">
+            <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />
+            <small class="text-muted">
+              This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+            </small>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="/assets/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/assets/popper/popper.min.js"></script>
+    <script src="/assets/popper/tooltip.min.js"></script>
+    <script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/assets/fontawesome-free/js/all.min.js"></script>
+    <script src="/assets/main.js"></script>
+  </body>
 </html>
