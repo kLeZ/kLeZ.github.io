@@ -5,6 +5,7 @@ date: 2019-03-14 20:05:00+00:00
 ---
 
 Sta sera ho quasi avuto il _panico_, quello che si prova quando **sminchi**[^] produzione, quello che hai quando sai di averla fatta te la _cazzata_, il commit maledetto che non ci doveva stare.
+<!--more-->
 
 Fortunatamente Travis CI è un ottimo prodotto. GitHub Pages lo è un po' meno.
 
