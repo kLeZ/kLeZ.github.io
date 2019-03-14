@@ -1,7 +1,18 @@
 <!doctype html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 	{% include head.html %}
-	<body class="{%- if page.landing == true -%}landing-page{%- endif -%}">
+
+	{%- assign classes_arr = " " | split: " " -%}
+	{%- assign landing_arr = " " | split: " " -%}
+	{%- assign service_arr = " " | split: " " -%}
+
+	{%- if page.landing == true -%}{%- assign landing_arr = "landing-page " | split: " " -%}{%- endif -%}
+	{%- if page.service == true -%}{%- assign service_arr = "service-page " | split: " " -%}{%- endif -%}
+
+	{%- assign classes_arr = classes_arr | concat: landing_arr | concat: service_arr -%}
+	{%- assign classes = classes_arr | join: " " -%}
+
+	<body class="{{ classes }}">
 		{% include header.html %}
 		<main class="container pt-3 pb-3" aria-label="Content">
 			{{ content }}
