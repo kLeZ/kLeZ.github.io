@@ -20,7 +20,7 @@ gem "html-proofer", "~> 3.10.2"
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-feed"
-  gem "jekyll-tidy"
+  # gem "jekyll-tidy"
   # gem "jekyll-multiple-languages-plugin"
 end
 
