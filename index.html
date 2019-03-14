@@ -73,13 +73,6 @@
                   <cite class="card-subtitle mb-2 text-muted">Posted by kLeZ on 14 Mar 2019</cite>
                   <p class="card-text">
                     Sta sera ho quasi avuto il <em>panico</em>, quello che si prova quando <strong>sminchi</strong>[^] produzione, quello che hai quando sai di averla fatta te la <em>cazzata</em>, il commit maledetto che non ci doveva stare.
-                    Fortunatamente Travis CI è un ottimo prodotto. GitHub Pages lo è un po’ meno.
-                    Non sapere il perché la build fallisce <strong>dentro GitHub</strong>, perché lui comunque effettua una build del tuo sito già bello e costruito dal buon Travis, non è una bella cosa, lo è ancora meno quando cerchi l’informazione e non la trovi.
-                    Si perché se c’è una cosa che ci insegnano da piccoli a noi informatici è che devi cercare i log per capire cosa non va. E i log non c’erano, nemmeno l’ombra. Maledetto, mi dici che ti fallisce la build e non mi dici perché.
-                    A questo punto ho avuto l’illuminazione: posso escludere GitHub dalla build e fargli mangiare il sito già cotto da TravisCI? Fortunatamente la risposta a questa domanda era si, GitHub permette di pubblicare siti statici direttamente su master.<br />
-                    Quindi potevo semplicemente riconfigurare TravisCI in modo da fargli fare il deploy solo della cartella di output e non di tutto il repo come facevo prima.
-                    1 a 1 palla al centro, che dalla mia parte ho avuto un buon assist di TravisCI ma un pessimo autogol di GitHub.
-                    Anche oggi produzione è salva e mi sono meritato la cena, buona notte.
                   </p>
                 </section>
                 <footer class="card-footer">
@@ -489,7 +482,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2019-03-14T21:44:24+01:00">Thu, 14 Mar 2019 21:44:24 +0100</time></small>
+            <small class="text-muted">Last build on <time datetime="2019-03-14T22:10:48+01:00">Thu, 14 Mar 2019 22:10:48 +0100</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
