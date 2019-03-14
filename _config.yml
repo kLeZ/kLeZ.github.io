@@ -43,7 +43,4 @@ exclude:
     - vendor/cache/
     - vendor/gems/
     - vendor/ruby/
-    - CNAME
-    - LICENSE
-    - README.md
     - blog-vector-icon-27.jpg
