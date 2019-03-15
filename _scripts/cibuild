@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e # halt script on error
 
-git log --format=%H -1 > COMMIT
+echo "<!-- Commit: ${TRAVIS_COMMIT:-abcdef01} ;; Build: ${TRAVIS_BUILD_NUMBER:-0} -->" > _includes/commit-hash.html
 bundle exec jekyll build
 bundle exec htmlproofer ./_site --disable-external
