@@ -4,7 +4,7 @@ tags: [ "travis-ci", "github", "questo blog", deployment ]
 date: 2019-03-14 20:05:00+00:00
 ---
 
-Sta sera ho quasi avuto il _panico_, quello che si prova quando **sminchi**[^] produzione, quello che hai quando sai di averla fatta te la _cazzata_, il commit maledetto che non ci doveva stare.
+Sta sera ho quasi avuto il _panico_, quello che si prova quando **sminchi**[^1] produzione, quello che hai quando sai di averla fatta te la _cazzata_, il commit maledetto che non ci doveva stare.
 <!--more-->
 
 Fortunatamente Travis CI è un ottimo prodotto. GitHub Pages lo è un po' meno.
@@ -20,4 +20,4 @@ Quindi potevo semplicemente riconfigurare TravisCI in modo da fargli fare il dep
 
 Anche oggi produzione è salva e mi sono meritato la cena, buona notte.
 
-[^]: **sminchiare**: termine tecnico del vocabolario informatico che indica l'operazione di rompere inesorabilmente e completamente l'ambiente di produzione
+[^1]: **sminchiare**: termine tecnico del vocabolario informatico che indica l'operazione di rompere inesorabilmente e completamente l'ambiente di produzione
