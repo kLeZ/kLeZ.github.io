@@ -1,24 +1,23 @@
 #!/bin/bash
 set -e # halt script on error
 
-tee _data/travis.yml <<EOF
+if [[ $CI == "true" ]]; then
+	tee _data/travis.yml <<EOF
 commit:
     hash: ${TRAVIS_COMMIT:-abcdef01}
-    message: "${TRAVIS_COMMIT_MESSAGE}"
     tag: ${TRAVIS_TAG:-0.1}
+    message: |- $(echo; echo -e "${TRAVIS_COMMIT_MESSAGE}" | sed 's/^/        /')
 build:
     number: ${TRAVIS_BUILD_NUMBER:-0}
     id: ${TRAVIS_BUILD_ID:-0}
     url: ${TRAVIS_BUILD_WEB_URL:-https://example.org}
 EOF
-
-echo
-echo
-
-if [[ $CI == "true" ]]; then
+	echo -e "\n"
 	bundle exec jekyll build
 	bundle exec htmlproofer ./_site --disable-external
 else
+	cat _data/travis.yml
+	echo -e "\n"
 	bundle exec jekyll build --drafts
 	bundle exec htmlproofer ./_site --disable-external
 fi

@@ -3,4 +3,5 @@ layout: page
 title: Build information
 service: true
 ---
-{% include build-data.html build_data=site.data.travis %}
+{%- assign repo = site.data.navigation | where: "title", "Repository" -%}
+{% include build-data.html build_data=site.data.travis repo_url=repo.first.url %}

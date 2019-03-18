@@ -1,8 +1,11 @@
 commit:
-    hash: abcdef01
-    message: ""
+    hash: 3fc8039a97f517f9450b8700c55ef35ef7dd834d
     tag: 0.1
+    message: |- 
+        - unified dev and ci build scripts
+        - changed build script name
+        - added tee to print _data/travis.yml to stdout
 build:
-    number: 0
-    id: 0
-    url: https://example.org
+    number: 62
+    id: 507890989
+    url: https://travis-ci.org/kLeZ/kLeZ.github.io/builds/507890989
