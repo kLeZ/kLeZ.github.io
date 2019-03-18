@@ -43,11 +43,15 @@
 									{%- if sublink.title == 'separator' -%}
 										<div role="separator" class="dropdown-divider"></div>
 									{%- else -%}
+										{%- assign class = nil -%}
+										{%- if page.url contains sublink.url -%}
+											{%- assign class = 'active' -%}
+										{%- endif -%}
 										{%- assign suburl = sublink.url -%}
 										{%- if sublink.relative -%}
 											{%- assign suburl = sublink.url | relative_url -%}
 										{%- endif -%}
-										<a class="dropdown-item" href="{{ suburl }}">{{ sublink.title }}</a>
+										<a class="dropdown-item {{ class }}" href="{{ suburl }}">{{ sublink.title }}</a>
 									{%- endif -%}
 								{%- endfor -%}
 							</div>

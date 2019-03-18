@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="col">
+		<h4>Commit</h4>
+		<cite>{{ include.build_data.commit.hash }}</cite>
+		<pre>{{ include.build_data.commit.message | escape }}</pre>
+	</div>
+	<div class="col">
+		<h4>Build</h4>
+		<blockquote cite="{{ include.build_data.build.url }}" data-id="{{ include.build_data.build.id }}">
+			{{ include.build_data.build.number }}
+		</blockquote>
+	</div>
+</div>
