@@ -8,20 +8,20 @@
 			{%- assign social_conf = site.data.social | where: "name", acct.name -%}
 			{%- assign base_url = social_conf.first.url -%}
 		{%- endif -%}
-		{%- assign url = base_url | append: acct.username -%}
+		{% assign url = base_url | append: acct.username %}
 			<a href="{{ url }}">
-			{%- if acct.icon -%}
+			{% if acct.icon %}
 				{%- if acct.icon.type == "fa" -%}
-					<span><i class="svg-icon {{ acct.icon.value }}"></i> {{ acct.name }}</span>
+					<i class="svg-icon {{ acct.icon.value }}"></i>
 				{%- endif -%}
-			{%- else -%}
+			{% else %}
 				<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon align-text-top d-inline-block">
 					<use xlink:href="{{ '/assets/minima-social-icons.svg#' | append: acct.name | relative_url }}"></use>
 				</svg>
-			{%- endif -%}
-			{%- if acct.display -%}
+			{% endif %}
+			{% unless acct.display == blank or acct.display == nil %}
 				<span class="username">{{ acct.display | escape }}</span>
-			{%- endif -%}
+			{% endunless %}
 			</a>
 		</li>
 	{%- endfor -%}

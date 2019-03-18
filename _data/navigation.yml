@@ -5,7 +5,6 @@
   url: /blog
   relative: true
 - title: About me
-  url: "#"
   sublinks:
       - title: About
         url: /about
@@ -17,7 +16,6 @@
   url: https://github.com/kLeZ/kLeZ.github.io
   relative: false
 - title: Progetti
-  url: "#"
   sublinks:
       - title: Wash Ideas (Alpha)
         url: https://klez.me/wash-ideas

@@ -14,6 +14,7 @@
 
 	<body class="{{ classes }}">
 		{% include header.html %}
+		{% include navbar.html items=site.data.navigation %}
 		<main class="container pt-3 pb-3" aria-label="Content">
 			{{ content }}
 		</main>
