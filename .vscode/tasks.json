@@ -20,7 +20,7 @@
 		{
 			"label": "Build",
 			"type": "shell",
-			"command": "./_scripts/devbuild",
+			"command": "./_scripts/build",
 			"problemMatcher": [
 				"$jekyll-error",
 				"$jekyll-warning"
