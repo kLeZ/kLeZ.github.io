@@ -31,27 +31,36 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand" href="/">kLeZ</a>
-        <a class="navbar-brand" href="https://travis-ci.org/kLeZ/kLeZ.github.io" target="_blank"><img src="https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev" alt="build status badge" /></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="https://travis-ci.org/kLeZ/kLeZ.github.io" target="_blank">
+          <img src="https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev" alt="build status badge" />
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="collapse navbar-collapse" id="navigation">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item ">
-              <a class="nav-link" href="/blog">Blog</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/about">About</a>
+              <a class="nav-link" href="/build.html">Build</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="/contatti">Contatti</a>
+              <a class="nav-link" href="/blog">Posts</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About me <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item active" href="/about">About</a>
+                <a class="dropdown-item " href="/contatti">Contatti</a>
+              </div>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="https://github.com/kLeZ/kLeZ.github.io">Repository</a>
             </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Progetti <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
+              </div>
             </li>
           </ul>
         </div>
@@ -62,16 +71,14 @@
         <header>
           <h1>About me</h1>
         </header>
-        <section>
-          <p>Questo è il mio sito. “<em>E vorrei ben vedere</em>” dirai, “<em>ci sono venuto apposta</em>”.<br />
-            Inizio dalle basi che è sempre bene farlo. Mi chiamo <strong>Alessandro</strong>, come si legge praticamente ovunque in queste pagine. Al momento in cui scrivo sono dotato di ben un paio di occhi, uno di orecchie, ho anche un paio di mani e piedi, e tutto questo alla veneranda età di <strong>32 anni</strong> (quasi suonati).<br />
-            Caso mai te lo stessi chiedendo, il momento in cui scrivo è l’<em>11 marzo 2019</em>. Alle <em>8 di sera</em>. Sul treno. Tornando a casa dal lavoro. E i 32 suoneranno il <strong>7 di aprile</strong>, giorno in cui, in quel di <strong>Civitavecchia</strong>, sono stato dato alla luce, gioia e dolore non solo della madre che m’ha partorito ma di tutti quelli che mi hanno sopportato e che mi sopportano. Un paio ancora devono farli santi.</p>
-          <h1 id="leggi-il-blog"><a href="/blog/">Leggi il blog!</a></h1>
-          <p>Dicevo. Tutto molto bello, ma sono solo l’ennesimo che scrive un blog, e non un ennesimo speciale, o che ritiene di esserlo, ma uno qualunque, proprio l’ennesimo insomma.
-            Ma allora: <em>ma che diamine ci sei venuto a fare qui?</em> Te lo spiego subito (si fa per dire). Probabilmente c’è qualche articolo che ti interessa, o hai parlato con me, ci siamo incontrati, o mi conosci da tutta la vita magari (<em>buu pe sta ‘……</em>) e vuoi curiosare in quello che sembra essere la cosa più vicina a uno spazio web interamente mio.</p>
-          <p>E allora che la festa cominci, in alto gli articoli, e speriamo che ce ne sia almeno uno che tu apprezzi. Verrà il giorno dei commenti, ma non è questo il giorno, perché l’unica opzione valida è disqus, ma è lesivo della privacy, e io ci tengo a questa cosa, chi mi conosce sa e patisce.<br />
-            Nel frattempo ti sarò <em>estremamente grato</em>, e sarò <em>estremamente contento</em> di sapere cosa ne pensi di me e di quello che scrivo tramite <a href="/contatti/">uno dei miei contatti</a>. <em>Oh, mi raccomando, scrivimi anche se ti salta in mente di insultarmi. <strong>Fa piacere</strong> anche quello, in un certo senso.</em></p>
-        </section>
+        <p>Questo è il mio sito. “<em>E vorrei ben vedere</em>” dirai, “<em>ci sono venuto apposta</em>”.<br />
+          Inizio dalle basi che è sempre bene farlo. Mi chiamo <strong>Alessandro</strong>, come si legge praticamente ovunque in queste pagine. Al momento in cui scrivo sono dotato di ben un paio di occhi, uno di orecchie, ho anche un paio di mani e piedi, e tutto questo alla veneranda età di <strong>32 anni</strong> (quasi suonati).<br />
+          Caso mai te lo stessi chiedendo, il momento in cui scrivo è l’<em>11 marzo 2019</em>. Alle <em>8 di sera</em>. Sul treno. Tornando a casa dal lavoro. E i 32 suoneranno il <strong>7 di aprile</strong>, giorno in cui, in quel di <strong>Civitavecchia</strong>, sono stato dato alla luce, gioia e dolore non solo della madre che m’ha partorito ma di tutti quelli che mi hanno sopportato e che mi sopportano. Un paio ancora devono farli santi.</p>
+        <h1 id="leggi-il-blog"><a href="/blog/">Leggi il blog!</a></h1>
+        <p>Dicevo. Tutto molto bello, ma sono solo l’ennesimo che scrive un blog, e non un ennesimo speciale, o che ritiene di esserlo, ma uno qualunque, proprio l’ennesimo insomma.
+          Ma allora: <em>ma che diamine ci sei venuto a fare qui?</em> Te lo spiego subito (si fa per dire). Probabilmente c’è qualche articolo che ti interessa, o hai parlato con me, ci siamo incontrati, o mi conosci da tutta la vita magari (<em>buu pe sta ‘……</em>) e vuoi curiosare in quello che sembra essere la cosa più vicina a uno spazio web interamente mio.</p>
+        <p>E allora che la festa cominci, in alto gli articoli, e speriamo che ce ne sia almeno uno che tu apprezzi. Verrà il giorno dei commenti, ma non è questo il giorno, perché l’unica opzione valida è disqus, ma è lesivo della privacy, e io ci tengo a questa cosa, chi mi conosce sa e patisce.<br />
+          Nel frattempo ti sarò <em>estremamente grato</em>, e sarò <em>estremamente contento</em> di sapere cosa ne pensi di me e di quello che scrivo tramite <a href="/contatti/">uno dei miei contatti</a>. <em>Oh, mi raccomando, scrivimi anche se ti salta in mente di insultarmi. <strong>Fa piacere</strong> anche quello, in un certo senso.</em></p>
       </article>
     </main>
     <footer class="site-footer bg-light w-100 py-3">
@@ -79,22 +86,34 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <ul class="list-inline text-center">
-              <li class="list-inline-item"><a href="https://github.com/kLeZ"><i class="svg-icon fab fa-github"></i><span class="username"></span>
+              <li class="list-inline-item">
+                <a href="https://github.com/kLeZ">
+                  <i class="svg-icon fab fa-github"></i>
                 </a>
               </li>
-              <li class="list-inline-item"><a href="https://twitter.com/kLeZhAcK"><i class="svg-icon fab fa-twitter"></i><span class="username"></span>
+              <li class="list-inline-item">
+                <a href="https://twitter.com/kLeZhAcK">
+                  <i class="svg-icon fab fa-twitter"></i>
                 </a>
               </li>
-              <li class="list-inline-item"><a href="https://www.linkedin.com/in/alessandroaccardo"><i class="svg-icon fab fa-linkedin"></i><span class="username"></span>
+              <li class="list-inline-item">
+                <a href="https://www.linkedin.com/in/alessandroaccardo">
+                  <i class="svg-icon fab fa-linkedin"></i>
                 </a>
               </li>
-              <li class="list-inline-item"><a href="https://telegram.me/julius8774"><i class="svg-icon fab fa-telegram"></i><span class="username"></span>
+              <li class="list-inline-item">
+                <a href="https://telegram.me/julius8774">
+                  <i class="svg-icon fab fa-telegram"></i>
                 </a>
               </li>
-              <li class="list-inline-item"><a href="/feed.xml"><i class="svg-icon fa fa-rss"></i><span class="username"></span>
+              <li class="list-inline-item">
+                <a href="/feed.xml">
+                  <i class="svg-icon fa fa-rss"></i>
                 </a>
               </li>
-              <li class="list-inline-item"><a href="mailto:klez@pm.me"><i class="svg-icon fa fa-envelope"></i><span class="username"></span>
+              <li class="list-inline-item">
+                <a href="mailto:klez@pm.me">
+                  <i class="svg-icon fa fa-envelope"></i>
                 </a>
               </li>
             </ul>
@@ -102,7 +121,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2019-03-15T18:49:06+01:00">Fri, 15 Mar 2019 18:49:06 +0100</time></small>
+            <small class="text-muted">Last build on <time datetime="2019-03-18T15:13:27+01:00">Mon, 18 Mar 2019 15:13:27 +0100</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
@@ -125,5 +144,4 @@
     <script src="/assets/fontawesome-free/js/all.min.js"></script>
     <script src="/assets/main.js"></script>
   </body>
-  <!-- Commit: d7d162339694837baaf68a1fbe764db10eefc4fc ;; Build: 59 -->
 </html>

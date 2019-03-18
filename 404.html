@@ -31,27 +31,36 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand" href="/">kLeZ</a>
-        <a class="navbar-brand" href="https://travis-ci.org/kLeZ/kLeZ.github.io" target="_blank"><img src="https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev" alt="build status badge" /></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="https://travis-ci.org/kLeZ/kLeZ.github.io" target="_blank">
+          <img src="https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev" alt="build status badge" />
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="collapse navbar-collapse" id="navigation">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item ">
-              <a class="nav-link" href="/blog">Blog</a>
+              <a class="nav-link" href="/build.html">Build</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="/about">About</a>
+              <a class="nav-link" href="/blog">Posts</a>
             </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="/contatti">Contatti</a>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About me <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="/about">About</a>
+                <a class="dropdown-item " href="/contatti">Contatti</a>
+              </div>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="https://github.com/kLeZ/kLeZ.github.io">Repository</a>
             </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Progetti <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
+              </div>
             </li>
           </ul>
         </div>
@@ -69,22 +78,34 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <ul class="list-inline text-center">
-              <li class="list-inline-item"><a href="https://github.com/kLeZ"><i class="svg-icon fab fa-github"></i><span class="username"></span>
+              <li class="list-inline-item">
+                <a href="https://github.com/kLeZ">
+                  <i class="svg-icon fab fa-github"></i>
                 </a>
               </li>
-              <li class="list-inline-item"><a href="https://twitter.com/kLeZhAcK"><i class="svg-icon fab fa-twitter"></i><span class="username"></span>
+              <li class="list-inline-item">
+                <a href="https://twitter.com/kLeZhAcK">
+                  <i class="svg-icon fab fa-twitter"></i>
                 </a>
               </li>
-              <li class="list-inline-item"><a href="https://www.linkedin.com/in/alessandroaccardo"><i class="svg-icon fab fa-linkedin"></i><span class="username"></span>
+              <li class="list-inline-item">
+                <a href="https://www.linkedin.com/in/alessandroaccardo">
+                  <i class="svg-icon fab fa-linkedin"></i>
                 </a>
               </li>
-              <li class="list-inline-item"><a href="https://telegram.me/julius8774"><i class="svg-icon fab fa-telegram"></i><span class="username"></span>
+              <li class="list-inline-item">
+                <a href="https://telegram.me/julius8774">
+                  <i class="svg-icon fab fa-telegram"></i>
                 </a>
               </li>
-              <li class="list-inline-item"><a href="/feed.xml"><i class="svg-icon fa fa-rss"></i><span class="username"></span>
+              <li class="list-inline-item">
+                <a href="/feed.xml">
+                  <i class="svg-icon fa fa-rss"></i>
                 </a>
               </li>
-              <li class="list-inline-item"><a href="mailto:klez@pm.me"><i class="svg-icon fa fa-envelope"></i><span class="username"></span>
+              <li class="list-inline-item">
+                <a href="mailto:klez@pm.me">
+                  <i class="svg-icon fa fa-envelope"></i>
                 </a>
               </li>
             </ul>
@@ -92,7 +113,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2019-03-15T18:49:06+01:00">Fri, 15 Mar 2019 18:49:06 +0100</time></small>
+            <small class="text-muted">Last build on <time datetime="2019-03-18T15:13:27+01:00">Mon, 18 Mar 2019 15:13:27 +0100</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
@@ -115,5 +136,4 @@
     <script src="/assets/fontawesome-free/js/all.min.js"></script>
     <script src="/assets/main.js"></script>
   </body>
-  <!-- Commit: d7d162339694837baaf68a1fbe764db10eefc4fc ;; Build: 59 -->
 </html>
