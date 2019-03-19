@@ -1,7 +1,9 @@
 ---
 title: IHC e ransomware
 tags: ihc ransomware talk hackers camping
+date: 2019-03-19 20:30:00+00:00
 ---
+
 Sono profondamente in ritardo, lo so.  
 Sono stato a questo campeggio qualcosa come 7 mesi e mezzo fa, e andava riportato, ma non sapevo dove quindi non l'ho fatto; non me ne vogliate.
 
