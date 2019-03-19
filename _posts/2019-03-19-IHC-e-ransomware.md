@@ -1,7 +1,7 @@
 ---
 title: IHC e ransomware
 tags: ihc ransomware talk hackers camping
-date: 2019-03-19 20:30:00+00:00
+date: 2019-03-19 21:23:01+01:00
 ---
 
 Sono profondamente in ritardo, lo so.  
@@ -9,13 +9,13 @@ Sono stato a questo campeggio qualcosa come 7 mesi e mezzo fa, e andava riportat
 
 Iniziamo dall'inizio. IHC significa _Italian Hackers' Camp_, e il genitivo sassone è una di quelle cose di cui in IHE (_Italian Hackers' Embassy_) abbiamo discusso di più. Come da tradizione di ogni gruppo hacker che va a soffermarsi sul dettaglio. Questo è un po' _hacking_ alla fine.
 
-IHC è un evento biennale che si è tenuto per la prima volta nel 2018 a Padova, se ti interessa vai sul [sito di IHC].
+IHC è un evento biennale che si è tenuto per la prima volta nel 2018 a Padova, se ti interessa vai sul [sito di IHC](https://ihc.camp).
 
 La community intorno a IHC e IHE, e soprattutto l'associazione che ha ideato, organizza e promuove la community e il campo, sono di quegli agglomerati molto attivi e pieni di gente bellissima.
 
 In quel di Padova, tra il 2 e il 5 di agosto, ho partecipato a questo bellissimo evento, mi sono divertito e ho imparato veramente tante cose, ho conosciuto della bella gente e non ultimo ho tenuto un talk, che è poi il motivo del titolo di questo post.
 
-Il talk verteva sulla tematica dei malware, dei ransomware nello specifico, dando alcuni numeri e spiegando in parole semplici cosa sono e come si diffondono. Ripropongo qui il transcript, il materiale preparatorio, le fonti e la presentazione. In calce alla pagina troverai anche il video del talk, disponibile comunque su YouTube nel canale di IHC2018.
+Il talk verteva sulla tematica dei malware, dei ransomware nello specifico, dando alcuni numeri e spiegando in parole semplici cosa sono e come si diffondono. Ripropongo qui il transcript, il materiale preparatorio, le fonti e la presentazione. In calce alla pagina troverai anche il video del talk, disponibile comunque su YouTube nel [canale di IHC2018](https://www.youtube.com/channel/UCV9Dbt9F5pg1qWA1By-1tJg).
 <!--more-->
 
 ## Ransomware, efficacia alle stelle: un po' di numeri, vettori e target più un extra
@@ -25,7 +25,6 @@ Il livello di rischio legato a questo tipo di malware, che ormai di nuovo non ha
 La cosa che più sconvolge di questa categoria di malware, è la quasi totale assenza di soluzioni _post_ infezione; l'unica strada realistica attualmente percorribile è la prevenzione, non solo a mezzo di anti-malware, che poco possono contro questa estesa minaccia, ma anche (e soprattutto) con dei metodi più _rudimentali_ come il backup dei dati su sistemi e/o supporti di storage esterni all'host infetto.
 
 Navigheremo tra le pieghe della negligenza, analizzeremo vettori e target, dai più consueti ai più insoliti, e ricreeremo il brainstorm creativo che permette agli hacker senza scrupoli di creare questi veri e propri gioielli dell'ingegneria sociale divenuti oramai anche piuttosto remunerativi.
-
 
 ### Efficacia e alcuni dati
 
@@ -43,8 +42,8 @@ Scavando un minimo di più la cosa che appare evidente (e interessante!) è la n
 La cosa interessante da questo punto di vista è il design di architetture, infrastrutture e moduli che è in realtà tipico del lavoro _enterprise_ e molto desueto nel mondo hacker, che di solito è più basato sulla sperimentazione e sull'artigianato digitale.
 Insomma, con questa nuova minaccia l'approccio è molto più _corporation_ che nella quasi totalità delle altre minacce presenti in rete.
 
-
 ### Vettori: *canonici* e *insoliti*
+
 Esempi tipici di vettori sono le iper sottovalutate email che con delle tecniche di _social engineering_ spesso "artistiche" e grossolane riescono comunque a infettare centinaia di migliaia di vittime (**scimmie** è un termine tecnico spesso usato come sinonimo in questi casi).
 
 Noi di solito archiviamo il caso con un **PEBCAK** e con una serie di meritati insulti al primate di turno.
@@ -54,6 +53,7 @@ Diversamente capita per chi invece è ingenuamente invogliato a scaricare ed ese
 Un esempio reale di questo vettore piuttosto insolito è una "mod" per Minecraft che era addirittura a pagamento e funzionante e che una settimana dopo l'installazione attivava il malware (probabilmente per cifrare ogni cosa lentamente evitando di essere rilevato).
 
 ### Target: *canonici* e *insoliti*
+
 Considerata la necessità computazionale dei ransomware, i target soliti sono i PC piuttosto che dispositivi mobili o embedded (_IoT_ , per i più hipster), per quanto comunque non manca chi tenta di entrare nella nicchia di business del device ransom, attualmente non molto praticata ma probabilmente piuttosto redditizia.
 
 Tra i target soliti sicuramente i più colpiti sono i PC aziendali, per l'ovvia probabilità di archiviare dati più importanti di una cartella piena di mkv o di mp3 o di semplici (e probabilmente poco importanti) fogli di calcolo contenenti il bilancio domestico.
@@ -70,6 +70,7 @@ Questo è ovviamente piuttosto fantascientifico (e strizza l'occhio verso Mr. Ro
 Immaginate cosa succederebbe se questo tipo di attacco fosse portato verso gli **Amazon Go** o verso i loro kit per _smart home_, **Echo** e **Key**.
 
 ## Esempio pratico: *Super Mario: Ransom for Peach*
+
 Riprendendo l'idea della mod di Minecraft e qualche altro spunto da alcuni film ormai di culto (Jumanji e Saw) porto un esempio pratico.
 
 Un videogioco, l'ennesimo capitolo di **Super Mario**, in cui però quello che succede è che **Bowser** (lo storico _villain_) cifra tutti i tuoi dati in cloud (**GDrive**) e l'unico modo per decifrarli è trovare **Peach** e finire il gioco.
@@ -102,13 +103,9 @@ Il pdf è disponibile previa registrazione, motivo per cui pur avendolo non poss
 * [MalwareBytes - Malwarebytes Annual State of Malware Report Reveals Ransomware Detections Increased More Than 90 Percent](https://press.malwarebytes.com/2018/01/25/malwarebytes-annual-state-malware-report-reveals-ransomware-detections-increased-90-percent/)
 * [2017 Ransomware Trend Report and Forecast for 2018](https://blog.360totalsecurity.com/en/2017-ransomware-trend-report-2018-forecast/)
 
-
 ## Il talk per intero (grazie @IvoErMejo) e le slide a corredo
 
 [Ransomware: minaccia alle stelle]({% link /media/2019-03-19/ihc-e-ransomware/ransomware.odp %})
 
-<div class="embed-responsive embed-responsive-16by9">
-	<iframe class="embed-responsive-item" width="1280" height="720" src="https://www.youtube.com/embed/svUxYlMNtLw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-[sito di IHC]: https://ihc.camp
+{: .embed-responsive-16by9 }
+{% include embed-youtube.html video_id="svUxYlMNtLw" %}

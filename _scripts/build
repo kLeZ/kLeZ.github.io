@@ -18,6 +18,6 @@ EOF
 else
 	cat _data/travis.yml
 	echo -e "\n"
-	bundle exec jekyll build --drafts
+	bundle exec jekyll build --drafts --trace
 	bundle exec htmlproofer ./_site --disable-external
 fi
