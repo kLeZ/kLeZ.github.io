@@ -15,4 +15,6 @@ In quel di Padova, tra l'1 e il 5 di agosto, ho partecipato a questo bellissimo 
 
 Il talk verteva sulla tematica dei malware, dei ransomware nello specifico, dando alcuni numeri e spiegando in parole semplici cosa sono e come si diffondono.
 
+
+
 [sito di IHC]: https://ihc.camp
