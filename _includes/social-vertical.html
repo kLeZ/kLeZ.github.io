@@ -12,7 +12,7 @@
 			<a href="{{ url }}">
 			{% if acct.icon %}
 				{%- if acct.icon.type == "fa" -%}
-					<i class="svg-icon {{ acct.icon.value }}"></i>
+					<span><i class="svg-icon {{ acct.icon.value }}"></i> {{ acct.name }}</span>
 				{%- endif -%}
 			{% else %}
 				<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon align-text-top d-inline-block">
