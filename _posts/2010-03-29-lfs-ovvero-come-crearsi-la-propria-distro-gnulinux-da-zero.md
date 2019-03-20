@@ -14,7 +14,10 @@ tags:
 
 Salve a tutti,
 Oggi m'è venuto in mente un progetto che non molto tempo fa stavo abbandonando, il mio personale LFS. L'avevo iniziato col mio amico di vecchia data ma poi per impegni universitari non ha più avuto tempo di proseguire la cosa, quindi per ora vado da solo ma sono sicuro che appena avrà un momento libero mi aiuterà.
+
 <!--more-->
+[read more](){: .invisible #read-more }
+{: .m-0 .invisible .zero-size }
 
 LFS è l'acronimo per Linux From Scratch tradotto Linux da Zero. Cioè mi scarico i sorgenti dei tool GNU mi scarico il sorgente del kernel e mi compilo tutto a mano.
 L'utilità se sei un utilizzatore è praticamente inesistente ma se vuoi creare una distro è un ottimo punto di partenza per creare qualcosa di mai visto prima, altrimenti la mia idea è che tanto poi se ti basi su una distro finisci per rifare il vestito a quella distro e a cambiargli le mutande poi per il resto è sempre lei.

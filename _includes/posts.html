@@ -7,11 +7,15 @@
 				<a href="{{ post.url | relative_url }}" class="card-link">
 					<h2 class="card-title">{{ post.title | escape }}</h2>
 				</a>
-				<cite class="card-subtitle mb-2 text-muted">Posted by {{ page.author | escape }} on {{ post.date | date_to_string }}</cite>
+				<cite class="card-subtitle mb-2 text-muted">
+					<i class="fa fa-calendar-alt"></i>
+					<time datetime="{{ post.date | date_to_xmlschema }}" >{{ post.date | date: '%a, %e %b %Y %H:%M:%S' }}</time>
+				</cite>
 			{%- if site.show_excerpts -%}
-				<p class="card-text">
-					{{ post.excerpt | strip | remove: '<p>' | remove: '</p>' }}
-				</p>
+				{{ post.excerpt | strip | replace: '<p>', '<p class="card-text">' }}
+			{%- endif -%}
+			{%- if post.content contains "<!--more-->" -%}
+				<a href="{{ post.url | relative_url }}#read-more" class="card-link btn btn-dark float-right">Read more</a>
 			{%- endif -%}
 			</section>
 		{%- unless post.tags.size == 0 -%}

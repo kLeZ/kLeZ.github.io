@@ -13,7 +13,10 @@ tags:
 ---
 
 Tonight let's talk a little about SecureBoot.
+
 <!--more-->
+[read more](){: .invisible #read-more }
+{: .m-0 .invisible .zero-size }
 
 Secure Boot is IMHO the worst thing that Microsoft did in the last 15 years, and we're talking about an era of Windows 98 [Epic Crash!], Windows Millennium [BUUgs] and Windows Vista [SLOOwness], and the first Service Pack of Windows XP, that introduced more bugs than that ones it has corrected. So it is IMHO a horrible thing that will never protect them against malware: done the law, found the trick. BUT! As Microsoft does every time a new component is introduced, every hardware producer install a copy of it in its UEFI firmwares, this leads to problems for most of the users in the dreamland of linux.
 

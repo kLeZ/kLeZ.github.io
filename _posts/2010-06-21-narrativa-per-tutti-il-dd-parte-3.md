@@ -12,7 +12,10 @@ tags:
 ---
 
 Continua anche se con molto stacco la serie di post di narrativa riguardanti in particolare il D&D (Dungeons & Dragons) gioco di ruolo cartaceo creato nel '73.
+
 <!--more-->
+[read more](){: .invisible #read-more }
+{: .m-0 .invisible .zero-size }
 
 Tralasciando tutta la storia fino alla sessione di sabato scorso, perché sarebbe troppo lunga da raccontare dato che la campagna dura veramente da tantissimo (ormai credo che siamo arrivati anche all'anno), vorrei fare più per me che per voi il punto della situazione dei miei amati PG.
 Al punto di sabato scorso i PG sono ritornati da un lungo viaggio interplanare sul piano materiale dove ora sono ricercati da tutte le forze demoniache degli inferi di Baator, e soprattutto sono ricercati dal fratello di Julius di Laertia loro mentore e maestro (nonché coordinatore del gruppo), per via del fatto che già due o tre volte sono riusciti, non sanno bene neanche loro come, a sventare i suoi piani di conquista del potere assoluto. In Baator hanno fatto la conoscenza del principe Levistus arcidiavolo un tempo rinchiuso in un iceberg da Asmodeus, re degli inferi e arcinemico dell'arcidiavolo sopracitato. A Ysgard invece hanno potuto conoscere Kord, dio del valore che li ha accompagnati personalmente in Baator dove purtroppo hanno fallito la controversa missione di guarire il re degli Inferi a causa del "Principe del Settimo" che gli si è parato davanti e li ha costretti alla fuga miracolosa compiuta da Julius. Nella fuga hanno purtroppo perso un membro, Xion, figlio del vecchio maestro Latinor e allievo di Julius, che, preso dall'aura di panico di Levistus si è gettato in un pozzo senza fondo non facendovi più ritorno.

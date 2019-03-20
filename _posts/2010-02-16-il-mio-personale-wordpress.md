@@ -11,7 +11,10 @@ tags:
 
 Salve a chiunque stia leggendo questo articolo, questo è il mio primo post nel mio blog.
 Nel blog voglio scrivere ogni cosa riesco in ambiti talvolta del tutto differenti, come le mie passioni. Troverete Informatica, Musica, Giochi di Ruolo Strategia e Carte (Magic), e Università, insomma un po' di tutto, di quelli che sono i miei interessi e le mie passioni.
+
 <!--more-->
+[read more](){: .invisible #read-more }
+{: .m-0 .invisible .zero-size }
 
 Inizio oggi a parlare del mio lavoro: sono un programmatore, inizio quasi 3 anni fa col Java e dopo un anno abbondante cambio e passo al .NET che già conoscevo e programmavo dal 2005. Ora sono su una piattaforma molto particolare, il GIS cioè un sistema informativo geografico. Questo è un mondo tutto nuovo per me e per ora (a parte le tecnologie utilizzate) sembra piacermi.
 

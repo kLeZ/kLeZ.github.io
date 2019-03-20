@@ -10,7 +10,10 @@ tags:
 ---
 
 Oggi già che ho un attimo di pausa voglio scrivere della bellissima vacanza passata con la mia lei a Ravenna, città d'arte bizantina molto bella. Giacché un viaggio inizia con una partenza e finisce con un rientro, direi che è il caso di cominciare dall'inizio, la partenza.
+
 <!--more-->
+[read more](){: .invisible #read-more }
+{: .m-0 .invisible .zero-size }
 
 Partenza alle 6 di mattina, giusto perché alle 5 era un po' troppo presto, e fortunatamente con la macchina di papà Maurizio, bella confortevole e soprattutto con aria condizionata, una mano santa per un viaggio cosi lungo.
 L'itinerario comprendeva partenza da Civitavecchia alle 6 in punto, viaggio con piccole soste in autostrada A1 fino a Bologna, scambio A1-A14 Bologna-Ancona per passare Imola e Forlì direzione Ravenna e fermare in quest'ultima. Arrivo previsto 13 del giorno stesso. Ovviamente non fu così.

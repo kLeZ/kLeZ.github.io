@@ -9,7 +9,10 @@ categories:
 ---
 
 This article is written in my native language, Italian, but you will find a translation ASAP (As Soon As Possible). Sorry for this. Questo argomento è, a dire la verità, credo tra i più discussi e spinosi in assoluto, io qui tenterò di dare forma alla nebulosa che compone questa tematica e getterò una base (spero) per qualcosa di più ampio.
+
 <!--more-->
+[read more](){: .invisible #read-more }
+{: .m-0 .invisible .zero-size }
 
 # La confusione parte dalle basi
 

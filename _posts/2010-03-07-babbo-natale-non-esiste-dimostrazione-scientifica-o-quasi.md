@@ -12,7 +12,10 @@ tags:
 ---
 
 Esiste Babbo Natale ? Decidetelo voi
+
 <!--more-->
+[read more](){: .invisible #read-more }
+{: .m-0 .invisible .zero-size }
 
 1) Nessuna specie conosciuta di renna può volare. Ma ci sono 300.000 specie di
 

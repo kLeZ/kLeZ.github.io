@@ -12,7 +12,10 @@ tags:
 ---
 
 Ciao a tutti! Oggi voglio esporre una mia piccola riflessione, una di quelle che faccio al bagno, sulla tazza del gabinetto.
+
 <!--more-->
+[read more](){: .invisible #read-more }
+{: .m-0 .invisible .zero-size }
 
 Si lo so che vi sembra abbastanza strano e forse anche ridicolo, ma a me stare sulla tazza concilia i pensieri e spesso faccio delle riflessioni molto profonde.
 Comunque per tornare sui binari del discorso, stavo riflettendo su una cosa che è considerata la punta di diamante dell'umanità: l'intelligenza. L'essere umano effettivamente sn dagli albori della sua storia è sempre stato connotato da una grande intelligenza, ma nella realtà di tutti i giorni, e più personalmente trasportato in informatica, cosa vuol dire intelligenza?

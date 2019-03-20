@@ -5,7 +5,10 @@ title: "The kLeZ reboot: an infinite journey"
 ## TL; DR
 
 Penso e spero di tenere in piedi questo sito a lungo, e penso e spero che gli articoli che scriverò saranno interessanti, utili, o spunti di riflessione per chi legge. Se vuoi seguire, ti consiglio la sottoscrizione [RSS]&#8203;[^1], perché non penso che sarò regolare nei "rilasci".
+
 <!--more-->
+[read more](){: .invisible #read-more }
+{: .m-0 .invisible .zero-size }
 
 ## The journey begins
 
