@@ -12,6 +12,13 @@
 		{% include navbar.html items=site.data.navigation %}
 		<main class="container pt-3 pb-3" aria-label="Content">
 			{{ content }}
+			<div class="row justify-content-end text-right">
+				<div class="col-6">
+					<a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page">
+						<i class="fa fa-5x fa-chevron-up"></i>
+					</a>
+				</div>
+			</div>
 		</main>
 		{% include footer.html %}
 		{% include scripts.html %}

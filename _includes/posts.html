@@ -9,20 +9,24 @@
 				</a>
 				<cite class="card-subtitle mb-2 text-muted">
 					<i class="fa fa-calendar-alt"></i>
-					<time datetime="{{ post.date | date_to_xmlschema }}" >{{ post.date | date: '%a, %e %b %Y %H:%M:%S' }}</time>
+					<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%a, %e %b %Y %H:%M:%S' }}</time>
 				</cite>
-			{%- if site.show_excerpts -%}
+				{%- if site.show_excerpts -%}
 				{{ post.excerpt | strip | replace: '<p>', '<p class="card-text">' }}
-			{%- endif -%}
-			{%- if post.content contains "<!--more-->" -%}
-				<a href="{{ post.url | relative_url }}#read-more" class="card-link btn btn-dark float-right">Read more</a>
-			{%- endif -%}
+				{%- endif -%}
+				{%- if post.content contains "<!--more-->" -%}
+				<div class="row justify-content-end text-right">
+					<div class="col-12">
+						<a href="{{ post.url | relative_url }}#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
+					</div>
+				</div>
+				{%- endif -%}
 			</section>
-		{%- unless post.tags.size == 0 -%}
+			{%- unless post.tags.size == 0 -%}
 			<footer class="card-footer">
 				<small class="text-muted">Tags: {{ post.tags | sort | join: ", " }}</small>
 			</footer>
-		{%- endunless -%}
+			{%- endunless -%}
 		</article>
 		{%- endfor -%}
 	</div>

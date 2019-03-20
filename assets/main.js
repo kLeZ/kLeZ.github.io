@@ -28,4 +28,11 @@
 				this.previousTop = currentTop;
 			});
 	}
+
+	$(document).ready(function () {
+		// scroll to top button
+		$('#scroller').click(function () {
+			$("html, body").animate({ scrollTop: 0 }, 'slow');
+		});
+	});
 })(jQuery); // End of use strict
