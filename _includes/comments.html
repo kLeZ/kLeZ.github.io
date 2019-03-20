@@ -1,0 +1,23 @@
+<ul class="comment-section">
+	{%- for comment in include.comments -%}
+	{%- assign comment_class = nil -%}
+	{%- if comment.name == page.author -%}
+		{%- assign comment_class = 'author-comment' -%}
+	{%- else -%}
+	{%- assign comment_class = 'user-comment' -%}
+	{%- endif -%}
+	<li class="comment {{ comment_class }}">
+		<div class="info">
+			<a>{{ comment.name }}</a>
+			<time datetime="{{ comment.date | date_to_xmlschema }}">{{ comment.date | date: '%a, %e %b %Y %H:%M:%S' }}</time>
+		</div>
+		<a class="avatar">
+			{% include avatar.html base_url=include.gravatar_url email=comment.email name=comment.name %}
+		</a>
+		<p>{{ comment.message | markdownify }}</p>
+	</li>
+	{%- endfor -%}
+	<li class="write-new">
+		{% include comment-form.html %}
+	</li>
+</ul>

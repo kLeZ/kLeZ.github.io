@@ -21,6 +21,7 @@ gem "html-proofer", "~> 3.10.2"
 group :jekyll_plugins do
   gem "jekyll-feed"
   gem "jekyll-tidy"
+  gem "liquid-md5"
 #   gem "jekyll-multiple-languages-plugin"
 end
 
