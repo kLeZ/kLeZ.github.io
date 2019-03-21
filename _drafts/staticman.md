@@ -1,1 +1,0 @@
-https://staticman.net/docs/
