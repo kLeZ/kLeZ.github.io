@@ -5,6 +5,7 @@ layout: default
 	<header>
 		<h2>{{ page.title | escape }}</h2>
 		<small class="text-muted">Posted on
+			{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
 			<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date_to_string }}</time>
 			{%- if page.author -%}
 			<span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ page.author }}</span></span>
@@ -14,6 +15,5 @@ layout: default
 	<section itemprop="articleBody">
 		{{ content }}
 	</section>
-	{%- assign social_conf = site.data.social | where: "name", "gravatar" | first -%}
-	{%- include comments.html comments=site.data.comments gravatar_url=social_conf.url -%}
+	<a href="{{ page.url | relative_url }}" hidden></a>
 </article>
