@@ -9,6 +9,8 @@ build:
     server: https://travis-ci.org/kLeZ/kLeZ.github.io
     status: https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev
 
+commenterUrl: https://klez-commenter.herokuapp.com/entry/github/kLeZ/kLeZ.github.io/dev/comments/
+
 sass:
     sass_dir: _sass
 

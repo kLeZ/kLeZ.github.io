@@ -1,5 +1,5 @@
 ---
-date: 2010-05-20 12:08:03+00:00
+date: 2010-05-20 12:08:03+01:00
 layout: post
 slug: sono-tornato
 title: Sono tornato!!!

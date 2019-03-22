@@ -1,5 +1,5 @@
 ---
-date: 2010-02-21 21:44:10+00:00
+date: 2010-02-21 21:44:10+01:00
 layout: post
 slug: narrativa-per-tutti-il-dd-parte-1
 title: Narrativa per tutti! - Il D&D parte 1

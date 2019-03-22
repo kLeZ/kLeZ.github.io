@@ -1,5 +1,5 @@
 ---
-date: 2010-06-21 09:56:08+00:00
+date: 2010-06-21 09:56:08+01:00
 layout: post
 slug: narrativa-per-tutti-il-dd-parte-3
 title: Narrativa per tutti! – Il D&D parte 3

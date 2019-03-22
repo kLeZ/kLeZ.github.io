@@ -1,5 +1,5 @@
 ---
-date: 2010-07-27 12:56:15+00:00
+date: 2010-07-27 12:56:15+01:00
 layout: post
 slug: vacanze-ravennati
 title: Vacanze Ravennati

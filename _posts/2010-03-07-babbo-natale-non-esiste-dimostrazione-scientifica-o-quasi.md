@@ -1,5 +1,5 @@
 ---
-date: 2010-03-07 11:47:49+00:00
+date: 2010-03-07 11:47:49+01:00
 layout: post
 slug: babbo-natale-non-esiste-dimostrazione-scientifica-o-quasi
 title: BABBO NATALE NON ESISTE (Dimostrazione scientifica.... o quasi)

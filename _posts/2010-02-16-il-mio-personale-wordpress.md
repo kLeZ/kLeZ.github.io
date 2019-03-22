@@ -1,5 +1,5 @@
 ---
-date: 2010-02-16 14:24:06+00:00
+date: 2010-02-16 14:24:06+01:00
 layout: post
 slug: il-mio-personale-wordpress
 title: Il mio personale WordPress

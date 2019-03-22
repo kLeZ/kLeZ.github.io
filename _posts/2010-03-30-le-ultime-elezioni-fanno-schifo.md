@@ -1,5 +1,5 @@
 ---
-date: 2010-03-30 09:32:32+00:00
+date: 2010-03-30 09:32:32+01:00
 layout: post
 slug: le-ultime-elezioni-fanno-schifo
 title: Le ultime elezioni fanno schifo...

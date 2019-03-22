@@ -1,5 +1,5 @@
 ---
-date: 2010-03-29 08:20:40+00:00
+date: 2010-03-29 08:20:40+01:00
 layout: post
 slug: voglia-di-rivoluzione
 title: Voglia di Rivoluzione

@@ -1,5 +1,5 @@
 ---
-date: 2010-06-26 23:08:11+00:00
+date: 2010-06-26 23:08:11+01:00
 layout: post
 slug: mi-piace-come-ragiona
 title: '...mi piace come ragiona'

@@ -5,7 +5,7 @@ tags:
 - commenting system
 - poor organization
 - open source
-date: 2019-03-21 21:22:45+00:00
+date: 2019-03-21 21:22:45+01:00
 ---
 
 Oggi mi dedico a parlare di [Staticman](https://staticman.net), un sistema di gestione dei commenti open source basato su _node.js_.

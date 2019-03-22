@@ -1,5 +1,5 @@
 ---
-date: 2010-06-18 10:19:37+00:00
+date: 2010-06-18 10:19:37+01:00
 layout: post
 slug: riflessioni-sul-pensiero-degli-esseri-umani
 title: Riflessioni sul pensiero degli esseri umani

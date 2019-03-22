@@ -1,5 +1,5 @@
 ---
-date: 2010-07-08 21:27:12+00:00
+date: 2010-07-08 21:27:12+01:00
 layout: post
 slug: altre-idee-per-fpm
 title: Altre idee per FPM

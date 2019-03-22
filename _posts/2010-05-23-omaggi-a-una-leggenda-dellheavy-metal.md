@@ -1,5 +1,5 @@
 ---
-date: 2010-05-23 11:29:26+00:00
+date: 2010-05-23 11:29:26+01:00
 layout: post
 slug: omaggi-a-una-leggenda-dellheavy-metal
 title: Omaggi a una leggenda dell'Heavy Metal

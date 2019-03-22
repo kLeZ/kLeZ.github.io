@@ -1,5 +1,5 @@
 ---
-date: 2010-10-11 16:19:18+00:00
+date: 2010-10-11 16:19:18+01:00
 layout: post
 slug: progetto-complicato
 title: Progetto complicato
