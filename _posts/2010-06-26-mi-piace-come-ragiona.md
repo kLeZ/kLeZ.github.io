@@ -1,5 +1,5 @@
 ---
-date: 2010-06-26 23:08:11+00:00
+date: 2010-06-26 23:08:11+01:00
 layout: post
 slug: mi-piace-come-ragiona
 title: '...mi piace come ragiona'
@@ -11,9 +11,7 @@ tags:
 - riportato da altri
 ---
 
-<!--more-->
-[read more](){: .invisible #read-more }
-{: .m-0 .invisible .zero-size }
+{% include more.html %}
 
 La maestra chiede a Gianni: "Ci sono 5 uccelli
 appollaiati su un ramo.

@@ -7,9 +7,7 @@ Questo post viene direttamente dallo smartphone. Neanche uno particolarmente mod
 Ma allora come ho fatto? L'ho compilato sul PC per poi pubblicarlo?  
 No! Ovviamente. Altrimenti che lo scriverei a fare: i post servono per raccontare qualcosa di nuovo o di diverso, le banalità ci vergogniamo a pubblicarle (per fortuna!).  
 
-<!--more-->
-[read more](){: .invisible #read-more }
-{: .m-0 .invisible .zero-size }
+{% include more.html %}
 
 ## L'idea
 

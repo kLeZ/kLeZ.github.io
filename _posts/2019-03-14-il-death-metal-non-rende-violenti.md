@@ -1,16 +1,14 @@
 ---
 title: Il Death Metal non rende violenti
 tags: music research metal
-date: 2019-03-14 13:05:47+00:00
+date: 2019-03-14 13:05:47+01:00
 ---
 
 Sta mattina ho letto un [articolo] che mi ha fatto riflettere.
 
 All'inizio ho pensato _"hanno fatto la scoperta dell'acqua calda"_, ma poi ho realizzato che, anche fosse, l'hanno messo nero su bianco con rigore scientifico. E questo è un piccola vittoria nella mia battaglia personale molto _punk_ nei confronti delle persone che sparano sentenze senza approfondire.
 
-<!--more-->
-[read more](){: .invisible #read-more }
-{: .m-0 .invisible .zero-size }
+{% include more.html %}
 
 ## Un po' di contesto
 

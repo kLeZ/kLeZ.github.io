@@ -1,5 +1,5 @@
 ---
-date: 2010-12-16 09:48:07+00:00
+date: 2010-12-16 09:48:07+01:00
 layout: post
 slug: discorsi-confusi
 title: Discorsi confusi
@@ -11,9 +11,7 @@ tags:
 - sfogo
 ---
 
-<!--more-->
-[read more](){: .invisible #read-more }
-{: .m-0 .invisible .zero-size }
+{% include more.html %}
 
 Sto blog sta diventando sempre più macabro, gira gira lo chiudo, tanto ho notato che non so tenerlo...
 E' veramente troppo difficile da spiegare, nessuno, in qualsiasi contesto con qualsiasi mezzo compresa religione e filosofia, riuscirà mai a spiegare perché nasciamo con dolore, moriamo con dolore e viviamo una vita fatta di dolore.

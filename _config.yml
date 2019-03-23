@@ -9,6 +9,12 @@ build:
     server: https://travis-ci.org/kLeZ/kLeZ.github.io
     status: https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev
 
+comments:
+    enabled: true
+    type: staticman
+    post_url: https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/dev/comments/
+    avatar_provider: gravatar
+
 sass:
     sass_dir: _sass
 

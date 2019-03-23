@@ -1,0 +1,38 @@
+{%- for c in include.comments -%}
+{%- assign comment = c[1] -%}
+<div class="card m-2">
+	<div class="card-body">
+		<div class="row">
+			<div class="col-md-2 text-center">
+				{%- include avatar.html base_url=include.avatar_url email=comment.email name=comment.name -%}
+				<div class="d-flex flex-column mt-2">
+					<small class="text-secondary text-center">{{ comment.date | date: '%a, %d %b %Y' }}</small>
+					<small class="text-secondary text-center">{{ comment.date | date: '%H:%M:%S' }}</small>
+				</div>
+			</div>
+			<div class="col-md-10">
+				{%- unless comment.url == blank or comment.url == nil -%}
+				<a class="float-left" href="{{ comment.url | default: '#' }}"><strong>{{ comment.name }}</strong></a>
+				{%- else -%}
+				<strong class="float-left">{{ comment.name }}</strong>
+				{%- endunless -%}
+				{{ comment.message | markdownify }}
+				{%- comment -%}
+				<p>
+					<a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+					<a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+				</p>
+				{%- endcomment -%}
+			</div>
+		</div>
+		{%- comment -%}
+		mantengo questo pezzo di codice per sviluppare in futuro i commenti annidati
+		<div class="card card-inner">
+			<div class="card-body">
+				...
+			</div>
+		</div>
+		{%- endcomment -%}
+	</div>
+</div>
+{%- endfor -%}

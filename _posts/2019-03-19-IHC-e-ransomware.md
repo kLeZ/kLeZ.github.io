@@ -17,9 +17,7 @@ In quel di Padova, tra il 2 e il 5 di agosto, ho partecipato a questo bellissimo
 
 Il talk verteva sulla tematica dei malware, dei ransomware nello specifico, dando alcuni numeri e spiegando in parole semplici cosa sono e come si diffondono. Ripropongo qui il transcript, il materiale preparatorio, le fonti e la presentazione. In calce alla pagina troverai anche il video del talk, disponibile comunque su YouTube nel [canale di IHC2018](https://www.youtube.com/channel/UCV9Dbt9F5pg1qWA1By-1tJg).
 
-<!--more-->
-[read more](){: .invisible #read-more }
-{: .m-0 .invisible .zero-size }
+{% include more.html %}
 
 ## Ransomware, efficacia alle stelle: un po' di numeri, vettori e target più un extra
 

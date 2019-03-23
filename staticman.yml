@@ -1,0 +1,17 @@
+comments:
+    allowedFields: ["name", "email", "url", "message"]
+    requiredFields: ["name", "email", "message"]
+    branch: "dev"
+    commitMessage: "Hey, human! Here's a comment from {fields.name} on {options.slug}!"
+    path: "_data/comments/{options.slug}"
+    filename: "comment-{@timestamp}"
+    format: "yaml"
+    generatedFields:
+        date:
+            type: date
+            options:
+                format: "iso8601"
+    moderation: true
+    name: "klez.me"
+    transforms:
+        email: md5

@@ -1,5 +1,5 @@
 ---
-date: 2010-06-11 08:54:55+00:00
+date: 2010-06-11 08:54:55+01:00
 layout: post
 slug: ahhhh-che-caldo
 title: Ahhhh che caldo!!!

@@ -1,5 +1,5 @@
 ---
-date: 2010-03-07 11:47:49+00:00
+date: 2010-03-07 11:47:49+01:00
 layout: post
 slug: babbo-natale-non-esiste-dimostrazione-scientifica-o-quasi
 title: BABBO NATALE NON ESISTE (Dimostrazione scientifica.... o quasi)
@@ -13,9 +13,7 @@ tags:
 
 Esiste Babbo Natale ? Decidetelo voi
 
-<!--more-->
-[read more](){: .invisible #read-more }
-{: .m-0 .invisible .zero-size }
+{% include more.html %}
 
 1) Nessuna specie conosciuta di renna può volare. Ma ci sono 300.000 specie di
 

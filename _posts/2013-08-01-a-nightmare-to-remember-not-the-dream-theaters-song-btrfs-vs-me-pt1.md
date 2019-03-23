@@ -1,5 +1,5 @@
 ---
-date: 2013-08-01 17:42:35+00:00
+date: 2013-08-01 17:42:35+01:00
 layout: post
 slug: a-nightmare-to-remember-not-the-dream-theaters-song-btrfs-vs-me-pt1
 title: A nightmare to remember -- not the Dream Theater's song -- [BTRFS vs. me -
@@ -16,9 +16,7 @@ tags:
 
 Today I want to say a few words about BTRFS. Firstly I want to say that **this filesystem is awesome for functionalities**, I will use it as my filesystem again as soon as it will become stable. But, It is not yet stable, I tried and I fallen in front of his horrible performances.
 
-<!--more-->
-[read more](){: .invisible #read-more }
-{: .m-0 .invisible .zero-size }
+{% include more.html %}
 
 Actually there are some problems on this filesystem that developers know in fact but, they are much more complicated to solve because most of them are normal behaviors of other functionalities. As an example in order to understand much better and quickly: there is a known issue of (obviously) horrible performances that I experimented by myself, it makes performance decrease whenever you use it because he want to write down all the data in the same time, he want also manage all the metadata at the same time, only because those data are in the same transaction (!!), and you cannot do anything to fix that behavior because it is not customizable AND this is the normal behavior of work for btrfs. Result: you have an awesome filesystem that decreases its performances more quickly than Windows, so it is hardly unusable, especially if you use it for the root partition.
 

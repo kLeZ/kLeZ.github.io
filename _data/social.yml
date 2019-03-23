@@ -20,3 +20,5 @@
   url: https://telegram.me/
 - name: email
   url: "mailto:"
+- name: gravatar
+  url: https://gravatar.com/avatar/

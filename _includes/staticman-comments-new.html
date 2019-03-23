@@ -1,0 +1,28 @@
+<form method="post" action="{{ include.post_url }}">
+	<input name="options[redirect]" type="hidden" value="{{ page.url | absolute_url }}#comments">
+	<input name="options[slug]" type="hidden" value="{{ page.slug }}">
+	<div class="form-row">
+		<div class="col form-group">
+			<input type="text" id="username" name="fields[name]" class="form-control" placeholder="username" required="true" />
+		</div>
+		<div class="col form-group">
+			<input type="email" id="email" name="fields[email]" class="form-control" placeholder="email adress (will not be published)" required="true" />
+		</div>
+		<div class="col form-group">
+			<input type="text" id="url" name="fields[url]" class="form-control" placeholder="website url" />
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="col form-group">
+			<textarea id="message" name="fields[message]" rows="3" class="form-control" placeholder="comment to this post" required="true"></textarea>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="col-sm-12 col-md-3 col-lg-2 form-group">
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+		<div class="col form-group">
+			<div class="alert alert-warning d-block small">New comments will be shown after moderation approval</div>
+		</div>
+	</div>
+</form>
