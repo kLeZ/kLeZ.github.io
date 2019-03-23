@@ -1,0 +1,6 @@
+_id: 90bf7bc0-4d63-11e9-8808-85e3de802e8a
+name: kLeZ
+email: f65bb613f6b3343408ad6faccad174cf
+url: 'https://klez.me'
+message: "Test messsage with gravatar.\r\n**This text show render as markdown** (_I hope it will_).\r\n\r\n# Endless possibilities of this is true!\r\n\r\nThis text below should be a math formula rendered by Katex:\r\n$i = \\text C ,\\dfrac{dv}{dt}$"
+date: '2019-03-23T12:02:43.864Z'
