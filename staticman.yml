@@ -2,7 +2,7 @@ comments:
     allowedFields: ["name", "email", "url", "message"]
     requiredFields: ["name", "email", "message"]
     branch: "draft"
-    commitMessage: "Hey, human! Here's another comment on {options.slug}!"
+    commitMessage: "Hey, human! Here's a comment from {fields.name} on {options.slug}!"
     path: "_data/comments/{options.slug}"
     filename: "comment-{@timestamp}"
     format: "yaml"

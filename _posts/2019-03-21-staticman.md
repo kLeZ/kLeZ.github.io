@@ -15,13 +15,11 @@ Il problema è che non funziona, o meglio, funziona **se e solo se** puoi far gi
 
 E qui viene il bello.
 
-<!--more-->
-[read more](){: .invisible #read-more }
-{: .m-0 .invisible .zero-size }
+{% include more.html %}
 
 ## In principio fu la luce
 
-Questo sito da cui leggi questo post (o il feed rss a cui ti sei iscritto) è interamente statico, questo lo sai (se non lo sai, [sallo]({{ post_url 2019-03-13-an-infinite-journey }})).  
+Questo sito da cui leggi questo post (o il feed rss a cui ti sei iscritto) è interamente statico, questo lo sai (se non lo sai, [sallo]({% post_url 2019-03-13-an-infinite-journey %})).  
 Per carità uso Jekyll non è che mi scrivo gli HTML a mano, uso metodi _moderni_, però la mancanza di dinamicità mi porta anche la mancanza di tutta una serie di strumenti che sono nativamente dinamici, come i commenti sotto ai post.
 
 Un post di fatto si chiama così proprio perché il contenuto viene _postato_ (cioè inviato tramite chiamata post) al server; il che, già di per sé, presuppone di averlo un server. E io chiaramente non ce l'ho. Quindi i commenti non posso averceli sul mio sito. ... O si?

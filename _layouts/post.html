@@ -17,12 +17,15 @@ layout: default
 	</section>
 	<a href="{{ page.url | relative_url }}" hidden></a>
 </article>
-<form method="post" action="https://klez-commenter.herokuapp.com/v3/entry/kLeZ/kLeZ.github.io/draft/comments/">
-	<input name="options[redirect]" type="hidden" value="https://klez.me">
-	<input name="options[slug]" type="hidden" value="{{ page.slug }}">
-	<input type="text" name="fields[name]" />
-	<input type="text" name="fields[email]" />
-	<input type="text" name="fields[url]" />
-	<textarea name="fields[message]" rows="3"></textarea>
-	<button type="submit">Submit</button>
-</form>
+{%- if site.comments.enabled -%}
+<p class="m-0 invisible zero-size">
+	<a href="" class="invisible" id="comments">comments</a>
+</p>
+<h3>Comments</h3>
+	{%- if site.comments.type == "staticman" -%}
+		{%- include staticman-comments-new.html post_url=site.comments.post_url -%}
+	{%- endif -%}
+	{%- assign page_comments = site.data.comments[page.slug] -%}
+	{%- assign social_conf = site.data.social | where: "name", site.comments.avatar_provider | first -%}
+	{%- include comment-list.html comments=page_comments avatar_url=social_conf.url -%}
+{%- endif -%}

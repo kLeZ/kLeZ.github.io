@@ -11,9 +11,7 @@ tags:
 - riportato da altri
 ---
 
-<!--more-->
-[read more](){: .invisible #read-more }
-{: .m-0 .invisible .zero-size }
+{% include more.html %}
 
 La maestra chiede a Gianni: "Ci sono 5 uccelli
 appollaiati su un ramo.
