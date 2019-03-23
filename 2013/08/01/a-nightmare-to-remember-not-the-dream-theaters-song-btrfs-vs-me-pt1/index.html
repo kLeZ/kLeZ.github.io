@@ -71,12 +71,14 @@
         <header>
           <h2>A nightmare to remember -- not the Dream Theater&#39;s song -- [BTRFS vs. me - pt1]</h2>
           <small class="text-muted">Posted on
-            <time datetime="2013-08-01T19:42:35+02:00" itemprop="datePublished">01 Aug 2013</time><span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
+            <time datetime="2013-08-01T18:42:35+02:00" itemprop="datePublished">01 Aug 2013</time><span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
         </header>
         <section itemprop="articleBody">
           <p>Today I want to say a few words about BTRFS. Firstly I want to say that <strong>this filesystem is awesome for functionalities</strong>, I will use it as my filesystem again as soon as it will become stable. But, It is not yet stable, I tried and I fallen in front of his horrible performances.</p>
           <!--more-->
-          <p class="m-0 invisible zero-size"><a href="" class="invisible" id="read-more">read more</a></p>
+          <p class="m-0 invisible zero-size">
+            <a href="" class="invisible" id="read-more">read more</a>
+          </p>
           <p>Actually there are some problems on this filesystem that developers know in fact but, they are much more complicated to solve because most of them are normal behaviors of other functionalities. As an example in order to understand much better and quickly: there is a known issue of (obviously) horrible performances that I experimented by myself, it makes performance decrease whenever you use it because he want to write down all the data in the same time, he want also manage all the metadata at the same time, only because those data are in the same transaction (!!), and you cannot do anything to fix that behavior because it is not customizable AND this is the normal behavior of work for btrfs. Result: you have an awesome filesystem that decreases its performances more quickly than Windows, so it is hardly unusable, especially if you use it for the root partition.</p>
           <p>A system cannot be so slow in 2013 so I ended up in a solution: I have to migrate my filesystem. I’m not a fan of passing data from a disk to another, I make a few bckups sometimes but not always, in fact this is a bad attitude, but that’s me. SO.</p>
           <p>In order to migrate the root filesystem (yes I had BTRFS for the root – and home – filesystem, I used to be a bad guy, huh) I used a slooooow but simple universal and powerful solution. The situation was aggravated by the fact that my laptop has secure boot and then the boot partition was very touchy. I used the well known live distro (any live distro could do this work, I used the openSuSE recovery system for that purpose) and so I logged in a shell. The rest are some commands, a cp, some other commands.</p>
@@ -114,6 +116,38 @@
         </section>
         <a href="/2013/08/01/a-nightmare-to-remember-not-the-dream-theaters-song-btrfs-vs-me-pt1/" hidden></a>
       </article>
+      <p class="m-0 invisible zero-size">
+        <a href="" class="invisible" id="comments">comments</a>
+      </p>
+      <h3>Comments</h3>
+      <form method="post" action="https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/dev/comments/">
+        <input name="options[redirect]" type="hidden" value="https://klez.me/2013/08/01/a-nightmare-to-remember-not-the-dream-theaters-song-btrfs-vs-me-pt1/#comments">
+        <input name="options[slug]" type="hidden" value="a-nightmare-to-remember-not-the-dream-theaters-song-btrfs-vs-me-pt1">
+        <div class="form-row">
+          <div class="col form-group">
+            <input type="text" id="username" name="fields[name]" class="form-control" placeholder="username" required="true" />
+          </div>
+          <div class="col form-group">
+            <input type="email" id="email" name="fields[email]" class="form-control" placeholder="email adress (will not be published)" required="true" />
+          </div>
+          <div class="col form-group">
+            <input type="text" id="url" name="fields[url]" class="form-control" placeholder="website url" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col form-group">
+            <textarea id="message" name="fields[message]" rows="3" class="form-control" placeholder="comment to this post" required="true"></textarea>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-sm-12 col-md-3 col-lg-2 form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          <div class="col form-group">
+            <div class="alert alert-warning d-block small">New comments will be shown after moderation approval</div>
+          </div>
+        </div>
+      </form>
       <div class="row justify-content-end text-right">
         <div class="col-6">
           <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page">
@@ -162,7 +196,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2019-03-22T15:05:05+01:00">Fri, 22 Mar 2019 15:05:05 +0100</time></small>
+            <small class="text-muted">Last build on <time datetime="2019-03-23T13:34:39+01:00">Sat, 23 Mar 2019 13:34:39 +0100</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>

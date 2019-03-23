@@ -79,9 +79,11 @@
             Il problema è che non funziona, o meglio, funziona <strong>se e solo se</strong> puoi far girare la tua istanza per le tue necessità.</p>
           <p>E qui viene il bello.</p>
           <!--more-->
-          <p class="m-0 invisible zero-size"><a href="" class="invisible" id="read-more">read more</a></p>
+          <p class="m-0 invisible zero-size">
+            <a href="" class="invisible" id="read-more">read more</a>
+          </p>
           <h2 id="in-principio-fu-la-luce">In principio fu la luce</h2>
-          <p>Questo sito da cui leggi questo post (o il feed rss a cui ti sei iscritto) è interamente statico, questo lo sai (se non lo sai, <a href="">sallo</a>).<br />
+          <p>Questo sito da cui leggi questo post (o il feed rss a cui ti sei iscritto) è interamente statico, questo lo sai (se non lo sai, <a href="/2019/03/13/an-infinite-journey/">sallo</a>).<br />
             Per carità uso Jekyll non è che mi scrivo gli HTML a mano, uso metodi <em>moderni</em>, però la mancanza di dinamicità mi porta anche la mancanza di tutta una serie di strumenti che sono nativamente dinamici, come i commenti sotto ai post.</p>
           <p>Un post di fatto si chiama così proprio perché il contenuto viene <em>postato</em> (cioè inviato tramite chiamata post) al server; il che, già di per sé, presuppone di averlo un server. E io chiaramente non ce l’ho. Quindi i commenti non posso averceli sul mio sito. … O si?</p>
           <p>Staticman si propone proprio questo: trova un sistema intelligente per portare i commenti sui blog statici, con un occhio di riguardo verso i siti costruiti con Jekyll e GitHub Pages, coppia simpatica all’autore di questo progetto interessante.</p>
@@ -100,10 +102,60 @@
             Quindi l’obiettivo è stato cercare un modo per portare a compimento l’opera.</p>
           <p>Un volenteroso quanto salvifico utente ha scritto <a href="https://vincenttam.gitlab.io/post/2018-09-16-staticman-powered-gitlab-pages/2/">un post sul suo blog</a> in cui afferma di aver portato l’intero progetto su GitLab e spiega come fare in passi semplici, affermando che è possibile essere <em>up ‘n’ running</em> in 15 minuti. Quindici minuti. Con gente che è rimasta 2 settimane in attesa di vedere il sistema dei commenti funzionare con l’istanza pubblica.</p>
           <p>Dato il vincolo di non volere nessun sistema <em>a là disqus</em> per mantenere i commenti, dato poi il ruolo mediatico dei commenti, sono convinto che questi come i post li debba gestire tutti io in modo statico, per poter anche effettuare dei backup eventualmente ed essere soprattutto agnostico dalle tecnologie usate, l’unica soluzione in questo momento mi sembra staticman. E lo implementerò, lo prometto.</p>
-          <p>Altri aggiornamenti probabilmente quando avrò tirato su tutto il sistema.</p>
+          <p>«««&lt; HEAD
+            Altri aggiornamenti probabilmente quando avrò tirato su tutto il sistema.
+            =======
+            Altri aggiornamenti probabilmente quando avrò tirato su tutto il sistema.</p>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <p>draft</p>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
         </section>
         <a href="/2019/03/21/staticman/" hidden></a>
       </article>
+      <p class="m-0 invisible zero-size">
+        <a href="" class="invisible" id="comments">comments</a>
+      </p>
+      <h3>Comments</h3>
+      <form method="post" action="https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/dev/comments/">
+        <input name="options[redirect]" type="hidden" value="https://klez.me/2019/03/21/staticman/#comments">
+        <input name="options[slug]" type="hidden" value="staticman">
+        <div class="form-row">
+          <div class="col form-group">
+            <input type="text" id="username" name="fields[name]" class="form-control" placeholder="username" required="true" />
+          </div>
+          <div class="col form-group">
+            <input type="email" id="email" name="fields[email]" class="form-control" placeholder="email adress (will not be published)" required="true" />
+          </div>
+          <div class="col form-group">
+            <input type="text" id="url" name="fields[url]" class="form-control" placeholder="website url" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col form-group">
+            <textarea id="message" name="fields[message]" rows="3" class="form-control" placeholder="comment to this post" required="true"></textarea>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-sm-12 col-md-3 col-lg-2 form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          <div class="col form-group">
+            <div class="alert alert-warning d-block small">New comments will be shown after moderation approval</div>
+          </div>
+        </div>
+      </form>
       <div class="row justify-content-end text-right">
         <div class="col-6">
           <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page">
@@ -152,7 +204,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2019-03-22T15:05:05+01:00">Fri, 22 Mar 2019 15:05:05 +0100</time></small>
+            <small class="text-muted">Last build on <time datetime="2019-03-23T13:34:39+01:00">Sat, 23 Mar 2019 13:34:39 +0100</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>

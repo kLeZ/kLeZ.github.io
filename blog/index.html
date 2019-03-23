@@ -86,6 +86,49 @@
                 <p class="card-text">Staticman potenzialmente è un gran prodotto, davvero. Sembrerebbe funzionare davvero bene e, seguendo la onnipresente filosofia unix, <em>fa una cosa e la fa per bene</em> (o quasi).<br />
                   Il problema è che non funziona, o meglio, funziona <strong>se e solo se</strong> puoi far girare la tua istanza per le tue necessità.</p>
                 <p class="card-text">E qui viene il bello.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <h2 id="in-principio-fu-la-luce">In principio fu la luce</h2>
+                <p class="card-text">Questo sito da cui leggi questo post (o il feed rss a cui ti sei iscritto) è interamente statico, questo lo sai (se non lo sai, <a href="/2019/03/13/an-infinite-journey/">sallo</a>).<br />
+                  Per carità uso Jekyll non è che mi scrivo gli HTML a mano, uso metodi <em>moderni</em>, però la mancanza di dinamicità mi porta anche la mancanza di tutta una serie di strumenti che sono nativamente dinamici, come i commenti sotto ai post.</p>
+                <p class="card-text">Un post di fatto si chiama così proprio perché il contenuto viene <em>postato</em> (cioè inviato tramite chiamata post) al server; il che, già di per sé, presuppone di averlo un server. E io chiaramente non ce l’ho. Quindi i commenti non posso averceli sul mio sito. … O si?</p>
+                <p class="card-text">Staticman si propone proprio questo: trova un sistema intelligente per portare i commenti sui blog statici, con un occhio di riguardo verso i siti costruiti con Jekyll e GitHub Pages, coppia simpatica all’autore di questo progetto interessante.</p>
+                <h2 id="il-buono-il-brutto-il-cattivo">Il buono, il brutto, il cattivo</h2>
+                <p class="card-text">Praticamente, ogni volta che posti un commento questo va direttamente a staticman, che ne genera un file che poi è in grado di caricare su GitHub.</p>
+                <p class="card-text">Questa operazione fa partire una nuova “<em>build</em>” del sito che trova il file col nuovo commento e lo scrive nella pagina statica.</p>
+                <p class="card-text">In breve è così che va il giro.</p>
+                <p class="card-text">Tutto molto buono, se solo non ci fosse anche il brutto: <strong>l’istanza non funziona</strong>. Si perché dal sito si legge che, <em>oltre a poter ospitare per conto proprio il servizio</em>, si può usare l’istanza pubblica messa a disposizione dall’autore, e anzi il suo utilizzo è l’unico documentato e raccomandato.</p>
+                <p class="card-text">Vani i tentativi di far funzionare l’istanza pubblica da parte di decine di utenti, come si evince dall’elenco di <em>issues</em> sul repository del progetto.</p>
+                <p class="card-text">Addirittura l’autore stesso spiega che il malfunzionamento deriva dalla grande quantità di richieste e dalle scarse risorse offerte dal piano gratuito di <a href="https://heroku.com">Heroku</a> dove il servizio è ospitato.</p>
+                <p class="card-text">Da qui, una presa di coscienza dell’utilizzo tipico, della mole di utenti interessati e dell’errore architetturale che ha portato alla forzata riscrittura dell’intero progetto che ha la stessa funzionalità ma fa un <em>giro</em> diverso, soprattutto verso GitHub.</p>
+                <p class="card-text">Il cattivo in questa storia, è comunque lo sviluppatore (attualmente il team si è allargato e i <em>contributors</em> dovrebbero essere mezza dozzina di sparuti utenti <em>tech savvy</em>) che non solo <strong>da settembre 2018</strong> non si è preoccupato di far funzionare di nuovo l’istanza vecchia oppure di mettere online una versione stabile seppur scarna della nuova, ma non si è soprattutto preoccupato di aggiornare il sito ufficiale che riporta istruzioni vecchie, non funzionanti e nessuna menzione di tutto questo discorso, che viene fuori scavando molto nelle issues di GitHub (cosa che io ovviamente ho fatto).</p>
+                <h2 id="la-forza-è-potente-in-me">La forza è potente in me</h2>
+                <p class="card-text">Intestardito dalla volontà di avere un’istanza funzionante, mi sono messo all’opera per cercare informazioni su come e dove ospitare la mia copia del servizio.</p>
+                <p class="card-text">Soprattutto, la forza che mi spinge è la necessità di un sistema di commenti, e il progetto nella sua idea mi piace davvero tanto, <strong>davvero</strong>.<br />
+                  Quindi l’obiettivo è stato cercare un modo per portare a compimento l’opera.</p>
+                <p class="card-text">Un volenteroso quanto salvifico utente ha scritto <a href="https://vincenttam.gitlab.io/post/2018-09-16-staticman-powered-gitlab-pages/2/">un post sul suo blog</a> in cui afferma di aver portato l’intero progetto su GitLab e spiega come fare in passi semplici, affermando che è possibile essere <em>up ‘n’ running</em> in 15 minuti. Quindici minuti. Con gente che è rimasta 2 settimane in attesa di vedere il sistema dei commenti funzionare con l’istanza pubblica.</p>
+                <p class="card-text">Dato il vincolo di non volere nessun sistema <em>a là disqus</em> per mantenere i commenti, dato poi il ruolo mediatico dei commenti, sono convinto che questi come i post li debba gestire tutti io in modo statico, per poter anche effettuare dei backup eventualmente ed essere soprattutto agnostico dalle tecnologie usate, l’unica soluzione in questo momento mi sembra staticman. E lo implementerò, lo prometto.</p>
+                <p class="card-text">«««&lt; HEAD
+                  Altri aggiornamenti probabilmente quando avrò tirato su tutto il sistema.
+                  =======
+                  Altri aggiornamenti probabilmente quando avrò tirato su tutto il sistema.</p>
+                <blockquote>
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <p class="card-text">draft</p>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+                </blockquote>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2019/03/21/staticman/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -112,6 +155,65 @@
                 <p class="card-text">La community intorno a IHC e IHE, e soprattutto l’associazione che ha ideato, organizza e promuove la community e il campo, sono di quegli agglomerati molto attivi e pieni di gente bellissima.</p>
                 <p class="card-text">In quel di Padova, tra il 2 e il 5 di agosto, ho partecipato a questo bellissimo evento, mi sono divertito e ho imparato veramente tante cose, ho conosciuto della bella gente e non ultimo ho tenuto un talk, che è poi il motivo del titolo di questo post.</p>
                 <p class="card-text">Il talk verteva sulla tematica dei malware, dei ransomware nello specifico, dando alcuni numeri e spiegando in parole semplici cosa sono e come si diffondono. Ripropongo qui il transcript, il materiale preparatorio, le fonti e la presentazione. In calce alla pagina troverai anche il video del talk, disponibile comunque su YouTube nel <a href="https://www.youtube.com/channel/UCV9Dbt9F5pg1qWA1By-1tJg">canale di IHC2018</a>.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <h2 id="ransomware-efficacia-alle-stelle-un-po-di-numeri-vettori-e-target-più-un-extra">Ransomware, efficacia alle stelle: un po’ di numeri, vettori e target più un extra</h2>
+                <p class="card-text">Il livello di rischio legato a questo tipo di malware, che ormai di nuovo non ha davvero più nulla, è attualmente tra i più altri finora registrati. L’infezione si attesta in crescita anche nel primo trimestre 2018.</p>
+                <p class="card-text">La cosa che più sconvolge di questa categoria di malware, è la quasi totale assenza di soluzioni <em>post</em> infezione; l’unica strada realistica attualmente percorribile è la prevenzione, non solo a mezzo di anti-malware, che poco possono contro questa estesa minaccia, ma anche (e soprattutto) con dei metodi più <em>rudimentali</em> come il backup dei dati su sistemi e/o supporti di storage esterni all’host infetto.</p>
+                <p class="card-text">Navigheremo tra le pieghe della negligenza, analizzeremo vettori e target, dai più consueti ai più insoliti, e ricreeremo il brainstorm creativo che permette agli hacker senza scrupoli di creare questi veri e propri gioielli dell’ingegneria sociale divenuti oramai anche piuttosto remunerativi.</p>
+                <h3 id="efficacia-e-alcuni-dati">Efficacia e alcuni dati</h3>
+                <p class="card-text">Di fatto questo metodo è l’unico che garantisce la salvaguardia dei dati, a patto che l’utente sia molto <strong>molto</strong> attento alla gestione dei dati, cosa che spesso non accade (e non solo per i privati o le PMI [piccole medie imprese; ndr]).</p>
+                <p class="card-text">Solo nello scorso anno la frequenza di infezioni ai danni di privati è passata da <strong>0,05 i/s nel Q1 2017</strong> a <strong>0,1 i/s nel Q3 2017</strong>, di fatto ottenendo una <strong>crescita del 100%</strong>.
+                  Per lo stesso periodo di riferimento le aziende sono state colpite <strong>ogni 40 s nel Q3 2017</strong>, crescendo di fatto anche qui di <strong>oltre il 100%</strong>.</p>
+                <p class="card-text">Per completare il ciclo di statistiche appena evidenziato, fino allo scorso anno (e sicuramente in aumento quest’anno, staremo a vedere) <strong>il 60% dei payload (6 su 10) erano ransomware</strong>.</p>
+                <p class="card-text">Visto che si parla di hacking e non è una conferenza di McAfee o Kaspersky, vediamo qualcosa di più interessante dei numeri.</p>
+                <p class="card-text">Scavando un minimo di più la cosa che appare evidente (e interessante!) è la nascita di “aziende” specializzate in ransomware. Di fatto, esattamente come succede con servizi leciti, esistono dei servizi in abbonamento che permettono di configurare e lanciare una campagna di estorsioni digitali: dei veri e propri <strong>RaaS</strong>, in puro stile <em>cloud</em>.</p>
+                <p class="card-text">La cosa interessante da questo punto di vista è il design di architetture, infrastrutture e moduli che è in realtà tipico del lavoro <em>enterprise</em> e molto desueto nel mondo hacker, che di solito è più basato sulla sperimentazione e sull’artigianato digitale.
+                  Insomma, con questa nuova minaccia l’approccio è molto più <em>corporation</em> che nella quasi totalità delle altre minacce presenti in rete.</p>
+                <h3 id="vettori-canonici-e-insoliti">Vettori: <em>canonici</em> e <em>insoliti</em></h3>
+                <p class="card-text">Esempi tipici di vettori sono le iper sottovalutate email che con delle tecniche di <em>social engineering</em> spesso “artistiche” e grossolane riescono comunque a infettare centinaia di migliaia di vittime (<strong>scimmie</strong> è un termine tecnico spesso usato come sinonimo in questi casi).</p>
+                <p class="card-text">Noi di solito archiviamo il caso con un <strong>PEBCAK</strong> e con una serie di meritati insulti al primate di turno.</p>
+                <p class="card-text">Diversamente capita per chi invece è ingenuamente invogliato a scaricare ed eseguire il malware. Alcuni vettori piuttosto insoliti colpiscono le ignare (e ingenue) vittime che invece di passare attraverso ore e ore di sudato <em>gaming</em> preferiscono una <strong>mod</strong> per <em>cheattare</em> e immancabilmente vengono puniti per il tentativo.</p>
+                <p class="card-text">Un esempio reale di questo vettore piuttosto insolito è una “mod” per Minecraft che era addirittura a pagamento e funzionante e che una settimana dopo l’installazione attivava il malware (probabilmente per cifrare ogni cosa lentamente evitando di essere rilevato).</p>
+                <h3 id="target-canonici-e-insoliti">Target: <em>canonici</em> e <em>insoliti</em></h3>
+                <p class="card-text">Considerata la necessità computazionale dei ransomware, i target soliti sono i PC piuttosto che dispositivi mobili o embedded (<em>IoT</em> , per i più hipster), per quanto comunque non manca chi tenta di entrare nella nicchia di business del device ransom, attualmente non molto praticata ma probabilmente piuttosto redditizia.</p>
+                <p class="card-text">Tra i target soliti sicuramente i più colpiti sono i PC aziendali, per l’ovvia probabilità di archiviare dati più importanti di una cartella piena di mkv o di mp3 o di semplici (e probabilmente poco importanti) fogli di calcolo contenenti il bilancio domestico.</p>
+                <p class="card-text">Tra i target insoliti, per contro, ci sono tutti i sistemi di <em>cloud storage</em> che, per ora, sono considerati sicuri (e vengono sistematicamente usati per i backup).</p>
+                <p class="card-text">Per quanto Google sia sicuramente più capace e sistematica nel fare i backup alle vostre foto, per evitare la perdita di dati, che sono più importanti per loro che per noi, tendo a non fidarmi troppo dei computer altrui preferendo ricorrere al vecchio hard disk esterno che torna offline appena terminato il backup.</p>
+                <p class="card-text">Non posso non guardare in avanti verso altri tipi di <strong>ransom attack</strong> più pericolosi che prevedono l’attacco ai <em>big data</em> sempre più personali legati all’IoT. Non ci sono ancora dati in merito, ma penso che ne sentiremo parlare.</p>
+                <p class="card-text">C’è una pletora di dati, legati alle cosiddette <em>smart home</em> e che vengono grossolanamente tenuti in casa senza particolari protezioni o meccanismi di backup automatico. Immaginate se il vostro pannello <strong>command &amp; control</strong> che controlla frigorifero, tapparelle, allarmi, serratura di casa (!!) e magari anche la porta del garage perdesse ogni informazione (o che queste siano cifrate): probabilmente vi ritrovereste a non poter entrare in casa vostra e l’unico modo per tornare a farlo sarebbe pagare un riscatto per far tornare al loro posto tutti i dati.<br />
+                  Questo è ovviamente piuttosto fantascientifico (e strizza l’occhio verso Mr. Robot) ma è perfettamente realizzabile con la attuale tecnologia.</p>
+                <p class="card-text">Immaginate cosa succederebbe se questo tipo di attacco fosse portato verso gli <strong>Amazon Go</strong> o verso i loro kit per <em>smart home</em>, <strong>Echo</strong> e <strong>Key</strong>.</p>
+                <h2 id="esempio-pratico-super-mario-ransom-for-peach">Esempio pratico: <em>Super Mario: Ransom for Peach</em></h2>
+                <p class="card-text">Riprendendo l’idea della mod di Minecraft e qualche altro spunto da alcuni film ormai di culto (Jumanji e Saw) porto un esempio pratico.</p>
+                <p class="card-text">Un videogioco, l’ennesimo capitolo di <strong>Super Mario</strong>, in cui però quello che succede è che <strong>Bowser</strong> (lo storico <em>villain</em>) cifra tutti i tuoi dati in cloud (<strong>GDrive</strong>) e l’unico modo per decifrarli è trovare <strong>Peach</strong> e finire il gioco.</p>
+                <p class="card-text">Questo sarebbe un modo piuttosto <em>divertente e sadico</em> di sviluppare un ransomware, e l’attacco di ingegneria sociale alla base riuscirebbe con una probabilità piuttosto elevata, considerando il fatto che oggi la funzione di salvataggio in cloud è pressoché ubiqua e che quindi qualsiasi ignaro giocatore darebbe il proprio consenso.</p>
+                <p class="card-text">Con la possibilità di leggere e scrivere liberamente (perfino autorizzati legalmente dal proprietario!), e con degli SDK molto ben fatti, sarebbe relativamente semplice e comodo produrre un software di questo tipo usando un qualsiasi linguaggio di alto livello (C# o Java) e delle piattaforme di sviluppo molto consolidate (LibGDX o Unity3D).</p>
+                <h2 id="final-thoughts-dati-a-rischio-la-causa-è-lanello-debole-ovviamente">Final thoughts: <em>dati a rischio, la causa è l’anello debole (ovviamente)</em></h2>
+                <p class="text-center"><img src="/media/2019-03-19/ihc-e-ransomware/AIDS-Trojan.jpg" alt="AIDS-Trojan" class="img-fluid" /></p>
+                <p class="card-text">Non siamo nuovi a questa minaccia, la cui prima apparizione risale addirittura al 1989, anno in cui il Dott. Popp, <em>evolutionary biologist</em> della Harvard University, inviò <strong>20.000 floppy</strong> disk ad alcuni partecipanti alla conferenza internazionale sull’AIDS. Il malware è stato ovviamente soprannominato <em>The AIDS Trojan</em> e <em>PC Cyborg</em>, per la tecnica di ingegneria sociale usata per lo <em>spreading</em>.</p>
+                <p class="card-text">Dopo <strong>90 riavvii</strong>, il malware nascondeva tutte le directory e cifrava tutti i nomi dei file, chiedendo un riscatto di <strong>$ 189.00</strong> da inviare a mezzo posta alla <em>PC Cyborg Corp.</em> con base a Panama.</p>
+                <h2 id="risorse-su-cui-ho-studiato-e-da-cui-ho-preso-dati-e-immagini">Risorse su cui ho studiato e da cui ho preso dati e immagini</h2>
+                <p class="card-text">Queste sono le risorse che ho usato per preparare il talk, e da cui ho preso i dati che cito.<br />
+                  Malwarebytes ha pubblicato un report (come ogni anno) in cui spiega nel dettaglio quali sono i vettori comuni e dettaglia addirittura fino ad arrivare alle CVE.<br />
+                  Il pdf è disponibile previa registrazione, motivo per cui pur avendolo non posso condividerlo.</p>
+                <ul>
+                  <li><a href="https://sensorstechforum.com/q1-2018-malware-report-ransomware-dethroned-cryptominers/">Sensors Tech - Q1 2018 Malware Report: Ransomware Dethroned by Cryptominers</a></li>
+                  <li><a href="https://securelist.com/it-threat-evolution-q1-2018-statistics/85541/">SecureList - IT threat evolution Q1 2018. Statistics</a></li>
+                  <li><a href="https://www.datto.com/blog/common-types-of-ransomware">Datto - Common Types of Ransomware</a></li>
+                  <li><a href="https://www.symantec.com/security-center/threat-report">Symantec - ISTR 2018</a></li>
+                  <li><a href="https://www.fortinet.com/corporate/about-us/newsroom/press-releases/2018/fortinet-threat-landscape-report-reveals-an-evolution-of-malware.html">Fortinet Threat Landscape Report Reveals an Evolution of Malware to Exploit Cryptocurrencies</a></li>
+                  <li><a href="https://blog.trendmicro.com/3-reasons-the-ransomware-threat-will-continue-in-2018/">TrendMicro - 3 reasons the ransomware threat will continue in 2018</a></li>
+                  <li><a href="https://press.malwarebytes.com/2018/01/25/malwarebytes-annual-state-malware-report-reveals-ransomware-detections-increased-90-percent/">MalwareBytes - Malwarebytes Annual State of Malware Report Reveals Ransomware Detections Increased More Than 90 Percent</a></li>
+                  <li><a href="https://blog.360totalsecurity.com/en/2017-ransomware-trend-report-2018-forecast/">2017 Ransomware Trend Report and Forecast for 2018</a></li>
+                </ul>
+                <h2 id="il-talk-per-intero-grazie-ivoermejo-e-le-slide-a-corredo">Il talk per intero (grazie @IvoErMejo) e le slide a corredo</h2>
+                <p class="card-text"><a href="/media/2019-03-19/ihc-e-ransomware/ransomware.odp">Ransomware: minaccia alle stelle</a></p>
+                <div class="embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/svUxYlMNtLw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                </div>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2019/03/19/IHC-e-ransomware/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -129,9 +231,20 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2019-03-14T21:05:00+01:00">Thu, 14 Mar 2019 21:05:00</time>
+                  <time datetime="2019-03-14T20:05:00+01:00">Thu, 14 Mar 2019 20:05:00</time>
                 </cite>
                 <p class="card-text">Sta sera ho quasi avuto il <em>panico</em>, quello che si prova quando <strong>sminchi</strong><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> produzione, quello che hai quando sai di averla fatta te la <em>cazzata</em>, il commit maledetto che non ci doveva stare.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Fortunatamente Travis CI è un ottimo prodotto. GitHub Pages lo è un po’ meno.</p>
+                <p class="card-text">Non sapere il perché la build fallisce <strong>dentro GitHub</strong>, perché lui comunque effettua una build del tuo sito già bello e costruito dal buon Travis, non è una bella cosa, lo è ancora meno quando cerchi l’informazione e non la trovi.</p>
+                <p class="card-text">Si perché se c’è una cosa che ci insegnano da piccoli a noi informatici è che devi cercare i log per capire cosa non va. E i log non c’erano, nemmeno l’ombra. Maledetto, mi dici che ti fallisce la build e non mi dici perché.</p>
+                <p class="card-text">A questo punto ho avuto l’illuminazione: posso escludere GitHub dalla build e fargli mangiare il sito già cotto da TravisCI? Fortunatamente la risposta a questa domanda era si, GitHub permette di pubblicare siti statici direttamente su master.<br />
+                  Quindi potevo semplicemente riconfigurare TravisCI in modo da fargli fare il deploy solo della cartella di output e non di tutto il repo come facevo prima.</p>
+                <p class="card-text">1 a 1 palla al centro, che dalla mia parte ho avuto un buon assist di TravisCI ma un pessimo autogol di GitHub.</p>
+                <p class="card-text">Anche oggi produzione è salva e mi sono meritato la cena, buona notte.</p>
                 <div class="footnotes">
                   <ol>
                     <li id="fn:1">
@@ -156,10 +269,30 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2019-03-14T14:05:47+01:00">Thu, 14 Mar 2019 14:05:47</time>
+                  <time datetime="2019-03-14T13:05:47+01:00">Thu, 14 Mar 2019 13:05:47</time>
                 </cite>
                 <p class="card-text">Sta mattina ho letto un <a href="https://www.bbc.com/news/science-environment-47543875">articolo</a> che mi ha fatto riflettere.</p>
                 <p class="card-text">All’inizio ho pensato <em>“hanno fatto la scoperta dell’acqua calda”</em>, ma poi ho realizzato che, anche fosse, l’hanno messo nero su bianco con rigore scientifico. E questo è un piccola vittoria nella mia battaglia personale molto <em>punk</em> nei confronti delle persone che sparano sentenze senza approfondire.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <h2 id="un-po-di-contesto">Un po’ di contesto</h2>
+                <p class="card-text">Così come riportato dalla BBC (che ritengo un giornale abbastanza autorevole), gli autori dell’articolo sono partiti dal contesto sociale in cui si trovano.<br />
+                  Siamo in Australia, significa che siamo immersi in una cultura prevalentemente cattolica e molto Anglo-Celtica, come trovo su alcuni testi.</p>
+                <p class="card-text">Il significato macroscopico di questo, per farla breve, è che ci troviamo davanti a una forte comunità di fedeli conservatori con la mania per la ricerca del colpevole, come la tradizione cattolica vuole.<br />
+                  Infatti, ogni <em>cieco fedele</em> di qualsiasi filosofia tende implicitamente a preservare lo <em>status quo</em> in cui la sua filosofia riesce a spiegare il mondo; l’alternativa è vedersi frantumare le convinzioni che questi fedeli hanno, cosa inaccettabile (per chiunque).</p>
+                <p class="card-text">Psicologicamente quindi abbiamo dei soggetti inclini alla ricerca di un colpevole, sia esso una persona <em>terrena</em> oppure il male incarnato in qualcosa o qualcuno, tipicamente <em>Satana</em>.</p>
+                <p class="card-text">Questo è più o meno il quadro sociale in cui ha operato l’equipe che ha prodotto questo lavoro.</p>
+                <h2 id="lo-studio">Lo studio</h2>
+                <p class="card-text">Sono stati “testati” in totale 80 individui, di cui 32 erano fan di musica Death Metal. L’esperimento puntava a comprendere la capacità di riconoscimento di scene violente da parte del soggetto, mentre questo ascoltava uno tra i brani scelti: <a href="https://www.youtube.com/watch?v=ZbZSe6N_BXs"><em>Happy</em></a> di <a href="https://it.wikipedia.org/wiki/Pharrell_Williams">Pharrel Williams</a> o <a href="https://www.youtube.com/watch?v=UBfoMgllphs"><em>Eaten</em></a> dei <a href="https://it.wikipedia.org/wiki/Bloodbath">Bloodbath</a>.<br />
+                  Le scene violente erano proposte una alla volta, affiancate di volta in volta da una immagine neutra.</p>
+                <p class="card-text">Il presupposto scientifico era: “se i fan di musica violenta fossero desensibilizzati alla violenza, che è quello di cui molti gruppi di genitori, gruppi religiosi e consigli di censura sono preoccupati, allora questi non avrebbero saputo riconoscere le scene violente”.<br />
+                  “Ma i fan hanno mostrato lo stesso identico comportamento nel riconoscere le immagini violente che hanno avuto i soggetti che non erano fan di questa musica”.</p>
+                <h2 id="la-conclusione">La conclusione</h2>
+                <p class="card-text">Alla fine, come già si evince, questo studio ha dimostrato che la musica, anche quella violenta, non ha assolutamente nessun impatto negativo sulla psiche e sul comportamento dell’essere umano, e che anzi ha un effetto benefico. “La risposta emozionale dominante a questa musica è la gioia e il senso di legittimazione e responsabilizzazione”.</p>
+                <p class="card-text">Io potrei anche concludere con un “Ma và!” come ho esordito, ma penso che sia importante demistificare questo genere musicale verso le masse, più che verso i fan che come me potrebbero prendere questo studio e snobbarlo come banale.</p>
+                <p class="card-text">Sempre grazie ai ricercatori che, diversamente da chi rimane fermo sul suo punto, ci danno ogni giorno un nuovo motivo per vivere e imparare.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2019/03/14/il-death-metal-non-rende-violenti/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -181,6 +314,24 @@
                 </cite>
                 <h2 id="tl-dr">TL; DR</h2>
                 <p class="card-text">Penso e spero di tenere in piedi questo sito a lungo, e penso e spero che gli articoli che scriverò saranno interessanti, utili, o spunti di riflessione per chi legge. Se vuoi seguire, ti consiglio la sottoscrizione <a href="https://it.wikipedia.org/wiki/RSS">RSS</a>​<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, perché non penso che sarò regolare nei “rilasci”.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <h2 id="the-journey-begins">The journey begins</h2>
+                <p class="card-text">Lo so, sono come l’<a href="https://it.wikipedia.org/wiki/Olandese_Volante">Olandese Volante</a>, che vuoi farci. È il <em>bello della diretta</em> direbbero alcuni, e in effetti la vita è un po’ una diretta, non si torna indietro e non si può rifare a richiesta.</p>
+                <p class="card-text">Ancora una volta torno su un blog, sta volta spero per sempre (o almeno mai più); fatto sta che un blog lo voglio, e l’ho sempre voluto ed è difficile poi però mantenerlo perché sono particolarmente <em>lazy</em> come dicono gli inglesi (thanks <a href="https://it.wikipedia.org/wiki/Deep_Purple#I_classici_(1970-1975)">Deep Purple MKII</a>).<br />
+                  Questa volta ho preso una serie di decisioni non da poco: non usare tecnologie che mi potrebbero portare a un <em>lock-in</em>, usare una tecnologia che in futuro posso ospitare con poco sforzo a casa, usare una tecnologia che mi fornisca qualcosa di molto semplice e flessibile e usare una tecnologia che renda semplice l’editing offline e la scrittura dei post. Questa tecnologia a mio avviso si chiama <a href="https://jekyllrb.com/">Jekyll</a>.</p>
+                <p class="card-text">Ho già ampiamente spiegato <a href="/2019/02/15/primo-post-da-smartphone/">qui</a> come e perché di molte cose, quindi non sto troppo a dilungarmi.<br />
+                  Fortunatamente per Jekyll esistono una marea di plugin e programmi utili, tra cui un <a href="https://github.com/thomasf/exitwp">importatore da <em>wordpress</em> molto efficiente e completo, scritto in python</a>. Questo ottimo tool mi ha permesso di importare diversi post provenienti dai miei vecchi blog wordpress.</p>
+                <p class="card-text">Storicamente, ho sempre apprezzato wordpress, e continuo ad apprezzarlo, ma volevo qualcosa di un po’ diverso, e soprattutto più <strong>sicuro</strong>, wordpress a volte mi fa dubitare della capacità degli sviluppatori che lo portano avanti da questo punto di vista.<br />
+                  Un sito generato con Jekyll per sua definizione <strong>non ha vulnerabilità</strong>, proprio perché quello che poi viene caricato sul web server alla fine è un sito statico, tante pagine html che potrebbero essere eseguite anche offline da un browser senza neanche l’ausilio di un web server.<br />
+                  E questo riduce molto la <em>superficie d’attacco</em>, come direbbe qualche amico del settore.</p>
+                <p class="card-text">Come storico quindi, trovi già dei post vecchi(ssimi) risalenti quasi tutti al 2010, quando ancora avevo voglia di scrivere, o forse quando ero galvanizzato dall’avere il mio server personale nel pc di casa, esposto su internet (in maniera alquanto poco cosciente) e con parecchi servizi attivi ed esposti (tra cui, si legge nei post di quel periodo, SSH, SVN e Apache 2). Fortunatamente anche dal punto di vista della sicurezza sono cresciuto, e difficilmente mi verrà di nuovo in mente di fare una cosa del genere, almeno non in quel modo.</p>
+                <p class="card-text">Ecco: ho voluto importare tutto per ricominciare ma allo stesso tempo dare continuità a un qualcosa che è cominciato ormai 9 anni fa (quando ero un piccolo sviluppatore junior allocato in Poste Italiane).<br />
+                  Ma con una grossa differenza: maggiori competenze, più consapevolezza di me stesso, del mondo, della tecnologia, maturità del mondo verso certe tecnologie che già in tempi non sospetti apprezzavo e consigliavo.<br />
+                  Forse anche un progetto implicito, quello che il web non è più così mio nemico come lo consideravo una volta (a ragione, ci arrivo dopo) e che quindi si <em>merita</em> che il mio sito sia qualcosa di etico, bello e sostenibile. Ma soprattutto etico.</p>
+                <p class="card-text">Andando indietro trovo post in cui sono galvanizzato per aver messo i miei siti e i miei servizi a casa mia, altri post in cui si evince che ho iniziato progetti che poi purtroppo sono morti (FPM), altri post invece sono un po’ più personali perché in quel momento mi sentivo di condividere le mie parole col mondo (mondo che in realtà probabilmente non ha mai letto queste cose, all’infuori forse di amici e parenti stretti).</p>
                 <div class="footnotes">
                   <ol>
                     <li id="fn:1">
@@ -207,6 +358,40 @@
                 <p class="card-text">Questo post viene direttamente dallo smartphone. Neanche uno particolarmente moddato, né tanto meno sono stato così “<em>hacky</em>” da portarmi dietro un ambiente ruby+jekyll.<br />
                   Ma allora come ho fatto? L’ho compilato sul PC per poi pubblicarlo?<br />
                   No! Ovviamente. Altrimenti che lo scriverei a fare: i post servono per raccontare qualcosa di nuovo o di diverso, le banalità ci vergogniamo a pubblicarle (per fortuna!).</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <h2 id="lidea">L’idea</h2>
+                <p class="card-text">Ieri è stato il <strong>Free Software Day</strong>, non sapevo che lo fosse, per me è sempre stato <em>San Valentino</em>, come per tutti.<br />
+                  Invece l’amata <a href="https://fsfe.org">FSFE</a> ha tirato fuori dal cilindro una iniziativa interessante e stimolante, a cui ho voluto partecipare nel mio piccolo: il Free Software Day.<br />
+                  Si trattava (o almeno è stato così per me) di esprimere il tuo <em>amore</em> verso gli sviluppatori dei software che utilizzi, sostanzialmente come avviene per San Valentino. Un piccolo gesto per te ma, e lo dico da sviluppatore, enorme per chi sviluppa, dal punto di vista della motivazione.<br />
+                  Ovviamente la buona FSFE ha messo a disposizione i propri mezzi e dei bellissimi artwork per l’evento. La missione era di condividere uno degli artwork con un link al sito dell’iniziativa <a href="https://ilovefs.org">#ilovefs</a> sul proprio sito o blog o <em>whatever</em> e poi ribaltarlo sui social media per aumentare l’audience.<br />
+                  Ma io non avevo un sito, un blog si ma inutilizzato da tempo.</p>
+                <p class="card-text">Da qui l’idea: mi faccio il sito.<br />
+                  Si ma come? Dove? Quanto tempo ci metto?<br />
+                  Non wordpress, altrimenti tanto valeva rispolverare il blog <em>“elettronicamente tuo”</em>, e non mi andava.<br />
+                  Quindi ho pensato: GitHub permette <strong>a gratis</strong> di avere un sito statico presso di loro, completamente <em>ridondato</em> e versionato (ovviamente) con <strong>git</strong>. Ma deve essere statico. E quindi la primissima versione (che potete anche andare a trovare, visto che è tutto sotto VCS) era una index.html con una banale struttura HTML 5 e - <em>udite udite</em> - <strong>bootstrap 4.3</strong>, del quale sono rimasto piacevolmente sorpreso quando ho appreso che quel poco di CSS che pensavo di dover scrivere (e che avevo scritto) non serviva assolutamente a nulla.<br />
+                  Quindi il mio bellissimo (si fa per dire) omaggio al free software l’ho dato tramite la pubblicazione FI questa semplice quanto efficace paginetta su GitHub Pages.</p>
+                <h2 id="il-restyling">Il restyling</h2>
+                <p class="card-text">Oggi però, terminato lo scopo della giornata di festa, ho deciso di dare a questo <em>attrezzo</em> una struttura più “degna”: in fondo è sempre il mio sito personale. Allora mi è venuto in mente un mio vecchio progettino di studio lasciato a morire nei meandri del mio PC. Tentavo di capire cosa fosse e come funzionasse Jekyll, un generatore statico, e come mi capita pressoché ogni volta avevo deciso di comprendere facendo.<br />
+                  Però avere un sito statico non mi è mai piaciuto: hai sempre necessità di un PC per modificare e pubblicare, perché che tu lo voglia o no scrivere codice su un dispositivo diverso dal PC <em>fa schifo</em>. E io spesso ho possibilità di scrivere qualcosa, buttare giù i miei pensieri, condividere qualcosa, solo durante il viaggio casa-lavoro che passo sui mezzi. E in quel tragitto ho solo uno smartphone, non un PC. Quindi da pigro e amante del concetto di cross-device fino alla morte, ho cercato una soluzione che mi permettesse di scrivere dallo smartphone, esattamente quello che sto facendo ora.</p>
+                <h2 id="fase-finale">Fase finale</h2>
+                <p class="card-text">Il sistema scelto è <a href="https://GitHub.com">GitHub</a> + <a href="https://jekyllrb.com">Jekyll</a> + <a href="https://travis-ci.org">TravisCI</a>.<br />
+                  TravisCI mi ha permesso di coprire <em>l’ultimo miglio</em>, cioè la parte in cui c’è un aggiornamento nel markdown gestito da Jekyll (aggiungo un post, ad esempio) e il sito statico viene rigenerato e pubblicato. E ci ho messo molto poco a mettere in piedi la baracca.<br />
+                  Lato “server” siamo pronti! Abbiamo un sito pubblico (grazie a GitHub), abbiamo un motore che processa documenti semplici e li traduce in pagine HTML ben formate e con un aspetto grafico omogeneo (Jekyll) e abbiamo un meccanismo automatico che si sveglia quando <em>sente</em> le modifiche, genera tutto e pubblica sul sito (TravisCI).</p>
+                <h2 id="i-client">I client</h2>
+                <p class="card-text">È quasi superfluo parlare del PC, tecnicamente sono sufficienti git e emacs, per comodità posso usare Visual Studio Code (<em>per quanto sia prodotto da Microsoft e per quanto sia un’app electron, è veramente un ottimo prodotto</em>), ma non è il PC che è interessante.<br />
+                  Sullo smartphone (Android, e solo con <a href="https://f-droid.org/">f-droid</a> a disposizione) ho installato <a href="https://manichord.com/projects/mgit.html">MGit</a>, un ottimo client git con cui posso comunicare con GitHub per scaricare il sorgente del sito per poi modificarlo e caricarlo aggiornato su GitHub pronto per TravisCI, e <a href="https://gsantner.net/project/markor.html">Markor</a>, un ottimo editor markdown che posso usare per scrivere.<br />
+                  Il flusso è questo:</p>
+                <ol>
+                  <li>Sincronizzo la mia copia di sviluppo con GitHub</li>
+                  <li>Creo un nuovo file markdown dove mi serve (si lavora sempre sul branche <strong>dev</strong>)</li>
+                  <li>Finito l’editing del testo, salvo faccio il commit delle modifiche e carico tutto su GitHub.</li>
+                  <li>TravisCI fa la magia e dopo qualche secondo ho tutto online</li>
+                </ol>
+                <p class="card-text">Forse, e dico forse, il post è finito e posso pubblicare, questo è il flusso anche se ci sono delle cose che vanno migliorate, come la possibilità di auto popolare un header vuoto per ogni post. E ancora non ho esplorato le possibilità di modifica del layout di Jekyll.</p>
+                <p class="card-text">A presto altri aggiornamenti.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2019/02/15/primo-post-da-smartphone/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -240,9 +425,47 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2014-02-05T19:09:06+01:00">Wed,  5 Feb 2014 19:09:06</time>
+                  <time datetime="2014-02-05T18:09:06+01:00">Wed,  5 Feb 2014 18:09:06</time>
                 </cite>
                 <p class="card-text">This article is written in my native language, Italian, but you will find a translation ASAP (As Soon As Possible). Sorry for this. Questo argomento è, a dire la verità, credo tra i più discussi e spinosi in assoluto, io qui tenterò di dare forma alla nebulosa che compone questa tematica e getterò una base (spero) per qualcosa di più ampio.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <h1 id="la-confusione-parte-dalle-basi">La confusione parte dalle basi</h1>
+                <p class="card-text">La base di tutto è il formato da usare. Se ne sono dette di tutti i colori su quale sia il formato migliore in assoluto, mentre la Linux Foundation standardizzava il formato RPM, prima Red Hat Package Manager e ora RPM Package Manager (ricorsivo).
+                  Si potrebbe anche qui discutere delle ere sui due formati <em>faggot</em> per eccellenza: RPM e DEB, ma non lo farò. Mi limiterò a dire che ognuno dei due formati introduce novità sull’argomento ma che porta anche gravi danni allo stesso. Per RPM il danno è più concettuale che sistemistico: RPM è l’estensione del file (.rpm), ma è anche il nome del formato (RPM), ed è anche il nome del Package Manager (sempre, rpm), senza contare gli innumerevoli usi impropri dell’acronimo. Insomma quando si parla di RPM non si sa mai se si sta parlando del file, del formato, del programma o di qualcos’altro. Il formato DEB dal canto suo introduce un problema ben più grave dal mio punto di vista: la frammentazione. Da quando il formato è nato, per opera della “bastian contrario” comunità di Debian, questo formato ha tentato sempre di <em>rubare</em> adozioni a RPM mettendo in atto una vera e propria guerra, per nulla salutare ai formati o a Linux e al mondo libero in generale, tutto solo per “essere diversi”. Ogni volta c’era qualche Debian-enthusiast che voleva necessariamente coinvolgere tutto il mondo linux nella loro totalitaria visione debian-centrica dell’universo, a partire dal loro package manager, dpkg. C’è da dire che non ci vuole uno scienziato a capire che il formato è perfetto sotto certi aspetti (lato utente medio) ma totalmente privo di funzionalità basilari se lo si guarda dal punto di vista di chi sa cosa diamine sia veramente la gestione del software, come i bonzi utilizzatori di slackware (i quali sanno <strong>veramente</strong> cosa sia gestire un pacchetto).</p>
+                <p class="card-text">Sull’argomento della definizione di un formato, molti hanno provato a dare una definizione e <em>tutti</em> sono caduti nel farlo nella morsa della necessità. Potremmo provarci anche noi, mantenendoci leggeri senza irrigidirci troppo su quello che già c’è o sulle regole da seguire, proviamo solo a pensare a <strong>cosa</strong> è necessario ad un formato per gestire tutti i casi esistenti (consci del fatto che in un modo o nell’altro tutti i formati di successo <strong>possono</strong> gestire ogni pacchetto esistente).
+                  <a href="https://en.wikipedia.org/wiki/Linux_package_formats">Wikipedia</a> prova a dare una definizione di formato:</p>
+                <blockquote>_A package format is a type of archive containing files and additional metadata found on packages._</blockquote>
+                <p class="card-text">Partendo da questa (molto) <strong>semplicistica</strong> definizione proviamo a capire cosa dovrebbe offrire un formato nel 2014:</p>
+                <ol>
+                  <li>
+                    <p class="card-text">I file da installare; O al limite i sorgenti. È necessario che il <strong>vero</strong> contenuto stia nel pacchetto, questa è una ovvietà, ma per eccesso di zelo, va detta.</p>
+                  </li>
+                  <li>
+                    <p class="card-text">Un manifest; Quello contenente i metadati, ce l’hanno tutti ed è indispensabile, quindi è dentro.</p>
+                  </li>
+                </ol>
+                <p class="card-text">Ok, sono finite le parti ovvie, quelle che implementano tutti, completamente o in parte. C’è dell’altro, ma prima è doveroso trattare l’argomento del manifest, visto che parlare di manifest è come parlare di ricette: troppe versioni, praticamente tutte discordanti, ognuno ha la sua. Ma qual’è il manifest perfetto (o quanto meno il più completo possibile)?</p>
+                <h3 id="un-manifest-per-domarli-unmanifestper-trovarli-unmanifestper-ghermirli-e-nel-buio-incatenarli">«Un Manifest per domarli. Un Manifest per trovarli. Un Manifest per ghermirli e nel buio incatenarli…»</h3>
+                <p class="card-text">Dato che la mia trattazione non è un mero confronto di formato tra manifest, mi limiterò a citare le informazioni dei principali formati e elencherò quello che un manifest dovrebbe avere, sulla base di quello che è possibile leggere dagli articoli ufficiali.</p>
+                <ul>
+                  <li>
+                    <p class="card-text">Il <a href="https://wiki.archlinux.org/index.php/Pkgbuild">PKGBUILD</a> di <strong>Arch</strong> è sicuramente tra i più semplici. Include tutte le informazioni di base che un manifest dovrebbe avere, ma il manifest è il minore dei problemi di un buon formato.</p>
+                  </li>
+                  <li>
+                    <p class="card-text">L’<a href="http://devmanual.gentoo.org/ebuild-writing/file-format/index.html">EBuild</a> di <strong>Gentoo</strong> invece è molto, molto complesso e non incoraggia i packager in erba a usarlo, a discapito della comunità e della quantità di pacchetti effettivamente disponibili. Anche se poi chi usa Gentoo è comunque un utente <strong>molto</strong> avanzato e quindi difficilmente necessita di un tool di assistenza per compilare i sorgenti di un software.</p>
+                  </li>
+                  <li>
+                    <p class="card-text"><a href="https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/RPM_Guide/ch-rpm-overview.html#id662040">RPM</a> di <strong>Red Hat &amp; Fedora, openSuSE, Mandriva e soci</strong> è largamente usato nelle maggiori distribuzioni (soprattutto quelle commerciali), ha un manifest relativamente semplice e strutturato, è un progetto molto maturo e ha molte funzionalità in più.</p>
+                  </li>
+                  <li>
+                    <p class="card-text"><a href="http://www.debian.org/doc/debian-policy/ch-controlfields.html">DEB</a> di <strong>Debian, Ubuntu e derivate</strong> è un formato nato semplice e diventato complesso con gli anni a causa dell’approccio “<em>write first, think later</em>” tipico dei giovani smanettoni (e studenti universitari), che sono i principali e tipici utilizzatori di questo formato, approdato al cospetto del grande pubblico solo “a causa” di ubuntu. Ciò è dimostrato dalla estremamente carente documentazione, tipica del progetto e opposta alla linea di condotta di progetti come Arch, smanettoni ma saggi che mettono a disposizione degli utenti una delle documentazioni online più complete e ricche, senza farlo per mestiere.</p>
+                  </li>
+                </ul>
+                <p class="card-text">Il manifest tipico quindi dovrebbe essere un formato <strong>semplice da scrivere</strong>, come ci insegnano i saggi di Arch, molto ben strutturato per essere <strong>scriptabile</strong>, come ci insegnano i supertecnici di Gentoo (che, se avete letto la documentazione, generano il manifest a partire dall’ebuild), <strong>solido maturo e flessibile</strong>, come hanno dimostrato negli anni i milioni di contributori delle distro più note basate/derivate/ispirate su/a Red Hat, e che sia <strong>semplice</strong> da includere in un pacchetto, senza troppe sovrastrutture che complicano inutilmente il lavoro, come ci ha insegnato la comunità di Debian.</p>
+                <p class="card-text">Qui finiamo la prima parte, la seconda (di una lunga serie) arriverà a breve, delineando quello che potrebbe essere il manifest <em>assoluto</em>, solo in senso puramente scientifico, cioè rendendo ciò che è elencato qui sopra una specie di formato <em>abbozzato male</em>.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2014/02/05/gestione-del-software-nel-mondo-gnu-linux/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -257,9 +480,47 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2013-08-01T19:42:35+02:00">Thu,  1 Aug 2013 19:42:35</time>
+                  <time datetime="2013-08-01T18:42:35+02:00">Thu,  1 Aug 2013 18:42:35</time>
                 </cite>
                 <p class="card-text">Today I want to say a few words about BTRFS. Firstly I want to say that <strong>this filesystem is awesome for functionalities</strong>, I will use it as my filesystem again as soon as it will become stable. But, It is not yet stable, I tried and I fallen in front of his horrible performances.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Actually there are some problems on this filesystem that developers know in fact but, they are much more complicated to solve because most of them are normal behaviors of other functionalities. As an example in order to understand much better and quickly: there is a known issue of (obviously) horrible performances that I experimented by myself, it makes performance decrease whenever you use it because he want to write down all the data in the same time, he want also manage all the metadata at the same time, only because those data are in the same transaction (!!), and you cannot do anything to fix that behavior because it is not customizable AND this is the normal behavior of work for btrfs. Result: you have an awesome filesystem that decreases its performances more quickly than Windows, so it is hardly unusable, especially if you use it for the root partition.</p>
+                <p class="card-text">A system cannot be so slow in 2013 so I ended up in a solution: I have to migrate my filesystem. I’m not a fan of passing data from a disk to another, I make a few bckups sometimes but not always, in fact this is a bad attitude, but that’s me. SO.</p>
+                <p class="card-text">In order to migrate the root filesystem (yes I had BTRFS for the root – and home – filesystem, I used to be a bad guy, huh) I used a slooooow but simple universal and powerful solution. The situation was aggravated by the fact that my laptop has secure boot and then the boot partition was very touchy. I used the well known live distro (any live distro could do this work, I used the openSuSE recovery system for that purpose) and so I logged in a shell. The rest are some commands, a cp, some other commands.</p>
+                <p class="card-text">Anyway, here is what I typed:</p>
+                <p class="card-text">I had to make a new partition of the same size or even better, so I resized the btrfs home partition of -200G in order to keep root filesystem very large.</p>
+                <p class="card-text"><em>btrfs filesystem resize -200G /dev/sda4</em></p>
+                <p class="card-text">Then I created the new filesystem and after that I mounted old (as read only) and new root filesystems.</p>
+                <p class="card-text">So I ran this command: __</p>
+                <p class="card-text"><em>cp -bfrdvx –preserve=all –suffix=~-bak-newfs -t /newfs/ /old/{bin,boot,etc,lib,lib64,media,mnt,opt,root,run,sbin,selinux,srv,tmp,usr,var}</em></p>
+                <p class="card-text">It took a few to complete but as it finished I had all my old root copied in the new one. I omitted copy the home folder because I have a separate partition for that, but I copied boot because even if I have a partition for that some files needs to be copied in any case.</p>
+                <p class="card-text">Explination:</p>
+                <p class="card-text"><em>-b:</em> means backup, cp makes a backup if it has to overwrite a file, as described in the man “<em>it works better with -f [force] and -r [recurse]</em>”</p>
+                <p class="card-text"><em>-f &amp; -r:</em> means recurse and force overwriting if you find the same file on destination</p>
+                <p class="card-text"><em>-d:</em> this is the combination of two other switches, it means that cp cannot ever follow any link in the source and it should preserve the link attribute on the new filesystem, it is useful in our case because we want to keep everything even links to system libraries, kernels configurations and so on. We have a user friendly distro, not slackware, so we want to preserve the configurations made by the packagers of our precompiled software.</p>
+                <p class="card-text"><em>-v:</em> verbose, no words.</p>
+                <p class="card-text"><em>-x:</em> stay on this filesystem but, as described by man “<em>mount points are not worth</em>” [read that as if you were David Letterman].</p>
+                <p class="card-text"><em>–preserve=all:</em> means preserve all attributes, other than links (remember <em>-d__ switch?</em>)</p>
+                <p class="card-text"><em>–suffix=~-bak-newfs:</em> I chose only a suffix that I can remember of, later.</p>
+                <p class="card-text"><em>-t /newfs/:</em> oh well, I’m explaining cp, but you should know of the -t option, it sets the destination folder.</p>
+                <p class="card-text"><em>/old/{bin,boot,etc,lib,lib64,media,mnt,opt,root,run,sbin,selinux,srv,tmp,usr,var}:</em> the filesystem, without volatile folders. This a bash expansion, so it is not fully trusted to use it on a different shell.</p>
+                <p class="card-text">Ended now?! No! You should go across other commands in order to recover your poor system. As it i now your new root don’t knows how to start itself, it knows only how to start the old root. There are some files you have to edit in order to let the new root know about itself.</p>
+                <p class="card-text"><strong>/etc/fstab</strong></p>
+                <p class="card-text">You have to edit the /etc/fstab of the new root because you have to change the mount device for / (root) mount point.</p>
+                <p class="card-text">I assume you know how to modify fstab.</p>
+                <p class="card-text">Then for the rest of configuration you have to chroot into the new root, so I bounded volatile filesystems (dev sys proc) and chrooted into the new root.</p>
+                <p class="card-text">You have to fix two main things that are broken because of their reference to the old filesystem: bootloader and kernel, you mind that if you do not do that part, the system will not boot up.</p>
+                <p class="card-text">In order to fix grub2 (I have grub2-efi so I make a guide on that, do not try to ask of lilo grub legacy or other BLs) I had to fire the command below:</p>
+                <p class="card-text"><em>grub2-mkconfig -o /boot/grub2/grub.cfg</em></p>
+                <p class="card-text">So easy? Yes! Grub2 is composed of a bunch of useful scripts that detect automagically all the systems installed in the mounted partitions, and writes all the data into the grub.cfg. It’s handy isn’t it?</p>
+                <p class="card-text">For kernel you have to pray all goes smooth as it did for me, in othre cases, <em>I saw errors that you humans will never see in your lives</em>.</p>
+                <p class="card-text">This is the command: <em>mkinitrd</em>, if it works, good, anyway pray god it will autofix itself.</p>
+                <p class="card-text">Once fstab, init ramdisk, and grub2 are all fixed you can try to exit the chroot and reboot your machine, optionally you can also delete the old root partition.</p>
+                <p class="card-text">If it ended up smooth you should see grub2 loading, kernel loading and launching init, and the rest of the system run as normal, but with greater performance.</p>
+                <p class="card-text">I hope they will fix those errors and make btrfs ready for the prime time as soon as possible, anyway I have btrfs for the home partition yet, so I have chances to try it out more and more.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2013/08/01/a-nightmare-to-remember-not-the-dream-theaters-song-btrfs-vs-me-pt1/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -277,9 +538,29 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2013-07-30T04:05:47+02:00">Tue, 30 Jul 2013 04:05:47</time>
+                  <time datetime="2013-07-30T03:05:47+02:00">Tue, 30 Jul 2013 03:05:47</time>
                 </cite>
                 <p class="card-text">Tonight let’s talk a little about SecureBoot.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Secure Boot is IMHO the worst thing that Microsoft did in the last 15 years, and we’re talking about an era of Windows 98 [Epic Crash!], Windows Millennium [BUUgs] and Windows Vista [SLOOwness], and the first Service Pack of Windows XP, that introduced more bugs than that ones it has corrected. So it is IMHO a horrible thing that will never protect them against malware: done the law, found the trick. BUT! As Microsoft does every time a new component is introduced, every hardware producer install a copy of it in its UEFI firmwares, this leads to problems for most of the users in the dreamland of linux.</p>
+                <p class="card-text">Thanks to Red Hat, Novell and Canonical (Fedora, OpenSuSE and Ubuntu), we stolen (making noise with money) a key from Microsoft and we can now successfully install in a GPLv3 way our preferred OS: GNU/Linux [I’m sorry RMS, I was going to write only Linux, don’t flash me with a lightning].</p>
+                <p class="card-text">I installed successfully openSuSE 12.3 on my Asus K55V with UEFI and SecureBoot, but tonight it stopped working after a reboot (!!). As I’m actually writing this blog post, you can deduce that I have solved my issue. Yes. I solved my issue. I’m fine thanks, my granny is greeting you.</p>
+                <p class="card-text">What happened was that SecureBoot has forgotten all the non Microsoft keys [I always thought Microsoft could put a naughty joke in one of its core components, Bad Microsoft BAD] and the only way I found to repair was to enter in the repair system of the openSuSE DVD and to use efibootmgr to solve the things.</p>
+                <p class="card-text">Before to do that I have to clear [it is not like a charm, some times, it won’t clear anything, even after reboot] all the keys in the key store of the UEFI settings. I’m lucky to have this menu, others could be not-so-lucky as I was.</p>
+                <p class="card-text">Then entering the repair mode I had to fire this command: <em>efibootmgr -c -L openSuSE -d /dev/sda -p 1 -l \EFI\opensuse\shim.efi</em>.</p>
+                <p class="card-text">Explain:
+                  -c : means that efibootmgr has to create a new boot entry
+                  -L : it is the name of the boot entry in the UEFI menu
+                  -d : takes the block device in which the efi things and the OS resides
+                  -p : could mean partition to someone, that are my guys!
+                  -l : it keeps the loader with all the path, DOS-like [because this shit was written by Microsoft], starting from the root of the partition containing the efi code, in my case efi has its own partition, the first</p>
+                <p class="card-text">Now if it happens to you, and you are not a Microsoft lover, you can repair (almost) easily the (UN)SecureBoot.</p>
+                <p class="card-text">Oh well, I was going to forget, to see if you have SecureBoot enabled, on a running Linux system, run this command below, 1 as enabled, 0 otherwise:</p>
+                <p class="card-text"><em>od -An -t u1 /sys/firmware/efi/vars/SecureBoot-8be4df61-93ca-11d2-aa0d-00e098032b8c/data.</em></p>
+                <p class="card-text">I hope you will never need this page.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2013/07/30/secureboot-the-last-microsoft-weapon-to-keep-its-users-locked-on-windows-8/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -297,9 +578,22 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2013-07-29T19:38:37+02:00">Mon, 29 Jul 2013 19:38:37</time>
+                  <time datetime="2013-07-29T18:38:37+02:00">Mon, 29 Jul 2013 18:38:37</time>
                 </cite>
                 <p class="card-text">Hey all, this is the very first post of my blog and I want to thank myself for having decided, finally.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Today I needed to send a text message (S[hort]M[essage]S[ervice]) to my girlfriend, in order to instruct her on how to go somewhere in Rome (Italy) and grab a little thing for me.
+                  There were a lot of informations to aggregate and I used EMACS, as I usually do, to keep them together. Grepped all the data from the Internet, placed on an EMACS new buffer, and cleaned some bytes here and there and the file is ready to be sent to her.</p>
+                <p class="card-text">Now I have to copy all the text by hand on the phone and send the text… No wait! I’m a smart tech-nerd so I have to find a better way to do so. Well, Unix fan, a bash under my fingers, an android phone connected to my laptop…. “Can I send an SMS through an Android Intent by hitting some adb shell commands?” I thought and I replied instantly “YES!”.</p>
+                <p class="card-text">Long story short: At the bottom of this page you can find a link to my github.com repo where I put the code I used to send the text message. Note that this could not work for you, and that will not be my fault, even if it brokes up your device. It worked for me, not guaranteed it can work for you.</p>
+                <p class="card-text">SO.</p>
+                <p class="card-text">I searched the Internet, thanks Holy Google, and found out that I can launch an Intent via shell on android with _am start <something>_, a useful answer is on this stackoverflow question: [http://stackoverflow.com/questions/6613889/how-to-start-an-android-application-from-the-command-line](http://stackoverflow.com/questions/6613889/how-to-start-an-android-application-from-the-command-line). Hm, interesting. Then I searched the sendto intent in the Android documentation: here's a link [http://developer.android.com/training/basics/intents/filters.html](http://developer.android.com/training/basics/intents/filters.html).
+                    Guessed other details [here](http://stackoverflow.com/questions/4043490/how-do-i-send-an-sms-from-a-shell) and [there](http://stackoverflow.com/questions/6980090/bash-read-from-file-or-stdin). The final script can be found in my git repo, below.</something></p>
+                <p class="card-text">Here’s the link for you: <a href="https://github.com/kLeZ/lin-utils/blob/master/adb-sms-send.sh">https://github.com/kLeZ/lin-utils/blob/master/adb-sms-send.sh</a></p>
+                <p class="card-text">Enjoy!</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2013/07/29/nerditure-of-a-tech-nerd-prologue-how-to-use-adb-on-a-working-android-phone-to-send-sms-through-a-pc/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -317,8 +611,18 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-12-16T10:48:07+01:00">Thu, 16 Dec 2010 10:48:07</time>
-                </cite>
+                  <time datetime="2010-12-16T09:48:07+01:00">Thu, 16 Dec 2010 09:48:07</time>
+                </cite><!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Sto blog sta diventando sempre più macabro, gira gira lo chiudo, tanto ho notato che non so tenerlo…
+                  E’ veramente troppo difficile da spiegare, nessuno, in qualsiasi contesto con qualsiasi mezzo compresa religione e filosofia, riuscirà mai a spiegare perché nasciamo con dolore, moriamo con dolore e viviamo una vita fatta di dolore.
+                  Ed è a volte questo che caratterizza la vita, la realizzazione è in fondo la ricerca di una felicità interiore, che per ognuno è diversa.
+                  Ma cos’è la felicità? Beh difficile dirlo, chiunque potrebbe abbattere le mie parole in un secondo, solo perché la felicità è uno di quei sentimenti intimi e personali che nessuno può definire per noi stessi a parte noi, e questo fa dell’uomo un debole, un animale che non vuole comprendere il cerchio del genere che ormai lo avvolge con le sue spire calde, forse troppo, e lo attanaglia con la ricerca di una parte nel mondo che per non incappare nell’egoismo ricerca nell’appartenenza a un gruppo.
+                  L’errore è proprio quello della ricerca del branco, perché da animali il nostro istinto è di organizzarci in branchi e poi distinguerci in essi, e quando uno il branco lo lascia a noi rimane un senso di vuoto che è lo stesso che avrebbe un puzzle senza un tassello. A noi sembra di rimanere incompleti solo perché non capiamo, o non vogliamo capire, che la completezza è dentro di noi e non fuori di noi.
+                  Purtroppo tutto il dolore che nella nostra vita proviamo è causato da alcuni difetti di fondo nell’essere umano, la codardia prima non per importanza ci “dona” la capacità di fuggire da ciò che istintivamente reputiamo “cattivo”, è la stessa che fa fuggire gli elefanti dai topolini, ed è la stessa che ci fa fuggire dai problemi.
+                  Secondo difetto, è l’egocentrismo, ma questo è diciamo una conseguenza secondo me della ricerca del branco, basti immaginare quello che succede ai leoni, ogni leone maschio più giovane tenta di accaparrarsi la guida del branco, e la continuazione delle generazioni, quella è selezione naturale che permette sempre e solo al leone più forte di fecondare le femmine e far nascere solo dei leoni forti per evitare di incappare nel dolore di un leoncino malato o ucciso precocemente perché debole; per noi questo scenario è fantastico, perché è interamente riportato nella nostra vita ma è ulteriormente deformato dall’anamnesi psicologica dell’uomo nel corso dei secoli, dove si è imparato a credere che tutti fossero capaci di fare tutto allo stesso modo, esaltando le capacità di chi invece non ne aveva e denigrando le capacità di chi poteva portarci in un futuro migliore. Questo argomento viene spesso frainteso, e sicuramente verrò frainteso io stesso abbattendo il valore dell’universale identicità del genere umano, però l’uguaglianza è proprio quello che ci apre le porte della sofferenza, la natura adotta un approccio cinico con la vita negando la possibilità anche solo di fecondare agli animali troppo deboli, invece noi per una voglia di adattare tutto a tutti facciamo fecondare anche chi è più debole permettendo che poi una volta che ci siamo affezionati questi se ne vada lasciandoci col vuoto di cui sopra. Purtroppo la natura ha trovato una soluzione che non ci è congeniale, perché la codardia ci costringe a non uccidere o evitare di far nascere chi risulterebbe più debole, e questo sentimento tutto umano si chiama appunto senso di umanità. Su questo si potrebbero aprire interminabili dibattiti e scrivere quintali di libri, e quindi non continuerò a parlare in maniera tanto ambigua da essere frainteso, darò solo la mia personale ipotesi, probabilmente utopistica che metta d’accordo umanità e selezione naturale. L’umanita per noi ha un ruolo fondamentale, è quello che secondo noi ci distingue dagli animali, e qui sorge spontanea la prima domanda, ma siamo veramente tanto diversi dagli animali? A parte il mio personale NO lascio al lettore l’interrogativo. Dicevo, questo fondamento molto filosofico del genere umano, si basa sulla concezione propria dell’uguaglianza, e l’uguaglianza viene in un’astrazione latente proprio dalla ricerca di quel branco che anche i lupi, solitari per eccellenza spesso vanno cercando o creando, se possono, esattamente come noi creiamo le nostre famiglie. Più si ragiona sulle somiglianze tra l’uomo e gli animali e meno si capisce allora perché gli animali abbiano meno problemi di noi. La risposta a questo interrogativo spesso è “gli animali non hanno problemi perché non hanno l’intelligenza”, quindi la mia personale conclusione è che data l’affermazione allora l’essere intelligenti provoca problematiche. No, non è questo. Il mio personale parere è che le nostre emozioni creino problemi, non provare affetto per qualcuno provoca che la sua morte non susciti in noi nessun particolare sentimento, d’altro canto la nostra sempre presente umanità provoca un sentimento di angoscia nel vedere un morto. Ora lasciando il discorso un po’ incompiuto cosi da suscitare una riflessione sull’argomento già che siamo in tema, concludo dicendo che la natura può insegnare, o perlomeno aiutarci, solo che non dobbiamo starla troppo a sentire altrimenti rischiamo di trovarci nell’estremo individualismo e in una situazione in cuoi l’unica legge è quella del taglione. No, non voglio questo. L’idea sarebbe quella di provare a unire le forze con madre natura rammentando sempre che abbiamo bisogno da buoni esseri deboli di quella naturale umanità che noi stessi abbiamo creato. Se questo discorso ha un senso parliamone, per commenti.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/12/16/discorsi-confusi/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -336,9 +640,15 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-10-11T18:19:18+02:00">Mon, 11 Oct 2010 18:19:18</time>
+                  <time datetime="2010-10-11T17:19:18+02:00">Mon, 11 Oct 2010 17:19:18</time>
                 </cite>
                 <p class="card-text">Salve a tutti i miei lettori, credo che oggi convenga parlare chiaro e tondo sul progetto freax.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Il progetto è molto complicato e sto trovando parecchie difficoltà nella realizzazione del software, purtroppo non ho aiuto e quel poco che il mio caro amico mi da non mi è sufficiente, ma non gliene faccio una colpa in fondo sta seguendo l’università ed è già molto complesso quello. Comunque la difficoltà principale sta nel raggruppare le informazioni per i tarball, quello che più è complesso è trovare in maniera programmatica anche solo il nome del software, figuriamoci poi la versione dello stesso. Il fatto è che non c’è uno standard per la creazione di tarball sorgenti. E quindi non è per nulla semplice trovare uno straccio di informazione su un particolare pacchetto, alcuni addirittura non forniscono neanche la versione del loro software all’interno del tarball, tanto che l’unico modo è segnarsi la versione al momento del download del software e/o compilare e poi prendere la versione che è magicamente comparsa sull’eseguibile. A questo punto non so più che cosa fare per poter ricavare queste informazioni, è troppo poco standard per poter essere letto programmaticamente, a meno di non farsi delle statistiche e implementare una specie di configurazione che mi permetta di trovare al volo quello che mi serve. Boh.
+                  Vabbè arrivederci a tutti.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/10/11/progetto-complicato/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -356,9 +666,23 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-07-27T14:56:15+02:00">Tue, 27 Jul 2010 14:56:15</time>
+                  <time datetime="2010-07-27T13:56:15+02:00">Tue, 27 Jul 2010 13:56:15</time>
                 </cite>
                 <p class="card-text">Oggi già che ho un attimo di pausa voglio scrivere della bellissima vacanza passata con la mia lei a Ravenna, città d’arte bizantina molto bella. Giacché un viaggio inizia con una partenza e finisce con un rientro, direi che è il caso di cominciare dall’inizio, la partenza.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Partenza alle 6 di mattina, giusto perché alle 5 era un po’ troppo presto, e fortunatamente con la macchina di papà Maurizio, bella confortevole e soprattutto con aria condizionata, una mano santa per un viaggio cosi lungo.
+                  L’itinerario comprendeva partenza da Civitavecchia alle 6 in punto, viaggio con piccole soste in autostrada A1 fino a Bologna, scambio A1-A14 Bologna-Ancona per passare Imola e Forlì direzione Ravenna e fermare in quest’ultima. Arrivo previsto 13 del giorno stesso. Ovviamente non fu così.
+                  La partenza slittò dalle 6 alle 6.15, con relativo tempo di entrata in autostrada A1 passando da Viterbo, e ovviamente trovando i “Viterbicolesi” lavori a Monte Romano, nota località turistica iper-tecnologica del viterbese.
+                  Passato lo scoglio Viterbo, durata del viaggio 1 ora e 35 (anche poco per me), entriamo in A1 dopo lo scambio sulla ex Civitavecchia-Orte ora divenuta Tuscania-Viterbo-Orte, e poi qualcuno dovrà spiegarmi il perché del taglio di una strada dritta e sicura (un bel collegamento Civitavecchia-Viterbo-Orte diretto) per far spazio a quella stradaccia che passa per Monte Romano, comunque entrando in autostrada fermiamo al primo autogrill per una breve colazione (35 minuti di agonia in mezzo alla folla, aspettando Sara) che si trovava nella vicina posizione di 37 km dall’entrata. Dopo aver fatto una buona colazione ed essermi svegliato un po’, ripartiamo alla volta del prossimo autogrill e poi il successivo e il successivo del successivo e poi il successivo del successivo del successivo e cosi via, insomma ci siamo fermati 4 o 5 volte solo in A1.
+                  Il viaggio s’era allungato di circa un’ora quindi in teoria dovevamo arrivare a Ravenna per le 14, salvo imprevisti. E gli imprevisti ci sono stati. All’uscita dall’Autosole a Bologna ci imbattiamo nell’intenso traffico (via via sempre più intenso) dell’A14 direzione Ancona. Due ore di traffico, fortuna che avevamo l’aria condizionata altrimenti avremmo potuto rimanerci secchi. Comunque slittato ancora l’orario di arrivo, l’albergo ci ha visti all’orizzonte alle 16 circa, traffico più traffico meno.
+                  Il posto era molto bello devo dire, confortevole, ottimo servizio, insomma aveva tutti gli attributi di un hotel a 4 stelle. E costava poco (relativamente alle 4 stelle). In tutto, comprensivo di colazione in camera la prima mattina, biglietti full optional per Mirabilandia e le comodità offerte dall’albergo, la spesa è stata di 270 euro complessivi, non male per come siamo stati coccolati, considerata anche la colazione a letto di 10 euro.
+                  Insomma il primo giorno arrivati in albergo e posate le nostre cose siamo immediatamente ripartiti direzione Ravenna centro, 10 minuti dal nostro hotel, per vedere sti benedetti mosaici. E ne è valsa la pena. I mosaici erano bellissimi e soprattutto era difficile capire che lo erano perché in lontananza il complessivo sembrava unito come un dipinto, l’effetto è dato dal fatto che le tessere di questi mosaici sono molto piccole e da lontano sembrano amalgamarsi tra loro creando un vero e proprio effetto dipinto sulle pareti. Siamo rimasti un po’ male a San Vitale, dai libri d’arte sembrava essere un posto immenso invece è grande sempre relativamente alla città in cui si trova, che di per sé è piccolina. Siamo rimasti molto contenti, invece, del mausoleo di Galla Placidia. Tutto quello che descrivono i libri è vero, è molto bella la volta stellata tanto che questa struttura piccola di per se s’è beccata anche il video! Poi è stata la volta di Sant’Apollinare Nuovo. Bellissima chiesa bizantina con bellissimi mosaici. Purtroppo la giornata è finita e siamo ritornati in albergo dove ci attendeva la doccia e poi una bella cena in un locale molto bello ed esclusivo di Ravenna. Il giorno dopo è inutile da raccontare: Mirabilandia! Siamo stati al parco di Ravenna la giornata intera fino a circa le 23, e ci siamo divertiti tantissimo. Ho fatto anche delle foto in costume d’epoca settecentesca! In sintesi Mirabilandia non va raccontata va vissuta, è puro divertimento e ci tornerò qualche altra volta. Il ritorno è stato meno tragico del previsto. Il checkout in albergo l’abbiamo fatto intorno alle 10.30 e poi siamo partiti alla volta di casa. Nulla di diverso da quanto detto sopra salvo il fatto che non c’era coda sulla A14 al ritorno. Cosa ho fatto una volta a casa non voglio scriverlo quella è un’altra storia.
+                  Spero di avervi deliziato con la descrizione del mio viaggio, a breve posterò qualche contenuto.
+                  Ciao ciao,
+                  Alessandro.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/07/27/vacanze-ravennati/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -376,9 +700,15 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-07-08T23:27:12+02:00">Thu,  8 Jul 2010 23:27:12</time>
+                  <time datetime="2010-07-08T22:27:12+02:00">Thu,  8 Jul 2010 22:27:12</time>
                 </cite>
                 <p class="card-text">Ciao a tutti, oggi vorrei condividere con voi alcune idee che mi sono venute in mente riguardo a fpm.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Voi sapete (e se non lo sapete andatelo a leggere nella pagina di Freax Package Manager in questo blog) che io sto scrivendo un package manager e sto compilando una distribuzione linux. Ora la mia distro è effettivamente difficilotta da compilare e vorrei quindi alleviare il problema grazie al mio fpm. Ho pensato: quale miglior modo di facilitare la compilazione del software della distro se non un package manager che è fatto apposta per compilare e installare software? Allora ho pensato e se invece volessi farla io la compilazione? Certo mi piacerebbe avere la vita facile ma vorrei scegliere alcune cose sulla configurazione del software e allora come fare?
+                  Allora ho pensato a quattro modalità: La tutorial, cioè una shell con un help in alto che ricorda i comandi da dare per la compilazione, configurazione e installazione del software con magari alcuni tip da chi ci è già passato e alcuni esempi e consigli sulla configurazione; La semiautomatica, in cui l’utente sceglie solo alcuni parametri delle configurazioni del software e il resto lo fa fpm; e la automatica in cui l’unica cosa che l’utente sceglie sono i pacchetti e il resto è demandato al software. Questo sia da interfaccia grafica che da riga di comando (e potrebbe tornarmi utile come installer della distro). Punto anche a far divenire fpm un must per i kernel a codice aperto come darwin, bsd, linux, hurd, minix e tutte le altre, in modo che tutte possano avere un punto di riferimento grazie al quale il software può essere installato con poca fatica ovunque. Forse un giorno cercherò di supportare windows chissà, e magari la battaglia dei sistemi operativi che ormai si combatte più a suon di software che a suon di caratteristiche finirà con l’adozione di un unico formato che gira da tutte le parti. Ma ora basta sto divagando troppo, quindi direi che è il momento di staccare e fantasticare nei sogni, se ne farò. Buona notte a tutti e, soprattutto in questo periodo di calura, che il pinguino sia con voi dal vangelo secondo Torvalds.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/07/08/altre-idee-per-fpm/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -396,8 +726,30 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-06-27T01:08:11+02:00">Sun, 27 Jun 2010 01:08:11</time>
-                </cite>
+                  <time datetime="2010-06-27T00:08:11+02:00">Sun, 27 Jun 2010 00:08:11</time>
+                </cite><!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">La maestra chiede a Gianni: “Ci sono 5 uccelli
+                  appollaiati su un ramo.
+                  Se si spara ad uno degli uccelli, quanti ne rimangono?”
+                  Il bambino risponde: “Nessuno perché con il rumore
+                  dello sparo voleranno via tutti.”
+                  La maestra:”Beh, la risposta giusta era 4 ma mi piace
+                  come ragioni.”
+                  Allora Gianni dice:”Posso farle io una domanda adesso?”
+                  La maestra: “Va bene.
+                  Gianni: “Allora:ci sono tre donne sedute su una
+                  panchina che mangiano il gelato.
+                  Una lo lecca delicatamente ai lati, la seconda lo
+                  ingoia tutto fino al cono, mentre la terza da piccoli
+                  morsi in cima al gelato.
+                  Quale delle tre è sposata?”
+                  L’insegnante arrossisce e risponde: “Suppongo la
+                  seconda quella che ingoia il gelato fino al cono.”
+                  E Gianni: “Beh, la risposta corretta sarebbe quella
+                  con la fede, ma mi piace come ragiona!!!”</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/06/27/mi-piace-come-ragiona/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -415,9 +767,16 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-06-21T11:56:08+02:00">Mon, 21 Jun 2010 11:56:08</time>
+                  <time datetime="2010-06-21T10:56:08+02:00">Mon, 21 Jun 2010 10:56:08</time>
                 </cite>
                 <p class="card-text">Continua anche se con molto stacco la serie di post di narrativa riguardanti in particolare il D&amp;D (Dungeons &amp; Dragons) gioco di ruolo cartaceo creato nel ‘73.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Tralasciando tutta la storia fino alla sessione di sabato scorso, perché sarebbe troppo lunga da raccontare dato che la campagna dura veramente da tantissimo (ormai credo che siamo arrivati anche all’anno), vorrei fare più per me che per voi il punto della situazione dei miei amati PG.
+                  Al punto di sabato scorso i PG sono ritornati da un lungo viaggio interplanare sul piano materiale dove ora sono ricercati da tutte le forze demoniache degli inferi di Baator, e soprattutto sono ricercati dal fratello di Julius di Laertia loro mentore e maestro (nonché coordinatore del gruppo), per via del fatto che già due o tre volte sono riusciti, non sanno bene neanche loro come, a sventare i suoi piani di conquista del potere assoluto. In Baator hanno fatto la conoscenza del principe Levistus arcidiavolo un tempo rinchiuso in un iceberg da Asmodeus, re degli inferi e arcinemico dell’arcidiavolo sopracitato. A Ysgard invece hanno potuto conoscere Kord, dio del valore che li ha accompagnati personalmente in Baator dove purtroppo hanno fallito la controversa missione di guarire il re degli Inferi a causa del “Principe del Settimo” che gli si è parato davanti e li ha costretti alla fuga miracolosa compiuta da Julius. Nella fuga hanno purtroppo perso un membro, Xion, figlio del vecchio maestro Latinor e allievo di Julius, che, preso dall’aura di panico di Levistus si è gettato in un pozzo senza fondo non facendovi più ritorno.
+                  La situazione di ora è la seguente: i PG sono tornati nel piano materiale dal quale sono assenti da qualche mese ormai, sono ricercati disgiuntamente sia dal fratello di Julius (di cui ancora non si conosce il nome), che apparentemente non ha scagnozzi ma agisce da solo, sia da Levistus e da tutti i suoi scagnozzi e alleati arcidiavoli vari. Intanto le divinità stanno morendo a poco a poco e la magia divina sta pian piano scomparendo insieme a loro. La loro prossima missione sarà quella di usare Belzebù, Signore del Sesto, in modo da fargli intessere una trama di intrighi che riesca a intrappolare in qualche modo i due nemici, ma non sarà semplice… Intanto bisogna sopperire alla mancanza di un amico con la ricerca di un nuovo alleato che sia di supporto alla squadra ormai decimata dagli eventi.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/06/21/narrativa-per-tutti-il-dd-parte-3/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -435,9 +794,28 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-06-18T12:19:37+02:00">Fri, 18 Jun 2010 12:19:37</time>
+                  <time datetime="2010-06-18T11:19:37+02:00">Fri, 18 Jun 2010 11:19:37</time>
                 </cite>
                 <p class="card-text">Ciao a tutti! Oggi voglio esporre una mia piccola riflessione, una di quelle che faccio al bagno, sulla tazza del gabinetto.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Si lo so che vi sembra abbastanza strano e forse anche ridicolo, ma a me stare sulla tazza concilia i pensieri e spesso faccio delle riflessioni molto profonde.
+                  Comunque per tornare sui binari del discorso, stavo riflettendo su una cosa che è considerata la punta di diamante dell’umanità: l’intelligenza. L’essere umano effettivamente sn dagli albori della sua storia è sempre stato connotato da una grande intelligenza, ma nella realtà di tutti i giorni, e più personalmente trasportato in informatica, cosa vuol dire intelligenza?
+                  Secondo il mio modesto parere l’intelligenza è la capacità di un essere vivente e senziente di elaborare concetti complessi in maniera modulare, cioè per passi scomponendo in concetti più piccoli e più facilmente elaborabili.
+                  Questo ha una ottima implicazione dal lato della lettura delle informazioni, cioè quando siamo “costretti” per così dire a dover analizzare qualcosa (come un problema ad esempio), ma una pessima implicazione quando siamo noi a dover costruire dei concetti. In poche parole la nostra intelligenza ci porta ad essere più bravi nel capire concetti preesistenti che non nel defirne di nuovi. Questo porta, se ci si pensa bene, a delle implicazioni che si estendono trasversalmente in tutti i campi e che sono a dir poco mostruose. Non per farla tragica ma pensate a cos’è successo quando Newton ha scoperto la gravità.
+                  Newton e tutti i luminari dell’epoca (e in realtà anche il povero contadino lontano dal mondo) conoscevano già la gravità per induzione possiamo dire, cioè per assunzione che qualcosa che ti tira verso il basso in realtà deve esserci. Già Galileo Galilei prima di Newton studiò la cosa e dimostrò a Pisa (sulla famosa torre), tramite l’esperimento della caduta dei gravi, che una forza che ti spinge dall’alto in basso doveva esistere. Comunque per farla breve tutti lo sapevano ma nessuno aveva ancora enunciato nulla che non fosse di Galileo, allora condannato e quindi esule dall’essere preso in considerazione (almeno fino a questo secolo con l’assoluzione del papa), e quando Newton enunciò la teoria della gravità (o anche della forza gravitazionale) i più scaltri inventori iniziarono a complicarsi la vita cercando di vincere la forza di gravità, perché non sia mai che l’uomo venga battuto.
+                  Il problema è che l’uomo generalmente pecca di presunzione verso la natura e verso la stessa pecca di concetti. Ci complichiamo la vita inutilmente, guarda Newton, a nessuno sarebbe importato se lui non avesse dato un nome alla gravità, anche perché di gravità si parlava già da tempo (Galilei è morto l’8 gennaio 1642 e Newton nacque il 4 gennaio 1643).
+                  Un altro esempio che faccio è quello relativo alla macchina di Ford. Il signor Ford inventò l’automobile, il mezzo di trasporto più acclamato e utilizzato sul globo attualmente. Ebbene, pensate alla necessità di doversi spostare da una parte all’altra del pianeta, è proprio quello il bello, poter andare da A a B (che sono due punti molto lontani) in pochissimo tempo! C’è solo qualche appunto che farei al signor Ford: provate a immaginare a prima dell’invenzione dell’automobile, ci si spostava ugualmente, certo molto più lentamente, ma il viaggio era bello tanto quanto la destinazione e sicuramente si instauravano molti più rapporti umani e molto più cordiali, si era meno nervosi perché si correva di meno. Ora Ford con la sua invenzione ha dato all’uomo ulteriori problemi con cui combattere: la corsa al petrolio, la battaglia per la produzione di carburante, l’inquinamento da monossido di carbonio, le nevrosi da stress per il traffico, la totale mancanza di rapporti umani con gli altri esseri umani, la totale consapevolezza che per andare da A a B c’è solo tanta strada e non un bel viaggio da godersi.
+                  Ecco questi sono solo pochi esempi di quanto l’uomo sia complicato, è vero riesce a elaborare molto analizza molti fattori, ma a che prezzo? Al prezzo che ci stiamo complicando enormemente la vita, ce la siamo già complicata tantissimo e continueremo a complicarcela ogni giorno a venire.
+                  E le complicazioni spesso portano a problemi problemi che non sempre riguardano solo gli esseri umani o i manufatti degli esseri umani, a volte tutto questo riguarda anche e soprattutto la terra che piano piano a causa dei nostri sforzi di “civilizzazione” stiamo vedendo scomparire e cadere nell’oblio del malfunzionamento e della deteriorazione.
+                  Pensate altri due esempi: gli utensili di base, e il fumo.
+                  Gli utensili di base sono stati le prime invenzioni dell’uomo Sapiens Sapiens, quelli che ci hanno direttamente contraddistinto dalla scimmia. Portano però solo a una ulteriore selezione, questa volta innaturale, della specie umana in quanto a pensarci bene chi non sapeva costruirsi il suo utensile da caccia non riusciva a procacciarsi il cibo e moriva di fame e chi lo costruiva in maniera non adeguata lo rompeva davanti alla preda (spesso mammuth, leoni o tigri dai denti a sciabola) e veniva ucciso. Tutto per non saper cacciare con le proprie forze.
+                  E il fumo? Quello si che è un grosso sbaglio dell’essere umano. Nessuno s’è fatto ancora una ragione del motivo per cui una persona dovrebbe essere così sadica da suicidarsi in maniera lenta, graduale e così dannosa per se e perché dovrebbe essere così poco rispettosa nel volere a tutti i costi uccidersi anche a costo di uccidere gli altri.
+                  Ecco l’uomo in questo caso si è veramente complicato molto la vita e solo per peggiorare, per autodegradarsi, per autodistruggersi.
+                  Siamo molto bravi ad analizzare ciò che già c’è ma poco furbi nel creare qualcosa che prima non esisteva facendolo nel modo più complicato e deteriorante per se per gli altri e per il pianeta.
+                  Vorrei qualche commento a questo solo per sapere a quanti piace il mio pensiero, per un po’ di critica insomma. Sono curioso di sapere quanti la pensano come me.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/06/18/riflessioni-sul-pensiero-degli-esseri-umani/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -455,7 +833,7 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-06-11T10:54:55+02:00">Fri, 11 Jun 2010 10:54:55</time>
+                  <time datetime="2010-06-11T09:54:55+02:00">Fri, 11 Jun 2010 09:54:55</time>
                 </cite>
                 <p class="card-text">Oggi diciamo che cazzeggio nel post, non ho molto da scrivere se non il fatto che mi sto compiacendo del mio bel download manager che sto scrivendo in java e che diverrà parte dello zozzissimo freax package manager, il gestore di pacchetti della distro che sto mettendo in piedi col mio caro amicone fabio. Ho finito di scrivere il modulo HTTP e va benissimo, ora sto scrivendo il modulo FTP che pure dovrebbe essere semplice. Vedremo come andrà a finire comunque gira gira lo riscrivo in C. Ma avanti col tempo.</p>
               </section>
@@ -470,10 +848,17 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-05-26T12:52:06+02:00">Wed, 26 May 2010 12:52:06</time>
+                  <time datetime="2010-05-26T11:52:06+02:00">Wed, 26 May 2010 11:52:06</time>
                 </cite>
                 <p class="card-text">Ciao a tutti,
                   Oggi voglio ricordare una bella persona, nessun grand’uomo nessuno di famoso solo uno che aveva il mio amore e il mio rispetto.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Gli volevo un gran bene e ora che non c’è più fidatevi è una bella mazzata, ora mi chiudo più o meno in me e sto qui a piangere la sua scomparsa, mentre scrivo non posso fare a meno di sentire che la mia faccia è bagnata di lacrime, che i miei occhi sono gonfi di di dolore, che in me c’è un vuoto che ormai solo il tempo potrà curare ma non si colmerà mai più.
+                  Il fatto è che perdere delle persone care è sempre pesante e non ci si fa mai più di tanto l’abitudine. Ora c’è da superare questa cosa, anche se il ritmo della vita procede serrato e incessante a un passo molto più lungo di quello che posso fare io adesso, mi devo fermare non ce la faccio a continuare, camminerò domani oggi no, non riesco, devo guardare indietro. Ora non posso fare altro che piangere, singhiozzare distruggermi di disperazione e riempirmi le orecchie di musica, ma non la stessa musica di sempre, la più cupa che si possa immaginare la più triste che si possa pensare ma allo stesso tempo la più incazzata, cosi come il mio stato d’animo. Non posso pensare di aver perso una persona così speciale per me uno che mi ha quasi cresciuto che mi ha insegnato che la vita è bella e va vissuta giorno per giorno godendosi quello che ci offre, uno che giuro di non aver mai visto senza il sorriso sulle labbra.
+                  Questo post è per una grande persona, e la voglio ricordare come l’ho sempre vista, felice e sorridente.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/05/26/lutto/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -491,9 +876,14 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-05-23T13:29:26+02:00">Sun, 23 May 2010 13:29:26</time>
+                  <time datetime="2010-05-23T12:29:26+02:00">Sun, 23 May 2010 12:29:26</time>
                 </cite>
                 <p class="card-text">Ciao a tutti, oggi scrivo per ricordare, perché la memoria non vada a finire nel cesso, perché i ricordi non si affievoliscano, oggi sono qui per ricordare una leggenda dell’heavy: R. J. Dio.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">È stato lui insieme agli Elf prima, ai Deep Purple e ai Rainbow nel frattempo e insieme agli Heaven and Hell (gli ex Black Sabbath) alla fine a creare questo genere che oggi ci fa impazzire tutti. È stato lui che ha scritto (forse), cantato (ovviamente) canzoni tra le più belle dell’Heavy Metal, primo fra tutti il capolavoro che scrisse con Ritchie Blackmore nei Rainbow: Long live Rock ‘n’ Roll. Ed ecco come lui ha scritto un inno al rock ‘n’ roll io voglio almeno in parte con le mie poche doti letterarie scrivere un post di memorie. Credo che post migliore di quello che è stato scritto sul suo sito dalla moglie Wendy non può essere scritto e quindi vabbè sto diventando monotono, non ci sono parole per descrivere quale perdita il Metal abbia sofferto quindi mi limito a dire: Long Live Rock and Roll.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/05/23/omaggi-a-una-leggenda-dellheavy-metal/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -511,8 +901,16 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-05-20T14:08:03+02:00">Thu, 20 May 2010 14:08:03</time>
-                </cite>
+                  <time datetime="2010-05-20T13:08:03+02:00">Thu, 20 May 2010 13:08:03</time>
+                </cite><!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Ciao a tutti!
+                  Finalmente sono tornato!! Era da un po’ che il blog era chiuso per problemi di configurazione di Apache2, ma ora grazie al libro che sto leggendo sono riuscito a capire dove e come mettere mano alla configurazione del mio bel server web. Ora sto progettando di portarci il mio sito con SVN, per mansioni di sviluppo, probabilmente il sito del gruppo di cui faccio parte, i Mind’s Mirror, e certamente anche il sito di Freax la distro che sto sviluppando con il mio caro vecchio amicone Fabio. Poi se mi faccio prendere la mano ci metto anche un social network e una bella chat, e forse forse pure IRC, vediamo. Comunque a parte il resto ormai sto pc sta diventando un server in piena regola e ne sono felice perché i servizi che voglio offrire sono molteplici, ovviamente tutto free e open source.</p>
+                <p class="card-text">A presto con gli aggiornamenti!!
+                  Ciao ciao,
+                  Alessandro.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/05/20/sono-tornato/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -530,8 +928,12 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-03-30T11:32:32+02:00">Tue, 30 Mar 2010 11:32:32</time>
-                </cite>
+                  <time datetime="2010-03-30T10:32:32+02:00">Tue, 30 Mar 2010 10:32:32</time>
+                </cite><!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Affanculo l’italia… So che c’è qualche brava  persona che non vuole quello che è successo ieri sera, ma del resto  qualcuno il voto glielo deve pur aver dato a quelle bestie… Se solo  avessero vissuto la perdita di qualche familiare per fucilazione da  parte delle camicie nere di sicuro la loro idea sarebbe diversa, anche  se questo non si augura a nessuno… Sono fiducioso che il mondo prima o  poi si rivolterà a questo scempio, ma deluso del fatto che ancora  questa ribellione non è avvenuta… Se mi cercate sono sulla mia sedia a  dondolo ascoltando buona musica sul grammofono con la mia copertina di lana sulle ginocchia e la carabina in mano aspettando che qualche fascista entri dalla mia porta per far valere le mie idee…</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/03/30/le-ultime-elezioni-fanno-schifo/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -549,10 +951,21 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-03-29T13:44:42+02:00">Mon, 29 Mar 2010 13:44:42</time>
+                  <time datetime="2010-03-29T12:44:42+02:00">Mon, 29 Mar 2010 12:44:42</time>
                 </cite>
                 <p class="card-text">Salve a tutti,
                   Oggi m’è venuto in mente un progetto che non molto tempo fa stavo abbandonando, il mio personale LFS. L’avevo iniziato col mio amico di vecchia data ma poi per impegni universitari non ha più avuto tempo di proseguire la cosa, quindi per ora vado da solo ma sono sicuro che appena avrà un momento libero mi aiuterà.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">LFS è l’acronimo per Linux From Scratch tradotto Linux da Zero. Cioè mi scarico i sorgenti dei tool GNU mi scarico il sorgente del kernel e mi compilo tutto a mano.
+                  L’utilità se sei un utilizzatore è praticamente inesistente ma se vuoi creare una distro è un ottimo punto di partenza per creare qualcosa di mai visto prima, altrimenti la mia idea è che tanto poi se ti basi su una distro finisci per rifare il vestito a quella distro e a cambiargli le mutande poi per il resto è sempre lei.
+                  Faccio un esempio di quello che dico: immaginate due amici con la passione per l’informatica e in particolare per linux che decidono di darsi battaglia per la creazione di una distro. Uno dei due si basa su openSuSE e inizia già col sistema precompilato, gli RPM il server X già configurato ecc ecc. L’altro invece decide di partire da zero e si scarica il manuale di linux from scratch e tutti i sorgenti. Dopo due mesi di lungo lavoro i due decidono di installare le due distro su un portatile in dual boot e di portarle al loro professore di sistemi operativi dell’università. Il professore notando e valutando i due sistemi probabilmente dirà: “Bravi ragazzi sono entrambe buone distro, solo un paio di cose avrei da puntualizzarvi: (ragazzo suse) tu hai creato una bella distro complimenti stabile veloce sicura… ma mi sembra di aver già visto le sue caratteristiche in openSuSE non sarà basata proprio su quella? (ragazzo LFS) Ottimo bravo è velocissima ma il sistema in se è un po’ vecchiotto, effettivamente questo la rende molto stabile ma non ti interessano le ultime versioni dei software? Comunque complimenti le caratteristiche della tua distro non le ho riconosciute in nessun’altra quindi immagino che tu debba ricevere un ulteriore plauso per aver compilato tutto a mano. Bravi ragazzi complimenti!”.
+                  Ecco questo piccolo dialogo (monologo per la verità) era per spiegarvi il perché mi butto in un’avventura come questa ricca di difficoltà ma anche di insegnamenti utili e esperienza.</p>
+                <p class="card-text">Beh dato che non ho ancora cominciato a compilare Torvalds, Tanembaum e Stallman direi che è meglio finirla qui con questo Nerd Attack (si si leggetelo come un Art Attack) e cominciare veramente l’avventura!</p>
+                <p class="card-text">Ciao ciao a tutti,
+                  kLeZ.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/03/29/lfs-ovvero-come-crearsi-la-propria-distro-gnulinux-da-zero/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -570,10 +983,20 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-03-29T10:20:40+02:00">Mon, 29 Mar 2010 10:20:40</time>
+                  <time datetime="2010-03-29T09:20:40+02:00">Mon, 29 Mar 2010 09:20:40</time>
                 </cite>
                 <p class="card-text">Salve a tutti,
                   Sta mattina sul treno per andare a lavoro stavo leggendo un libro che contiene una raccolta di discorsi di Ernesto “Che” Guevara tenuti in vari ambiti della sua amministrazione di Cuba da ministro dell’Industria.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Più leggevo e più mi veniva voglia di aprire un canale preferenziale tra me e tutti quelli che riescono a pensare a un mondo diverso da quello che oggi conosciamo. Io sono un consulente e in quanto tale non ho diritti lavorativi, ma in teoria neanche obblighi solo che questo non viene mai rispettato. Quindi direi che, prima di armarmi di fucile e partire per rovesciare il governo come consigliava il Che ai tempi in cui l’unica soluzione era la lotta armata, mi converrebbe trovare un modo per armare le menti e cercare di fare gruppo di accaparrarsi quel poco di dignità e diritti che ci spettano in quanto lavoratori. Mentirei se dicessi che lo faccio per gli altri e non per me stesso ma mentirei anche se dicessi che lo faccio solo per me stesso in quanto questo mondo capitalistico è proprio il massimo per l’accumulo di ricchezza individuale, quindi se pensassi solo a me stesso mi converrebbe rimanere cosi come sono. Lo faccio più che altro per poter dare alla mia futura famiglia una stabilità che ora non posseggo e una possibilità di un futuro stabile economicamente a me e ai miei figli, amici, parenti. Manca di stabilità infatti questo mondo in cui conta il singolo, conta il capitale e non conta il lasciare qualcosa a qualcuno, perché dopo che si è passata una vita ad accumulare non sarebbe giustizia lasciarlo agli altri senza godersene un po’, poi anche perché una vita di accumulo necessita di un’altra vita di sperpero di ciò che si è accumulato. E questo vedete non è semplice da costruire specialmente se si ha una sola vita di mediamente 70 anni di cui poter usufruire.
+                  La sintesi è che il capitalismo, di cui la nostra società è completamente intrisa, è l’unica cosa che ci blocca alla nostra odierna precarietà e l’unica cosa che fa arricchire i potenti a discapito nostro, del nostro lavoro e della nostra sanità mentale visti gli andazzi di ciò che quotidianamente accade in ufficio.</p>
+                <p class="card-text">La mia idea è dunque, e rimane, di costituire un consorzio, una glida o un’associazione che possa tutelare i nostri scopi e i nostri diritti congiuntamente alla necessità di una stabilità contrattuale ed economica.</p>
+                <p class="card-text">Poi vabbè il mio cuore rivoluzionario mi porterebbe pure a rovesciare l’italia in una rivoluzione che ci starebbe bene in questo periodo di prese per il culo continue da parte di tutta la classe dirigente, però quella è già una cosa più complicata.</p>
+                <p class="card-text">Ok, io direi che di cose ne ho già dette tante, quindi posso smetterla qui.</p>
+                <p class="card-text">kLeZ.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/03/29/voglia-di-rivoluzione/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -591,9 +1014,77 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-03-07T12:47:49+01:00">Sun,  7 Mar 2010 12:47:49</time>
+                  <time datetime="2010-03-07T11:47:49+01:00">Sun,  7 Mar 2010 11:47:49</time>
                 </cite>
                 <p class="card-text">Esiste Babbo Natale ? Decidetelo voi</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">1) Nessuna specie conosciuta di renna può volare. Ma ci sono 300.000 specie di</p>
+                <p class="card-text">organismi viventi che devono ancora essere classificati, e ANCHE se la maggior</p>
+                <p class="card-text">parte di essi sono rappresentati da insetti e batteri, questo NON significa</p>
+                <p class="card-text">ASSOLUTAMENTE che le renne volanti non esistano. Anche se, per il</p>
+                <p class="card-text">momento è SOLO Babbo Natale ad averle viste.</p>
+                <p class="card-text">2) Al mondo esistono 2 miliardi di bambini (intesi come persone di età inferiore</p>
+                <p class="card-text">ai 18 anni). Ma dato che sembra che Babbo Natale non sia interessato ai</p>
+                <p class="card-text">bambini Mussulmani, Indù, Ebrei e Buddisti, questo riduce il carico di lavoro al</p>
+                <p class="card-text">15% del valore iniziale, cioè 378 milioni come d’accordo con il Centro</p>
+                <p class="card-text">Demografico Mondiale. Ad una media di 3,5 bambini per casa (cfr. censimento)</p>
+                <p class="card-text">questo da come risultato 91,8 milioni di case. E’ necessario affermare però che</p>
+                <p class="card-text">si presume che ci sia almeno un bambino buono in ogni casa.</p>
+                <p class="card-text">3) Babbo Natale ha 31 ore per completare il suo lavoro natalizio, questo grazie</p>
+                <p class="card-text">ai differenti fusi orari e alla rotazione della Terra, assumendo che egli viaggi</p>
+                <p class="card-text">da est verso ovest (cosa questa che sembra alquanto logica). Dai dati in nostro</p>
+                <p class="card-text">possesso possiamo quindi affermare che Babbo Natale dovrebbe effettuare 822,6</p>
+                <p class="card-text">visite per secondo. Questo significa che, per ciascuna casa cristiana con un</p>
+                <p class="card-text">bambino buono, Babbo Natale ha a disposizione un millesimo di secondo per</p>
+                <p class="card-text">parcheggiare, saltare fuori dalla slitta, saltare dentro il camino e calarsi in</p>
+                <p class="card-text">casa, riempire le calze, disporre i rimanenti regali sotto l’albero, mangiare</p>
+                <p class="card-text">qualunque tipo di snack gli sia stato lasciato, ritornare nel camino e scalarlo</p>
+                <p class="card-text">sino in cima, risaltare sulla slitta e spostarsi alla casa successiva.</p>
+                <p class="card-text">Assumendo che ciascuna di queste 91,8 milioni di fermate siano distribuite</p>
+                <p class="card-text">costantemente e linearmente sulla superficie della Terra (semplificazione che</p>
+                <p class="card-text">sappiamo essere ovviamente falsa, ma che possiamo accettare ai fini della nostra</p>
+                <p class="card-text">analisi), stiamo parlando di … 125,5 kilometri per ciascuna casa, per un</p>
+                <p class="card-text">viaggio totale di 121,5 milioni di kilometri, senza contare le fermate per fare</p>
+                <p class="card-text">quello che ciascuno di noi dovrebbe fare almeno una volta nell’arco di 31 ore</p>
+                <p class="card-text">(in più ci sarebbe il discorso del pasto suo e delle renne, ma non vogliamo</p>
+                <p class="card-text">incasinare troppo i calcoli). Comunque, questo significa che la slitta di Babbo</p>
+                <p class="card-text">Natale si muove ad una velocità di 1.046 kilometri per secondo (e sottolineamo</p>
+                <p class="card-text">‘secondo’), 3.000 volte la velocità del suono. Per darvi un’idea ancora più</p>
+                <p class="card-text">precisa, il veicolo più veloce che l’uomo abbia mai costruito è la sonda</p>
+                <p class="card-text">spaziale Ulysse, che si muove alla MODESTA velocita di 44,1 kilometri per</p>
+                <p class="card-text">secondo. Inoltre, una renna convenzionale (quelle che siamo abituati a vedere</p>
+                <p class="card-text">in Lapponia) può correre alla velocita (folle) massima di 24 kilometri orari</p>
+                <p class="card-text">(e qui sottolineiamo ‘orari’).</p>
+                <p class="card-text">4) Il carico della slitta aggiunge un altro interessante elemento. Assumendo</p>
+                <p class="card-text">come ipotesi che ciascun bambino buono riceva come regalo una confezione</p>
+                <p class="card-text">media di lego (dal peso di 91 gr.) la slitta trasporterebbe un carico dal peso</p>
+                <p class="card-text">di 321.000 tonnellate, senza contare anche il peso di Babbo Natale che</p>
+                <p class="card-text">solitamente è descritto essere in sovrappeso.</p>
+                <p class="card-text">Sul terreno, una renna convenzionale può portare al massimo non più di 136,08</p>
+                <p class="card-text">chili. Anche assumendo che le renne volanti siano in grado di trasportare un</p>
+                <p class="card-text">peso DIECI VOLTE superiore, non potremo spostare la slitta di Babbo Natale</p>
+                <p class="card-text">con otto o nove renne volanti, ma ce ne servirebbero qualcosa come 214.200.</p>
+                <p class="card-text">Questo incrementerebbe il peso della slitta a 353.430 tonnellate. Sempre per</p>
+                <p class="card-text">rendere una idea più precisa del nostro problema, tale peso corrisponde a</p>
+                <p class="card-text">quattro volte il peso del noto transatlantico ‘Queen Elizabeth’.</p>
+                <p class="card-text">5) 353.000 tonnellate viaggianti alla velocità di 1.046 kilometri per secondo</p>
+                <p class="card-text">creano un’enorme resistenza all’aria. Questo farà scaldare le renne alla stessa</p>
+                <p class="card-text">maniera di una sonda spaziale che rientra nell’atmosfera terrestre. Il paio di</p>
+                <p class="card-text">renne in testa, le fortunatissime renne guida, dovrebbero assorbire qualcosa</p>
+                <p class="card-text">come 14,3 QUANTILLIONI di joules di energia… Per secondo… Ciascuna…</p>
+                <p class="card-text">In breve, brucerebbero tra le fiamme quantomeno istantaneamente, esponendo le</p>
+                <p class="card-text">renne dietro di loro, creando un cono sonico assordante nella loro scia.</p>
+                <p class="card-text">L’intero gruppo di renne verrebbe vaporizzato nell’arco di 4,26 millesimi di</p>
+                <p class="card-text">secondo. Babbo Natale, nel frattempo, sarebbe soggetto a una forza centrifuga</p>
+                <p class="card-text">17.500 volte più forte di quella gravitazionale. Un Babbo Natale di 113,4 chili</p>
+                <p class="card-text">(anche se sembra comicamente magro) verrebbe schiacciato sul fondo della sua</p>
+                <p class="card-text">slitta da una forza di 1.957.257,88 kg.</p>
+                <p class="card-text">In conclusione: se Babbo Natale ha mai recapitato un regalo in tutta la</p>
+                <p class="card-text">sua vita…… a nostro avviso non sarà più in grado di farlo.</p>
+                <p class="card-text">Mai più.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/03/07/babbo-natale-non-esiste-dimostrazione-scientifica-o-quasi/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -611,9 +1102,16 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-03-01T17:14:11+01:00">Mon,  1 Mar 2010 17:14:11</time>
+                  <time datetime="2010-03-01T16:14:11+01:00">Mon,  1 Mar 2010 16:14:11</time>
                 </cite>
                 <p class="card-text">La storia inizia più o meno con la fine della Grande Guerra, quella scoppiata tra tutte le razze gli uni contro gli altri. Vinsero gli elfi, o perlomeno furono quelli che conquistarono un più vasto territorio, isolandosi completamente dal resto del mondo e allontanando, con la forza se necessario, le altre razze.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Quasi 5000 anni più tardi, quando le razze vivevano pacificamente tutte insieme, tolti gli elfi che comunque continuavano a mantenere questo ormai antico punto, un gruppo di orchi tentarono il golpe (riuscendo) contro il capo clan unificato perché ritenevano che si fosse rammollito per aver stretto trattati di pace e reciproca difesa con gli altri popoli. Non contenti di aver piegato il popolo degli orchi questi dissidenti tentano il colpaccio muovendo drasticamente guerra a tutto il mondo, questo risulterà in una quasi totale egemonia sul territorio Faeruniano. Il resto del mondo però non sta a guardare la follia egemonica degli orchi e quindi nasce una coalizione contro la forza orchesca che, però è molto più debole rispetto ai terribili avversari e finisce per soccombere a ogni battaglia.</p>
+                <p class="card-text">Qui entrano in campo i nostri avventurieri mandati per vari motivi al centro della lotta.</p>
+                <p class="card-text">Per primo incontriamo Scarlet, un giovane guerriero col nome da donna che arriva al fronte solo per una folle sete di vendetta contro gli orchi che hanno distrutto il suo villaggio e la sua famiglia.</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/03/01/narrativa-per-tutti-il-dd-parte-2/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -631,9 +1129,17 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-02-21T22:44:10+01:00">Sun, 21 Feb 2010 22:44:10</time>
+                  <time datetime="2010-02-21T21:44:10+01:00">Sun, 21 Feb 2010 21:44:10</time>
                 </cite>
                 <p class="card-text">Salve, oggi il mio intento è quello di addentrarvi nel fantastico mondo del fantastico (che non è il parco giochi di Lunghezza ma un gioco di parole), cioè la cara vecchia fantasia, che da bambini ci accompagna come una fedele amica e che poi alcuni abbandonano, come un cucciolo troppo cresciuto, sull’autostrada dei loro ricordi d’infanzia.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Arrivato a 23 anni quasi suonati direi che il modo migliore per parlare di fantasia senza sembrare troppo bambino è quello di raccontarvi la storia che i miei giocatori stanno vivendo grazie a Dungeons &amp; Dragons che, per chi non lo sapesse, è un gioco di ruolo cartaceo. Ora per spiegare in parole brevi cos’è un gdr (abbreviato gioco di ruolo) basti pensare al teatro, in cui gli attori interpretano un “Ruolo”. Giocare di ruolo significa in pratica impersonare un personaggio e recitare il suo ruolo, la sua parte, come se si fosse a teatro e lo si fa, almeno nel mio caso, per divertimento. La differenza col teatro è sostanzialmente il fatto che non ci sono spettatori non c’è un palco e, salvo alcuni casi, non si gesticola, invece quello che si fa oltre all’interpretare un personaggio è seguire delle regole di gioco ben precise, scritte in dei manuali, unicamente per il fatto che è un gioco e quindi ha le sue meccaniche che non sono quelle del mondo reale, basti pensare al fatto che nei mondi di gioco spesso si trova la magia. D&amp;D è un gioco in cui non c’è un vincitore è un vinto, o perlomeno non esplicitamente, perché è un “dungeon master” che fa il gioco e in alcuni casi anche le regole, è lui che sa quali regole sono in vigore (sempre concordate con i giocatori), ed è lui che racconta la storia ai giocatori stimolando la loro fantasia e facendoli ritrovare in un mondo fantastico dove possono fare ciò che vogliono. La componente fondamentale è come avrete capito proprio la fantasia, senza la quale non si avrebbe un’esperienza di gioco gradevole.</p>
+                <p class="card-text">Il mio scopo per questo post però non è spiegare cosa sia il gdr o il D&amp;D in particolare, bensì quello di cominciare raccontandovi la storia che fino ad oggi i miei giocatori sabato sera dopo sabato sera stanno vivendo.</p>
+                <p class="card-text">La storia si ambienta in un mondo fantasy classico di stile medievale popolato da elfi, gnomi, nani, orchi, umani e mille altre razze tutte particolari.</p>
+                <p class="card-text">Adesso avreste voglia di sapere come inizia immagino… Beh l’inizio alla prossima volta! ;-)</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/02/21/narrativa-per-tutti-il-dd-parte-1/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -651,10 +1157,21 @@
                 </a>
                 <cite class="card-subtitle mb-2 text-muted">
                   <i class="fa fa-calendar-alt"></i>
-                  <time datetime="2010-02-16T15:24:06+01:00">Tue, 16 Feb 2010 15:24:06</time>
+                  <time datetime="2010-02-16T14:24:06+01:00">Tue, 16 Feb 2010 14:24:06</time>
                 </cite>
                 <p class="card-text">Salve a chiunque stia leggendo questo articolo, questo è il mio primo post nel mio blog.
                   Nel blog voglio scrivere ogni cosa riesco in ambiti talvolta del tutto differenti, come le mie passioni. Troverete Informatica, Musica, Giochi di Ruolo Strategia e Carte (Magic), e Università, insomma un po’ di tutto, di quelli che sono i miei interessi e le mie passioni.</p>
+                <!--more-->
+                <p class="m-0 invisible zero-size">
+                  <a href="" class="invisible" id="read-more">read more</a>
+                </p>
+                <p class="card-text">Inizio oggi a parlare del mio lavoro: sono un programmatore, inizio quasi 3 anni fa col Java e dopo un anno abbondante cambio e passo al .NET che già conoscevo e programmavo dal 2005. Ora sono su una piattaforma molto particolare, il GIS cioè un sistema informativo geografico. Questo è un mondo tutto nuovo per me e per ora (a parte le tecnologie utilizzate) sembra piacermi.</p>
+                <p class="card-text">Oltre a questo la passione per l’informatica ce l’ho da bambino, ho iniziato a studiare linguaggi quando avevo appena una decina d’anni, niente di che ovviamente facevo solo casini nel pc di mio zio che ogni tanto stava dal tecnico. Oggi mi diverto molto con la mia openSUSE e di solito con vi programmo in C e C++, in Perl e qualche volta in Python ma non tanto. Poi mi diverto pure col Java e col .NET ma li apro un bell’IDE serio tipo eclipse per Java e MonoDevelop in .NET.</p>
+                <p class="card-text">Quando non scrivo codice di solito sono impegnato in qualche gioco fantasy, come Dungeons &amp; Dragons. Da bravo nerd il mio maggior divertimento è fare il sadico master con i PG dei miei giocatori, o caramellare i gioielli di famiglia ai miei amici giocando a magic con i miei mazzi incredibilmente pesanti (nel senso che mettono in stallo la partita) e loro mi maledicono sempre! :-D
+                  Il giorno più bello della settimana per me è il giorno in cui si suona, la domenica nel mio caso. Suono la batteria da ormai parecchio tempo e mi piace un casino! Col mio gruppo stiamo sperimentando alcuni generi mischiandoli tra loro per trovare la nostra vocazione e per adesso pare portarci verso un genere un po’ dark, epico e progressivo.</p>
+                <p class="card-text">Non sarei contorto come sono se ora non tornassi sul primo argomento del post, da bravo nerd ho montato il caro wordpress sul mio pc a casa, il tutto in ssh dall’ufficio, dove la porta ssh è purtroppo per me bloccata e non starò a tediarvi su come ho aggirato la sicurezza.
+                  Mi sta divertendo molto il fatto che finalmente ho il mio bel sito tutto mio dove posso parlare di quello che voglio e dove sono sicuro che non devo sottostare alle limitazioni di nessun provider di servizi di blog di forum o quant’altro. Forse quando in italia arriverà una banda migliore in upload monterò qualche altra macchina a fare da server, a casa mia e mi metterò ad offrire un servizio gratuito e senza limitazioni solo per il gusto di farlo. Ma nel frattempo hosto il mio blog!</p>
+                <p class="card-text">Beh che altro dire, intanto questo e poi il resto a un altro giorno! :-)</p>
                 <div class="row justify-content-end text-right">
                   <div class="col-12">
                     <a href="/2010/02/16/il-mio-personale-wordpress/#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
@@ -716,7 +1233,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2019-03-22T15:05:05+01:00">Fri, 22 Mar 2019 15:05:05 +0100</time></small>
+            <small class="text-muted">Last build on <time datetime="2019-03-23T13:34:39+01:00">Sat, 23 Mar 2019 13:34:39 +0100</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
