@@ -37,6 +37,10 @@ defaults:
 show_excerpts: true
 excerpt_separator: "{% include more.html %}"
 
+markdown: kramdown
+kramdown:
+    math_engine: mathjax
+
 jekyll_tidy:
     compress_html: false
 

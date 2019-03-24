@@ -93,10 +93,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  html-proofer (~> 3.10.2)
-  jekyll (~> 3.8.4)
+  html-proofer
+  jekyll
   jekyll-feed
   jekyll-tidy
+  kramdown
   tzinfo-data
 
 BUNDLED WITH
