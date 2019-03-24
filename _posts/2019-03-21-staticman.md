@@ -55,8 +55,4 @@ Un volenteroso quanto salvifico utente ha scritto [un post sul suo blog](https:/
 
 Dato il vincolo di non volere nessun sistema _a là disqus_ per mantenere i commenti, dato poi il ruolo mediatico dei commenti, sono convinto che questi come i post li debba gestire tutti io in modo statico, per poter anche effettuare dei backup eventualmente ed essere soprattutto agnostico dalle tecnologie usate, l'unica soluzione in questo momento mi sembra staticman. E lo implementerò, lo prometto.
 
-<<<<<<< HEAD
 Altri aggiornamenti probabilmente quando avrò tirato su tutto il sistema.
-=======
-Altri aggiornamenti probabilmente quando avrò tirato su tutto il sistema.
->>>>>>> draft
