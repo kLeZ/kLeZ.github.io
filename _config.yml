@@ -35,7 +35,7 @@ defaults:
           permalink: /:year/:month/:day/:title/
 
 show_excerpts: true
-excerpt_separator: <!--more-->
+excerpt_separator: "{% include more.html %}"
 
 jekyll_tidy:
     compress_html: false
