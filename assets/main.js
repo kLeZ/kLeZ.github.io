@@ -29,10 +29,22 @@
 			});
 	}
 
+	$("script[type='math/tex']").replaceWith(function () {
+		var tex = $(this).text();
+		return "<span class=\"inline-equation\">" + katex.renderToString(tex) + "</span>";
+	});
+
+	$("script[type='math/tex; mode=display']").replaceWith(function () {
+		var tex = $(this).text();
+		return "<div class=\"equation\">" + katex.renderToString("\\displaystyle " + tex) + "</div>";
+	});
+
 	$(document).ready(function () {
 		// scroll to top button
 		$('#scroller').click(function () {
-			$("html, body").animate({ scrollTop: 0 }, 'slow');
+			$("html, body").animate({
+				scrollTop: 0
+			}, 'slow');
 		});
 	});
 })(jQuery); // End of use strict
