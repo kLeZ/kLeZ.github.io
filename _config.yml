@@ -38,8 +38,12 @@ show_excerpts: true
 excerpt_separator: "{% include more.html %}"
 
 markdown: kramdown
-kramdown:
-    math_engine: mathjax
+highlighter: rouge
+katex:
+    js_path: "assets/katex"
+    rendering_options:
+        throw_error: true
+        error_color: "#cc0000"
 
 jekyll_tidy:
     compress_html: false
