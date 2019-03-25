@@ -1,7 +1,7 @@
 ---
 title: Staticman c'è!
 tags: staticman heroku
-#date: 
+date: 2019-03-25 09:30:00+01:00
 ---
 
 Ecco lo sperato secondo articolo su [Staticman](https://staticman.net), finalmente ho qualcosa da scrivere!
@@ -46,5 +46,8 @@ Questo è il dopo:
   })
 ```
 
+## Final thoughts
+
+Insomma, in buona sostanza ho trovato un progetto molto utile, potenzialmente indispensabile, che ha raccolto solo grazie all'idea una massa critica di utenti, ma che purtroppo è mal gestito. A me funziona con un po' di lavoro ma avrei preferito che funzionasse l'istanza pubblica, tutto sommato non è andata male.
 
 [^1]: Concetto coniato da me in questa occasione, significa progettare solo il minimo della funzionalità, senza pensare a tematiche di buona progettazione come scalabilità e prestazioni.
