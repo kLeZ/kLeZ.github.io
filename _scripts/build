@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e # halt script on error
 
+chmod a+x _scripts/publish
+
+./_scripts/publish
+
 if [[ $CI == "true" ]]; then
 	tee _data/travis.yml <<EOF
 commit:

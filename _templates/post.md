@@ -1,7 +1,7 @@
 ---
 title: 
 tags: 
-date: 
+date: __CURRENT_DATE
 ---
 
 {% include more.html %}

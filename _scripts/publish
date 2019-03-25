@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for f in `ls _drafts/*.md.pub`;
+do
+	current_date="$(date '+%Y-%m-%d %H:%M:%S%:z')"
+	sed -i "s/__CURRENT_DATE/${current_date}/" $f;
+	mv ${f} _posts/`date '+%Y-%m-%d'`-`basename ${f%.pub}`
+done
