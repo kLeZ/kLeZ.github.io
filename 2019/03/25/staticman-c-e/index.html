@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="author" content="Alessandro 'kLeZ' Accardo" />
-    <title>Alessandro 'kLeZ' Accardo personal website - Progetto complicato</title>
+    <title>Alessandro 'kLeZ' Accardo personal website - Staticman c'è!</title>
     <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
     <link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" />
@@ -70,28 +70,69 @@
     <main class="container pt-3 pb-3" aria-label="Content">
       <article itemscope itemtype="http://schema.org/BlogPosting">
         <header>
-          <h2>Progetto complicato</h2>
+          <h2>Staticman c&#39;è!</h2>
           <small class="text-muted">Posted on
-            <time datetime="2010-10-11T17:19:18+02:00" itemprop="datePublished">11 Oct 2010</time><span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
+            <time datetime="2019-03-25T09:30:00+01:00" itemprop="datePublished">25 Mar 2019</time><span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
         </header>
         <section itemprop="articleBody">
-          <p>Salve a tutti i miei lettori, credo che oggi convenga parlare chiaro e tondo sul progetto freax.</p>
+          <p>Ecco lo sperato secondo articolo su <a href="https://staticman.net">Staticman</a>, finalmente ho qualcosa da scrivere!</p>
+          <p>Le difficoltà ci sono state, ma devo dire che pensavo peggio, alla fine mi ci è voluta solo mezza giornata di lavoro per tirare su la baracca.<br />
+            Anche se con un mucchio di se e ma e però, comunque il componente regge e io <strong>non ho speso un euro</strong>. Vittoria per me, <em>ma amara</em>.</p>
           <!--more-->
           <p class="m-0 invisible zero-size">
             <a class="invisible" id="read-more">read more</a>
           </p>
-          <p>Il progetto è molto complicato e sto trovando parecchie difficoltà nella realizzazione del software, purtroppo non ho aiuto e quel poco che il mio caro amico mi da non mi è sufficiente, ma non gliene faccio una colpa in fondo sta seguendo l’università ed è già molto complesso quello. Comunque la difficoltà principale sta nel raggruppare le informazioni per i tarball, quello che più è complesso è trovare in maniera programmatica anche solo il nome del software, figuriamoci poi la versione dello stesso. Il fatto è che non c’è uno standard per la creazione di tarball sorgenti. E quindi non è per nulla semplice trovare uno straccio di informazione su un particolare pacchetto, alcuni addirittura non forniscono neanche la versione del loro software all’interno del tarball, tanto che l’unico modo è segnarsi la versione al momento del download del software e/o compilare e poi prendere la versione che è magicamente comparsa sull’eseguibile. A questo punto non so più che cosa fare per poter ricavare queste informazioni, è troppo poco standard per poter essere letto programmaticamente, a meno di non farsi delle statistiche e implementare una specie di configurazione che mi permetta di trovare al volo quello che mi serve. Boh.
-            Vabbè arrivederci a tutti.</p>
+          <h2 id="le-basi-errori-di-programmazione-per-un-progetto-disorganizzato-e-fuori-rotta">Le basi: errori di programmazione per un progetto disorganizzato e fuori rotta</h2>
+          <p>Il progetto Staticman, come ho detto <a href="/2019/03/21/staticman/">altre volte</a> è interessante, lo è <em>molto</em>, ma rimane dietro la barriera dell’interessante non riuscendo a fuggire dal blocco dei progetti destinati a morire. E se non cambia rotta <strong>succederà</strong>.</p>
+          <p>Inizio col dire che come ogni progetto molto piccolo le informazioni sono poche e difficili da reperire (anche dal sito “ufficiale”), questo perché lo vediamo nella sua fase embrionale. Il problema esiste perché il suo autore, il portoghese <a href="https://eduardoboucas.com/">Eduardo Bouças</a>, si è trovato a dover gestire una situazione che probabilmente non pensava di dover gestire, cioè una massa critica di utenti che ha permesso a questo progetto di uscire dalla bolla di invisibilità che copre ogni software prima che degli utenti si accorgano della sua esistenza e della sua (<em>spesso relativa</em>) utilità, esattamente come ancora succede al mio <a href="https://klez.me/wash-ideas">Wash Ideas</a>.</p>
+          <p>Dal punto di vista puramente tecnico, ha incontrato e incontra ancora delle crisi di prestazioni che lo hanno portato a un cambio netto di implementazione e di approccio, come <a href="https://github.com/eduardoboucas/staticman/issues/243">notificato nelle <em>issues</em></a> dagli utenti stessi. Vedo un tecnico con un approccio <em>minimal working piece</em><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> al servizio, un approccio che devo dire a me non piace.</p>
+          <p>Dal punto di vista organizzativo invece, poca è la documentazione del progetto, e minore ancora è la voglia di strutturare il lavoro in maniera adeguata, per far funzionare senza (troppi) disservizi questo software. Neanche dopo aver ricevuto uno sponsor, neanche dopo che qualche decina di persone ha iniziato a lavorare sul progetto, Eduardo ha dimostrato di voler fare di meglio: attualmente non c’è la minima ombra di organizzazione del team, degli sviluppi, non c’è una direzione, né delle <em>milestone</em>, né a dire la verità sembra esserci la volontà piena di far vedere la luce a questo piccolo progetto.</p>
+          <p>Tornando alla documentazione estremamente carente, sul sito ufficiale di Staticman si trovano informazioni per <em>configurare</em> (se mai ci sia la possibilità di riuscirci) quello che viene specificato come l’<em>endpoint</em> <strong>v2</strong> mentre, <a href="https://github.com/eduardoboucas/staticman/issues/278">come sembra dalle issues</a>, gli endpoint v1 e v2 dovrebbero essere deprecati in favore dell’endpoint v3, che però non vuol saperne di funzionare adeguatamente e su cui chiaramente non c’è documentazione ufficiale per configurazione e manutenzione.</p>
+          <p>Inoltre, come se non bastasse, una volta scaricato il sorgente per configurare la mia istanza su Heroku (grazie al <a href="https://vincenttam.gitlab.io/post/2018-09-16-staticman-powered-gitlab-pages/2/">post</a> non preciso ma almeno esistente sull’internet di Vincent Tam) sono riuscito anche a trovare un errore di programmazione che non avrebbe dovuto esserci, e che fortunatamente mi ha portato via solo mezz’ora, considerato tutto.</p>
+          <p>Questo è il prima:</p>
+          <div class="language-javascript highlighter-rouge">
+            <div class="highlight">
+              <pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">github</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GitHub</span><span class="p">({</span>
+    <span class="na">username</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span>
+    <span class="na">repository</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">repository</span><span class="p">,</span>
+    <span class="na">branch</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">branch</span><span class="p">,</span>
+    <span class="na">token</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'githubToken'</span><span class="p">)</span>
+  <span class="p">})</span>
+</code></pre>
+            </div>
+          </div>
+          <p>Questo è il dopo:</p>
+          <div class="language-javascript highlighter-rouge">
+            <div class="highlight">
+              <pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">github</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GitHub</span><span class="p">({</span>
+    <span class="na">branch</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">branch</span><span class="p">,</span>
+    <span class="na">repository</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">repository</span><span class="p">,</span>
+    <span class="na">username</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span>
+    <span class="na">version</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">version</span><span class="p">,</span>
+    <span class="na">token</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'githubToken'</span><span class="p">)</span>
+  <span class="p">})</span>
+</code></pre>
+            </div>
+          </div>
+          <h2 id="final-thoughts">Final thoughts</h2>
+          <p>Insomma, in buona sostanza ho trovato un progetto molto utile, potenzialmente indispensabile, che ha raccolto solo grazie all’idea una massa critica di utenti, ma che purtroppo è mal gestito. A me funziona con un po’ di lavoro ma avrei preferito che funzionasse l’istanza pubblica, tutto sommato non è andata male.</p>
+          <div class="footnotes">
+            <ol>
+              <li id="fn:1">
+                <p>Concetto coniato da me in questa occasione, significa progettare solo il minimo della funzionalità, senza pensare a tematiche di buona progettazione come scalabilità e prestazioni. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+              </li>
+            </ol>
+          </div>
         </section>
-        <a href="/2010/10/11/progetto-complicato/" hidden></a>
+        <a href="/2019/03/25/staticman-c-e/" hidden></a>
       </article>
       <p class="m-0 invisible zero-size">
         <a href="" class="invisible" id="comments">comments</a>
       </p>
       <h3>Comments</h3>
       <form method="post" action="https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/dev/comments/">
-        <input name="options[redirect]" type="hidden" value="https://klez.me/2010/10/11/progetto-complicato/#comments">
-        <input name="options[slug]" type="hidden" value="progetto-complicato">
+        <input name="options[redirect]" type="hidden" value="https://klez.me/2019/03/25/staticman-c-e/#comments">
+        <input name="options[slug]" type="hidden" value="staticman-c-e">
         <div class="form-row">
           <div class="col form-group">
             <input type="text" id="username" name="fields[name]" class="form-control" placeholder="username" required="true" />
