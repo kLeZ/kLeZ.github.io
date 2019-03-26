@@ -1,6 +1,8 @@
 ---
-title: 
-tags: 
+title: "Spaghetti Code: It's **that** bad"
+tags:
+- spaghetti code
+- bad practices
 date: __CURRENT_DATE
 ---
 
