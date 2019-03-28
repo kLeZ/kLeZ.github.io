@@ -3,7 +3,7 @@ title: "Spaghetti Code: It's **that** bad"
 tags:
 - spaghetti code
 - bad practices
-##date: __CURRENT_DATE
+date: 2019-03-28 13:25:43+01:00
 ---
 
 Ho sempre lottato contro le cattive pratiche, chi mi conosce lo sa.  
