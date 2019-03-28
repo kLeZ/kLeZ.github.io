@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
 font-size: 20px;
 color: #212529;
@@ -476,3 +477,31 @@ color: #f92672; }
 .highlight {
 color: #f8f8f2;
 background-color: #49483e; }
+blockquote {
+padding: 1rem 1.2rem 1rem 4rem;
+margin-bottom: 1rem;
+border-left: 1rem solid #343a40;
+border-right: 0.4rem solid #343a40;
+font-family: 'Lora', 'Times New Roman', serif;
+font-size: 1.25rem;
+line-height: 1.2;
+color: #495057;
+background-color: #f8f9fa;
+text-align: justify;
+quotes: "“" "”" "‘" "’"; }
+blockquote::before {
+font-family: 'Lora', 'Times New Roman', serif;
+color: #868e96;
+content: open-quote;
+font-size: 4em;
+line-height: 0.1em;
+margin-right: 0.25em;
+vertical-align: -0.4em; }
+blockquote p {
+display: inline; }
+blockquote footer {
+display: block;
+font-size: 80%;
+color: #828282; }
+blockquote footer::before {
+content: "\2014\00A0"; }
