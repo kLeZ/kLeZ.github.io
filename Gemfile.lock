@@ -64,6 +64,11 @@ GEM
       listen (~> 3.0)
     kramdown (1.17.0)
     liquid (4.0.1)
+    liquid_pluralize (1.0.3)
+      liquid (>= 2.6, < 5.0)
+    liquid_reading_time (1.1.3)
+      liquid (>= 2.6, < 5.0)
+      nokogiri (~> 1.6)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -106,6 +111,8 @@ DEPENDENCIES
   jekyll-postfiles
   jekyll-tidy
   kramdown
+  liquid_pluralize
+  liquid_reading_time
   tzinfo-data
 
 BUNDLED WITH
