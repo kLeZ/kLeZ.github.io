@@ -36,7 +36,7 @@ Beh, c'è qualche caso limite, pure qui da uno che può permettersi di raccontar
 Il punto però è un altro: tu puoi anche riscrivere il software, ma il tuo *cono di incertezza* ti porterà a sbagliare la stima di almeno un fattore di 4.  
 La buona soluzione in caso si voglia pensare a un *Big Rewrite* in realtà è non riscrivere il software ma correggerlo iterativamente. Questo ci porta al passo successivo.
 
-#CATCH
+# CATCH
 
 ## Regole di base
 
@@ -44,16 +44,19 @@ Prima fra tutte le regole: segui attentamente e senza eccezioni questo elenco, �
 
 ### La regola del *boy scout*
 
+> citation ""
 > Lascia il bosco in cui sei stato **meglio** di come l'hai trovato
 
 Ogni volta che trovi un pezzo di codice brutto, mentre modifichi una funzione o una struttura, effettua un *refactoring*, correggi quel codice, **può fare solo bene a te, al software e al team**.
 
 E non credere a chi ti dice che il tempo di fare *refactoring* non c'è (anche se questo è il tuo capo), il *refactoring* è parte integrante del lavoro di sviluppo, esattamente come i test di base e la compilazione: va fatto sempre e comunque, come quando vai al bagno dopo pranzo.
 
+> citation ""
 > Il *refactoring* è parte integrante del lavoro di sviluppo, esattamente come i test di base e la compilazione
 
 ### Scrivi degli Unit Test
 
+> citation ""
 > Metti in quarantena lo *spaghetti code*
 
 Per ogni funzione o struttura che vai a modificare, è facile creare degli *unit test* che possono darti la sicurezza che ti serve su cosa fa effettivamente il modulo che hai di fronte.
@@ -70,6 +73,7 @@ Guadagneranno tempo perché essendo tu più confidente nella stima delle modific
 
 Guadagneranno soldi perché l'applicazione continuerà a produrre valore mentre diventerà via via più semplice da modificare, e diventerà anche più veloce da modificare il che permetterà loro di stanziare meno budget per le modifiche di quanto avrebbero fatto prima, potendolo reinvestire in altre modifiche e aumentando ancora il valore dell'applicazione.
 
+> citation ""
 > Insomma, il *refactoring* è uno strumento saggio per aumentare la produttività del team, **un buon manager deve** non solo accettarlo, ma **consigliarlo**.
 
 ### Concentrati sulla qualità e sulla semplicità
@@ -83,11 +87,11 @@ Immagina di dover scrivere una funzione che accenda o spenga una lampadina, potr
 
 ~~~javascript
 function turn(isOn) {
-	if (isOn) {
-		// turn on the lightbulb
-	} else {
-		// turn off the lightbulb
-	}
+    if (isOn) {
+        // turn on the lightbulb
+    } else {
+        // turn off the lightbulb
+    }
 }
 ~~~
 
@@ -99,11 +103,11 @@ Dovresti usare un approccio più semplice a una funzione come questa:
 
 ~~~javascript
 function turnOn() {
-	// turn on the lightbulb
+    // turn on the lightbulb
 }
 
 function turnOff() {
-	// turn off the lightbulb
+    // turn off the lightbulb
 }
 ~~~
 
@@ -113,31 +117,32 @@ C'è sempre la possibilità di seguire le parole dei grandi luminari del proprio
 
 *Uncle Bob* fa un'analogia perfetta per spiegare l'importanza della qualità.
 
+> citation ""
 > Pensa alla cena: puoi cucinare più velocemente se eviti di lavare i piatti. Alla fine però, rimarrai a corto di piatti. Lasciarli da una parte ora significa solo che dovrai lavarli dopo, oppure puoi "appaltare" questo lavoro andando a cena fuori, che però costa molto di più che cucinare a casa.
 
 ## Alcuni consigli per fare *refactoring* e per scrivere buon codice
 
-- Le funzioni dovrebbero avere un nome che descrive esattamente cosa fanno
-	+ I nomi lunghi vanno benissimo
-	+ La scelta del nome non dovrebbe portarti via lo stesso tempo di quando hai dato il nome a tuo figlio
-		* Se capita questo, probabilmente hai davanti una funzione che può essere spezzata in due o più parti
-- Le funzioni dovrebbero fare una cosa e farla bene
-	+ Quando una funzione fa una cosa fatta bene senza effetti collaterali, sarai più portato a riutilizzarla
-	+ Capisci che una funzione fa una sola cosa fatta bene quando non puoi più spezzarla in funzioni più semplici
-- Il codice all'interno di una funzione dovrebbe essere tutto allo stesso livello di astrazione
-	+ Se stai scrivendo logica di business, non dovresti fare manipolazione di stringhe o accesso ai dati nella stessa funzione
-	+ Facendo questo potrai leggere il codice dal livello di astrazione più alto in giù, andando in profondità quando necessario per trovare un errore o per una modifica
-	+ Le funzioni scritte bene dovrebbero essere lette come degli elenchi puntati
-- Le funzioni non dovrebbero superare le 20 righe di codice
-	+ Anche 20 è comunque un numero un po' alto, tenta di tenere tutto entro 10 righe o meno
-	+ In questo modo sarà più facile per il tuo cervello leggere e trovare i problemi
-	+ Questo approccio forza il codice a essere modulare
-	+ Se hai un blocco di codice dentro a un'istruzione di controllo (*if/else/while, ecc.*) quel codice dovrebbe essere spostato dentro a una funzione -- `if function() else someOtherFunction()`
-- Le funzioni dovrebbero massimo 3 parametri, idealmente 0 o 1
-	+ È difficile ricordare l'ordine degli argomenti se ne hai più di 3, questo rende il codice  più passibile di difetti e lo rende anche più complicato da leggere
-	+ Se hai più di 3 parametri probabilmente puoi raggrupparli in una struttura. Per esempio se hai un metodo `login(String username, String password)`, questo può facilmente diventare `login(Credentials credentials)` dove *Credentials* è un oggetto con uno *username* e una *password*, che ne promuove il riuso
-	+ Evita i parametri booleani -- per esempio invece di una funzione `boolean turn(Boolean isOn)` usa due funzioni separate ch chiarifichino le tue intenzioni: `turnOn()` e `turnOff()`
-- Le funzioni dovrebbero lanciare eccezioni anziché ritornare messaggi e codici di errore
+* Le funzioni dovrebbero avere un nome che descrive esattamente cosa fanno
+  * I nomi lunghi vanno benissimo
+  * La scelta del nome non dovrebbe portarti via lo stesso tempo di quando hai dato il nome a tuo figlio
+    * Se capita questo, probabilmente hai davanti una funzione che può essere spezzata in due o più parti
+* Le funzioni dovrebbero fare una cosa e farla bene
+  * Quando una funzione fa una cosa fatta bene senza effetti collaterali, sarai più portato a riutilizzarla
+  * Capisci che una funzione fa una sola cosa fatta bene quando non puoi più spezzarla in funzioni più semplici
+* Il codice all'interno di una funzione dovrebbe essere tutto allo stesso livello di astrazione
+  * Se stai scrivendo logica di business, non dovresti fare manipolazione di stringhe o accesso ai dati nella stessa funzione
+  * Facendo questo potrai leggere il codice dal livello di astrazione più alto in giù, andando in profondità quando necessario per trovare un errore o per una modifica
+  * Le funzioni scritte bene dovrebbero essere lette come degli elenchi puntati
+* Le funzioni non dovrebbero superare le 20 righe di codice
+  * Anche 20 è comunque un numero un po' alto, tenta di tenere tutto entro 10 righe o meno
+  * In questo modo sarà più facile per il tuo cervello leggere e trovare i problemi
+  * Questo approccio forza il codice a essere modulare
+  * Se hai un blocco di codice dentro a un'istruzione di controllo (*if/else/while, ecc.*) quel codice dovrebbe essere spostato dentro a una funzione -- `if function() else someOtherFunction()`
+* Le funzioni dovrebbero massimo 3 parametri, idealmente 0 o 1
+  * È difficile ricordare l'ordine degli argomenti se ne hai più di 3, questo rende il codice  più passibile di difetti e lo rende anche più complicato da leggere
+  * Se hai più di 3 parametri probabilmente puoi raggrupparli in una struttura. Per esempio se hai un metodo `login(String username, String password)`, questo può facilmente diventare `login(Credentials credentials)` dove *Credentials* è un oggetto con uno *username* e una *password*, che ne promuove il riuso
+  * Evita i parametri booleani -- per esempio invece di una funzione `boolean turn(Boolean isOn)` usa due funzioni separate ch chiarifichino le tue intenzioni: `turnOn()` e `turnOff()`
+* Le funzioni dovrebbero lanciare eccezioni anziché ritornare messaggi e codici di errore
 
 # FINALLY
 
@@ -145,5 +150,5 @@ In conclusione, si può sempre tornare indietro da una situazione a *spaghetti c
 
 Il mio consiglio è di non demordere in presenza di software di questo tipo, e portare avanti l'idea di un software migliore ignorando chi ci dice che non è possibile o i manager che ci "spiegano" che il tempo per questi miglioramenti *cosmetici* non c'è.
 
+> citation "kLeZ"
 > Fate *refactoring*, non fate spaghetti.
-> <footer><cite>kLeZ</cite></footer>
