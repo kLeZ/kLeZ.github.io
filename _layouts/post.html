@@ -6,8 +6,8 @@ layout: default
 		<h2>{{ page.title | escape }}</h2>
 		<small class="text-muted">Posted on
 			<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date_to_string }}</time>
-			{%- if page.author -%}
-			<span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ page.author }}</span></span>
+			{%- if page.author.name -%}
+			<span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ page.author.name }}</span></span>
 			{%- endif -%}
 		</small>
 	</header>

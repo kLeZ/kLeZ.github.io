@@ -12,6 +12,19 @@
       "id": "4",
       "references": [],
       "title": "Implement plugin jekyll-git_metadata"
+    },
+    {
+      "assignedTo": {
+        "name": "Alessandro Accardo"
+      },
+      "creation_time": "2019-04-04T19:02:13.485Z",
+      "description": {
+        "content": "https://github.com/jekyll/jekyll-seo-tag",
+        "mime": "text/markdown"
+      },
+      "id": "1",
+      "references": [],
+      "title": "Implement plugin jekyll-seo-tag"
     }
   ],
   "in-progress": [],
@@ -29,19 +42,6 @@
       "id": "3",
       "references": [],
       "title": "Implement plugin jekyll-compose"
-    },
-    {
-      "assignedTo": {
-        "name": "Alessandro Accardo"
-      },
-      "creation_time": "2019-04-04T19:02:13.485Z",
-      "description": {
-        "content": "https://github.com/jekyll/jekyll-seo-tag",
-        "mime": "text/markdown"
-      },
-      "id": "1",
-      "references": [],
-      "title": "Implement plugin jekyll-seo-tag"
     },
     {
       "assignedTo": {

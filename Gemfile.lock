@@ -58,6 +58,8 @@ GEM
       jekyll (~> 3.6)
     jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
+    jekyll-seo-tag (2.6.0)
+      jekyll (~> 3.3)
     jekyll-tidy (0.2.2)
       htmlbeautifier
       htmlcompressor
@@ -112,6 +114,7 @@ DEPENDENCIES
   jekyll-git_metadata
   jekyll-katex
   jekyll-postfiles
+  jekyll-seo-tag
   jekyll-tidy
   kramdown
   liquid_pluralize

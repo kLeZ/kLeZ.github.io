@@ -9,6 +9,10 @@ build:
     server: https://travis-ci.org/kLeZ/kLeZ.github.io
     status: https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev
 
+twitter:
+    username: kLeZhAcK
+    card: summary
+
 comments:
     enabled: true
     type: staticman
@@ -26,7 +30,9 @@ defaults:
     - scope:
           path: ""
       values:
-          author: kLeZ
+          author:
+              name: kLeZ
+              twitter: kLeZhAcK
           header_background_url: /assets/img/home-bg.jpg
     - scope:
           path: ""
@@ -57,6 +63,7 @@ plugins:
     - liquid_reading_time
     - liquid_pluralize
     - jekyll-git_metadata
+    - jekyll-seo-tag
 
 # Defaults. IF you want to change the exclude make sure you keep those sane defaults
 exclude:
@@ -68,3 +75,4 @@ exclude:
     - vendor/gems/
     - vendor/ruby/
     - blog-vector-icon-27.jpg
+    - staticman.yml
