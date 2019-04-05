@@ -1,14 +1,14 @@
 <div class="row">
-	<div class="col">
-		<h4>Commit</h4>
-		<a href="{{ include.repo_url }}/commit/{{ include.build_data.commit.hash }}" target="_blank">{{ include.build_data.commit.hash }}</a>
-		{{ include.build_data.commit.message | markdownify }}
+	<div class="col-12">
+		<h3>Commit</h3>
+		<a href="{{ include.url }}/commit/{{ include.commit.long_sha }}" target="_blank">{{ include.commit.short_sha }}</a>
+		{{ include.commit.message | markdownify }}
 	</div>
-	<div class="col">
-		<h4>Build</h4>
+	<div class="col-12">
+		<h3>Build</h3>
 		<blockquote>
-			<a href="{{ include.build_data.build.url }}">
-				{{ include.build_data.build.number }} <sup>({{ include.build_data.build.id }})</sup>
+			<a href="{{ include.build.build.url }}">
+				{{ include.build.build.number }} <sup>({{ include.build.build.id }})</sup>
 			</a>
 		</blockquote>
 	</div>

@@ -56,6 +56,7 @@ plugins:
     - jekyll-postfiles
     - liquid_reading_time
     - liquid_pluralize
+    - jekyll-git_metadata
 
 # Defaults. IF you want to change the exclude make sure you keep those sane defaults
 exclude:

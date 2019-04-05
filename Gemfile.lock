@@ -49,6 +49,8 @@ GEM
       safe_yaml (~> 1.0)
     jekyll-feed (0.10.0)
       jekyll (~> 3.3)
+    jekyll-git_metadata (0.2.0)
+      jekyll (~> 3.0)
     jekyll-katex (0.4.1)
       execjs (~> 2.7)
       jekyll (~> 3.8)
@@ -107,6 +109,7 @@ DEPENDENCIES
   html-proofer
   jekyll
   jekyll-feed
+  jekyll-git_metadata
   jekyll-katex
   jekyll-postfiles
   jekyll-tidy

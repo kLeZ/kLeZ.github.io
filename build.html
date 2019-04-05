@@ -4,4 +4,4 @@ title: Build information
 service: true
 ---
 {%- assign repo = site.data.navigation | where: "title", "Repository" -%}
-{% include build-data.html build_data=site.data.travis repo_url=repo.first.url %}
+{% include build-data.html commit=site.git.last_commit build=site.data.travis url=repo.first.url %}

@@ -1,5 +1,19 @@
 {
-  "done": [],
+  "done": [
+    {
+      "assignedTo": {
+        "name": "Alessandro Accardo"
+      },
+      "creation_time": "2019-04-04T19:03:33.087Z",
+      "description": {
+        "content": "https://github.com/ivantsepp/jekyll-git_metadata",
+        "mime": "text/markdown"
+      },
+      "id": "4",
+      "references": [],
+      "title": "Implement plugin jekyll-git_metadata"
+    }
+  ],
   "in-progress": [],
   "testing": [],
   "todo": [
@@ -41,19 +55,6 @@
       "id": "2",
       "references": [],
       "title": "Implement plugin jekyll-sitemap"
-    },
-    {
-      "assignedTo": {
-        "name": "Alessandro Accardo"
-      },
-      "creation_time": "2019-04-04T19:03:33.087Z",
-      "description": {
-        "content": "https://github.com/ivantsepp/jekyll-git_metadata",
-        "mime": "text/markdown"
-      },
-      "id": "4",
-      "references": [],
-      "title": "Implement plugin jekyll-git_metadata"
     }
   ]
 }

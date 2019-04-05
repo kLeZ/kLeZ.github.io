@@ -7,9 +7,9 @@ chmod a+x _scripts/publish
 
 if [[ $CI == "true" ]]; then
 	tee _data/travis.yml <<EOF
-commit:
-    hash: ${TRAVIS_COMMIT:-abcdef01}
-    tag: ${TRAVIS_TAG:-0.1}
+last_commit:
+    short_sha: $(echo ${TRAVIS_COMMIT:-abcdef01} | cut -c 1-8)
+    long_sha: ${TRAVIS_COMMIT:-abcdef01abcdef01abcdef01abcdef01abcdef01}
     message: |- $(echo; echo -e "${TRAVIS_COMMIT_MESSAGE}" | sed 's/^/        /')
 build:
     number: ${TRAVIS_BUILD_NUMBER:-0}
