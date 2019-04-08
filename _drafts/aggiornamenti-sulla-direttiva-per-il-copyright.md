@@ -29,7 +29,7 @@ Comincio con la fonte diretta, come mi è stato insegnato. [Questa](https://eur-
 
 Alla data odierna della visita al PDF di riferimento[^1] leggo scritto questo, alla voce dell'**Articolo 11** (chiaramente in versione integrale):
 
-### EN
+**EN**
 
 > info ""
 > 1. Member States shall provide publishers of press publications established in a Member State
@@ -37,7 +37,7 @@ Alla data odierna della visita al PDF di riferimento[^1] leggo scritto questo, a
 > of their press publications by information society service providers. These rights shall not apply to
 > private or non-commercial uses of press publications carried out by individual users.
 
-### IT
+**IT**
 
 > info ""
 > 1. Gli Stati membri forniscono agli editori di pubblicazioni di stampa stabilite in uno Stato membro
@@ -51,13 +51,13 @@ Quello che succede qui in breve è che i *provider* di servizi internet, denomin
 
 Altro estratto poco chiaro è riportato immediatamente sotto nel documento:
 
-### EN
+**EN**
 
 > info ""
 > The rights referred to in the first subparagraph shall not apply in
 > respect of uses of individual words or very short extracts of a press publication.
 
-### IT
+**IT**
 
 > info ""
 > I diritti di cui al primo comma non si applicano
@@ -70,6 +70,48 @@ Ma quanto sono brevi questi *brevissimi* estratti? Non ci è dato saperlo. Alla 
 L'articolo 13 ormai è famoso, è anche soprannominato "*Censorship Machines*" o "*Upload filter*". È tendenzialmente l'articolo più controverso dell'intera Direttiva.
 
 In buona sostanza si dichiara che le piattaforme vengano ritenute responsabili qualora rendano pubblico contenuto coperto da copyright, anche (e soprattutto) se caricato da utenti.
+
+Non riesco a estrarre una citazione dal documento, perché in modo piuttosto arguto il testo risulta molto legalese, nebuloso e quantomeno piuttosto complesso, quindi non è di facile analisi.  
+Per questo motivo decido di non estrarre le parti per analizzarle come ho fatto con [l'articolo 11](#articolo-11). Mi perdonerete.
+
+Quello che però so e posso dirvi è quello che ormai in alcuni ambienti (ancora troppo pochi) è diventato un mantra, e questo lo possiamo analizzare.
+
+### Troppo generico
+
+Si ripete ormai come riflesso condizionato che il testo dell'articolo 17 [ex art. 13] sia troppo vago e usi (secondo me volutamente, ma ci arriviamo) parole troppo generiche e che generalizzi troppo.  
+L'impressione che si ha dalla seconda lettura in poi è la stessa, ve lo posso assicurare, dove nella prima lettura invece si fa fatica anche a comprendere cosa effettivamente significhi quello che si sta leggendo.
+
+In un mondo in cui specificare è l'unico modo per poter imbrigliare tutti i "furbi" (termine che alcune volte diventa anche "furbetti" per taluni giornali estremamente buoni con persone che io chiamo semplicemente *criminali equilibristi*) una norma così generica stona non poco, c'è sicuramente uno scopo diverso dietro.
+
+### Deleterio per gli utenti
+
+Immagina di essere un utente di internet che vive in Europa (facile eh?). Ora immagina che io sia un americano (o che ne so un *Inglese*) e che io abbia scritto un articolo piuttosto interessante, magari corredato da immagini. Questo articolo presumibilmente tu non potrai vederlo perché io ho registrato il copyright sul mio articolo e la piattaforma attraverso cui tu verresti a sapere che esiste lo filtra: in poche parole diventi vittima di **censura selettiva**, mentre tutti i tuoi amici che sono emigrati a Londra per fare i lavapiatti, loro si che lo leggono, e te ne parlano e tu non saprai cosa dire, perché non riesci a trovarlo (anche Google sottende a questa norma eh) e quindi a leggerlo.
+
+Bello? Siamo solo all'inizio.
+
+Da utente, tu puoi anche caricare dei contenuti (come il link all'articolo dell'esempio): quindi i tuoi amici, potrebbero condividere con te l'articolo su Facebook, giusto? Sbagliato!  
+Essendo questa una norma che viene imposta a livello comunitario, piattaforme come Facebook finirebbero per inserire all'interno dei Termini di Servizio (quelli che non legge mai nessuno, ora c'è un buon motivo per farlo) la libertà di censurare automaticamente. E lo farà, matematicamente certo.
+
+Qui il problema è un po' più sottile: se tu sei l'autore dell'articolo e quindi dichiari che il post non doveva essere censurato (e hai tutto il diritto di farlo), Facebook può tranquillamente ignorarti facendoti però notare che hai violato i Termini di Servizio (sei tu quello in difetto ricordi?).
+
+Reggi ancora un po' che non è finita.
+
+### Deleterio per i creatori di contenuti
+
+Prendi l'esempio precedente e ruota la visuale. Ora sei tu che hai scritto l'articolo.  
+Se Facebook diventa **direttamente perseguibile** per le violazioni dei propri utenti, non si farà scrupoli a evitare multe salatissime ai suoi danni (e ci mancherebbe! non è mica una ONLUS).  
+Sai come lo farà? chiaramente inserendo dei filtri automatici tarati in eccesso, che saranno ben felici di avere qualche migliaio di falsi positivi in funzione però di milioni di post che violano la norma, portando a Facebook un *risparmio* di diversi milioni di euro dovuto a multe non prese.
+
+Sposta ancora la visuale, *adesso sei Facebook*. O meglio, non proprio Facebook, ma una piccola piattaforma nata da poco (**4 anni sono poco per un social network**, già Facebook che fu rivoluzionario impiegò una decina d'anni per affermarsi, così come Google, giusto per uscire dalla bolla dei social).
+
+Immagina che te *l'upload filter* non puoi inserirlo, perché scriverlo da te è molto costoso (si parla di intelligenza artificiale, ci sono intere aziende che fanno solo questo di mestiere) e acquistare un prodotto già fatto lo è altrettanto.
+
+Arrivo io, utente, bello bello, e ti carico su l'ultimo *meme* visto in america, che però casualmente è ripreso da una puntata de *I Simpson*, e chiaramente viola il copyright europeo. Te non te ne accorgi perché non hai un filtro, e la moderazione è a campione, sei piccolo ma non *così piccolo*, qualche centinaio di migliaia di utenti, anche qualche milione è un numero realistico.
+
+**BAM!** La comunità europea ti multa per 4 milioni di euro perché Matt Groening dall'altro lato dell'Atlantico ti ha denunciato per far rimuovere il contenuto (e lo fanno ogni giorno te l'assicuro).
+
+
+
 
 [^1]: [Il PDF, visitato in data 29/03/2019, riporta la data 20/02/2019](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CONSIL:ST_6637_2019_INIT&from=EN)
 

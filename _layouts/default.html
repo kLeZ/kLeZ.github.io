@@ -10,11 +10,7 @@
 	<body class="{{ classes }}">
 		{% include header.html %}
 		{% include navbar.html items=site.data.navigation %}
-		{% if page.layout == 'post' %}
-		<aside class="sticky-top float-left ml-5 mt-5 bg-light px-3" style="max-width: 15rem;">
-			<p>This article will take {{ content | reading_time | pluralize: "minute" }} to read.</p>
-		</aside>
-		{% endif %}
+		{%- include post-sidebar.html layout=page.layout content=content -%}
 		<main class="container py-3" aria-label="Content">
 			{{ content }}
 			<div class="row justify-content-end text-right">
