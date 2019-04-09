@@ -6,6 +6,9 @@ before_script:
  - chmod +x ./_scripts/build
 script: ./_scripts/build
 
+git:
+  submodules: true
+
 branches:
   only:
     - dev

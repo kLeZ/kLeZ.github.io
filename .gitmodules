@@ -1,0 +1,7 @@
+[submodule "premonition"]
+ 	path = _plugins/premonition
+ 	url = https://github.com/kLeZ/premonition.git
+
+[submodule "SgEExt"]
+ 	path = _plugins/SgEExt
+ 	url = https://github.com/HorlogeSkynet/SgEExt.git
