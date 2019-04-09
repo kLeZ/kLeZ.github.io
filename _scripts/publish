@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for f in `ls _drafts/*.md.pub`;
+for f in `ls _drafts/*.md`;
 do
 	current_date="$(date '+%Y-%m-%d %H:%M:%S%:z')"
 	sed -i "s/__CURRENT_DATE/${current_date}/" $f;

@@ -55,6 +55,9 @@ katex:
 jekyll_tidy:
     compress_html: false
 
+emoji:
+    src: "/assets/img"
+
 plugins:
     - jekyll-feed
     - jekyll-tidy
@@ -64,6 +67,7 @@ plugins:
     - liquid_pluralize
     - jekyll-git_metadata
     - jekyll-seo-tag
+    - jemoji
 
 # Defaults. IF you want to change the exclude make sure you keep those sane defaults
 exclude:
