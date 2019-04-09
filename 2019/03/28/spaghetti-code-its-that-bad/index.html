@@ -5,8 +5,27 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="author" content="Alessandro 'kLeZ' Accardo" />
-    <title>Alessandro 'kLeZ' Accardo personal website - Spaghetti Code: It's **that** bad</title>
+    <!-- Begin Jekyll SEO tag v2.6.0 -->
+    <title>Spaghetti Code: It’s that bad | Alessandro ‘kLeZ’ Accardo personal website</title>
+    <meta name="generator" content="Jekyll v3.8.5" />
+    <meta property="og:title" content="Spaghetti Code: It’s that bad" />
+    <meta name="author" content="kLeZ" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="Ho sempre lottato contro le cattive pratiche, chi mi conosce lo sa. Ho sempre parteggiato per il codice di qualità, con la forte convinzione che questo possa essere un vantaggio strategico per il progetto e l’azienda che ne è proprietaria. Proprio per questi motivi ancora oggi, da 12 anni, non riesco a comprendere perché certi project owners abbiano sempre l’idea di risparmiare il budget dello sviluppo tagliando sulla qualità. Che poi risparmiare sulla qualità non significa niente, non è che a comando siccome ti pagano di meno puoi fare un lavoro schifoso. E infatti, per forzare il programmatore a produrre codice schifoso spingono sul fattore tempo (che è sempre poco)." />
+    <meta property="og:description" content="Ho sempre lottato contro le cattive pratiche, chi mi conosce lo sa. Ho sempre parteggiato per il codice di qualità, con la forte convinzione che questo possa essere un vantaggio strategico per il progetto e l’azienda che ne è proprietaria. Proprio per questi motivi ancora oggi, da 12 anni, non riesco a comprendere perché certi project owners abbiano sempre l’idea di risparmiare il budget dello sviluppo tagliando sulla qualità. Che poi risparmiare sulla qualità non significa niente, non è che a comando siccome ti pagano di meno puoi fare un lavoro schifoso. E infatti, per forzare il programmatore a produrre codice schifoso spingono sul fattore tempo (che è sempre poco)." />
+    <link rel="canonical" href="https://klez.me/2019/03/28/spaghetti-code-its-that-bad/" />
+    <meta property="og:url" content="https://klez.me/2019/03/28/spaghetti-code-its-that-bad/" />
+    <meta property="og:site_name" content="Alessandro ‘kLeZ’ Accardo personal website" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-03-28T13:25:43+01:00" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="Spaghetti Code: It’s that bad" />
+    <meta name="twitter:site" content="@kLeZhAcK" />
+    <meta name="twitter:creator" content="@kLeZhAcK" />
+    <script type="application/ld+json">
+      {"headline":"Spaghetti Code: It’s that bad","dateModified":"2019-03-28T13:25:43+01:00","datePublished":"2019-03-28T13:25:43+01:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2019/03/28/spaghetti-code-its-that-bad/"},"url":"https://klez.me/2019/03/28/spaghetti-code-its-that-bad/","author":{"@type":"Person","name":"kLeZ"},"description":"Ho sempre lottato contro le cattive pratiche, chi mi conosce lo sa. Ho sempre parteggiato per il codice di qualità, con la forte convinzione che questo possa essere un vantaggio strategico per il progetto e l’azienda che ne è proprietaria. Proprio per questi motivi ancora oggi, da 12 anni, non riesco a comprendere perché certi project owners abbiano sempre l’idea di risparmiare il budget dello sviluppo tagliando sulla qualità. Che poi risparmiare sulla qualità non significa niente, non è che a comando siccome ti pagano di meno puoi fare un lavoro schifoso. E infatti, per forzare il programmatore a produrre codice schifoso spingono sul fattore tempo (che è sempre poco).","@context":"https://schema.org"}
+    </script>
+    <!-- End Jekyll SEO tag -->
     <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
     <link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" />
@@ -67,7 +86,10 @@
         </div>
       </div>
     </nav>
-    <main class="container pt-3 pb-3" aria-label="Content">
+    <aside class="sticky-top float-left ml-5 mt-5 bg-light px-3 border rounded-lg border-dark shadow" style="max-width: 15rem;">
+      <p class="text-muted">This article will take 6 minutes to read.</p>
+    </aside>
+    <main class="container py-3" aria-label="Content">
       <article itemscope itemtype="http://schema.org/BlogPosting">
         <header>
           <h2>Spaghetti Code: It&#39;s **that** bad</h2>
@@ -94,22 +116,31 @@
           <p>Beh, c’è qualche caso limite, pure qui da uno che può permettersi di raccontare <a href="https://signalvnoise.com/posts/3856-the-big-rewrite-revisited">la sua personale storia</a> di <em>Rewrite from Scratch</em> in cui però la battaglia l’ha vinta. Alla fine parliamo di <strong>DHH</strong> a.k.a. <em>David Hansson</em>, CTO e cofondatore di Basecamp, un altro autorevole, per avere il contraddittorio, alla fine.</p>
           <p>Il punto però è un altro: tu puoi anche riscrivere il software, ma il tuo <em>cono di incertezza</em> ti porterà a sbagliare la stima di almeno un fattore di 4.<br />
             La buona soluzione in caso si voglia pensare a un <em>Big Rewrite</em> in realtà è non riscrivere il software ma correggerlo iterativamente. Questo ci porta al passo successivo.</p>
-          <p>#CATCH</p>
+          <h1 id="catch">CATCH</h1>
           <h2 id="regole-di-base">Regole di base</h2>
           <p>Prima fra tutte le regole: segui attentamente e senza eccezioni questo elenco, è veramente l’unico modo per uscire, molto lentamente ma efficacemente, dallo <em>spaghetti code</em>.</p>
           <h3 id="la-regola-del-boy-scout">La regola del <em>boy scout</em></h3>
-          <blockquote>
-            <p>Lascia il bosco in cui sei stato <strong>meglio</strong> di come l’hai trovato</p>
-          </blockquote>
+          <div class="premonition citation">
+            <div class="fas fa-quote-left"></div>
+            <blockquote class="content blockquote">
+              <p>Lascia il bosco in cui sei stato <strong>meglio</strong> di come l’hai trovato</p>
+            </blockquote>
+          </div>
           <p>Ogni volta che trovi un pezzo di codice brutto, mentre modifichi una funzione o una struttura, effettua un <em>refactoring</em>, correggi quel codice, <strong>può fare solo bene a te, al software e al team</strong>.</p>
           <p>E non credere a chi ti dice che il tempo di fare <em>refactoring</em> non c’è (anche se questo è il tuo capo), il <em>refactoring</em> è parte integrante del lavoro di sviluppo, esattamente come i test di base e la compilazione: va fatto sempre e comunque, come quando vai al bagno dopo pranzo.</p>
-          <blockquote>
-            <p>Il <em>refactoring</em> è parte integrante del lavoro di sviluppo, esattamente come i test di base e la compilazione</p>
-          </blockquote>
+          <div class="premonition citation">
+            <div class="fas fa-quote-left"></div>
+            <blockquote class="content blockquote">
+              <p>Il <em>refactoring</em> è parte integrante del lavoro di sviluppo, esattamente come i test di base e la compilazione</p>
+            </blockquote>
+          </div>
           <h3 id="scrivi-degli-unit-test">Scrivi degli Unit Test</h3>
-          <blockquote>
-            <p>Metti in quarantena lo <em>spaghetti code</em></p>
-          </blockquote>
+          <div class="premonition citation">
+            <div class="fas fa-quote-left"></div>
+            <blockquote class="content blockquote">
+              <p>Metti in quarantena lo <em>spaghetti code</em></p>
+            </blockquote>
+          </div>
           <p>Per ogni funzione o struttura che vai a modificare, è facile creare degli <em>unit test</em> che possono darti la sicurezza che ti serve su cosa fa effettivamente il modulo che hai di fronte.</p>
           <p>I vantaggi sono molti:</p>
           <ul>
@@ -120,9 +151,12 @@
           <p>Dal punto di vista del management, lasciarti fare questi test a loro farà <strong>guadagnare tempo e soldi</strong>, mi spiego subito.</p>
           <p>Guadagneranno tempo perché essendo tu più confidente nella stima delle modifiche (perché avrai degli <em>unit test</em> che ti aiuteranno a non introdurre altri difetti) sarai più spesso <em>on time</em>, come piace dirlo a loro, cioè all’interno della stima.</p>
           <p>Guadagneranno soldi perché l’applicazione continuerà a produrre valore mentre diventerà via via più semplice da modificare, e diventerà anche più veloce da modificare il che permetterà loro di stanziare meno budget per le modifiche di quanto avrebbero fatto prima, potendolo reinvestire in altre modifiche e aumentando ancora il valore dell’applicazione.</p>
-          <blockquote>
-            <p>Insomma, il <em>refactoring</em> è uno strumento saggio per aumentare la produttività del team, <strong>un buon manager deve</strong> non solo accettarlo, ma <strong>consigliarlo</strong>.</p>
-          </blockquote>
+          <div class="premonition citation">
+            <div class="fas fa-quote-left"></div>
+            <blockquote class="content blockquote">
+              <p>Insomma, il <em>refactoring</em> è uno strumento saggio per aumentare la produttività del team, <strong>un buon manager deve</strong> non solo accettarlo, ma <strong>consigliarlo</strong>.</p>
+            </blockquote>
+          </div>
           <h3 id="concentrati-sulla-qualità-e-sulla-semplicità">Concentrati sulla qualità e sulla semplicità</h3>
           <p>Mantieni semplici le tue funzioni, ovunque la logica comincia a diventare distorta o confusa spendi tempo per spezzare i metodi e renderli più leggibili.</p>
           <p>Attieniti sotto alle 20 righe di codice per ogni funzione, ma sarebbe meglio che le istruzioni fossero ancora meno, e se puoi evita le diramazioni.</p>
@@ -131,11 +165,11 @@
           <div class="language-javascript highlighter-rouge">
             <div class="highlight">
               <pre class="highlight"><code><span class="kd">function</span> <span class="nx">turn</span><span class="p">(</span><span class="nx">isOn</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">if</span> <span class="p">(</span><span class="nx">isOn</span><span class="p">)</span> <span class="p">{</span>
-		<span class="c1">// turn on the lightbulb</span>
-	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-		<span class="c1">// turn off the lightbulb</span>
-	<span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isOn</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// turn on the lightbulb</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// turn off the lightbulb</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
             </div>
@@ -146,11 +180,11 @@
           <div class="language-javascript highlighter-rouge">
             <div class="highlight">
               <pre class="highlight"><code><span class="kd">function</span> <span class="nx">turnOn</span><span class="p">()</span> <span class="p">{</span>
-	<span class="c1">// turn on the lightbulb</span>
+    <span class="c1">// turn on the lightbulb</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">turnOff</span><span class="p">()</span> <span class="p">{</span>
-	<span class="c1">// turn off the lightbulb</span>
+    <span class="c1">// turn off the lightbulb</span>
 <span class="p">}</span>
 </code></pre>
             </div>
@@ -158,9 +192,12 @@
           <h2 id="segui-lo-zio-bob">Segui lo Zio Bob</h2>
           <p>C’è sempre la possibilità di seguire le parole dei grandi luminari del proprio settore, uno tra questi nel <em>nostro</em> settore è <a href="https://blog.cleancoder.com/">Robert “<em>Uncle Bob</em>” Martin</a>.</p>
           <p><em>Uncle Bob</em> fa un’analogia perfetta per spiegare l’importanza della qualità.</p>
-          <blockquote>
-            <p>Pensa alla cena: puoi cucinare più velocemente se eviti di lavare i piatti. Alla fine però, rimarrai a corto di piatti. Lasciarli da una parte ora significa solo che dovrai lavarli dopo, oppure puoi “appaltare” questo lavoro andando a cena fuori, che però costa molto di più che cucinare a casa.</p>
-          </blockquote>
+          <div class="premonition citation">
+            <div class="fas fa-quote-left"></div>
+            <blockquote class="content blockquote">
+              <p>Pensa alla cena: puoi cucinare più velocemente se eviti di lavare i piatti. Alla fine però, rimarrai a corto di piatti. Lasciarli da una parte ora significa solo che dovrai lavarli dopo, oppure puoi “appaltare” questo lavoro andando a cena fuori, che però costa molto di più che cucinare a casa.</p>
+            </blockquote>
+          </div>
           <h2 id="alcuni-consigli-per-fare-refactoring-e-per-scrivere-buon-codice">Alcuni consigli per fare <em>refactoring</em> e per scrivere buon codice</h2>
           <ul>
             <li>Le funzioni dovrebbero avere un nome che descrive esattamente cosa fanno
@@ -206,14 +243,17 @@
           <h1 id="finally">FINALLY</h1>
           <p>In conclusione, si può sempre tornare indietro da una situazione a <em>spaghetti code</em>, si può sempre decidere di migliorare le cose piuttosto che adattarsi passivamente al caos.</p>
           <p>Il mio consiglio è di non demordere in presenza di software di questo tipo, e portare avanti l’idea di un software migliore ignorando chi ci dice che non è possibile o i manager che ci “spiegano” che il tempo per questi miglioramenti <em>cosmetici</em> non c’è.</p>
-          <blockquote>
-            <p>Fate <em>refactoring</em>, non fate spaghetti.</p>
-            <footer><cite>kLeZ</cite></footer>
-          </blockquote>
+          <div class="premonition citation">
+            <div class="fas fa-quote-left"></div>
+            <blockquote class="content blockquote">
+              <p>Fate <em>refactoring</em>, non fate spaghetti.</p>
+              <footer class="blockquote-footer"><cite title="kLeZ">kLeZ</cite></footer>
+            </blockquote>
+          </div>
         </section>
         <a href="/2019/03/28/spaghetti-code-its-that-bad/" hidden></a>
       </article>
-      <p class="m-0 invisible zero-size">
+      <p class="mx-0 mb-0 mt-5 invisible zero-size">
         <a href="" class="invisible" id="comments">comments</a>
       </p>
       <h3>Comments</h3>
@@ -293,7 +333,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2019-04-05T16:59:26+02:00">Fri, 05 Apr 2019 16:59:26 +0200</time></small>
+            <small class="text-muted">Last build on <time datetime="2019-04-09T14:57:16+02:00">Tue, 09 Apr 2019 14:57:16 +0200</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
