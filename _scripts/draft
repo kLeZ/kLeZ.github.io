@@ -1,0 +1,8 @@
+#!/bin/bash
+
+title="$@"
+safe_title=$(echo $title | tr '[:upper:]' '[:lower:]' | tr '[ \t]' '-' | tr -cd '[^a-z0-9-+_.]')
+echo $safe_title
+
+cp _templates/post.md _drafts/$safe_title.md
+sed -i "s/title: /title: \"$title\"/" _drafts/$safe_title.md

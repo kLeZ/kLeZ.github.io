@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e # halt script on error
 
+chmod +x emojis
+./emojis
+
 if [[ $CI == "true" ]]; then
 	tee _data/travis.yml <<EOF
 last_commit:
