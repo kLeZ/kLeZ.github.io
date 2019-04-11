@@ -26,8 +26,16 @@ Alcune volte però sono molto fermo sulle mie idee, prevalentemente perché non 
 
 Tra le mie idee ce n'è una marxista, che a volte ritorna prepotentemente: **i salari alti sono un male**.
 
-Non mi definirei propriamente anti-capitalista, anche se il capitalismo non mi piace per niente, perché da pragmatico credo che  per ammazzare il capitalismo ci sia bisogno di uno sforzo enorme da parte di tutto il pianeta, e da pessimista cosmico (solo perché osservatore attento) vedo che è utopistico credere che l'intero pianeta sia in grado di uno sforzo così grande.
+Non mi definirei propriamente anti-capitalista, anche se il capitalismo non mi piace per niente, perché da pragmatico credo che  per ammazzare il capitalismo ci sia bisogno di uno sforzo enorme da parte di tutto il pianeta, e da sfiduciato verso l'umanità (solo perché osservatore attento) vedo che è utopistico credere che l'intero pianeta sia in grado di uno sforzo così grande.
 
-Gli anni '90 ci hanno "regalato" un mondo senza lotte, ma senza neanche la voglia di lottare.
+Gli anni '90 ci hanno "regalato" un mondo senza lotte, ma senza neanche la capacità, la voglia di lottare. E questo fa si che siamo obiettivamente la generazione più debole e manipolabile della storia contemporanea.
+
+Quel che è peggio, lo siamo nonostante un accesso così ampio alla cultura. Anche i nostri nonni con la 3ª elementare si accorgerebbero della forte manipolazione che subiamo e saprebbero lottare di più e meglio.
+
+Questo mi porta a una considerazione: oggi come oggi non siamo in grado di resistere con forza, ma possiamo fare dei piccoli passi e preparare la strada a chi verrà dopo di noi e (si spera) di voglia di lottare ne avrà di più.
+
+## La povertà
+
+
 
 [wikipedia]: https://it.wikipedia.org/wiki/Socrate
