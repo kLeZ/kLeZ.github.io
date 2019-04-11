@@ -1,7 +1,7 @@
 ---
 title: "Sull'inevitabilità e lo stato"
 tags: filosofia marx welfare
-##date: __CURRENT_DATE
+date: 2019-04-11 17:48:42+02:00
 ---
 
 Ogni tanto parto col *pippone* filosofico, ormai lo sai. Questo è uno di quei momenti.
