@@ -13,7 +13,13 @@
 		<main class="container-fluid" aria-label="Content">
 			<div class="row">
 				<div class="col-lg-2 col-md-12">
-					{%- include post-sidebar.html layout=page.layout content=content -%}
+					{% if page.layout == 'post' %}
+					<aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
+						<p class="text-muted">
+							This article will take {{ content | reading_time | pluralize: "minute" }} to read.
+						</p>
+					</aside>
+					{% endif %}
 				</div>
 				<div class="col-lg-8 col-md-12">
 					{{ content }}

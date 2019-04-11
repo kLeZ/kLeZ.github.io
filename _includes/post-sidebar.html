@@ -1,5 +1,0 @@
-{% if include.layout == 'post' %}
-<aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
-	<p class="text-muted">This article will take {{ include.content | reading_time | pluralize: "minute" }} to read.</p>
-</aside>
-{% endif %}
