@@ -128,7 +128,6 @@ DEPENDENCIES
   kramdown
   liquid_pluralize
   liquid_reading_time
-  tzinfo-data
 
 BUNDLED WITH
    1.16.1
