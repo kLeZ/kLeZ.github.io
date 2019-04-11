@@ -1,6 +1,9 @@
 ---
 title: "Git submodules: una feature spettacolare e sottovalutata"
-tags: 
+tags:
+    - best practice
+    - git
+    - modularity
 date: 2019-04-11 08:07:47+02:00
 ---
 

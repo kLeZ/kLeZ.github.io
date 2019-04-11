@@ -10,9 +10,15 @@
 	<body class="{{ classes }}">
 		{% include header.html %}
 		{% include navbar.html items=site.data.navigation %}
-		{%- include post-sidebar.html layout=page.layout content=content -%}
-		<main class="container py-3" aria-label="Content">
-			{{ content }}
+		<main class="container-fluid" aria-label="Content">
+			<div class="row">
+				<div class="col-lg-2 col-md-12">
+					{%- include post-sidebar.html layout=page.layout content=content -%}
+				</div>
+				<div class="col-lg-8 col-md-12">
+					{{ content }}
+				</div>
+			</div>
 			<div class="row justify-content-end text-right">
 				<div class="col-6">
 					<a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page">
