@@ -86,62 +86,71 @@
         </div>
       </div>
     </nav>
-    <main class="container py-3" aria-label="Content">
-      <article itemscope itemtype="http://schema.org/BlogPosting">
-        <header>
-          <h2>LFS ovvero come crearsi la propria distro GNU/Linux da zero</h2>
-          <small class="text-muted">Posted on
-            <time datetime="2010-03-29T12:44:42+02:00" itemprop="datePublished">29 Mar 2010</time><span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
-        </header>
-        <section itemprop="articleBody">
-          <p>Salve a tutti,
-            Oggi m’è venuto in mente un progetto che non molto tempo fa stavo abbandonando, il mio personale LFS. L’avevo iniziato col mio amico di vecchia data ma poi per impegni universitari non ha più avuto tempo di proseguire la cosa, quindi per ora vado da solo ma sono sicuro che appena avrà un momento libero mi aiuterà.</p>
-          <!--more-->
-          <p class="m-0 invisible zero-size">
-            <a class="invisible" id="read-more">read more</a>
+    <main class="container-fluid" aria-label="Content">
+      <div class="row">
+        <div class="col-lg-2 col-md-12">
+          <aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
+            <p class="text-muted">This article will take 2 minutes to read.</p>
+          </aside>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <article itemscope itemtype="http://schema.org/BlogPosting">
+            <header>
+              <h2>LFS ovvero come crearsi la propria distro GNU/Linux da zero</h2>
+              <small class="text-muted">Posted on
+                <time datetime="2010-03-29T12:44:42+02:00" itemprop="datePublished">29 Mar 2010</time><span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
+            </header>
+            <section itemprop="articleBody">
+              <p>Salve a tutti,
+                Oggi m’è venuto in mente un progetto che non molto tempo fa stavo abbandonando, il mio personale LFS. L’avevo iniziato col mio amico di vecchia data ma poi per impegni universitari non ha più avuto tempo di proseguire la cosa, quindi per ora vado da solo ma sono sicuro che appena avrà un momento libero mi aiuterà.</p>
+              <!--more-->
+              <p class="m-0 invisible zero-size">
+                <a class="invisible" id="read-more">read more</a>
+              </p>
+              <p>LFS è l’acronimo per Linux From Scratch tradotto Linux da Zero. Cioè mi scarico i sorgenti dei tool GNU mi scarico il sorgente del kernel e mi compilo tutto a mano.
+                L’utilità se sei un utilizzatore è praticamente inesistente ma se vuoi creare una distro è un ottimo punto di partenza per creare qualcosa di mai visto prima, altrimenti la mia idea è che tanto poi se ti basi su una distro finisci per rifare il vestito a quella distro e a cambiargli le mutande poi per il resto è sempre lei.
+                Faccio un esempio di quello che dico: immaginate due amici con la passione per l’informatica e in particolare per linux che decidono di darsi battaglia per la creazione di una distro. Uno dei due si basa su openSuSE e inizia già col sistema precompilato, gli RPM il server X già configurato ecc ecc. L’altro invece decide di partire da zero e si scarica il manuale di linux from scratch e tutti i sorgenti. Dopo due mesi di lungo lavoro i due decidono di installare le due distro su un portatile in dual boot e di portarle al loro professore di sistemi operativi dell’università. Il professore notando e valutando i due sistemi probabilmente dirà: “Bravi ragazzi sono entrambe buone distro, solo un paio di cose avrei da puntualizzarvi: (ragazzo suse) tu hai creato una bella distro complimenti stabile veloce sicura… ma mi sembra di aver già visto le sue caratteristiche in openSuSE non sarà basata proprio su quella? (ragazzo LFS) Ottimo bravo è velocissima ma il sistema in se è un po’ vecchiotto, effettivamente questo la rende molto stabile ma non ti interessano le ultime versioni dei software? Comunque complimenti le caratteristiche della tua distro non le ho riconosciute in nessun’altra quindi immagino che tu debba ricevere un ulteriore plauso per aver compilato tutto a mano. Bravi ragazzi complimenti!”.
+                Ecco questo piccolo dialogo (monologo per la verità) era per spiegarvi il perché mi butto in un’avventura come questa ricca di difficoltà ma anche di insegnamenti utili e esperienza.</p>
+              <p>Beh dato che non ho ancora cominciato a compilare Torvalds, Tanembaum e Stallman direi che è meglio finirla qui con questo Nerd Attack (si si leggetelo come un Art Attack) e cominciare veramente l’avventura!</p>
+              <p>Ciao ciao a tutti,
+                kLeZ.</p>
+            </section>
+            <a href="/2010/03/29/lfs-ovvero-come-crearsi-la-propria-distro-gnulinux-da-zero/" hidden></a>
+          </article>
+          <p class="mx-0 mb-0 mt-5 invisible zero-size">
+            <a href="" class="invisible" id="comments">comments</a>
           </p>
-          <p>LFS è l’acronimo per Linux From Scratch tradotto Linux da Zero. Cioè mi scarico i sorgenti dei tool GNU mi scarico il sorgente del kernel e mi compilo tutto a mano.
-            L’utilità se sei un utilizzatore è praticamente inesistente ma se vuoi creare una distro è un ottimo punto di partenza per creare qualcosa di mai visto prima, altrimenti la mia idea è che tanto poi se ti basi su una distro finisci per rifare il vestito a quella distro e a cambiargli le mutande poi per il resto è sempre lei.
-            Faccio un esempio di quello che dico: immaginate due amici con la passione per l’informatica e in particolare per linux che decidono di darsi battaglia per la creazione di una distro. Uno dei due si basa su openSuSE e inizia già col sistema precompilato, gli RPM il server X già configurato ecc ecc. L’altro invece decide di partire da zero e si scarica il manuale di linux from scratch e tutti i sorgenti. Dopo due mesi di lungo lavoro i due decidono di installare le due distro su un portatile in dual boot e di portarle al loro professore di sistemi operativi dell’università. Il professore notando e valutando i due sistemi probabilmente dirà: “Bravi ragazzi sono entrambe buone distro, solo un paio di cose avrei da puntualizzarvi: (ragazzo suse) tu hai creato una bella distro complimenti stabile veloce sicura… ma mi sembra di aver già visto le sue caratteristiche in openSuSE non sarà basata proprio su quella? (ragazzo LFS) Ottimo bravo è velocissima ma il sistema in se è un po’ vecchiotto, effettivamente questo la rende molto stabile ma non ti interessano le ultime versioni dei software? Comunque complimenti le caratteristiche della tua distro non le ho riconosciute in nessun’altra quindi immagino che tu debba ricevere un ulteriore plauso per aver compilato tutto a mano. Bravi ragazzi complimenti!”.
-            Ecco questo piccolo dialogo (monologo per la verità) era per spiegarvi il perché mi butto in un’avventura come questa ricca di difficoltà ma anche di insegnamenti utili e esperienza.</p>
-          <p>Beh dato che non ho ancora cominciato a compilare Torvalds, Tanembaum e Stallman direi che è meglio finirla qui con questo Nerd Attack (si si leggetelo come un Art Attack) e cominciare veramente l’avventura!</p>
-          <p>Ciao ciao a tutti,
-            kLeZ.</p>
-        </section>
-        <a href="/2010/03/29/lfs-ovvero-come-crearsi-la-propria-distro-gnulinux-da-zero/" hidden></a>
-      </article>
-      <p class="mx-0 mb-0 mt-5 invisible zero-size">
-        <a href="" class="invisible" id="comments">comments</a>
-      </p>
-      <h3>Comments</h3>
-      <form method="post" action="https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/dev/comments/">
-        <input name="options[redirect]" type="hidden" value="https://klez.me/2010/03/29/lfs-ovvero-come-crearsi-la-propria-distro-gnulinux-da-zero/#comments">
-        <input name="options[slug]" type="hidden" value="lfs-ovvero-come-crearsi-la-propria-distro-gnulinux-da-zero">
-        <div class="form-row">
-          <div class="col form-group">
-            <input type="text" id="username" name="fields[name]" class="form-control" placeholder="username" required="true" />
-          </div>
-          <div class="col form-group">
-            <input type="email" id="email" name="fields[email]" class="form-control" placeholder="email adress (will not be published)" required="true" />
-          </div>
-          <div class="col form-group">
-            <input type="text" id="url" name="fields[url]" class="form-control" placeholder="website url" />
-          </div>
+          <h3>Comments</h3>
+          <form method="post" action="https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/dev/comments/">
+            <input name="options[redirect]" type="hidden" value="https://klez.me/2010/03/29/lfs-ovvero-come-crearsi-la-propria-distro-gnulinux-da-zero/#comments">
+            <input name="options[slug]" type="hidden" value="lfs-ovvero-come-crearsi-la-propria-distro-gnulinux-da-zero">
+            <div class="form-row">
+              <div class="col form-group">
+                <input type="text" id="username" name="fields[name]" class="form-control" placeholder="username" required="true" />
+              </div>
+              <div class="col form-group">
+                <input type="email" id="email" name="fields[email]" class="form-control" placeholder="email adress (will not be published)" required="true" />
+              </div>
+              <div class="col form-group">
+                <input type="text" id="url" name="fields[url]" class="form-control" placeholder="website url" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col form-group">
+                <textarea id="message" name="fields[message]" rows="3" class="form-control" placeholder="comment to this post" required="true"></textarea>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-sm-12 col-md-3 col-lg-2 form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+              <div class="col form-group">
+                <div class="alert alert-warning d-block small">New comments will be shown after moderation approval</div>
+              </div>
+            </div>
+          </form>
         </div>
-        <div class="form-row">
-          <div class="col form-group">
-            <textarea id="message" name="fields[message]" rows="3" class="form-control" placeholder="comment to this post" required="true"></textarea>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-sm-12 col-md-3 col-lg-2 form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-          <div class="col form-group">
-            <div class="alert alert-warning d-block small">New comments will be shown after moderation approval</div>
-          </div>
-        </div>
-      </form>
+      </div>
       <div class="row justify-content-end text-right">
         <div class="col-6">
           <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page">
@@ -190,7 +199,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2019-04-11T11:19:32+02:00">Thu, 11 Apr 2019 11:19:32 +0200</time></small>
+            <small class="text-muted">Last build on <time datetime="2019-04-11T14:39:52+02:00">Thu, 11 Apr 2019 14:39:52 +0200</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>

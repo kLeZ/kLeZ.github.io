@@ -86,86 +86,95 @@
         </div>
       </div>
     </nav>
-    <main class="container py-3" aria-label="Content">
-      <article itemscope itemtype="http://schema.org/BlogPosting">
-        <header>
-          <h2>Primo post da smartphone</h2>
-          <small class="text-muted">Posted on
-            <time datetime="2019-02-15T20:53:10+01:00" itemprop="datePublished">15 Feb 2019</time><span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
-        </header>
-        <section itemprop="articleBody">
-          <p>Questo post viene direttamente dallo smartphone. Neanche uno particolarmente moddato, né tanto meno sono stato così “<em>hacky</em>” da portarmi dietro un ambiente ruby+jekyll.<br />
-            Ma allora come ho fatto? L’ho compilato sul PC per poi pubblicarlo?<br />
-            No! Ovviamente. Altrimenti che lo scriverei a fare: i post servono per raccontare qualcosa di nuovo o di diverso, le banalità ci vergogniamo a pubblicarle (per fortuna!).</p>
-          <!--more-->
-          <p class="m-0 invisible zero-size">
-            <a class="invisible" id="read-more">read more</a>
+    <main class="container-fluid" aria-label="Content">
+      <div class="row">
+        <div class="col-lg-2 col-md-12">
+          <aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
+            <p class="text-muted">This article will take 4 minutes to read.</p>
+          </aside>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <article itemscope itemtype="http://schema.org/BlogPosting">
+            <header>
+              <h2>Primo post da smartphone</h2>
+              <small class="text-muted">Posted on
+                <time datetime="2019-02-15T20:53:10+01:00" itemprop="datePublished">15 Feb 2019</time><span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
+            </header>
+            <section itemprop="articleBody">
+              <p>Questo post viene direttamente dallo smartphone. Neanche uno particolarmente moddato, né tanto meno sono stato così “<em>hacky</em>” da portarmi dietro un ambiente ruby+jekyll.<br />
+                Ma allora come ho fatto? L’ho compilato sul PC per poi pubblicarlo?<br />
+                No! Ovviamente. Altrimenti che lo scriverei a fare: i post servono per raccontare qualcosa di nuovo o di diverso, le banalità ci vergogniamo a pubblicarle (per fortuna!).</p>
+              <!--more-->
+              <p class="m-0 invisible zero-size">
+                <a class="invisible" id="read-more">read more</a>
+              </p>
+              <h2 id="lidea">L’idea</h2>
+              <p>Ieri è stato il <strong>Free Software Day</strong>, non sapevo che lo fosse, per me è sempre stato <em>San Valentino</em>, come per tutti.<br />
+                Invece l’amata <a href="https://fsfe.org">FSFE</a> ha tirato fuori dal cilindro una iniziativa interessante e stimolante, a cui ho voluto partecipare nel mio piccolo: il Free Software Day.<br />
+                Si trattava (o almeno è stato così per me) di esprimere il tuo <em>amore</em> verso gli sviluppatori dei software che utilizzi, sostanzialmente come avviene per San Valentino. Un piccolo gesto per te ma, e lo dico da sviluppatore, enorme per chi sviluppa, dal punto di vista della motivazione.<br />
+                Ovviamente la buona FSFE ha messo a disposizione i propri mezzi e dei bellissimi artwork per l’evento. La missione era di condividere uno degli artwork con un link al sito dell’iniziativa <a href="https://ilovefs.org">#ilovefs</a> sul proprio sito o blog o <em>whatever</em> e poi ribaltarlo sui social media per aumentare l’audience.<br />
+                Ma io non avevo un sito, un blog si ma inutilizzato da tempo.</p>
+              <p>Da qui l’idea: mi faccio il sito.<br />
+                Si ma come? Dove? Quanto tempo ci metto?<br />
+                Non wordpress, altrimenti tanto valeva rispolverare il blog <em>“elettronicamente tuo”</em>, e non mi andava.<br />
+                Quindi ho pensato: GitHub permette <strong>a gratis</strong> di avere un sito statico presso di loro, completamente <em>ridondato</em> e versionato (ovviamente) con <strong>git</strong>. Ma deve essere statico. E quindi la primissima versione (che potete anche andare a trovare, visto che è tutto sotto VCS) era una index.html con una banale struttura HTML 5 e - <em>udite udite</em> - <strong>bootstrap 4.3</strong>, del quale sono rimasto piacevolmente sorpreso quando ho appreso che quel poco di CSS che pensavo di dover scrivere (e che avevo scritto) non serviva assolutamente a nulla.<br />
+                Quindi il mio bellissimo (si fa per dire) omaggio al free software l’ho dato tramite la pubblicazione FI questa semplice quanto efficace paginetta su GitHub Pages.</p>
+              <h2 id="il-restyling">Il restyling</h2>
+              <p>Oggi però, terminato lo scopo della giornata di festa, ho deciso di dare a questo <em>attrezzo</em> una struttura più “degna”: in fondo è sempre il mio sito personale. Allora mi è venuto in mente un mio vecchio progettino di studio lasciato a morire nei meandri del mio PC. Tentavo di capire cosa fosse e come funzionasse Jekyll, un generatore statico, e come mi capita pressoché ogni volta avevo deciso di comprendere facendo.<br />
+                Però avere un sito statico non mi è mai piaciuto: hai sempre necessità di un PC per modificare e pubblicare, perché che tu lo voglia o no scrivere codice su un dispositivo diverso dal PC <em>fa schifo</em>. E io spesso ho possibilità di scrivere qualcosa, buttare giù i miei pensieri, condividere qualcosa, solo durante il viaggio casa-lavoro che passo sui mezzi. E in quel tragitto ho solo uno smartphone, non un PC. Quindi da pigro e amante del concetto di cross-device fino alla morte, ho cercato una soluzione che mi permettesse di scrivere dallo smartphone, esattamente quello che sto facendo ora.</p>
+              <h2 id="fase-finale">Fase finale</h2>
+              <p>Il sistema scelto è <a href="https://GitHub.com">GitHub</a> + <a href="https://jekyllrb.com">Jekyll</a> + <a href="https://travis-ci.org">TravisCI</a>.<br />
+                TravisCI mi ha permesso di coprire <em>l’ultimo miglio</em>, cioè la parte in cui c’è un aggiornamento nel markdown gestito da Jekyll (aggiungo un post, ad esempio) e il sito statico viene rigenerato e pubblicato. E ci ho messo molto poco a mettere in piedi la baracca.<br />
+                Lato “server” siamo pronti! Abbiamo un sito pubblico (grazie a GitHub), abbiamo un motore che processa documenti semplici e li traduce in pagine HTML ben formate e con un aspetto grafico omogeneo (Jekyll) e abbiamo un meccanismo automatico che si sveglia quando <em>sente</em> le modifiche, genera tutto e pubblica sul sito (TravisCI).</p>
+              <h2 id="i-client">I client</h2>
+              <p>È quasi superfluo parlare del PC, tecnicamente sono sufficienti git e emacs, per comodità posso usare Visual Studio Code (<em>per quanto sia prodotto da Microsoft e per quanto sia un’app electron, è veramente un ottimo prodotto</em>), ma non è il PC che è interessante.<br />
+                Sullo smartphone (Android, e solo con <a href="https://f-droid.org/">f-droid</a> a disposizione) ho installato <a href="https://manichord.com/projects/mgit.html">MGit</a>, un ottimo client git con cui posso comunicare con GitHub per scaricare il sorgente del sito per poi modificarlo e caricarlo aggiornato su GitHub pronto per TravisCI, e <a href="https://gsantner.net/project/markor.html">Markor</a>, un ottimo editor markdown che posso usare per scrivere.<br />
+                Il flusso è questo:</p>
+              <ol>
+                <li>Sincronizzo la mia copia di sviluppo con GitHub</li>
+                <li>Creo un nuovo file markdown dove mi serve (si lavora sempre sul branche <strong>dev</strong>)</li>
+                <li>Finito l’editing del testo, salvo faccio il commit delle modifiche e carico tutto su GitHub.</li>
+                <li>TravisCI fa la magia e dopo qualche secondo ho tutto online</li>
+              </ol>
+              <p>Forse, e dico forse, il post è finito e posso pubblicare, questo è il flusso anche se ci sono delle cose che vanno migliorate, come la possibilità di auto popolare un header vuoto per ogni post. E ancora non ho esplorato le possibilità di modifica del layout di Jekyll.</p>
+              <p>A presto altri aggiornamenti.</p>
+            </section>
+            <a href="/2019/02/15/primo-post-da-smartphone/" hidden></a>
+          </article>
+          <p class="mx-0 mb-0 mt-5 invisible zero-size">
+            <a href="" class="invisible" id="comments">comments</a>
           </p>
-          <h2 id="lidea">L’idea</h2>
-          <p>Ieri è stato il <strong>Free Software Day</strong>, non sapevo che lo fosse, per me è sempre stato <em>San Valentino</em>, come per tutti.<br />
-            Invece l’amata <a href="https://fsfe.org">FSFE</a> ha tirato fuori dal cilindro una iniziativa interessante e stimolante, a cui ho voluto partecipare nel mio piccolo: il Free Software Day.<br />
-            Si trattava (o almeno è stato così per me) di esprimere il tuo <em>amore</em> verso gli sviluppatori dei software che utilizzi, sostanzialmente come avviene per San Valentino. Un piccolo gesto per te ma, e lo dico da sviluppatore, enorme per chi sviluppa, dal punto di vista della motivazione.<br />
-            Ovviamente la buona FSFE ha messo a disposizione i propri mezzi e dei bellissimi artwork per l’evento. La missione era di condividere uno degli artwork con un link al sito dell’iniziativa <a href="https://ilovefs.org">#ilovefs</a> sul proprio sito o blog o <em>whatever</em> e poi ribaltarlo sui social media per aumentare l’audience.<br />
-            Ma io non avevo un sito, un blog si ma inutilizzato da tempo.</p>
-          <p>Da qui l’idea: mi faccio il sito.<br />
-            Si ma come? Dove? Quanto tempo ci metto?<br />
-            Non wordpress, altrimenti tanto valeva rispolverare il blog <em>“elettronicamente tuo”</em>, e non mi andava.<br />
-            Quindi ho pensato: GitHub permette <strong>a gratis</strong> di avere un sito statico presso di loro, completamente <em>ridondato</em> e versionato (ovviamente) con <strong>git</strong>. Ma deve essere statico. E quindi la primissima versione (che potete anche andare a trovare, visto che è tutto sotto VCS) era una index.html con una banale struttura HTML 5 e - <em>udite udite</em> - <strong>bootstrap 4.3</strong>, del quale sono rimasto piacevolmente sorpreso quando ho appreso che quel poco di CSS che pensavo di dover scrivere (e che avevo scritto) non serviva assolutamente a nulla.<br />
-            Quindi il mio bellissimo (si fa per dire) omaggio al free software l’ho dato tramite la pubblicazione FI questa semplice quanto efficace paginetta su GitHub Pages.</p>
-          <h2 id="il-restyling">Il restyling</h2>
-          <p>Oggi però, terminato lo scopo della giornata di festa, ho deciso di dare a questo <em>attrezzo</em> una struttura più “degna”: in fondo è sempre il mio sito personale. Allora mi è venuto in mente un mio vecchio progettino di studio lasciato a morire nei meandri del mio PC. Tentavo di capire cosa fosse e come funzionasse Jekyll, un generatore statico, e come mi capita pressoché ogni volta avevo deciso di comprendere facendo.<br />
-            Però avere un sito statico non mi è mai piaciuto: hai sempre necessità di un PC per modificare e pubblicare, perché che tu lo voglia o no scrivere codice su un dispositivo diverso dal PC <em>fa schifo</em>. E io spesso ho possibilità di scrivere qualcosa, buttare giù i miei pensieri, condividere qualcosa, solo durante il viaggio casa-lavoro che passo sui mezzi. E in quel tragitto ho solo uno smartphone, non un PC. Quindi da pigro e amante del concetto di cross-device fino alla morte, ho cercato una soluzione che mi permettesse di scrivere dallo smartphone, esattamente quello che sto facendo ora.</p>
-          <h2 id="fase-finale">Fase finale</h2>
-          <p>Il sistema scelto è <a href="https://GitHub.com">GitHub</a> + <a href="https://jekyllrb.com">Jekyll</a> + <a href="https://travis-ci.org">TravisCI</a>.<br />
-            TravisCI mi ha permesso di coprire <em>l’ultimo miglio</em>, cioè la parte in cui c’è un aggiornamento nel markdown gestito da Jekyll (aggiungo un post, ad esempio) e il sito statico viene rigenerato e pubblicato. E ci ho messo molto poco a mettere in piedi la baracca.<br />
-            Lato “server” siamo pronti! Abbiamo un sito pubblico (grazie a GitHub), abbiamo un motore che processa documenti semplici e li traduce in pagine HTML ben formate e con un aspetto grafico omogeneo (Jekyll) e abbiamo un meccanismo automatico che si sveglia quando <em>sente</em> le modifiche, genera tutto e pubblica sul sito (TravisCI).</p>
-          <h2 id="i-client">I client</h2>
-          <p>È quasi superfluo parlare del PC, tecnicamente sono sufficienti git e emacs, per comodità posso usare Visual Studio Code (<em>per quanto sia prodotto da Microsoft e per quanto sia un’app electron, è veramente un ottimo prodotto</em>), ma non è il PC che è interessante.<br />
-            Sullo smartphone (Android, e solo con <a href="https://f-droid.org/">f-droid</a> a disposizione) ho installato <a href="https://manichord.com/projects/mgit.html">MGit</a>, un ottimo client git con cui posso comunicare con GitHub per scaricare il sorgente del sito per poi modificarlo e caricarlo aggiornato su GitHub pronto per TravisCI, e <a href="https://gsantner.net/project/markor.html">Markor</a>, un ottimo editor markdown che posso usare per scrivere.<br />
-            Il flusso è questo:</p>
-          <ol>
-            <li>Sincronizzo la mia copia di sviluppo con GitHub</li>
-            <li>Creo un nuovo file markdown dove mi serve (si lavora sempre sul branche <strong>dev</strong>)</li>
-            <li>Finito l’editing del testo, salvo faccio il commit delle modifiche e carico tutto su GitHub.</li>
-            <li>TravisCI fa la magia e dopo qualche secondo ho tutto online</li>
-          </ol>
-          <p>Forse, e dico forse, il post è finito e posso pubblicare, questo è il flusso anche se ci sono delle cose che vanno migliorate, come la possibilità di auto popolare un header vuoto per ogni post. E ancora non ho esplorato le possibilità di modifica del layout di Jekyll.</p>
-          <p>A presto altri aggiornamenti.</p>
-        </section>
-        <a href="/2019/02/15/primo-post-da-smartphone/" hidden></a>
-      </article>
-      <p class="mx-0 mb-0 mt-5 invisible zero-size">
-        <a href="" class="invisible" id="comments">comments</a>
-      </p>
-      <h3>Comments</h3>
-      <form method="post" action="https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/dev/comments/">
-        <input name="options[redirect]" type="hidden" value="https://klez.me/2019/02/15/primo-post-da-smartphone/#comments">
-        <input name="options[slug]" type="hidden" value="primo-post-da-smartphone">
-        <div class="form-row">
-          <div class="col form-group">
-            <input type="text" id="username" name="fields[name]" class="form-control" placeholder="username" required="true" />
-          </div>
-          <div class="col form-group">
-            <input type="email" id="email" name="fields[email]" class="form-control" placeholder="email adress (will not be published)" required="true" />
-          </div>
-          <div class="col form-group">
-            <input type="text" id="url" name="fields[url]" class="form-control" placeholder="website url" />
-          </div>
+          <h3>Comments</h3>
+          <form method="post" action="https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/dev/comments/">
+            <input name="options[redirect]" type="hidden" value="https://klez.me/2019/02/15/primo-post-da-smartphone/#comments">
+            <input name="options[slug]" type="hidden" value="primo-post-da-smartphone">
+            <div class="form-row">
+              <div class="col form-group">
+                <input type="text" id="username" name="fields[name]" class="form-control" placeholder="username" required="true" />
+              </div>
+              <div class="col form-group">
+                <input type="email" id="email" name="fields[email]" class="form-control" placeholder="email adress (will not be published)" required="true" />
+              </div>
+              <div class="col form-group">
+                <input type="text" id="url" name="fields[url]" class="form-control" placeholder="website url" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col form-group">
+                <textarea id="message" name="fields[message]" rows="3" class="form-control" placeholder="comment to this post" required="true"></textarea>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-sm-12 col-md-3 col-lg-2 form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+              <div class="col form-group">
+                <div class="alert alert-warning d-block small">New comments will be shown after moderation approval</div>
+              </div>
+            </div>
+          </form>
         </div>
-        <div class="form-row">
-          <div class="col form-group">
-            <textarea id="message" name="fields[message]" rows="3" class="form-control" placeholder="comment to this post" required="true"></textarea>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-sm-12 col-md-3 col-lg-2 form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-          <div class="col form-group">
-            <div class="alert alert-warning d-block small">New comments will be shown after moderation approval</div>
-          </div>
-        </div>
-      </form>
+      </div>
       <div class="row justify-content-end text-right">
         <div class="col-6">
           <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page">
@@ -214,7 +223,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2019-04-11T11:19:32+02:00">Thu, 11 Apr 2019 11:19:32 +0200</time></small>
+            <small class="text-muted">Last build on <time datetime="2019-04-11T14:39:52+02:00">Thu, 11 Apr 2019 14:39:52 +0200</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>

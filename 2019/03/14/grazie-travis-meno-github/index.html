@@ -86,68 +86,77 @@
         </div>
       </div>
     </nav>
-    <main class="container py-3" aria-label="Content">
-      <article itemscope itemtype="http://schema.org/BlogPosting">
-        <header>
-          <h2>Grazie Travis CI, meno grazie a GitHub</h2>
-          <small class="text-muted">Posted on
-            <time datetime="2019-03-14T20:05:00+01:00" itemprop="datePublished">14 Mar 2019</time><span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
-        </header>
-        <section itemprop="articleBody">
-          <p>Sta sera ho quasi avuto il <em>panico</em>, quello che si prova quando <strong>sminchi</strong><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> produzione, quello che hai quando sai di averla fatta te la <em>cazzata</em>, il commit maledetto che non ci doveva stare.</p>
-          <!--more-->
-          <p class="m-0 invisible zero-size">
-            <a class="invisible" id="read-more">read more</a>
+    <main class="container-fluid" aria-label="Content">
+      <div class="row">
+        <div class="col-lg-2 col-md-12">
+          <aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
+            <p class="text-muted">This article will take 1 minute to read.</p>
+          </aside>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <article itemscope itemtype="http://schema.org/BlogPosting">
+            <header>
+              <h2>Grazie Travis CI, meno grazie a GitHub</h2>
+              <small class="text-muted">Posted on
+                <time datetime="2019-03-14T20:05:00+01:00" itemprop="datePublished">14 Mar 2019</time><span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
+            </header>
+            <section itemprop="articleBody">
+              <p>Sta sera ho quasi avuto il <em>panico</em>, quello che si prova quando <strong>sminchi</strong><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> produzione, quello che hai quando sai di averla fatta te la <em>cazzata</em>, il commit maledetto che non ci doveva stare.</p>
+              <!--more-->
+              <p class="m-0 invisible zero-size">
+                <a class="invisible" id="read-more">read more</a>
+              </p>
+              <p>Fortunatamente Travis CI è un ottimo prodotto. GitHub Pages lo è un po’ meno.</p>
+              <p>Non sapere il perché la build fallisce <strong>dentro GitHub</strong>, perché lui comunque effettua una build del tuo sito già bello e costruito dal buon Travis, non è una bella cosa, lo è ancora meno quando cerchi l’informazione e non la trovi.</p>
+              <p>Si perché se c’è una cosa che ci insegnano da piccoli a noi informatici è che devi cercare i log per capire cosa non va. E i log non c’erano, nemmeno l’ombra. Maledetto, mi dici che ti fallisce la build e non mi dici perché.</p>
+              <p>A questo punto ho avuto l’illuminazione: posso escludere GitHub dalla build e fargli mangiare il sito già cotto da TravisCI? Fortunatamente la risposta a questa domanda era si, GitHub permette di pubblicare siti statici direttamente su master.<br />
+                Quindi potevo semplicemente riconfigurare TravisCI in modo da fargli fare il deploy solo della cartella di output e non di tutto il repo come facevo prima.</p>
+              <p>1 a 1 palla al centro, che dalla mia parte ho avuto un buon assist di TravisCI ma un pessimo autogol di GitHub.</p>
+              <p>Anche oggi produzione è salva e mi sono meritato la cena, buona notte.</p>
+              <div class="footnotes">
+                <ol>
+                  <li id="fn:1">
+                    <p><strong>sminchiare</strong>: termine tecnico del vocabolario informatico che indica l’operazione di rompere inesorabilmente e completamente l’ambiente di produzione <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+                  </li>
+                </ol>
+              </div>
+            </section>
+            <a href="/2019/03/14/grazie-travis-meno-github/" hidden></a>
+          </article>
+          <p class="mx-0 mb-0 mt-5 invisible zero-size">
+            <a href="" class="invisible" id="comments">comments</a>
           </p>
-          <p>Fortunatamente Travis CI è un ottimo prodotto. GitHub Pages lo è un po’ meno.</p>
-          <p>Non sapere il perché la build fallisce <strong>dentro GitHub</strong>, perché lui comunque effettua una build del tuo sito già bello e costruito dal buon Travis, non è una bella cosa, lo è ancora meno quando cerchi l’informazione e non la trovi.</p>
-          <p>Si perché se c’è una cosa che ci insegnano da piccoli a noi informatici è che devi cercare i log per capire cosa non va. E i log non c’erano, nemmeno l’ombra. Maledetto, mi dici che ti fallisce la build e non mi dici perché.</p>
-          <p>A questo punto ho avuto l’illuminazione: posso escludere GitHub dalla build e fargli mangiare il sito già cotto da TravisCI? Fortunatamente la risposta a questa domanda era si, GitHub permette di pubblicare siti statici direttamente su master.<br />
-            Quindi potevo semplicemente riconfigurare TravisCI in modo da fargli fare il deploy solo della cartella di output e non di tutto il repo come facevo prima.</p>
-          <p>1 a 1 palla al centro, che dalla mia parte ho avuto un buon assist di TravisCI ma un pessimo autogol di GitHub.</p>
-          <p>Anche oggi produzione è salva e mi sono meritato la cena, buona notte.</p>
-          <div class="footnotes">
-            <ol>
-              <li id="fn:1">
-                <p><strong>sminchiare</strong>: termine tecnico del vocabolario informatico che indica l’operazione di rompere inesorabilmente e completamente l’ambiente di produzione <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-              </li>
-            </ol>
-          </div>
-        </section>
-        <a href="/2019/03/14/grazie-travis-meno-github/" hidden></a>
-      </article>
-      <p class="mx-0 mb-0 mt-5 invisible zero-size">
-        <a href="" class="invisible" id="comments">comments</a>
-      </p>
-      <h3>Comments</h3>
-      <form method="post" action="https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/dev/comments/">
-        <input name="options[redirect]" type="hidden" value="https://klez.me/2019/03/14/grazie-travis-meno-github/#comments">
-        <input name="options[slug]" type="hidden" value="grazie-travis-meno-github">
-        <div class="form-row">
-          <div class="col form-group">
-            <input type="text" id="username" name="fields[name]" class="form-control" placeholder="username" required="true" />
-          </div>
-          <div class="col form-group">
-            <input type="email" id="email" name="fields[email]" class="form-control" placeholder="email adress (will not be published)" required="true" />
-          </div>
-          <div class="col form-group">
-            <input type="text" id="url" name="fields[url]" class="form-control" placeholder="website url" />
-          </div>
+          <h3>Comments</h3>
+          <form method="post" action="https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/dev/comments/">
+            <input name="options[redirect]" type="hidden" value="https://klez.me/2019/03/14/grazie-travis-meno-github/#comments">
+            <input name="options[slug]" type="hidden" value="grazie-travis-meno-github">
+            <div class="form-row">
+              <div class="col form-group">
+                <input type="text" id="username" name="fields[name]" class="form-control" placeholder="username" required="true" />
+              </div>
+              <div class="col form-group">
+                <input type="email" id="email" name="fields[email]" class="form-control" placeholder="email adress (will not be published)" required="true" />
+              </div>
+              <div class="col form-group">
+                <input type="text" id="url" name="fields[url]" class="form-control" placeholder="website url" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col form-group">
+                <textarea id="message" name="fields[message]" rows="3" class="form-control" placeholder="comment to this post" required="true"></textarea>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-sm-12 col-md-3 col-lg-2 form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+              <div class="col form-group">
+                <div class="alert alert-warning d-block small">New comments will be shown after moderation approval</div>
+              </div>
+            </div>
+          </form>
         </div>
-        <div class="form-row">
-          <div class="col form-group">
-            <textarea id="message" name="fields[message]" rows="3" class="form-control" placeholder="comment to this post" required="true"></textarea>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-sm-12 col-md-3 col-lg-2 form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-          <div class="col form-group">
-            <div class="alert alert-warning d-block small">New comments will be shown after moderation approval</div>
-          </div>
-        </div>
-      </form>
+      </div>
       <div class="row justify-content-end text-right">
         <div class="col-6">
           <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page">
@@ -196,7 +205,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2019-04-11T11:19:32+02:00">Thu, 11 Apr 2019 11:19:32 +0200</time></small>
+            <small class="text-muted">Last build on <time datetime="2019-04-11T14:39:52+02:00">Thu, 11 Apr 2019 14:39:52 +0200</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
