@@ -1,5 +1,8 @@
 #!/bin/bash
 
+chmod +x _scripts/emojis
+./_scripts/emojis
+
 for f in `ls _drafts/*.md`;
 do
 	current_date="$(date '+%Y-%m-%d %H:%M:%S%:z')"

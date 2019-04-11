@@ -3,8 +3,9 @@ title: Alessandro 'kLeZ' Accardo personal website
 description: >-
     This is the personal website of an Italian developer once called 'kLeZ'.
 baseurl: ""
-url: "https://klez.me"
+url: https://klez.me
 copyright: Copyright © Alessandro 'kLeZ' Accardo 2019
+repo: https://github.com/kLeZ/kLeZ.github.io
 build:
     server: https://travis-ci.org/kLeZ/kLeZ.github.io
     status: https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev

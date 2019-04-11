@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e # halt script on error
 
-chmod +x emojis
-./emojis
+chmod +x _scripts/emojis
+./_scripts/emojis
 
 if [[ $CI == "true" ]]; then
 	tee _data/travis.yml <<EOF
