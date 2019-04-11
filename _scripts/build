@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e # halt script on error
 
-chmod +x _scripts/emojis
-./_scripts/emojis
-
 if [[ $CI == "true" ]]; then
 	tee _data/travis.yml <<EOF
 last_commit:
@@ -19,6 +16,8 @@ EOF
 	bundle exec jekyll build
 	bundle exec htmlproofer ./_site --disable-external
 else
+	chmod +x _scripts/emojis
+	./_scripts/emojis
 	cat _data/travis.yml
 	echo -e "\n"
 	bundle exec jekyll build --drafts --trace
