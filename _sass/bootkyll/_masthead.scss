@@ -22,9 +22,11 @@
 header.masthead {
 	// TIP: Background images are set within the HTML using inline CSS!
 	margin-bottom: 10px;
+
 	@media only screen and (min-width: 768px) {
 		margin-bottom: 50px;
 	}
+
 	background: no-repeat center center;
 	background-color: $gray-600;
 	background-attachment: scroll;
@@ -58,7 +60,16 @@ header.masthead {
 		text-align: center;
 
 		h1 {
-			font-size: 50px;
+			font-size: 48px;
+
+			@media only screen and (min-width: 576px) {
+				font-size: 50px;
+			}
+
+			@media only screen and (min-width: 768px) {
+				font-size: 80px;
+			}
+
 			margin-top: 0;
 		}
 
@@ -70,12 +81,6 @@ header.masthead {
 			margin: 10px 0 0;
 
 			@include sans-serif-font;
-		}
-
-		@media only screen and (min-width: 768px) {
-			h1 {
-				font-size: 80px;
-			}
 		}
 	}
 

@@ -105,18 +105,19 @@ Provo a fare una lista ordinata dal livello lavorativo più basso al più alto, 
 
 I salari per livello si intendono in euro, con un spesa per l'azienda pari al 100% del netto e comprendono 13 mensilità.
 
-| Livello | Mansione | PNG[^1] | Mensile | RAL[^2] |
-|----|---|---|---|---|
-| 1  | Operaio | 40 | 1040 | 27040 |
-| 2  | Operaio specializzato | 50 | 1300 | 33800 |
-| 3  | Operaio capo | 60 | 1560 | 40560 |
-| 4  | Impiegato | 70 | 1820 | 47320 |
-| 5  | Impiegato specializzato | 80 | 2080 | 54080 |
-| 6  | Impiegato capo | 90 | 2340 | 60840 |
-| 7  | Quadro | 100 | 2600 | 67600 |
-| 8  | Manager | 110 | 2860 | 74360 |
-| 9  | Direttore | 120 | 3120 | 81120 |
-| 10 | Presidente | 130 | 3380 | 87880 |
+{: .table .table-striped .table-responsive-sm }
+| Livello | Mansione                | PNG[^1] | Mensile | RAL[^2] |
+| ------- | ----------------------- | ------- | ------- | ------- |
+| 1       | Operaio                 | 40      | 1040    | 27040   |
+| 2       | Operaio specializzato   | 50      | 1300    | 33800   |
+| 3       | Operaio capo            | 60      | 1560    | 40560   |
+| 4       | Impiegato               | 70      | 1820    | 47320   |
+| 5       | Impiegato specializzato | 80      | 2080    | 54080   |
+| 6       | Impiegato capo          | 90      | 2340    | 60840   |
+| 7       | Quadro                  | 100     | 2600    | 67600   |
+| 8       | Manager                 | 110     | 2860    | 74360   |
+| 9       | Direttore               | 120     | 3120    | 81120   |
+| 10      | Presidente              | 130     | 3380    | 87880   |
 
 Vedi anche tu che si comprendono bene le più naturali casistiche italiane, con 10 livelli di cui 3 + 1 manageriali, e la paga giornaliera è calcolata sulla base di un'ipotetica azienda come AMA (che non è piccola).
 

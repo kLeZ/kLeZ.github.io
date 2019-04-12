@@ -2,6 +2,7 @@
 layout: page
 title: Build information
 service: true
+permalink: /build.html
 ---
 {%- assign repo = site.data.navigation | where: "title", "Repository" -%}
 {% include build-data.html commit=site.git.last_commit build=site.data.travis url=repo.first.url %}
