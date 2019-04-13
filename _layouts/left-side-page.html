@@ -1,0 +1,16 @@
+---
+layout: page
+---
+<div class="row my-5">
+	<div class="col-4">
+		<img alt="Personal Photo" title="Personal Photo" src="{{ page.left_image }}" class="rounded-circle w-100" />
+	</div>
+	<div class="col-8">
+		{{ page.right_content | markdownify }}
+	</div>
+</div>
+<div class="row my-5">
+	<div class="col">
+		{{ content }}
+	</div>
+</div>
