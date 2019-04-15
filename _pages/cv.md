@@ -15,6 +15,9 @@ right_content: >-
     Attualmente ricopro i ruoli di Senior Developer, Team Leader, Solutions Architect presso [Key 2 Business](http://www.key2.it/).
     
     
+    #### [Contattami](/contatti)
+    
+    
 ---
 
 ## Carriera
@@ -123,55 +126,69 @@ Ho lavorato per 3 mesi come **sviluppatore Java** in un progetto per il **Minist
 ---
 {: .my-5 .bg-success }
 
-* Ambienti Operativi:
-  * Windows
-  * Linux
-  * Android
+## Sistemi Operativi
 
-* Linguaggi:
-  * Java
-  * C#
-  * C/C++
-  * Ruby
-  * PHP
-  * Python
-  * Perl
-  * JavaScript
-  * HTML5
-  * CSS3
-  * VB
-  * VB.NET
+{: .table .table-striped .table-responsive-sm }
+| OS      | Proficiency |
+| ------- | ----------- |
+| Windows | Expert      |
+| Linux   | Expert      |
+| Android | Expert      |
 
-* Dati:
-  * XML
-  * JSON
-  * SQL
-  * T-SQL
-  * PL/SQL
-  * Hibernate
-  * Entity Framework
+## Linguaggi
 
-* Basi Dati:
+{: .table .table-striped .table-responsive-sm }
+| Linguaggio | Proficiency  |
+| ---------- | ------------ |
+| Java       | Expert       |
+| C#         | Expert       |
+| C/C++      | Intermediate |
+| Ruby       | Intermediate |
+| PHP        | Intermediate |
+| Python     | Intermediate |
+| Perl       | Intermediate |
+| JavaScript | Expert       |
+| HTML5      | Expert       |
+| CSS3       | Expert       |
+| VB         | Intermediate |
+| VB.NET     | Intermediate |
+| SQL        | Expert       |
+
+<div class="row">
+<div class="col" markdown="1">
+
+* **Basi Dati**:
   * SQL Server
   * MySQL
   * PostgreSQL
   * Oracle
 
-* Framework Web:
+</div>
+<div class="col" markdown="1">
+
+* **Framework Web**:
   * Struts
   * Ruby On Rails
   * ASP.NET MVC
   * ASP.NET WebForms
+  * ReactJS
 
-* Application Server:
+</div>
+<div class="col" markdown="1">
+
+* **Application Server**:
   * IIS
   * Jboss
   * Tomcat
   * WebSphere
   * Glassfish
   * Apache
+  * Express
 
-* Librerie e Framework vari:
+</div>
+<div class="col" markdown="1">
+
+* **Librerie e Framework vari**:
   * WCF
   * WPF
   * UWP
@@ -188,3 +205,9 @@ Ho lavorato per 3 mesi come **sviluppatore Java** in un progetto per il **Minist
   * Chart
   * Jquery UI
   * Android
+  * Hibernate
+  * NHibernate
+  * Entity Framework
+
+</div>
+</div>
