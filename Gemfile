@@ -8,7 +8,6 @@ group :jekyll_plugins do
   gem "jekyll-feed"
   gem "jekyll-tidy"
   gem "jekyll-katex"
-  gem "jekyll-postfiles"
   gem "liquid_reading_time"
   gem "liquid_pluralize"
   gem "jekyll-git_metadata"

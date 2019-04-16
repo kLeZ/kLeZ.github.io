@@ -63,7 +63,6 @@ plugins:
     - jekyll-feed
     - jekyll-tidy
     - jekyll-katex
-    - jekyll-postfiles
     - liquid_reading_time
     - liquid_pluralize
     - jekyll-git_metadata
