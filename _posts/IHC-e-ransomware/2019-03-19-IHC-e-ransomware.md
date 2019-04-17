@@ -83,7 +83,7 @@ Con la possibilità di leggere e scrivere liberamente (perfino autorizzati legal
 ## Final thoughts: *dati a rischio, la causa è l'anello debole (ovviamente)*
 
 {: .text-center }
-![AIDS-Trojan]({% link /media/2019-03-19/ihc-e-ransomware/AIDS-Trojan.jpg %}){: .img-fluid }
+![AIDS-Trojan](AIDS-Trojan.jpg){: .img-fluid }
 
 Non siamo nuovi a questa minaccia, la cui prima apparizione risale addirittura al 1989, anno in cui il Dott. Popp, *evolutionary biologist* della Harvard University, inviò **20.000 floppy** disk ad alcuni partecipanti alla conferenza internazionale sull'AIDS. Il malware è stato ovviamente soprannominato *The AIDS Trojan* e *PC Cyborg*, per la tecnica di ingegneria sociale usata per lo *spreading*.
 
@@ -104,9 +104,9 @@ Il pdf è disponibile previa registrazione, motivo per cui pur avendolo non poss
 * [MalwareBytes - Malwarebytes Annual State of Malware Report Reveals Ransomware Detections Increased More Than 90 Percent](https://press.malwarebytes.com/2018/01/25/malwarebytes-annual-state-malware-report-reveals-ransomware-detections-increased-90-percent/)
 * [2017 Ransomware Trend Report and Forecast for 2018](https://blog.360totalsecurity.com/en/2017-ransomware-trend-report-2018-forecast/)
 
-## Il talk per intero (grazie @IvoErMejo) e le slide a corredo
+## Il talk per intero (grazie @IvoErMejo e @Koji76) e le slide a corredo
 
-[Ransomware: minaccia alle stelle]({% link /media/2019-03-19/ihc-e-ransomware/ransomware.odp %})
+[Ransomware: minaccia alle stelle](ransomware.odp)
 
 {: .embed-responsive-16by9 }
 {% include embed-youtube.html video_id="svUxYlMNtLw" %}
