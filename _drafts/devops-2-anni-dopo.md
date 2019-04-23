@@ -33,3 +33,5 @@ In modo poco fantasioso, il *Dev* è lo sviluppatore [dall'inglese, developer], 
 Dall'altro lato l'*Ops* (a cui è stato cambiato nome) è il sistemista o l'operatore [la traduzione non è letterale, Ops sta per operations], cioè colui che segue l'operatività del software e dell'infrastruttura che lo contorna.
 
 Al di là dei termini molto *markettari* che si usano e degli strumenti di sviluppo e di controllo esistenti, questa metodologia aiuta a riorganizzare la squadra di lavoro, definire ruoli ben precisi che sono cardine attivo della metodologia, e di fatto a rendere più efficiente e a "oliare" gli ingranaggi del lavoro quotidiano della produzione di software.
+
+Per come la vedo io, adottando questa metodologia di lavoro l'azienda stessa acquisisce un processo standard e stabile, delle procedure e una nomenclatura conosciuta, e questo aiuta molto a ridurre la frizione quando nuovo personale (sia esso impiegato o dirigente) entra in azienda.
