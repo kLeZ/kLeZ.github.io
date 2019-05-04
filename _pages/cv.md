@@ -1,5 +1,5 @@
 ---
-layout: left-side-page
+layout: profile-page
 title: Alessandro Accardo
 permalink: /cv/
 left_image: /assets/cv-photo.jpeg
