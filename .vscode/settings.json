@@ -1,4 +1,5 @@
 {
-	"python.linting.pylintEnabled": true,
-	"python.linting.enabled": true
+	"command-runner.commands": {
+		"Bundle Install": "bundle install"
+	}
 }

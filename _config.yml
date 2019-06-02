@@ -63,12 +63,12 @@ plugins:
     - jekyll-feed
     - jekyll-tidy
     - jekyll-katex
-    - jekyll-postfiles
     - liquid_reading_time
     - liquid_pluralize
     - jekyll-git_metadata
     - jekyll-seo-tag
     - jemoji
+    - jekyll-postfiles
 
 # Defaults. IF you want to change the exclude make sure you keep those sane defaults
 exclude:

@@ -1,10 +1,10 @@
-<div class="card">
+<div class="card my-3">
 	<div class="card-body">
 		<h5 class="card-title">{{ include.title }}</h5>
 		<h6 class="card-subtitle mb-2 text-muted">{{ include.subtitle }}</h6>
-		<p class="card-text">{{ include.content }}</p>
+		<p class="card-text">{{ include.content | markdownify }}</p>
 	</div>
 	<div class="card-footer text-muted">
-		{{ include.footer }}
+		{{ include.footer | markdownify | replace: '<p>', '<p class="my-0">' }}
 	</div>
 </div>

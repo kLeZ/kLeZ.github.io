@@ -5,4 +5,22 @@ service: true
 permalink: /build.html
 ---
 {%- assign repo = site.data.navigation | where: "title", "Repository" -%}
-{% include build-data.html commit=site.git.last_commit build=site.data.travis url=repo.first.url %}
+{%- assign commit = site.git.last_commit -%}
+<div class="row">
+	<div class="col-md-6 col-sm-12">
+		<h3>Commit Info</h3>
+		<small class="text-muted">
+			<a href="{{ repo.first.url }}/commit/{{ commit.long_sha }}" target="_blank">{{ commit.short_sha }}</a> on
+			<time datetime="{{ commit.commit_date | date_to_xmlschema }}">{{ commit.commit_date | date_to_string }}</time>
+		</small>
+		{{ commit.message | markdownify }}
+	</div>
+	<div class="col-md-6 col-sm-12">
+		<h3>Build</h3>
+		<blockquote>
+			<a href="{{ include.build.build.url }}">
+				{{ site.data.travis.build.number }} <sup>({{ site.data.travis.build.id }})</sup>
+			</a>
+		</blockquote>
+	</div>
+</div>
