@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Begin Jekyll SEO tag v2.6.0 -->
+    <title>FLOSSness di una distro Android | Alessandro ‘kLeZ’ Accardo personal website</title>
+    <meta name="generator" content="Jekyll v3.8.5" />
+    <meta property="og:title" content="FLOSSness di una distro Android" />
+    <meta name="author" content="kLeZ" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="Da molto tempo ormai sono un utilizzatore di Android in versioni alternative alle ROM cosiddette stock. Ora, dopo parecchio tempo passato a valutare la situazione, sono pronto per dare il mio giudizio sullo stato di salute di progetti FLOSS che possono regalarci un po’ di open source nella nostra vita quotidiana al fianco del nostro smartphone." />
+    <meta property="og:description" content="Da molto tempo ormai sono un utilizzatore di Android in versioni alternative alle ROM cosiddette stock. Ora, dopo parecchio tempo passato a valutare la situazione, sono pronto per dare il mio giudizio sullo stato di salute di progetti FLOSS che possono regalarci un po’ di open source nella nostra vita quotidiana al fianco del nostro smartphone." />
+    <link rel="canonical" href="https://klez.me/2019/05/27/flossness-di-una-distro-android/" />
+    <meta property="og:url" content="https://klez.me/2019/05/27/flossness-di-una-distro-android/" />
+    <meta property="og:site_name" content="Alessandro ‘kLeZ’ Accardo personal website" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2019-05-27T20:37:41+02:00" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="FLOSSness di una distro Android" />
+    <meta name="twitter:site" content="@kLeZhAcK" />
+    <meta name="twitter:creator" content="@kLeZhAcK" />
+    <script type="application/ld+json">
+      {"headline":"FLOSSness di una distro Android","dateModified":"2019-05-27T20:37:41+02:00","datePublished":"2019-05-27T20:37:41+02:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2019/05/27/flossness-di-una-distro-android/"},"url":"https://klez.me/2019/05/27/flossness-di-una-distro-android/","author":{"@type":"Person","name":"kLeZ"},"description":"Da molto tempo ormai sono un utilizzatore di Android in versioni alternative alle ROM cosiddette stock. Ora, dopo parecchio tempo passato a valutare la situazione, sono pronto per dare il mio giudizio sullo stato di salute di progetti FLOSS che possono regalarci un po’ di open source nella nostra vita quotidiana al fianco del nostro smartphone.","@context":"https://schema.org"}
+    </script>
+    <!-- End Jekyll SEO tag -->
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/katex/katex.min.css" />
+    <link rel="stylesheet" href="/assets/main.css" />
+    <link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro 'kLeZ' Accardo personal website" />
+  </head>
+  <body class="">
+    <header class="masthead" style="background-image: url(/assets/img/home-bg.jpg)">
+      <div class="overlay"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Alessandro 'kLeZ' Accardo personal website</h1>
+              <span class="subheading">This is the personal website of an Italian developer once called 'kLeZ'.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="/">kLeZ</a>
+        <a class="navbar-brand" href="https://travis-ci.org/kLeZ/kLeZ.github.io" target="_blank">
+          <img src="https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev" alt="build status badge">
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/build.html">Build</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/blog">Posts</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About me <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="/about">About</a>
+                <a class="dropdown-item " href="/contatti">Contatti</a>
+                <a class="dropdown-item " href="/cv">Curriculum Vitae</a>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="https://github.com/kLeZ/kLeZ.github.io">Repository</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Progetti <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
+                <a class="dropdown-item " href="https://klez.me/PassMan">PassMan</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container-fluid" aria-label="Content">
+      <div class="row">
+        <div class="col-lg-2 col-md-12">
+          <aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
+            <p class="text-muted">
+              This article will take 6 minutes to read.
+            </p>
+          </aside>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <article itemscope itemtype="http://schema.org/BlogPosting">
+            <header>
+              <h2>FLOSSness di una distro Android</h2>
+              <small class="text-muted">Posted on
+                <time datetime="2019-05-27T20:37:41+02:00" itemprop="datePublished">27 May 2019</time><span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
+            </header>
+            <section itemprop="articleBody">
+              <p>Da molto tempo ormai sono un utilizzatore di <em>Android</em> in versioni alternative alle <em>ROM</em> cosiddette <em>stock</em>.</p>
+              <p>Ora, dopo parecchio tempo passato a valutare la situazione, sono pronto per dare il mio giudizio sullo stato di salute di progetti <em>FLOSS</em> che possono regalarci un po’ di <em>open source</em> nella nostra vita quotidiana al fianco del nostro <em>smartphone</em>.</p>
+              <!--more-->
+              <p class="m-0 invisible zero-size">
+                <a class="invisible" id="read-more">read more</a>
+              </p>
+              <h2 id="definizioni">Definizioni</h2>
+              <p>Comincio la trattazione definendo un paio di termini e concetti che ho usato qui sopra.</p>
+              <h3 id="cosè-una-rom">Cos’è una ROM</h3>
+              <p>Di fatto una ROM è un termine preso in prestito dal gergo “antico” dei firmware.</p>
+              <p>Una volta il firmware era in sola lettura per il dispositivo che lo eseguiva (<em>read-only</em>) e di conseguenza l’aggiornamento doveva essere eseguito forzando il chip a recepire una nuova scrittura tramite un apposito strumento chiamato “programmatore”.</p>
+              <div class="premonition info">
+                <div class="fa fa-info-circle"></div>
+                <div class="content">
+                  <p><em>ROM</em> quindi significa “<em>read-only memory</em>” cioè memoria in sola
+                    lettura. Parlo di gergo “antico” proprio perché ad oggi le
+                    memorie dei dispositivi “<em>embedded</em>” non sono più in sola
+                    lettura.</p>
+                </div>
+              </div>
+              <h3 id="cosè-il-floss">Cos’è il FLOSS</h3>
+              <div class="premonition info">
+                <div class="fa fa-info-circle"></div>
+                <div class="content">
+                  <p>Il termine è un acronimo che usa anche una parola che
+                    effettivamente non esiste nel vocabolario inglese
+                    e che si traduce a grandi linee con:<br>
+                    “<strong><em>Free Libre Open Source Software</em></strong>”.</p>
+                </div>
+              </div>
+              <p>In termini spiccioli parlo di tutto il software che non solo è <em>open source</em> (mi aspetto che tu sappia cos’è, altrimenti <a href="https://it.wikipedia.org/wiki/Open_source">sappilo</a>) ma anche libero, nei termini <em>free</em> <em>as in freedom</em>, rafforzato da una parola squisitamente presa in prestito dalle lingue neolatine, <em>libre</em> che vuol dire “libero”.</p>
+              <h2 id="la-piattaforma">La piattaforma</h2>
+              <div class="premonition citation">
+                <div class="fas fa-quote-left"></div>
+                <blockquote class="content blockquote">
+                  <p>Android non è solo Android.</p>
+                </blockquote>
+              </div>
+              <p>Il sistema che vedi ogni giorno non è un solo sistema, ma di fatto è più un <em>ecosistema</em>.</p>
+              <p>Probabilmente l’hai intuito già solo notando la grande diversità delle varie “incarnazioni” di Android, così come vengono chiamate da quegli orrendi giornalisti mediocri che di informatica, <em>open source</em> e <strong>Linux</strong> non ne sanno assolutamente nulla, e che con pochezza grammaticale reinventano un termine che invece esiste ed è di uso comune nell’ambito tecnico.</p>
+              <p>Il termine che da ora in poi userò, e che dovrai usare anche tu per onorare i poveri tecnici che ogni giorno dedicano la loro vita a costruire qualcosa con cui tu eventualmente puoi farti <em>selfie</em> da postare su <em>Instagram</em>, è “<em>distribuzione</em>”, o <em>distro</em> per gli amici.</p>
+              <h3 id="cosè-una-distribuzione">Cos’è una distribuzione</h3>
+              <p>Lo so che i <em>cos’è</em> rientrano tutti nella sezione appena conclusa, e so che questo è il paragrafo in cui si parla della ciccia, dopo aver chiarito il dizionario di base di comune accordo. Però è necessario spiegare cos’è una distribuzione, così ti sarà chiaro anche perché parlo di Android come piattaforma.</p>
+              <p>Una distribuzione è in linea di massima una selezione di software che concorrono a costituire un sistema operativo, più o meno completo nel software preinstallato.</p>
+              <p>Partendo dalla base, Android di fatto è un sistema basato su Linux, re troneggiante della definizione di “<em>distro</em>”, questo è il primo strato.</p>
+              <p>Lo strato successivo è il software di base per rendere questa <em>distro</em> Linux funzionante al minimo indispensabile per poter eseguire un programma, quindi dispositivo pienamente funzionante ma con solo un terminale a disposizione (in alcuni casi neanche quello).</p>
+              <p>Nello strato successivo troviamo tutta una serie di altri software specifici di Android, più una serie di librerie scritte appositamente per questa piattaforma, che vanno dalla configurazione del modem al processo che esegue le onnipresenti (e onnipotenti) Apps. Questo costituisce il sistema Android minimale, adatto solo a “partire” e visualizzare una scritta sullo schermo: “Hello world!”.</p>
+              <p>Sopra a questo strato minimo, che costituisce il sistema di base e il <em>Native Development Kit</em>, vengono poggiate tutte le Apps.<br>
+                Se ve lo steste chiedendo, anche l’intera interfaccia utente di Android è un’App, è quella che vedete nominata come “UI Sistema” o “System UI”.</p>
+              <p>Questo, al netto di molte altre cose che ho volutamente tralasciato per necessità prosastica, è quello che è contenuto nel progetto <em><a href="https://it.wikipedia.org/wiki/Android#Android_Open_Source_Project">AOSP</a></em>, l’<em>Android Open Source Project</em>.</p>
+              <p>AOSP, quindi, è la nostra Piattaforma nonché, volendo essere fiscali, anche una <em>distro</em> Linux.</p>
+              <p>I vari sistemi basati su AOSP che trovi installati sui dispositivi che teniamo sempre in tasca sono distribuzioni, o <em>distro</em>.</p>
+              <h2 id="definizione-di-flossness">Definizione di FLOSSness</h2>
+              <p>Ma cosa rende <em>FLOSS</em> una <em>distro</em> Android? In molti danno la loro personale definizione. Anche io voglio darne una, vorrei chiarire i punti su cui tutti sono d’accordo e vorrei aggiungere qualche punto che io ritengo fondamentale per evitare che questo sia l’ennesimo inno all’<em>open source</em> inutilizzabile che si trova spesso in giro.</p>
+              <p>Aderire ai principi <em>FLOSS</em> per una <em>distro</em> significa accettare che tutto il software installato nel dispositivo sia libero.</p>
+              <p>E già questo è estremamente complicato considerando anche solo i driver per tutto l’hardware proprietario che è contenuto nel dispositivo.</p>
+              <p>Per me però un dispositivo è veramente <em>FLOSS</em> solo quando anche i servizi che vengono invocati dalle app sono liberi, così come i sistemi operativi e le infrastrutture coinvolte.</p>
+              <p>E questo è <strong>impossibile</strong> a meno di mantenere la propria infrastruttura, costruirsi i propri <em>smartphone</em> e farlo solo con <a href="https://it.wikipedia.org/wiki/Hardware_libero">open hardware</a>.</p>
+              <h2 id="la-verità-sta-nel-merito">La verità sta nel <em>merito</em>
+</h2>
+              <p>Di solito direi che la verità sta nel mezzo. Ma in questo caso il mezzo è il compromesso, e il compromesso a mio modesto parere non è abbastanza soddisfacente per essere accettato.</p>
+              <p>Per mio limite accetto l’impossibilità di costruirmi e gestirmi l’hardware e il firmware, posso fare qualcosa solo da AOSP in su.<br>
+                Posto che AOSP è effettivamente <em>open source</em>, dovrei a questo punto essere in grado di definirmi soddisfatto della mia <em>non perfetta</em> FLOSSness. E invece no.</p>
+              <p>Perché AOSP da sola o <em>Lineage OS</em>, ex <em>Cyanogen Mod</em>, che seguo da sempre, o qualunque altra <em>distro open source</em> non sono molto utilizzabili così come sono.</p>
+              <p>La prima <em>feature</em> che manca, e davvero si sente tantissimo, è l’<em>App Store</em>, quella famosa app che magari non apri così spesso ma che ti serve necessariamente qualora tu voglia <strong>installare un’app</strong>. Ecco, diciamo che la <em>distro</em> si salva solo nel momento in cui le app che usi ogni giorno sono preinstallate, e normalmente non è così.</p>
+              <p>Mancano da morire anche i servizi di localizzazione; Si perché il GPS, che è un pezzettino di hardware da qualche parte nel tuo telefono, da solo sembra non essere sufficiente a garantire che i servizi di localizzazione funzionino a dovere. E ovviamente insieme ai servizi di localizzazione è persa anche l’app di navigazione e mappe.</p>
+              <p>Una delle <em>feature</em> più sottovalutate di sempre, e anche questa mancante ovviamente, è la sincronizzazione con un servizio di <em>Cloud Storage</em>; Chiaramente è mancante anche il servizio stesso.</p>
+              <p>Con molta fatica, negli anni sono riuscito a venire a capo di alcuni di questi punti, ma il merito della soluzione non è mio. La comunità in questi anni è stata piuttosto prolifica nella produzione di app per Android, una su tutte <a href="https://it.wikipedia.org/wiki/F-Droid">F-Droid</a> che pone le basi per una <em>community</em> Android <em>FLOSS</em> coesa e compatta nella creazione di una <em>distro</em> Android <strong>veramente</strong> <em>FLOSS</em>, quantomeno nel software.</p>
+              <p>Il mio <em>setup</em> di base comprende queste app:</p>
+              <ul>
+                <li><a href="https://f-droid.org/">F-Droid</a></li>
+                <li><a href="https://f-droid.org/packages/at.bitfire.davdroid/">DAVx<sup>5</sup></a></li>
+                <li><a href="https://f-droid.org/it/packages/org.sufficientlysecure.keychain/">OpenKeychain</a></li>
+                <li>
+<a href="https://f-droid.org/it/packages/com.zeapo.pwdstore/">Password Store</a> (su questa app ho aneddoti, arriveranno <img class="emoji" title=":grin:" alt=":grin:" src="/assets/img/emoji/unicode/1f601.png" height="20" width="20">)</li>
+                <li><a href="https://f-droid.org/it/packages/com.fsck.k9/">K9-Mail</a></li>
+                <li><a href="https://f-droid.org/it/packages/com.nextcloud.client/">Nextcloud</a></li>
+                <li><a href="https://f-droid.org/it/packages/net.gsantner.markor/">Markor</a></li>
+                <li><a href="https://f-droid.org/it/packages/com.manichord.mgit">MGit</a></li>
+              </ul>
+              <p>Queste e alcune altre app mi aiutano a non sentire (troppo) la mancanza di <em>BigG</em> &amp; co. e mi aiutano a rendere il mio <em>smartphone</em> qualcosa di utile piuttosto che renderlo un costoso soprammobile.</p>
+              <p>Purtroppo siamo ancora in una fase in cui quello che ho fatto io per avere qualcosa di effettivamente usabile richiede grossi sforzi di studio della materia e alcuni compromessi, accettando talvolta semplicemente di non poter fare qualcosa (pochissime operazioni, te lo assicuro, e spesso il motivo non è tecnologico ma etico).</p>
+              <h3 id="uno-spiraglio-di-luce-forse">Uno spiraglio di luce (forse)</h3>
+              <p>Fortunatamente alcuni altri <em>geek</em> come me si sono uniti per costruire qualcosa di usabile, qualcosa però che sia “pronto all’uso” piuttosto che l’ennesima ROM da “cucinare” e “solo per smanettoni”. Questo <em>team</em> ha come obiettivo ultimo una esperienza utente e una facilità di installazione appetibili per l’utente medio, mantenendo però la loro vocazione verso il software libero e la protezione della privacy. Questo include ovviamente l’erosione dei servizi Google in ogni punto del sistema e il passaggio a qualcosa di cui si possa avere più fiducia.</p>
+              <p>Non ne parlo oltre perché non ne voglio fare una sponsorizzazione, ma comunque sono vicino al progetto e ne sono anche un utente attivo.<br>
+                Se per qualche motivo hai maturato curiosità verso questo nuovo sistema, ecco il sito ufficiale di <a href="https://e.foundation">/e/</a>.</p>
+              <h2 id="conclusioni">Conclusioni</h2>
+              <p>Non c’è molto da concludere, visto che la soluzione è molto in divenire. Però posso trarre alcune lezioni da questo ragionamento fatto sul blog.</p>
+              <p>Innanzi tutto, apprezzo molto lo stato già molto buono dell’ecosistema di alternative libere alle app molto più consumistiche, liberticide e lesive della privacy presenti nello store libero <a href="https://it.wikipedia.org/wiki/F-Droid">F-Droid</a>.</p>
+              <p>Poi, sono molto contento dell’integrazione sempre più buona di servizi protettivi della privacy che stanno nascendo e che crescono sempre più rapidamente, e di questo ne giova particolarmente l’esperienza utente, che ha finalmente anche dei servizi liberi e non solo delle app libere.</p>
+              <p>Staremo a vedere quanto ancora potranno migliorare le cose grazie a una così bella e ricca community.</p>
+            </section>
+            <a href="/2019/05/27/flossness-di-una-distro-android/" hidden></a>
+          </article>
+          <p class="mx-0 mb-0 mt-5 invisible zero-size">
+            <a href="" class="invisible" id="comments">comments</a>
+          </p>
+          <h3>Comments</h3>
+          <form method="post" action="https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/dev/comments/">
+            <input name="options[redirect]" type="hidden" value="https://klez.me/2019/05/27/flossness-di-una-distro-android/#comments">
+            <input name="options[slug]" type="hidden" value="flossness-di-una-distro-android">
+            <div class="form-row">
+              <div class="col form-group">
+                <input type="text" id="username" name="fields[name]" class="form-control" placeholder="username" required="true">
+              </div>
+              <div class="col form-group">
+                <input type="email" id="email" name="fields[email]" class="form-control" placeholder="email adress (will not be published)" required="true">
+              </div>
+              <div class="col form-group">
+                <input type="text" id="url" name="fields[url]" class="form-control" placeholder="website url">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col form-group">
+                <textarea id="message" name="fields[message]" rows="3" class="form-control" placeholder="comment to this post" required="true"></textarea>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-sm-12 col-md-3 col-lg-2 form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+              <div class="col form-group">
+                <div class="alert alert-warning d-block small">New comments will be shown after moderation approval</div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row justify-content-end text-right">
+        <div class="col-6">
+          <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page">
+            <i class="fa fa-5x fa-chevron-up"></i>
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer bg-light w-100 py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="https://github.com/kLeZ">
+                  <i class="svg-icon fab fa-github"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://twitter.com/kLeZhAcK">
+                  <i class="svg-icon fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://www.linkedin.com/in/alessandroaccardo">
+                  <i class="svg-icon fab fa-linkedin"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://telegram.me/julius8774">
+                  <i class="svg-icon fab fa-telegram"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="/feed.xml">
+                  <i class="svg-icon fa fa-rss"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="mailto:klez@pm.me">
+                  <i class="svg-icon fa fa-envelope"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-left">
+            <small class="text-muted">Last build on <time datetime="2019-06-02T12:37:24+02:00">Sun, 02 Jun 2019 12:37:24 +0200</time></small>
+          </div>
+          <div class="col text-right">
+            <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"></a><br>
+            <small class="text-muted">
+              This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+            </small>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="/assets/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/assets/popper/popper.min.js"></script>
+    <script src="/assets/popper/tooltip.min.js"></script>
+    <script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/assets/fontawesome-free/js/all.min.js"></script>
+    <script src="/assets/main.js"></script>
+  </body>
+</html>
