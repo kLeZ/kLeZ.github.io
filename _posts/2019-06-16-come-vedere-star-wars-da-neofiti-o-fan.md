@@ -79,7 +79,7 @@ Il tempo comincia a diventare una variabile importante per una buona e **sana** 
 
 Motivo per cui abbiamo iniziato a fare dei calcoli.
 
-### Durata dei film di star wars (fonte: [https://it.wikipedia.org/wiki/Guerre_stellari](Wikipedia)).
+### Durata dei film di star wars (fonte: [Wikipedia](https://it.wikipedia.org/wiki/Guerre_stellari)).
 
 
 | Film 				| Durata 					 |
