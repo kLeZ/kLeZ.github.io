@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://klez.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://klez.me/" rel="alternate" type="text/html" /><updated>2019-06-16T17:31:50+02:00</updated><id>https://klez.me/</id><title type="html">Alessandro ‘kLeZ’ Accardo personal website</title><subtitle>This is the personal website of an Italian developer once called 'kLeZ'.</subtitle><entry><title type="html">Come vedere Star Wars da neofiti o fan</title><link href="https://klez.me/2019/06/16/come-vedere-star-wars-da-neofiti-o-fan/" rel="alternate" type="text/html" title="Come vedere Star Wars da neofiti o fan" /><published>2019-06-16T17:19:14+02:00</published><updated>2019-06-16T17:19:14+02:00</updated><id>https://klez.me/2019/06/16/come-vedere-star-wars-da-neofiti-o-fan</id><content type="html" xml:base="https://klez.me/2019/06/16/come-vedere-star-wars-da-neofiti-o-fan/">&lt;p&gt;Sono un &lt;em&gt;fan&lt;/em&gt; di Guerre Stellari, probabilmente lo saprai.&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://klez.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://klez.me/" rel="alternate" type="text/html" /><updated>2019-06-17T23:11:19+02:00</updated><id>https://klez.me/</id><title type="html">Alessandro ‘kLeZ’ Accardo personal website</title><subtitle>This is the personal website of an Italian developer once called 'kLeZ'.</subtitle><entry><title type="html">Come vedere Star Wars da neofiti o fan</title><link href="https://klez.me/2019/06/16/come-vedere-star-wars-da-neofiti-o-fan/" rel="alternate" type="text/html" title="Come vedere Star Wars da neofiti o fan" /><published>2019-06-16T17:19:14+02:00</published><updated>2019-06-16T17:19:14+02:00</updated><id>https://klez.me/2019/06/16/come-vedere-star-wars-da-neofiti-o-fan</id><content type="html" xml:base="https://klez.me/2019/06/16/come-vedere-star-wars-da-neofiti-o-fan/">&lt;p&gt;Sono un &lt;em&gt;fan&lt;/em&gt; di Guerre Stellari, probabilmente lo saprai.&lt;br /&gt;
         Da appassionato del genere e dei film della Saga, negli anni ho sempre avuto quella sorta di richiamo che ogni tanto mi porta a vedere &lt;strong&gt;interamente&lt;/strong&gt; tutti i film.&lt;/p&gt;
         &lt;p&gt;La saga però ha dei &lt;em&gt;problemi&lt;/em&gt; particolari, il primo dei quali è l’ordine di visione.&lt;/p&gt;
         &lt;!--more--&gt;
@@ -21,8 +21,7 @@
         &lt;li&gt;Episodio III - La vendetta dei Sith&lt;/li&gt;
         &lt;li&gt;Episodio VI - Il ritorno dello Jedi&lt;/li&gt;
         &lt;/ul&gt;
-        &lt;p&gt;La motivazione era semplice: la trilogia &lt;em&gt;prequel&lt;/em&gt; viene trattata come un &lt;em&gt;flashback&lt;/em&gt;, che arriva immediatamente dopo il &lt;em&gt;cliffhanger&lt;/em&gt; 
-        di Episodio V.&lt;/p&gt;
+        &lt;p&gt;La motivazione era semplice: la trilogia &lt;em&gt;prequel&lt;/em&gt; viene trattata come un &lt;em&gt;flashback&lt;/em&gt;, che arriva immediatamente dopo il &lt;em&gt;cliffhanger&lt;/em&gt; di Episodio V.&lt;/p&gt;
         &lt;p&gt;Ha perfettamente senso dal nostro punto di vista perché permette di mantenere intatta la figura minacciosa e crudele del cattivo più interessante della saga (così come i vecchi fan hanno imparato ad apprezzare), pur dando spazio alla sua storia personale prima di quella discesa affannosa nel &lt;strong&gt;Lato Oscuro&lt;/strong&gt;, spiegandone le motivazioni.&lt;/p&gt;
         &lt;p&gt;Il ritorno dello Jedi serve per chiudere, a quel punto, tutte le trame ancora aperte dei cinque film precedenti.&lt;/p&gt;
         &lt;p&gt;Questo per noi è sempre stato perfettamente sensato, e permetteva la visione dell’intera saga in una giornata, in modo che anche un neofita potesse permettersi una &lt;em&gt;full immersion&lt;/em&gt; nella storia.&lt;/p&gt;
@@ -52,8 +51,8 @@
         &lt;p&gt;Ora però le cose sono molto cambiate, perché sono stati aggiunti ben quattro nuovi film, e un quinto sta per arrivare, tra soli 6 mesi circa.&lt;/p&gt;
         &lt;p&gt;Il tempo comincia a diventare una variabile importante per una buona e &lt;strong&gt;sana&lt;/strong&gt; visione della super-saga.&lt;/p&gt;
         &lt;p&gt;Motivo per cui abbiamo iniziato a fare dei calcoli.&lt;/p&gt;
-        &lt;h3 id=&quot;durata-dei-film-di-star-wars-fonte-wikipedia&quot;&gt;Durata dei film di star wars (fonte: &lt;a href=&quot;https://it.wikipedia.org/wiki/Guerre_stellari&quot;&gt;Wikipedia&lt;/a&gt;).&lt;/h3&gt;
-        &lt;table&gt;
+        &lt;h3 id=&quot;durata-dei-film-di-star-wars-fonte-wikipedia&quot;&gt;Durata dei film di star wars (fonte: &lt;a href=&quot;https://it.wikipedia.org/wiki/Guerre_stellari&quot;&gt;Wikipedia&lt;/a&gt;)&lt;/h3&gt;
+        &lt;table class=&quot;table table-striped table-responsive-md&quot;&gt;
         &lt;thead&gt;
         &lt;tr&gt;
         &lt;th&gt;Film&lt;/th&gt;
