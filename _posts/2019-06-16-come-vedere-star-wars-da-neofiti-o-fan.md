@@ -26,6 +26,7 @@ Anni fa su un *blog* trovammo l'idea pazza di un tizio che spiegava quello che l
 L'ordine originale non comprendeva altro che le due trilogie, la vecchia e la nuova.
 
 La lista dei film da vedere in sequenza era:
+
 * Episodio IV - Una nuova speranza
 * Episodio V - L'impero colpisce ancora
 * Episodio I - La minaccia fantasma
@@ -33,8 +34,7 @@ La lista dei film da vedere in sequenza era:
 * Episodio III - La vendetta dei Sith
 * Episodio VI - Il ritorno dello Jedi
 
-La motivazione era semplice: la trilogia *prequel* viene trattata come un *flashback*, che arriva immediatamente dopo il *cliffhanger* 
-di Episodio V.
+La motivazione era semplice: la trilogia *prequel* viene trattata come un *flashback*, che arriva immediatamente dopo il *cliffhanger* di Episodio V.
 
 Ha perfettamente senso dal nostro punto di vista perché permette di mantenere intatta la figura minacciosa e crudele del cattivo più interessante della saga (così come i vecchi fan hanno imparato ad apprezzare), pur dando spazio alla sua storia personale prima di quella discesa affannosa nel **Lato Oscuro**, spiegandone le motivazioni.
 
@@ -79,24 +79,23 @@ Il tempo comincia a diventare una variabile importante per una buona e **sana** 
 
 Motivo per cui abbiamo iniziato a fare dei calcoli.
 
-### Durata dei film di star wars (fonte: [Wikipedia](https://it.wikipedia.org/wiki/Guerre_stellari)).
+### Durata dei film di star wars (fonte: [Wikipedia](https://it.wikipedia.org/wiki/Guerre_stellari))
 
-
-| Film 				| Durata 					 |
-|-------------------|----------------------------|
-| Episodio IV		|  125 min 					 |
-| Episodio V		|  124 min 					 |
-| Episodio VI		|  134 min 					 |
-| Episodio I		|  136 min 					 |
-| Episodio II		|  142 min 					 |
-| Episodio III	    |  140 min 					 |
-| Episodio VII	    |  136 min 					 |
-| Episodio VIII	    |  152 min 					 |
-| Rogue One			|  133 min 					 |
-| Solo				|  135 min 					 |
-|-------------------|----------------------------|
-| Totale			| 1357 min (22 ore e 37 min) |
-
+{: .table .table-striped .table-responsive-md }
+| Film                | Durata                       |
+| ------------------- | ---------------------------- |
+| Episodio IV         | 125 min                      |
+| Episodio V          | 124 min                      |
+| Episodio VI         | 134 min                      |
+| Episodio I          | 136 min                      |
+| Episodio II         | 142 min                      |
+| Episodio III        | 140 min                      |
+| Episodio VII        | 136 min                      |
+| Episodio VIII       | 152 min                      |
+| Rogue One           | 133 min                      |
+| Solo                | 135 min                      |
+| ------------------- | ---------------------------- |
+| Totale              | 1357 min (22 ore e 37 min)   |
 
 Queste sono le durate ricavate direttamente da Wikipedia, che ci aiutano a capire quanto tempo dovremmo stare davanti alla televisione a vedere film di Star Wars. Diciamo che 23 ore di visione non sono proprio una cosa da poter raccomandare.
 

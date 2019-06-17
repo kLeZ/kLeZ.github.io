@@ -4,7 +4,7 @@ tags:
 ##date: __CURRENT_DATE
 ---
 
-Venerdì sera ragionavo sul mio pregresso lavorativo, e nello specifico mi concentravo sull'ambiente di lavoro. Il _trigger_ è stato il treno che ho preso ieri sera, **Ostiense, 20.40**, che non è proprio il massimo della vita, questo posso dirlo, perché mi porta a casa alle 21.45 circa.
+Qualche sera fa ragionavo sul mio pregresso lavorativo, e nello specifico mi concentravo sull'ambiente di lavoro. Il _trigger_ è stato il treno che ho preso quella sera, **Ostiense, 20.40**, che non è proprio il massimo della vita, questo posso dirlo, perché mi porta a casa alle 21.45 circa.
 
 Alla fine dell'analisi preliminare ho stabilito che volevo concentrare il mio ragionamento sull'orario di lavoro (ancora una volta) tentando di sviscerare il perché mi riduco sempre a sopportare certi orari.
 
@@ -88,3 +88,7 @@ Ma allora perché **sembra** _così tanto_ **falso**?
 
 Sembra falso perché, come ho sempre immaginato e questa osservazione conferma l'idea, il fine non giustifica *mai* i mezzi. **Mai**.
 
+Il mezzo ovviamente è lo straordinario, mentre il fine, beh, quello è palese, la consegna in tempi brevi.  
+Il problema è sempre **quanto** brevi e quanto veramente è utile o necessario che questi tempi siano brevi.
+
+La maggior parte delle volte non è utile, anzi è deleterio per la qualità del prodotto consegnato e per la qualità del
