@@ -1,7 +1,7 @@
 ---
-title: 
+title: Il revisionismo del ritardo cronico
 tags: 
-##date: __CURRENT_DATE
+date: 2019-07-19 19:50:00+02:00
 ---
 
 Qualche sera fa ragionavo sul mio pregresso lavorativo, e nello specifico mi concentravo sull'ambiente di lavoro. Il _trigger_ è stato il treno che ho preso quella sera, **Ostiense, 20.40**, che non è proprio il massimo della vita, questo posso dirlo, perché mi porta a casa alle 21.45 circa.
@@ -55,7 +55,7 @@ La nuova lista quindi è aggiornata nel modo seguente:
 
 Ne ho aggiunti 3 sfilando i _team leader_, solo perché questa lista vede le cose da quel medesimo punto di vista.
 
-_Stranamente_ c'è ancora il punto sulla pianificazione errata, e il motivo è semplice: capita spesso che pur essendo _team leader_ sia comunque il manager ad avere l'ultima parola sui numeri delle stime per le attività, che praticamente sempre subiscono riduzioni.
+_Stranamente_ c'è ancora il punto sulla pianificazione errata, e il motivo è semplice: capita spesso che pur essendo _team leader_ sia comunque il manager ad avere l'ultima parola sui numeri delle stime per le attività, che praticamente sempre subiscono riduzioni. Capita meno spesso, ma capita, che il _team leader_ si basi su assunzioni errate nel formulare le stime, risultando quindi in stime errate, perché troppo ottimistiche o perché _pressappochistiche_.
 
 Tutto questo però non mi bastava, sapevo di non essermi fatto abbastanza domande, sapevo che c'era ancora qualche **perché** non espresso.
 
@@ -91,4 +91,18 @@ Sembra falso perché, come ho sempre immaginato e questa osservazione conferma l
 Il mezzo ovviamente è lo straordinario, mentre il fine, beh, quello è palese, la consegna in tempi brevi.  
 Il problema è sempre **quanto** brevi e quanto veramente è utile o necessario che questi tempi siano brevi.
 
-La maggior parte delle volte non è utile, anzi è deleterio per la qualità del prodotto consegnato e per la qualità del
+La maggior parte delle volte non è utile, anzi è deleterio per la qualità del prodotto consegnato e per la qualità della vita del lavoratore.
+
+Fatto sta che succede, gli orari cambiano poco se non nulla e alla fine per un motivo o per un altro si torna a casa sempre a orari imprecisati della sera.
+
+La conclusione più ovvia sarebbe "facciamo in modo che le aziende si sforzino di più per raggiungere questo risultato".  
+Si, se solo il lavoratore non avesse così tanta voglia di fare degli straordinari non pagati.
+
+Quindi la conclusione definitiva alla fine della mia introspezione è:
+
+> Fai tardi quanto vuoi, se vuoi, ma dai la colpa a te stesso (o non darla a nessuno)  
+> Altrimenti, non fare tardi "_'ché c'hai 'na famiglia_"
+
+Grazie ad Alberto che mi segue sempre con tanta dedizione, pure che è più di un mese che non pubblico (e avevo detto che avrei scritto qualcosa ogni giorno).
+
+> Vai a casa Albè, che è tardi!
