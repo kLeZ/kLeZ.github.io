@@ -1,4 +1,124 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://klez.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://klez.me/" rel="alternate" type="text/html" /><updated>2019-09-13T17:11:54+02:00</updated><id>https://klez.me/</id><title type="html">Alessandro ‘kLeZ’ Accardo personal website</title><subtitle>This is the personal website of an Italian developer once called 'kLeZ'.</subtitle><entry><title type="html">Transazioni distribuite saghe e code</title><link href="https://klez.me/2019/07/27/transazioni-distribuite-saghe-e-code/" rel="alternate" type="text/html" title="Transazioni distribuite saghe e code" /><published>2019-07-27T12:56:10+02:00</published><updated>2019-07-27T12:56:10+02:00</updated><id>https://klez.me/2019/07/27/transazioni-distribuite-saghe-e-code</id><content type="html" xml:base="https://klez.me/2019/07/27/transazioni-distribuite-saghe-e-code/">&lt;p&gt;Venerdì scorso ho tenuto un &lt;em&gt;talk&lt;/em&gt; interno alla mia azienda sulle basi (molto basi) del framework Spring.&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://klez.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://klez.me/" rel="alternate" type="text/html" /><updated>2019-09-13T19:05:17+02:00</updated><id>https://klez.me/</id><title type="html">Alessandro ‘kLeZ’ Accardo personal website</title><subtitle>This is the personal website of an Italian developer once called 'kLeZ'.</subtitle><entry><title type="html">La situazione sul TDD</title><link href="https://klez.me/2019/09/13/la-situazione-sul-tdd/" rel="alternate" type="text/html" title="La situazione sul TDD" /><published>2019-09-13T19:00:57+02:00</published><updated>2019-09-13T19:00:57+02:00</updated><id>https://klez.me/2019/09/13/la-situazione-sul-tdd</id><content type="html" xml:base="https://klez.me/2019/09/13/la-situazione-sul-tdd/">&lt;p&gt;Il TDD è una di quelle metodologie che più spesso viene bistrattata qui in Italia. Spesso si sente definire questo approccio come &lt;em&gt;troppo costoso&lt;/em&gt; o peggio come &lt;em&gt;fallimentare&lt;/em&gt;.&lt;br /&gt;
+        Molto spesso la “colpa” va al budget, sempre troppo risicato quantunque esso sia, ma qui si sa che la coperta viene commissionata su misura per un watusso e poi arrotolata fino a non coprirci neanche un pigmeo. E quello deve bastarti, altra non ne srotolano.&lt;/p&gt;
+        &lt;p&gt;Al di là delle facili critiche e delle superficiali battute tragicomiche, il fatto è che c’è molto ancora da fare per convincere i più biechi antagonisti di questa tecnica che vale la pena &lt;em&gt;iniziare&lt;/em&gt; a fare dei test un componente necessario di ogni progetto.&lt;/p&gt;
+        &lt;!--more--&gt;
+        &lt;p class=&quot;m-0 invisible zero-size&quot;&gt;
+        &lt;a class=&quot;invisible&quot; id=&quot;read-more&quot;&gt;read more&lt;/a&gt;
+        &lt;/p&gt;
+        &lt;h2 id=&quot;cosa-è-il-tdd&quot;&gt;Cosa è il TDD&lt;/h2&gt;
+        &lt;p&gt;Quindi cos’è il TDD? TDD è un acronimo che significa &lt;em&gt;Test Driven Development&lt;/em&gt;; è una metodologia che ci consente di guidare lo sviluppo tramite i test, che sembra complicato ma non lo è.&lt;/p&gt;
+        &lt;p&gt;Guidare lo sviluppo tramite i test significa essenzialmente che i test vanno &lt;strong&gt;progettati bene&lt;/strong&gt;, perché dovranno coprire ad alto livello tutti i casi d’uso richiesti dal committente del software.&lt;/p&gt;
+        &lt;blockquote&gt;
+        &lt;p&gt;Un test alla fine non è altro che la spiegazione con verifica passo passo di una funzione del software usando il software stesso.&lt;/p&gt;
+        &lt;/blockquote&gt;
+        &lt;p&gt;Esistono diversi tipi di test che si usano per diversi scopi e in diversi contesti, e servono per allargare via via il cono di visibilità sul sistema. Vediamoli.&lt;/p&gt;
+        &lt;h3 id=&quot;unit-test&quot;&gt;Unit test&lt;/h3&gt;
+        &lt;p&gt;I test unitari o &lt;em&gt;unit test&lt;/em&gt; sono i componenti principali di una qualsiasi &lt;em&gt;suite&lt;/em&gt; di test. Con uno &lt;em&gt;unit test&lt;/em&gt; andiamo a verificare il funzionamento di singole unità di codice, singoli metodi o singole funzioni, che dovrebbero fare una sola cosa e dovrebbero farla bene. Questo rientra nel &lt;a href=&quot;/2019/03/28/spaghetti-code-its-that-bad/&quot;&gt;Clean Code&lt;/a&gt;, l’abbiamo già trattato.&lt;/p&gt;
+        &lt;h3 id=&quot;integration-test&quot;&gt;Integration test&lt;/h3&gt;
+        &lt;p&gt;A dispetto di quanto si pensa, non servono per verificare l’integrazione del sistema con altri sistemi, bensì servono per verificare che ogni componente del sistema sia correttamente integrato con gli altri. Inoltre gli &lt;em&gt;integration test&lt;/em&gt; si usano anche per verificare che il sistema risponda correttamente ai requisiti funzionali (cioè che faccia ciò che è richiesto dal committente).&lt;/p&gt;
+        &lt;h3 id=&quot;validation-test&quot;&gt;Validation test&lt;/h3&gt;
+        &lt;p&gt;I test di validazione (solitamente manuali) sono test che validano il comportamento generale del sistema; sono chiamati anche test &lt;em&gt;end-to-end&lt;/em&gt; o con l’acronimo &lt;strong&gt;E2E&lt;/strong&gt;. In alcuni casi è possibile che anche questi test trovino spazio nella &lt;em&gt;suite&lt;/em&gt; dei test del software da eseguire automaticamente, ma non è sempre così.&lt;/p&gt;
+        &lt;h2 id=&quot;il-solito-uncle-bob-a-illuminarmi-la-strada&quot;&gt;Il solito Uncle Bob a illuminarmi la strada&lt;/h2&gt;
+        &lt;p&gt;Quando morirà, spero il più tardi possibile, probabilmente mi sentirò smarrito e piangerò, come fosse stato mio padre. Beh, dal punto di vista puramente tecnico mi ha insegnato e mi insegna ancora tutto quello che sa, esattamente come farebbe un padre. Oh, non c’è un rapporto diretto, quello che insegna a me lo insegna a tutti tramite &lt;a href=&quot;https://twitter.com/unclebobmartin&quot;&gt;Twitter&lt;/a&gt;, &lt;a href=&quot;https://blog.cleancoder.com/&quot;&gt;il suo blog&lt;/a&gt; e i suoi libri.&lt;/p&gt;
+        &lt;p&gt;Lo Zio ha pubblicato, ormai molte lune or sono&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, &lt;a href=&quot;https://blog.cleancoder.com/uncle-bob/2016/03/19/GivingUpOnTDD.html&quot;&gt;questo interessante articolo&lt;/a&gt; in cui analizza &lt;a href=&quot;https://iansommerville.com/systems-software-and-technology/2016/03/17/giving-up-on-test-first-development/&quot;&gt;un altro articolo&lt;/a&gt;, quello di nientemeno che &lt;a href=&quot;https://en.wikipedia.org/wiki/Ian_Sommerville_(academic)&quot;&gt;Ian Sommerville&lt;/a&gt; uno dei più stimati professori di Ingegneria del Software, non uno qualunque, ecco.&lt;/p&gt;
+        &lt;p&gt;L’articolo analizza punto per punto le critiche di Sommerville bollandolo alla fine come neofita, a ragione tra l’altro.&lt;/p&gt;
+        &lt;h2 id=&quot;sommervilles-issue&quot;&gt;Sommerville’s issue&lt;/h2&gt;
+        &lt;p&gt;I problemi di Sommerville sono di certo una spiccata lentezza nell’apprendere la metodologia unita a una progettazione probabilmente ricca di compromessi.&lt;br /&gt;
+        Capita spesso di scendere a dei compromessi che imbruttiscono il codice, ma non dovremmo lasciarci tentare da queste scorciatoie perché il prezzo è sempre la qualità del codice, l’architettura e di conseguenza la difficoltà nello svolgere task semplici come scrivere un test o effettuare una modifica al comportamento.&lt;/p&gt;
+        &lt;p&gt;La prima critica mossa verso il TDD riguarda il primo dei problemi che incontrano i neofiti nell’approccio alla disciplina.&lt;/p&gt;
+        &lt;h3 id=&quot;il-problema-dei-test-fragili&quot;&gt;Il problema dei Test fragili&lt;/h3&gt;
+        &lt;p&gt;Un po’ sto traducendo da Uncle Bob, ma va bene lo stesso (almeno per me).&lt;/p&gt;
+        &lt;p&gt;Sommerville asserisce che il TDD rende conservativi riguardo al software, cioè rende chi adotta questo approccio molto avverso all’applicazione di cambiamenti nel software.&lt;/p&gt;
+        &lt;p&gt;La risposta dello Zio ovviamente riguarda l’architettura; un software su cui si ha avversione ad applicare modifiche è un software mal progettato. E io sono assolutamente d’accordo. Aggiungo qualcosa di mio riprendendo esattamente la frase di Sommerville.&lt;/p&gt;
+        &lt;div class=&quot;premonition citation&quot;&gt;&lt;div class=&quot;fas fa-quote-left&quot;&gt;&lt;/div&gt;&lt;blockquote class=&quot;content blockquote&quot; cite=&quot;https://iansommerville.com/systems-software-and-technology/2016/03/17/giving-up-on-test-first-development/&quot;&gt;
+        &lt;p&gt;Because you want to ensure that you always pass the majority of tests,
+        you tend to think about this when you change and extend the program.
+        You therefore are more reluctant to make large-scale changes that will lead to the failure of lots of tests.
+        Psychologically, you become conservative to avoid breaking lots of tests.&lt;/p&gt;
+        &lt;footer class=&quot;blockquote-footer&quot;&gt;&lt;cite title=&quot;Ian Sommerville&quot;&gt;Ian Sommerville&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+        &lt;p&gt;Sostanzialmente, sembrerebbe che Sommerville abbia sperimentato quello che ci porta tutti a pensare di abbandonare il TDD, inizialmente.&lt;/p&gt;
+        &lt;p&gt;Siccome, in quanto programmatori, siamo pigri, meno “fatica” facciamo per ottenere il risultato e più siamo contenti.&lt;/p&gt;
+        &lt;p&gt;Dato questo e dato che la nostra disciplina premia la pigrizia, impariamo ben presto a conservare il più possibile l’energia che abbiamo, tentando di percorrere strade anche non battute ma più brevi per risolvere il nostro problema.&lt;/p&gt;
+        &lt;p&gt;E Ian questo lo sa molto bene, non a caso ha insegnato Ingegneria del Software per svariati anni.&lt;/p&gt;
+        &lt;p&gt;La pigrizia è ciò che ci ha portato ad avere sistemi sempre più automatici, e la pigrizia ha portato Sommerville a “fallire” con il TDD.&lt;/p&gt;
+        &lt;p&gt;Quello che dice in parte è corretto, psicologicamente &lt;strong&gt;sei portato a diventare&lt;/strong&gt; conservativo, ma solo perché scrivere test è un lavoro particolarmente noioso, che diventa relativamente meno noioso solo quando i test vengono usati per sviluppare la progettazione del sistema a partire dai casi d’uso. La parte incorretta è quella che dà pigramente e impunemente la colpa ai test e al TDD.&lt;/p&gt;
+        &lt;p&gt;Non è per il TDD che trovi noioso scrivere i test, è perché sei pigro! Un’arma estremamente utile in certi casi, ma altrettanto affilata se usata contro di te. Ho dato del pigro a Sommerville, si.&lt;/p&gt;
+        &lt;p&gt;Tanto più che Sommerville parla di &lt;em&gt;modifiche al sistema che rompono i test&lt;/em&gt;, cosa &lt;strong&gt;inammissibile&lt;/strong&gt; nel TDD, dove sono sempre i test i primi a essere modificati, mai l’opposto.&lt;/p&gt;
+        &lt;p&gt;Su questo punto Sommerville sembra soffermarsi un po’ di più e stabilisce un nuovo concetto:&lt;/p&gt;
+        &lt;div class=&quot;premonition citation&quot;&gt;&lt;div class=&quot;fas fa-quote-left&quot;&gt;&lt;/div&gt;&lt;blockquote class=&quot;content blockquote&quot; cite=&quot;https://iansommerville.com/systems-software-and-technology/2016/03/17/giving-up-on-test-first-development/&quot;&gt;
+        &lt;p&gt;The most serious problem for me is that it encourages a focus on
+        sorting out detail to pass tests rather than looking at the
+        program as a whole. I started programming at a time where
+        computer time was limited and you had to spend time looking at
+        and thinking about the program as a whole. I think this leads to
+        more elegant and better structured programs. But, with TDD, you
+        dive into the detail in different parts of the program and
+        rarely step back and look at the big picture.&lt;/p&gt;
+        &lt;footer class=&quot;blockquote-footer&quot;&gt;&lt;cite title=&quot;Ian Sommerville&quot;&gt;Ian Sommerville&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+        &lt;p&gt;Qui in pratica sta dicendo che i test, su cui siamo concentrati, ci costringono a soffermarci sui dettagli senza pensare alla &lt;em&gt;big picture&lt;/em&gt;, anzi abbandonandola e dimenticandola.&lt;/p&gt;
+        &lt;p&gt;Anche questo errore è relativo alla sua condizione di neofita dell’approccio, che lo porta a faticare molto per comprendere la nuova metodologia e i nuovi artefatti su cui sta lavorando perdendo di fatto la rotta sulla &lt;em&gt;big picture&lt;/em&gt; ma non a causa dei test, bensì a causa del suo essere un neofita.&lt;/p&gt;
+        &lt;h3 id=&quot;il-problema-della-progettazione-testabile&quot;&gt;Il problema della progettazione testabile&lt;/h3&gt;
+        &lt;div class=&quot;premonition citation&quot;&gt;&lt;div class=&quot;fas fa-quote-left&quot;&gt;&lt;/div&gt;&lt;blockquote class=&quot;content blockquote&quot; cite=&quot;https://iansommerville.com/systems-software-and-technology/2016/03/17/giving-up-on-test-first-development/&quot;&gt;
+        &lt;p&gt;It is easier to test some program designs than others.
+        Sometimes, the best design is one that’s hard to test
+        so you are more reluctant to take this approach because you
+        know that you’ll spend a lot more time designing and writing
+        tests (which I, for one, quite a boring thing to do)&lt;/p&gt;
+        &lt;footer class=&quot;blockquote-footer&quot;&gt;&lt;cite title=&quot;Ian Sommerville&quot;&gt;Ian Sommerville&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+        &lt;p&gt;Qui Robert si arrabbia un po’ e ha ragione.&lt;/p&gt;
+        &lt;p&gt;Io mi arrabbio un po’ di più (sapete, la giovane età :grin:) e ho ragione pure io.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Certo&lt;/strong&gt; che certi componenti sono più difficili da testare di altri, certo.&lt;br /&gt;
+        Ogni dispositivo di IO è difficile da testare, no?&lt;/p&gt;
+        &lt;p&gt;Immagina di dover testare le interazioni di un dispositivo VR, o di una fotocamera con sensore di profondità (videocamere 3D), quale sarebbe l’approccio per testarlo? Quali sarebbero i test specifici?&lt;/p&gt;
+        &lt;p&gt;In quali condizioni saremmo soddisfatti dei test tanto da accettare il software?&lt;/p&gt;
+        &lt;p&gt;Si tratta di domande molto complicate a cui rispondere, &lt;strong&gt;ovviamente&lt;/strong&gt;. La parola che sbaglia tantissimo è &lt;em&gt;designs&lt;/em&gt;, non sono &lt;em&gt;certe architetture&lt;/em&gt; ad essere più difficili di altre, sono i &lt;em&gt;design&lt;/em&gt; sbagliati che non sono testabili, per vari motivi.&lt;br /&gt;
+        Sempre su questo punto aggiungo che &lt;strong&gt;di solito&lt;/strong&gt; la difficoltà di scrivere dei buoni test è data da una &lt;strong&gt;mancanza&lt;/strong&gt; di architettura piuttosto che da una cattiva architettura.&lt;br /&gt;
+        Lo Zio Bob non si spinge fino all’affermare che ci sia una &lt;em&gt;totale mancanza di architettura&lt;/em&gt;, perché per lui non può esistere un software &lt;strong&gt;senza architettura&lt;/strong&gt;, per me si.&lt;br /&gt;
+        Per me un software può essere stato scritto senza pensare a un’architettura, e si nota immediatamente, di conseguenza è molto semplice cadere nel baratro dell’impossibilità o della estrema difficoltà nell’implementazione dei test.&lt;/p&gt;
+        &lt;p&gt;Questo è uno dei capisaldi di &lt;em&gt;Uncle Bob&lt;/em&gt; che però io mi sono sentito di mettere in dubbio. Per lui anche l’assenza di architettura è un’architettura, e dal punto di vista pratico ha ragione. Ma dal punto di vista della progettazione cosciente e consapevole, secondo me, determinati software non hanno un’architettura, dove per “non hanno un’architettura” intendo che chi ha sviluppato questi software non aveva in mente alcuna idea o convenzione o pattern ben preciso e ha scritto, secondo me, &lt;em&gt;di getto&lt;/em&gt;, cioè non consapevolmente.&lt;/p&gt;
+        &lt;p&gt;Per chiudere su Sommerville, qui lui ha fatto un errore da neofita sul TDD: l’architettura di un progetto TDD va pensata, e i componenti devono essere progettati col chiaro scopo di testarli, ora o in futuro.&lt;/p&gt;
+        &lt;p&gt;Cito &lt;em&gt;Uncle Bob&lt;/em&gt; direttamente, ma perché in questo caso mi ha davvero tolto le parole di bocca (o i caratteri da sotto alle dita).&lt;/p&gt;
+        &lt;div class=&quot;premonition citation&quot;&gt;&lt;div class=&quot;fas fa-quote-left&quot;&gt;&lt;/div&gt;&lt;blockquote class=&quot;content blockquote&quot; cite=&quot;https://blog.cleancoder.com/uncle-bob/2016/03/19/GivingUpOnTDD.html&quot;&gt;
+        &lt;p&gt;Any design that is hard to test is crap. Pure crap.&lt;/p&gt;
+        &lt;footer class=&quot;blockquote-footer&quot;&gt;&lt;cite title=&quot;Robert 'Uncle Bob' Martin&quot;&gt;Robert 'Uncle Bob' Martin&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+        &lt;h3 id=&quot;il-problema-del-proiettile-magico&quot;&gt;Il problema del proiettile magico&lt;/h3&gt;
+        &lt;p&gt;A questo punto, i pensieri di Sommerville sono talmente confusi sul TDD che non riesce più a distinguerne il confine.&lt;br /&gt;
+        E inizia a pensare che il TDD debba essere una panacea che, solo per il fatto di essere stata applicata a un progetto, lo rende già migliore.&lt;br /&gt;
+        E lo fa in queste poche righe in cui argomenta malissimo.&lt;/p&gt;
+        &lt;div class=&quot;premonition citation&quot;&gt;&lt;div class=&quot;fas fa-quote-left&quot;&gt;&lt;/div&gt;&lt;blockquote class=&quot;content blockquote&quot; cite=&quot;https://iansommerville.com/systems-software-and-technology/2016/03/17/giving-up-on-test-first-development/&quot;&gt;
+        &lt;p&gt;In my experience, lots of program failures arise because the
+        data being processed is not what’s expected by the programmer.
+        It’s really hard to write ‘bad data’ tests that accurately
+        reflect the real bad data you will have to process because you
+        have to be a domain expert to understand the data. The ‘purist’
+        approach here, of course, is that you design data validation
+        checks so that you never have to process bad data. But the
+        reality is that it’s often hard to specify what ‘correct data’
+        means and sometimes you have to simply process the data you’ve
+        got rather than the data that you’d like to have.&lt;/p&gt;
+        &lt;footer class=&quot;blockquote-footer&quot;&gt;&lt;cite title=&quot;Ian Sommerville&quot;&gt;Ian Sommerville&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+        &lt;p&gt;Ovviamente la sua lamentela sui dati è non solo realistica, ma reale. Ma non ha nulla a che fare col TDD.&lt;/p&gt;
+        &lt;p&gt;In che modo una metodologia che ti aiuta a formalizzare dei test e verificare il funzionamento di un software potrebbe aiutarti o addirittura risolvere il problema che hai con i dati non validi?&lt;/p&gt;
+        &lt;p&gt;In quale modo il TDD dovrebbe anticipare tutti i casi su cui non hai ancora ragionato?&lt;/p&gt;
+        &lt;div class=&quot;premonition citation&quot;&gt;&lt;div class=&quot;fas fa-quote-left&quot;&gt;&lt;/div&gt;&lt;blockquote class=&quot;content blockquote&quot;&gt;
+        &lt;p&gt;Il TDD non sostituisce la progettazione;&lt;br /&gt;
+        Il TDD non cura una pessima architettura;&lt;br /&gt;
+        Il TDD non scriverà per te i tuoi requisiti e le tue validazioni
+        sui dati e sugli algoritmi.&lt;/p&gt;
+        &lt;footer class=&quot;blockquote-footer&quot;&gt;&lt;cite title=&quot;kLeZ&quot;&gt;kLeZ&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+        &lt;p&gt;L’unico modo per gestire dati non validi in un software è anticipare in fase di progettazione quanti più casi non validi possibile, e il TDD al limite ci è di aiuto come &lt;em&gt;strumento&lt;/em&gt; per scrivere i test che verificano il comportamento del sistema in presenza di quei dati non validi che abbiamo teorizzato possano esistere.&lt;/p&gt;
+        &lt;p&gt;Una cosa giusta però Sommerville l’ha scritta alla fine, che però non riguarda direttamente il TDD ma l’attitudine alla meccanizzazione delle operazioni che è tipica del programmatore pigro tipico.&lt;/p&gt;
+        &lt;div class=&quot;premonition citation&quot;&gt;&lt;div class=&quot;fas fa-quote-left&quot;&gt;&lt;/div&gt;&lt;blockquote class=&quot;content blockquote&quot; cite=&quot;https://iansommerville.com/systems-software-and-technology/2016/03/17/giving-up-on-test-first-development/&quot;&gt;
+        &lt;p&gt;Think-first rather than test-first is the way to go.&lt;/p&gt;
+        &lt;footer class=&quot;blockquote-footer&quot;&gt;&lt;cite title=&quot;Ian Sommerville&quot;&gt;Ian Sommerville&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+        &lt;p&gt;Ha ragione, le scimmie prima o poi scriveranno anche dei buoni test, e allora a noi resterà solo la capacità di pensare per distinguerci da loro.&lt;/p&gt;
+        &lt;div class=&quot;footnotes&quot;&gt;
+        &lt;ol&gt;
+        &lt;li id=&quot;fn:1&quot;&gt;
+        &lt;p&gt;nel 2016, 3 anni e mezzo fa. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;/ol&gt;
+        &lt;/div&gt;</content><author><name>kLeZ</name></author><summary type="html">Il TDD è una di quelle metodologie che più spesso viene bistrattata qui in Italia. Spesso si sente definire questo approccio come troppo costoso o peggio come fallimentare. Molto spesso la “colpa” va al budget, sempre troppo risicato quantunque esso sia, ma qui si sa che la coperta viene commissionata su misura per un watusso e poi arrotolata fino a non coprirci neanche un pigmeo. E quello deve bastarti, altra non ne srotolano. Al di là delle facili critiche e delle superficiali battute tragicomiche, il fatto è che c’è molto ancora da fare per convincere i più biechi antagonisti di questa tecnica che vale la pena iniziare a fare dei test un componente necessario di ogni progetto.</summary></entry><entry><title type="html">Transazioni distribuite saghe e code</title><link href="https://klez.me/2019/07/27/transazioni-distribuite-saghe-e-code/" rel="alternate" type="text/html" title="Transazioni distribuite saghe e code" /><published>2019-07-27T12:56:10+02:00</published><updated>2019-07-27T12:56:10+02:00</updated><id>https://klez.me/2019/07/27/transazioni-distribuite-saghe-e-code</id><content type="html" xml:base="https://klez.me/2019/07/27/transazioni-distribuite-saghe-e-code/">&lt;p&gt;Venerdì scorso ho tenuto un &lt;em&gt;talk&lt;/em&gt; interno alla mia azienda sulle basi (molto basi) del framework Spring.&lt;br /&gt;
         Mi sono concentrato poco sui dettagli, ho preferito puntare verso le potenzialità del framework e le &lt;em&gt;feature&lt;/em&gt; più innovative e interessanti, con un occhio buono al cloud, vera punta di diamante di tutta la tecnologia Spring.&lt;/p&gt;
         &lt;!--more--&gt;
         &lt;p class=&quot;m-0 invisible zero-size&quot;&gt;
@@ -628,57 +748,4 @@
         &lt;p&gt;Retribuzione Annua Lorda, il costo annuale del lavoratore per l’azienda. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
         &lt;/li&gt;
         &lt;/ol&gt;
-        &lt;/div&gt;</content><author><name>kLeZ</name></author><category term="filosofia" /><category term="marx" /><category term="welfare" /><summary type="html">Ogni tanto parto col pippone filosofico, ormai lo sai. Questo è uno di quei momenti. Parlerò di Socrate, della povertà e di Marx.</summary></entry><entry><title type="html">Git submodules: una feature spettacolare e sottovalutata</title><link href="https://klez.me/2019/04/11/git-submodules-una-feature-spettacolare-e-sottovalutata/" rel="alternate" type="text/html" title="Git submodules: una feature spettacolare e sottovalutata" /><published>2019-04-11T08:07:47+02:00</published><updated>2019-04-11T08:07:47+02:00</updated><id>https://klez.me/2019/04/11/git-submodules-una-feature-spettacolare-e-sottovalutata</id><content type="html" xml:base="https://klez.me/2019/04/11/git-submodules-una-feature-spettacolare-e-sottovalutata/">&lt;p&gt;Oggi parlo di Git, e in particolare di una feature di questo indispensabile strumento che spesso viene sottovalutata o non considerata a dovere nell’organizzazione del codice.&lt;/p&gt;
-        &lt;!--more--&gt;
-        &lt;p class=&quot;m-0 invisible zero-size&quot;&gt;
-        &lt;a class=&quot;invisible&quot; id=&quot;read-more&quot;&gt;read more&lt;/a&gt;
-        &lt;/p&gt;
-        &lt;h2 id=&quot;cosa-è&quot;&gt;Cosa è&lt;/h2&gt;
-        &lt;p&gt;Un &lt;em&gt;submodule&lt;/em&gt;, come dice la &lt;a href=&quot;https://git-scm.com/book/en/v2/Git-Tools-Submodules&quot;&gt;documentazione ufficiale&lt;/a&gt; è un &lt;em&gt;repository&lt;/em&gt; git inserito nel &lt;em&gt;working tree&lt;/em&gt; di un altro &lt;em&gt;repository&lt;/em&gt; git, come dipendenza.&lt;/p&gt;
-        &lt;p&gt;A tutti sarà capitato di avere una libreria usata in più progetti, o addirittura comune all’organizzazione. Ecco, i &lt;em&gt;submodule&lt;/em&gt; servono proprio a questo. Permettono di specificare che un determinato percorso è in realtà un &lt;em&gt;repository&lt;/em&gt; separato, che deve essere scaricato e mantenuto aggiornato di volta in volta.&lt;/p&gt;
-        &lt;p&gt;Chiaramente esistono ottimi sistemi che evitano l’esigenza di questa funzione, ma non è sempre così.&lt;/p&gt;
-        &lt;p&gt;Nel caso in cui io stia sviluppando in &lt;strong&gt;Java&lt;/strong&gt; avrei &lt;strong&gt;Maven&lt;/strong&gt; o &lt;strong&gt;Gradle&lt;/strong&gt;, ottimi tool di gestione delle dipendenze.&lt;br /&gt;
-        Nel caso in cui io stia sviluppando in &lt;strong&gt;C#&lt;/strong&gt; avrei &lt;strong&gt;NuGet&lt;/strong&gt;, anch’esso ottimo.&lt;br /&gt;
-        Così via anche con &lt;strong&gt;Python&lt;/strong&gt;, &lt;strong&gt;Ruby&lt;/strong&gt;, &lt;strong&gt;Perl&lt;/strong&gt;.&lt;/p&gt;
-        &lt;p&gt;Ma non sempre ho a disposizione questi strumenti, oppure non posso o non voglio pubblicare.&lt;/p&gt;
-        &lt;div class=&quot;premonition info&quot;&gt;&lt;div class=&quot;fa fa-info-circle&quot;&gt;&lt;/div&gt;&lt;div class=&quot;content&quot;&gt;&lt;p&gt;Esempio pratico: questo blog.&lt;br /&gt;
-        In questo blog utilizzo molti &lt;em&gt;plugin&lt;/em&gt;, potrai vederli nel &lt;em&gt;[Gemfile]&lt;/em&gt; o nel [file di configurazione].&lt;/p&gt;
-        &lt;/div&gt;&lt;/div&gt;
-        &lt;p&gt;Per due di questi però (uno effettivamente non è un &lt;em&gt;plugin&lt;/em&gt; ma sorvoliamo), ho dovuto usare dei &lt;em&gt;submodule&lt;/em&gt;. Andiamo con ordine.&lt;/p&gt;
-        &lt;h3 id=&quot;premonition&quot;&gt;Premonition&lt;/h3&gt;
-        &lt;p&gt;Premonition è un ottimo &lt;em&gt;plugin&lt;/em&gt; per Jekyll che mi aiuta a scrivere meno codice quando sto scrivendo un articolo, momento in cui di fatto io voglio scrivere il minor quantitativo di parole strettamente formali e conformi possibile (soprattutto perché la sintassi formale ha bisogno di delimitatori per aiutare il &lt;em&gt;parser&lt;/em&gt;, e i caratteri speciali usati di solito non sono così semplici da scrivere su uno smartphone).&lt;/p&gt;
-        &lt;div class=&quot;premonition citation&quot;&gt;&lt;div class=&quot;fas fa-quote-left&quot;&gt;&lt;/div&gt;&lt;blockquote class=&quot;content blockquote&quot;&gt;&lt;p&gt;I caratteri speciali usati di solito non sono così semplici da scrivere su uno smartphone&lt;/p&gt;
-        &lt;/blockquote&gt;&lt;/div&gt;
-        &lt;p&gt;Proprio il blocco di citazione che vedi qua sopra è opera di &lt;em&gt;premonition&lt;/em&gt;, o quantomeno della mia variante, ma ci arrivo.&lt;br /&gt;
-        &lt;em&gt;Premonition&lt;/em&gt; mi aiuta a usare blocchi di citazione (&lt;em&gt;blockquote&lt;/em&gt;, in HTML) e a dargli uno stile grafico che sia semantico rispetto al contenuto. Di base offre quattro tipi di citazioni:&lt;/p&gt;
-        &lt;div class=&quot;premonition note&quot;&gt;&lt;div class=&quot;fa fa-check-square&quot;&gt;&lt;/div&gt;&lt;div class=&quot;content&quot;&gt;&lt;p&gt;Questo è un blocco di citazione con stile “&lt;em&gt;note&lt;/em&gt;”&lt;/p&gt;
-        &lt;/div&gt;&lt;/div&gt;
-        &lt;hr /&gt;
-        &lt;div class=&quot;premonition info&quot;&gt;&lt;div class=&quot;fa fa-info-circle&quot;&gt;&lt;/div&gt;&lt;div class=&quot;content&quot;&gt;&lt;p&gt;Questo è un blocco di citazione con stile “&lt;em&gt;info&lt;/em&gt;”&lt;/p&gt;
-        &lt;/div&gt;&lt;/div&gt;
-        &lt;hr /&gt;
-        &lt;div class=&quot;premonition warning&quot;&gt;&lt;div class=&quot;fa fa-exclamation-circle&quot;&gt;&lt;/div&gt;&lt;div class=&quot;content&quot;&gt;&lt;p&gt;Questo è un blocco di citazione con stile “&lt;em&gt;warning&lt;/em&gt;”&lt;/p&gt;
-        &lt;/div&gt;&lt;/div&gt;
-        &lt;hr /&gt;
-        &lt;div class=&quot;premonition error&quot;&gt;&lt;div class=&quot;fa fa-exclamation-triangle&quot;&gt;&lt;/div&gt;&lt;div class=&quot;content&quot;&gt;&lt;p&gt;Questo è un blocco di citazione con stile “&lt;em&gt;error&lt;/em&gt;”&lt;/p&gt;
-        &lt;/div&gt;&lt;/div&gt;
-        &lt;p&gt;E il blocco sopra? Quello con le “virgolette”? Ecco, quello e un’altra piccolezza sono la mia modifica.&lt;/p&gt;
-        &lt;p&gt;Per contribuire all’&lt;em&gt;open source&lt;/em&gt; come di solito mi preme fare, ho deciso di &lt;em&gt;forkare&lt;/em&gt; il progetto e fare le mie modifiche, mandando poi una &lt;em&gt;Pull request&lt;/em&gt; all’owner del progetto (che onestamente sembra non lo stia più sviluppando). Quindi, se prima potevo scaricare la gemma con l’ottimo sistema integrato in &lt;em&gt;Ruby&lt;/em&gt;, adesso non posso più farlo, perché devo usare la mia versione “di sviluppo”, fino a che la mia modifica non verrà pubblicata.&lt;/p&gt;
-        &lt;p&gt;Visto che Jekyll è in grado di accettare &lt;em&gt;plugin&lt;/em&gt; nell’apposita cartella decido di ficcare il sorgente di premonition li dentro, un paio di test in locale e funziona tutto.&lt;/p&gt;
-        &lt;h3 id=&quot;sgeext&quot;&gt;SgEExt&lt;/h3&gt;
-        &lt;p&gt;Integrando un altro plugin, JEmoji, mi imbatto in un qualcosa che non mi piace, JEmoji pesca le &lt;em&gt;png&lt;/em&gt; delle emoji da githubassets.com, e io non voglio che lo faccia perché non voglio connessioni esterne al mio dominio (fatta eccezione per il badge “live” di TravisCI).&lt;/p&gt;
-        &lt;p&gt;Cercando in rete una soluzione trovo uno script &lt;em&gt;python&lt;/em&gt; che fa al caso mio: scarica le emoji da githubassets.com e le riversa nella mia cartella di asset.&lt;/p&gt;
-        &lt;p&gt;Ma io non voglio che un domani questo script, presente su github, venga aggiornato senza la possibilità di accedere facilmente agli aggiornamenti. Quindi anche per questo script, che di fatto non ho modificato, clono il &lt;em&gt;repository&lt;/em&gt;, faccio due test in locale e tutto funziona.&lt;/p&gt;
-        &lt;h3 id=&quot;la-questione&quot;&gt;La questione&lt;/h3&gt;
-        &lt;p&gt;Soddisfatto, anche dell’&lt;a href=&quot;/2019/04/09/aggiornamenti-sulla-direttiva-per-il-copyright/&quot;&gt;articolo precedente a questo&lt;/a&gt;, decido che è il caso di pubblicare tutto in “produzione”. Git &lt;strong&gt;add&lt;/strong&gt;, &lt;strong&gt;commit&lt;/strong&gt; e &lt;strong&gt;push&lt;/strong&gt; e sono “live” (sempre live).&lt;/p&gt;
-        &lt;p&gt;Arriva una mail però in cui Travis mi avvisa che la &lt;em&gt;build&lt;/em&gt; è fallita, i log affermano che c’è un problema nel trovare un file &lt;strong&gt;SASS&lt;/strong&gt;, “{…}/premonition.scss”.&lt;/p&gt;
-        &lt;p&gt;Non intuendo quello che succede controllo e capisco che Git (giustamente) non pubblica i &lt;em&gt;repository&lt;/em&gt; che si trovano all’interno di altri &lt;em&gt;repository&lt;/em&gt;. Quindi penso a una soluzione e subito mi viene in mente la parola “&lt;em&gt;submodule&lt;/em&gt;”.&lt;/p&gt;
-        &lt;p&gt;Raccolgo informazioni dallo smartphone (l’unico strumento a mia disposizione in quel momento) e decido di provare quello che la documentazione mi racconta, molto alla cieca.&lt;/p&gt;
-        &lt;p&gt;Creo il file &lt;em&gt;.gitmodules&lt;/em&gt;, ci metto dentro le due sezioni relative ai due &lt;em&gt;repository&lt;/em&gt; da includere stando attento alla posizione nel &lt;em&gt;working tree&lt;/em&gt; e alla &lt;em&gt;url&lt;/em&gt; inserita e provo un &lt;em&gt;commit&lt;/em&gt; correttivo.&lt;/p&gt;
-        &lt;p&gt;Potete verificare voi stessi quale unica modifica ho fatto tramite il comando &lt;code class=&quot;highlighter-rouge&quot;&gt;git diff 958006..bae173&lt;/code&gt;: risulterà che ho aggiunto il file &lt;em&gt;.gitmodules&lt;/em&gt; e ho inserito il supporto ai &lt;em&gt;submodule&lt;/em&gt; in Travis (dovrebbe essere già attivo di default, ma non volevo eccedere di sicurezza).&lt;/p&gt;
-        &lt;p&gt;Va tutto molto bene per fortuna e ho il mio post online (cruciale la data, visto che il 15 di questo mese si voterà definitivamente la direttiva).&lt;/p&gt;
-        &lt;p&gt;Totale della correzione: circa 15 minuti (operativi) dalla notifica del fallimento della &lt;em&gt;build&lt;/em&gt; all’implementazione della soluzione. In realtà il tempo reale è stato molto di più, ho pubblicato e sono stato notificato del fallimento sul treno, e ho potuto risolvere solo in pausa pranzo.&lt;/p&gt;
-        &lt;h3 id=&quot;conclusione&quot;&gt;Conclusione&lt;/h3&gt;
-        &lt;p&gt;Questo vi racconta quanto questa funzione di Git sia semplice da usare e da capire, e vi dà un’idea di quanto possa essere utile e potente come strumento quando la struttura del progetto sia particolare (e neanche tanto poi).&lt;/p&gt;
-        &lt;div class=&quot;premonition citation&quot;&gt;&lt;div class=&quot;fas fa-quote-left&quot;&gt;&lt;/div&gt;&lt;blockquote class=&quot;content blockquote&quot;&gt;&lt;p&gt;Usate quanto più possibile le funzioni dei vostri strumenti senza avere paura, a qualsiasi livello, è importante non tralasciare mai questo aspetto vitale che ci evita tante complicazioni inutili (come avere un progetto comune che viene copia-incollato ovunque e si disallinea a T con 0).&lt;/p&gt;
-        &lt;footer class=&quot;blockquote-footer&quot;&gt;&lt;cite title=&quot;kLeZ&quot;&gt;kLeZ&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;</content><author><name>kLeZ</name></author><category term="best practice" /><category term="git" /><category term="modularity" /><summary type="html">Oggi parlo di Git, e in particolare di una feature di questo indispensabile strumento che spesso viene sottovalutata o non considerata a dovere nell’organizzazione del codice.</summary></entry></feed>
+        &lt;/div&gt;</content><author><name>kLeZ</name></author><category term="filosofia" /><category term="marx" /><category term="welfare" /><summary type="html">Ogni tanto parto col pippone filosofico, ormai lo sai. Questo è uno di quei momenti. Parlerò di Socrate, della povertà e di Marx.</summary></entry></feed>
