@@ -22,11 +22,16 @@ right_content: >-
 
 ## Carriera
 
+{% capture card11 %}
+Sviluppo e manutenzione di un servizio REST che fa da gateway per pagamenti scritto in PHP 5.6.
+
+Sviluppo e manutenzione di un'applicazione web che permette l'inserimento e la gestione di progetti di natura variabile e che permette di definire sezioni di profondità variabile per la categorizzazione di KPI. I KPI vengono inseriti all'interno delle iniziative, divisi per sezioni, e sulla base dei valori inseriti dai PM vengono calcolati vari parametri di controllo, che permettono delle previsioni sul'andamento del progetto.
+{% endcapture %}
+{% include card.html title="Senior Developer" subtitle="Key 2 Business s.r.l. | 03/06/2019 - presente" content=card11 footer="Skills: **PHP 5.6**, **Symfony 2.8**, **MySql**, **Java 8**, **Spring 2**, **ZKOss**" %}
+
 {% capture card10 %}
 Sviluppo e manutenzione di una piattaforma multi-tenant utilizzata da vettori che offrono servizio di corriera (autobus).  
 La piattaforma comprende un portale online pubblico per l'acquisto di biglietti, un portale di backoffice con autenticazione per la gestione della piattaforma da parte dei vettori, dei servizi web a corredo del funzionamento e due diverse App per la gestione delle corse utilizzate dagli autisti.
-
-Analogamente, sviluppo e manutenzione di una piattaforma multi-tenant simile alla precedente.
 
 Sviluppo e manutenzione di una applicazione WPF che aiuta degli operatori con un lavoro di produzione tramite una lista di operazioni standard per lotto. L'applicazione viene utilizzata tramite comandi vocali e utilizza un fotocamera Reflex per la cattura delle immagini dei passi significativi nella preparazione dell'unità.
 {% endcapture %}
@@ -172,6 +177,10 @@ Ho lavorato per 3 mesi come **sviluppatore Java** in un progetto per il **Minist
   * ASP.NET MVC
   * ASP.NET WebForms
   * ReactJS
+  * ZKOss
+  * Spring MVC
+  * Thymeleaf
+  * JSF
 
 </div>
 <div class="col" markdown="1">
