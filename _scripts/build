@@ -16,8 +16,8 @@ EOF
 	bundle exec jekyll build
 	bundle exec htmlproofer ./_site --disable-external
 else
-	chmod +x _scripts/emojis
-	./_scripts/emojis
+	bash ./_scripts/publish
+	bash ./_scripts/emojis
 	cat _data/travis.yml
 	echo -e "\n"
 	bundle exec jekyll build --drafts --trace

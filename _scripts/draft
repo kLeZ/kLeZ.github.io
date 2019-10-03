@@ -5,7 +5,8 @@ safe_title=$(echo $title | tr '[:upper:]' '[:lower:]' | iconv -f utf-8 -t ascii/
 echo $safe_title
 
 if [[ -n $safe_title ]]; then
-	cp _templates/post.md _drafts/$safe_title.md
-	sed -i "s/title: /title: \"$title\"/" _drafts/$safe_title.md
-	$JEKYLL_EDITOR _drafts/$safe_title.md
+	new_file="_drafts/$safe_title.md.draft"
+	cp _templates/post.md $new_file
+	sed -i "s/title: /title: \"$title\"/" $new_file
+	$JEKYLL_EDITOR $new_file
 fi
