@@ -6,24 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <!-- Begin Jekyll SEO tag v2.6.0 -->
-    <title>Riflessioni sul pensiero degli esseri umani | Alessandro ‘kLeZ’ Accardo personal website</title>
+    <title>Using The Eisenhower Matrix In Emacs Org-Mode | Alessandro ‘kLeZ’ Accardo personal website</title>
     <meta name="generator" content="Jekyll v3.8.5" />
-    <meta property="og:title" content="Riflessioni sul pensiero degli esseri umani" />
+    <meta property="og:title" content="Using The Eisenhower Matrix In Emacs Org-Mode" />
     <meta name="author" content="kLeZ" />
     <meta property="og:locale" content="en_US" />
-    <meta name="description" content="Ciao a tutti! Oggi voglio esporre una mia piccola riflessione, una di quelle che faccio al bagno, sulla tazza del gabinetto." />
-    <meta property="og:description" content="Ciao a tutti! Oggi voglio esporre una mia piccola riflessione, una di quelle che faccio al bagno, sulla tazza del gabinetto." />
-    <link rel="canonical" href="https://klez.me/2010/06/18/riflessioni-sul-pensiero-degli-esseri-umani/" />
-    <meta property="og:url" content="https://klez.me/2010/06/18/riflessioni-sul-pensiero-degli-esseri-umani/" />
+    <meta name="description" content="Riporto integralmente l’articolo di Tom Purl che parla dell’integrazione della matrice di Eisenhower in Emacs Org-Mode. Purtroppo Tom ha rimosso l’articolo dal suo sito ma sono riuscito comunque a trovarlo tramite la Wayback Machine. Di seguito (in inglese) l’articolo integrale. Forse (forse) porterò una traduzione di questo articolo nel blog, a imperitura memoria, soprattutto per chi non mastica granché l’inglese." />
+    <meta property="og:description" content="Riporto integralmente l’articolo di Tom Purl che parla dell’integrazione della matrice di Eisenhower in Emacs Org-Mode. Purtroppo Tom ha rimosso l’articolo dal suo sito ma sono riuscito comunque a trovarlo tramite la Wayback Machine. Di seguito (in inglese) l’articolo integrale. Forse (forse) porterò una traduzione di questo articolo nel blog, a imperitura memoria, soprattutto per chi non mastica granché l’inglese." />
+    <link rel="canonical" href="https://klez.me/2019/10/22/using-the-eisenhower-matrix-in-emacs-org-mode/" />
+    <meta property="og:url" content="https://klez.me/2019/10/22/using-the-eisenhower-matrix-in-emacs-org-mode/" />
     <meta property="og:site_name" content="Alessandro ‘kLeZ’ Accardo personal website" />
     <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2010-06-18T11:19:37+02:00" />
+    <meta property="article:published_time" content="2019-10-22T16:18:35+02:00" />
     <meta name="twitter:card" content="summary" />
-    <meta property="twitter:title" content="Riflessioni sul pensiero degli esseri umani" />
+    <meta property="twitter:title" content="Using The Eisenhower Matrix In Emacs Org-Mode" />
     <meta name="twitter:site" content="@kLeZhAcK" />
     <meta name="twitter:creator" content="@kLeZhAcK" />
     <script type="application/ld+json">
-      {"description":"Ciao a tutti! Oggi voglio esporre una mia piccola riflessione, una di quelle che faccio al bagno, sulla tazza del gabinetto.","@type":"BlogPosting","headline":"Riflessioni sul pensiero degli esseri umani","dateModified":"2010-06-18T11:19:37+02:00","datePublished":"2010-06-18T11:19:37+02:00","url":"https://klez.me/2010/06/18/riflessioni-sul-pensiero-degli-esseri-umani/","mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2010/06/18/riflessioni-sul-pensiero-degli-esseri-umani/"},"author":{"@type":"Person","name":"kLeZ"},"@context":"https://schema.org"}
+      {"description":"Riporto integralmente l’articolo di Tom Purl che parla dell’integrazione della matrice di Eisenhower in Emacs Org-Mode. Purtroppo Tom ha rimosso l’articolo dal suo sito ma sono riuscito comunque a trovarlo tramite la Wayback Machine. Di seguito (in inglese) l’articolo integrale. Forse (forse) porterò una traduzione di questo articolo nel blog, a imperitura memoria, soprattutto per chi non mastica granché l’inglese.","@type":"BlogPosting","headline":"Using The Eisenhower Matrix In Emacs Org-Mode","dateModified":"2019-10-22T16:18:35+02:00","datePublished":"2019-10-22T16:18:35+02:00","url":"https://klez.me/2019/10/22/using-the-eisenhower-matrix-in-emacs-org-mode/","mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2019/10/22/using-the-eisenhower-matrix-in-emacs-org-mode/"},"author":{"@type":"Person","name":"kLeZ"},"@context":"https://schema.org"}
     </script>
     <!-- End Jekyll SEO tag -->
     <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
@@ -93,48 +93,79 @@
         <div class="col-lg-2 col-md-12">
           <aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
             <p class="text-muted">
-              This article will take 4 minutes to read.
+              This article will take 2 minutes to read.
             </p>
           </aside>
         </div>
         <div class="col-lg-8 col-md-12">
           <article itemscope itemtype="http://schema.org/BlogPosting">
             <header>
-              <h2>Riflessioni sul pensiero degli esseri umani</h2>
+              <h2>Using The Eisenhower Matrix In Emacs Org-Mode</h2>
               <small class="text-muted">Posted on
-                <time datetime="2010-06-18T11:19:37+02:00" itemprop="datePublished">18 Jun 2010</time><span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
+                <time datetime="2019-10-22T16:18:35+02:00" itemprop="datePublished">22 Oct 2019</time><span> by • <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
             </header>
             <section itemprop="articleBody">
-              <p>Ciao a tutti! Oggi voglio esporre una mia piccola riflessione, una di quelle che faccio al bagno, sulla tazza del gabinetto.</p>
+              <p>Riporto integralmente l’articolo di Tom Purl che parla dell’integrazione della matrice di Eisenhower in Emacs Org-Mode.</p>
+              <p>Purtroppo Tom ha rimosso l’articolo dal suo sito ma sono riuscito comunque a trovarlo tramite la <a href="https://web.archive.org/web/">Wayback Machine</a>.</p>
+              <p>Di seguito (in inglese) l’articolo integrale. Forse (<strong>forse</strong>) porterò una traduzione di questo articolo nel blog, a imperitura memoria, soprattutto per chi non mastica granché l’inglese.</p>
               <!--more-->
               <p class="m-0 invisible zero-size">
                 <a class="invisible" id="read-more">read more</a>
               </p>
-              <p>Si lo so che vi sembra abbastanza strano e forse anche ridicolo, ma a me stare sulla tazza concilia i pensieri e spesso faccio delle riflessioni molto profonde.
-                Comunque per tornare sui binari del discorso, stavo riflettendo su una cosa che è considerata la punta di diamante dell’umanità: l’intelligenza. L’essere umano effettivamente sn dagli albori della sua storia è sempre stato connotato da una grande intelligenza, ma nella realtà di tutti i giorni, e più personalmente trasportato in informatica, cosa vuol dire intelligenza?
-                Secondo il mio modesto parere l’intelligenza è la capacità di un essere vivente e senziente di elaborare concetti complessi in maniera modulare, cioè per passi scomponendo in concetti più piccoli e più facilmente elaborabili.
-                Questo ha una ottima implicazione dal lato della lettura delle informazioni, cioè quando siamo “costretti” per così dire a dover analizzare qualcosa (come un problema ad esempio), ma una pessima implicazione quando siamo noi a dover costruire dei concetti. In poche parole la nostra intelligenza ci porta ad essere più bravi nel capire concetti preesistenti che non nel defirne di nuovi. Questo porta, se ci si pensa bene, a delle implicazioni che si estendono trasversalmente in tutti i campi e che sono a dir poco mostruose. Non per farla tragica ma pensate a cos’è successo quando Newton ha scoperto la gravità.
-                Newton e tutti i luminari dell’epoca (e in realtà anche il povero contadino lontano dal mondo) conoscevano già la gravità per induzione possiamo dire, cioè per assunzione che qualcosa che ti tira verso il basso in realtà deve esserci. Già Galileo Galilei prima di Newton studiò la cosa e dimostrò a Pisa (sulla famosa torre), tramite l’esperimento della caduta dei gravi, che una forza che ti spinge dall’alto in basso doveva esistere. Comunque per farla breve tutti lo sapevano ma nessuno aveva ancora enunciato nulla che non fosse di Galileo, allora condannato e quindi esule dall’essere preso in considerazione (almeno fino a questo secolo con l’assoluzione del papa), e quando Newton enunciò la teoria della gravità (o anche della forza gravitazionale) i più scaltri inventori iniziarono a complicarsi la vita cercando di vincere la forza di gravità, perché non sia mai che l’uomo venga battuto.
-                Il problema è che l’uomo generalmente pecca di presunzione verso la natura e verso la stessa pecca di concetti. Ci complichiamo la vita inutilmente, guarda Newton, a nessuno sarebbe importato se lui non avesse dato un nome alla gravità, anche perché di gravità si parlava già da tempo (Galilei è morto l’8 gennaio 1642 e Newton nacque il 4 gennaio 1643).
-                Un altro esempio che faccio è quello relativo alla macchina di Ford. Il signor Ford inventò l’automobile, il mezzo di trasporto più acclamato e utilizzato sul globo attualmente. Ebbene, pensate alla necessità di doversi spostare da una parte all’altra del pianeta, è proprio quello il bello, poter andare da A a B (che sono due punti molto lontani) in pochissimo tempo! C’è solo qualche appunto che farei al signor Ford: provate a immaginare a prima dell’invenzione dell’automobile, ci si spostava ugualmente, certo molto più lentamente, ma il viaggio era bello tanto quanto la destinazione e sicuramente si instauravano molti più rapporti umani e molto più cordiali, si era meno nervosi perché si correva di meno. Ora Ford con la sua invenzione ha dato all’uomo ulteriori problemi con cui combattere: la corsa al petrolio, la battaglia per la produzione di carburante, l’inquinamento da monossido di carbonio, le nevrosi da stress per il traffico, la totale mancanza di rapporti umani con gli altri esseri umani, la totale consapevolezza che per andare da A a B c’è solo tanta strada e non un bel viaggio da godersi.
-                Ecco questi sono solo pochi esempi di quanto l’uomo sia complicato, è vero riesce a elaborare molto analizza molti fattori, ma a che prezzo? Al prezzo che ci stiamo complicando enormemente la vita, ce la siamo già complicata tantissimo e continueremo a complicarcela ogni giorno a venire.
-                E le complicazioni spesso portano a problemi problemi che non sempre riguardano solo gli esseri umani o i manufatti degli esseri umani, a volte tutto questo riguarda anche e soprattutto la terra che piano piano a causa dei nostri sforzi di “civilizzazione” stiamo vedendo scomparire e cadere nell’oblio del malfunzionamento e della deteriorazione.
-                Pensate altri due esempi: gli utensili di base, e il fumo.
-                Gli utensili di base sono stati le prime invenzioni dell’uomo Sapiens Sapiens, quelli che ci hanno direttamente contraddistinto dalla scimmia. Portano però solo a una ulteriore selezione, questa volta innaturale, della specie umana in quanto a pensarci bene chi non sapeva costruirsi il suo utensile da caccia non riusciva a procacciarsi il cibo e moriva di fame e chi lo costruiva in maniera non adeguata lo rompeva davanti alla preda (spesso mammuth, leoni o tigri dai denti a sciabola) e veniva ucciso. Tutto per non saper cacciare con le proprie forze.
-                E il fumo? Quello si che è un grosso sbaglio dell’essere umano. Nessuno s’è fatto ancora una ragione del motivo per cui una persona dovrebbe essere così sadica da suicidarsi in maniera lenta, graduale e così dannosa per se e perché dovrebbe essere così poco rispettosa nel volere a tutti i costi uccidersi anche a costo di uccidere gli altri.
-                Ecco l’uomo in questo caso si è veramente complicato molto la vita e solo per peggiorare, per autodegradarsi, per autodistruggersi.
-                Siamo molto bravi ad analizzare ciò che già c’è ma poco furbi nel creare qualcosa che prima non esisteva facendolo nel modo più complicato e deteriorante per se per gli altri e per il pianeta.
-                Vorrei qualche commento a questo solo per sapere a quanti piace il mio pensiero, per un po’ di critica insomma. Sono curioso di sapere quanti la pensano come me.</p>
+              <p>I just finished reading the <a href="http://waitbutwhy.com/2015/03/procrastination-matrix.html">The Procrastination Matrix</a> article on the <a href="http://waitbutwhy.com/">Wait But Why</a> blog and it really spoke to me. I’m a big fan of using <a href="http://orgmode.org/">Org-Mode</a> in Emacs to organize all of my tasks, and I wondered if I could make both of these systems work together. Naturally, Org-Mode makes it really easy, and here’s how I did it.</p>
+              <h2 id="easy-tagging">Easy Tagging</h2>
+              <p>First, I need to be able to categorize my TODO’s as being urgent, important, or both. The easiest way to do this in Org-Mode is to use tags that looks something like this:</p>
+              <div class="highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>** TODO Pay bills                                                    :urgent:
+</code></pre>
+                </div>
+              </div>
+              <p>You can easily add tags using the <code class="highlighter-rouge">C-c C-c</code> command, but I like to make things even easier by using the <code class="highlighter-rouge">org-tag-alist</code> variable:</p>
+              <div class="language-elisp highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="p">(</span><span class="k">setq</span> <span class="nv">org-tag-alist</span> <span class="o">'</span><span class="p">((</span><span class="s">"important"</span> <span class="o">.</span> <span class="nv">?i</span><span class="p">)</span>
+                    <span class="p">(</span><span class="s">"urgent"</span>    <span class="o">.</span> <span class="nv">?u</span><span class="p">)))</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Now when I tag a TODO item, I simply need to type <code class="highlighter-rouge">i</code> or <code class="highlighter-rouge">u</code> to tag it as important and/or urgent.</p>
+              <h2 id="canned-searches">Canned Searches</h2>
+              <p>Now that my TODO’s are tagged I would like to be able to look at all 4 quadrants quickly and easily. I can do this in Org-Mode by setting the value of the <code class="highlighter-rouge">org-agenda-custom-commands</code> variable. Here’s what I have:</p>
+              <div class="language-elisp highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="p">(</span><span class="k">setq</span> <span class="nv">org-agenda-custom-commands</span>
+   <span class="o">'</span><span class="p">((</span><span class="s">"1"</span> <span class="s">"Q1"</span> <span class="nv">tags-todo</span> <span class="s">"+important+urgent"</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">"2"</span> <span class="s">"Q2"</span> <span class="nv">tags-todo</span> <span class="s">"+important-urgent"</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">"3"</span> <span class="s">"Q3"</span> <span class="nv">tags-todo</span> <span class="s">"-important+urgent"</span><span class="p">)</span>
+     <span class="p">(</span><span class="s">"4"</span> <span class="s">"Q4"</span> <span class="nv">tags-todo</span> <span class="s">"-important-urgent"</span><span class="p">)))</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Q1 stands for “quadrant 1” and contains all TODO’s that are tagged as both important and urgent. Q2 contains all of the TODO’s that are tagged as important but not urgent. And the rest should be pretty self explanatory.</p>
+              <p>Now when I press <code class="highlighter-rouge">C-c</code> a I see my usual agenda search dialog with the following lines at the bottom:</p>
+              <div class="highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>1    Q1        : +important+urgent
+2    Q2        : +important-urgent
+3    Q3        : -important+urgent
+4    Q4        : -important-urgent
+</code></pre>
+                </div>
+              </div>
+              <p>I can then see all of the tasks for a given quadrant by pressing the corresponding number.</p>
+              <h2 id="thats-it">That’s It!</h2>
+              <p>Once again Org-Mode has proven itself to be very easy to customize. It literally does everything for me but complete my tasks and show the <a href="http://waitbutwhy.com/2013/10/why-procrastinators-procrastinate.html">Instant Gratification Monkey</a> who’s boss.</p>
             </section>
-            <a href="/2010/06/18/riflessioni-sul-pensiero-degli-esseri-umani/" hidden></a>
+            <a href="/2019/10/22/using-the-eisenhower-matrix-in-emacs-org-mode/" hidden></a>
           </article>
           <p class="mx-0 mb-0 mt-5 invisible zero-size">
             <a href="" class="invisible" id="comments">comments</a>
           </p>
           <h3>Comments</h3>
           <form method="post" action="https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/dev/comments/">
-            <input name="options[redirect]" type="hidden" value="https://klez.me/2010/06/18/riflessioni-sul-pensiero-degli-esseri-umani/#comments">
-            <input name="options[slug]" type="hidden" value="riflessioni-sul-pensiero-degli-esseri-umani">
+            <input name="options[redirect]" type="hidden" value="https://klez.me/2019/10/22/using-the-eisenhower-matrix-in-emacs-org-mode/#comments">
+            <input name="options[slug]" type="hidden" value="using-the-eisenhower-matrix-in-emacs-org-mode">
             <div class="form-row">
               <div class="col form-group">
                 <input type="text" id="username" name="fields[name]" class="form-control" placeholder="username" required="true" />
