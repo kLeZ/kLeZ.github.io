@@ -45,7 +45,7 @@ Now that my TODO's are tagged I would like to be able to look at all 4 quadrants
 
 Q1 stands for "quadrant 1" and contains all TODO's that are tagged as both important and urgent. Q2 contains all of the TODO's that are tagged as important but not urgent. And the rest should be pretty self explanatory.
 
-Now when I press `C-c` a I see my usual agenda search dialog with the following lines at the bottom:
+Now when I press `C-c a` I see my usual agenda search dialog with the following lines at the bottom:
 
 ```
 1    Q1        : +important+urgent
