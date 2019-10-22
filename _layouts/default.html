@@ -5,6 +5,7 @@
 	{%- assign classes_arr = " " | split: " " -%}
 	{%- if page.landing == true -%}{%- assign classes_arr = classes_arr | push: "landing-page" -%}{%- endif -%}
 	{%- if page.service == true -%}{%- assign classes_arr = classes_arr | push: "service-page" -%}{%- endif -%}
+	{%- if page.post == true -%}{%- assign classes_arr = classes_arr | push: "post-page" -%}{%- endif -%}
 	{%- assign classes = classes_arr | join: " " -%}
 
 	<body class="{{ classes }}">

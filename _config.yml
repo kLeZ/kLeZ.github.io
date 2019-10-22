@@ -41,6 +41,7 @@ defaults:
       values:
           layout: "post"
           permalink: /:year/:month/:day/:title/
+          post: true
 
 show_excerpts: true
 excerpt_separator: "{% include more.html %}"

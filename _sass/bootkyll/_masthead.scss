@@ -19,6 +19,20 @@
 	}
 }
 
+.post-page {
+	header.masthead {
+		.page-heading,
+		.post-heading,
+		.site-heading {
+			padding: 80px 0 50px;
+
+			@media only screen and (min-width: 768px) {
+				padding: 50px 0;
+			}
+		}
+	}
+}
+
 header.masthead {
 	// TIP: Background images are set within the HTML using inline CSS!
 	margin-bottom: 10px;
