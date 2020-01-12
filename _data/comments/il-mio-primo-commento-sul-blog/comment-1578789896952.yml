@@ -1,0 +1,13 @@
+_id: c136b300-34d4-11ea-90c4-6909f013a759
+name: Frida Hojrup
+email: accb68c27141040d26f658810efe22cb
+url: 'https://it.flowergardennews.com/'
+message: >-
+  Se viene visualizzato il messaggio "Nessun post pubblicato. Inizia
+  aggiungendone qualcuno." allora clicca su di esso per scrivere il primo post.
+  Se viene visualizzato solo il messaggio "Nessun post pubblicato" significa che
+  non c'e nessuna pagina blog nella lingua in cui stai visualizzando il sito. E
+  necessario aggiungere una nuova pagina di tipo blog per poter pubblicare il
+  tuo primo post. Aggiungi ".rss" alla fine dell'indirizzo del tuo blog e
+  otterrai l'indirizzo RSS per quel blog (ad esempio
+date: '2020-01-12T00:44:56.947Z'
