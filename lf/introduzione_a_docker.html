@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Introduzione a Docker</title>
+<meta name="author" content="Alessandro Accardo"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="/home/klez/.emacs.d/vendor/reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="/home/klez/.emacs.d/vendor/reveal.js/css/theme/black.css" id="theme"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '/home/klez/.emacs.d/vendor/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1>Introduzione a Docker</h1><h2>Learning Friday del 17/04/2020</h2><h3> Alessandro Accardo</h3><p><a href="https://klez.me/lf/introduzione_a_docker.html">Vedi online</a></p>
+</section>
+
+<section>
+<section id="slide-org2b28fd9">
+<h2 id="org2b28fd9">Chi sono</h2>
+<p>
+Ciao, sono Alessandro Accardo, forse vi ricorderete di me per un altro Learning Friday sul framework Spring.
+</p>
+
+<p>
+Ecco chi sono.
+</p>
+
+<ul>
+<li class="fragment appear">Senior Developer</li>
+<li class="fragment appear">Solution Architect</li>
+<li class="fragment appear">Specializzato in soluzioni Cloud-Native</li>
+<li class="fragment appear">Nerd</li>
+<li class="fragment appear">Appassionato di tecnologia</li>
+<li class="fragment appear"><i>Hacker</i></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org61adcf6">
+<h2 id="org61adcf6">Cos'è Docker</h2>
+
+<div class="figure">
+<p><img src="./be_like_docker.jpg" alt="be_like_docker.jpg" />
+</p>
+</div>
+
+</section>
+<section>
+
+<p>
+Docker è un software, innanzi tutto. Viene usato come sinonimo di <i>container</i>, per quanto i container non siano effettivamente nati con esso.
+</p>
+
+<p>
+Alla base di questa tecnologia c'è una tecnica chiamata <i>sandboxing</i>.
+</p>
+
+<p>
+Spesso, molto (troppo) spesso, i container vengono paragonati alle VM, macchine virtuali, quando invece poco e male si accostano tra loro, per quanto comunque le sandbox effettivamente virtualizzano, ma a livello di sistema operativo e non a livello hardware (quindi due livelli sotto).
+</p>
+
+<aside class="notes">
+<p>
+Aneddoto su Microsoft e Hyper-V <i>Containers</i> :D
+</p>
+
+</aside>
+
+<p>
+Ma veniamo al punto: cos'è, a questo punto, un container?
+</p>
+
+</section>
+<section id="slide-orgbc56bc2">
+<h3 id="orgbc56bc2">Container e sandbox, un amore lungo una vita</h3>
+<p>
+Andando un po' indietro con la storia, il trascorso di queste tecnologie non è di certo nuovo. Troviamo degli embrioni di quello che oggi è un container addirittura in Unix.
+</p>
+
+<p>
+Questi <i>proto-container</i> (perdonate la bestemmia) erano già chiamati sandbox, sostanzialmente degli <i>userspace</i> isolati tra loro a cui il sistema operativo fornisce risorse distribuendole (più o meno) equamente.
+</p>
+
+<p>
+I casi più notevoli sono la <i>chroot</i> di Unix 7, la jail di BSD prima e di Linux dopo e le Zone di solaris.
+</p>
+
+<p>
+A un certo punto, il kernel Linux tira fuori una tecnologia chiamata LXC, linux containers, e su questa è stato sviluppato Docker, che inizialmente (nel 2008!) era uno script python.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc9e39e4">
+<h2 id="orgc9e39e4">Perché?</h2>
+<p>
+Una volta capito a grandi linee cos'è Docker e da dove viene la domanda spontanea è: <i>perché</i>.
+</p>
+
+<p>
+Quale problema risolve Docker? Per quale motivo è stato sviluppato? E perché ora è così popolare?
+</p>
+
+
+<div class="figure">
+<p><img src="./it_works_on_my_machine.png" alt="it_works_on_my_machine.png" />
+</p>
+</div>
+
+</section>
+<section>
+
+<p>
+L'industria del software è cambiata.
+</p>
+
+<ul>
+<li class="fragment appear">Prima:
+<ul>
+<li>applicazioni monolitiche</li>
+<li>cicli di sviluppo lunghi</li>
+<li>ridimensionamento lento</li>
+
+</ul></li>
+<li class="fragment appear">Adesso:
+<ul>
+<li>servizi disaccoppiati</li>
+<li>miglioramenti iterativi veloci</li>
+<li>ridimensionamento veloce</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section>
+
+<p>
+Proprio per la velocità di produzione richiesta attualmente è diventato indispensabile efficientare il ciclo che va dalla <i>scoperta</i> della necessità di una feature alla sua messa in produzione.
+</p>
+
+<p>
+Inoltre, i sistemi di oggi sono molto complessi proprio per supportare un sempre maggiore numero di requisiti. Questo rende necessaria l'installazione di diverse componenti software da dover gestire contemporaneamente.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf9d8389">
+<h2 id="orgf9d8389">Come funziona</h2>
+<p>
+Veniamo alla parte importante: come funziona, internamente, Docker?
+</p>
+
+
+<div class="figure">
+<p><img src="./container_diagram.png" alt="container_diagram.png" />
+</p>
+</div>
+
+</section>
+<section>
+
+<p>
+Il Docker Engine, o più comunemente Docker, si compone principalmente dei seguenti componenti:
+</p>
+
+<dl>
+<dt class="fragment appear">Docker daemon</dt><dd class="fragment appear">Il demone Docker è ciò che esegue effettivamente i comandi inviati dal client Docker, come la costruzione, l'esecuzione e la distribuzione dei container. Il Docker Daemon viene eseguito sul computer host, ma da utente semplice non comunichi mai direttamente con il Daemon. Il client Docker può essere eseguito anche sul computer host, ma non è necessario. Può essere eseguito su un altro computer e comunicare con il Docker Daemon in esecuzione sul computer host.</dd>
+<dt class="fragment appear">Docker client</dt><dd class="fragment appear">Docker Client è ciò con cui l'utente finale di Docker comunica. Pensalo come l'interfaccia utente di Docker. Ad esempio, quando si esegue un comando, si comunica al client Docker, che comunica le istruzioni al daemon Docker.</dd>
+
+</dl>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb481467">
+<h2 id="orgb481467">Anatomia di un container</h2>
+
+<div class="figure">
+<p><img src="./container_anatomy.jpg" alt="container_anatomy.jpg" />
+</p>
+</div>
+
+</section>
+<section>
+
+<p>
+C'è molta confusione sui nomi, e l'idea qui è quella di ridurre al minimo la frizione esplicitandoli per bene.
+</p>
+
+<dl>
+<dt class="fragment appear">Distribuzione</dt><dd class="fragment appear">Un insieme opinionato di software e configurazioni di base che costituiscono un sistema operativo</dd>
+<dt class="fragment appear">Kernel</dt><dd class="fragment appear">Il cuore del sistema operativo</dd>
+<dt class="fragment appear">Bootfs</dt><dd class="fragment appear">La base su cui si costruiscono le immagini base, il nostro "bootloader"</dd>
+
+</dl>
+</section>
+<section>
+<dl>
+<dt class="fragment appear">Base Image</dt><dd class="fragment appear">L'immagine di base, che rappresenta la distribuzione di software di base minimo per far funzionare un'applicazione. Tipicamente le <i>distro</i> maggiori mettono a disposizione una base image per docker</dd>
+<dt class="fragment appear">Image</dt><dd class="fragment appear">Sempre a partire da un'altra immagine, o al limite dall'immagine di base, modifica di quest'ultima per includere un software o una configurazione non presente nello strato sottostante</dd>
+<dt class="fragment appear">Container</dt><dd class="fragment appear">L'instanza in esecuzione di una immagine</dd>
+
+</dl>
+
+</section>
+<section id="slide-org21b711a">
+<h3 id="org21b711a">Partiamo dal principio, il filesystem e l'immagine di base</h3>
+<p>
+Bootfs è il filesystem messo a disposizione dal kernel Linux come base per uno userspace isolato LXC, o linux container.
+</p>
+
+<p>
+Su questo componente del sistema operativo si costruisce l'immagine di base, che di solito è una distribuzione linux, o in generale una distribuzione di software di base (molto, molto base).
+</p>
+
+</section>
+<section id="slide-org0c9ccff">
+<h3 id="org0c9ccff">La Docker Image, la base del container</h3>
+<p>
+Una Docker Image si compone di diversi strati, o <i>layer</i>. Ogni strato si poggia sui precedenti andando ad aggiungere qualcosa allo userspace finale che costituirà poi l'immagine usata quando si crea un container.
+</p>
+
+</section>
+<section id="slide-orgcb38280">
+<h3 id="orgcb38280">Il container</h3>
+<p>
+Alla fine (o in cima, a seconda della prospettiva) della catena troviamo il container, cioè l'aggeggio dentro cui poter eseguire software che sarà a quel punto isolato dal resto del sistema operativo.
+</p>
+
+<p>
+I container possono essere usati per i più vari utilizzi, si pensi a software come <a href="https://www.brow.sh/">browsh</a> che non offre un servizio, ma un <i>normale</i> software nel suo ambiente protetto di esecuzione.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgcfb9669">
+<h2 id="orgcfb9669">Dockerfile</h2>
+<p>
+Questo di seguito è l'esempio di un dockerfile, commentiamolo insieme.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-shell">FROM ubuntu:18.04
+
+MAINTAINER klez@pm.me
+
+RUN apt-get update &amp;&amp; apt-get install -y mongodb &amp;&amp; apt-get install nano
+
+<span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Create the MongoDB data directory</span>
+RUN mkdir -p /data/db
+
+<span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Expose port #37017 from the container to the host</span>
+EXPOSE 37017
+
+<span style="color: #8B8989; font-style: italic;">#</span><span style="color: #8B8989; font-style: italic;">Start MongoDb</span>
+CMD [<span style="color: #61CE3C;">"mongod"</span>, <span style="color: #61CE3C;">"-f"</span>, <span style="color: #61CE3C;">"/etc/mongodb.conf"</span>]
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgaa4e465">
+<h2 id="orgaa4e465">Saluti</h2>
+<p>
+Grazie a tutti per essere arrivati fin qui!
+</p>
+
+
+<div class="figure">
+<p><img src="./thanks_for_watching.jpeg" alt="thanks_for_watching.jpeg" />
+</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="/home/klez/.emacs.d/vendor/reveal.js/lib/js/head.min.js"></script>
+<script src="/home/klez/.emacs.d/vendor/reveal.js/js/reveal.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+
+overview: true,
+width: 1440,
+height: 900,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'convex', // see README of reveal.js for options
+transitionSpeed: 'default',
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+ { src: '/home/klez/.emacs.d/vendor/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '/home/klez/.emacs.d/vendor/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '/home/klez/.emacs.d/vendor/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '/home/klez/.emacs.d/vendor/reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '/home/klez/.emacs.d/vendor/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+</script>
+</body>
+</html>
