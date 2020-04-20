@@ -38,17 +38,17 @@ Sviluppo e manutenzione di una applicazione WPF che aiuta degli operatori con un
 {% include card.html title="Senior Developer, DevOps coach @ Infoservice s.r.l." subtitle="Key 2 Business s.r.l. | 10/12/2018 - 31/05/2019" content=card10 footer="Skills: **ASP.NET MVC 5**, **Sql Server 2016**, **WebApi**, **UWP**, **WPF**, **WCF**, **Web Functions**, **Xamarin**, solution quality" %}
 
 {% capture card9 %}
-Per 2 mesi ho sviluppato alcune evolutive per una intranet SharePoint 2013 on premises.
+Ho sviluppato alcune evolutive per una intranet SharePoint 2013 on premises.
 
-Per 4 mesi ho progettato e sviluppato un portale **SharePoint Online**, con particolare enfasi nella **progettazione della soluzione e nella stesura di linee guida di sviluppo e standard di sviluppo e qualità del codice**.
+Ho progettato e sviluppato un portale **SharePoint Online**, con particolare enfasi nella **progettazione della soluzione e nella stesura di linee guida di sviluppo e standard di sviluppo e qualità del codice**.
 
-Per 8 mesi ho sviluppato delle evolutive per un sistema di **streaming in diretta**. In particolare, le evolutive consistevano nell’implementazione dello standard di streaming multimediale **HLS**, con produzione di frammenti audio-video in formato **MPEG2 Transport Stream** contenenti stream video in formato **H.264** e stream audio in formato **AAC+** all’interno del software di Encoding in **C++08**.
+Ho sviluppato delle evolutive per un sistema di **streaming in diretta**. In particolare, le evolutive consistevano nell’implementazione dello standard di streaming multimediale **HLS**, con produzione di frammenti audio-video in formato **MPEG2 Transport Stream** contenenti stream video in formato **H.264** e stream audio in formato **AAC+** all’interno del software di Encoding in **C++08**.
 
 Ottimizzazione del consumo di memoria tramite **analisi dei memory leak** e del flusso di esecuzione con particolare enfasi nella progettazione di un flusso estremamente veloce per la necessità di processare i **dati multimediali in real-time**. Inoltre l’evolutiva consisteva anche nell’adeguamento dei vari **player multimediali per browser** utilizzando tecnologie client come **Silverlight**, **Applet Java**, **Flash**, **HTML5 video**, **HLS.js**, **player nativi per Android e iOS**.
 
 Progettazione e sviluppo di una intranet su **SharePoint Online**, con particolare enfasi nella **progettazione della soluzione e nella stesura di linee guida di sviluppo e standard di sviluppo e qualità del codice**, ricoprendo anche i ruoli di **Git Master**, **DevOps Architect** e **Technical Leader**. Nel progetto è stata coinvolta anche **Microsoft** con cui ho collaborato anche per l’implementazione delle funzionalità di **Continuous Integration**, **Continuous Deployment**, **Continuous Delivery**.
 {% endcapture %}
-{% include card.html title="Seniod Developer @ Cluster Reply" subtitle="Key 2 Business s.r.l. | 4/09/2017 - 30/11/2018" content=card9 footer="Skills: **Sharepoint 2013**, **SharePoint 2016**, **SharePoint Online**, **JavaScript**, **TypeScript**, **Css3**, **HTML**, **NodeJs**, **C#**, **Java**, **C++**, **ActionScript 3**, **Handlebars**, **ReactJS**, **KnockoutJS**, Streaming multimediale, controllo qualità e ottimizzazione del software, **architetture cloud-based su Azure e Office 365**, Azure **WebAPI**, Azure **WebJobs**, Azure **WebFunctions**, code review, code quality, DevOps pipeline, Team leadership, progettazione" %}
+{% include card.html title="Seniod Developer @ Cluster Reply" subtitle="Key 2 Business s.r.l. | 19/06/2017 - 30/11/2018" content=card9 footer="Skills: **Sharepoint 2013**, **SharePoint 2016**, **SharePoint Online**, **JavaScript**, **TypeScript**, **Css3**, **HTML**, **NodeJs**, **C#**, **Java**, **C++**, **ActionScript 3**, **Handlebars**, **ReactJS**, **KnockoutJS**, Streaming multimediale, controllo qualità e ottimizzazione del software, **architetture cloud-based su Azure e Office 365**, Azure **WebAPI**, Azure **WebJobs**, Azure **WebFunctions**, code review, code quality, DevOps pipeline, Team leadership, progettazione" %}
 
 {% capture card8 %}
 Lavoro svolto sia presso la sede del cliente, sia presso la sede interna.
