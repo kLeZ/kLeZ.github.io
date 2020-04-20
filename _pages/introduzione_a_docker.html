@@ -1,3 +1,6 @@
+---
+permalink: /lf/introduzione_a_docker.html
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +10,13 @@
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="/home/klez/.emacs.d/vendor/reveal.js/css/reveal.css"/>
 
-<link rel="stylesheet" href="/home/klez/.emacs.d/vendor/reveal.js/css/theme/black.css" id="theme"/>
+<link rel="stylesheet" href="{{ '/assets/reveal.js/css/reset.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/reveal.js/css/reveal.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/reveal.js/css/theme/black.css' | relative_url }}" id="theme">
+
+<!-- Theme used for syntax highlighting of code -->
+<link rel="stylesheet" href="{{ '/assets/reveal.js/lib/css/monokai.css' | relative_url }}">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -17,7 +24,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = '/home/klez/.emacs.d/vendor/reveal.js/css/print/pdf.css';
+        link.href = "{{ '/assets/reveal.js/css/print/pdf.css' | relative_url }}";
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
@@ -26,7 +33,7 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1>Introduzione a Docker</h1><h2>Learning Friday del 17/04/2020</h2><h3> Alessandro Accardo</h3><p><a href="https://klez.me/lf/introduzione_a_docker.html">Vedi online</a></p>
+<h1>Introduzione a Docker</h1><h2>Learning Friday del 17/04/2020</h2><h3> Alessandro Accardo</h3><p><a href="{{ page.url }}">Vedi online</a></p>
 </section>
 
 <section>
@@ -57,7 +64,7 @@ Ecco chi sono.
 <h2 id="org61adcf6">Cos'è Docker</h2>
 
 <div class="figure">
-<p><img src="./be_like_docker.jpg" alt="be_like_docker.jpg" />
+<p><img src="./introduzione_a_docker/be_like_docker.jpg" alt="be_like_docker.jpg" />
 </p>
 </div>
 
@@ -121,7 +128,7 @@ Quale problema risolve Docker? Per quale motivo è stato sviluppato? E perché o
 
 
 <div class="figure">
-<p><img src="./it_works_on_my_machine.png" alt="it_works_on_my_machine.png" />
+<p><img src="./introduzione_a_docker/it_works_on_my_machine.png" alt="it_works_on_my_machine.png" />
 </p>
 </div>
 
@@ -172,7 +179,7 @@ Veniamo alla parte importante: come funziona, internamente, Docker?
 
 
 <div class="figure">
-<p><img src="./container_diagram.png" alt="container_diagram.png" />
+<p><img src="./introduzione_a_docker/container_diagram.png" alt="container_diagram.png" />
 </p>
 </div>
 
@@ -196,7 +203,7 @@ Il Docker Engine, o più comunemente Docker, si compone principalmente dei segue
 <h2 id="orgb481467">Anatomia di un container</h2>
 
 <div class="figure">
-<p><img src="./container_anatomy.jpg" alt="container_anatomy.jpg" />
+<p><img src="./introduzione_a_docker/container_anatomy.jpg" alt="container_anatomy.jpg" />
 </p>
 </div>
 
@@ -290,15 +297,15 @@ Grazie a tutti per essere arrivati fin qui!
 
 
 <div class="figure">
-<p><img src="./thanks_for_watching.jpeg" alt="thanks_for_watching.jpeg" />
+<p><img src="./introduzione_a_docker/thanks_for_watching.jpeg" alt="thanks_for_watching.jpeg" />
 </p>
 </div>
+<a href="{{ site.url }}">Torna alla Home</a>
 </section>
 </section>
 </div>
 </div>
-<script src="/home/klez/.emacs.d/vendor/reveal.js/lib/js/head.min.js"></script>
-<script src="/home/klez/.emacs.d/vendor/reveal.js/js/reveal.js"></script>
+<script src="{{ '/assets/reveal.js/js/reveal.js' | relative_url }}"></script>
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
@@ -326,11 +333,11 @@ transitionSpeed: 'default',
 
 // Optional libraries used to extend reveal.js
 dependencies: [
- { src: '/home/klez/.emacs.d/vendor/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '/home/klez/.emacs.d/vendor/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '/home/klez/.emacs.d/vendor/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: '/home/klez/.emacs.d/vendor/reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: '/home/klez/.emacs.d/vendor/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }]
+ { src: "{{ '/assets/reveal.js/plugin/markdown/marked.js' | relative_url }}", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: "{{ '/assets/reveal.js/plugin/markdown/markdown.js' | relative_url }}", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: "{{ '/assets/reveal.js/plugin/notes/notes.js' | relative_url }}", async: true, condition: function() { return !!document.body.classList; } },
+ { src: "{{ '/assets/reveal.js/plugin/search/search.js' | relative_url }}", async: true, condition: function() { return !!document.body.classList; } },
+ { src: "{{ '/assets/reveal.js/plugin/zoom-js/zoom.js' | relative_url }}", async: true, condition: function() { return !!document.body.classList; } }]
 
 });
 </script>

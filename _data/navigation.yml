@@ -26,3 +26,8 @@
       - title: PassMan
         url: https://klez.me/PassMan
         relative: false
+- title: Presentazioni
+  sublinks:
+      - title: Introduzione a Docker (Talk Learning Friday del 17/04/2020)
+        url: /lf/introduzione_a_docker.html
+        relative: true
