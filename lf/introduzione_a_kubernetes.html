@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Introduzione a Kubernetes</title>
+    <meta name="author" content="Alessandro Accardo"/>
+    <style type="text/css">
+      .underline { text-decoration: underline; }
+    </style>
+    <link rel="stylesheet" href="/assets/reveal.js/css/reveal.css"/>
+    <link rel="stylesheet" href="/assets/reveal.js/css/theme/black.css" id="theme"/>
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+          var link = document.createElement( 'link' );
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          link.href = "/assets/reveal.js/css/print/pdf.css";
+          document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section id="sec-title-slide">
+          <h1>Introduzione a Kubernetes</h1>
+          <h2>Learning Friday del 04/09/2020</h2>
+          <h3> Alessandro Accardo</h3>
+          <p><a href="https://klez.me/lf/introduzione_a_kubernetes.html">Vedi online</a></p>
+        </section>
+        <section>
+          <section id="slide-org1ccb5a5">
+            <h2 id="org1ccb5a5">Chi sono</h2>
+            <p>
+              Ciao, sono Alessandro Accardo, forse vi ricorderete di me per un Learning Friday su Docker.
+            </p>
+            <p>
+              Ecco chi sono.
+            </p>
+            <ul>
+              <li class="fragment appear">Senior Developer</li>
+              <li class="fragment appear">Solution Architect</li>
+              <li class="fragment appear">Specializzato in soluzioni Cloud-Native</li>
+              <li class="fragment appear">Nerd</li>
+              <li class="fragment appear">Appassionato di tecnologia</li>
+              <li class="fragment appear"><i>Hacker</i></li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section id="slide-orgf3a18cb">
+            <h2 id="orgf3a18cb">Cos'è Kubernetes</h2>
+            <p>
+              Kubernetes è un sistema di orchestrazione di <i>container</i>. Esaminiamo parola per parola.
+            </p>
+          </section>
+          <section id="slide-org7779d99">
+            <h3 id="org7779d99">Sistema</h3>
+            <p>
+              Spero sappiate cos'è un sistema, altrimenti ho pessime notizie&#x2026;
+            </p>
+            <div class="figure">
+              <p><img src="/lf/introduzione_a_kubernetes/facepalm-head.jpg" alt="facepalm-head.jpg" />
+              </p>
+            </div>
+          </section>
+          <section id="slide-org21dc165">
+            <h3 id="org21dc165">Orchestrazione</h3>
+            <p>
+              Wikipedia dice questo in merito a cosa è l'orchestrazione di sistemi informatici:
+            </p>
+            <blockquote>
+              <p>
+                In system administration, orchestration is the automated configuration, coordination, and management of computer systems and software. &#x2013; <a href="https://en.wikipedia.org/wiki/Orchestration_%28computing%29">Orchestration (computing)</a>
+              </p>
+            </blockquote>
+            <p>
+              Cioè, stiamo parlando di un sistema che è in grado di automatizzare le operazioni di configurazione, deploy e gestione di <i>software</i>, come dice wikipedia. Più in particolare, quando si parla di Kubernetes, i <i>software</i> sono container.
+            </p>
+          </section>
+          <section id="slide-org1f49ca1">
+            <h3 id="org1f49ca1">Container</h3>
+            <p>
+              Sapere cosa è un container è un prerequisito di questo Learning Friday, per dubbi andate allo <a href="https://klez.me/lf/introduzione_a_docker.html">scorso LF</a>.
+            </p>
+            <div class="figure">
+              <p><img src="/lf/introduzione_a_kubernetes/container_anatomy.jpg" alt="container_anatomy.jpg" />
+              </p>
+            </div>
+          </section>
+          <section id="slide-orgdf5760d">
+            <h4 id="orgdf5760d">Perché li amiamo?</h4>
+            <p>
+              I <i>container</i> forniscono un meccanismo leggero per isolare l'ambiente di un'applicazione.
+            </p>
+            <p>
+              Per una data applicazione, possiamo specificare la configurazione del sistema e le librerie che vogliamo installare senza preoccuparci di creare conflitti con altre applicazioni che potrebbero essere in esecuzione sulla stessa macchina fisica.
+            </p>
+            <p>
+              Incapsuliamo ogni applicazione come un'immagine del <i>container</i> che può essere eseguita in modo affidabile su qualsiasi macchina, fornendoci la portabilità per consentire transizioni fluide dallo sviluppo alla distribuzione.
+            </p>
+            <p>
+              Inoltre, poiché ogni applicazione è autonoma senza la preoccupazione di conflitti ambientali, è più facile posizionare più carichi di lavoro sulla stessa macchina fisica e ottenere un maggiore utilizzo delle risorse (memoria e CPU), riducendo in definitiva i costi.
+            </p>
+          </section>
+          <section id="slide-orgc0c9eb7">
+            <h4 id="orgc0c9eb7">Cosa manca ai container quindi?</h4>
+            <ul>
+              <li class="fragment appear">Che succede se il tuo <i>container</i> muore?</li>
+              <li class="fragment appear">Che succede se la macchina che esegue il <i>container</i> muore? I <i>container</i> non forniscono una soluzione per la tolleranza agli errori.</li>
+              <li class="fragment appear">Se hai più <i>container</i> che devono comunicare tra loro o con il mondo esterno, come abiliti la rete tra i <i>container</i>?</li>
+              <li class="fragment appear">Come cambia la topologia di rete mentre accendi o spegni i <i>container</i>? Il networking dei <i>container</i> può facilmente diventare un guazzabuglio medievale (<i>courtesy of</i> <b>Mago Merlino</b>)</li>
+              <li class="fragment appear">Infine, supponiamo che il tuo ambiente di produzione sia composto da più macchine: come decidi quale macchina utilizzare per eseguire il <i>container</i>?</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section id="slide-org5778aa8">
+            <h2 id="org5778aa8">Si, ma perché Kubernetes?</h2>
+            <p>
+              La domanda più lecita che ci si potrebbe porre.
+            </p>
+            <p>
+              Abbiamo sistemi di controllo della configurazione come Ansible e Puppet, abbiamo software dinamici, abbiamo repository della configurazione, quindi perché?
+            </p>
+          </section>
+        </section>
+        <section>
+          <section id="slide-orge2d0205">
+            <h2 id="orge2d0205">Perché&#x2026;</h2>
+            <ul>
+              <li class="fragment appear">Permette di gestire i <i>container</i></li>
+              <li class="fragment appear">Permette di scalare i <i>container</i></li>
+              <li class="fragment appear">Permette di configurate facilmente il networking dei <i>container</i></li>
+              <li class="fragment appear">E una pletora di altre cose&#x2026;</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section id="slide-orga506c01">
+            <h2 id="orga506c01">Architetture complesse</h2>
+            <p>
+              Kubernetes non è uno strumento da prendere alla leggera, e non serve di certo per mettere in piedi il prossimo blog con <a href="https://it.wikipedia.org/wiki/WordPress">Wordpress</a>.
+            </p>
+            <p>
+              Per alcuni sistemi complessi l'elaborazione viene spezzata in diversi software che svolgono ognuno una parte del calcolo.
+            </p>
+            <p>
+              Tutti questi processi possono essere gestiti da un processo principale che governa l'elaborazione, oppure possono autogestirsi comunicando tra loro per passare il calcolo al processo successivo.
+            </p>
+          </section>
+          <section>
+            <p>
+              Nel caso dell'elaborazione distribuita i programmi hanno bisogno di un ambiente operativo completo di <i>networking</i> che nel caso specifico viene implementato come un container.
+            </p>
+            <p>
+              Le architetture complesse hanno bisogno di soddisfare diversi requisiti di funzionamento e devono garantire un alto livello di sicurezza, uno dei tanti motivi per cui si usano i container.
+            </p>
+          </section>
+        </section>
+        <section>
+          <section id="slide-orgf747cc9">
+            <h2 id="orgf747cc9">I requisiti delle architetture complesse</h2>
+            <p>
+              Quindi, quali sono questi requisiti?
+            </p>
+          </section>
+          <section id="slide-org0509244">
+            <h3 id="org0509244">Tolleranza ai guasti</h3>
+            <p>
+              Chiaramente un sistema non deve interrompere il servizio in presenza di guasti, e per quanto possibile deve poterli gestire e riparare.
+            </p>
+            <p>
+              Sarebbe quanto meno ingenuo pensare che un sistema non dovrebbe avere guasti in primo luogo, i guasti esistono, i bug pure, e i pessimi programmatori anche, quindi un sistema ben progettato deve resistere a quello che io definisco come <i>intemperie</i>.
+            </p>
+          </section>
+          <section id="slide-org55510ce">
+            <h3 id="org55510ce">Scalabilità</h3>
+            <p>
+              Un sistema deve poter gestire il carico di lavoro, che ricade sempre nel principio di non interruzione del servizio.
+            </p>
+            <p>
+              Il carico è un elemento variabile (in alcuni casi, molto variabile) e questo presuppone che un software sia in grado di gestire <i>qualsiasi</i> quantitativo di richieste, giusto?
+            </p>
+          </section>
+          <section id="slide-orgfbef6bf">
+            <h4 id="orgfbef6bf">Sbagliato!</h4>
+            <p>
+              Un software viene progettato per poter gestire un determinato carico, compreso tra un minimo e un massimo, dove non necessariamente il minimo è zero. Quando si arriva al massimo, semplicemente il software interrompe il servizio e questo non è ammissibile.
+            </p>
+          </section>
+          <section id="slide-org38c584c">
+            <h4 id="org38c584c">Repliche</h4>
+            <p>
+              Il modo migliore <i>da sempre</i> per gestire il carico è il buon vecchio adagio <i>divide et impera</i> che in termini di software si traduce in:
+            </p>
+            <blockquote>
+              <p>
+                Esegui una n-esima istanza del software e distribuisci il carico tra tutte le istanze, chiamate <i>repliche</i>.
+              </p>
+            </blockquote>
+          </section>
+          <section id="slide-orge1f999e">
+            <h3 id="orge1f999e">Configurabilità</h3>
+            <p>
+              Ogni software ha bisogno di una configurazione, tutti i software di una certa complessità tendono a sviluppare una configurazione più o meno complessa.
+            </p>
+            <p>
+              Mantenere la configurazione di ogni software può diventare complicato quando i software sono tanti, soprattutto quando il tutto va fatto manualmente.
+            </p>
+          </section>
+          <section id="slide-orgf271cc1">
+            <h3 id="orgf271cc1">Automatismi</h3>
+            <p>
+              Tutto questo parlare di repliche con tutti questi requisiti porta a considerare la possibilità di automatizzare i processi di gestione delle repliche, delle configurazioni, dei log degli errori, della gestione della rete.
+            </p>
+          </section>
+          <section id="slide-org7e6cbfe">
+            <h3 id="org7e6cbfe">Altri requisiti</h3>
+            <p>
+              Ce ne sono molti altri, ma questi sono quelli che mi permettono di andare verso la soluzione.
+            </p>
+          </section>
+        </section>
+        <section>
+          <section id="slide-orge2f00eb">
+            <h2 id="orge2f00eb">Kubernetes to the rescue!</h2>
+            <p>
+              Kubernetes risolve i problemi di <i>dinamicità</i> di questo tipo di configurazioni complesse.
+            </p>
+            <p>
+              Una piattaforma di orchestrazione dei <i>container</i> gestisce l'intero ciclo di vita dei singoli <i>container</i>, attivando e disattivando le risorse secondo necessità.
+            </p>
+            <p>
+              Se un <i>container</i> muore inavvertitamente, la piattaforma di orchestrazione reagirà avviando un altro contenitore al suo posto.
+            </p>
+            <p>
+              Inoltre, la piattaforma di orchestrazione fornisce un meccanismo per la comunicazione tra le applicazioni anche quando i singoli contenitori sottostanti vengono creati e distrutti.
+            </p>
+            <p>
+              Ma come funziona Kubernetes? Di quali componenti è composto? Quali sono le sue funzionalità di base?
+            </p>
+          </section>
+        </section>
+        <section>
+          <section id="slide-orgfda0bcd">
+            <h2 id="orgfda0bcd">Princìpi di progettazione</h2>
+            <p>
+              Kubernetes è un sistema <b>dichiarativo</b>. Questo significa che l'intera installazione della piattaforma viene <i>descritta</i> da una serie di file di configurazione.
+            </p>
+            <p>
+              Questo concetto è fondamentale, per comprendere una delle funzioni di base di Kubernetes, la sua capacità di <b>auto curarsi</b>.
+            </p>
+            <p>
+              Tramite la configurazione si dichiara alla piattaforma qual è lo stato desiderato e Kubernetes si assicurerà che lo stato attuale sia esattamente come descritto nella configurazione, altrimenti ce lo porterà.
+            </p>
+            <p>
+              In questo modo di fatto Kubernetes saprà quando lo stato è differente dalla configurazione desiderata e sarà sempre in grado di <i>curarsi</i> da solo.
+            </p>
+          </section>
+          <section>
+            <p>
+              Un altro dei principi fondanti di Kubernetes è di essere <b>distribuito</b>.
+            </p>
+            <p>
+              Kubernetes è progettato per fornire il livello infrastrutturale per tali sistemi distribuiti, fornendo astrazioni pulite per creare applicazioni su una raccolta di macchine (note collettivamente come cluster).
+            </p>
+            <p>
+              Più specificamente, Kubernetes fornisce un'interfaccia unificata per interagire con questo cluster in modo tale da non doverti preoccupare di comunicare individualmente con ogni macchina.
+            </p>
+          </section>
+          <section>
+            <div class="figure">
+              <p><img src="/lf/introduzione_a_kubernetes/workload_automation.png" alt="workload_automation.png" />
+              </p>
+            </div>
+          </section>
+          <section>
+            <p>
+              Kubernetes è <b>disaccoppiato</b> (o meglio, favorisce il disaccoppiamento).
+            </p>
+            <p>
+              Le astrazioni fornite in Kubernetes supportano naturalmente l'idea di servizi disaccoppiati che possono essere scalati e aggiornati in modo indipendente.
+            </p>
+            <p>
+              Questi servizi sono separati logicamente e comunicano tramite API ben definite.
+            </p>
+            <p>
+              Questa separazione logica consente ai team di implementare le modifiche nella produzione a una velocità maggiore poiché ogni servizio può operare su cicli di rilascio indipendenti (a condizione che rispettino i contratti API esistenti).
+            </p>
+          </section>
+          <section>
+            <p>
+              L'infrastruttura diventa <b>immutabile</b>.
+            </p>
+            <p>
+              Il significato di questo è molto importante. Piuttosto che entrare nell'istanza attiva per sostituire il software o una sua libreria, su Kubernetes andrai a creare una nuova versione del <i>container</i>, la installerai e terminerai la vecchia versione.
+            </p>
+            <p>
+              Di fatto questa procedura rende effimere le istanze, che sono a questo punto sempre pronte per essere create e distrutte.
+            </p>
+          </section>
+        </section>
+        <section>
+          <section id="slide-org673aeeb">
+            <h2 id="org673aeeb">Di cosa è fatto Kubernetes?</h2>
+            <div class="figure">
+              <p><img src="/lf/introduzione_a_kubernetes/cloud_made_of.jpg" alt="cloud_made_of.jpg" />
+              </p>
+            </div>
+          </section>
+          <section>
+            <p>
+              Kubernetes è sostanzialmente fatto di <b>oggetti</b>, che sono descritti da quelle che prima, parlando dello stato, chiamavo <i>configurazioni</i> (<i>more or less</i>).
+            </p>
+          </section>
+          <section id="slide-orgcfd58ab">
+            <h3 id="orgcfd58ab">Pod</h3>
+            <p>
+              Il Pod è l'oggetto fondamentale di Kubernetes, composto da uno o più <i>container</i> (strettamente correlati), uno strato di rete condiviso e volumi condivisi (<i>filesystem</i>, <i>storage</i>).
+            </p>
+            <p>
+              Analogamente ai <i>container</i>, i pod sono progettati per essere effimeri: non ci si aspetta che un singolo pod specifico persista per molto tempo.
+            </p>
+            <blockquote>
+              <p>
+                Oh, i Pod <i>consentono</i> di eseguire vari container, ma non è consigliato. La <i>best practice</i> è 1 Pod == 1 Container.
+              </p>
+            </blockquote>
+          </section>
+          <section id="slide-orgecd03c2">
+            <h3 id="orgecd03c2">Deployment</h3>
+            <p>
+              Un oggetto <i>Deployment</i> comprende una raccolta di pod definiti da un template e un certo numero di repliche (quante copie del template vogliamo eseguire).
+            </p>
+            <p>
+              Si può impostare un valore specifico per il <i>count</i> delle repliche o utilizzare una risorsa Kubernetes separata (ad es. un <i>autoscaler</i> orizzontale) per controllare il numero delle repliche in base a metriche di sistema come l'utilizzo della CPU.
+            </p>
+            <div class="figure">
+              <p><img src="/lf/introduzione_a_kubernetes/deployment.png" alt="deployment.png" />
+              </p>
+            </div>
+          </section>
+          <section>
+            <p>
+              Anche se non si può fare affidamento che un pod rimanga in esecuzione indefinitamente, si può star certi che il cluster cercherà sempre di avere <i>n</i> pod disponibili (dove <i>n</i> è definito dal numero di repliche specificato).
+            </p>
+            <p>
+              Se abbiamo una distribuzione con un <i>count</i> di repliche pari a 10 e 3 di questi pod si bloccano a causa di un guasto, verranno pianificati altri 3 pod per essere eseguiti su una macchina diversa nel cluster.
+            </p>
+            <p>
+              Per questo motivo, i <i>Deployment</i> sono più adatti per applicazioni <i>stateless</i> in cui i pod possono essere sostituiti in qualsiasi momento senza rompere le cose.
+            </p>
+          </section>
+          <section id="slide-org031b443">
+            <h3 id="org031b443">Service</h3>
+            <p>
+              A ogni pod in Kubernetes viene assegnato un indirizzo IP univoco. Chiaramente ci serve per poter comunicare col software dentro al pod, altrimenti sarebbe us sistema isolato (e pressoché inutile).
+            </p>
+            <p>
+              MA! Poiché i pod sono effimeri, può essere parecchio difficile inviare traffico al <i>container</i> giusto.
+            </p>
+            <aside class="notes">
+              <p>
+                Ad esempio, consideriamo il <i>deployment</i> dall'alto: abbiamo 10 pod che eseguono un contenitore che serve un modello di <i>machine learning</i> tramite REST.
+              </p>
+              <p>
+                Come comunichiamo in modo affidabile con un server se il set di pod in esecuzione come parte del Deployment può cambiare in qualsiasi momento?
+              </p>
+            </aside>
+            <p>
+              È qui che l'oggetto Servizio entra in gioco.
+            </p>
+            <p>
+              Un <i>Service</i> su Kubernetes fornisce un endpoint stabile che può essere utilizzato per indirizzare il traffico ai pod giusti anche se gli esatti pod sottostanti cambiano a causa di aggiornamenti, ridimensionamento e errori.
+            </p>
+            <p>
+              I servizi sanno a quali pod devono inviare il traffico in base alle etichette (coppie chiave-valore) che definiamo nei metadati del pod.
+            </p>
+          </section>
+          <section id="slide-org4706cef">
+            <h3 id="org4706cef">Ingress</h3>
+            <p>
+              Mentre un servizio ci consente di esporre le applicazioni dietro un endpoint stabile, l'endpoint è disponibile solo per il traffico interno al cluster.
+            </p>
+            <p>
+              Se volessimo esporre la nostra applicazione al traffico esterno, dobbiamo definire un oggetto Ingress.
+            </p>
+            <p>
+              Il vantaggio è che puoi selezionare i Servizi da rendere pubblicamente disponibili.
+            </p>
+            <p>
+              Ad esempio, supponiamo che oltre al nostro servizio per un modello di <i>machine learning</i>, disponessimo di un'interfaccia utente che sfruttava le previsioni del modello come parte di un'applicazione più ampia.
+            </p>
+            <p>
+              Possiamo scegliere di rendere disponibile solo l'interfaccia utente al pubblico, impedendo agli utenti di interrogare direttamente il servizio del modello.
+            </p>
+          </section>
+          <section id="slide-org4a1e329">
+            <h3 id="org4a1e329">Job</h3>
+            <p>
+              Gli oggetti Kubernetes che ho descritto fino a questo punto possono essere composti per creare servizi affidabili e che girano a lungo.
+            </p>
+            <p>
+              Al contrario, l'oggetto Job è utile quando si desidera eseguire un'attività discreta.
+            </p>
+            <aside class="notes">
+              <p>
+                Ad esempio, supponiamo di voler riqualificare il nostro modello quotidianamente sulla base delle informazioni raccolte il giorno precedente.
+              </p>
+              <p>
+                Ogni giorno, vogliamo avviare un <i>container</i> per eseguire un carico di lavoro predefinito (ad es. Uno script train.py) e quindi arrestarlo al termine dell'addestramento.
+              </p>
+            </aside>
+            <p>
+              I Job ci forniscono la possibilità di fare esattamente questo!
+            </p>
+            <p>
+              Se per qualche motivo il nostro <i>container</i> si arresta in modo anomalo prima di terminare lo script, Kubernetes reagirà lanciando un nuovo Pod al suo posto per completare il job.
+            </p>
+            <p>
+              Per gli oggetti Job, lo "stato desiderato" dell'oggetto è il completamento del job.
+            </p>
+          </section>
+          <section id="slide-org62fc4f0">
+            <h3 id="org62fc4f0">&#x2026;and more</h3>
+            <p>
+              Chiaramente non li elenco tutti, questi sono solo i principali, altrimenti stiamo qui fino alla fine dei tempi.
+            </p>
+            <dl>
+              <dt class="fragment appear">Volume</dt>
+              <dd class="fragment appear">per la gestione delle directory montate sui pod</dd>
+              <dt class="fragment appear">Secret</dt>
+              <dd class="fragment appear">per la memorizzazione di dati sensibili</dd>
+              <dt class="fragment appear">Namespace</dt>
+              <dd class="fragment appear">per separare le risorse sul cluster</dd>
+            </dl>
+          </section>
+          <section>
+            <dl>
+              <dt class="fragment appear">ConfigMap</dt>
+              <dd class="fragment appear">per specificare i valori di configurazione dell'applicazione da montare come file</dd>
+              <dt class="fragment appear">HorizontalPodAutoscaler</dt>
+              <dd class="fragment appear">per il ridimensionamento dei deployment in base all'utilizzo delle risorse dei pod esistenti</dd>
+              <dt class="fragment appear">StatefulSet</dt>
+              <dd class="fragment appear">simile a un deployment, ma per quando è necessario eseguire un'applicazione con stato</dd>
+            </dl>
+          </section>
+        </section>
+        <section>
+          <section id="slide-org033c470">
+            <h2 id="org033c470">Quando non dovresti usare Kubernetes?</h2>
+            <p>
+              Come per ogni nuova tecnologia, dovrai impararlo "sul campo", e la curva di apprendimento potrebbe essere piuttosto ripida.
+            </p>
+            <p>
+              È lecito chiedersi "ho davvero bisogno di Kubernetes?", quindi ho pensato di raccogliere alcuni motivi per cui la risposta potrebbe essere "NO".
+            </p>
+          </section>
+          <section>
+            <ul>
+              <li class="fragment appear">Puoi eseguire il carico di lavoro su una singola macchina. (Kubernetes può essere visto come una piattaforma per la creazione di sistemi distribuiti, ma non dovresti creare un sistema distribuito se non ne hai bisogno!)</li>
+              <li class="fragment appear">Le tue esigenze di elaborazione sono leggere. (In questo caso, il calcolo speso per il framework di orchestrazione è relativamente alto!)</li>
+              <li class="fragment appear">Non hai bisogno di alta disponibilità e puoi tollerare tempi di inattività.</li>
+              <li class="fragment appear">Non prevedi di apportare molte modifiche ai servizi distribuiti.</li>
+              <li class="fragment appear">Hai già uno stack di strumenti efficace di cui sei soddisfatto.</li>
+              <li class="fragment appear">Hai un'architettura monolitica e non prevedi di separarla in microservizi. (Ciò risale a utilizzare lo strumento come era stato progettato per essere utilizzato.)</li>
+              <li class="fragment appear">Hai letto questa presentazione e hai pensato "porca puttana è complicato" piuttosto che "porca troia è utile".</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section id="slide-orgfea2067">
+            <h2 id="orgfea2067">Saluti</h2>
+            <p>
+              Grazie a tutti per essere arrivati fin qui!
+            </p>
+            <div class="figure">
+              <p><img src="/lf/introduzione_a_kubernetes/thanks_for_watching.jpeg" alt="thanks_for_watching.jpeg" />
+              </p>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+    <script src="/assets/reveal.js/js/reveal.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      
+      controls: true,
+      progress: true,
+      history: false,
+      center: true,
+      slideNumber: 'c',
+      rollingLinks: false,
+      keyboard: true,
+      mouseWheel: false,
+      fragmentInURL: false,
+      hashOneBasedIndex: false,
+      pdfSeparateFragments: true,
+      
+      overview: true,
+      width: 1440,
+      height: 900,
+      
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'convex', // see README of reveal.js for options
+      transitionSpeed: 'default',
+      
+      // Optional libraries used to extend reveal.js
+      dependencies: [
+       { src: "/assets/reveal.js/plugin/markdown/marked.js", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+       { src: "/assets/reveal.js/plugin/markdown/markdown.js", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+       { src: "/assets/reveal.js/plugin/notes/notes.js", async: true, condition: function() { return !!document.body.classList; } },
+       { src: "/assets/reveal.js/plugin/search/search.js", async: true, condition: function() { return !!document.body.classList; } },
+       { src: "/assets/reveal.js/plugin/zoom-js/zoom.js", async: true, condition: function() { return !!document.body.classList; } }]
+      
+      });
+    </script>
+  </body>
+</html>
