@@ -106,17 +106,18 @@
               <div class="col-md-6 col-sm-12">
                 <h3>Commit Info</h3>
                 <small class="text-muted">
-                  <a href="https://github.com/kLeZ/kLeZ.github.io/commit/6bcf0558225f6611bbbff80b372230fb8057cef1" target="_blank">6bcf055</a> on
-                  <time datetime="2020-09-14T20:56:44+02:00">14 Sep 2020</time>
+                  <a href="https://github.com/kLeZ/kLeZ.github.io/commit/9748545703bcac663d45547bc577451506f8e91a" target="_blank">9748545</a> on
+                  <time datetime="2020-11-26T10:56:50+01:00">26 Nov 2020</time>
                 </small>
-                <h1 id="published-learning-friday-slides">Published learning friday slides!</h1>
-                <p>New Slides from the latest Learning Friday on Kubernetes</p>
+                <ul>
+                  <li>added goat counter</li>
+                </ul>
               </div>
               <div class="col-md-6 col-sm-12">
                 <h3>Build</h3>
                 <blockquote>
-                  <a href="https://travis-ci.org/kLeZ/kLeZ.github.io/builds/744913485">
-                    220 <sup>(744913485)</sup>
+                  <a href="https://travis-ci.org/kLeZ/kLeZ.github.io/builds/746047623">
+                    221 <sup>(746047623)</sup>
                   </a>
                 </blockquote>
               </div>
@@ -172,7 +173,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2020-11-20T18:08:59+01:00">Fri, 20 Nov 2020 18:08:59 +0100</time></small>
+            <small class="text-muted">Last build on <time datetime="2020-11-26T11:33:17+01:00">Thu, 26 Nov 2020 11:33:17 +0100</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
@@ -194,5 +195,13 @@
     <script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="/assets/fontawesome-free/js/all.min.js"></script>
     <script src="/assets/main.js"></script>
+    <script>
+      // Only load on production environment.
+      if (window.location.host !== 'klez.me')
+      	window.goatcounter = {
+      		no_onload: true
+      	}
+    </script>
+    <script data-goatcounter="https://klez.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>

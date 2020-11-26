@@ -217,7 +217,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2020-11-20T18:08:59+01:00">Fri, 20 Nov 2020 18:08:59 +0100</time></small>
+            <small class="text-muted">Last build on <time datetime="2020-11-26T11:33:17+01:00">Thu, 26 Nov 2020 11:33:17 +0100</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
@@ -239,5 +239,13 @@
     <script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="/assets/fontawesome-free/js/all.min.js"></script>
     <script src="/assets/main.js"></script>
+    <script>
+      // Only load on production environment.
+      if (window.location.host !== 'klez.me')
+      	window.goatcounter = {
+      		no_onload: true
+      	}
+    </script>
+    <script data-goatcounter="https://klez.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </body>
 </html>
