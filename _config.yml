@@ -54,6 +54,11 @@ katex:
         throw_error: true
         error_color: "#cc0000"
 
+goat-counter:
+  count-url: https://klez.goatcounter.com/count
+  code: klez
+  production-url: klez.me
+
 jekyll_tidy:
     compress_html: false
 

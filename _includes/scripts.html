@@ -4,3 +4,12 @@
 <script src="{{ '/assets/bootstrap/bootstrap.bundle.min.js' | relative_url }}"></script>
 <script src="{{ '/assets/fontawesome-free/js/all.min.js' | relative_url }}"></script>
 <script src="{{ '/assets/main.js' | relative_url }}"></script>
+<script>
+	// Only load on production environment.
+	if (window.location.host !== '{{ site.goat-counter.production-url }}')
+		window.goatcounter = {
+			no_onload: true
+		}
+
+</script>
+<script data-goatcounter="{{ site.goat-counter.count-url }}" async src="//gc.zgo.at/count.js"></script>
