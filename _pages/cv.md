@@ -22,12 +22,41 @@ right_content: >-
 
 ## Carriera
 
+{% capture card14 %}
+Sviluppo di due microservizi necessari per la presentazione di dati fluidi provenienti da ETL verso una interfaccia di gestione e monitoraggio basata su Angular 7.
+
+Uno dei microservizi è un /BFF/ che espone delle API specifiche e adatte al frontend che serve, il quale è a sua volta un /micro-frontend/.
+
+L'altro servizio è un /data service/ che compie relativamente poche operazioni di business oltre al recupero dei dati, ma che pone la sua complessità nell'utilizzo di un virtualizzatore di database /embedded/ che permette l'aggregazione di molteplici sorgenti dati eterogenee, distribuite e fluide.  
+Il recupero dei dati viene effettuato tenendo conto della fluidità dei dati, generando metadati utili al frontend per la costruzione dinamica delle interfacce di visualizzazione e creando delle query e dei mapping dinamici tenendo conto dei metadati generati dinamicamente.
+{% endcapture %}
+{% include card.html title="Senior Developer" subtitle="Key 2 Business s.r.l. | 28/09/2020 - presente" content=card14 footer="Skills: **Java 8**, **Spring Boot 2**, **Spring Data REST**, **Spring Cloud**, **Docker**, **OpenShift**, **AWS**, **Linux**, **Jenkins**, **SonarQube**, **Teiid**" %}
+
+{% capture card13 %}
+Sviluppo e manutenzione di alcuni microservizi per un sistema di automazione e gestione del lavoro burocratico e di burocratizzazione delle operazioni sul campo e delle operazioni finanziarie gestite dal cliente.
+
+Coordinamento di un team distribuito e internazionale, gestione del progetto, task management.  
+Progettazione delle soluzioni tenendo conto dei vincoli imposti dall'architettura preesistente e dalle linee guida allo sviluppo fornite dai partner.
+{% endcapture %}
+{% include card.html title="Team Leader / Senior Developer" subtitle="Key 2 Business s.r.l. | 30/12/2019 - 25/09/2020" content=card13 footer="Skills: **Java 8**, **Spring Boot 2**, **Spring Cloud**, **OpenShift**, **MuleSoft API Gateway**, **Kubernetes**, **EFK (Elasticsearch, Fluentd e Kibana) Stack**, **Resilience4j**, **Twitter Zipkin**, **Kafka**, **Openfeign**, **RabbiMQ**, **JBoss Drools**, **Microservices**" %}
+
+{% capture card12 %}
+Progettazione di una soluzione a microservizi basata su Spring Boot e Spring Cloud da ospitare su Azure che permetta l'elaborazione documentale e la gestione dei processi e delle procedure di lavorazione della documentazione in modo sicuro, asincrono e distribuito.  
+La soluzione tende a fare largo uso dei servizi offerti dal cloud provider Azure per quanto riguarda l'infrastruttura a supporto dei microservizi, prevedendo comunque degli strati di astrazione che permettano l'eventuale migrazione verso cloud provider differenti, aprendo la strada soprattutto verso Kubernetes.  
+Si è posta particolare enfasi nella distribuzione delle operazioni a corredo dei processi per bilanciare il carico di lavoro e per distribuire le funzionalità in modo più omogeneo possibile, per evitare al massimo problematiche di *single point of failure*.  
+Ogni operazione è progettata per poter lavorare autonomamente sulla propria porzione di processo limitando al minimo la necessità di coreografie e orchestrazioni tra servizi.  
+L'attenzione maggiore è stata posta nel garantire sempre l'integrità delle informazioni sia in transito che in persistenza, tramite la progettazione di comandi che garantiscano l'atomicità delle operazioni di scrittura.
+
+Manutenzione di un sistema monolitico che permetteva l'elaborazione documentale e la gestione dei processi e delle procedure di lavorazione della documentazione in modo sicuro e asincrono.
+{% endcapture %}
+{% include card.html title="Software Architect / Senior Developer" subtitle="Key 2 Business s.r.l. | 02/09/2019 - 27/12/2019" content=card12 footer="Skills: **Java 8**, **Java 11**, **Spring Boot 2**, **Spring Cloud**, **Azure Cloud**, **Microservices**, **Architectural design**" %}
+
 {% capture card11 %}
 Sviluppo e manutenzione di un servizio REST che fa da gateway per pagamenti scritto in PHP 5.6.
 
 Sviluppo e manutenzione di un'applicazione web che permette l'inserimento e la gestione di progetti di natura variabile e che permette di definire sezioni di profondità variabile per la categorizzazione di KPI. I KPI vengono inseriti all'interno delle iniziative, divisi per sezioni, e sulla base dei valori inseriti dai PM vengono calcolati vari parametri di controllo, che permettono delle previsioni sul'andamento del progetto.
 {% endcapture %}
-{% include card.html title="Senior Developer" subtitle="Key 2 Business s.r.l. | 03/06/2019 - presente" content=card11 footer="Skills: **PHP 5.6**, **Symfony 2.8**, **MySql**, **Java 8**, **Spring 2**, **ZKOss**" %}
+{% include card.html title="Senior Developer" subtitle="Key 2 Business s.r.l. | 03/06/2019 - 30/08/2019" content=card11 footer="Skills: **PHP 5.6**, **Symfony 2.8**, **MySql**, **Java 8**, **Spring Boot 2**, **ZKOss**" %}
 
 {% capture card10 %}
 Sviluppo e manutenzione di una piattaforma multi-tenant utilizzata da vettori che offrono servizio di corriera (autobus).  
