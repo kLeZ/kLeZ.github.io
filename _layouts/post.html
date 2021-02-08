@@ -4,10 +4,10 @@ layout: default
 <article itemscope itemtype="http://schema.org/BlogPosting">
 	<header>
 		<h2>{{ page.title | escape }}</h2>
-		<small class="text-muted">Posted on
+		<small class="text-muted">{% t posts.posted-on %}
 			<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date_to_string }}</time>
 			{%- if page.author.name -%}
-			<span> • by <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ page.author.name }}</span></span>
+			<span> • {% t posts.posted-by %} <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ page.author.name }}</span></span>
 			{%- endif -%}
 		</small>
 	</header>
@@ -18,9 +18,9 @@ layout: default
 </article>
 {%- if site.comments.enabled -%}
 <p class="mx-0 mb-0 mt-5 invisible zero-size">
-	<a href="" class="invisible" id="comments">comments</a>
+	<a href="" class="invisible" id="comments">{% t global.comments-heading %}</a>
 </p>
-<h3>Comments</h3>
+<h3>{% t global.comments-heading %}</h3>
 	{%- if site.comments.type == "staticman" -%}
 		{%- include staticman-comments-new.html post_url=site.comments.post_url -%}
 	{%- endif -%}

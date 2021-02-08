@@ -17,7 +17,10 @@
 					{% if page.layout == 'post' %}
 					<aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
 						<p class="text-muted">
-							This article will take {{ content | reading_time | pluralize: "minute" }} to read.
+							{%- assign reading-time = site.translations[site.lang].global.reading-time -%}
+							{%- assign startmsg = reading-time.message.start | append: ' ' -%}
+							{%- assign endmsg = reading-time.message.end | prepend: ' ' -%}
+							{{ content | reading_time | pluralize: reading-time.minute, reading-time.minutes | prepend: startmsg | append: endmsg }}
 						</p>
 					</aside>
 					{% endif %}

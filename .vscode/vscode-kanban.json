@@ -47,19 +47,6 @@
       "assignedTo": {
         "name": "Alessandro Accardo"
       },
-      "creation_time": "2019-04-10T06:42:34.871Z",
-      "description": {
-        "content": "https://github.com/Anthony-Gaudino/jekyll-multiple-languages-plugin",
-        "mime": "text/markdown"
-      },
-      "id": "5",
-      "references": [],
-      "title": "Implement plugin jekyll-multiple-languages-plugin"
-    },
-    {
-      "assignedTo": {
-        "name": "Alessandro Accardo"
-      },
       "creation_time": "2019-04-04T19:02:38.710Z",
       "description": {
         "content": "https://github.com/jekyll/jekyll-sitemap",
@@ -68,6 +55,19 @@
       "id": "2",
       "references": [],
       "title": "Implement plugin jekyll-sitemap"
+    },
+    {
+      "assignedTo": {
+        "name": "Alessandro Accardo"
+      },
+      "creation_time": "2019-04-10T06:42:34.871Z",
+      "description": {
+        "content": "https://github.com/Anthony-Gaudino/jekyll-multiple-languages-plugin",
+        "mime": "text/markdown"
+      },
+      "id": "5",
+      "references": [],
+      "title": "Implement plugin jekyll-multiple-languages-plugin"
     }
   ]
 }

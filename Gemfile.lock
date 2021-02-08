@@ -58,6 +58,8 @@ GEM
     jekyll-katex (0.4.1)
       execjs (~> 2.7)
       jekyll (~> 3.8)
+    jekyll-multiple-languages-plugin (1.7.0)
+      jekyll (>= 2.0, < 5.0)
     jekyll-postfiles (3.0.0)
       jekyll (~> 3.6)
     jekyll-sass-converter (1.5.2)
@@ -127,6 +129,7 @@ DEPENDENCIES
   jekyll-feed
   jekyll-git_metadata
   jekyll-katex
+  jekyll-multiple-languages-plugin
   jekyll-postfiles
   jekyll-seo-tag
   jekyll-tidy

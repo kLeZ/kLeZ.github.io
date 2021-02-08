@@ -16,4 +16,5 @@ group :jekyll_plugins do
   gem "jekyll-seo-tag"
   gem "jemoji"
   gem "jekyll-postfiles"
+  gem "jekyll-multiple-languages-plugin"
 end

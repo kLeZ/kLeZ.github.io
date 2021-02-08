@@ -1,0 +1,21 @@
+global:
+  read-more: Read more
+  comments-heading: Comments
+  page-not-found-message: This isn't the page you're looking for.
+  reading-time:
+    minute: minute
+    minutes: minutes
+    message:
+      start: This article will take
+      end: to read.
+comments:
+  placeholders:
+    username: username
+    email: email adress (will not be published)
+    website: website url
+    message: comment to this post
+  submit: Submit
+  moderation-warning: New comments will be shown after moderation approval
+posts:
+  posted-on: Posted on
+  posted-by: by

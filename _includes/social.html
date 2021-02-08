@@ -16,7 +16,7 @@
 				{%- endif -%}
 			{% else %}
 				<svg preserveAspectRatio="xMidYMid meet" x="0" y="0" viewBox="0 0 16 16" class="svg-icon align-text-top d-inline-block">
-					<use xlink:href="{{ '/assets/minima-social-icons.svg#' | append: acct.name | relative_url }}"></use>
+					<use xlink:href="{{ '/assets/minima-social-icons.svg#' | append: acct.name | prepend: site.baseurl_root }}"></use>
 				</svg>
 			{% endif %}
 			{% unless acct.display == blank or acct.display == nil %}

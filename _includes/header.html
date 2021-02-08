@@ -1,6 +1,6 @@
 {%- assign style = '' -%}
 {%- unless page.header_background_url == blank or page.header_background_url == nil -%}
-	{%- assign style = 'background-image: url(' | append: page.header_background_url | relative_url | append: ')' -%}
+	{%- assign style = 'background-image: url(' | append: page.header_background_url | prepend: site.baseurl_root | append: ')' -%}
 {%- endunless -%}
 <header class="masthead" style="{{ style }}">
 	<div class="overlay"></div>

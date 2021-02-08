@@ -11,12 +11,12 @@ permalink: /lf/introduzione_a_docker.html
 .underline { text-decoration: underline; }
 </style>
 
-<link rel="stylesheet" href="{{ '/assets/reveal.js/css/reset.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/reveal.js/css/reveal.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/reveal.js/css/theme/black.css' | relative_url }}" id="theme">
+<link rel="stylesheet" href="{{ '/assets/reveal.js/css/reset.css' | prepend: site.baseurl_root }}">
+<link rel="stylesheet" href="{{ '/assets/reveal.js/css/reveal.css' | prepend: site.baseurl_root }}">
+<link rel="stylesheet" href="{{ '/assets/reveal.js/css/theme/black.css' | prepend: site.baseurl_root }}" id="theme">
 
 <!-- Theme used for syntax highlighting of code -->
-<link rel="stylesheet" href="{{ '/assets/reveal.js/lib/css/monokai.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/reveal.js/lib/css/monokai.css' | prepend: site.baseurl_root }}">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -24,7 +24,7 @@ permalink: /lf/introduzione_a_docker.html
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = "{{ '/assets/reveal.js/css/print/pdf.css' | relative_url }}";
+        link.href = "{{ '/assets/reveal.js/css/print/pdf.css' | prepend: site.baseurl_root }}";
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
@@ -300,12 +300,12 @@ Grazie a tutti per essere arrivati fin qui!
 <p><img src="./introduzione_a_docker/thanks_for_watching.jpeg" alt="thanks_for_watching.jpeg" />
 </p>
 </div>
-<a href="{{ site.url }}">Torna alla Home</a>
+<a href="{{ site.baseurl_root }}">Torna alla Home</a>
 </section>
 </section>
 </div>
 </div>
-<script src="{{ '/assets/reveal.js/js/reveal.js' | relative_url }}"></script>
+<script src="{{ '/assets/reveal.js/js/reveal.js' | prepend: site.baseurl_root }}"></script>
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
@@ -333,11 +333,11 @@ transitionSpeed: 'default',
 
 // Optional libraries used to extend reveal.js
 dependencies: [
- { src: "{{ '/assets/reveal.js/plugin/markdown/marked.js' | relative_url }}", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: "{{ '/assets/reveal.js/plugin/markdown/markdown.js' | relative_url }}", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: "{{ '/assets/reveal.js/plugin/notes/notes.js' | relative_url }}", async: true, condition: function() { return !!document.body.classList; } },
- { src: "{{ '/assets/reveal.js/plugin/search/search.js' | relative_url }}", async: true, condition: function() { return !!document.body.classList; } },
- { src: "{{ '/assets/reveal.js/plugin/zoom-js/zoom.js' | relative_url }}", async: true, condition: function() { return !!document.body.classList; } }]
+ { src: "{{ '/assets/reveal.js/plugin/markdown/marked.js' | prepend: site.baseurl_root }}", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: "{{ '/assets/reveal.js/plugin/markdown/markdown.js' | prepend: site.baseurl_root }}", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: "{{ '/assets/reveal.js/plugin/notes/notes.js' | prepend: site.baseurl_root }}", async: true, condition: function() { return !!document.body.classList; } },
+ { src: "{{ '/assets/reveal.js/plugin/search/search.js' | prepend: site.baseurl_root }}", async: true, condition: function() { return !!document.body.classList; } },
+ { src: "{{ '/assets/reveal.js/plugin/zoom-js/zoom.js' | prepend: site.baseurl_root }}", async: true, condition: function() { return !!document.body.classList; } }]
 
 });
 </script>

@@ -43,7 +43,7 @@ defaults:
           permalink: /:year/:month/:day/:title/
           post: true
 
-show_excerpts: true
+show_excerpts: false
 excerpt_separator: "{% include more.html %}"
 
 markdown: kramdown
@@ -65,6 +65,20 @@ jekyll_tidy:
 emoji:
     src: "/assets/img"
 
+languages:
+    - it
+    - en
+exclude_from_localizations:
+    - assets
+    - media
+    - lf
+    - CNAME
+    - favicon.ico
+    - LICENSE
+    - README.md
+
+default_locale_in_subfolder: true
+
 plugins:
     - jekyll-feed
     - jekyll-tidy
@@ -75,7 +89,7 @@ plugins:
     - jekyll-seo-tag
     - jemoji
     - jekyll-postfiles
-
+    - jekyll-multiple-languages-plugin
 # Defaults. IF you want to change the exclude make sure you keep those sane defaults
 exclude:
     - Gemfile

@@ -10,9 +10,9 @@ permalink: /lf/introduzione_a_kubernetes.html
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="{{ '/assets/reveal.js/css/reveal.css' | relative_url }}"/>
+<link rel="stylesheet" href="{{ '/assets/reveal.js/css/reveal.css' | prepend: site.baseurl_root }}"/>
 
-<link rel="stylesheet" href="{{ '/assets/reveal.js/css/theme/black.css' | relative_url }}" id="theme"/>
+<link rel="stylesheet" href="{{ '/assets/reveal.js/css/theme/black.css' | prepend: site.baseurl_root }}" id="theme"/>
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -20,7 +20,7 @@ permalink: /lf/introduzione_a_kubernetes.html
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = "{{ '/assets/reveal.js/css/print/pdf.css' | relative_url }}";
+        link.href = "{{ '/assets/reveal.js/css/print/pdf.css' | prepend: site.baseurl_root }}";
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
@@ -71,7 +71,7 @@ Spero sappiate cos'è un sistema, altrimenti ho pessime notizie&#x2026;
 
 
 <div class="figure">
-<p><img src="{{ '/lf/introduzione_a_kubernetes/facepalm-head.jpg' | relative_url }}" alt="facepalm-head.jpg" />
+<p><img src="{{ '/lf/introduzione_a_kubernetes/facepalm-head.jpg' | prepend: site.baseurl_root }}" alt="facepalm-head.jpg" />
 </p>
 </div>
 
@@ -101,7 +101,7 @@ Sapere cosa è un container è un prerequisito di questo Learning Friday, per du
 
 
 <div class="figure">
-<p><img src="{{ '/lf/introduzione_a_kubernetes/container_anatomy.jpg' | relative_url }}" alt="container_anatomy.jpg" />
+<p><img src="{{ '/lf/introduzione_a_kubernetes/container_anatomy.jpg' | prepend: site.baseurl_root }}" alt="container_anatomy.jpg" />
 </p>
 </div>
 
@@ -332,7 +332,7 @@ Più specificamente, Kubernetes fornisce un'interfaccia unificata per interagire
 
 
 <div class="figure">
-<p><img src="{{ '/lf/introduzione_a_kubernetes/workload_automation.png' | relative_url }}" alt="workload_automation.png" />
+<p><img src="{{ '/lf/introduzione_a_kubernetes/workload_automation.png' | prepend: site.baseurl_root }}" alt="workload_automation.png" />
 </p>
 </div>
 
@@ -377,7 +377,7 @@ Di fatto questa procedura rende effimere le istanze, che sono a questo punto sem
 <h2 id="org673aeeb">Di cosa è fatto Kubernetes?</h2>
 
 <div class="figure">
-<p><img src="{{ '/lf/introduzione_a_kubernetes/cloud_made_of.jpg' | relative_url }}" alt="cloud_made_of.jpg" />
+<p><img src="{{ '/lf/introduzione_a_kubernetes/cloud_made_of.jpg' | prepend: site.baseurl_root }}" alt="cloud_made_of.jpg" />
 </p>
 </div>
 
@@ -418,7 +418,7 @@ Si può impostare un valore specifico per il <i>count</i> delle repliche o utili
 
 
 <div class="figure">
-<p><img src="{{ '/lf/introduzione_a_kubernetes/deployment.png' | relative_url }}" alt="deployment.png" />
+<p><img src="{{ '/lf/introduzione_a_kubernetes/deployment.png' | prepend: site.baseurl_root }}" alt="deployment.png" />
 </p>
 </div>
 
@@ -591,14 +591,15 @@ Grazie a tutti per essere arrivati fin qui!
 
 
 <div class="figure">
-<p><img src="{{ '/lf/introduzione_a_kubernetes/thanks_for_watching.jpeg' | relative_url }}" alt="thanks_for_watching.jpeg" />
+<p><img src="{{ '/lf/introduzione_a_kubernetes/thanks_for_watching.jpeg' | prepend: site.baseurl_root }}" alt="thanks_for_watching.jpeg" />
 </p>
 </div>
+<a href="{{ site.baseurl_root }}">Torna alla Home</a>
 </section>
 </section>
 </div>
 </div>
-<script src="{{ '/assets/reveal.js/js/reveal.js' | relative_url }}"></script>
+<script src="{{ '/assets/reveal.js/js/reveal.js' | prepend: site.baseurl_root }}"></script>
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
@@ -626,11 +627,11 @@ transitionSpeed: 'default',
 
 // Optional libraries used to extend reveal.js
 dependencies: [
- { src: "{{ '/assets/reveal.js/plugin/markdown/marked.js' | relative_url }}", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: "{{ '/assets/reveal.js/plugin/markdown/markdown.js' | relative_url }}", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: "{{ '/assets/reveal.js/plugin/notes/notes.js' | relative_url }}", async: true, condition: function() { return !!document.body.classList; } },
- { src: "{{ '/assets/reveal.js/plugin/search/search.js' | relative_url }}", async: true, condition: function() { return !!document.body.classList; } },
- { src: "{{ '/assets/reveal.js/plugin/zoom-js/zoom.js' | relative_url }}", async: true, condition: function() { return !!document.body.classList; } }]
+ { src: "{{ '/assets/reveal.js/plugin/markdown/marked.js' | prepend: site.baseurl_root }}", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: "{{ '/assets/reveal.js/plugin/markdown/markdown.js' | prepend: site.baseurl_root }}", condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: "{{ '/assets/reveal.js/plugin/notes/notes.js' | prepend: site.baseurl_root }}", async: true, condition: function() { return !!document.body.classList; } },
+ { src: "{{ '/assets/reveal.js/plugin/search/search.js' | prepend: site.baseurl_root }}", async: true, condition: function() { return !!document.body.classList; } },
+ { src: "{{ '/assets/reveal.js/plugin/zoom-js/zoom.js' | prepend: site.baseurl_root }}", async: true, condition: function() { return !!document.body.classList; } }]
 
 });
 </script>

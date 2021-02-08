@@ -17,7 +17,7 @@
 				{%- if post.content contains "<!--more-->" -%}
 				<div class="row justify-content-end text-right">
 					<div class="col-12">
-						<a href="{{ post.url | relative_url }}#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
+						<a href="{{ post.url | relative_url }}#read-more" class="card-link btn btn-dark text-nowrap">{% t global.read-more %}</a>
 					</div>
 				</div>
 				{%- endif -%}
