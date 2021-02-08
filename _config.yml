@@ -55,6 +55,7 @@ katex:
         error_color: "#cc0000"
 
 goat-counter:
+  stats-url: https://klez.goatcounter.com
   count-url: https://klez.goatcounter.com/count
   code: klez
   production-url: klez.me
