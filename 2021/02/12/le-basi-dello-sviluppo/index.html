@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Begin Jekyll SEO tag v2.6.0 -->
+    <title>Le basi dello sviluppo | Alessandro ‘kLeZ’ Accardo personal website</title>
+    <meta name="generator" content="Jekyll v3.8.5" />
+    <meta property="og:title" content="Le basi dello sviluppo" />
+    <meta name="author" content="kLeZ" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="Ultimamente mi trovo spesso a leggere di sviluppatori che non conoscono determinati acronimi, o che si ritrovano a chiamarsi “sviluppatori” senza sapere cosa effettivamente significhi sviluppare software. E come al solito mi triggero sulle basi e vado dritto come un pesce all’amo tentando di sviscerare un argomento che molti altri più bravi di me hanno tentato di sviscerare in libri interi spesso riuscendoci solo in parte. Mi ripeto sempre che è una cattiva idea usare un blog per parlare di un argomento così vasto e che i grandi come Uncle Bob e Kent Beck si rivolterebbero nella tomba se ne avessero una. Ma siccome sono entrambi ancora vivi, non temo questa reazione e quindi sbaglio con piacere, sperando anche di fare cosa gradita a quei 3 scappati di casa che leggono questo sito. Inizio, dopo l’inizio, dicendo che le basi dello sviluppo di software sono tante, e lo sviluppo di software è un’arte complessa che merita tempo per lo studio e dedizione per la materia, mancanti le quali il software non può essere sviluppato oppure può esserlo ma sarà brutto, poco performante, difficile da mantenere e probabilmente pieno di problemi. E soprattutto, un software sviluppato senza conoscere le basi sarà consegnato in ritardo, sempre. Qui non ci sono deroghe." />
+    <meta property="og:description" content="Ultimamente mi trovo spesso a leggere di sviluppatori che non conoscono determinati acronimi, o che si ritrovano a chiamarsi “sviluppatori” senza sapere cosa effettivamente significhi sviluppare software. E come al solito mi triggero sulle basi e vado dritto come un pesce all’amo tentando di sviscerare un argomento che molti altri più bravi di me hanno tentato di sviscerare in libri interi spesso riuscendoci solo in parte. Mi ripeto sempre che è una cattiva idea usare un blog per parlare di un argomento così vasto e che i grandi come Uncle Bob e Kent Beck si rivolterebbero nella tomba se ne avessero una. Ma siccome sono entrambi ancora vivi, non temo questa reazione e quindi sbaglio con piacere, sperando anche di fare cosa gradita a quei 3 scappati di casa che leggono questo sito. Inizio, dopo l’inizio, dicendo che le basi dello sviluppo di software sono tante, e lo sviluppo di software è un’arte complessa che merita tempo per lo studio e dedizione per la materia, mancanti le quali il software non può essere sviluppato oppure può esserlo ma sarà brutto, poco performante, difficile da mantenere e probabilmente pieno di problemi. E soprattutto, un software sviluppato senza conoscere le basi sarà consegnato in ritardo, sempre. Qui non ci sono deroghe." />
+    <link rel="canonical" href="https://klez.me/2021/02/12/le-basi-dello-sviluppo/" />
+    <meta property="og:url" content="https://klez.me/2021/02/12/le-basi-dello-sviluppo/" />
+    <meta property="og:site_name" content="Alessandro ‘kLeZ’ Accardo personal website" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2021-02-12T16:16:59+01:00" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="Le basi dello sviluppo" />
+    <meta name="twitter:site" content="@kLeZhAcK" />
+    <meta name="twitter:creator" content="@kLeZhAcK" />
+    <script type="application/ld+json">
+      {"author":{"@type":"Person","name":"kLeZ"},"description":"Ultimamente mi trovo spesso a leggere di sviluppatori che non conoscono determinati acronimi, o che si ritrovano a chiamarsi “sviluppatori” senza sapere cosa effettivamente significhi sviluppare software. E come al solito mi triggero sulle basi e vado dritto come un pesce all’amo tentando di sviscerare un argomento che molti altri più bravi di me hanno tentato di sviscerare in libri interi spesso riuscendoci solo in parte. Mi ripeto sempre che è una cattiva idea usare un blog per parlare di un argomento così vasto e che i grandi come Uncle Bob e Kent Beck si rivolterebbero nella tomba se ne avessero una. Ma siccome sono entrambi ancora vivi, non temo questa reazione e quindi sbaglio con piacere, sperando anche di fare cosa gradita a quei 3 scappati di casa che leggono questo sito. Inizio, dopo l’inizio, dicendo che le basi dello sviluppo di software sono tante, e lo sviluppo di software è un’arte complessa che merita tempo per lo studio e dedizione per la materia, mancanti le quali il software non può essere sviluppato oppure può esserlo ma sarà brutto, poco performante, difficile da mantenere e probabilmente pieno di problemi. E soprattutto, un software sviluppato senza conoscere le basi sarà consegnato in ritardo, sempre. Qui non ci sono deroghe.","headline":"Le basi dello sviluppo","dateModified":"2021-02-12T16:16:59+01:00","datePublished":"2021-02-12T16:16:59+01:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2021/02/12/le-basi-dello-sviluppo/"},"url":"https://klez.me/2021/02/12/le-basi-dello-sviluppo/","@context":"https://schema.org"}
+    </script>
+    <!-- End Jekyll SEO tag -->
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/katex/katex.min.css" />
+    <link rel="stylesheet" href="/assets/main.css" />
+    <link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro 'kLeZ' Accardo personal website" />
+  </head>
+  <body class="post-page">
+    <header class="masthead" style="background-image: url(/assets/img/home-bg.jpg)">
+      <div class="overlay"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Alessandro 'kLeZ' Accardo personal website</h1>
+              <span class="subheading">This is the personal website of an Italian developer once called 'kLeZ'.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="/">kLeZ</a>
+        <a class="navbar-brand" href="https://travis-ci.org/kLeZ/kLeZ.github.io" target="_blank">
+          <img src="https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev" alt="build status badge" />
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/build.html">Build</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/blog">Posts</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About me <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="/about">About</a>
+                <a class="dropdown-item " href="/contatti">Contatti</a>
+                <a class="dropdown-item " href="/cv">Curriculum Vitae</a>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="https://github.com/kLeZ/kLeZ.github.io">Repository</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Progetti <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
+                <a class="dropdown-item " href="https://klez.me/PassMan">PassMan</a>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/eventi">Eventi</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container-fluid" aria-label="Content">
+      <div class="row">
+        <div class="col-lg-2 col-md-12">
+          <aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
+            <p class="text-muted">
+              This article will take 8 minutes to read.
+            </p>
+          </aside>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <article itemscope itemtype="http://schema.org/BlogPosting">
+            <header>
+              <h2>Le basi dello sviluppo</h2>
+              <small class="text-muted">Posted on
+                <time datetime="2021-02-12T16:16:59+01:00" itemprop="datePublished">12 Feb 2021</time><span> • by <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
+            </header>
+            <section itemprop="articleBody">
+              <p>Ultimamente mi trovo spesso a leggere di sviluppatori che non conoscono determinati acronimi, o che si ritrovano a chiamarsi “sviluppatori” senza sapere cosa effettivamente significhi sviluppare software.</p>
+              <p>E come al solito mi <em>triggero</em> sulle basi e vado dritto come un pesce all’amo tentando di sviscerare un argomento che molti altri più bravi di me hanno tentato di sviscerare in libri interi spesso riuscendoci solo in parte.</p>
+              <p>Mi ripeto sempre che è una cattiva idea usare un blog per parlare di un argomento così vasto e che i grandi come <strong>Uncle Bob</strong> e <strong>Kent Beck</strong> si rivolterebbero nella tomba se ne avessero una.</p>
+              <p>Ma siccome sono entrambi ancora vivi, non temo questa reazione e quindi <em>sbaglio</em> con piacere, sperando anche di fare cosa gradita a quei 3 scappati di casa che leggono questo sito.</p>
+              <p>Inizio, dopo l’inizio, dicendo che le basi dello sviluppo di software sono tante, e lo sviluppo di software è un’arte complessa che merita tempo per lo studio e dedizione per la materia, mancanti le quali il software non può essere sviluppato oppure può esserlo ma sarà brutto, poco performante, difficile da mantenere e probabilmente pieno di problemi.</p>
+              <p>E soprattutto, un software sviluppato senza conoscere le basi sarà consegnato in ritardo, <strong>sempre</strong>. Qui non ci sono deroghe.</p>
+              <!--more-->
+              <p class="m-0 invisible zero-size">
+                <a class="invisible" id="read-more">read more</a>
+              </p>
+              <h2 id="la-base-fra-le-basi-studiare">La base fra le basi: studiare</h2>
+              <p>Non c’è dubbio che il settore informatico sia in continuo, apparentemente caotico movimento. E in ogni ambiente in cui il movimento è continuo e caotico la sopravvivenza è data da un’unica legge: <em>chi si ferma è perduto</em>.</p>
+              <p>Di certo ci sarà chi pensa che si può tirare avanti con una singola tecnologia per tutta la propria carriera, e probabilmente è vero se si restringe il campo: in particolari ambiti, solo su alcuni progetti, per certi clienti e certe tecnologie probabilmente è possibile fare la stessa cosa tutta la vita.<br />
+                Un esempio lampante è dato dal COBOL, che ancora oggi viene usato in ambienti <em>mainframe</em> dopo 50 anni o più di sviluppo.</p>
+              <p>Non augurerei comunque a nessuno di leggere quel codice, considerando che inizialmente i COBOListi venivano pagati a righe di codice (LoC). Immagina che porcaio di righe di 4 caratteri c’erano.</p>
+              <p>Per non fermarsi, un buon programmatore al passo coi tempi deve studiare. Studiare le nuove tecnologie, si, ma anche (e soprattutto) le basi.</p>
+              <p>Perché, se devo davvero dire cosa mi abbia aiutato a spaziare così tanto su tecnologie così diverse, ecco, sarebbe questo.</p>
+              <p>Per parafrasare (a mio favore) un famoso adagio:</p>
+              <div class="premonition citation">
+                <div class="fas fa-quote-left"></div>
+                <blockquote class="content blockquote">
+                  <p>Dai un pesce a un uomo e lo nutrirai per un giorno.</p>
+                  <p>Insegnagli a pescare e lo nutrirai per tutta la vita.</p>
+                  <footer class="blockquote-footer"><cite title="Proverbio Cinese (forse attribuibile a Confucio)">Proverbio Cinese (forse attribuibile a Confucio)</cite></footer>
+                </blockquote>
+              </div>
+              <p>La mia versione è questa:</p>
+              <div class="premonition citation">
+                <div class="fas fa-quote-left"></div>
+                <blockquote class="content blockquote">
+                  <p>Dai una tecnologia a un uomo e lavorerà un decennio (<em>forse, se non è un framework JavaScript</em>).</p>
+                  <p>Insegnagli le basi e lavorerà per sempre (<em>oppure svilupperà un framework JavaScript al mese</em>).</p>
+                  <footer class="blockquote-footer"><cite title="kLeZ">kLeZ</cite></footer>
+                </blockquote>
+              </div>
+              <p>Il concetto è questo: conoscere le basi è come saper pescare.</p>
+              <p>Ma studiare non è un consiglio sufficiente, perché la prima domanda è: studiare, ok, ma cosa?</p>
+              <h2 id="i-principi-formali">I principi formali</h2>
+              <p>Nella scienza dell’informatica, ancora meglio nell’ingegneria del software, esistono molti “guru” (veri, non come il mago Otelma) che si propongono di racchiudere i loro molti anni di esperienza in alcune pratiche considerate di successo.</p>
+              <p>Spesso il processo prevede che questi super-tecnici stilino due elenchi, uno con le pratiche che sicuramente sono sbagliate e, partendo da questo, un elenco di pratiche che sicuramente hanno avuto una percentuale di successo sufficientemente alta.</p>
+              <p>Loro stessi sperimentano in prima persona questi principi prima di raccoglierli in dei testi che poi saranno utili ad altri professionisti o aspiranti tali del settore.</p>
+              <p>In questo articolo, cito solo tre principi (qualcuno di più in realtà, capirete nel corso dell’articolo).</p>
+              <h2 id="dry-dont-repeat-yourself">DRY (Don’t Repeat Yourself)</h2>
+              <p>Questo principio viene da un ottimo libro, uno dei <em>must read</em> dell’artigiano del software di qualità.</p>
+              <p>Parlo di <a href="https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/">Il pragmatic programmer</a>, un libro che mi ha dato tante soddisfazioni, e che racchiude tra i tanti consigli un principio <em>pragmatico</em>: <strong>Non Ripeterti</strong>.</p>
+              <p>Non Ripeterti (<a href="https://en.wikipedia.org/wiki/Don't_repeat_yourself">Don’t Repeat Yourself, DRY</a>) è un principio che sintetizza il concetto del riuso di codice.<br />
+                O meglio, gli autori del libro in realtà parlano in senso molto più generale dello sforzo di avere sempre un singolo elemento della conoscenza in un solo punto.</p>
+              <div class="premonition citation">
+                <div class="fas fa-quote-left"></div>
+                <blockquote class="content blockquote">
+                  <p>Every piece of knowledge must have a single, unambiguous, authoritative representation within a system</p>
+                  <footer class="blockquote-footer"><cite title="Andy Hunt and Dave Thomas, The Pragmatic Programmer">Andy Hunt and Dave Thomas, The Pragmatic Programmer</cite></footer>
+                </blockquote>
+              </div>
+              <p>Ma ciò su cui voglio soffermarmi io è l’applicazione di questo principio alla pratica della scrittura di codice.</p>
+              <p>Questo principio è efficace nella stesura del codice se si pensa al fatto che puntare a riusare il codice ti porta a scrivere codice più pulito, generico e flessibile, proprio perché sai che potresti usarlo in contesti in cui certe premesse non sono più valide.</p>
+              <p>E quindi ti porta a scrivere del codice di fatto di qualità più alta, pronto per il mondo esterno, usabile e magari già usato da porogrammatori differenti da te, che si sa potrebbero essere <em>diversamente simpatici</em>.</p>
+              <p class="text-center"><img src="/media/2021-02-12/le-basi-dello-sviluppo/violent-psychopath.jpg" alt="Violent-Psychopath" class="w-50 img-fluid" /></p>
+              <p>Il principio però, come mi è capitato di vedere altre volte può portare a un eccesso.</p>
+              <p>Ho visto parecchi neofiti approcciare alla programmazione e ho notato che quasi tutti sono passati dal primo banale approccio del <em>pattern copia-incolla</em>, la pratica sconsigliata dagli autori del principio DRY, a non duplicare più nulla, rendendo inutilmente super complicati i metodi che scrivevano in una <strong>eccessiva</strong> ottica di riutilizzo.</p>
+              <blockquote>
+                <p>Vabbè ma prima mi dici che non devo duplicare il codice poi mi dici che non duplicarlo porta a codice complesso! Deciditi!</p>
+              </blockquote>
+              <p>E infatti è qui il punto, l’equilibrio. Ne parleremo parecchio.</p>
+              <p class="text-center"><img src="/media/2021-02-12/le-basi-dello-sviluppo/393-balance-thanos.JPG" alt="Thanos-Balance" class="w-50 img-fluid" /></p>
+              <p>Il concetto è quello di genericizzare quando c’è possibilità di farlo senza complicare molto il codice. Mi verrebbe da dire troppo, ma poi dovrei spiegare come si capisce quando il codice è troppo complicato, e c’è un altro guru di cui ho parlato spesso che ha scritto libri interi sull’argomento.</p>
+              <p>Tipicamente comunque, un codice è troppo complicato quando qualcuno senza conoscenza del contesto lo legge senza capire bene quale sia il suo risultato.</p>
+              <div class="d-flex justify-content-center mb-5">
+                <div class="embed-responsive embed-responsive-16by9 w-50">
+                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/E8z3EecNuEI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                </div>
+              </div>
+              <h2 id="yagni-you-arent-gonna-need-it">YAGNI (You Aren’t Gonna Need It)</h2>
+              <p>Un altro principio fondamentale ci viene dagli originali ideatori della pratica <em>Agile</em> dell’<em>Extreme Programming</em> (<a href="https://en.wikipedia.org/wiki/Extreme_programming">XP</a>).</p>
+              <p><a href="https://en.wikipedia.org/wiki/Ron_Jeffries">Ron Jeffries</a> ci regala questa perla, in cui ci spiega (in uno <em>slogan</em> praticamente) che non si deve cedere alla pratica diffusa di sviluppare cose perché si pensa possano essere utili <strong>in futuro</strong>.</p>
+              <p>Rientrando in quello che a Roma potrebbe essere il nostro proverbiale “Non si sa mai”, ecco Ron e i suoi colleghi <a href="https://en.wikipedia.org/wiki/Ward_Cunningham">Ward Cunningham</a> e <a href="https://en.wikipedia.org/wiki/Kent_Beck">Kent Beck</a> (mica due tizi qualsiasi) che ci spiegano che al software questo adagio è meglio non applicarlo.</p>
+              <p>È meglio perché nell’ottica <em>Agile</em> di rilasciare più <em>feature</em> possibile il più in fretta possibile, spendere del tempo per anticipare delle necessità <strong>eventuali</strong> non è il modo migliore di spendere quel tempo perché tanto <a href="https://en.wikipedia.org/wiki/You_aren't_gonna_need_it">You aren’t gonna need it, YAGNI</a>, appunto.</p>
+              <blockquote>
+                <p>Always implement things when you actually need them, never when you just foresee that you need them.</p>
+              </blockquote>
+              <h2 id="solid">SOLID</h2>
+              <p>Il meglio viene alla fine, come sempre. SOLID però, mi spiace per te, non è un principio (o meglio, non uno solo), bensì cinque.</p>
+              <p><a href="https://en.wikipedia.org/wiki/SOLID">SOLID</a> è un acronimo, quindi andiamo lettera per lettera, concetto per concetto, in ordine.</p>
+              <h3 id="single-responsibility-principle-srp">Single responsibility principle (SRP)</h3>
+              <p>Questo principio indica che ogni componente del sistema abbia una e una sola responsabilità. Di fatto è il principio alla base dell’incapsulamento.</p>
+              <blockquote>
+                <p>A class should only have a single responsibility, that is, only changes to one part of the software’s specification should be able to affect the specification of the class.</p>
+              </blockquote>
+              <p>Nella mia esperienza ho visto moltissimi progetti, e un curiosamente molto alto numero di <em>God Class</em>, cioè classi che nel software fanno <em>praticamente</em> ogni cosa, o quasi. Spesso sono anche <em>Singleton</em>, motivo per cui questo pattern è diventato un anti-pattern per molti, me compreso.</p>
+              <p>C’è poco altro da spiegare: una classe deve fare una sola cosa e farla bene, In questo modo si riesce anche a rispettare il principio DRY, perché ogni classe diventa la <em>single source of truth</em> (la singola sorgente della verità) per quel determinato comportamento o quella parte della conoscenza.</p>
+              <h3 id="open-closed-principle-ocp">Open-Closed Principle (OCP)</h3>
+              <p>Questo principio spiega che un componente dovrebbe sempre essere aperto alle estensioni (qui il nostro “non si sa mai” è ammesso) ma chiusa per le modifiche.</p>
+              <blockquote>
+                <p>Software entities should be open for extension, but closed for modification.</p>
+              </blockquote>
+              <p>Questo principio porta con sé almeno due verità implicite:</p>
+              <ul>
+                <li>Più modifichi e più bug introduci (<em>potenzialmente</em>)</li>
+                <li>Un componente non sarà mai scolpito nella pietra, i requisiti evolvono e il software con essi</li>
+              </ul>
+              <p>Anche qui, spesso ho visto classi che magari facevano una sola cosa, ma che erano dipendenza di molti altri componenti del sistema e venivano spesso modificate per supportare ulteriori comportamenti. Più spesso di quanto si pensi, aggiungere ulteriori comportamenti potrebbe portare a rompere i comportamenti esistenti, e quindi rompere le funzionalità esistenti.</p>
+              <p>Dietro questo principio, come dietro a ogni principio c’è la volontà forte di spendere la maggior quantità di tempo possibile nello sviluppo di nuove funzionalità piuttosto che nella risoluzione dei problemi, perché quest’ultima non porta valore aggiunto al software (se non un software con meno problemi).</p>
+              <p>Quindi, bisogna sempre stare attenti a non sviluppare classi che debbano essere modificate spesso, e questa è proprio la campanella che devi ascoltare per capire se il principio è rispettato o meno.</p>
+              <h3 id="liskov-substitution-principle-lsp">Liskov Substitution Principle (LSP)</h3>
+              <p>Ok, qui entriamo nel vivo della programmazione orientata agli oggetti (<a href="https://en.wikipedia.org/wiki/Object-oriented_programming">OOP</a>).</p>
+              <p>Questo principio ci spiega che se un tipo B è un sottotipo di A, allora gli oggetti di tipo A devono poter essere sostituibili da oggetti di tipo B senza alterare il comportamento del programma.</p>
+              <blockquote>
+                <p>Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.</p>
+              </blockquote>
+              <p>Dipendentemente dal linguaggio che usi, potresti avere più o meno problemi con questo principio.</p>
+              <p>Io sono stato relativamente fortunato a trovarmi poco di fronte a violazioni di questo tipo.</p>
+              <p>C’è da dire che spesso ho visto progettazioni ingenue in cui si utilizzavano praticamente solo classi concrete tra di loro, e questo anche se non direttamente vìola questo principio.</p>
+              <h3 id="interface-segregation-principle-isp">Interface segregation principle (ISP)</h3>
+              <p>Anche qui si parla di OOP. E anche qui si parla di SRP.</p>
+              <blockquote>
+                <p>Ma scusa?! L’SRP l’avevamo già trattato! Questo non è DRY!</p>
+              </blockquote>
+              <p>Potrebbe sembrare che si parli di SRP, ed effettivamente questo principio è molto simile.</p>
+              <p>Ma la sua valenza è fondamentale, perché qui non si tratta di far fare a un’interfaccia più cose, bensì si tratta di evitare le <em>God Class</em> che necessariamente risulterebbero dall’implementazione di una interfaccia con troppi metodi.</p>
+              <p>Infatti il principio enuncia questo:</p>
+              <blockquote>
+                <p>Many client-specific interfaces are better than one general-purpose interface.</p>
+              </blockquote>
+              <p>Quindi, per puntualizzare, un client dovrebbe utilizzare una interfaccia di cui usa tutti i metodi (o quasi, qualche piccola deroga c’è), in contrapposizione con quelle interfacce piene di metodi di cui un client ne usa solo una piccola parte.</p>
+              <p>Questo è fondamentale anche per evitare di esporre dei componenti a dei comportamenti fuorvianti magari perché indotte da dei metodi che hanno degli effetti collaterali non voluti o non gestiti.</p>
+              <h3 id="dependency-inversion-priciple-dip">Dependency Inversion Priciple (DIP)</h3>
+              <p>Qui parliamo sempre di progettazione del codice. Il principio si focalizza sulla scelta di progettazione di usare classi astratte o interfacce al posto di implementazioni concrete quando si introduce una dipendenza in un componente.</p>
+              <blockquote>
+                <p>A. High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g., interfaces).
+                  B. Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.</p>
+              </blockquote>
+              <p>Si tratta sostanzialmente di disaccoppiare i componenti in maniera tale da non dipendere da una implementazione concreta.</p>
+              <p>Questo è particolarmente utile quando si sceglie a un certo punto di reimplementare un componente per cambiarne il comportamento.</p>
+              <p>Se infatti avendo come dipendenza una interfaccia a noi basta iniettare l’implementazione corretta e il software continua a funzionare a dovere, nel momento in cui la dipendenza è una implementazione concreta io non ho possibilità di usare il polimorfismo (e quindi il principio di sostituzione di Liskov) per sostituire l’implementazione e cambiare il comportamento.</p>
+              <p>Questo principio definisce anche un ulteriore concetto, che è la <em>direzione</em> delle dipendenze.</p>
+              <p>Su questo argomento, l’autore di questo principio ci tiene a sottolineare che i moduli di alto livello non dovrebbero dipendere da moduli di basso livello.</p>
+              <p>L’inversione sta nel fatto che se entrambi i moduli, quello di basso livello e quello di alto livello, dipendono da un’astrazione, di fatto abbiamo invertito la dipendenza che invece tende intuitivamente ad avere moduli di alto livello che dipendono dai dettagli implementativi.</p>
+              <h2 id="conclusioni">Conclusioni</h2>
+              <p>I principi sono fondamentali, sono le basi su cui si dovrebbero fondare le competenze di un programmatore.</p>
+              <p>Conoscere l’ennesimo luccicante faramework non solo non è sufficiente a definirsi buoni programmatori, ma non è neanche utile se poi questo framework viene usato senza che questi principi siano ben saldi nella mente dello sviluppatore che lo usa.</p>
+              <p>Pensa a quanto è brutto (e pieno di <em>bug</em>, e lento) il codice scritto senza avere cognizione di causa di questi fondamentali precetti.</p>
+            </section>
+            <a href="/2021/02/12/le-basi-dello-sviluppo/" hidden></a>
+          </article>
+          <p class="mx-0 mb-0 mt-5 invisible zero-size">
+            <a href="" class="invisible" id="comments">comments</a>
+          </p>
+          <h3>Comments</h3>
+          <form method="post" action="https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/dev/comments/">
+            <input name="options[redirect]" type="hidden" value="https://klez.me/2021/02/12/le-basi-dello-sviluppo/#comments">
+            <input name="options[slug]" type="hidden" value="le-basi-dello-sviluppo">
+            <div class="form-row">
+              <div class="col form-group">
+                <input type="text" id="username" name="fields[name]" class="form-control" placeholder="username" required="true" />
+              </div>
+              <div class="col form-group">
+                <input type="email" id="email" name="fields[email]" class="form-control" placeholder="email adress (will not be published)" required="true" />
+              </div>
+              <div class="col form-group">
+                <input type="text" id="url" name="fields[url]" class="form-control" placeholder="website url" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col form-group">
+                <textarea id="message" name="fields[message]" rows="3" class="form-control" placeholder="comment to this post" required="true"></textarea>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-sm-12 col-md-3 col-lg-2 form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+              <div class="col form-group">
+                <div class="alert alert-warning d-block small">New comments will be shown after moderation approval</div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row justify-content-end text-right">
+        <div class="col-6">
+          <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page">
+            <i class="fa fa-5x fa-chevron-up"></i>
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer bg-light w-100 py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="https://github.com/kLeZ">
+                  <i class="svg-icon fab fa-github"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://twitter.com/kLeZhAcK">
+                  <i class="svg-icon fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://www.linkedin.com/in/alessandroaccardo">
+                  <i class="svg-icon fab fa-linkedin"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://telegram.me/julius8774">
+                  <i class="svg-icon fab fa-telegram"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="/feed.xml">
+                  <i class="svg-icon fa fa-rss"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="mailto:klez@pm.me">
+                  <i class="svg-icon fa fa-envelope"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-left">
+            <small class="text-muted">Last build on <time datetime="2021-02-12T16:32:06+01:00">Fri, 12 Feb 2021 16:32:06 +0100</time></small>
+          </div>
+          <div class="col text-right">
+            <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />
+            <small class="text-muted">
+              This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+            </small>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="/assets/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/assets/popper/popper.min.js"></script>
+    <script src="/assets/popper/tooltip.min.js"></script>
+    <script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/assets/fontawesome-free/js/all.min.js"></script>
+    <script src="/assets/main.js"></script>
+    <script>
+      // Only load on production environment.
+      if (window.location.host !== 'klez.me')
+      	window.goatcounter = {
+      		no_onload: true
+      	}
+    </script>
+    <script data-goatcounter="https://klez.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>
