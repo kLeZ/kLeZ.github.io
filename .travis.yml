@@ -28,8 +28,7 @@ cache: bundler
 
 deploy:
     provider: pages
-    cleanup: false
-    strategy: git
+    skip_cleanup: true
     token: $GITHUB_TOKEN
     keep_history: true
     fqdn: klez.me
