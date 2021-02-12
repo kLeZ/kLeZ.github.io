@@ -165,19 +165,29 @@
               <p>Ma ciò su cui voglio soffermarmi io è l’applicazione di questo principio alla pratica della scrittura di codice.</p>
               <p>Questo principio è efficace nella stesura del codice se si pensa al fatto che puntare a riusare il codice ti porta a scrivere codice più pulito, generico e flessibile, proprio perché sai che potresti usarlo in contesti in cui certe premesse non sono più valide.</p>
               <p>E quindi ti porta a scrivere del codice di fatto di qualità più alta, pronto per il mondo esterno, usabile e magari già usato da porogrammatori differenti da te, che si sa potrebbero essere <em>diversamente simpatici</em>.</p>
-              <p class="text-center"><img src="/media/2021-02-12/le-basi-dello-sviluppo/violent-psychopath.jpg" alt="Violent-Psychopath" class="w-50 img-fluid" /></p>
+              <div class="row d-flex justify-content-center">
+                <div class="col col-12 col-xl-8">
+                  <p><img src="/media/2021-02-12/le-basi-dello-sviluppo/violent-psychopath.jpg" alt="Violent-Psychopath" class="img-fluid" /></p>
+                </div>
+              </div>
               <p>Il principio però, come mi è capitato di vedere altre volte può portare a un eccesso.</p>
               <p>Ho visto parecchi neofiti approcciare alla programmazione e ho notato che quasi tutti sono passati dal primo banale approccio del <em>pattern copia-incolla</em>, la pratica sconsigliata dagli autori del principio DRY, a non duplicare più nulla, rendendo inutilmente super complicati i metodi che scrivevano in una <strong>eccessiva</strong> ottica di riutilizzo.</p>
               <blockquote>
                 <p>Vabbè ma prima mi dici che non devo duplicare il codice poi mi dici che non duplicarlo porta a codice complesso! Deciditi!</p>
               </blockquote>
               <p>E infatti è qui il punto, l’equilibrio. Ne parleremo parecchio.</p>
-              <p class="text-center"><img src="/media/2021-02-12/le-basi-dello-sviluppo/393-balance-thanos.JPG" alt="Thanos-Balance" class="w-50 img-fluid" /></p>
+              <div class="row d-flex justify-content-center">
+                <div class="col col-12 col-xl-8">
+                  <p><img src="/media/2021-02-12/le-basi-dello-sviluppo/393-balance-thanos.JPG" alt="Thanos-Balance" class="img-fluid" /></p>
+                </div>
+              </div>
               <p>Il concetto è quello di genericizzare quando c’è possibilità di farlo senza complicare molto il codice. Mi verrebbe da dire troppo, ma poi dovrei spiegare come si capisce quando il codice è troppo complicato, e c’è un altro guru di cui ho parlato spesso che ha scritto libri interi sull’argomento.</p>
               <p>Tipicamente comunque, un codice è troppo complicato quando qualcuno senza conoscenza del contesto lo legge senza capire bene quale sia il suo risultato.</p>
-              <div class="d-flex justify-content-center mb-5">
-                <div class="embed-responsive embed-responsive-16by9 w-50">
-                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/E8z3EecNuEI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+              <div class="row justify-content-center mb-5">
+                <div class="col-12 col-xl-10">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/E8z3EecNuEI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                  </div>
                 </div>
               </div>
               <h2 id="yagni-you-arent-gonna-need-it">YAGNI (You Aren’t Gonna Need It)</h2>
@@ -236,8 +246,8 @@
               <h3 id="dependency-inversion-priciple-dip">Dependency Inversion Priciple (DIP)</h3>
               <p>Qui parliamo sempre di progettazione del codice. Il principio si focalizza sulla scelta di progettazione di usare classi astratte o interfacce al posto di implementazioni concrete quando si introduce una dipendenza in un componente.</p>
               <blockquote>
-                <p>A. High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g., interfaces).
-                  B. Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.</p>
+                <p>A. High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g., interfaces).</p>
+                <p>B. Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.</p>
               </blockquote>
               <p>Si tratta sostanzialmente di disaccoppiare i componenti in maniera tale da non dipendere da una implementazione concreta.</p>
               <p>Questo è particolarmente utile quando si sceglie a un certo punto di reimplementare un componente per cambiarne il comportamento.</p>
@@ -334,7 +344,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2021-02-12T16:32:06+01:00">Fri, 12 Feb 2021 16:32:06 +0100</time></small>
+            <small class="text-muted">Last build on <time datetime="2021-02-12T20:35:01+01:00">Fri, 12 Feb 2021 20:35:01 +0100</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
