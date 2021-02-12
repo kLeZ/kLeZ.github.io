@@ -108,5 +108,4 @@ Il pdf è disponibile previa registrazione, motivo per cui pur avendolo non poss
 
 [Ransomware: minaccia alle stelle](ransomware.odp)
 
-{: .embed-responsive-16by9 }
-{% include embed-youtube.html video_id="svUxYlMNtLw" %}
+{% include embed-youtube.html video_id="svUxYlMNtLw" classes="embed-responsive-16by9" %}
