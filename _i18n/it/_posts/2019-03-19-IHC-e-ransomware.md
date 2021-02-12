@@ -108,5 +108,4 @@ Il pdf è disponibile previa registrazione, motivo per cui pur avendolo non poss
 
 [Ransomware: minaccia alle stelle]({% link /media/2019-03-19/ihc-e-ransomware/ransomware.odp %})
 
-{: .embed-responsive-16by9 }
-{% include embed-youtube.html video_id="svUxYlMNtLw" %}
+{% include embed-youtube.html video_id="svUxYlMNtLw" classes="embed-responsive-16by9" %}
