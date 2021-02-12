@@ -77,8 +77,11 @@ Questo principio è efficace nella stesura del codice se si pensa al fatto che p
 
 E quindi ti porta a scrivere del codice di fatto di qualità più alta, pronto per il mondo esterno, usabile e magari già usato da porogrammatori differenti da te, che si sa potrebbero essere *diversamente simpatici*.
 
-{: .text-center }
-![Violent-Psychopath]({% link /media/2021-02-12/le-basi-dello-sviluppo/violent-psychopath.jpg %}){: .w-50 .img-fluid }
+<div class="row d-flex justify-content-center">
+<div class="col col-12 col-xl-8" markdown="1">
+![Violent-Psychopath]({% link /media/2021-02-12/le-basi-dello-sviluppo/violent-psychopath.jpg %}){: .img-fluid }
+</div>
+</div>
 
 Il principio però, come mi è capitato di vedere altre volte può portare a un eccesso.
 
@@ -88,15 +91,18 @@ Ho visto parecchi neofiti approcciare alla programmazione e ho notato che quasi 
 
 E infatti è qui il punto, l'equilibrio. Ne parleremo parecchio.
 
-{: .text-center }
-![Thanos-Balance]({% link /media/2021-02-12/le-basi-dello-sviluppo/393-balance-thanos.JPG %}){: .w-50 .img-fluid }
+<div class="row d-flex justify-content-center">
+<div class="col col-12 col-xl-8" markdown="1">
+![Thanos-Balance]({% link /media/2021-02-12/le-basi-dello-sviluppo/393-balance-thanos.JPG %}){: .img-fluid }
+</div>
+</div>
 
 Il concetto è quello di genericizzare quando c'è possibilità di farlo senza complicare molto il codice. Mi verrebbe da dire troppo, ma poi dovrei spiegare come si capisce quando il codice è troppo complicato, e c'è un altro guru di cui ho parlato spesso che ha scritto libri interi sull'argomento.
 
 Tipicamente comunque, un codice è troppo complicato quando qualcuno senza conoscenza del contesto lo legge senza capire bene quale sia il suo risultato.
 
 {: .justify-content-center .mb-5 }
-{% include embed-youtube.html video_id="E8z3EecNuEI" classes="embed-responsive-16by9 w-50" %}
+{% include embed-youtube.html video_id="E8z3EecNuEI" classes="embed-responsive-16by9" %}
 
 ## YAGNI (You Aren't Gonna Need It)
 
@@ -180,8 +186,8 @@ Questo è fondamentale anche per evitare di esporre dei componenti a dei comport
 Qui parliamo sempre di progettazione del codice. Il principio si focalizza sulla scelta di progettazione di usare classi astratte o interfacce al posto di implementazioni concrete quando si introduce una dipendenza in un componente.
 
 > A. High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g., interfaces).
+>  
 > B. Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.
-
 
 Si tratta sostanzialmente di disaccoppiare i componenti in maniera tale da non dipendere da una implementazione concreta.
 

@@ -1,3 +1,4 @@
+os: linux
 language: ruby
 rvm:
   - 2.6.0
@@ -23,18 +24,17 @@ addons:
     packages:
     - libcurl4-openssl-dev
 
-sudo: false
-
 cache: bundler
 
 deploy:
     provider: pages
-    skip-cleanup: true
-    github-token: $GITHUB_TOKEN
-    keep-history: true
+    cleanup: false
+    strategy: git
+    token: $GITHUB_TOKEN
+    keep_history: true
     fqdn: klez.me
     local_dir: _site/
-    deployment-file: true
+    deployment_file: true
     on:
       branch: dev
-    target-branch: master
+    target_branch: master
