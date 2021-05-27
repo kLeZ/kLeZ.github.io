@@ -1,8 +1,10 @@
 #!/bin/bash
 set -e # halt script on error
 
+bundle exec jekyll doctor
+
 if [[ $CI == "true" ]]; then
-	tee _data/travis.yml <<EOF
+	tee _data/ci-status.yml <<EOF
 last_commit:
     short_sha: $(echo ${TRAVIS_COMMIT:-abcdef01} | cut -c 1-8)
     long_sha: ${TRAVIS_COMMIT:-abcdef01abcdef01abcdef01abcdef01abcdef01}
@@ -14,12 +16,12 @@ build:
 EOF
 	echo -e "\n"
 	bundle exec jekyll build
-	bundle exec htmlproofer ./_site --disable-external
 else
 	bash ./_scripts/publish
 	bash ./_scripts/emojis
-	cat _data/travis.yml
+	cat _data/ci-status.yml
 	echo -e "\n"
 	bundle exec jekyll build --drafts --trace
-	bundle exec htmlproofer ./_site --disable-external
 fi
+
+bundle exec htmlproofer ./_site --disable-external
