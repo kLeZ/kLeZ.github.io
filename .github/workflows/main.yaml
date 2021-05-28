@@ -23,7 +23,7 @@ on:
       - "README.md"
 
 env:
-  RUBY_VERSION: 2.7.1
+  RUBY_VERSION: 2.6.0
 
 jobs:
   jekyll:
