@@ -7,8 +7,8 @@ url: https://klez.me
 copyright: Copyright © Alessandro 'kLeZ' Accardo 2019
 repo: https://github.com/kLeZ/kLeZ.github.io
 build:
-    server: https://travis-ci.org/kLeZ/kLeZ.github.io
-    status: https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev
+    server: https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml
+    status: https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml/badge.svg?branch=dev
 
 twitter:
     username: kLeZhAcK
