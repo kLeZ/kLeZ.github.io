@@ -24,6 +24,8 @@ on:
 
 env:
   RUBY_VERSION: 2.6.0
+  JEKYLL_ENV: 'production'
+  NOKOGIRI_USE_SYSTEM_LIBRARIES: true
 
 jobs:
   jekyll:
@@ -52,11 +54,6 @@ jobs:
           ruby --version
           gem --version
           bundle --version
-
-      - name: Setting variables
-        run: |
-          echo "JEKYLL_ENV=production" >> $GITHUB_ENV
-          echo "NOKOGIRI_USE_SYSTEM_LIBRARIES=true" >> $GITHUB_ENV
 
       - name: Give permissions to build script
         run: chmod +x ./_scripts/build
