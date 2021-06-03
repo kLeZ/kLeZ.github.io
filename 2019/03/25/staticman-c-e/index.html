@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <!-- Begin Jekyll SEO tag v2.6.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
     <title>Staticman c’è! | Alessandro ‘kLeZ’ Accardo personal website</title>
-    <meta name="generator" content="Jekyll v3.8.5" />
+    <meta name="generator" content="Jekyll v3.9.1" />
     <meta property="og:title" content="Staticman c’è!" />
     <meta name="author" content="kLeZ" />
     <meta property="og:locale" content="en_US" />
@@ -23,7 +23,7 @@
     <meta name="twitter:site" content="@kLeZhAcK" />
     <meta name="twitter:creator" content="@kLeZhAcK" />
     <script type="application/ld+json">
-      {"author":{"@type":"Person","name":"kLeZ"},"description":"Ecco lo sperato secondo articolo su Staticman, finalmente ho qualcosa da scrivere! Le difficoltà ci sono state, ma devo dire che pensavo peggio, alla fine mi ci è voluta solo mezza giornata di lavoro per tirare su la baracca. Anche se con un mucchio di se e ma e però, comunque il componente regge e io non ho speso un euro. Vittoria per me, ma amara.","headline":"Staticman c’è!","dateModified":"2019-03-25T09:30:00+01:00","datePublished":"2019-03-25T09:30:00+01:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2019/03/25/staticman-c-e/"},"url":"https://klez.me/2019/03/25/staticman-c-e/","@context":"https://schema.org"}
+      {"mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2019/03/25/staticman-c-e/"},"description":"Ecco lo sperato secondo articolo su Staticman, finalmente ho qualcosa da scrivere! Le difficoltà ci sono state, ma devo dire che pensavo peggio, alla fine mi ci è voluta solo mezza giornata di lavoro per tirare su la baracca. Anche se con un mucchio di se e ma e però, comunque il componente regge e io non ho speso un euro. Vittoria per me, ma amara.","@type":"BlogPosting","url":"https://klez.me/2019/03/25/staticman-c-e/","headline":"Staticman c’è!","dateModified":"2019-03-25T09:30:00+01:00","datePublished":"2019-03-25T09:30:00+01:00","author":{"@type":"Person","name":"kLeZ"},"@context":"https://schema.org"}
     </script>
     <!-- End Jekyll SEO tag -->
     <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
@@ -51,8 +51,8 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand" href="/">kLeZ</a>
-        <a class="navbar-brand" href="https://travis-ci.org/kLeZ/kLeZ.github.io" target="_blank">
-          <img src="https://travis-ci.org/kLeZ/kLeZ.github.io.svg?branch=dev" alt="build status badge" />
+        <a class="navbar-brand" href="https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml" target="_blank">
+          <img src="https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml/badge.svg?branch=dev" alt="build status badge" />
         </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
           Menu
@@ -118,7 +118,7 @@
               <h2 id="le-basi-errori-di-programmazione-per-un-progetto-disorganizzato-e-fuori-rotta">Le basi: errori di programmazione per un progetto disorganizzato e fuori rotta</h2>
               <p>Il progetto Staticman, come ho detto <a href="/2019/03/21/staticman/">altre volte</a> è interessante, lo è <em>molto</em>, ma rimane dietro la barriera dell’interessante non riuscendo a fuggire dal blocco dei progetti destinati a morire. E se non cambia rotta <strong>succederà</strong>.</p>
               <p>Inizio col dire che come ogni progetto molto piccolo le informazioni sono poche e difficili da reperire (anche dal sito “ufficiale”), questo perché lo vediamo nella sua fase embrionale. Il problema esiste perché il suo autore, il portoghese <a href="https://eduardoboucas.com/">Eduardo Bouças</a>, si è trovato a dover gestire una situazione che probabilmente non pensava di dover gestire, cioè una massa critica di utenti che ha permesso a questo progetto di uscire dalla bolla di invisibilità che copre ogni software prima che degli utenti si accorgano della sua esistenza e della sua (<em>spesso relativa</em>) utilità, esattamente come ancora succede al mio <a href="https://klez.me/wash-ideas">Wash Ideas</a>.</p>
-              <p>Dal punto di vista puramente tecnico, ha incontrato e incontra ancora delle crisi di prestazioni che lo hanno portato a un cambio netto di implementazione e di approccio, come <a href="https://github.com/eduardoboucas/staticman/issues/243">notificato nelle <em>issues</em></a> dagli utenti stessi. Vedo un tecnico con un approccio <em>minimal working piece</em><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> al servizio, un approccio che devo dire a me non piace.</p>
+              <p>Dal punto di vista puramente tecnico, ha incontrato e incontra ancora delle crisi di prestazioni che lo hanno portato a un cambio netto di implementazione e di approccio, come <a href="https://github.com/eduardoboucas/staticman/issues/243">notificato nelle <em>issues</em></a> dagli utenti stessi. Vedo un tecnico con un approccio <em>minimal working piece</em><sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> al servizio, un approccio che devo dire a me non piace.</p>
               <p>Dal punto di vista organizzativo invece, poca è la documentazione del progetto, e minore ancora è la voglia di strutturare il lavoro in maniera adeguata, per far funzionare senza (troppi) disservizi questo software. Neanche dopo aver ricevuto uno sponsor, neanche dopo che qualche decina di persone ha iniziato a lavorare sul progetto, Eduardo ha dimostrato di voler fare di meglio: attualmente non c’è la minima ombra di organizzazione del team, degli sviluppi, non c’è una direzione, né delle <em>milestone</em>, né a dire la verità sembra esserci la volontà piena di far vedere la luce a questo piccolo progetto.</p>
               <p>Tornando alla documentazione estremamente carente, sul sito ufficiale di Staticman si trovano informazioni per <em>configurare</em> (se mai ci sia la possibilità di riuscirci) quello che viene specificato come l’<em>endpoint</em> <strong>v2</strong> mentre, <a href="https://github.com/eduardoboucas/staticman/issues/278">come sembra dalle issues</a>, gli endpoint v1 e v2 dovrebbero essere deprecati in favore dell’endpoint v3, che però non vuol saperne di funzionare adeguatamente e su cui chiaramente non c’è documentazione ufficiale per configurazione e manutenzione.</p>
               <p>Inoltre, come se non bastasse, una volta scaricato il sorgente per configurare la mia istanza su Heroku (grazie al <a href="https://vincenttam.gitlab.io/post/2018-09-16-staticman-powered-gitlab-pages/2/">post</a> non preciso ma almeno esistente sull’internet di Vincent Tam) sono riuscito anche a trovare un errore di programmazione che non avrebbe dovuto esserci, e che fortunatamente mi ha portato via solo mezz’ora, considerato tutto.</p>
@@ -129,7 +129,7 @@
     <span class="na">username</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span>
     <span class="na">repository</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">repository</span><span class="p">,</span>
     <span class="na">branch</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">branch</span><span class="p">,</span>
-    <span class="na">token</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'githubToken'</span><span class="p">)</span>
+    <span class="na">token</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">githubToken</span><span class="dl">'</span><span class="p">)</span>
   <span class="p">})</span>
 </code></pre>
                 </div>
@@ -142,17 +142,17 @@
     <span class="na">repository</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">repository</span><span class="p">,</span>
     <span class="na">username</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span>
     <span class="na">version</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">version</span><span class="p">,</span>
-    <span class="na">token</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'githubToken'</span><span class="p">)</span>
+    <span class="na">token</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">githubToken</span><span class="dl">'</span><span class="p">)</span>
   <span class="p">})</span>
 </code></pre>
                 </div>
               </div>
               <h2 id="final-thoughts">Final thoughts</h2>
               <p>Insomma, in buona sostanza ho trovato un progetto molto utile, potenzialmente indispensabile, che ha raccolto solo grazie all’idea una massa critica di utenti, ma che purtroppo è mal gestito. A me funziona con un po’ di lavoro ma avrei preferito che funzionasse l’istanza pubblica, tutto sommato non è andata male.</p>
-              <div class="footnotes">
+              <div class="footnotes" role="doc-endnotes">
                 <ol>
-                  <li id="fn:1">
-                    <p>Concetto coniato da me in questa occasione, significa progettare solo il minimo della funzionalità, senza pensare a tematiche di buona progettazione come scalabilità e prestazioni. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+                  <li id="fn:1" role="doc-endnote">
+                    <p>Concetto coniato da me in questa occasione, significa progettare solo il minimo della funzionalità, senza pensare a tematiche di buona progettazione come scalabilità e prestazioni. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
                   </li>
                 </ol>
               </div>
@@ -241,7 +241,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2021-05-21T17:55:45+02:00">Fri, 21 May 2021 17:55:45 +0200</time></small>
+            <small class="text-muted">Last build on <time datetime="2021-06-03T20:20:20+02:00">Thu, 03 Jun 2021 20:20:20 +0200</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
