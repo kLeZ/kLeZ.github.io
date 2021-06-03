@@ -65,7 +65,7 @@ jobs:
           NOKOGIRI_USE_SYSTEM_LIBRARIES: true
 
       - name: Date-tag the build
-        run: touch "_site/$(echo "deployed at `date` by GitHub Actions")"
+        run: touch "_site/$(echo "deployed at `date '+%a %b %d %H.%M.%S %Z %Y'` by GitHub Actions")"
 
       - name: Upload built site
         uses: actions/upload-artifact@v2
