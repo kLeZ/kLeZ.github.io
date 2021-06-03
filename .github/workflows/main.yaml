@@ -62,12 +62,11 @@ jobs:
         env:
           JEKYLL_ENV: production
           NOKOGIRI_USE_SYSTEM_LIBRARIES: true
-          CI: true
-          COMMIT_SHA: "$GITHUB_SHA"
+          COMMIT_SHA: "${{ github.sha }}"
           COMMIT_MESSAGE: "${{ github.event.head_commit.message }}"
-          BUILD_NUMBER: "$GITHUB_RUN_NUMBER"
-          BUILD_ID: "$GITHUB_RUN_ID"
-          BUILD_WEB_URL: "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          BUILD_NUMBER: "${{ github.run_number }}"
+          BUILD_ID: "${{ github.run_id }}"
+          BUILD_WEB_URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
       - name: Date-tag the build
         run: touch "_site/$(echo "deployed at `LANG=en_US date '+%a %b %d %H.%M.%S %Z %Y'` by GitHub Actions")"
