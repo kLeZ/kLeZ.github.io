@@ -28,7 +28,7 @@ env:
   NOKOGIRI_USE_SYSTEM_LIBRARIES: true
 
 jobs:
-  jekyll:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -64,12 +64,15 @@ jobs:
           JEKYLL_ENV: production
           NOKOGIRI_USE_SYSTEM_LIBRARIES: true
 
-      - uses: helaili/jekyll-action@v2
+      - name: Date-tag the build
+        run: touch "_site/$(echo "deployed at `date` by GitHub Actions")"
+
+      - name: Upload built site
+        uses: actions/upload-artifact@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          jekyll_src: '_site/'
-          target_branch: 'master'
-          gem_src: '.'
+          name: site-release
+          path: _site/
+          if-no-files-found: error
 
       - name: Cleaning up
         run: bundle exec jekyll clean
