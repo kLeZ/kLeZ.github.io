@@ -6,13 +6,13 @@ bundle exec jekyll doctor
 if [[ $CI == "true" ]]; then
 	tee _data/ci-status.yml <<EOF
 last_commit:
-    short_sha: $(echo ${TRAVIS_COMMIT:-abcdef01} | cut -c 1-8)
-    long_sha: ${TRAVIS_COMMIT:-abcdef01abcdef01abcdef01abcdef01abcdef01}
-    message: |- $(echo; echo -e "${TRAVIS_COMMIT_MESSAGE}" | sed 's/^/        /')
+    short_sha: $(echo ${COMMIT_SHA:-abcdef01} | cut -c 1-8)
+    long_sha: ${COMMIT_SHA:-abcdef01abcdef01abcdef01abcdef01abcdef01}
+    message: |- $(echo; echo -e "${COMMIT_MESSAGE}" | sed 's/^/        /')
 build:
-    number: ${TRAVIS_BUILD_NUMBER:-0}
-    id: ${TRAVIS_BUILD_ID:-0}
-    url: ${TRAVIS_BUILD_WEB_URL:-https://example.org}
+    number: ${BUILD_NUMBER:-0}
+    id: ${BUILD_ID:-0}
+    url: ${BUILD_WEB_URL:-https://example.org}
 EOF
 	echo -e "\n"
 	bundle exec jekyll build

@@ -4,8 +4,8 @@ commit:
     message: |- 
         - unified dev and ci build scripts
         - changed build script name
-        - added tee to print _data/travis.yml to stdout
+        - added tee to print _data/ci-status.yml to stdout
 build:
     number: 62
     id: 507890989
-    url: https://travis-ci.org/kLeZ/kLeZ.github.io/builds/507890989
+    url: https://github.com/kLeZ/kLeZ.github.io/actions/runs/903830597

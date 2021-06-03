@@ -62,6 +62,12 @@ jobs:
         env:
           JEKYLL_ENV: production
           NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+          CI: true
+          COMMIT_SHA: "$GITHUB_SHA"
+          COMMIT_MESSAGE: "${{ github.event.head_commit.message }}"
+          BUILD_NUMBER: "$GITHUB_RUN_NUMBER"
+          BUILD_ID: "$GITHUB_RUN_ID"
+          BUILD_WEB_URL: "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
 
       - name: Date-tag the build
         run: touch "_site/$(echo "deployed at `LANG=en_US date '+%a %b %d %H.%M.%S %Z %Y'` by GitHub Actions")"
@@ -90,16 +96,22 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "admin@klez.me"
-          rm -f "deployed*"
+          ls -l deployed*
+          rm -f deployed*
 
       - name: Download built site artifact
         uses: actions/download-artifact@v2
         with:
           name: site-release
 
-      - name: Deploy Files
+      - name: Add Files to index
         run: |
+          ls -l deployed*
           git status
           git add -A
+
+      - name: Commit and push added files
+        run: |
+          git status
           git commit -m "Deployed new klez.me version"
           git push
