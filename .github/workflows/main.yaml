@@ -90,8 +90,14 @@ jobs:
         with:
           name: site-release
 
-      - name: Deploy Files
+      - name: Setup Git
         run: |
           git config user.name "GitHub Actions"
-          git config user.email "deployer@klez.me"
+          git config user.email "admin@klez.me"
+          git status
+
+      - name: Deploy Files
+        run: |
+          git add -A
+          git commit -m "Deployed new klez.me version"
           git push
