@@ -43,6 +43,8 @@ a {
 	&:hover {
 		color: $primary;
 	}
+
+	text-decoration: underline;
 }
 
 .section-heading {
@@ -87,4 +89,10 @@ img::-moz-selection {
 .zero-size {
 	width: 0;
 	height: 0;
+}
+
+div.badge-bin {
+	img {
+		width: 147px;
+	}
 }

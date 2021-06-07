@@ -3,7 +3,12 @@
 	position: absolute;
 	border-bottom: 1px solid $gray-200;
 	background-color: white;
+
 	@include sans-serif-font;
+
+	a {
+		text-decoration: none;
+	}
 
 	.navbar-brand {
 		font-weight: 800;
@@ -19,8 +24,8 @@
 	}
 
 	.navbar-nav {
-		>li.nav-item {
-			>a {
+		> li.nav-item {
+			> a {
 				font-size: 12px;
 				font-weight: 800;
 				letter-spacing: 1px;
@@ -28,7 +33,7 @@
 			}
 
 			&.active {
-				>a {
+				> a {
 					color: $green;
 				}
 			}
@@ -45,24 +50,24 @@
 
 			&:focus,
 			&:hover {
-				color: fade-out($white, .2);
+				color: fade-out($white, 0.2);
 			}
 		}
 
 		.navbar-nav {
-			>li.nav-item {
-				>a {
+			> li.nav-item {
+				> a {
 					padding: 10px 20px;
 					color: $white;
 
 					&:focus,
 					&:hover {
-						color: fade-out($white, .2);
+						color: fade-out($white, 0.2);
 					}
 				}
 
 				&.active {
-					>a {
+					> a {
 						color: $green;
 					}
 				}
@@ -74,6 +79,7 @@
 		-webkit-transition: background-color 0.2s;
 		-moz-transition: background-color 0.2s;
 		transition: background-color 0.2s;
+
 		/* Force Hardware Acceleration in WebKit */
 		-webkit-transform: translate3d(0, 0, 0);
 		-moz-transform: translate3d(0, 0, 0);
@@ -89,8 +95,8 @@
 			-webkit-transition: -webkit-transform 0.2s;
 			-moz-transition: -moz-transform 0.2s;
 			transition: transform 0.2s;
-			border-bottom: 1px solid darken($white, .05);
-			background-color: fade-out($white, .1);
+			border-bottom: 1px solid darken($white, 0.05);
+			background-color: fade-out($white, 0.1);
 
 			.navbar-brand {
 				color: $gray-900;
@@ -102,8 +108,8 @@
 			}
 
 			.navbar-nav {
-				>li.nav-item {
-					>a {
+				> li.nav-item {
+					> a {
 						color: $gray-900;
 
 						&:focus,
@@ -113,7 +119,7 @@
 					}
 
 					&.active {
-						>a {
+						> a {
 							color: $green;
 						}
 					}
