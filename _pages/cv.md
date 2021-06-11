@@ -22,10 +22,9 @@ right_content: >-
 
 ## Badges
 
-<div class="badge-bin" markdown="1">
-
-[![CKA-Badge](https://images.credly.com/size/196x196/images/8b8ed108-e77d-4396-ac59-2504583b9d54/cka_from_cncfsite__281_29.png)](https://www.credly.com/badges/b8e00196-45e0-4944-91dc-c67fb4d71067)
-
+<div class="badge-bin">
+	<a href="https://www.credly.com/badges/b8e00196-45e0-4944-91dc-c67fb4d71067/public_url" target="_blank"><img src="{{ '/assets/img/cka-certified-kubernetes-administrator.png' | relative_url }}" alt="CKA-Badge"></a>
+	<a href="https://www.credly.com/badges/41425c5b-0ad7-4c97-b79f-f4df07f39fd7/public_url" target="_blank"><img src="{{ '/assets/img/vmware-certified-master-specialist-cloud-native-2021.png' | relative_url }}" alt="VMware-CMS-Badge"></a>
 </div>
 
 ## Carriera
