@@ -1,0 +1,52 @@
+---
+title: "FizzBuzz e l'ottimizzazione"
+tags: 
+##date: __CURRENT_DATE
+---
+
+Oggi vorrei parlarvi di un algoritmo.
+
+Di norma un algoritmo talmente semplice da essere usato durante i colloqui per la valutazione della capacità _minima_ di scrivere e leggere codice che comprenda il minimo indispensabile di logica, matematica e pensiero critico.
+
+L'algoritmo consiste nell'implementare una funzione che dati i numeri da 1 a 100 faccia quanto segue:
+
+- stampi la stringa "_Fizz_" quando il numero è un multiplo di 3
+- stampi la stringa "_Buzz_" quando il numero è un multiplo di 5
+- stampi la stringa "_FizzBuzz_" quando il numero è un multiplo di 3 o 5
+- stampi il numero quando non è un multiplo di 3 né di 5
+
+Semplice semplice. Ma allora perché ne parlo?
+
+{% include more.html %}
+
+Ne parlo perché da un occhio esperto permette di valutare la lentezza _matematica_ di un operatore in particolare, il modulo.
+
+E quindi mi permette di parlare di ottimizzazioni di basso livello.
+
+L'implementazione scolastica
+
+A livello di studio, si usa il modulo per questo tipo di problema. Il listato che segue è l'implementazione completa.
+
+```java
+for (int i = 1; i <= 100; i++) {
+	if (i % 15 == 0) {
+		System.out.println("FizzBuzz");
+	} else if (i % 5 == 0) {
+		System.out.println("Buzz");
+	} else if (i % 3 == 0) {
+		System.out.println("Fizz");
+	} else {
+		System.out.println(i);
+	}
+}
+```
+
+Questa è l'implementazione, banale un ciclo e 4 if con delle operazioni di modulo. Ma il modulo è un'operazione lenta.
+
+Come descritto [qui](https://cs.stackexchange.com/questions/12931/complexity-of-taking-mod) e [qui](https://en.wikipedia.org/wiki/Computational_complexity_of_mathematical_operations), siamo di fronte a una complessità di `O(M(n))` che è veramente parecchio. Mi sono chiesto se fosse possibile ottimizzare.
+
+ho messo quindi in piedi un programma, che ho raffinato in varie iterazioni, che potete vedere a questo [GIST](https://gist.github.com/kLeZ/c1b3b387521747bd732c32a5834146b7).
+
+Di seguito vi commento la versione finale.
+
+
