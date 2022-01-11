@@ -15,7 +15,7 @@ twitter:
     card: summary
 
 comments:
-    enabled: true
+    enabled: false
     type: staticman
     post_url: https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/dev/comments/
     avatar_provider: gravatar

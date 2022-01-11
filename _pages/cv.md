@@ -29,6 +29,12 @@ right_content: >-
 
 ## Carriera
 
+{% capture card15 %}
+Progettazione e sviluppo di workflow e componenti architetturali complessi per una piattaforma di gestione delle transazioni bancarie che richiede performance near real-time.
+Gestione delle implementazioni dei diversi processi bancari e finanziari di movimentazione e transazione da e verso altre banche e sistemi bancari e finanziari e da e verso sistemi di smart payment e pagamento elettronico.
+{% endcapture %}
+{% include card.html title="Team Leader / Senior Developer / Solution Architect" subtitle="Key 2 Business s.r.l. | 01/03/2021 - presente" content=card15 footer="Skills: **Java 8**, **Vert.x**, **JUnit**, **Hibernate**, **MyBatis**, **PostgreSQL**, **Docker**, **OpenShift**, **Linux**, **Jenkins**, **SonarQube**" %}
+
 {% capture card14 %}
 Sviluppo di due microservizi necessari per la presentazione di dati fluidi provenienti da ETL verso una interfaccia di gestione e monitoraggio basata su Angular 7.
 
@@ -37,7 +43,7 @@ Uno dei microservizi è un *BFF* che espone delle API specifiche e adatte al fro
 L'altro servizio è un *data service* che compie relativamente poche operazioni di business oltre al recupero dei dati, ma che pone la sua complessità nell'utilizzo di un virtualizzatore di database *embedded* che permette l'aggregazione di molteplici sorgenti dati eterogenee, distribuite e fluide.  
 Il recupero dei dati viene effettuato tenendo conto della fluidità dei dati, generando metadati utili al frontend per la costruzione dinamica delle interfacce di visualizzazione e creando delle query e dei mapping dinamici tenendo conto dei metadati generati dinamicamente.
 {% endcapture %}
-{% include card.html title="Senior Developer" subtitle="Key 2 Business s.r.l. | 28/09/2020 - presente" content=card14 footer="Skills: **Java 8**, **Spring Boot 2**, **Spring Data REST**, **Spring Cloud**, **Docker**, **OpenShift**, **AWS**, **Linux**, **Jenkins**, **SonarQube**, **Teiid**" %}
+{% include card.html title="Team Leader / Senior Developer / DevOps Engineer" subtitle="Key 2 Business s.r.l. | 28/09/2020 - 26/02/2021" content=card14 footer="Skills: **Java 8**, **Spring Boot 2**, **Spring Data REST**, **Spring Cloud**, **Docker**, **OpenShift**, **AWS**, **Linux**, **Jenkins**, **SonarQube**, **Teiid**" %}
 
 {% capture card13 %}
 Sviluppo e manutenzione di alcuni microservizi per un sistema di automazione e gestione del lavoro burocratico e di burocratizzazione delle operazioni sul campo e delle operazioni finanziarie gestite dal cliente.
