@@ -1,0 +1,5 @@
+tasks:
+  - init: |
+      bundle install && bash ./_scripts/build
+    command: |
+      bash ./_scripts/serve
