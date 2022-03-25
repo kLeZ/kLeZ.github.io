@@ -6,24 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <!-- Begin Jekyll SEO tag v2.7.1 -->
-    <title>Discorsi confusi | Alessandro ‘kLeZ’ Accardo personal website</title>
+    <title>Il dilemma del calcolo delle stime | Alessandro ‘kLeZ’ Accardo personal website</title>
     <meta name="generator" content="Jekyll v3.9.1" />
-    <meta property="og:title" content="Discorsi confusi" />
+    <meta property="og:title" content="Il dilemma del calcolo delle stime" />
     <meta name="author" content="kLeZ" />
     <meta property="og:locale" content="en_US" />
-    <meta name="description" content="This is the personal website of an Italian developer once called ‘kLeZ’." />
-    <meta property="og:description" content="This is the personal website of an Italian developer once called ‘kLeZ’." />
-    <link rel="canonical" href="https://klez.me/2010/12/16/discorsi-confusi/" />
-    <meta property="og:url" content="https://klez.me/2010/12/16/discorsi-confusi/" />
+    <meta name="description" content="Di norma direi che il calcolo delle stime è qualcosa che facciamo tutti i giorni e che quindi almeno sulla carta ogni programmatore dovrebbe saper farlo. Di norma direi anche che ci dovrebbe essere una procedura, una best practice una formula che possa calcolare una stima. Siamo programmatori, quindi siamo ingegneri (più o meno)!" />
+    <meta property="og:description" content="Di norma direi che il calcolo delle stime è qualcosa che facciamo tutti i giorni e che quindi almeno sulla carta ogni programmatore dovrebbe saper farlo. Di norma direi anche che ci dovrebbe essere una procedura, una best practice una formula che possa calcolare una stima. Siamo programmatori, quindi siamo ingegneri (più o meno)!" />
+    <link rel="canonical" href="https://klez.me/2022/03/25/il-dilemma-del-calcolo-delle-stime/" />
+    <meta property="og:url" content="https://klez.me/2022/03/25/il-dilemma-del-calcolo-delle-stime/" />
     <meta property="og:site_name" content="Alessandro ‘kLeZ’ Accardo personal website" />
     <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2010-12-16T09:48:07+01:00" />
+    <meta property="article:published_time" content="2022-03-25T10:39:26+01:00" />
     <meta name="twitter:card" content="summary" />
-    <meta property="twitter:title" content="Discorsi confusi" />
+    <meta property="twitter:title" content="Il dilemma del calcolo delle stime" />
     <meta name="twitter:site" content="@kLeZhAcK" />
     <meta name="twitter:creator" content="@kLeZhAcK" />
     <script type="application/ld+json">
-      {"mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2010/12/16/discorsi-confusi/"},"description":"This is the personal website of an Italian developer once called ‘kLeZ’.","@type":"BlogPosting","url":"https://klez.me/2010/12/16/discorsi-confusi/","headline":"Discorsi confusi","dateModified":"2010-12-16T09:48:07+01:00","datePublished":"2010-12-16T09:48:07+01:00","author":{"@type":"Person","name":"kLeZ"},"@context":"https://schema.org"}
+      {"mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2022/03/25/il-dilemma-del-calcolo-delle-stime/"},"description":"Di norma direi che il calcolo delle stime è qualcosa che facciamo tutti i giorni e che quindi almeno sulla carta ogni programmatore dovrebbe saper farlo. Di norma direi anche che ci dovrebbe essere una procedura, una best practice una formula che possa calcolare una stima. Siamo programmatori, quindi siamo ingegneri (più o meno)!","@type":"BlogPosting","url":"https://klez.me/2022/03/25/il-dilemma-del-calcolo-delle-stime/","headline":"Il dilemma del calcolo delle stime","dateModified":"2022-03-25T10:39:26+01:00","datePublished":"2022-03-25T10:39:26+01:00","author":{"@type":"Person","name":"kLeZ"},"@context":"https://schema.org"}
     </script>
     <!-- End Jekyll SEO tag -->
     <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
@@ -52,7 +52,7 @@
       <div class="container">
         <a class="navbar-brand" href="/">kLeZ</a>
         <a class="navbar-brand" href="https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml" target="_blank">
-          <img src="https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml/badge.svg?branch=dev" alt="build status badge" />
+          <img src="https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml/badge.svg?branch=dev" alt="build status badge">
         </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
           Menu
@@ -96,31 +96,59 @@
         <div class="col-lg-2 col-md-12">
           <aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
             <p class="text-muted">
-              This article will take 4 minutes to read.
+              This article will take 3 minutes to read.
             </p>
           </aside>
         </div>
         <div class="col-lg-8 col-md-12">
           <article itemscope itemtype="http://schema.org/BlogPosting">
             <header>
-              <h2>Discorsi confusi</h2>
+              <h2>Il dilemma del calcolo delle stime</h2>
               <small class="text-muted">Posted on
-                <time datetime="2010-12-16T09:48:07+01:00" itemprop="datePublished">16 Dec 2010</time><span> • by <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
+                <time datetime="2022-03-25T10:39:26+01:00" itemprop="datePublished">25 Mar 2022</time><span> • by <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
             </header>
             <section itemprop="articleBody">
+              <p>Di norma direi che il calcolo delle stime è qualcosa che facciamo tutti i giorni e che quindi almeno sulla carta ogni programmatore dovrebbe saper farlo.</p>
+              <p>Di norma direi anche che ci dovrebbe essere una procedura, una <em>best practice</em> una formula che possa calcolare una stima.</p>
+              <p>Siamo programmatori, quindi siamo ingegneri (più o meno)!</p>
               <!--more-->
               <p class="m-0 invisible zero-size">
                 <a class="invisible" id="read-more">read more</a>
               </p>
-              <p>Sto blog sta diventando sempre più macabro, gira gira lo chiudo, tanto ho notato che non so tenerlo…
-                E’ veramente troppo difficile da spiegare, nessuno, in qualsiasi contesto con qualsiasi mezzo compresa religione e filosofia, riuscirà mai a spiegare perché nasciamo con dolore, moriamo con dolore e viviamo una vita fatta di dolore.
-                Ed è a volte questo che caratterizza la vita, la realizzazione è in fondo la ricerca di una felicità interiore, che per ognuno è diversa.
-                Ma cos’è la felicità? Beh difficile dirlo, chiunque potrebbe abbattere le mie parole in un secondo, solo perché la felicità è uno di quei sentimenti intimi e personali che nessuno può definire per noi stessi a parte noi, e questo fa dell’uomo un debole, un animale che non vuole comprendere il cerchio del genere che ormai lo avvolge con le sue spire calde, forse troppo, e lo attanaglia con la ricerca di una parte nel mondo che per non incappare nell’egoismo ricerca nell’appartenenza a un gruppo.
-                L’errore è proprio quello della ricerca del branco, perché da animali il nostro istinto è di organizzarci in branchi e poi distinguerci in essi, e quando uno il branco lo lascia a noi rimane un senso di vuoto che è lo stesso che avrebbe un puzzle senza un tassello. A noi sembra di rimanere incompleti solo perché non capiamo, o non vogliamo capire, che la completezza è dentro di noi e non fuori di noi.
-                Purtroppo tutto il dolore che nella nostra vita proviamo è causato da alcuni difetti di fondo nell’essere umano, la codardia prima non per importanza ci “dona” la capacità di fuggire da ciò che istintivamente reputiamo “cattivo”, è la stessa che fa fuggire gli elefanti dai topolini, ed è la stessa che ci fa fuggire dai problemi.
-                Secondo difetto, è l’egocentrismo, ma questo è diciamo una conseguenza secondo me della ricerca del branco, basti immaginare quello che succede ai leoni, ogni leone maschio più giovane tenta di accaparrarsi la guida del branco, e la continuazione delle generazioni, quella è selezione naturale che permette sempre e solo al leone più forte di fecondare le femmine e far nascere solo dei leoni forti per evitare di incappare nel dolore di un leoncino malato o ucciso precocemente perché debole; per noi questo scenario è fantastico, perché è interamente riportato nella nostra vita ma è ulteriormente deformato dall’anamnesi psicologica dell’uomo nel corso dei secoli, dove si è imparato a credere che tutti fossero capaci di fare tutto allo stesso modo, esaltando le capacità di chi invece non ne aveva e denigrando le capacità di chi poteva portarci in un futuro migliore. Questo argomento viene spesso frainteso, e sicuramente verrò frainteso io stesso abbattendo il valore dell’universale identicità del genere umano, però l’uguaglianza è proprio quello che ci apre le porte della sofferenza, la natura adotta un approccio cinico con la vita negando la possibilità anche solo di fecondare agli animali troppo deboli, invece noi per una voglia di adattare tutto a tutti facciamo fecondare anche chi è più debole permettendo che poi una volta che ci siamo affezionati questi se ne vada lasciandoci col vuoto di cui sopra. Purtroppo la natura ha trovato una soluzione che non ci è congeniale, perché la codardia ci costringe a non uccidere o evitare di far nascere chi risulterebbe più debole, e questo sentimento tutto umano si chiama appunto senso di umanità. Su questo si potrebbero aprire interminabili dibattiti e scrivere quintali di libri, e quindi non continuerò a parlare in maniera tanto ambigua da essere frainteso, darò solo la mia personale ipotesi, probabilmente utopistica che metta d’accordo umanità e selezione naturale. L’umanita per noi ha un ruolo fondamentale, è quello che secondo noi ci distingue dagli animali, e qui sorge spontanea la prima domanda, ma siamo veramente tanto diversi dagli animali? A parte il mio personale NO lascio al lettore l’interrogativo. Dicevo, questo fondamento molto filosofico del genere umano, si basa sulla concezione propria dell’uguaglianza, e l’uguaglianza viene in un’astrazione latente proprio dalla ricerca di quel branco che anche i lupi, solitari per eccellenza spesso vanno cercando o creando, se possono, esattamente come noi creiamo le nostre famiglie. Più si ragiona sulle somiglianze tra l’uomo e gli animali e meno si capisce allora perché gli animali abbiano meno problemi di noi. La risposta a questo interrogativo spesso è “gli animali non hanno problemi perché non hanno l’intelligenza”, quindi la mia personale conclusione è che data l’affermazione allora l’essere intelligenti provoca problematiche. No, non è questo. Il mio personale parere è che le nostre emozioni creino problemi, non provare affetto per qualcuno provoca che la sua morte non susciti in noi nessun particolare sentimento, d’altro canto la nostra sempre presente umanità provoca un sentimento di angoscia nel vedere un morto. Ora lasciando il discorso un po’ incompiuto cosi da suscitare una riflessione sull’argomento già che siamo in tema, concludo dicendo che la natura può insegnare, o perlomeno aiutarci, solo che non dobbiamo starla troppo a sentire altrimenti rischiamo di trovarci nell’estremo individualismo e in una situazione in cuoi l’unica legge è quella del taglione. No, non voglio questo. L’idea sarebbe quella di provare a unire le forze con madre natura rammentando sempre che abbiamo bisogno da buoni esseri deboli di quella naturale umanità che noi stessi abbiamo creato. Se questo discorso ha un senso parliamone, per commenti.</p>
+              <p>Invece questo argomento rimane complesso e basato su esperienza e capacità personali di chi sta tentando di tirare fuori un numero.</p>
+              <p>Oltretutto, quella che dovrebbe essere solo un’informazione di massima utile per avere un’idea <em>a spanne</em> dei tempi di realizzazione diventa spesso la <em>deadline</em>, ma questa è un’altra storia, oppure <strong>un altro rant</strong>, se volete.</p>
+              <h2 id="refs">Refs</h2>
+              <p>Navigando su <a href="https://news.ycombinator.com/"><em>Hacker News</em></a> ho trovato questa perla, che qualcuno ha deciso di condividere rianimandola tramite archive.org.</p>
+              <p>Se volete il link trovato su Hacker News e la perla in questione, <a href="https://news.ycombinator.com/item?id=28667174">qui</a> e <a href="https://web.archive.org/web/20170603123809/http://www.tuicool.com:80/articles/7niyym">qua</a> trovate tutto.</p>
+              <p>Di seguito rielaboro a modo mio, come sempre.</p>
+              <h2 id="lidea-geniale">L’idea geniale</h2>
+              <p>L’idea è una ulteriore <em>best practice</em>, ma in forma di formula e non di additivo statistico, come mi insegnò un mio capo un tempo.</p>
+              <p>La regola aurea è:</p>
+              <div class="premonition citation">
+                <div class="fas fa-quote-left"></div>
+                <blockquote class="content blockquote">
+                  <p>Moltiplica sempre le tue stime per π</p>
+                  <footer class="blockquote-footer"><cite title="#AltDevBlogADay">#AltDevBlogADay</cite></footer>
+                </blockquote>
+              </div>
+              <p>Qualcuno - un progettista, il tuo <em>team leader</em>, un amico, tua madre - ti chiede di fare qualcosa. Tu rifletti, prendi appunti, consideri il requisito e fai un piano e, auspicabilmente, una stima.</p>
+              <p>Ma le cose cambiano. Esce fuori che c’erano informazioni che il tuo <em>qualcuno</em> ha trascurato di menzionare, e mentre lavoravi hai avuto alcune idee per migliorarlo ulteriormente. Di fatto la quantità di lavoro è aumentata, hai più cose da fare.</p>
+              <p>Ovviamente, non va tutto liscio. Quando mai. Il primo tentativo è stato un fallimento, però hai imparato qualcosa. Poi col secondo tentativo hai accelerato e hai lasciato indietro le <em>best practice</em> architetturali che poi ti hanno portato alla necessità di fare <em>refactoring</em>. Hai impiegato due giorni in più per cercare una soluzione alternativa. Alla fine, il percorso per portare a casa il risultato è come una strada di montagna, tutta storta e piena di buche (dalle mie parti diremmo è come la strada di <a href="https://it.wikipedia.org/wiki/Tolfa">Tolfa</a>, stesso concetto <img class="emoji" title=":grin:" alt=":grin:" src="/assets/img/emoji/unicode/1f601.png" height="20" width="20">).</p>
+              <p>Quindi, quanto è durato il lavoro rispetto al piano originale?</p>
+              <p>Eccoti qui col problema in mano o “<em>col sorcio in bocca</em>”: qualunque cosa pensi quando inizi, dopo l’analisi, la progettazione, le discussioni, i prototipi, i fallimenti, i test, l’abbandono dei requisiti e tutte le altre fasi del processo creativo, l’avrai indubbiamente fatto <em>π volte</em> quanto avevi pianificato inizialmente.</p>
+              <p>Ora, qualcuno potrebbe mettere in dubbio il mio rigore matematico, e perfino contestare quella che ritengo essere la conclusione incontrovertibile. Le persone possono affermare che il moltiplicatore corretto non è in effetti π, ma che è piuttosto 2, o √2, o <a href="https://it.wikipedia.org/wiki/E_(costante_matematica)">e</a>, o il rapporto aureo <a href="https://it.wikipedia.org/wiki/Sezione_aurea">φ</a>. Però sicuramente nessuno va in giro dicendo che il moltiplicatore sia inferiore a 1.</p>
+              <blockquote>
+                <p>Indipendentemente dalle tue inclinazioni numerologiche, il punto è che devi darti il ​​permesso di ammettere che, quando inizi un progetto, non hai il quadro completo, non sai come andranno le cose e c’è del lavoro da fare di cui non hai nessuna idea o indizi.
+                  Nessuna quantità di pianificazione e analisi delle attività può cambiarlo, quindi non provarci neanche. Invece, concediti un plausibile cuscinetto e impegnati a portare avanti il lavoro.</p>
+              </blockquote>
+              <p>Ah. Sai quella TODO List che hai scritto lo scorso weekend? Ti sei chiesto perché di quelle cose ne hai portate a casa solo circa un terzo?</p>
+              <div class="row d-flex justify-content-center">
+                <div class="col col-12 col-xl-8">
+                  <p><img src="/media/2022-03-25/il-dilemma-del-calcolo-delle-stime/coincidenza-non-credo.jpg" alt="Coincidenze-Non-Credo" class="img-fluid"></p>
+                </div>
+              </div>
             </section>
-            <a href="/2010/12/16/discorsi-confusi/" hidden></a>
+            <a href="/2022/03/25/il-dilemma-del-calcolo-delle-stime/" hidden></a>
           </article>
         </div>
       </div>
@@ -180,7 +208,7 @@
         </div>
         <div class="row">
           <div class="col text-center">
-            <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"></a><br>
             <small class="text-muted">
               This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
             </small>
