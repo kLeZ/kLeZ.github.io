@@ -57,6 +57,7 @@ katex:
 goat-counter:
   stats-url: https://klez.goatcounter.com
   count-url: https://klez.goatcounter.com/count
+  script-url: https://gc.zgo.at/count.js
   code: klez
   production-url: klez.me
 

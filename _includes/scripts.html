@@ -4,12 +4,21 @@
 <script src="{{ '/assets/bootstrap/bootstrap.bundle.min.js' | relative_url }}"></script>
 <script src="{{ '/assets/fontawesome-free/js/all.min.js' | relative_url }}"></script>
 <script src="{{ '/assets/main.js' | relative_url }}"></script>
-<script>
-	// Only load on production environment.
-	if (window.location.host !== '{{ site.goat-counter.production-url }}')
-		window.goatcounter = {
-			no_onload: true
-		}
-
-</script>
-<script data-goatcounter="{{ site.goat-counter.count-url }}" async src="//gc.zgo.at/count.js"></script>
+{%- assign abs_url = page.url | absolute_url -%}
+{%- if abs_url contains site.goat-counter.production-url -%}
+<script data-goatcounter="{{ site.goat-counter.count-url }}" async src="{{ site.goat-counter.script-url }}"></script>
+<noscript>
+    <img src="{{ site.goat-counter.count-url }}?rnd&p={{ page.url | absolute_url | uri_escape }}&t={{ page.title | uri_escape }}">
+</noscript>
+{%- else -%}
+<details>
+<summary style="margin: 25px">
+  <strong>ALESSANDRO!</strong> Ricordati che questo pezzetto qui sotto è solo per debug.<br />
+  Va mantenuto identico a quello vero, che è subito sopra, nel ramo <i>true</i> della if.
+</summary>
+&lt;script data-goatcounter="&lbrace;&lbrace; site.goat-counter.count-url &rbrace;&rbrace;" async src="&lbrace;&lbrace; site.goat-counter.script-url &rbrace;&rbrace;"&gt;&lt;/script&gt;<br />
+&lt;noscript&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="&lbrace;&lbrace; site.goat-counter.count-url &rbrace;&rbrace;?rnd&p=&lbrace;&lbrace; page.url | absolute_url | uri_escape &rbrace;&rbrace;&t=&lbrace;&lbrace; page.title | uri_escape &rbrace;&rbrace;"&gt;<br />
+&lt;/noscript&gt;
+</details>
+{%- endif -%}
