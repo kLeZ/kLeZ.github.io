@@ -8,7 +8,7 @@
 {%- if abs_url contains site.goat-counter.production-url -%}
 <script data-goatcounter="{{ site.goat-counter.count-url }}" async src="{{ site.goat-counter.script-url }}"></script>
 <noscript>
-    <img src="{{ site.goat-counter.count-url }}?rnd&p={{ page.url | absolute_url | uri_escape }}&t={{ page.title | uri_escape }}">
+    <img src="{{ site.goat-counter.count-url }}?rnd&p={{ page.url | absolute_url | uri_escape }}&t={{ page.title | uri_escape }}" alt="goat-counter" />
 </noscript>
 {%- else -%}
 <details>
