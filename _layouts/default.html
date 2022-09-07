@@ -14,7 +14,7 @@
 		<main class="container-fluid" aria-label="Content">
 			<div class="row">
 				<div class="col-lg-2 col-md-12">
-					{% if page.layout == 'post' %}
+					{% if page.layout == 'post' or page.reading_time == true %}
 					<aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
 						<p class="text-muted">
 							This article will take {{ content | reading_time | pluralize: "minute" }} to read.
@@ -24,6 +24,14 @@
 				</div>
 				<div class="col-lg-8 col-md-12">
 					{{ content }}
+				</div>
+				<div class="col-lg-2 col-md-12">
+					{% if page.toc %}
+					<aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
+						{% capture incl_toc_content %}{% include_relative {{ page.toc }} %}{% endcapture %}
+						{{ incl_toc_content | markdownify }}
+					</aside>
+					{% endif %}
 				</div>
 			</div>
 			<div class="row justify-content-end text-right">

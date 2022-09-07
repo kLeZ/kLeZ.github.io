@@ -6,7 +6,10 @@ layout: page
 		<img alt="Personal Photo" title="Personal Photo" src="{{ page.left_image }}" class="rounded-circle w-100" />
 	</div>
 	<div class="col-8">
-		{{ page.right_content | markdownify }}
+		{% if page.right_content %}
+			{% capture incl_right_content %}{% include_relative {{ page.right_content }} %}{% endcapture %}
+			{{ incl_right_content | markdownify }}
+		{% endif %}
 	</div>
 </div>
 <div class="row my-5">
