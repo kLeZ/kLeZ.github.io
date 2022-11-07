@@ -9,7 +9,7 @@
 			{%- assign base_url = social_conf.first.url -%}
 		{%- endif -%}
 		{% assign url = base_url | append: acct.username %}
-			<a href="{{ url }}">
+			<a rel="me" href="{{ url }}">
 			{% if acct.icon %}
 				{%- if acct.icon.type == "fa" -%}
 					<span><i class="svg-icon {{ acct.icon.value }}"></i> {{ acct.name }}</span>

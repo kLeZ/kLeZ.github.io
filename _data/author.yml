@@ -12,6 +12,11 @@ social:
       icon:
           type: fa
           value: fab fa-twitter
+    - name: mastodon-uno
+      username: klez
+      icon:
+          type: fa
+          value: fab fa-mastodon
     - name: linkedin
       username: alessandroaccardo
       icon:

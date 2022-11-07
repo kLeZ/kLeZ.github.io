@@ -22,3 +22,5 @@
   url: "mailto:"
 - name: gravatar
   url: https://gravatar.com/avatar/
+- name: mastodon-uno
+  url: "https://mastodon.uno/web/@"
