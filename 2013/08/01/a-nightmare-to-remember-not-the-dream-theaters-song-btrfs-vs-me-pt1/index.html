@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <!-- Begin Jekyll SEO tag v2.7.1 -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
     <title>A nightmare to remember – not the Dream Theater’s song – [BTRFS vs. me - pt1] | Alessandro ‘kLeZ’ Accardo personal website</title>
-    <meta name="generator" content="Jekyll v3.9.1" />
+    <meta name="generator" content="Jekyll v3.9.3" />
     <meta property="og:title" content="A nightmare to remember – not the Dream Theater’s song – [BTRFS vs. me - pt1]" />
     <meta name="author" content="kLeZ" />
     <meta property="og:locale" content="en_US" />
@@ -23,7 +23,7 @@
     <meta name="twitter:site" content="@kLeZhAcK" />
     <meta name="twitter:creator" content="@kLeZhAcK" />
     <script type="application/ld+json">
-      {"mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2013/08/01/a-nightmare-to-remember-not-the-dream-theaters-song-btrfs-vs-me-pt1/"},"description":"Today I want to say a few words about BTRFS. Firstly I want to say that this filesystem is awesome for functionalities, I will use it as my filesystem again as soon as it will become stable. But, It is not yet stable, I tried and I fallen in front of his horrible performances.","@type":"BlogPosting","url":"https://klez.me/2013/08/01/a-nightmare-to-remember-not-the-dream-theaters-song-btrfs-vs-me-pt1/","headline":"A nightmare to remember – not the Dream Theater’s song – [BTRFS vs. me - pt1]","dateModified":"2013-08-01T18:42:35+02:00","datePublished":"2013-08-01T18:42:35+02:00","author":{"@type":"Person","name":"kLeZ"},"@context":"https://schema.org"}
+      {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"kLeZ"},"dateModified":"2013-08-01T18:42:35+02:00","datePublished":"2013-08-01T18:42:35+02:00","description":"Today I want to say a few words about BTRFS. Firstly I want to say that this filesystem is awesome for functionalities, I will use it as my filesystem again as soon as it will become stable. But, It is not yet stable, I tried and I fallen in front of his horrible performances.","headline":"A nightmare to remember – not the Dream Theater’s song – [BTRFS vs. me - pt1]","mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2013/08/01/a-nightmare-to-remember-not-the-dream-theaters-song-btrfs-vs-me-pt1/"},"url":"https://klez.me/2013/08/01/a-nightmare-to-remember-not-the-dream-theaters-song-btrfs-vs-me-pt1/"}
     </script>
     <!-- End Jekyll SEO tag -->
     <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" />
     <link rel="stylesheet" href="/assets/katex/katex.min.css" />
     <link rel="stylesheet" href="/assets/main.css" />
-    <link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro 'kLeZ' Accardo personal website" />
+    <link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro &apos;kLeZ&apos; Accardo personal website" />
   </head>
   <body class="post-page">
     <header class="masthead" style="background-image: url(/assets/img/home-bg.jpg)">
@@ -67,7 +67,7 @@
               <a class="nav-link" href="/blog">Posts</a>
             </li>
             <li class="nav-item dropdown ">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About me <span class="caret"></span></a>
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">About me <span class="caret"></span></a>
               <div class="dropdown-menu">
                 <a class="dropdown-item " href="/about">About</a>
                 <a class="dropdown-item " href="/contatti">Contatti</a>
@@ -78,7 +78,7 @@
               <a class="nav-link" href="https://github.com/kLeZ/kLeZ.github.io">Repository</a>
             </li>
             <li class="nav-item dropdown ">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Progetti <span class="caret"></span></a>
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Progetti <span class="caret"></span></a>
               <div class="dropdown-menu">
                 <a class="dropdown-item " href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
                 <a class="dropdown-item " href="https://klez.me/PassMan">PassMan</a>
@@ -111,7 +111,7 @@
               <p>Today I want to say a few words about BTRFS. Firstly I want to say that <strong>this filesystem is awesome for functionalities</strong>, I will use it as my filesystem again as soon as it will become stable. But, It is not yet stable, I tried and I fallen in front of his horrible performances.</p>
               <!--more-->
               <p class="m-0 invisible zero-size">
-                <a class="invisible" id="read-more">read more</a>
+                <a class="invisible" id="read-more" href="#">read more</a>
               </p>
               <p>Actually there are some problems on this filesystem that developers know in fact but, they are much more complicated to solve because most of them are normal behaviors of other functionalities. As an example in order to understand much better and quickly: there is a known issue of (obviously) horrible performances that I experimented by myself, it makes performance decrease whenever you use it because he want to write down all the data in the same time, he want also manage all the metadata at the same time, only because those data are in the same transaction (!!), and you cannot do anything to fix that behavior because it is not customizable AND this is the normal behavior of work for btrfs. Result: you have an awesome filesystem that decreases its performances more quickly than Windows, so it is hardly unusable, especially if you use it for the root partition.</p>
               <p>A system cannot be so slow in 2013 so I ended up in a solution: I have to migrate my filesystem. I’m not a fan of passing data from a disk to another, I make a few bckups sometimes but not always, in fact this is a bad attitude, but that’s me. SO.</p>
@@ -156,7 +156,7 @@
       </div>
       <div class="row justify-content-end text-right">
         <div class="col-6">
-          <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page">
+          <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page" href="#">
             <i class="fa fa-5x fa-chevron-up"></i>
           </a>
         </div>
@@ -207,7 +207,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2023-05-24T11:51:31+02:00">Wed, 24 May 2023 11:51:31 +0200</time></small>
+            <small class="text-muted">Last build on <time datetime="2023-06-25T15:57:09+02:00">Sun, 25 Jun 2023 15:57:09 +0200</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>

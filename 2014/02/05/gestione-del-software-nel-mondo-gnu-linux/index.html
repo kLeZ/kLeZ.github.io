@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <!-- Begin Jekyll SEO tag v2.7.1 -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
     <title>Gestione del software nel mondo GNU/Linux - parte 1 | Alessandro ‘kLeZ’ Accardo personal website</title>
-    <meta name="generator" content="Jekyll v3.9.1" />
+    <meta name="generator" content="Jekyll v3.9.3" />
     <meta property="og:title" content="Gestione del software nel mondo GNU/Linux - parte 1" />
     <meta name="author" content="kLeZ" />
     <meta property="og:locale" content="en_US" />
@@ -23,7 +23,7 @@
     <meta name="twitter:site" content="@kLeZhAcK" />
     <meta name="twitter:creator" content="@kLeZhAcK" />
     <script type="application/ld+json">
-      {"mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2014/02/05/gestione-del-software-nel-mondo-gnu-linux/"},"description":"This article is written in my native language, Italian, but you will find a translation ASAP (As Soon As Possible). Sorry for this. Questo argomento è, a dire la verità, credo tra i più discussi e spinosi in assoluto, io qui tenterò di dare forma alla nebulosa che compone questa tematica e getterò una base (spero) per qualcosa di più ampio.","@type":"BlogPosting","url":"https://klez.me/2014/02/05/gestione-del-software-nel-mondo-gnu-linux/","headline":"Gestione del software nel mondo GNU/Linux - parte 1","dateModified":"2014-02-05T18:09:06+01:00","datePublished":"2014-02-05T18:09:06+01:00","author":{"@type":"Person","name":"kLeZ"},"@context":"https://schema.org"}
+      {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"kLeZ"},"dateModified":"2014-02-05T18:09:06+01:00","datePublished":"2014-02-05T18:09:06+01:00","description":"This article is written in my native language, Italian, but you will find a translation ASAP (As Soon As Possible). Sorry for this. Questo argomento è, a dire la verità, credo tra i più discussi e spinosi in assoluto, io qui tenterò di dare forma alla nebulosa che compone questa tematica e getterò una base (spero) per qualcosa di più ampio.","headline":"Gestione del software nel mondo GNU/Linux - parte 1","mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2014/02/05/gestione-del-software-nel-mondo-gnu-linux/"},"url":"https://klez.me/2014/02/05/gestione-del-software-nel-mondo-gnu-linux/"}
     </script>
     <!-- End Jekyll SEO tag -->
     <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" />
     <link rel="stylesheet" href="/assets/katex/katex.min.css" />
     <link rel="stylesheet" href="/assets/main.css" />
-    <link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro 'kLeZ' Accardo personal website" />
+    <link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro &apos;kLeZ&apos; Accardo personal website" />
   </head>
   <body class="post-page">
     <header class="masthead" style="background-image: url(/assets/img/home-bg.jpg)">
@@ -67,7 +67,7 @@
               <a class="nav-link" href="/blog">Posts</a>
             </li>
             <li class="nav-item dropdown ">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About me <span class="caret"></span></a>
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">About me <span class="caret"></span></a>
               <div class="dropdown-menu">
                 <a class="dropdown-item " href="/about">About</a>
                 <a class="dropdown-item " href="/contatti">Contatti</a>
@@ -78,7 +78,7 @@
               <a class="nav-link" href="https://github.com/kLeZ/kLeZ.github.io">Repository</a>
             </li>
             <li class="nav-item dropdown ">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Progetti <span class="caret"></span></a>
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Progetti <span class="caret"></span></a>
               <div class="dropdown-menu">
                 <a class="dropdown-item " href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
                 <a class="dropdown-item " href="https://klez.me/PassMan">PassMan</a>
@@ -111,7 +111,7 @@
               <p>This article is written in my native language, Italian, but you will find a translation ASAP (As Soon As Possible). Sorry for this. Questo argomento è, a dire la verità, credo tra i più discussi e spinosi in assoluto, io qui tenterò di dare forma alla nebulosa che compone questa tematica e getterò una base (spero) per qualcosa di più ampio.</p>
               <!--more-->
               <p class="m-0 invisible zero-size">
-                <a class="invisible" id="read-more">read more</a>
+                <a class="invisible" id="read-more" href="#">read more</a>
               </p>
               <h1 id="la-confusione-parte-dalle-basi">La confusione parte dalle basi</h1>
               <p>La base di tutto è il formato da usare. Se ne sono dette di tutti i colori su quale sia il formato migliore in assoluto, mentre la Linux Foundation standardizzava il formato RPM, prima Red Hat Package Manager e ora RPM Package Manager (ricorsivo).
@@ -136,13 +136,13 @@
                   <p>Il <a href="https://wiki.archlinux.org/index.php/Pkgbuild">PKGBUILD</a> di <strong>Arch</strong> è sicuramente tra i più semplici. Include tutte le informazioni di base che un manifest dovrebbe avere, ma il manifest è il minore dei problemi di un buon formato.</p>
                 </li>
                 <li>
-                  <p>L’<a href="http://devmanual.gentoo.org/ebuild-writing/file-format/index.html">EBuild</a> di <strong>Gentoo</strong> invece è molto, molto complesso e non incoraggia i packager in erba a usarlo, a discapito della comunità e della quantità di pacchetti effettivamente disponibili. Anche se poi chi usa Gentoo è comunque un utente <strong>molto</strong> avanzato e quindi difficilmente necessita di un tool di assistenza per compilare i sorgenti di un software.</p>
+                  <p>L’<a href="https://devmanual.gentoo.org/ebuild-writing/file-format/index.html">EBuild</a> di <strong>Gentoo</strong> invece è molto, molto complesso e non incoraggia i packager in erba a usarlo, a discapito della comunità e della quantità di pacchetti effettivamente disponibili. Anche se poi chi usa Gentoo è comunque un utente <strong>molto</strong> avanzato e quindi difficilmente necessita di un tool di assistenza per compilare i sorgenti di un software.</p>
                 </li>
                 <li>
                   <p><a href="https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/RPM_Guide/ch-rpm-overview.html#id662040">RPM</a> di <strong>Red Hat &amp; Fedora, openSuSE, Mandriva e soci</strong> è largamente usato nelle maggiori distribuzioni (soprattutto quelle commerciali), ha un manifest relativamente semplice e strutturato, è un progetto molto maturo e ha molte funzionalità in più.</p>
                 </li>
                 <li>
-                  <p><a href="http://www.debian.org/doc/debian-policy/ch-controlfields.html">DEB</a> di <strong>Debian, Ubuntu e derivate</strong> è un formato nato semplice e diventato complesso con gli anni a causa dell’approccio “<em>write first, think later</em>” tipico dei giovani smanettoni (e studenti universitari), che sono i principali e tipici utilizzatori di questo formato, approdato al cospetto del grande pubblico solo “a causa” di ubuntu. Ciò è dimostrato dalla estremamente carente documentazione, tipica del progetto e opposta alla linea di condotta di progetti come Arch, smanettoni ma saggi che mettono a disposizione degli utenti una delle documentazioni online più complete e ricche, senza farlo per mestiere.</p>
+                  <p><a href="https://www.debian.org/doc/debian-policy/ch-controlfields.html">DEB</a> di <strong>Debian, Ubuntu e derivate</strong> è un formato nato semplice e diventato complesso con gli anni a causa dell’approccio “<em>write first, think later</em>” tipico dei giovani smanettoni (e studenti universitari), che sono i principali e tipici utilizzatori di questo formato, approdato al cospetto del grande pubblico solo “a causa” di ubuntu. Ciò è dimostrato dalla estremamente carente documentazione, tipica del progetto e opposta alla linea di condotta di progetti come Arch, smanettoni ma saggi che mettono a disposizione degli utenti una delle documentazioni online più complete e ricche, senza farlo per mestiere.</p>
                 </li>
               </ul>
               <p>Il manifest tipico quindi dovrebbe essere un formato <strong>semplice da scrivere</strong>, come ci insegnano i saggi di Arch, molto ben strutturato per essere <strong>scriptabile</strong>, come ci insegnano i supertecnici di Gentoo (che, se avete letto la documentazione, generano il manifest a partire dall’ebuild), <strong>solido maturo e flessibile</strong>, come hanno dimostrato negli anni i milioni di contributori delle distro più note basate/derivate/ispirate su/a Red Hat, e che sia <strong>semplice</strong> da includere in un pacchetto, senza troppe sovrastrutture che complicano inutilmente il lavoro, come ci ha insegnato la comunità di Debian.</p>
@@ -156,7 +156,7 @@
       </div>
       <div class="row justify-content-end text-right">
         <div class="col-6">
-          <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page">
+          <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page" href="#">
             <i class="fa fa-5x fa-chevron-up"></i>
           </a>
         </div>
@@ -207,7 +207,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2023-05-24T11:51:31+02:00">Wed, 24 May 2023 11:51:31 +0200</time></small>
+            <small class="text-muted">Last build on <time datetime="2023-06-25T15:57:09+02:00">Sun, 25 Jun 2023 15:57:09 +0200</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
