@@ -24,7 +24,7 @@
 						{% unless url == blank or url == nil %}
 							<a href="{{ url }}" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ link.title }} <span class="caret"></span></a>
 						{% else %}
-							<a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ link.title }} <span class="caret"></span></a>
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">{{ link.title }} <span class="caret"></span></a>
 						{% endunless %}
 							<div class="dropdown-menu">
 								{% for sublink in link.sublinks %}

@@ -23,7 +23,7 @@ on:
       - "README.md"
 
 env:
-  RUBY_VERSION: 2.6.0
+  RUBY_VERSION: 3.2.0
   JEKYLL_ENV: 'production'
   NOKOGIRI_USE_SYSTEM_LIBRARIES: true
 
@@ -35,7 +35,7 @@ jobs:
       - name: Install packages
         run: |
           sudo apt-get update
-          sudo apt-get install libcurl4-openssl-dev
+          sudo apt-get install nodejs
 
       - name: Clone repository
         uses: actions/checkout@v2

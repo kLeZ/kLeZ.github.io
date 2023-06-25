@@ -61,7 +61,7 @@ I can then see all of the tasks for a given quadrant by pressing the correspondi
 Once again Org-Mode has proven itself to be very easy to customize. It literally does everything for me but complete my tasks and show the [Instant Gratification Monkey] who's boss.
 
 
-[The Procrastination Matrix]: http://waitbutwhy.com/2015/03/procrastination-matrix.html
-[Wait But Why]: http://waitbutwhy.com/
-[Org-Mode]: http://orgmode.org/
-[Instant Gratification Monkey]: http://waitbutwhy.com/2013/10/why-procrastinators-procrastinate.html
+[The Procrastination Matrix]: https://waitbutwhy.com/2015/03/procrastination-matrix.html
+[Wait But Why]: https://waitbutwhy.com/
+[Org-Mode]: https://orgmode.org/
+[Instant Gratification Monkey]: https://waitbutwhy.com/2013/10/why-procrastinators-procrastinate.html

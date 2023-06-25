@@ -84,5 +84,5 @@ Quando ho completato il progetto l'ho usato per qualche tempo, devo dire con par
 Ma è stato comunque un divertentissimo esperimento, che mi ha permesso di imparare molto, soprattutto le potenzialità delle applicazioni che vengono eseguite interamente nel browser (alla fine ho utilizzato OpenPGP dentro a un browser).
 
 [Passman]: {{ site.url }}{{ site.baseurl }}/PassMan
-[Unix Pass]: http://www.zx2c4.com/projects/password-store/
+[Unix Pass]: https://www.zx2c4.com/projects/password-store/
 [MVVM]: https://en.wikipedia.org/wiki/Model–view–viewmodel
