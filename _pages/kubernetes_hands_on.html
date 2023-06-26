@@ -19,12 +19,12 @@ permalink: /lf/kubernetes_hands_on.html
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1>Kubernetes e come toccare le nuvole per meri mortali</h1><h2>Learning Friday del 07/07/2023</h2><h3> Alessandro Accardo</h3><p><a href="https://klez.me/lf/kubernetes_hands_on.html"><img src="./kubernetes_hands_on/k8s-hands-on-slides_qr.png" /></a></p>
+<h1>Kubernetes e come toccare le nuvole per meri mortali</h1><h2>Learning Friday del 07/07/2023</h2><h3> Alessandro Accardo</h3><p><a href="https://klez.me/lf/kubernetes_hands_on.html"><img src="./kubernetes_hands_on/k8s-hands-on-slides_qr.png" alt="permalink qr code" /></a></p>
 </section>
 
 <section>
-<section id="slide-org0f45a23">
-<h2 id="org0f45a23">Chi sono</h2>
+<section id="slide-org7139839">
+<h2 id="org7139839">Chi sono</h2>
 <p>
 Ciao, sono Alessandro Accardo, forse vi ricorderete di me per altri Learning Friday come <i>Introduzione a Docker</i> o <i>Introduzione a Kubernetes</i>.
 </p>
@@ -46,8 +46,8 @@ Ecco chi sono.
 </section>
 </section>
 <section>
-<section id="slide-org93260e6">
-<h2 id="org93260e6">Kubectl, Ring of the Elves</h2>
+<section id="slide-orgd6fc0e7">
+<h2 id="orgd6fc0e7">Kubectl, Ring of the Elves</h2>
 <aside class="notes">
 <p>
 Il motivo per cui ho associato Kubectl agli anelli degli elfi è che kubectl è LO strumento.
@@ -83,8 +83,8 @@ Per la configurazione, <code>kubectl</code> cerca un file chiamato <code>config<
 </p>
 
 </section>
-<section id="slide-orgb9c4497">
-<h3 id="orgb9c4497">Esempi di utilizzo</h3>
+<section id="slide-orgc2fbc3a">
+<h3 id="orgc2fbc3a">Esempi di utilizzo</h3>
 <div class="org-src-container">
 <label class="org-src-name">Autocomplete</label>
 <pre class="src src-sh"><span style="color: #4c83ff;">source</span> &lt;(kubectl completion bash)
@@ -214,8 +214,8 @@ kubectl top pod POD_NAME --sort-by=cpu     <span style="color: #8B8989; font-sty
 </section>
 </section>
 <section>
-<section id="slide-orgb11d7d9">
-<h2 id="orgb11d7d9">Helm, Ring of the Dwarves</h2>
+<section id="slide-org259660e">
+<h2 id="org259660e">Helm, Ring of the Dwarves</h2>
 <aside class="notes">
 <p>
 Ho associato Helm agli anelli dei nani perché questi anelli sono stati i meno efficaci grazie alla innata resistenza dei nani e perché portarono loro enormi ricchezze, cosa che helm può effettivamente fare.
@@ -255,8 +255,8 @@ Helm tiene traccia della cronologia delle versioni di ogni installazione e modif
 </section>
 </section>
 <section>
-<section id="slide-org44c3cb3">
-<h2 id="org44c3cb3">Dashboard, Ring of the Men</h2>
+<section id="slide-orge47d85a">
+<h2 id="orge47d85a">Dashboard, Ring of the Men</h2>
 <aside class="notes">
 <p>
 La dashboard la associo agli uomini perché associo la necessità di una visualizzazione grafica alla caducità della vita. Una volta che si saranno provati gli strumenti CLI non si vorrà più tornare indietro, e la dashboard sarà destinata a rimanere li, appesa.
@@ -322,8 +322,8 @@ Tra quelle che è doveroso citare, direi che ci sono <a href="https://skooner.io
 </section>
 </section>
 <section>
-<section id="slide-org7fef78c">
-<h2 id="org7fef78c">Manifests, The One Ring</h2>
+<section id="slide-orgce4292b">
+<h2 id="orgce4292b">Manifests, The One Ring</h2>
 <aside class="notes">
 <p>
 Penso sia abbastanza chiaro perché di tutti gli strumenti su uci si basa Kubernetes e che possiamo usare per <i>operarlo</i> ho scelto proprio i Manifest come associazione per l'Unico Anello.
@@ -357,8 +357,8 @@ Si può anche pensare a un file manifest come a una lista dei desideri di Kubern
 </section>
 </section>
 <section>
-<section id="slide-org9c1863a">
-<h2 id="org9c1863a"><b>Bonus</b>: Charts, The Minor Rings</h2>
+<section id="slide-orgd9f070c">
+<h2 id="orgd9f070c"><b>Bonus</b>: Charts, The Minor Rings</h2>
 <aside class="notes">
 <p>
 Le chart alla fine non sono altro che dei template di manifest, di conseguenza sono assimilabili ai test fatti per ottenere infine l'Unico Anello.
@@ -379,8 +379,8 @@ Se si desidera scaricare e consultare i file di un chart pubblicato, senza insta
 </p>
 
 </section>
-<section id="slide-org939c216">
-<h3 id="org939c216">Charts come template per diversi applicativi simili tra loro</h3>
+<section id="slide-org7fbe606">
+<h3 id="org7fbe606">Charts come template per diversi applicativi simili tra loro</h3>
 <p>
 Ora, visto che le chart di fatto non sono altro che <i>template</i> di manifest, possiamo pensare che, dato un set di configurazioni comuni (quindi ad alta similarità di manifest) quello che differenzia una chart dall'altra è solo il descrittore <i>values.yaml</i> che viene passato ad helm per configurare le opzioni della chart.
 </p>
@@ -390,8 +390,8 @@ Chiaramente, è più facile vederlo che usare 1000 parole per spiegarlo.
 </p>
 
 </section>
-<section id="slide-org11cc385">
-<h3 id="org11cc385">Charts come <i>installer</i> per sistemi complessi</h3>
+<section id="slide-orgf349f65">
+<h3 id="orgf349f65">Charts come <i>installer</i> per sistemi complessi</h3>
 <p>
 Il motivo per cui helm è nato, e quindi per cui esistono le charts, è proprio perché si è iniziato a parlare di <i>stack applicativi</i>, cioè un insieme di software che compongono un sistema completo che implementa una funzionalità o un ristretto insieme di queste.
 </p>
@@ -403,8 +403,8 @@ Proprio per l'astrazione ulteriore che questi strumenti hanno fornito, si è pre
 </section>
 </section>
 <section>
-<section id="slide-org09bc2e1">
-<h2 id="org09bc2e1">Prerequisiti</h2>
+<section id="slide-orged62125">
+<h2 id="orged62125">Prerequisiti</h2>
 <blockquote>
 <p>
 Un Anello per domarli, un Anello per trovarli,
@@ -459,8 +459,8 @@ Tutti i comandi verranno eseguiti nel contesto di questa directory.
 </section>
 </section>
 <section>
-<section id="slide-org71f6bca">
-<h2 id="org71f6bca">Installare un cluster di test con KinD</h2>
+<section id="slide-org806d7ac">
+<h2 id="org806d7ac">Installare un cluster di test con KinD</h2>
 <p>
 KinD è uno strumento per l'esecuzione di cluster Kubernetes locali utilizzando i container Docker come "nodi".
 </p>
@@ -577,8 +577,8 @@ curl localhost/bar/hostname
 </section>
 </section>
 <section>
-<section id="slide-orgeea1684">
-<h2 id="orgeea1684">Installare il Debug Pod tramite kubectl</h2>
+<section id="slide-org5f1ce8d">
+<h2 id="org5f1ce8d">Installare il Debug Pod tramite kubectl</h2>
 <p>
 Esiste una bellissima immagine con molti tool preinstallati per fare un po' di debugging all'interno del cluster.
 </p>
@@ -600,8 +600,8 @@ Il comando per il suo utilizzo è il seguente:
 </section>
 </section>
 <section>
-<section id="slide-orgfb54baa">
-<h2 id="orgfb54baa">Installare la dashboard tramite manifest</h2>
+<section id="slide-org5cfd5c3">
+<h2 id="org5cfd5c3">Installare la dashboard tramite manifest</h2>
 <p>
 Di Dashboard ne abbiamo già parlato nella slide di teoria, ora è il momento di mettere in pratica quello che sappiamo.
 </p>
@@ -614,8 +614,8 @@ Di Dashboard ne abbiamo già parlato nella slide di teoria, ora è il momento di
 </div>
 
 </section>
-<section id="slide-org8cb44cf">
-<h3 id="org8cb44cf">Ingress</h3>
+<section id="slide-org97aa31a">
+<h3 id="org97aa31a">Ingress</h3>
 <div class="org-src-container">
 <label class="org-src-name">dashboard-ingress.yaml</label>
 <pre class="src src-yaml"><span style="color: #ff69b4;">kind</span>: Ingress
@@ -648,8 +648,8 @@ Di Dashboard ne abbiamo già parlato nella slide di teoria, ora è il momento di
 </div>
 
 </section>
-<section id="slide-orgb8fe5dd">
-<h3 id="orgb8fe5dd">The Admin: A Service Account's tale</h3>
+<section id="slide-orgb7f3ad3">
+<h3 id="orgb7f3ad3">The Admin: A Service Account's tale</h3>
 <div class="org-src-container">
 <label class="org-src-name">dashboard-user.yaml</label>
 <pre class="src src-yaml"><span style="color: #ff69b4;">apiVersion</span>: v1
@@ -717,8 +717,8 @@ A questo punto copiamo il token generato che ci servirà per fare il login.
 </section>
 </section>
 <section>
-<section id="slide-orgb4afbcd">
-<h2 id="orgb4afbcd">Installare l'infrastruttura di monitoring tramite charts</h2>
+<section id="slide-org4d7d4e0">
+<h2 id="org4d7d4e0">Installare l'infrastruttura di monitoring tramite charts</h2>
 <p>
 Abbiamo già parlato di cosa sono le charts, di cosa è Helm e di come questi strumenti ci consentono di astrarre ancora di più il nostro sistema, abilitandoci alla progettazione di sistemi molto molto più complessi di come siamo sempre stati abituati progettare.
 </p>
@@ -735,43 +735,43 @@ Come infrastruttura per il monitoraggio scegliamo una soluzione considerata orma
 </p>
 
 </section>
-<section id="slide-org2e631b7">
-<h3 id="org2e631b7">Esplorando gli stack PLG e PG</h3>
+<section id="slide-org6f6a537">
+<h3 id="org6f6a537">Esplorando gli stack PLG e PG</h3>
 <p>
 Prima di immergerci nell'installazione degli stack, rivisitiamo rapidamente ciascuno dei principali componenti. Una volta acquisita una comprensione fondamentale della responsabilità principale di ogni componente, possiamo immergerci nell'installazione sul nostro cluster Kubernetes.
 </p>
 
 </section>
-<section id="slide-org6cbc024">
-<h3 id="org6cbc024">Prometheus</h3>
+<section id="slide-org02b4168">
+<h3 id="org02b4168">Prometheus</h3>
 <p>
 Prometheus è un toolkit di monitoraggio e avviso di sistemi. Prometheus raccoglie e archivia le sue metriche in serie temporali, cioè le informazioni sulle metriche vengono archiviate con il timestamp in cui sono state registrate, insieme a coppie chiave-valore opzionali denominate etichette.
 </p>
 
 </section>
-<section id="slide-org1d99bbb">
-<h3 id="org1d99bbb">Promtail</h3>
+<section id="slide-org78cf052">
+<h3 id="org78cf052">Promtail</h3>
 <p>
 Promtail è responsabile dell'inserimento dei dati in Loki. È implementato come DaemonSet, il che significa che un'istanza di Promtail viene eseguita su ogni nodo del tuo cluster Kubernetes. Legge periodicamente i log da tutti i container (stdout e stderr) in esecuzione su quel particolare nodo Kubernetes. Oltre a localizzare e leggere i flussi di log, Promtail può allegare etichette ai log prima di inviarli a Loki.
 </p>
 
 </section>
-<section id="slide-orgcd2a6dd">
-<h3 id="orgcd2a6dd">Loki</h3>
+<section id="slide-orgdf80d8a">
+<h3 id="orgdf80d8a">Loki</h3>
 <p>
 Loki è il cuore dello stack PLG. È un archivio dati ottimizzato per i log. A differenza di altri sistemi di aggregazione dei log, Loki non indicizza i messaggi di log. Al contrario, indicizza le etichette assegnate a ogni log. Possiamo interrogare i log archiviati in Loki utilizzando LogQL, un linguaggio di query ispirato a PromQL. Con LogQL, possiamo non solo semplicemente esaminare milioni di log in pochi secondi ma possiamo anche estrarre facilmente le metriche dai log.
 </p>
 
 </section>
-<section id="slide-org3f469f7">
-<h3 id="org3f469f7">Grafana</h3>
+<section id="slide-org61fd052">
+<h3 id="org61fd052">Grafana</h3>
 <p>
 Grafana viene utilizzato per visualizzare metriche (provvenienti da Prometheus) e log (memorizzati in Loki). Loki e Prometheus si integrano perfettamente con Grafana. Possiamo creare dashboard individuali in Grafana in base ai log dell'applicazione e alle metriche calcolate.
 </p>
 
 </section>
-<section id="slide-orga074182">
-<h3 id="orga074182">Installazione</h3>
+<section id="slide-orgf9eca37">
+<h3 id="orgf9eca37">Installazione</h3>
 <div class="org-src-container">
 
 <pre class="src src-sh">helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -827,8 +827,8 @@ kubectl --namespace monitoring get pods -l <span style="color: #61CE3C;">"releas
 </div>
 
 </section>
-<section id="slide-orgf9b6ff3">
-<h3 id="orgf9b6ff3">An entrance to the Monitoring appliance</h3>
+<section id="slide-org835ba0a">
+<h3 id="org835ba0a">An entrance to the Monitoring appliance</h3>
 <div class="org-src-container">
 <label class="org-src-name">grafana-ingress.yaml</label>
 <pre class="src src-yaml"><span style="color: #ff69b4;">kind</span>: Ingress
@@ -860,8 +860,8 @@ kubectl --namespace monitoring get pods -l <span style="color: #61CE3C;">"releas
 </div>
 
 </section>
-<section id="slide-orgd9fceaf">
-<h3 id="orgd9fceaf">Accessing the holy secrets of the monitoring infrastructure</h3>
+<section id="slide-org7974805">
+<h3 id="org7974805">Accessing the holy secrets of the monitoring infrastructure</h3>
 <div class="org-src-container">
 <label class="org-src-name">prometheus-ingress.yaml</label>
 <pre class="src src-yaml"><span style="color: #ff69b4;">kind</span>: Ingress
@@ -893,8 +893,8 @@ kubectl --namespace monitoring get pods -l <span style="color: #61CE3C;">"releas
 </div>
 
 </section>
-<section id="slide-org2b34994">
-<h3 id="org2b34994">The Bastard Son of Odin</h3>
+<section id="slide-org09a847c">
+<h3 id="org09a847c">The Bastard Son of Odin</h3>
 <div class="org-src-container">
 
 <pre class="src src-sh">helm repo add grafana https://grafana.github.io/helm-charts
@@ -917,8 +917,8 @@ helm upgrade --install loki grafana/loki-distributed -n monitoring
 </div>
 
 </section>
-<section id="slide-orgbc02f07">
-<h3 id="orgbc02f07">Some dashboards (courtesy of @dotdc)</h3>
+<section id="slide-org2f331e3">
+<h3 id="org2f331e3">Some dashboards (courtesy of @dotdc)</h3>
 <p>
 David Calvert è un SRE abbastanza attivo nella community che partecipa al progetto Prometheus come Open Source Contrinutor.
 </p>
@@ -940,8 +940,8 @@ rm grafana-dashboards.yaml
 </section>
 </section>
 <section>
-<section id="slide-orgf968563">
-<h2 id="orgf968563">Qualche servizio di esempio e un po' lurking sul cluster</h2>
+<section id="slide-orgb32292a">
+<h2 id="orgb32292a">Qualche servizio di esempio e un po' lurking sul cluster</h2>
 <p>
 Come applicazione di esempio da installare ho scelto Spring PetClinic, un classico per chi, come me, viene dal mondo Java e ha un rapporto sano e sincero con Spring.
 </p>
@@ -958,8 +958,8 @@ Sviluppo applicativo di sistemi distribuiti basati sull'orchestrazione di contai
 </aside>
 
 </section>
-<section id="slide-orgdf167c2">
-<h3 id="orgdf167c2">Spring PetClinic</h3>
+<section id="slide-orgf70bc30">
+<h3 id="orgf70bc30">Spring PetClinic</h3>
 <p>
 Installiamo la PetClinic, facendo però attenzione a disabilitare WaveFront, una soluzione di monitoring in cloud offerta da VMware (che per ora non ci interessa).
 </p>
@@ -989,8 +989,8 @@ kubectl apply -f k8s/init-services
 </div>
 
 </section>
-<section id="slide-org06babca">
-<h3 id="org06babca">La patch (per chi volesse vederla)</h3>
+<section id="slide-org75fc32c">
+<h3 id="org75fc32c">La patch (per chi volesse vederla)</h3>
 <div class="org-src-container">
 <label class="org-src-name">Disabled<sub>WaveFront</sub><sub>integration</sub><sub>Changed</sub><sub>API</sub><sub>Gateway</sub><sub>Service</sub><sub>Type</sub><sub>from</sub><sub>LoadBalancer</sub><sub>to</sub><sub>C.patch</sub></label>
 <pre class="src src-diff">Subject: [PATCH] Disabled WaveFront integration; Changed API Gateway Service Type from LoadBalancer to ClusterIP
@@ -1190,8 +1190,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 </div>
 
 </section>
-<section id="slide-orgae334e3">
-<h3 id="orgae334e3">L'ingress di API Gateway</h3>
+<section id="slide-org9370085">
+<h3 id="org9370085">L'ingress di API Gateway</h3>
 <div class="org-src-container">
 <label class="org-src-name">petclinic-ingress.yaml</label>
 <pre class="src src-yaml"><span style="color: #ff69b4;">kind</span>: Ingress
@@ -1223,8 +1223,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 </div>
 
 </section>
-<section id="slide-orgdca9f4a">
-<h3 id="orgdca9f4a">I database (MySQL)</h3>
+<section id="slide-org829451b">
+<h3 id="org829451b">I database (MySQL)</h3>
 <div class="org-src-container">
 
 <pre class="src src-sh">helm repo add bitnami https://charts.bitnami.com/bitnami
@@ -1239,8 +1239,8 @@ helm install customers-db-mysql bitnami/mysql --namespace spring-petclinic <span
 </div>
 
 </section>
-<section id="slide-orgeb11bd9">
-<h3 id="orgeb11bd9">E finalmente arriva mamm&#x2026; errrr, no. E finalmente arrivano i deployment</h3>
+<section id="slide-org8f016fe">
+<h3 id="org8f016fe">E finalmente arriva mamm&#x2026; errrr, no. E finalmente arrivano i deployment</h3>
 <div class="org-src-container">
 
 <pre class="src src-sh"><span style="color: #4c83ff;">cd</span> spring-petclinic-cloud
@@ -1256,14 +1256,14 @@ helm install customers-db-mysql bitnami/mysql --namespace spring-petclinic <span
 </div>
 
 </section>
-<section id="slide-orgbf2feb2">
-<h3 id="orgbf2feb2">Attiviamo il Grande Fratello</h3>
+<section id="slide-orgadd1caa">
+<h3 id="orgadd1caa">Attiviamo il Grande Fratello</h3>
 <p>
 Due parole sui service monitor.
 </p>
 
 
-<div id="orgbc698d7" class="figure">
+<div id="org9ce94c7" class="figure">
 <p><img src="./kubernetes_hands_on/prometheus-custom-metrics-elements-1024x555.png" alt="prometheus-custom-metrics-elements-1024x555.png" />
 </p>
 </div>
@@ -1383,14 +1383,14 @@ Due parole sui service monitor.
 </section>
 </section>
 <section>
-<section id="slide-org331c962">
-<h2 id="org331c962">Saluti</h2>
+<section id="slide-org672ea9a">
+<h2 id="org672ea9a">Saluti</h2>
 <p>
 Grazie a tutti per essere arrivati fin qui!
 </p>
 
 
-<div id="orgb0d002e" class="figure">
+<div id="orgf74eb2c" class="figure">
 <p><img src="./kubernetes_hands_on/thanks_for_watching.jpeg" alt="thanks_for_watching.jpeg" />
 </p>
 </div>
