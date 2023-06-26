@@ -1,0 +1,1439 @@
+---
+permalink: /lf/kubernetes_hands_on.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Kubernetes e come toccare le nuvole per meri mortali</title>
+<meta name="author" content="Alessandro Accardo"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/dist/theme/black.css" id="theme"/>
+<style>#text-table-of-contents, .src { overflow-x: auto !important; overflow-y: auto !important; max-height: 75vh; max-width: 85vw; }</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1>Kubernetes e come toccare le nuvole per meri mortali</h1><h2>Learning Friday del 07/07/2023</h2><h3> Alessandro Accardo</h3><p><a href="https://klez.me/lf/kubernetes_hands_on.html"><img src="./kubernetes_hands_on/k8s-hands-on-slides_qr.png" /></a></p>
+</section>
+
+<section>
+<section id="slide-org0f45a23">
+<h2 id="org0f45a23">Chi sono</h2>
+<p>
+Ciao, sono Alessandro Accardo, forse vi ricorderete di me per altri Learning Friday come <i>Introduzione a Docker</i> o <i>Introduzione a Kubernetes</i>.
+</p>
+
+<p>
+Ecco chi sono.
+</p>
+
+<ul>
+<li class="fragment appear">Senior Developer</li>
+<li class="fragment appear">Solution Architect</li>
+<li class="fragment appear">Specializzato in soluzioni Cloud-Native</li>
+<li class="fragment appear">Nerd</li>
+<li class="fragment appear">Appassionato di tecnologia</li>
+<li class="fragment appear"><i>Hacker</i></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org93260e6">
+<h2 id="org93260e6">Kubectl, Ring of the Elves</h2>
+<aside class="notes">
+<p>
+Il motivo per cui ho associato Kubectl agli anelli degli elfi è che kubectl è LO strumento.
+C'è poco da dire sulla sua efficacia e sul fatto che è fattualmente indispensabile conoscerlo per chiunque operi un cluster kubernetes.
+</p>
+
+</aside>
+
+<blockquote>
+<p>
+Tre Anelli ai Re degli Elfi sotto il cielo che risplende
+</p>
+</blockquote>
+
+<p>
+Kubernetes fornisce uno strumento a riga di comando per comunicare con il <i>control plane</i> di un cluster Kubernetes, utilizzando l'API Kubernetes.
+</p>
+
+<p>
+Questo strumento si chiama <code>kubectl</code>.
+</p>
+
+<p>
+Kubectl è <b><i>lo strumento</i></b> che permette di controllare (<i>operare</i>, dicono quelli bravi) un cluster Kubernetes.
+</p>
+
+<p>
+Kubectl permette di leggere informazioni da un cluster o applicare modifiche a un cluster, ma lavora sempre e solo su un singolo cluster, pur avendo il concetto di <i>contesto</i> e potendo quindi cambiare contesto (cambiare cluster) a necessità.
+</p>
+
+<p>
+Per la configurazione, <code>kubectl</code> cerca un file chiamato <code>config</code> nella directory <code>$HOME/.kube</code>. È possibile specificare altri file kubeconfig impostando la variabile d'ambiente <code>KUBECONFIG</code> o il flag <code>--kubeconfig</code>.
+</p>
+
+</section>
+<section id="slide-orgb9c4497">
+<h3 id="orgb9c4497">Esempi di utilizzo</h3>
+<div class="org-src-container">
+<label class="org-src-name">Autocomplete</label>
+<pre class="src src-sh"><span style="color: #4c83ff;">source</span> &lt;(kubectl completion bash)
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+<label class="org-src-name">Contesto</label>
+<pre class="src src-sh">kubectl config get-contexts                <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">display list of contexts</span>
+kubectl config current-context             <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">display the current-context</span>
+kubectl config use-context my-cluster-name <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">set the default context to my-cluster-name</span>
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+<label class="org-src-name">Apply</label>
+<pre class="src src-sh">kubectl apply -f ./my-manifest.yaml        <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">create resource(s)</span>
+kubectl apply -f ./my1.yaml -f ./my2.yaml  <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">create from multiple files</span>
+kubectl apply -f ./dir                     <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">create resource(s) in all manifest files in dir</span>
+kubectl apply -f https://git.io/vPieo      <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">create resource(s) from url</span>
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+<label class="org-src-name">Apply - parte 2</label>
+<pre class="src src-sh"><span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Create multiple YAML objects from stdin</span>
+kubectl apply -f - &lt;&lt;EOF
+<span style="color: #ffff00; font-weight: bold;">apiVersion: v1</span>
+<span style="color: #ffff00; font-weight: bold;">kind: Pod</span>
+<span style="color: #ffff00; font-weight: bold;">metadata:</span>
+<span style="color: #ffff00; font-weight: bold;">  name: busybox-sleep</span>
+<span style="color: #ffff00; font-weight: bold;">spec:</span>
+<span style="color: #ffff00; font-weight: bold;">  containers:</span>
+<span style="color: #ffff00; font-weight: bold;">  - name: busybox</span>
+<span style="color: #ffff00; font-weight: bold;">    image: busybox:1.28</span>
+<span style="color: #ffff00; font-weight: bold;">    args:</span>
+<span style="color: #ffff00; font-weight: bold;">    - sleep</span>
+<span style="color: #ffff00; font-weight: bold;">    - "1000000"</span>
+<span style="color: #ffff00; font-weight: bold;">EOF</span>
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+<label class="org-src-name">Visualizzazione delle risorse</label>
+<pre class="src src-sh"><span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Get commands with basic output</span>
+kubectl get services                          <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">List all services in the namespace</span>
+kubectl get pods --all-namespaces             <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">List all pods in all namespaces</span>
+kubectl get pods -o wide                      <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">List all pods in the current namespace, with more details</span>
+kubectl get deployment my-dep                 <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">List a particular deployment</span>
+kubectl get pods                              <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">List all pods in the namespace</span>
+kubectl get pod my-pod -o yaml                <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Get a pod's YAML</span>
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+<label class="org-src-name">Aggiornamento</label>
+<pre class="src src-sh">kubectl set image deployment/frontend <span style="color: #ff69b4;">www</span>=image:v2
+       <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Rolling update "www" containers of "frontend" deployment, updating the image</span>
+kubectl rollout history deployment/frontend              <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Check the history of deployments including the revision</span>
+kubectl rollout undo deployment/frontend                 <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Rollback to the previous deployment</span>
+kubectl rollout undo deployment/frontend --to-revision=2 <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Rollback to a specific revision</span>
+kubectl rollout status -w deployment/frontend
+            <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Watch rolling update status of "frontend" deployment until completion</span>
+kubectl rollout restart deployment/frontend              <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Rolling restart of the "frontend" deployment</span>
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+<label class="org-src-name">Scaling</label>
+<pre class="src src-sh">kubectl scale --replicas=3 rs/foo                                 <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Scale a replicaset named 'foo' to 3</span>
+kubectl scale --replicas=3 -f foo.yaml                            <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Scale a resource specified in "foo.yaml" to 3</span>
+kubectl scale --current-replicas=2 --replicas=3 deployment/mysql
+  <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">If the deployment named mysql's current size is 2, scale mysql to 3</span>
+kubectl scale --replicas=5 rc/foo rc/bar rc/baz                   <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Scale multiple replication controllers</span>
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+<label class="org-src-name">Interazioni con le risorse</label>
+<pre class="src src-sh">kubectl logs my-pod                    <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">dump pod logs (stdout)</span>
+kubectl logs -l <span style="color: #ff69b4;">name</span>=myLabel           <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">dump pod logs, with label name=myLabel (stdout)</span>
+kubectl logs my-pod --previous         <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">dump pod logs (stdout) for a previous instantiation of a container</span>
+kubectl logs my-pod -c my-container    <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">dump pod container logs (stdout, multi-container case)</span>
+kubectl logs -l <span style="color: #ff69b4;">name</span>=myLabel -c my-container <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">dump pod logs, with label name=myLabel (stdout)</span>
+kubectl logs my-pod -c my-container --previous
+         <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">dump pod container logs (stdout, multi-container case) for a previous instantiation of a container</span>
+kubectl logs -f my-pod                 <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">stream pod logs (stdout)</span>
+kubectl logs -f my-pod -c my-container  <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">stream pod container logs (stdout, multi-container case)</span>
+kubectl logs -f -l <span style="color: #ff69b4;">name</span>=myLabel --all-containers <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">stream all pods logs with label name=myLabel (stdout)</span>
+kubectl run -i --tty busybox --image=busybox:1.28 -- sh <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Run pod as interactive shell</span>
+kubectl run nginx --image=nginx -n mynamespace
+         <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Start a single instance of nginx pod in the namespace of mynamespace</span>
+kubectl run nginx --image=nginx --dry-run=client -o yaml &gt; pod.yaml
+         <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Generate spec for running pod nginx and write it into a file called pod.yaml</span>
+kubectl attach my-pod -i                   <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Attach to Running Container</span>
+kubectl port-forward my-pod 5000:6000
+         <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Listen on port 5000 on the local machine and forward to port 6000 on my-pod</span>
+kubectl exec my-pod -- ls /                <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Run command in existing pod (1 container case)</span>
+kubectl exec --stdin --tty my-pod -- /bin/sh <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Interactive shell access to a running pod (1 container case)</span>
+kubectl exec my-pod -c my-container -- ls / <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Run command in existing pod (multi-container case)</span>
+kubectl top pod POD_NAME --containers      <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Show metrics for a given pod and its containers</span>
+kubectl top pod POD_NAME --sort-by=cpu     <span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">Show metrics for a given pod and sort it by 'cpu' or 'memory'</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb11d7d9">
+<h2 id="orgb11d7d9">Helm, Ring of the Dwarves</h2>
+<aside class="notes">
+<p>
+Ho associato Helm agli anelli dei nani perché questi anelli sono stati i meno efficaci grazie alla innata resistenza dei nani e perché portarono loro enormi ricchezze, cosa che helm può effettivamente fare.
+</p>
+
+</aside>
+
+<blockquote>
+<p>
+Sette ai Principi dei Nani nelle lor rocche di pietra
+</p>
+</blockquote>
+
+<p>
+Se Kubernetes fosse un sistema operativo, Helm sarebbe il gestore dei pacchetti. Ubuntu usa apt, CentOS usa yum e Kubernetes usa helm.
+</p>
+
+<p>
+Helm distribuisce le applicazioni pacchettizzate su Kubernetes e le struttura in chart. Questi chart contengono tutte le risorse applicative preconfigurate e tutte le versioni in un unico pacchetto facilmente gestibile.
+</p>
+
+<p>
+Helm semplifica l'installazione, l'aggiornamento, il recupero delle dipendenze e la configurazione delle distribuzioni su Kubernetes con semplici comandi CLI. I pacchetti software si trovano nei repository o vengono creati.
+</p>
+
+</section>
+<section>
+
+<p>
+Gli oggetti Kubernetes sono difficili da gestire. Con strumenti utili, la curva di apprendimento di Kubernetes diventa fluida e gestibile. Helm automatizza la manutenzione dei manifesti YAML per gli oggetti Kubernetes, impacchettando le informazioni nelle chart e pubblicandole in un cluster Kubernetes.
+</p>
+
+<p>
+Helm tiene traccia della cronologia delle versioni di ogni installazione e modifica della chart. Il rollback a una versione precedente o l'aggiornamento a una versione più recente sono completati con comandi comprensibili.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org44c3cb3">
+<h2 id="org44c3cb3">Dashboard, Ring of the Men</h2>
+<aside class="notes">
+<p>
+La dashboard la associo agli uomini perché associo la necessità di una visualizzazione grafica alla caducità della vita. Una volta che si saranno provati gli strumenti CLI non si vorrà più tornare indietro, e la dashboard sarà destinata a rimanere li, appesa.
+</p>
+
+</aside>
+
+<aside class="notes">
+<p>
+caducità s. f. [ der. di <i>caduco</i> ]. – 1. L’esser caduco, qualità delle cose che son destinate a cadere o a perire: <i>c. delle foglie di una pianta</i>, <i>del calice di un fiore</i>, ecc. Più com. in senso fig.: la <i>c. umana</i>, la <i>c. delle cose mondane</i>, <i>della bellezza</i>, ecc. 2. In diritto, <i>c. delle disposizioni testamentarie</i>, la perdita della loro efficacia per il verificarsi di fatti nuovi (sopravvenienza del discendente non contemplata nel testamento; decorrenza di termini in alcuni testamenti speciali, ecc.). 
+</p>
+
+</aside>
+
+<blockquote>
+<p>
+Nove agli Uomini Mortali che la triste morte attende
+</p>
+</blockquote>
+
+<p>
+Kubernetes Dashboard è un utile componente aggiuntivo che ti consente di monitorare l'attività del tuo cluster dal tuo browser.
+</p>
+
+<p>
+Puoi utilizzare Dashboard per distribuire applicazioni containerizzate in un cluster Kubernetes, risolvere i problemi dell'applicazione containerizzata e gestire le risorse del cluster.
+</p>
+
+<p>
+Puoi utilizzare Dashboard per ottenere una panoramica delle applicazioni in esecuzione sul tuo cluster, nonché per creare o modificare singole risorse Kubernetes (come deployments, jobs, DaemonSets e così via). Ad esempio, puoi ridimensionare un deployment, avviare un aggiornamento in sequenza, riavviare un pod o distribuire nuove applicazioni utilizzando una procedura guidata di distribuzione.
+</p>
+
+<p>
+La dashboard fornisce anche informazioni sullo stato delle risorse Kubernetes nel tuo cluster e su eventuali errori che potrebbero essersi verificati.
+</p>
+
+</section>
+<section>
+
+<p>
+Può anche soddisfare i requisiti di base di modifica delle risorse, ma dovrai comunque lavorare con i manifest per la maggior parte del tempo. Il modulo di creazione delle risorse è adatto solo per i casi d'uso più elementari e non funziona affatto con gli elementi esistenti.
+</p>
+
+<p>
+L'abilitazione della dashboard è facoltativa e non sarà necessariamente utile in tutti gli scenari. Se ti senti a tuo agio con il terminale, sei preoccupato per la sicurezza o cerchi di ridurre al minimo il consumo di risorse in background, non perderai nulla rimanendo fedele agli strumenti CLI più familiari.
+</p>
+
+</section>
+<section>
+
+<p>
+<b>Bonus point:</b> Qui abbiamo parlato della dashboard <i>ufficiale</i> del progetto Kubernetes. Prevalentemente perché è, per l'appunto, <i>ufficiale</i>.
+</p>
+
+<p>
+Esistono però varie e variegate altre dashboard di terze parti che possono essere migliori o più semplici da installare, o focalizzate sulla <i>Ops Experience (OX)</i> oppure focalizzate sulla sicurezza.
+</p>
+
+<p>
+Tra quelle che è doveroso citare, direi che ci sono <a href="https://skooner.io">Skooner</a>, <a href="https://headlamp.dev">Headlamp</a> e <a href="https://www.weave.works/oss/scope/">Weaveworks Scope</a>. Non li tratteremo, ma dobbiamo citarli.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org7fef78c">
+<h2 id="org7fef78c">Manifests, The One Ring</h2>
+<aside class="notes">
+<p>
+Penso sia abbastanza chiaro perché di tutti gli strumenti su uci si basa Kubernetes e che possiamo usare per <i>operarlo</i> ho scelto proprio i Manifest come associazione per l'Unico Anello.
+</p>
+
+<p>
+I manifest non solo sono estremamente precisi nel facilitare la dichiarazione id <i>cosa</i> vogliamo che sia presente nel cluster, ma vengono anche usati come template o generati al volo da tutti gli altri strumenti. Di fatto Kubernetes capisce solo i suoi manifest, tutti gli altri tool sono dei facilitatori in questo senso.
+</p>
+
+<p>
+Di conseguenza, i Manifest sono l'unico <b>vero</b> metodo per definire lo stato di un cluster, e abilitano quella che viene chiamata <i>IaC</i>: <b>Infrastructure as Code</b>, concetto molto importante in ambito DevOps, e utilissimo in generale.
+</p>
+
+</aside>
+
+<blockquote>
+<p>
+Uno per l'Oscuro Sire chiuso nella reggia tetra,
+Nella Terra di Mordor, dove l'Ombra nera scende.
+</p>
+</blockquote>
+
+<p>
+Un file manifest di Kubernetes è la vostra guida personale attraverso un cluster Kubernetes: Un file di configurazione scritto in formato YAML o JSON, che descrive le risorse che volete nel vostro cluster. Queste risorse possono essere una miriade di cose: pod (che eseguono le applicazioni), servizi (che aiutano le applicazioni a comunicare) e deployment (che gestiscono le applicazioni).
+</p>
+
+<p>
+Si può anche pensare a un file manifest come a una lista dei desideri di Kubernetes: comunica quali risorse volete e come volete che siano configurate.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org9c1863a">
+<h2 id="org9c1863a"><b>Bonus</b>: Charts, The Minor Rings</h2>
+<aside class="notes">
+<p>
+Le chart alla fine non sono altro che dei template di manifest, di conseguenza sono assimilabili ai test fatti per ottenere infine l'Unico Anello.
+</p>
+
+</aside>
+
+<p>
+Helm utilizza un formato di packaging chiamato chart. Un chart è un insieme di file che descrivono un insieme correlato di risorse Kubernetes. Un singolo chart può essere utilizzato per distribuire qualcosa di semplice, come un pod memcached, o qualcosa di complesso, come un intero stack di app web con server HTTP, database, cache e così via.
+</p>
+
+<p>
+I chart sono creati come file disposti in un particolare albero di directory. Possono essere impacchettati in archivi di versione per essere distribuiti.
+</p>
+
+<p>
+Se si desidera scaricare e consultare i file di un chart pubblicato, senza installarlo, è possibile farlo con <code>helm pull chartrepo/chartname</code>.
+</p>
+
+</section>
+<section id="slide-org939c216">
+<h3 id="org939c216">Charts come template per diversi applicativi simili tra loro</h3>
+<p>
+Ora, visto che le chart di fatto non sono altro che <i>template</i> di manifest, possiamo pensare che, dato un set di configurazioni comuni (quindi ad alta similarità di manifest) quello che differenzia una chart dall'altra è solo il descrittore <i>values.yaml</i> che viene passato ad helm per configurare le opzioni della chart.
+</p>
+
+<p>
+Chiaramente, è più facile vederlo che usare 1000 parole per spiegarlo.
+</p>
+
+</section>
+<section id="slide-org11cc385">
+<h3 id="org11cc385">Charts come <i>installer</i> per sistemi complessi</h3>
+<p>
+Il motivo per cui helm è nato, e quindi per cui esistono le charts, è proprio perché si è iniziato a parlare di <i>stack applicativi</i>, cioè un insieme di software che compongono un sistema completo che implementa una funzionalità o un ristretto insieme di queste.
+</p>
+
+<p>
+Proprio per l'astrazione ulteriore che questi strumenti hanno fornito, si è presa la strada di alzare il livello di astrazione durante la progettazione di sistemi distribuiti complessi trattando gli <i>stack</i> come applicativi singoli. Questo ha permesso di progettare sistemi sempre più complessi e con un alto grado di interoperabilità, e ha permesso la nascita di molti standard di settore e l'affermazione di <i>stack applicativi</i> come <i>best practice</i> e standard <i>de facto</i>.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org09bc2e1">
+<h2 id="org09bc2e1">Prerequisiti</h2>
+<blockquote>
+<p>
+Un Anello per domarli, un Anello per trovarli,
+Un Anello per ghermirli e nel buio incatenarli.
+Nella Terra di Mordor, dove l'Ombra cupa scende.
+</p>
+</blockquote>
+
+<ol>
+<li>Una distribuzione <i>Linux</i> (io uso OpenSuSE, ma va bene anche Ubuntu, Debian, Fedora, Arch).
+<i>Non garantisco supporto o funzionamento delle procedure per Windows + WSL2, MacOS, *BSD o altri sistemi minori.</i></li>
+<li>Go 1.18 o superiore (<a href="https://golang.org">https://golang.org</a>)</li>
+<li>Kubectl 1.24 o superiore (<a href="https://kubernetes.io/docs/tasks/tools/#kubectl">https://kubernetes.io/docs/tasks/tools/#kubectl</a>)</li>
+<li>Helm 3.12.0 o superiore (<a href="https://helm.sh">https://helm.sh</a>)</li>
+
+</ol>
+
+</section>
+<section>
+
+<p>
+Per far funzionare la baracca, avremo anche bisogno di inserire queste righe nel nostro <i>file hosts</i> (<code>/etc/hosts</code>).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-hosts">127.0.0.1       kind.local
+127.0.0.1       dashboard.kind.local
+127.0.0.1       monitoring.kind.local
+127.0.0.1       prometheus.kind.local
+127.0.0.1       petclinic.kind.local
+</pre>
+</div>
+
+</section>
+<section>
+
+<p>
+Altro requisito è clonare il mio repository, che contiene già tutti i file necessari per questo Hands-On.
+</p>
+
+<p>
+Tutti i comandi verranno eseguiti nel contesto di questa directory.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git clone https://github.com/kLeZ/20230707-LF-k8s-hands-on.git
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org71f6bca">
+<h2 id="org71f6bca">Installare un cluster di test con KinD</h2>
+<p>
+KinD è uno strumento per l'esecuzione di cluster Kubernetes locali utilizzando i container Docker come "nodi".
+</p>
+
+<p>
+KinD è stato progettato principalmente per testare Kubernetes stesso, ma può essere utilizzato per lo sviluppo locale o per il CI.
+</p>
+
+<p>
+Andiamo ora sul sito ufficiale di KinD, <a href="https://kind.sigs.k8s.io">https://kind.sigs.k8s.io</a>.
+</p>
+
+<p>
+Così come specificato nella guida quickstart, eseguiamo l'installazione della CLI.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">go install sigs.k8s.io/kind@v0.20.0
+</pre>
+</div>
+
+</section>
+<section>
+
+<p>
+Creiamo il cluster KinD.
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name">cluster.yaml</label>
+<pre class="src src-yaml"><span style="color: #ff69b4;">kind</span>: Cluster
+<span style="color: #ff69b4;">apiVersion</span>: kind.x-k8s.io/v1alpha4
+<span style="color: #ff69b4;">nodes</span>:
+- <span style="color: #ff69b4;">role</span>: control-plane
+  <span style="color: #ff69b4;">kubeadmConfigPatches</span>:
+  - |
+    <span style="color: #61CE3C;">kind: InitConfiguration</span>
+    <span style="color: #ff69b4;">nodeRegistration</span>:
+      <span style="color: #ff69b4;">kubeletExtraArgs</span>:
+        <span style="color: #ff69b4;">node-labels</span>: <span style="color: #61CE3C;">"ingress-ready=true"</span>
+  <span style="color: #ff69b4;">extraPortMappings</span>:
+  - <span style="color: #ff69b4;">containerPort</span>: 80
+    <span style="color: #ff69b4;">hostPort</span>: 80
+    <span style="color: #ff69b4;">protocol</span>: TCP
+  - <span style="color: #ff69b4;">containerPort</span>: 443
+    <span style="color: #ff69b4;">hostPort</span>: 443
+    <span style="color: #ff69b4;">protocol</span>: TCP
+- <span style="color: #ff69b4;">role</span>: worker
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kind create cluster --config=cluster.yaml --name local
+</pre>
+</div>
+
+</section>
+<section>
+
+<p>
+Installiamo un Ingress Controller, che servirà tra poco.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl apply <span style="color: #61CE3C;">\</span>
+    -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+</pre>
+</div>
+
+<p>
+E aspettiamo che venga su.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl wait --namespace ingress-nginx <span style="color: #61CE3C;">\</span>
+  --for=<span style="color: #ff69b4;">condition</span>=ready pod <span style="color: #61CE3C;">\</span>
+  --selector=app.kubernetes.io/component=controller <span style="color: #61CE3C;">\</span>
+  --timeout=90s
+</pre>
+</div>
+
+</section>
+<section>
+
+<p>
+E per provarlo, installiamo il seguente Echo Service.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl apply <span style="color: #61CE3C;">\</span>
+    -f https://kind.sigs.k8s.io/examples/ingress/usage.yaml
+</pre>
+</div>
+
+<p>
+Che possiamo testare in questo modo:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">should output "foo-app"</span>
+curl localhost/foo/hostname
+<span style="color: #4c83ff;">echo</span> -e <span style="color: #61CE3C;">'\n'</span>
+<span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">should output "bar-app"</span>
+curl localhost/bar/hostname
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgeea1684">
+<h2 id="orgeea1684">Installare il Debug Pod tramite kubectl</h2>
+<p>
+Esiste una bellissima immagine con molti tool preinstallati per fare un po' di debugging all'interno del cluster.
+</p>
+
+<p>
+A imperitura memoria, il repository dove si trova il <code>Dockerfile</code> è disponibile su <a href="https://github.com/hfuss/swiss-army-knife">GitHub</a>.
+</p>
+
+<p>
+Il comando per il suo utilizzo è il seguente:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl run -it --rm --image=brix4dayz/swiss-army-knife --restart=Never debug
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfb54baa">
+<h2 id="orgfb54baa">Installare la dashboard tramite manifest</h2>
+<p>
+Di Dashboard ne abbiamo già parlato nella slide di teoria, ora è il momento di mettere in pratica quello che sappiamo.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl apply <span style="color: #61CE3C;">\</span>
+    -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+</pre>
+</div>
+
+</section>
+<section id="slide-org8cb44cf">
+<h3 id="org8cb44cf">Ingress</h3>
+<div class="org-src-container">
+<label class="org-src-name">dashboard-ingress.yaml</label>
+<pre class="src src-yaml"><span style="color: #ff69b4;">kind</span>: Ingress
+<span style="color: #ff69b4;">apiVersion</span>: networking.k8s.io/v1
+<span style="color: #ff69b4;">metadata</span>:
+  <span style="color: #ff69b4;">name</span>: kubernetes-dashboard
+  <span style="color: #ff69b4;">namespace</span>: kubernetes-dashboard
+  <span style="color: #ff69b4;">annotations</span>:
+    <span style="color: #ff69b4;">kubernetes.io/ingress.class</span>: nginx
+    <span style="color: #ff69b4;">nginx.ingress.kubernetes.io/backend-protocol</span>: <span style="color: #61CE3C;">"HTTPS"</span>
+<span style="color: #ff69b4;">spec</span>:
+  <span style="color: #ff69b4;">rules</span>:
+  - <span style="color: #ff69b4;">host</span>: dashboard.kind.local
+    <span style="color: #ff69b4;">http</span>:
+      <span style="color: #ff69b4;">paths</span>:
+      - <span style="color: #ff69b4;">path</span>: /
+        <span style="color: #ff69b4;">pathType</span>: Prefix
+        <span style="color: #ff69b4;">backend</span>:
+          <span style="color: #ff69b4;">service</span>:
+            <span style="color: #ff69b4;">name</span>: kubernetes-dashboard
+            <span style="color: #ff69b4;">port</span>:
+              <span style="color: #ff69b4;">number</span>: 443
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl apply -f dashboard-ingress.yaml
+</pre>
+</div>
+
+</section>
+<section id="slide-orgb8fe5dd">
+<h3 id="orgb8fe5dd">The Admin: A Service Account's tale</h3>
+<div class="org-src-container">
+<label class="org-src-name">dashboard-user.yaml</label>
+<pre class="src src-yaml"><span style="color: #ff69b4;">apiVersion</span>: v1
+<span style="color: #ff69b4;">kind</span>: ServiceAccount
+<span style="color: #ff69b4;">metadata</span>:
+  <span style="color: #ff69b4;">name</span>: admin-user
+  <span style="color: #ff69b4;">namespace</span>: kubernetes-dashboard
+<span style="color: #8B8989; font-style: italic;">---</span>
+<span style="color: #ff69b4;">apiVersion</span>: v1
+<span style="color: #ff69b4;">kind</span>: Secret
+<span style="color: #ff69b4;">type</span>: kubernetes.io/service-account-token
+<span style="color: #ff69b4;">metadata</span>:
+  <span style="color: #ff69b4;">name</span>: admin-user-token
+  <span style="color: #ff69b4;">namespace</span>: kubernetes-dashboard
+  <span style="color: #ff69b4;">annotations</span>:
+    <span style="color: #ff69b4;">kubernetes.io/service-account.name</span>: admin-user
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl apply -f dashboard-user.yaml
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+<label class="org-src-name">dashboard-user-crb.yaml</label>
+<pre class="src src-yaml"><span style="color: #ff69b4;">apiVersion</span>: rbac.authorization.k8s.io/v1
+<span style="color: #ff69b4;">kind</span>: ClusterRoleBinding
+<span style="color: #ff69b4;">metadata</span>:
+  <span style="color: #ff69b4;">name</span>: admin-user
+<span style="color: #ff69b4;">roleRef</span>:
+  <span style="color: #ff69b4;">apiGroup</span>: rbac.authorization.k8s.io
+  <span style="color: #ff69b4;">kind</span>: ClusterRole
+  <span style="color: #ff69b4;">name</span>: cluster-admin
+<span style="color: #ff69b4;">subjects</span>:
+- <span style="color: #ff69b4;">kind</span>: ServiceAccount
+  <span style="color: #ff69b4;">name</span>: admin-user
+  <span style="color: #ff69b4;">namespace</span>: kubernetes-dashboard
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl apply -f dashboard-user-crb.yaml
+</pre>
+</div>
+
+</section>
+<section>
+
+<p>
+A questo punto copiamo il token generato che ci servirà per fare il login.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl -n kubernetes-dashboard describe secret admin-user-token | grep <span style="color: #61CE3C;">'token:'</span> | awk <span style="color: #61CE3C;">'{print $2}'</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb4afbcd">
+<h2 id="orgb4afbcd">Installare l'infrastruttura di monitoring tramite charts</h2>
+<p>
+Abbiamo già parlato di cosa sono le charts, di cosa è Helm e di come questi strumenti ci consentono di astrarre ancora di più il nostro sistema, abilitandoci alla progettazione di sistemi molto molto più complessi di come siamo sempre stati abituati progettare.
+</p>
+
+<aside class="notes">
+<p>
+Tutto questo vale ovviamente per il principio per cui la progettazione, a ogni livello deve <i>fittare</i> nella nostra testa interamente, pena una pessima progettazione.
+</p>
+
+</aside>
+
+<p>
+Come infrastruttura per il monitoraggio scegliamo una soluzione considerata ormai uno standard <i>de facto</i> nella community Kubernetes. Parlo dello stack Prometheus, Grafana. Come bonus installeremo anche lo stack PLG (Promtail, Loki, Grafana) per l'aggregazione e il monitoraggio dei log.
+</p>
+
+</section>
+<section id="slide-org2e631b7">
+<h3 id="org2e631b7">Esplorando gli stack PLG e PG</h3>
+<p>
+Prima di immergerci nell'installazione degli stack, rivisitiamo rapidamente ciascuno dei principali componenti. Una volta acquisita una comprensione fondamentale della responsabilità principale di ogni componente, possiamo immergerci nell'installazione sul nostro cluster Kubernetes.
+</p>
+
+</section>
+<section id="slide-org6cbc024">
+<h3 id="org6cbc024">Prometheus</h3>
+<p>
+Prometheus è un toolkit di monitoraggio e avviso di sistemi. Prometheus raccoglie e archivia le sue metriche in serie temporali, cioè le informazioni sulle metriche vengono archiviate con il timestamp in cui sono state registrate, insieme a coppie chiave-valore opzionali denominate etichette.
+</p>
+
+</section>
+<section id="slide-org1d99bbb">
+<h3 id="org1d99bbb">Promtail</h3>
+<p>
+Promtail è responsabile dell'inserimento dei dati in Loki. È implementato come DaemonSet, il che significa che un'istanza di Promtail viene eseguita su ogni nodo del tuo cluster Kubernetes. Legge periodicamente i log da tutti i container (stdout e stderr) in esecuzione su quel particolare nodo Kubernetes. Oltre a localizzare e leggere i flussi di log, Promtail può allegare etichette ai log prima di inviarli a Loki.
+</p>
+
+</section>
+<section id="slide-orgcd2a6dd">
+<h3 id="orgcd2a6dd">Loki</h3>
+<p>
+Loki è il cuore dello stack PLG. È un archivio dati ottimizzato per i log. A differenza di altri sistemi di aggregazione dei log, Loki non indicizza i messaggi di log. Al contrario, indicizza le etichette assegnate a ogni log. Possiamo interrogare i log archiviati in Loki utilizzando LogQL, un linguaggio di query ispirato a PromQL. Con LogQL, possiamo non solo semplicemente esaminare milioni di log in pochi secondi ma possiamo anche estrarre facilmente le metriche dai log.
+</p>
+
+</section>
+<section id="slide-org3f469f7">
+<h3 id="org3f469f7">Grafana</h3>
+<p>
+Grafana viene utilizzato per visualizzare metriche (provvenienti da Prometheus) e log (memorizzati in Loki). Loki e Prometheus si integrano perfettamente con Grafana. Possiamo creare dashboard individuali in Grafana in base ai log dell'applicazione e alle metriche calcolate.
+</p>
+
+</section>
+<section id="slide-orga074182">
+<h3 id="orga074182">Installazione</h3>
+<div class="org-src-container">
+
+<pre class="src src-sh">helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+kubectl create ns monitoring
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">helm install prom prometheus-community/kube-prometheus-stack -n monitoring --values prometheus-values.yaml
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl wait --namespace monitoring <span style="color: #61CE3C;">\</span>
+  --for=<span style="color: #ff69b4;">condition</span>=ready pod <span style="color: #61CE3C;">\</span>
+  --selector=<span style="color: #ff69b4;">release</span>=prom <span style="color: #61CE3C;">\</span>
+  --timeout=90s
+kubectl --namespace monitoring get pods -l <span style="color: #61CE3C;">"release=prom"</span>
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+<label class="org-src-name">prometheus-values.yaml</label>
+<pre class="src src-yaml"><span style="color: #ff69b4;">prometheus</span>:
+  <span style="color: #ff69b4;">prometheusSpec</span>:
+    <span style="color: #ff69b4;">serviceMonitorSelectorNilUsesHelmValues</span>: <span style="color: #96CBFE;">false</span>
+    <span style="color: #ff69b4;">serviceMonitorSelector</span>: {<span style="color: #ff69b4;">}</span>
+<span style="color: #ff69b4;">    serviceMonitorNamespaceSelector</span>: {}
+
+<span style="color: #ff69b4;">grafana</span>:
+  <span style="color: #ff69b4;">sidecar</span>:
+    <span style="color: #ff69b4;">dashboards</span>:
+      <span style="color: #ff69b4;">enabled</span>: <span style="color: #96CBFE;">true</span>
+      <span style="color: #ff69b4;">defaultFolderName</span>: <span style="color: #61CE3C;">"General"</span>
+      <span style="color: #ff69b4;">label</span>: grafana_dashboard
+      <span style="color: #ff69b4;">labelValue</span>: <span style="color: #61CE3C;">"1"</span>
+      <span style="color: #ff69b4;">folderAnnotation</span>: grafana_folder
+      <span style="color: #ff69b4;">searchNamespace</span>: ALL
+      <span style="color: #ff69b4;">provider</span>:
+        <span style="color: #ff69b4;">foldersFromFilesStructure</span>: <span style="color: #96CBFE;">true</span>
+    <span style="color: #ff69b4;">datasources</span>:
+      <span style="color: #ff69b4;">defaultDatasourceEnabled</span>: <span style="color: #96CBFE;">true</span>
+  <span style="color: #ff69b4;">additionalDataSources</span>:
+    - <span style="color: #ff69b4;">name</span>: Loki
+      <span style="color: #ff69b4;">type</span>: loki
+      <span style="color: #ff69b4;">url</span>: http://loki-loki-distributed-query-frontend.monitoring:3100
+</pre>
+</div>
+
+</section>
+<section id="slide-orgf9b6ff3">
+<h3 id="orgf9b6ff3">An entrance to the Monitoring appliance</h3>
+<div class="org-src-container">
+<label class="org-src-name">grafana-ingress.yaml</label>
+<pre class="src src-yaml"><span style="color: #ff69b4;">kind</span>: Ingress
+<span style="color: #ff69b4;">apiVersion</span>: networking.k8s.io/v1
+<span style="color: #ff69b4;">metadata</span>:
+  <span style="color: #ff69b4;">name</span>: grafana-ingress
+  <span style="color: #ff69b4;">namespace</span>: monitoring
+  <span style="color: #ff69b4;">annotations</span>:
+    <span style="color: #ff69b4;">kubernetes.io/ingress.class</span>: nginx
+<span style="color: #ff69b4;">spec</span>:
+  <span style="color: #ff69b4;">rules</span>:
+  - <span style="color: #ff69b4;">host</span>: monitoring.kind.local
+    <span style="color: #ff69b4;">http</span>:
+      <span style="color: #ff69b4;">paths</span>:
+      - <span style="color: #ff69b4;">path</span>: /
+        <span style="color: #ff69b4;">pathType</span>: Prefix
+        <span style="color: #ff69b4;">backend</span>:
+          <span style="color: #ff69b4;">service</span>:
+            <span style="color: #ff69b4;">name</span>: prom-grafana
+            <span style="color: #ff69b4;">port</span>:
+              <span style="color: #ff69b4;">number</span>: 80
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl apply -f grafana-ingress.yaml
+</pre>
+</div>
+
+</section>
+<section id="slide-orgd9fceaf">
+<h3 id="orgd9fceaf">Accessing the holy secrets of the monitoring infrastructure</h3>
+<div class="org-src-container">
+<label class="org-src-name">prometheus-ingress.yaml</label>
+<pre class="src src-yaml"><span style="color: #ff69b4;">kind</span>: Ingress
+<span style="color: #ff69b4;">apiVersion</span>: networking.k8s.io/v1
+<span style="color: #ff69b4;">metadata</span>:
+  <span style="color: #ff69b4;">name</span>: prometheus-ingress
+  <span style="color: #ff69b4;">namespace</span>: monitoring
+  <span style="color: #ff69b4;">annotations</span>:
+    <span style="color: #ff69b4;">kubernetes.io/ingress.class</span>: nginx
+<span style="color: #ff69b4;">spec</span>:
+  <span style="color: #ff69b4;">rules</span>:
+  - <span style="color: #ff69b4;">host</span>: prometheus.kind.local
+    <span style="color: #ff69b4;">http</span>:
+      <span style="color: #ff69b4;">paths</span>:
+      - <span style="color: #ff69b4;">path</span>: /
+        <span style="color: #ff69b4;">pathType</span>: Prefix
+        <span style="color: #ff69b4;">backend</span>:
+          <span style="color: #ff69b4;">service</span>:
+            <span style="color: #ff69b4;">name</span>: prom-kube-prometheus-stack-prometheus
+            <span style="color: #ff69b4;">port</span>:
+              <span style="color: #ff69b4;">number</span>: 9090
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl apply -f prometheus-ingress.yaml
+</pre>
+</div>
+
+</section>
+<section id="slide-org2b34994">
+<h3 id="org2b34994">The Bastard Son of Odin</h3>
+<div class="org-src-container">
+
+<pre class="src src-sh">helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">helm upgrade --install promtail grafana/promtail -f promtail-values.yaml -n monitoring
+helm upgrade --install loki grafana/loki-distributed -n monitoring
+</pre>
+</div>
+
+<div class="org-src-container">
+<label class="org-src-name">promtail-values.yaml</label>
+<pre class="src src-yaml"><span style="color: #ff69b4;">config</span>:
+  <span style="color: #ff69b4;">lokiAddress</span>: <span style="color: #61CE3C;">"http://loki-loki-distributed-gateway/loki/api/v1/push"</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgbc02f07">
+<h3 id="orgbc02f07">Some dashboards (courtesy of @dotdc)</h3>
+<p>
+David Calvert è un SRE abbastanza attivo nella community che partecipa al progetto Prometheus come Open Source Contrinutor.
+</p>
+
+<p>
+Prendiamo spunto dal suo ottimo gusto estetico (del resto è francese!) e dalle sue fantastiche dashboard per avere un sistema pronto all'uso.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git clone https://github.com/dotdc/grafana-dashboards-kubernetes.git
+kubectl kustomize grafana-dashboards-kubernetes &gt; grafana-dashboards.yaml
+rm -rf grafana-dashboards-kubernetes
+kubectl -n monitoring apply -f grafana-dashboards.yaml
+rm grafana-dashboards.yaml
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf968563">
+<h2 id="orgf968563">Qualche servizio di esempio e un po' lurking sul cluster</h2>
+<p>
+Come applicazione di esempio da installare ho scelto Spring PetClinic, un classico per chi, come me, viene dal mondo Java e ha un rapporto sano e sincero con Spring.
+</p>
+
+<p>
+Di base è semplicemente un'applicazione distribuita, ci serve solo a scopo illustrativo di come poi il cluster possa essere utilizzato per finalità di sviluppo applicativo.
+</p>
+
+<aside class="notes">
+<p>
+Sviluppo applicativo di sistemi distribuiti basati sull'orchestrazione di container tramite Kubernetes. Si, la descrizione di un sistema del genere è complessa anche da pronunciare tutta d'un fiato.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgdf167c2">
+<h3 id="orgdf167c2">Spring PetClinic</h3>
+<p>
+Installiamo la PetClinic, facendo però attenzione a disabilitare WaveFront, una soluzione di monitoring in cloud offerta da VMware (che per ora non ci interessa).
+</p>
+
+<p>
+Oltre a questo, dovremo anche modificare il <code>Service</code> di API Gateway perché piuttosto che pubblicare la porta su un LoadBalancer (che non abbiamo) espondendo quindi direttamente il servizio, lo proteggeremo facendolo passare da Ingress Controller.
+</p>
+
+<p>
+Per ovviare alle problematiche esposte senza dover fare modifiche manualmente, dovendo entrare quindi nel merito del codice, applichiamo la patch che vi ho fornito.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git clone https://github.com/spring-petclinic/spring-petclinic-cloud.git
+<span style="color: #4c83ff;">cd</span> spring-petclinic-cloud
+git apply ../Disabled_WaveFront_integration_Changed_API_Gateway_Service_Type_from_LoadBalancer_to_C.patch
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #4c83ff;">cd</span> spring-petclinic-cloud
+kubectl apply -f k8s/init-namespace
+kubectl apply -f k8s/init-services
+</pre>
+</div>
+
+</section>
+<section id="slide-org06babca">
+<h3 id="org06babca">La patch (per chi volesse vederla)</h3>
+<div class="org-src-container">
+<label class="org-src-name">Disabled<sub>WaveFront</sub><sub>integration</sub><sub>Changed</sub><sub>API</sub><sub>Gateway</sub><sub>Service</sub><sub>Type</sub><sub>from</sub><sub>LoadBalancer</sub><sub>to</sub><sub>C.patch</sub></label>
+<pre class="src src-diff">Subject: [PATCH] Disabled WaveFront integration; Changed API Gateway Service Type from LoadBalancer to ClusterIP
+<span style="background-color: #5f5f5f;">---</span>
+<span style="background-color: #5f5f5f;">Index: </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">k8s/init-services/04-wavefront.yaml</span>
+===================================================================
+<span style="background-color: #5f5f5f;">diff --git a/k8s/init-services/04-wavefront.yaml b/k8s/init-services/04-wavefront.yaml</span>
+<span style="background-color: #5f5f5f;">deleted file mode 100644</span>
+<span style="background-color: #5f5f5f;">--- </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">a/k8s/init-services/04-wavefront.yaml</span><span style="background-color: #5f5f5f;">       (revision ab8476cbc1e23f8f2a415e31fa69d26ca23e4704)</span>
+<span style="background-color: #5f5f5f;">+++ </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">/dev/null</span><span style="background-color: #5f5f5f;">   (revision ab8476cbc1e23f8f2a415e31fa69d26ca23e4704)</span>
+<span style="background-color: #5f5f5f;">@@ -1,66 +0,0 @@</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;"># Need to change YOUR_CLUSTER and YOUR_API_TOKEN accordingly</span>
+<span style="color: #aa2222;">-</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">apiVersion: apps/v1</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">kind: Deployment</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">metadata:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">  labels:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">    app: wavefront-proxy</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">    name: wavefront-proxy</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">  name: wavefront-proxy</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">  namespace: spring-petclinic</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">spec:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">  replicas: 1</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">  selector:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">    matchLabels:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">      app: wavefront-proxy</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">  template:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">    metadata:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">      labels:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        app: wavefront-proxy</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">    spec:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">      containers:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">      - name: wavefront-proxy</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        image: wavefronthq/proxy:latest</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        imagePullPolicy: Always</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        env:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        - name: WAVEFRONT_URL</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">          valueFrom:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">             secretKeyRef:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">               name: wavefront</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">               key: wavefront-url</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        - name: WAVEFRONT_TOKEN</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">          valueFrom:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">             secretKeyRef:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">               name: wavefront</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">               key: wavefront-api-token</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        # Uncomment the below lines to consume Zipkin/Istio traces</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        - name: WAVEFRONT_PROXY_ARGS</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">          value: --traceZipkinListenerPorts 9411 --traceZipkinApplicationName spring-petclinic-k8s</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        ports:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        - containerPort: 2878</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">          protocol: TCP</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        # Uncomment the below lines to consume Zipkin/Istio traces</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        - containerPort: 9411</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">          protocol: TCP</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        securityContext:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">          privileged: false</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">---</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">apiVersion: v1</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">kind: Service</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">metadata:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">  name: wavefront-proxy</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">  labels:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">    app: wavefront-proxy</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">  namespace: spring-petclinic</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">spec:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">  ports:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">  - name: wavefront</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">    port: 2878</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">    protocol: TCP</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">  # Uncomment the below lines to consume Zipkin/Istio traces</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">  - name: http</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">    port: 9411</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">    targetPort: 9411</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">    protocol: TCP</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">  selector:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">    app: wavefront-proxy</span>
+<span style="background-color: #5f5f5f;">Index: </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">k8s/api-gateway-deployment.yaml</span>
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<span style="color: #aa2222;">&lt;</span><span style="color: #ff0000;">+&gt;UTF-8</span>
+===================================================================
+<span style="background-color: #5f5f5f;">diff --git a/k8s/api-gateway-deployment.yaml b/k8s/api-gateway-deployment.yaml</span>
+<span style="background-color: #5f5f5f;">--- </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">a/k8s/api-gateway-deployment.yaml</span><span style="background-color: #5f5f5f;">   (revision ab8476cbc1e23f8f2a415e31fa69d26ca23e4704)</span>
+<span style="background-color: #5f5f5f;">+++ </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">b/k8s/api-gateway-deployment.yaml</span><span style="background-color: #5f5f5f;">   (date 1687512570696)</span>
+<span style="background-color: #5f5f5f;">@@ -45,8 +45,6 @@</span>
+         env:
+         - name: SPRING_PROFILES_ACTIVE
+           value: kubernetes
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_URI</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">          value: proxy://wavefront-proxy.spring-petclinic.svc.cluster.local:2878</span>
+         ports:
+         - containerPort: 8080
+       restartPolicy: Always
+<span style="background-color: #5f5f5f;">Index: </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">k8s/customers-service-deployment.yaml</span>
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<span style="color: #aa2222;">&lt;</span><span style="color: #ff0000;">+&gt;UTF-8</span>
+===================================================================
+<span style="background-color: #5f5f5f;">diff --git a/k8s/customers-service-deployment.yaml b/k8s/customers-service-deployment.yaml</span>
+<span style="background-color: #5f5f5f;">--- </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">a/k8s/customers-service-deployment.yaml</span><span style="background-color: #5f5f5f;">     (revision ab8476cbc1e23f8f2a415e31fa69d26ca23e4704)</span>
+<span style="background-color: #5f5f5f;">+++ </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">b/k8s/customers-service-deployment.yaml</span><span style="background-color: #5f5f5f;">     (date 1687512749759)</span>
+<span style="background-color: #5f5f5f;">@@ -55,10 +55,7 @@</span>
+              secretKeyRef:
+                name: customers-db-mysql
+                key: mysql-root-password
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_URI</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">          value: proxy://wavefront-proxy.spring-petclinic.svc.cluster.local:2878</span>
+         ports:
+         - containerPort: 8080
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        resources: {}</span>
+       restartPolicy: Always
+ status: {}
+<span style="background-color: #5f5f5f;">Index: </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">k8s/vets-service-deployment.yaml</span>
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<span style="color: #aa2222;">&lt;</span><span style="color: #ff0000;">+&gt;UTF-8</span>
+===================================================================
+<span style="background-color: #5f5f5f;">diff --git a/k8s/vets-service-deployment.yaml b/k8s/vets-service-deployment.yaml</span>
+<span style="background-color: #5f5f5f;">--- </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">a/k8s/vets-service-deployment.yaml</span><span style="background-color: #5f5f5f;">  (revision ab8476cbc1e23f8f2a415e31fa69d26ca23e4704)</span>
+<span style="background-color: #5f5f5f;">+++ </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">b/k8s/vets-service-deployment.yaml</span><span style="background-color: #5f5f5f;">  (date 1687512585440)</span>
+<span style="background-color: #5f5f5f;">@@ -54,10 +54,7 @@</span>
+              secretKeyRef:
+                name: vets-db-mysql
+                key: mysql-root-password
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_URI</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">          value: proxy://wavefront-proxy.spring-petclinic.svc.cluster.local:2878</span>
+         ports:
+         - containerPort: 8080
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        resources: {}</span>
+       restartPolicy: Always
+ status: {}
+<span style="background-color: #5f5f5f;">Index: </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">k8s/visits-service-deployment.yaml</span>
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<span style="color: #aa2222;">&lt;</span><span style="color: #ff0000;">+&gt;UTF-8</span>
+===================================================================
+<span style="background-color: #5f5f5f;">diff --git a/k8s/visits-service-deployment.yaml b/k8s/visits-service-deployment.yaml</span>
+<span style="background-color: #5f5f5f;">--- </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">a/k8s/visits-service-deployment.yaml</span><span style="background-color: #5f5f5f;">        (revision ab8476cbc1e23f8f2a415e31fa69d26ca23e4704)</span>
+<span style="background-color: #5f5f5f;">+++ </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">b/k8s/visits-service-deployment.yaml</span><span style="background-color: #5f5f5f;">        (date 1687512597292)</span>
+<span style="background-color: #5f5f5f;">@@ -54,10 +54,7 @@</span>
+              secretKeyRef:
+                name: visits-db-mysql
+                key: mysql-root-password
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_URI</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">          value: proxy://wavefront-proxy.spring-petclinic.svc.cluster.local:2878</span>
+         ports:
+         - containerPort: 8080
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        resources: {}</span>
+       restartPolicy: Always
+ status: {}
+<span style="background-color: #5f5f5f;">Index: </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">k8s/init-services/05-api-gateway-service.yaml</span>
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<span style="color: #aa2222;">&lt;</span><span style="color: #ff0000;">+&gt;UTF-8</span>
+===================================================================
+<span style="background-color: #5f5f5f;">diff --git a/k8s/init-services/05-api-gateway-service.yaml b/k8s/init-services/05-api-gateway-service.yaml</span>
+<span style="background-color: #5f5f5f;">--- </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">a/k8s/init-services/05-api-gateway-service.yaml</span><span style="background-color: #5f5f5f;">     (revision ab8476cbc1e23f8f2a415e31fa69d26ca23e4704)</span>
+<span style="background-color: #5f5f5f;">+++ </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">b/k8s/init-services/05-api-gateway-service.yaml</span><span style="background-color: #5f5f5f;">     (date 1687512416412)</span>
+<span style="background-color: #5f5f5f;">@@ -13,6 +13,5 @@</span>
+     targetPort: 8080
+   selector:
+     app: api-gateway
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">  type: LoadBalancer</span>
+ status:
+   loadBalancer: {}
+<span style="background-color: #5f5f5f;">Index: </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">k8s/init-services/02-config-map.yaml</span>
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<span style="color: #aa2222;">&lt;</span><span style="color: #ff0000;">+&gt;UTF-8</span>
+===================================================================
+<span style="background-color: #5f5f5f;">diff --git a/k8s/init-services/02-config-map.yaml b/k8s/init-services/02-config-map.yaml</span>
+<span style="background-color: #5f5f5f;">--- </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">a/k8s/init-services/02-config-map.yaml</span><span style="background-color: #5f5f5f;">      (revision ab8476cbc1e23f8f2a415e31fa69d26ca23e4704)</span>
+<span style="background-color: #5f5f5f;">+++ </span><span style="color: #dcdccc; background-color: #5f5f5f; font-weight: bold;">b/k8s/init-services/02-config-map.yaml</span><span style="background-color: #5f5f5f;">      (date 1687511667914)</span>
+<span style="background-color: #5f5f5f;">@@ -16,11 +16,6 @@</span>
+         mime-types: application/json,text/css,application/javascript
+         min-response-size: 2048
+ 
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">    wavefront:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">      application:</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">        name: spring-petclinic-k8s</span>
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">      freemium-account: true</span>
+<span style="color: #aa2222;">-</span>
+     # Logging
+     logging.level.org.springframework: INFO
+ 
+<span style="background-color: #5f5f5f;">@@ -50,7 +45,7 @@</span>
+           prometheus:
+             enabled: true
+           wavefront:
+<span style="color: #aa2222;">-</span><span style="color: #ff0000;">            enabled: </span><span style="color: #ff0000; background-color: #aa2222;">true</span>
+<span style="color: #22aa22;">+</span><span style="color: #00ff00;">            enabled: </span><span style="color: #00ff00; background-color: #006400;">false</span>
+ 
+     customers-service-id: http://customers-service.spring-petclinic.svc.cluster.local:8080
+     visits-service-id: http://vists-service.spring-petclinic.svc.cluster.local:8080
+</pre>
+</div>
+
+</section>
+<section id="slide-orgae334e3">
+<h3 id="orgae334e3">L'ingress di API Gateway</h3>
+<div class="org-src-container">
+<label class="org-src-name">petclinic-ingress.yaml</label>
+<pre class="src src-yaml"><span style="color: #ff69b4;">kind</span>: Ingress
+<span style="color: #ff69b4;">apiVersion</span>: networking.k8s.io/v1
+<span style="color: #ff69b4;">metadata</span>:
+  <span style="color: #ff69b4;">name</span>: petclinic-ingress
+  <span style="color: #ff69b4;">namespace</span>: spring-petclinic
+  <span style="color: #ff69b4;">annotations</span>:
+    <span style="color: #ff69b4;">kubernetes.io/ingress.class</span>: nginx
+<span style="color: #ff69b4;">spec</span>:
+  <span style="color: #ff69b4;">rules</span>:
+  - <span style="color: #ff69b4;">host</span>: petclinic.kind.local
+    <span style="color: #ff69b4;">http</span>:
+      <span style="color: #ff69b4;">paths</span>:
+      - <span style="color: #ff69b4;">path</span>: /
+        <span style="color: #ff69b4;">pathType</span>: Prefix
+        <span style="color: #ff69b4;">backend</span>:
+          <span style="color: #ff69b4;">service</span>:
+            <span style="color: #ff69b4;">name</span>: api-gateway
+            <span style="color: #ff69b4;">port</span>:
+              <span style="color: #ff69b4;">number</span>: 80
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl apply -f petclinic-ingress.yaml
+</pre>
+</div>
+
+</section>
+<section id="slide-orgdca9f4a">
+<h3 id="orgdca9f4a">I database (MySQL)</h3>
+<div class="org-src-container">
+
+<pre class="src src-sh">helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
+helm install vets-db-mysql bitnami/mysql --namespace spring-petclinic <span style="color: #61CE3C;">\</span>
+     --version 9.10.4 --set auth.database=service_instance_db
+helm install visits-db-mysql bitnami/mysql --namespace spring-petclinic <span style="color: #61CE3C;">\</span>
+     --version 9.10.4 --set auth.database=service_instance_db
+helm install customers-db-mysql bitnami/mysql --namespace spring-petclinic <span style="color: #61CE3C;">\</span>
+     --version 9.10.4 --set auth.database=service_instance_db
+</pre>
+</div>
+
+</section>
+<section id="slide-orgeb11bd9">
+<h3 id="orgeb11bd9">E finalmente arriva mamm&#x2026; errrr, no. E finalmente arrivano i deployment</h3>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #4c83ff;">cd</span> spring-petclinic-cloud
+<span style="color: #4c83ff;">export</span> <span style="color: #ff69b4;">REPOSITORY_PREFIX</span>=springcommunity
+./scripts/deployToKubernetes.sh
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">rm -rf spring-petclinic-cloud
+</pre>
+</div>
+
+</section>
+<section id="slide-orgbf2feb2">
+<h3 id="orgbf2feb2">Attiviamo il Grande Fratello</h3>
+<p>
+Due parole sui service monitor.
+</p>
+
+
+<div id="orgbc698d7" class="figure">
+<p><img src="./kubernetes_hands_on/prometheus-custom-metrics-elements-1024x555.png" alt="prometheus-custom-metrics-elements-1024x555.png" />
+</p>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+<label class="org-src-name">api-gateway-servicemonitor.yaml</label>
+<pre class="src src-yaml"><span style="color: #ff69b4;">apiVersion</span>: monitoring.coreos.com/v1
+<span style="color: #ff69b4;">kind</span>: ServiceMonitor
+<span style="color: #ff69b4;">metadata</span>:
+  <span style="color: #ff69b4;">name</span>: api-gateway
+  <span style="color: #ff69b4;">namespace</span>: spring-petclinic
+<span style="color: #ff69b4;">spec</span>:
+  <span style="color: #ff69b4;">endpoints</span>:
+  - <span style="color: #ff69b4;">port</span>: http
+    <span style="color: #ff69b4;">path</span>: <span style="color: #61CE3C;">'/actuator/prometheus'</span>
+  <span style="color: #ff69b4;">namespaceSelector</span>:
+    <span style="color: #ff69b4;">any</span>: <span style="color: #96CBFE;">true</span>
+  <span style="color: #ff69b4;">selector</span>:
+    <span style="color: #ff69b4;">matchLabels</span>:
+      <span style="color: #ff69b4;">app</span>: api-gateway
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl apply -f api-gateway-servicemonitor.yaml
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+<label class="org-src-name">customers-service-servicemonitor.yaml</label>
+<pre class="src src-yaml"><span style="color: #ff69b4;">apiVersion</span>: monitoring.coreos.com/v1
+<span style="color: #ff69b4;">kind</span>: ServiceMonitor
+<span style="color: #ff69b4;">metadata</span>:
+  <span style="color: #ff69b4;">name</span>: customers-service
+  <span style="color: #ff69b4;">namespace</span>: spring-petclinic
+<span style="color: #ff69b4;">spec</span>:
+  <span style="color: #ff69b4;">endpoints</span>:
+  - <span style="color: #ff69b4;">port</span>: http
+    <span style="color: #ff69b4;">path</span>: <span style="color: #61CE3C;">'/actuator/prometheus'</span>
+  <span style="color: #ff69b4;">namespaceSelector</span>:
+    <span style="color: #ff69b4;">any</span>: <span style="color: #96CBFE;">true</span>
+  <span style="color: #ff69b4;">selector</span>:
+    <span style="color: #ff69b4;">matchLabels</span>:
+      <span style="color: #ff69b4;">app</span>: customers-service
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl apply -f customers-service-servicemonitor.yaml
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+<label class="org-src-name">vets-service-servicemonitor.yaml</label>
+<pre class="src src-yaml"><span style="color: #ff69b4;">apiVersion</span>: monitoring.coreos.com/v1
+<span style="color: #ff69b4;">kind</span>: ServiceMonitor
+<span style="color: #ff69b4;">metadata</span>:
+  <span style="color: #ff69b4;">name</span>: vets-service
+  <span style="color: #ff69b4;">namespace</span>: spring-petclinic
+<span style="color: #ff69b4;">spec</span>:
+  <span style="color: #ff69b4;">endpoints</span>:
+  - <span style="color: #ff69b4;">port</span>: http
+    <span style="color: #ff69b4;">path</span>: <span style="color: #61CE3C;">'/actuator/prometheus'</span>
+  <span style="color: #ff69b4;">namespaceSelector</span>:
+    <span style="color: #ff69b4;">any</span>: <span style="color: #96CBFE;">true</span>
+  <span style="color: #ff69b4;">selector</span>:
+    <span style="color: #ff69b4;">matchLabels</span>:
+      <span style="color: #ff69b4;">app</span>: vets-service
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl apply -f vets-service-servicemonitor.yaml
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+<label class="org-src-name">visits-service-servicemonitor.yaml</label>
+<pre class="src src-yaml"><span style="color: #ff69b4;">apiVersion</span>: monitoring.coreos.com/v1
+<span style="color: #ff69b4;">kind</span>: ServiceMonitor
+<span style="color: #ff69b4;">metadata</span>:
+  <span style="color: #ff69b4;">name</span>: visits-service
+  <span style="color: #ff69b4;">namespace</span>: spring-petclinic
+<span style="color: #ff69b4;">spec</span>:
+  <span style="color: #ff69b4;">endpoints</span>:
+  - <span style="color: #ff69b4;">port</span>: http
+    <span style="color: #ff69b4;">path</span>: <span style="color: #61CE3C;">'/actuator/prometheus'</span>
+  <span style="color: #ff69b4;">namespaceSelector</span>:
+    <span style="color: #ff69b4;">any</span>: <span style="color: #96CBFE;">true</span>
+  <span style="color: #ff69b4;">selector</span>:
+    <span style="color: #ff69b4;">matchLabels</span>:
+      <span style="color: #ff69b4;">app</span>: visits-service
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">kubectl apply -f visits-service-servicemonitor.yaml
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org331c962">
+<h2 id="org331c962">Saluti</h2>
+<p>
+Grazie a tutti per essere arrivati fin qui!
+</p>
+
+
+<div id="orgb0d002e" class="figure">
+<p><img src="./kubernetes_hands_on/thanks_for_watching.jpeg" alt="thanks_for_watching.jpeg" />
+</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/plugin/markdown/markdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/plugin/search/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/plugin/zoom/zoom.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+width: 1800,
+height: 1000,
+
+transition: 'convex',
+transitionSpeed: 'default',
+
+// Plugins with reveal.js 4.x
+plugins: [ RevealMarkdown, RevealNotes, RevealSearch, RevealZoom ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+});
+</script>
+</body>
+</html>
