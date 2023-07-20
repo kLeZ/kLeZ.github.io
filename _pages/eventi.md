@@ -15,7 +15,7 @@ Terzo Learning Friday fatto nella mia azienda. Ho parlato di Kubernetes, di nuov
 [Slide]({% link _pages/kubernetes_hands_on.html %})
 
 {: .mb-5 .justify-content-center }
-{% include embed-youtube.html video_id="2jo0vZaOvB0" classes="embed-responsive-16by9" %}
+{% include embed-youtube.html video_id="j-UWf--mlwE" classes="embed-responsive-16by9" %}
 
 ### Learning Friday #2 - Introduzione a Kubernetes (04/09/2020)
 
