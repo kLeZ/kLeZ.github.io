@@ -1,46 +1,178 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="https://klez.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://klez.me/" rel="alternate" type="text/html" /><updated>2023-07-20T17:22:33+02:00</updated><id>https://klez.me/feed.xml</id><title type="html">Alessandro ‘kLeZ’ Accardo personal website</title><subtitle>This is the personal website of an Italian developer once called &apos;kLeZ&apos;.</subtitle><entry><title type="html">Trova lo st***zo! The IBM Way!</title><link href="https://klez.me/2022/05/05/trova-lo-stzo-the-ibm-way/" rel="alternate" type="text/html" title="Trova lo st***zo! The IBM Way!" /><published>2022-05-05T12:00:50+02:00</published><updated>2022-05-05T12:00:50+02:00</updated><id>https://klez.me/2022/05/05/trova-lo-stzo-the-ibm-way</id><content type="html" xml:base="https://klez.me/2022/05/05/trova-lo-stzo-the-ibm-way/"><![CDATA[<p>Oggi leggevo un brevissimo articolo, che però ci tengo a condividere con i miei (pochi[ssimi]) lettori. Forse lo condivido solo per me stesso perché ho una pessima memoria selettiva, che però seleziona un po’ come gli pare.</p>
-      <p>Il titolo originale è “The Asshole Test”, il mio è un po’ più colorito, ma non più di tanto.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="https://klez.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://klez.me/" rel="alternate" type="text/html" /><updated>2024-08-29T20:53:22+02:00</updated><id>https://klez.me/feed.xml</id><title type="html">Alessandro ‘kLeZ’ Accardo personal website</title><subtitle>This is the personal website of an Italian developer once called &apos;kLeZ&apos;.</subtitle><entry><title type="html">La sostanza dell’intelligenza</title><link href="https://klez.me/2024/08/29/la-sostanza-dell-intelligenza/" rel="alternate" type="text/html" title="La sostanza dell’intelligenza" /><published>2024-08-29T18:08:37+02:00</published><updated>2024-08-29T18:08:37+02:00</updated><id>https://klez.me/2024/08/29/la-sostanza-dell-intelligenza</id><content type="html" xml:base="https://klez.me/2024/08/29/la-sostanza-dell-intelligenza/"><![CDATA[<p>Certe volte capita di non poter fare a meno di essere cinici, di essere sinceri, di essere razionali ma allo stesso tempo intercettati da un turbine di emozioniforti che fanno scaturire un’urgenza di specificare, in chiaro, cosa va e cosa no (soprattutto cosa no) di una determinata affermazione o di un determinato comportamento.</p>
+      <p>A livello umano, non è spesso bello quello che si dice, tanto meno lo è - spesso - il modo in cui si esprime la propria urgenza di spiegare a chiare lettere e senza mezzi termini o gentilezze di alcun tipo cosa non va.</p>
+      <p>Vorrei oggi, com un ritorno che si attendeva da anni, spiegare con un recentissimo aneddoto quello che intendo, le mie necessità e le mie posizioni in merito.</p>
+      <p>Non farò nomi e cognomi (anche nelle screenshot), anche se la persona della quale vado a parlare ha affermato distintamente di non avere affatto l’interesse alla privacy, anzi è profondamente contro questo che per me appare un diritto fondamentale dell’essere umano. <em>Il diritto a chiudere la porta quando si fa la cacca</em>, per dirla in termini spiccioli. E io, che invece credo fermamente nel diritto inalienabile alla privacy, proteggerò la sua.</p>
       <!--more-->
       <p class="m-0 invisible zero-size">
         <a class="invisible" id="read-more" href="#">read more</a>
       </p>
-      <p>Un dipendente IBM ha voluto condividere <a href="https://johnpublic.mataroa.blog/blog/the-asshole-test/">questo</a> articolo col mondo in cui racconta il test che gli è stato somministrato in fase di assunzione anni addietro.</p>
-      <p>Il test consiste nel seguente schema.</p>
-      <p>Un gruppo di circa 8 persone viene portato in una stanza e gli viene chiesto di risolvere un <em>puzzle</em> insieme.</p>
-      <p>A ogni partecipante vengono fornite delle informazioni, nella stanza c’è una lavagna bianca e un timer che conta alla rovescia 60 minuti.</p>
-      <p>Nella sua esperienza, <em>John</em> (pseudonimo inventato per poter esprimere liberamente le proprie opinioni senza che queste siano legate al suo datore di lavoro) racconta che inizialmente c’è stato silenzio, poi qualcuno ha iniziato a prendere la parola per tentare di raccogliere le informazioni di tutti per cercare di metterle a fattor comune.</p>
-      <p>Qualcuno “conquista” la lavagna e prende un pennarello, attendendo qualcosa da scrivere, autoproclamandosi <em>leader</em>. Le informazioni però sono confuse, quindi c’è poco da scrivere.</p>
-      <p>Questa scena di autoproclamazione si ripete quando qualcun altro interrompe un collega che stava tentando di leggere ad alta voce le informazioni in suo possesso per condividerle con il gruppo.</p>
-      <p>Alla fine l’ora finisce e e il puzzle non è stato risolto, <em>neanche lontanamente</em>.</p>
-      <p>Confusi e spompati escono tutti dalla stanza per passare al prossimo test.</p>
-      <p>Alla fine del giorno il gruppo è diviso in due stanze e il nostro Johnny, come potrete immaginare, è nel gruppo di “quelli bravi”, quelli che sono passati.</p>
-      <p>Sei mesi dopo affianca un collega che sta gestendo il medesimo test per un altro gruppo di candidati. La domanda più ovvia per John è sapere se c’è mai stato qualcuno che ha risolto il puzzle.</p>
-      <p>La risposta è spiazzante: “Oh, non è quello lo scopo, questo è un test antist<strong><em>zi. Ti permette di vedere chi fa lo st</em></strong>zo sotto pressione, e quelli non passano al round successivo.</p>
-      <h2 id="conclusioni">Conclusioni</h2>
-      <p>Devo dire che un po’ ha spiazzato anche me, però il titolo era abbastanza esplicativo per permettermi di capire a grandi linee dove voleva arrivare, del resto l’articolo si legge in neanche un minuto, quindi forse ci sto anche ragionando troppo :P</p>
-      <p>A me un test del genere sarebbe veramente piaciuto implementarlo nella mia azienda, e penso che io l’avrei passato, ma ci vorrebbe un grosso lavoro di introspezione per esserne sicuri o altrimenti bisognerebbe… fare il test!</p>
-      <p>Voi che ne pensate? Passereste il test?</p>
-      ]]></content><author><name>kLeZ</name></author><summary type="html"><![CDATA[Oggi leggevo un brevissimo articolo, che però ci tengo a condividere con i miei (pochi[ssimi]) lettori. Forse lo condivido solo per me stesso perché ho una pessima memoria selettiva, che però seleziona un po’ come gli pare. Il titolo originale è “The Asshole Test”, il mio è un po’ più colorito, ma non più di tanto.]]></summary></entry><entry><title type="html">FizzBuzz e l’ottimizzazione</title><link href="https://klez.me/2022/03/25/fizzbuzz-e-lottimizzazione/" rel="alternate" type="text/html" title="FizzBuzz e l’ottimizzazione" /><published>2022-03-25T20:57:13+01:00</published><updated>2022-03-25T20:57:13+01:00</updated><id>https://klez.me/2022/03/25/fizzbuzz-e-lottimizzazione</id><content type="html" xml:base="https://klez.me/2022/03/25/fizzbuzz-e-lottimizzazione/"><![CDATA[<p>Oggi vorrei parlarvi di un algoritmo.</p>
-    <p>Di norma un algoritmo talmente semplice da essere usato durante i colloqui per la valutazione della capacità <em>minima</em> di scrivere e leggere codice che comprenda il minimo indispensabile di logica, matematica e pensiero critico.</p>
-    <p>L’algoritmo consiste nell’implementare una funzione che dati i numeri da 1 a 100 faccia quanto segue:</p>
-    <ul>
-      <li>stampi la stringa “<em>Fizz</em>” quando il numero è un multiplo di 3</li>
-      <li>stampi la stringa “<em>Buzz</em>” quando il numero è un multiplo di 5</li>
-      <li>stampi la stringa “<em>FizzBuzz</em>” quando il numero è un multiplo di 3 o 5</li>
-      <li>stampi il numero quando non è un multiplo di 3 né di 5</li>
-    </ul>
-    <p>Semplice semplice. Ma allora perché ne parlo?</p>
+      <h2 id="antefatto">Antefatto</h2>
+      <p>Oggi dopo pranzo, incappando in un post su LinkedIn ho sentito la necessità morbosa di commentare. Il post è il seguente.</p>
+      <div class="row d-flex justify-content-center">
+        <p><img src="/media/2024-08-29/post_riginale.png" alt="Original-Post" class="img-fluid" /></p>
+      </div>
+      <p>Ecco. Ho diversi commenti su questo argomento, perché è chiaramente un argomento sensibile (non per me, in generale) e chiaramente è il post non ragionato di una persona sconnessa dalla realtà. Ed è per me non solo sbagliato ma <em>pericoloso</em>.</p>
+      <p>Eviterò di entrare nel merito delle ultime parole e del sondaggio in sé, sarebbe come sparare sulla croce rossa, e oltretutto non è l’argomento di questo post.</p>
+      <p>Spezzerò il post in due parti: la prima parte in cui commento la lotteria, i meccanismi fisio-psico-sociali che si verificano in questo contesto, e la seconda parte in cui commento la presunta opacità dello Stato sul tema e sul significato di monopolio, al di la dei temi filosofici.</p>
+      <p>Poi spiegherò in maniera più razionale e approfondita il mio commento, e il successivo messaggio privato con mia risposta annessa (dove per altro ho tentato di usare la mia ironia tagliente e la mia razionalità per spiegare in breve le mie motivazioni).</p>
+      <p>Ah, l’affermazione della persona in questione sulla privacy è la seguente, annotata da me con un paio di pensieri molesti che mi sono venuti in mente leggendo la risposta e che ho preferito tenere per me su LinkedIn, ma che qui sul mio blog, a casa mia, sento di poter esprimere.</p>
+      <div class="row d-flex justify-content-center">
+        <p><img src="/media/2024-08-29/dichiarazione_privacy.png" alt="Original-Post" class="img-fluid" /></p>
+      </div>
+      <blockquote>
+        <p><strong>Nota</strong>: questo commento non è rivolto a me, ma a qualcuno che stimo e che solitamente parla <em>anche</em> di privacy, nei canali su cui è presente online.</p>
+      </blockquote>
+      <h2 id="breakdown">Breakdown</h2>
+      <p>Partiamo dalla prima parte del post, l’incipit <em>odioso</em> che non tiene conto delle <strong>fragilità umane</strong> e delle reazioni <em>istintive</em>, <em>di pancia</em>, quelle che portano le persone in <strong>spirali tossiche</strong>.</p>
+      <p>Questo non riguarda solo la ludopatia, ovviamente, è <strong>parte degli esseri umani</strong>, di tutti gli esseri umani, perché non ce ne sono di forti e di deboli, di intelligenti e di stupidi, di quelli che “<em>a me o alla mia famiglia non capiterà mai</em>”.</p>
+      <blockquote>
+        <p>Si tratta solo di persone che attraversano periodi ed esperienze <em>particolari</em> (per usare un gentile eufemismo) che li portano ad adottare comportamenti autodistruttivi.</p>
+      </blockquote>
+      <h3 id="la-prima-parte">La prima parte</h3>
+      <div class="premonition citation">
+        <div class="fas fa-quote-left"></div>
+        <blockquote class="content blockquote">
+          <p>ho pensato ad una lotteria tra persone, dove uno dei partecipanti vince tutti i soldi della lotteria, senza intermediari.<br />
+            <em>niente ludopatia</em>, un semplice gioco ad utilità sociale.</p>
+          <footer class="blockquote-footer"><cite title="Persona su LinkedIn">Persona su LinkedIn</cite></footer>
+        </blockquote>
+      </div>
+      <p>Visto che il contesto umano l’ho già impostato, partirò col commentare questa affermazione in modo pragmatico e razionale.</p>
+      <p><strong>La Lotteria</strong>, qualunque lotteria, <strong>è già tra persone</strong>, nel senso che sono le persone a giocare e a contendersi, in una gara priva di competizione, il premio in denaro. Ma alla lotteria per la sua meccanica intrinseca serve un gestore centrale che prenda i soldi e distribuisca i biglietti, che gestisca il momento dell’estrazione in maniera pubblica e trasparente, dando a tutti i partecipanti la possibilità di assistere, e che elargisca la vincita al leggittimo estratto.</p>
+      <p><em>Diversamente da questo non è lotteria</em>. Non può esserlo perché manca l’accentratore dell’accumulo di capitale e manca la parte <em>ludica</em>, cioè il momento in cui si verifica l’estrazione del vincitore. L’intermediario, insomma, serve eccome. Ed è una falsità subdola e raccapricciantemente malvagia quella che definisce la propria lotteria come “<em>tra persone</em>”, in contrapposizione a chissà cosa poi. <em>Perché, la lotteria non è già tra persone?</em></p>
+      <p>Il ruolo dell’accentratore serve per fini pratici, ma anche per fini etici, come la correttezza e la fiducia che si deve instaurare tra l’accentratore e i giocatori. L’accentratore infatti è obbligato, soprattutto dalla natura diffidente dell’essere umano, a essere (o a mostrarsi quanto meno) <em>super partes</em>, trasparente e senza conflitto d’interessi, altrimenti viene meno la fiducia delle persone e il gioco non può materialmente avere luogo, per mancanza di giocatori (oltre al ricevere, <em>alla meglio</em>, accuse di truffa e riciclaggio).</p>
+      <p>C’è poi un aspetto giuridico fondamentale che invalida in ogni caso questo discorso: la lotteria, così come altri giochi a <em>rischio ludopatia</em>, è un <strong>monopolio di stato</strong>.<br />
+        E c’è un motivo molto importante per cui i giochi a rischio ludopatia sono monopolio, e per cui l’Italia ancora resiste alla pressione occidentale di legalizzare il gioco d’azzardo: l’Italia protegge i propri cittadini anche da sé stessi, e questo è nella nostra Carta Costituzionale.</p>
+      <div class="premonition citation">
+        <div class="fas fa-quote-left"></div>
+        <blockquote class="content blockquote" cite="https://www.senato.it/istituzione/la-costituzione/principi-fondamentali/articolo-3">
+          <p><strong>Articolo 3</strong></p>
+          <p>Tutti i cittadini hanno pari dignità sociale [cfr. XIV] e sono eguali davanti alla legge, senza distinzione di sesso [cfr. artt. 29 c. 2, 37 c. 1, 48 c. 1, 51 c. 1], di razza, di lingua [cfr. art. 6], di religione [cfr. artt. 8, 19], di opinioni politiche [cfr. art. 22], di condizioni personali e sociali.</p>
+          <p>E` compito della Repubblica rimuovere gli ostacoli di ordine economico e sociale, che, limitando di fatto la libertà e l’eguaglianza dei cittadini, impediscono il pieno sviluppo della persona umana e l’effettiva partecipazione di tutti i lavoratori all’organizzazione politica, economica e sociale del Paese.</p>
+          <footer class="blockquote-footer"><cite title="Costituzione Italiana"><a href="https://www.senato.it/istituzione/la-costituzione/principi-fondamentali/articolo-3">Costituzione Italiana</a></cite></footer>
+        </blockquote>
+      </div>
+      <p>Nell’articolo 3 la parte importante è la prima frase (“Tutti i cittadini hanno pari dignità sociale”) e la costituzione di un conseguente dovere repubblicano nel “rimuovere gli ostacoli di ordine economico e sociale” che “impediscono il pieno sviluppo della persona umana”.</p>
+      <p>Ecco, <em>l’ostacolo sociale</em> che lo stato <strong>rimuove</strong> è la ludopatia, impedendo che privati con un palese conflitto d’interessi e con la possibilità di gestire la propria attività in totale libertà possano utilizzare pratiche scorrette per sfruttare questo comportamento umano a scopo di lucro.</p>
+      <p>Sostanzialmente lo stato impedisce che persone con pochi scrupoli si arricchiscano sulle spalle di chi ha un problema e va aiutato piuttosto che spinto ancora più sul fondo. Questo vale anche per chi la ludopatia ancora non ce l’ha e viene protetto in modo preventivo dallo Stato (questo varrebbe anche per i vaccini, ma poi dovrei divagare troppo).</p>
+      <p>Inoltre, legato a questo principio fondamentale c’è questo articolo legato al <em>Titolo I: Rapporti civili</em>.</p>
+      <div class="premonition citation">
+        <div class="fas fa-quote-left"></div>
+        <blockquote class="content blockquote" cite="https://www.senato.it/istituzione/la-costituzione/parte-i/titolo-ii/articolo-32">
+          <p><strong>Articolo 32</strong></p>
+          <p>La Repubblica tutela la salute come fondamentale diritto dell’individuo e interesse della collettività, e garantisce cure gratuite agli indigenti.</p>
+          <p>Nessuno può essere obbligato a un determinato trattamento sanitario se non per disposizione di legge. La legge non può in nessun caso violare i limiti imposti dal rispetto della persona umana.</p>
+          <footer class="blockquote-footer"><cite title="Costituzione Italiana"><a href="https://www.senato.it/istituzione/la-costituzione/parte-i/titolo-ii/articolo-32">Costituzione Italiana</a></cite></footer>
+        </blockquote>
+      </div>
+      <p>In questo caso si specifica molto chiaramente che non solo lo stato si deve occupare di arginare proattivamente i rischi di ludopatia, ma deve anche occuparsi di curare i casi di ludopatia accertata, per il bene dell’individuo ma <em>anche</em> per l’interesse della collettività.</p>
+      <p>E per curare la ludopatia si deve innanzi tutto istituire delle regole che impediscano a soggetti ludopatici o a rischio di accedere ai giochi, cosa che un privato potrebbe non fare, se non a mezzo di leggi ad-hoc complesse da far rispettare. E la salute dei cittadini (anche quella mentale) non è scambiabile con la privatizzazione liberale spinta.</p>
+      <p>Questo mi porta a smontare anche l’altro pezzetto di frase finale del primo blocco: “<em>niente ludopatia</em>, un semplice gioco ad utilità sociale”. Un semplice gioco di utilità sociale un corno! Sarebbe estremamente complesso tutelare le persone per pochi individui, specialmente se poi questo venisse fatto su piattaforma informatica, li sarebbe virtualmente impossibile.</p>
+      <h3 id="la-seconda-parte">La seconda parte</h3>
+      <p>Bene, veniamo alla seconda parte del post, che ho comunque già parzialmente smontato.</p>
+      <div class="premonition citation">
+        <div class="fas fa-quote-left"></div>
+        <blockquote class="content blockquote">
+          <p>il monopolio di stato sui giochi prende i soldi e li riutilizza per altro, magari anche cose sociali, ma così facendo usa in maniera nascosta la ludopatia delle persone.</p>
+          <p>non mi piace.</p>
+          <footer class="blockquote-footer"><cite title="Persona su LinedIn">Persona su LinedIn</cite></footer>
+        </blockquote>
+      </div>
+      <p>Lo stato monopolizzando non sfrutta affatto la ludopatia, piuttosto tenta di arginarla trovando un compromesso che non sia il divieto (che viene prontamente ignorato dai cittadini, vedi “Cannabis Legale”) ma che non sia la liberalizzazione di una pratica così pericolosa per il cittadino che, ricordo, lo stato deve tutelare e curare.</p>
+      <p>Che poi prenda i soldi e li riutilizzi per altro, è una affermazione forte e pure molto faziosa.</p>
+      <p><em>Primum</em>, lo stato riutilizza i soldi provenienti dalla lotteria per mettere in piedi il sistema, che è piuttosto costoso; <em>Deinde</em>, se anche usasse i soldi per curare i ludopatici sarebbe denaro ben speso.</p>
+      <p>Detto questo, proprio per le normative riguardanti l’amministrazione trasparente, come ho fatto notare alla persona in questione, esiste sempre la possibilità di consultare i <a href="https://www.adm.gov.it/portale/amministrazione-trasparente-bilanci">bilanci</a> di <a href="https://www.adm.gov.it">ADM</a> (Agenzia per le Dogane e i Monopoli) o eventualmente di redigere e inviare a mezzo PEC un <a href="https://foia.gov.it/normativa/cose-il-foia">FOIA</a> (Freedom Of Information Act) per farsi spiegare nel dettaglio quali sono i proventi e come vengono utilizzati. E le amministrazioni tutte sono obbligate a rispondere ai FOIA in maniera esaustiva (anche se talvolta sono molto “<em>creativi</em>” quando non vogliono o non sanno rispondere).</p>
+      <p>Il bilancio preventivo e consuntivo per l’anno 2023 comunque mi pare più che sufficiente per soddisfare questa fantasia <em>pelosa</em> e smontare nettamente anche questo piccolo pezzo di affermazione faziosa.<br />
+        Lascio al lettore l’esercizio di soddisfare questa fantasia, qualora ci fosse.</p>
+      <h3 id="conclusione-del-breakdown-e-considerazioni-personali">Conclusione del breakdown e considerazioni personali</h3>
+      <p>Tutto questo che ho descritto qui, in cui mi sono dilungato in spiegazioni razionali e accurate nell’informazione (anche citando le fonti), serve solo a dare una base solida razionalmente.</p>
+      <p>Ma la mia opinione personale è più… “<em>agitata</em>”.</p>
+      <div class="premonition citation">
+        <div class="fas fa-quote-left"></div>
+        <blockquote class="content blockquote">
+          <p>Il fatto che si dia per assunte certe informazioni, non verificate, e che si sia così superficiali nel trattare una delle più grandi piaghe sociali di cui soffriamo come italiani (specialmente al sud, purtroppo) denota una ignoranza, una arroganza e una superficialità indegna di un essere umano che si dice senziente e in grado di esprimere opinioni (anche forti, mi piacciono le opinioni forti) in merito ai più disparati argomenti, anche sul piano sociale, personale, psicologico, filosofico.</p>
+          <p>È grave secondo me un comportamento di questo tipo, perché lascia deliberatamente che molte persone pure seppur ingenue abbocchino a questo tipo di affermazioni ed espone il fianco a chi, adducendo motivazioni convincenti, sfrutta questo tipo di aggregazioni sociali con il secondo fine di truffare qualcuno senza curarsi del male che compie.</p>
+          <p>Una affermazione del genere insomma costruisce il palcoscenico di chi potrebbe sfruttare per secondi fini persone fragili che hanno affidato la propria fiducia (nonché in certi casi anche i loro risparmi personali) a chi dovrebbe offrire, come scrive questa persona “un semplice gioco ad utilità sociale”.</p>
+          <p>Trovo ripugnante questo livello di superficialità e questo scarso rispetto della dignità umana, che è una delle cose che più dovrebbe interessarci come individui.</p>
+          <footer class="blockquote-footer"><cite title="kLeZ">kLeZ</cite></footer>
+        </blockquote>
+      </div>
+      <h2 id="la-mia-risposta-al-post">La mia risposta al post</h2>
+      <p>Oh, come promesso, ma senza commentarla, la mia risposta al post.</p>
+      <div class="row d-flex justify-content-center">
+        <p><img src="/media/2024-08-29/mia_risposta.png" alt="Original-Post" class="img-fluid" /></p>
+      </div>
+      <p>Non mi soffermo su questo commento, perché ritengo di aver ampiamente spiegato le mie opinioni e le mie motivazioni nel <em>breakdown</em>.</p>
+      <p>Anche perché non finisce qui. Questa dice di avermi segnalato per “molestie”. Per questo stesso commento che ho riportato. E me lo segnala tranquillamente per messaggio privato.</p>
+      <h2 id="i-messaggi-in-privato">I messaggi in privato</h2>
+      <p>L’ultima parte la butto li, c’è da poter riflettere dalle parole di entrambi.</p>
+      <div class="row d-flex justify-content-center">
+        <p><img src="/media/2024-08-29/messaggio_privato.png" alt="Original-Post" class="img-fluid" /></p>
+      </div>
+      <p>Io per mia parte, rifletto sul fatto che secondo questa persona sono stato “violento ed irrispettoso”.<br />
+        Forse avrò usato parole forti, ma ho scritto quella che è la constatazione della verità.</p>
+      <p>Ho scritto che non ha la più pallidea idea di quello che scrive; ho scritto che quello che quel post è stato una “imbecillità” e che denota una “superficialità disarmante”. Ho scritto anche che “l’ignoranza (la sua in particolare) è il peggiore di tutti i mali” ma che si cura studiando e informandosi.</p>
+      <p>Non mi pare nulla di violento o di irrispettoso, per quello che può valere la mia parola. Era piuttosto la constatazione, espressa in termini duri, della realtà che questa persona ha esposto al suo pubblico social.</p>
+      <p>La mia risposta è stata la seguente, ne vado abbastanza fiero. Notare l’ironia graffiante, il sarcasmo e l’acume usati.</p>
+      <div class="row d-flex justify-content-center">
+        <p><img src="/media/2024-08-29/mia_risposta_al_messaggio_privato.png" alt="Original-Post" class="img-fluid" /></p>
+      </div>
+      <h2 id="conclusione">Conclusione</h2>
+      <p>A questo, non ho da aggiungere niente. Solo le parole di un tizio a caso su internet che <em>ranta</em> un po’ su quello che gli capita davanti e riflette sulla stupidità umana, che purtroppo esiste, vive e prolifica tra noi.</p>
+      <p>Ed è per questo, che ho intitolato questo post “<em>La sostanza dell’intelligenza umana</em>”, che a mio avviso consiste nello studiare e nell’andare in profondità sugli argomenti. E nel riflettere prima di parlare, che sarebbe utile per moltissime persone, più di quante pensiamo.</p>
+      <p>Lascio una citazione di Abraham Lincoln:</p>
+      <div class="premonition citation">
+        <div class="fas fa-quote-left"></div>
+        <blockquote class="content blockquote" cite="https://le-citazioni.it/frasi/328770-abraham-lincoln-e-meglio-rimanere-in-silenzio-ed-essere-considerat/">
+          <p>È meglio rimanere in silenzio ed essere considerati imbecilli piuttosto che aprire bocca e togliere ogni dubbio.</p>
+          <footer class="blockquote-footer"><cite title="Abraham Lincoln"><a href="https://le-citazioni.it/frasi/328770-abraham-lincoln-e-meglio-rimanere-in-silenzio-ed-essere-considerat/">Abraham Lincoln</a></cite></footer>
+        </blockquote>
+      </div>
+      <p>Che descrive i miei pensieri e le mie azioni in presenza di questo tipo di affermazioni da bar.</p>
+      <p>Ad maiora!</p>
+      ]]></content><author><name>kLeZ</name></author><category term="riflessione" /><category term="rant" /><category term="senso della vita" /><category term="filosofia" /><summary type="html"><![CDATA[Certe volte capita di non poter fare a meno di essere cinici, di essere sinceri, di essere razionali ma allo stesso tempo intercettati da un turbine di emozioniforti che fanno scaturire un’urgenza di specificare, in chiaro, cosa va e cosa no (soprattutto cosa no) di una determinata affermazione o di un determinato comportamento. A livello umano, non è spesso bello quello che si dice, tanto meno lo è - spesso - il modo in cui si esprime la propria urgenza di spiegare a chiare lettere e senza mezzi termini o gentilezze di alcun tipo cosa non va. Vorrei oggi, com un ritorno che si attendeva da anni, spiegare con un recentissimo aneddoto quello che intendo, le mie necessità e le mie posizioni in merito. Non farò nomi e cognomi (anche nelle screenshot), anche se la persona della quale vado a parlare ha affermato distintamente di non avere affatto l’interesse alla privacy, anzi è profondamente contro questo che per me appare un diritto fondamentale dell’essere umano. Il diritto a chiudere la porta quando si fa la cacca, per dirla in termini spiccioli. E io, che invece credo fermamente nel diritto inalienabile alla privacy, proteggerò la sua.]]></summary></entry><entry><title type="html">Trova lo st***zo! The IBM Way!</title><link href="https://klez.me/2022/05/05/trova-lo-stzo-the-ibm-way/" rel="alternate" type="text/html" title="Trova lo st***zo! The IBM Way!" /><published>2022-05-05T12:00:50+02:00</published><updated>2022-05-05T12:00:50+02:00</updated><id>https://klez.me/2022/05/05/trova-lo-stzo-the-ibm-way</id><content type="html" xml:base="https://klez.me/2022/05/05/trova-lo-stzo-the-ibm-way/"><![CDATA[<p>Oggi leggevo un brevissimo articolo, che però ci tengo a condividere con i miei (pochi[ssimi]) lettori. Forse lo condivido solo per me stesso perché ho una pessima memoria selettiva, che però seleziona un po’ come gli pare.</p>
+    <p>Il titolo originale è “The Asshole Test”, il mio è un po’ più colorito, ma non più di tanto.</p>
     <!--more-->
     <p class="m-0 invisible zero-size">
       <a class="invisible" id="read-more" href="#">read more</a>
     </p>
-    <p>Ne parlo perché da un occhio esperto permette di valutare la lentezza <em>matematica</em> di un operatore in particolare, il modulo.</p>
-    <p>E quindi mi permette di parlare di ottimizzazioni di basso livello.</p>
-    <h2 id="limplementazione-scolastica">L’implementazione scolastica</h2>
-    <p>A livello di studio, si usa il modulo per questo tipo di problema. Il listato che segue è l’implementazione completa.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <p>Un dipendente IBM ha voluto condividere <a href="https://johnpublic.mataroa.blog/blog/the-asshole-test/">questo</a> articolo col mondo in cui racconta il test che gli è stato somministrato in fase di assunzione anni addietro.</p>
+    <p>Il test consiste nel seguente schema.</p>
+    <p>Un gruppo di circa 8 persone viene portato in una stanza e gli viene chiesto di risolvere un <em>puzzle</em> insieme.</p>
+    <p>A ogni partecipante vengono fornite delle informazioni, nella stanza c’è una lavagna bianca e un timer che conta alla rovescia 60 minuti.</p>
+    <p>Nella sua esperienza, <em>John</em> (pseudonimo inventato per poter esprimere liberamente le proprie opinioni senza che queste siano legate al suo datore di lavoro) racconta che inizialmente c’è stato silenzio, poi qualcuno ha iniziato a prendere la parola per tentare di raccogliere le informazioni di tutti per cercare di metterle a fattor comune.</p>
+    <p>Qualcuno “conquista” la lavagna e prende un pennarello, attendendo qualcosa da scrivere, autoproclamandosi <em>leader</em>. Le informazioni però sono confuse, quindi c’è poco da scrivere.</p>
+    <p>Questa scena di autoproclamazione si ripete quando qualcun altro interrompe un collega che stava tentando di leggere ad alta voce le informazioni in suo possesso per condividerle con il gruppo.</p>
+    <p>Alla fine l’ora finisce e e il puzzle non è stato risolto, <em>neanche lontanamente</em>.</p>
+    <p>Confusi e spompati escono tutti dalla stanza per passare al prossimo test.</p>
+    <p>Alla fine del giorno il gruppo è diviso in due stanze e il nostro Johnny, come potrete immaginare, è nel gruppo di “quelli bravi”, quelli che sono passati.</p>
+    <p>Sei mesi dopo affianca un collega che sta gestendo il medesimo test per un altro gruppo di candidati. La domanda più ovvia per John è sapere se c’è mai stato qualcuno che ha risolto il puzzle.</p>
+    <p>La risposta è spiazzante: “Oh, non è quello lo scopo, questo è un test antist<strong><em>zi. Ti permette di vedere chi fa lo st</em></strong>zo sotto pressione, e quelli non passano al round successivo.</p>
+    <h2 id="conclusioni">Conclusioni</h2>
+    <p>Devo dire che un po’ ha spiazzato anche me, però il titolo era abbastanza esplicativo per permettermi di capire a grandi linee dove voleva arrivare, del resto l’articolo si legge in neanche un minuto, quindi forse ci sto anche ragionando troppo :P</p>
+    <p>A me un test del genere sarebbe veramente piaciuto implementarlo nella mia azienda, e penso che io l’avrei passato, ma ci vorrebbe un grosso lavoro di introspezione per esserne sicuri o altrimenti bisognerebbe… fare il test!</p>
+    <p>Voi che ne pensate? Passereste il test?</p>
+    ]]></content><author><name>kLeZ</name></author><summary type="html"><![CDATA[Oggi leggevo un brevissimo articolo, che però ci tengo a condividere con i miei (pochi[ssimi]) lettori. Forse lo condivido solo per me stesso perché ho una pessima memoria selettiva, che però seleziona un po’ come gli pare. Il titolo originale è “The Asshole Test”, il mio è un po’ più colorito, ma non più di tanto.]]></summary></entry><entry><title type="html">FizzBuzz e l’ottimizzazione</title><link href="https://klez.me/2022/03/25/fizzbuzz-e-lottimizzazione/" rel="alternate" type="text/html" title="FizzBuzz e l’ottimizzazione" /><published>2022-03-25T20:57:13+01:00</published><updated>2022-03-25T20:57:13+01:00</updated><id>https://klez.me/2022/03/25/fizzbuzz-e-lottimizzazione</id><content type="html" xml:base="https://klez.me/2022/03/25/fizzbuzz-e-lottimizzazione/"><![CDATA[<p>Oggi vorrei parlarvi di un algoritmo.</p>
+  <p>Di norma un algoritmo talmente semplice da essere usato durante i colloqui per la valutazione della capacità <em>minima</em> di scrivere e leggere codice che comprenda il minimo indispensabile di logica, matematica e pensiero critico.</p>
+  <p>L’algoritmo consiste nell’implementare una funzione che dati i numeri da 1 a 100 faccia quanto segue:</p>
+  <ul>
+    <li>stampi la stringa “<em>Fizz</em>” quando il numero è un multiplo di 3</li>
+    <li>stampi la stringa “<em>Buzz</em>” quando il numero è un multiplo di 5</li>
+    <li>stampi la stringa “<em>FizzBuzz</em>” quando il numero è un multiplo di 3 o 5</li>
+    <li>stampi il numero quando non è un multiplo di 3 né di 5</li>
+  </ul>
+  <p>Semplice semplice. Ma allora perché ne parlo?</p>
+  <!--more-->
+  <p class="m-0 invisible zero-size">
+    <a class="invisible" id="read-more" href="#">read more</a>
+  </p>
+  <p>Ne parlo perché da un occhio esperto permette di valutare la lentezza <em>matematica</em> di un operatore in particolare, il modulo.</p>
+  <p>E quindi mi permette di parlare di ottimizzazioni di basso livello.</p>
+  <h2 id="limplementazione-scolastica">L’implementazione scolastica</h2>
+  <p>A livello di studio, si usa il modulo per questo tipo di problema. Il listato che segue è l’implementazione completa.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
 	<span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">15</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
 		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"FizzBuzz"</span><span class="o">);</span>
 	<span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
@@ -52,102 +184,102 @@
 	<span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <p>Questa è l’implementazione, banale un ciclo e 4 if con delle operazioni di modulo. Ma il modulo è un’operazione lenta.</p>
-    <p>Come descritto <a href="https://cs.stackexchange.com/questions/12931/complexity-of-taking-mod">qui</a> e <a href="https://en.wikipedia.org/wiki/Computational_complexity_of_mathematical_operations">qui</a>, siamo di fronte a una complessità di <code class="language-plaintext highlighter-rouge">O(M(n))</code> che è veramente parecchio. Mi sono chiesto se fosse possibile ottimizzare.</p>
-    <p>ho messo quindi in piedi un programma, che ho raffinato in varie iterazioni, che potete vedere a questo <a href="https://gist.github.com/kLeZ/c1b3b387521747bd732c32a5834146b7">GIST</a>.</p>
-    <p>Di seguito vi commento la versione finale.</p>
-    <h2 id="le-righe-di-boilerplate">Le righe di boilerplate</h2>
-    <p>C’è molto boilerplate in questo codice, materialmente perché volevo quantificare le differenze di approccio in dei benchmark, a partire dalla stessa jvm.</p>
-    <p>Di conseguenza ho costruito dei runnable con i quattro metodi che ho implementato per calcolare il fizzbuzz e intorno c’è tutta un’impalcatura di misurazione delle prestazioni di elaborazione dell’algoritmo.</p>
-    <p>Ho fatto tutto <em>in casa</em> perché volevo azzerare le dipendenze.</p>
-    <p>Di fatto questo codice gira senza dipendenze sulla jvm, è autocontenuto, proprio per permettere anche ad altri di farlo girare facilmente, scambiando solo il file col codice.</p>
-    <p>Qui spiego, pezzo per pezzo tutto il codice, partendo dalle costanti in cima.</p>
-    <h2 id="le-costanti">Le costanti</h2>
-    <p>Questa costante rappresenta lo “standard” output, per avere comunque l’output degli algoritmi evitando però le scritture dirette su console, che risultano lente.</p>
-    <p>L’ho fatto per velocizzare le computazioni, visto che alla fine questo codice verrà eseguito 1M di volte.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">StringBuilder</span> <span class="no">OUT</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+  </div>
+  <p>Questa è l’implementazione, banale un ciclo e 4 if con delle operazioni di modulo. Ma il modulo è un’operazione lenta.</p>
+  <p>Come descritto <a href="https://cs.stackexchange.com/questions/12931/complexity-of-taking-mod">qui</a> e <a href="https://en.wikipedia.org/wiki/Computational_complexity_of_mathematical_operations">qui</a>, siamo di fronte a una complessità di <code class="language-plaintext highlighter-rouge">O(M(n))</code> che è veramente parecchio. Mi sono chiesto se fosse possibile ottimizzare.</p>
+  <p>ho messo quindi in piedi un programma, che ho raffinato in varie iterazioni, che potete vedere a questo <a href="https://gist.github.com/kLeZ/c1b3b387521747bd732c32a5834146b7">GIST</a>.</p>
+  <p>Di seguito vi commento la versione finale.</p>
+  <h2 id="le-righe-di-boilerplate">Le righe di boilerplate</h2>
+  <p>C’è molto boilerplate in questo codice, materialmente perché volevo quantificare le differenze di approccio in dei benchmark, a partire dalla stessa jvm.</p>
+  <p>Di conseguenza ho costruito dei runnable con i quattro metodi che ho implementato per calcolare il fizzbuzz e intorno c’è tutta un’impalcatura di misurazione delle prestazioni di elaborazione dell’algoritmo.</p>
+  <p>Ho fatto tutto <em>in casa</em> perché volevo azzerare le dipendenze.</p>
+  <p>Di fatto questo codice gira senza dipendenze sulla jvm, è autocontenuto, proprio per permettere anche ad altri di farlo girare facilmente, scambiando solo il file col codice.</p>
+  <p>Qui spiego, pezzo per pezzo tutto il codice, partendo dalle costanti in cima.</p>
+  <h2 id="le-costanti">Le costanti</h2>
+  <p>Questa costante rappresenta lo “standard” output, per avere comunque l’output degli algoritmi evitando però le scritture dirette su console, che risultano lente.</p>
+  <p>L’ho fatto per velocizzare le computazioni, visto che alla fine questo codice verrà eseguito 1M di volte.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">StringBuilder</span> <span class="no">OUT</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
 </code></pre>
-      </div>
     </div>
-    <p>Costanti che controllano cosa e quando stampare sull’output.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="no">PRINT_AT_LAST</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+  </div>
+  <p>Costanti che controllano cosa e quando stampare sull’output.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="no">PRINT_AT_LAST</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
 	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="no">PRINT_FIZZ_BUZZ</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
 </code></pre>
-      </div>
     </div>
-    <p>Le famigerate costanti FizzBuzz, solo perché a un certo punto sono stato curioso di cambiare questi valori in modo coerente per sperimentare come si sarebbe comportato l’algoritmo. Del resto il compilatore queste costanti le riscrive <em>inline</em> quindi è una fatica in più che ho fatto, ma solo per amore della scienza e della sperimentazione!</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">FIZZ</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+  </div>
+  <p>Le famigerate costanti FizzBuzz, solo perché a un certo punto sono stato curioso di cambiare questi valori in modo coerente per sperimentare come si sarebbe comportato l’algoritmo. Del resto il compilatore queste costanti le riscrive <em>inline</em> quindi è una fatica in più che ho fatto, ma solo per amore della scienza e della sperimentazione!</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">FIZZ</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
 	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">BUZZ</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
 	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">FIZZ_BUZZ</span> <span class="o">=</span> <span class="mi">15</span><span class="o">;</span>
 </code></pre>
-      </div>
     </div>
-    <p>Queste due costanti rappresentano il numero di iterazioni per l’algoritmo FizzBuzz (cioè i numeri da valutare per stampare Fizz, Buzz oppure FizzBuzz).</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MIN_FIZZ_BUZZ</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+  </div>
+  <p>Queste due costanti rappresentano il numero di iterazioni per l’algoritmo FizzBuzz (cioè i numeri da valutare per stampare Fizz, Buzz oppure FizzBuzz).</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MIN_FIZZ_BUZZ</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
 	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MAX_FIZZ_BUZZ</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
 </code></pre>
-      </div>
     </div>
-    <p>Poco da dire. Queste sono le costanti che stampo “<em>a schermo</em>”.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">FIZZ_STRING</span> <span class="o">=</span> <span class="s">"Fizz"</span><span class="o">;</span>
+  </div>
+  <p>Poco da dire. Queste sono le costanti che stampo “<em>a schermo</em>”.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">FIZZ_STRING</span> <span class="o">=</span> <span class="s">"Fizz"</span><span class="o">;</span>
 	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">BUZZ_STRING</span> <span class="o">=</span> <span class="s">"Buzz"</span><span class="o">;</span>
 	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">FIZZ_BUZZ_STRING</span> <span class="o">=</span> <span class="s">"FizzBuzz"</span><span class="o">;</span>
 </code></pre>
-      </div>
     </div>
-    <p>Questa costante invece rappresenta il numero di esecuzioni per ogni algoritmo.</p>
-    <p>Si tratta di un numero molto alto proprio perché vogliamo tagliare i picchi statistici e vogliamo oltrepassare anche il tema dell’ottimizzazione del bytecode effettuata dalla JVM sul nostro codice. In statistica e nel benchmarking, più volte si effettua il test di esecuzione con registrazione dei tempi e più ci si avvicina alle reali prestazioni dell’algoritmo. Un milione di iterazioni mi sono sembrate “<em>abbastanza</em>”.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">ITERATIONS</span> <span class="o">=</span> <span class="mi">1_000_000</span><span class="o">;</span>
+  </div>
+  <p>Questa costante invece rappresenta il numero di esecuzioni per ogni algoritmo.</p>
+  <p>Si tratta di un numero molto alto proprio perché vogliamo tagliare i picchi statistici e vogliamo oltrepassare anche il tema dell’ottimizzazione del bytecode effettuata dalla JVM sul nostro codice. In statistica e nel benchmarking, più volte si effettua il test di esecuzione con registrazione dei tempi e più ci si avvicina alle reali prestazioni dell’algoritmo. Un milione di iterazioni mi sono sembrate “<em>abbastanza</em>”.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">ITERATIONS</span> <span class="o">=</span> <span class="mi">1_000_000</span><span class="o">;</span>
 </code></pre>
-      </div>
     </div>
-    <h2 id="il-main">Il main</h2>
-    <p>Stampo la versione.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">version</span><span class="o">());</span>
+  </div>
+  <h2 id="il-main">Il main</h2>
+  <p>Stampo la versione.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">version</span><span class="o">());</span>
 </code></pre>
-      </div>
     </div>
-    <p>Salvo l’istante in cui il programma “parte”.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>		<span class="kd">final</span> <span class="kt">long</span> <span class="n">startProgram</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">nanoTime</span><span class="o">();</span>
+  </div>
+  <p>Salvo l’istante in cui il programma “parte”.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>		<span class="kd">final</span> <span class="kt">long</span> <span class="n">startProgram</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">nanoTime</span><span class="o">();</span>
 </code></pre>
-      </div>
     </div>
-    <p>Creo una mappa con tutti e quattro i metodi. Questa mappa verrà usata nelle 1M di iterazioni.</p>
-    <p>Mi creo una mappa per avere vita facile nell’iterazione, è una tecnica che ho spesso usato e che mi piace parecchio, ovviamente non è l’unica tecnica per facilitare il lavoro di iterazione dinamica, ma a me piace e funziona bene.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>		<span class="kd">final</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Runnable</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">&gt;&gt;</span> <span class="n">waysTimes</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+  </div>
+  <p>Creo una mappa con tutti e quattro i metodi. Questa mappa verrà usata nelle 1M di iterazioni.</p>
+  <p>Mi creo una mappa per avere vita facile nell’iterazione, è una tecnica che ho spesso usato e che mi piace parecchio, ovviamente non è l’unica tecnica per facilitare il lavoro di iterazione dinamica, ma a me piace e funziona bene.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>		<span class="kd">final</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Runnable</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">&gt;&gt;</span> <span class="n">waysTimes</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
 		<span class="n">waysTimes</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="nl">Scratch:</span><span class="o">:</span><span class="n">way1</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;());</span>
 		<span class="n">waysTimes</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="nl">Scratch:</span><span class="o">:</span><span class="n">way2</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;());</span>
 		<span class="n">waysTimes</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="nl">Scratch:</span><span class="o">:</span><span class="n">way3</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;());</span>
 		<span class="n">waysTimes</span><span class="o">.</span><span class="na">put</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="nc">Scratch</span><span class="o">.</span><span class="na">way4</span><span class="o">(</span><span class="no">MIN_FIZZ_BUZZ</span><span class="o">,</span> <span class="no">MAX_FIZZ_BUZZ</span><span class="o">),</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;());</span>
 </code></pre>
-      </div>
     </div>
-    <h2 id="literazione">L’iterazione</h2>
-    <p>L’iterazione funziona così: per un milione di volte, per ogni implementazione, salva l’istante di partenza, esegui l’algoritmo, salva in una lista la differenza tra istanti di tempo, cioè il tempo trascorso <em>durante</em> il <code class="language-plaintext highlighter-rouge">.run()</code>.</p>
-    <p>Alla fine dell’esecuzione di ognuna delle implementazioni, se non è il caso di stampare l’output di FizzBuzz (praticamente solo per motivi di debug)</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="no">ITERATIONS</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+  </div>
+  <h2 id="literazione">L’iterazione</h2>
+  <p>L’iterazione funziona così: per un milione di volte, per ogni implementazione, salva l’istante di partenza, esegui l’algoritmo, salva in una lista la differenza tra istanti di tempo, cioè il tempo trascorso <em>durante</em> il <code class="language-plaintext highlighter-rouge">.run()</code>.</p>
+  <p>Alla fine dell’esecuzione di ognuna delle implementazioni, se non è il caso di stampare l’output di FizzBuzz (praticamente solo per motivi di debug)</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="no">ITERATIONS</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
 			<span class="k">for</span> <span class="o">(</span><span class="nc">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="nc">Runnable</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">&gt;&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">waysTimes</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
 				<span class="kd">final</span> <span class="kt">long</span> <span class="n">start</span><span class="o">;</span>
 				<span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">nanoTime</span><span class="o">();</span>
@@ -158,35 +290,35 @@
 				<span class="no">OUT</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="no">OUT</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
 		<span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <h2 id="il-calcolo-dei-risultati-del-benchmark">Il calcolo dei risultati del benchmark</h2>
-    <p>Di seguito le istruzioni che collezionano le statistiche dei tempi di esecuzione delle varie esecuzioni degli algoritmi.</p>
-    <p>Quello che faccio materialmente è collezionare degli oggetti <code class="language-plaintext highlighter-rouge">LongSummaryStatistics</code>, uno per ogni algoritmo eseguito.</p>
-    <p>Questo è possibile perché per ogni iterazione vado a salvare la durata dell’esecuzione in una lista per ogni implementazione (<code class="language-plaintext highlighter-rouge">entry.getValue().add(System.nanoTime() - start)</code>).</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>		<span class="kd">final</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">LongSummaryStatistics</span><span class="o">&gt;</span> <span class="n">statistics</span> <span class="o">=</span> <span class="n">waysTimes</span><span class="o">.</span><span class="na">values</span><span class="o">()</span>
+  </div>
+  <h2 id="il-calcolo-dei-risultati-del-benchmark">Il calcolo dei risultati del benchmark</h2>
+  <p>Di seguito le istruzioni che collezionano le statistiche dei tempi di esecuzione delle varie esecuzioni degli algoritmi.</p>
+  <p>Quello che faccio materialmente è collezionare degli oggetti <code class="language-plaintext highlighter-rouge">LongSummaryStatistics</code>, uno per ogni algoritmo eseguito.</p>
+  <p>Questo è possibile perché per ogni iterazione vado a salvare la durata dell’esecuzione in una lista per ogni implementazione (<code class="language-plaintext highlighter-rouge">entry.getValue().add(System.nanoTime() - start)</code>).</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>		<span class="kd">final</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">LongSummaryStatistics</span><span class="o">&gt;</span> <span class="n">statistics</span> <span class="o">=</span> <span class="n">waysTimes</span><span class="o">.</span><span class="na">values</span><span class="o">()</span>
 				<span class="o">.</span><span class="na">stream</span><span class="o">()</span>
 				<span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">l</span> <span class="o">-&gt;</span> <span class="n">l</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="nl">LongSummaryStatistics:</span><span class="o">:</span><span class="k">new</span><span class="o">,</span> <span class="nl">LongSummaryStatistics:</span><span class="o">:</span><span class="n">accept</span><span class="o">,</span> <span class="nl">LongSummaryStatistics:</span><span class="o">:</span><span class="n">combine</span><span class="o">))</span>
 				<span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
 </code></pre>
-      </div>
     </div>
-    <p>Qui il calcolo del minimo dei tempi mediani di tutte le statistiche. Questa informazione indica quale è la durata minima tra tutti i tempi medi (quindi all’interno della media ponderata). Praticamente l’esecuzione più performante.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>		<span class="kd">final</span> <span class="kt">double</span> <span class="n">minOfAvgs</span> <span class="o">=</span> <span class="n">statistics</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+  </div>
+  <p>Qui il calcolo del minimo dei tempi mediani di tutte le statistiche. Questa informazione indica quale è la durata minima tra tutti i tempi medi (quindi all’interno della media ponderata). Praticamente l’esecuzione più performante.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>		<span class="kd">final</span> <span class="kt">double</span> <span class="n">minOfAvgs</span> <span class="o">=</span> <span class="n">statistics</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
 				<span class="o">.</span><span class="na">mapToDouble</span><span class="o">(</span><span class="nl">LongSummaryStatistics:</span><span class="o">:</span><span class="n">getAverage</span><span class="o">)</span>
 				<span class="o">.</span><span class="na">min</span><span class="o">()</span>
 				<span class="o">.</span><span class="na">orElse</span><span class="o">(</span><span class="mi">0</span><span class="no">D</span><span class="o">);</span>
 </code></pre>
-      </div>
     </div>
-    <p>A questo punto mi vado a cercare quale implementazione ha totalizzato il risultato migliore, cioè il minimo dei mediani calcolato prima.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>		<span class="nc">String</span> <span class="n">minOfAvgsName</span> <span class="o">=</span> <span class="s">"Ukn"</span><span class="o">;</span>
+  </div>
+  <p>A questo punto mi vado a cercare quale implementazione ha totalizzato il risultato migliore, cioè il minimo dei mediani calcolato prima.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>		<span class="nc">String</span> <span class="n">minOfAvgsName</span> <span class="o">=</span> <span class="s">"Ukn"</span><span class="o">;</span>
 		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">statistics</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
 			<span class="kd">final</span> <span class="nc">LongSummaryStatistics</span> <span class="n">statistic</span> <span class="o">=</span> <span class="n">statistics</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">k</span><span class="o">);</span>
 			<span class="kd">final</span> <span class="kt">double</span> <span class="n">average</span> <span class="o">=</span> <span class="n">statistic</span><span class="o">.</span><span class="na">getAverage</span><span class="o">();</span>
@@ -197,12 +329,12 @@
 		<span class="o">}</span>
 		<span class="n">println</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">lineSeparator</span><span class="o">());</span>
 </code></pre>
-      </div>
     </div>
-    <p>Infine, stampo tutti i tempi e le statistiche.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">statistics</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
+  </div>
+  <p>Infine, stampo tutti i tempi e le statistiche.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">statistics</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
 			<span class="kd">final</span> <span class="nc">LongSummaryStatistics</span> <span class="n">statistic</span> <span class="o">=</span> <span class="n">statistics</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">k</span><span class="o">);</span>
 			<span class="kd">final</span> <span class="kt">double</span> <span class="n">average</span> <span class="o">=</span> <span class="n">statistic</span><span class="o">.</span><span class="na">getAverage</span><span class="o">();</span>
 			<span class="n">printf</span><span class="o">(</span><span class="s">"Way%d had an avg of %f ns%n"</span><span class="o">,</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">average</span><span class="o">);</span>
@@ -211,13 +343,13 @@
 		<span class="n">printf</span><span class="o">(</span><span class="s">"Program ran for %f ms%n"</span><span class="o">,</span> <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">nanoTime</span><span class="o">()</span> <span class="o">-</span> <span class="n">startProgram</span><span class="o">)</span> <span class="o">/</span> <span class="mi">1000_000</span><span class="no">D</span><span class="o">);</span>
 		<span class="n">flush</span><span class="o">();</span>
 </code></pre>
-      </div>
     </div>
-    <h2 id="le-funzioni-di-appoggio-che-sono-tante">Le funzioni di appoggio (che sono tante)</h2>
-    <p>Queste funzioni sono solo di appoggio all’esecuzione, ma sono fondamentali per avere un minimo di leggibilità nel codice principale.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">flush</span><span class="o">()</span> <span class="o">{</span>
+  </div>
+  <h2 id="le-funzioni-di-appoggio-che-sono-tante">Le funzioni di appoggio (che sono tante)</h2>
+  <p>Queste funzioni sono solo di appoggio all’esecuzione, ma sono fondamentali per avere un minimo di leggibilità nel codice principale.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">flush</span><span class="o">()</span> <span class="o">{</span>
 		<span class="k">if</span> <span class="o">(</span><span class="no">PRINT_AT_LAST</span><span class="o">)</span>
 			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="no">OUT</span><span class="o">);</span>
 		<span class="no">OUT</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="no">OUT</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
@@ -260,16 +392,16 @@
 			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
 	<span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <h2 id="gli-algoritmi">Gli algoritmi</h2>
-    <p>Gli algoritmi devono seguire la logica dell’algoritmo FizzBuzz.</p>
-    <p>L’algoritmo specifica che, dato un insieme di numeri, per ogni numero se questo è multiplo di 3 stampa <strong>Fizz</strong>, se invece è multiplo di 5 stampa <strong>Buzz</strong>, se è multiplo di 3 o 5 (quindi se è multiplo del minimo comune multiplo di 3 e 5 che è 15) stampo <strong>FizzBuzz</strong>, altrimenti stampa il numero.</p>
-    <h2 id="prima-implementazione">Prima implementazione</h2>
-    <p>La prima implementazione è quella <em>scolastica</em>.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">way1</span><span class="o">()</span> <span class="o">{</span>
+  </div>
+  <h2 id="gli-algoritmi">Gli algoritmi</h2>
+  <p>Gli algoritmi devono seguire la logica dell’algoritmo FizzBuzz.</p>
+  <p>L’algoritmo specifica che, dato un insieme di numeri, per ogni numero se questo è multiplo di 3 stampa <strong>Fizz</strong>, se invece è multiplo di 5 stampa <strong>Buzz</strong>, se è multiplo di 3 o 5 (quindi se è multiplo del minimo comune multiplo di 3 e 5 che è 15) stampo <strong>FizzBuzz</strong>, altrimenti stampa il numero.</p>
+  <h2 id="prima-implementazione">Prima implementazione</h2>
+  <p>La prima implementazione è quella <em>scolastica</em>.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">way1</span><span class="o">()</span> <span class="o">{</span>
 		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="no">MIN_FIZZ_BUZZ</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="no">MAX_FIZZ_BUZZ</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
 			<span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="no">FIZZ_BUZZ</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
 				<span class="n">println</span><span class="o">(</span><span class="no">FIZZ_BUZZ_STRING</span><span class="o">);</span>
@@ -283,16 +415,16 @@
 		<span class="o">}</span>
 	<span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <h2 id="seconda-implementazione">Seconda implementazione</h2>
-    <p>Nella seconda implementazione faccio una considerazione: è possibile escludere il terzo ramo del condizionale?</p>
-    <p>Si, semplicemente stampando Fizz per multipli di 3 e Buzz per multipli di 5 senza andare a capo.</p>
-    <p>Di conseguenza per multipli di 3 o 5 (quindi del m.c.m. 15), alla fine ho stampato sia fizz che buzz.</p>
-    <p>Per andare a capo, oppure per stampare il numero e completare il requisito mi appoggio a una variabile booleana per sapere se ho stampato qualcosa. Se questo è successo semplicemente vado a capo, altrimenti stampo il numero. Stesso risultato, ma con un ramo condizionale in meno e quindi plausibilmente con un calcolo in meno.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">way2</span><span class="o">()</span> <span class="o">{</span>
+  </div>
+  <h2 id="seconda-implementazione">Seconda implementazione</h2>
+  <p>Nella seconda implementazione faccio una considerazione: è possibile escludere il terzo ramo del condizionale?</p>
+  <p>Si, semplicemente stampando Fizz per multipli di 3 e Buzz per multipli di 5 senza andare a capo.</p>
+  <p>Di conseguenza per multipli di 3 o 5 (quindi del m.c.m. 15), alla fine ho stampato sia fizz che buzz.</p>
+  <p>Per andare a capo, oppure per stampare il numero e completare il requisito mi appoggio a una variabile booleana per sapere se ho stampato qualcosa. Se questo è successo semplicemente vado a capo, altrimenti stampo il numero. Stesso risultato, ma con un ramo condizionale in meno e quindi plausibilmente con un calcolo in meno.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">way2</span><span class="o">()</span> <span class="o">{</span>
 		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="no">MIN_FIZZ_BUZZ</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="no">MAX_FIZZ_BUZZ</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
 			<span class="kt">boolean</span> <span class="n">status</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
 			<span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="no">FIZZ</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
@@ -311,21 +443,21 @@
 		<span class="o">}</span>
 	<span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <h2 id="terza-implementazione">Terza implementazione</h2>
-    <p>In questa implementazione mi faccio venire ancora un altro dubbio. <em>E se l’operazione di modulo fosse più lenta di un incremento?</em></p>
-    <p>Del resto i calcolatori sono ottimizzati per calcolare addizioni, utilizzando delle istruzioni macchina come <code class="language-plaintext highlighter-rouge">ADD RAX, RBX</code> dove si aggiunge il valore contenuto nel registro <code class="language-plaintext highlighter-rouge">RBX</code> al numero (contatore) presente in <code class="language-plaintext highlighter-rouge">RAX</code>.</p>
-    <p>Il modulo è un’operazione di divisione che ritorna il resto intero della divisione, che è particolarmente onerosa per i calcolatori, anche più moderni. Ma questa è un’altra storia che parla di Assembly e architetture dei calcolatori (Grazie Torlone!).</p>
-    <p>Di conseguenza riscrivo l’algoritmo per evitare l’uso dell’operazione di modulo, usando piuttosto dei contatori che posso <em>resettare</em> una volta arrivati al risultato.</p>
-    <p>Quindi l’algoritmo di fatto recita questo:</p>
-    <p>Per ogni iterazione incremento i contatori <code class="language-plaintext highlighter-rouge">temp3</code> e <code class="language-plaintext highlighter-rouge">temp5</code>, a prescindere.</p>
-    <p>Poi controllo se <code class="language-plaintext highlighter-rouge">temp3</code> è uguale a 3: se lo è stampo <strong>Fizz</strong> e resetto il contatore a 0.</p>
-    <p>Poi controllo se <code class="language-plaintext highlighter-rouge">temp5</code> è uguale a 5: se lo è stampo <strong>Buzz</strong> e resetto il contatore a 0.</p>
-    <p>Il resto del meccanismo è lo stesso della seconda implementazione, uso un booleano per capire se devo andare a capo o stampare il numero corrente. In questo modo gestisco anche il caso <strong>FizzBuzz</strong>.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">way3</span><span class="o">()</span> <span class="o">{</span>
+  </div>
+  <h2 id="terza-implementazione">Terza implementazione</h2>
+  <p>In questa implementazione mi faccio venire ancora un altro dubbio. <em>E se l’operazione di modulo fosse più lenta di un incremento?</em></p>
+  <p>Del resto i calcolatori sono ottimizzati per calcolare addizioni, utilizzando delle istruzioni macchina come <code class="language-plaintext highlighter-rouge">ADD RAX, RBX</code> dove si aggiunge il valore contenuto nel registro <code class="language-plaintext highlighter-rouge">RBX</code> al numero (contatore) presente in <code class="language-plaintext highlighter-rouge">RAX</code>.</p>
+  <p>Il modulo è un’operazione di divisione che ritorna il resto intero della divisione, che è particolarmente onerosa per i calcolatori, anche più moderni. Ma questa è un’altra storia che parla di Assembly e architetture dei calcolatori (Grazie Torlone!).</p>
+  <p>Di conseguenza riscrivo l’algoritmo per evitare l’uso dell’operazione di modulo, usando piuttosto dei contatori che posso <em>resettare</em> una volta arrivati al risultato.</p>
+  <p>Quindi l’algoritmo di fatto recita questo:</p>
+  <p>Per ogni iterazione incremento i contatori <code class="language-plaintext highlighter-rouge">temp3</code> e <code class="language-plaintext highlighter-rouge">temp5</code>, a prescindere.</p>
+  <p>Poi controllo se <code class="language-plaintext highlighter-rouge">temp3</code> è uguale a 3: se lo è stampo <strong>Fizz</strong> e resetto il contatore a 0.</p>
+  <p>Poi controllo se <code class="language-plaintext highlighter-rouge">temp5</code> è uguale a 5: se lo è stampo <strong>Buzz</strong> e resetto il contatore a 0.</p>
+  <p>Il resto del meccanismo è lo stesso della seconda implementazione, uso un booleano per capire se devo andare a capo o stampare il numero corrente. In questo modo gestisco anche il caso <strong>FizzBuzz</strong>.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">way3</span><span class="o">()</span> <span class="o">{</span>
 		<span class="kt">int</span> <span class="n">temp3</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">temp5</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
 		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="no">MIN_FIZZ_BUZZ</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="no">MAX_FIZZ_BUZZ</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
 			<span class="kt">boolean</span> <span class="n">status</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
@@ -349,14 +481,14 @@
 		<span class="o">}</span>
 	<span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <h3 id="quarta-implementazione">Quarta implementazione</h3>
-    <p>Questa è un bonus. A questo punto ho messo in dubbio anche le prestazioni del ciclo for.</p>
-    <p>Di conseguenza ho pensato di implementare una funzione ricorsiva escludendo l’iterazione per capire se parte del problema di prestazioni potesse essere dovuta al ciclo.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">way4</span><span class="o">(</span><span class="kd">final</span> <span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+  </div>
+  <h3 id="quarta-implementazione">Quarta implementazione</h3>
+  <p>Questa è un bonus. A questo punto ho messo in dubbio anche le prestazioni del ciclo for.</p>
+  <p>Di conseguenza ho pensato di implementare una funzione ricorsiva escludendo l’iterazione per capire se parte del problema di prestazioni potesse essere dovuta al ciclo.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">way4</span><span class="o">(</span><span class="kd">final</span> <span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
 		<span class="k">if</span> <span class="o">(</span><span class="n">start</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
 			<span class="kt">boolean</span> <span class="n">mod3</span> <span class="o">=</span> <span class="o">(</span><span class="n">start</span> <span class="o">%</span> <span class="no">FIZZ</span><span class="o">)</span> <span class="o">==</span> <span class="mi">0</span><span class="o">;</span>
 			<span class="kt">boolean</span> <span class="n">mod5</span> <span class="o">=</span> <span class="o">(</span><span class="n">start</span> <span class="o">%</span> <span class="no">BUZZ</span><span class="o">)</span> <span class="o">==</span> <span class="mi">0</span><span class="o">;</span>
@@ -373,13 +505,13 @@
 		<span class="o">}</span>
 	<span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <h2 id="i-risultati">I risultati</h2>
-    <p>Durante i miei test questo è quello che ho totalizzato sulla mia attuale macchina.</p>
-    <div class="language-plaintext highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>Red Hat, Inc. OpenJDK 64-Bit Server VM 1.8.0_282 25.282-b08 52.0
+  </div>
+  <h2 id="i-risultati">I risultati</h2>
+  <p>Durante i miei test questo è quello che ho totalizzato sulla mia attuale macchina.</p>
+  <div class="language-plaintext highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>Red Hat, Inc. OpenJDK 64-Bit Server VM 1.8.0_282 25.282-b08 52.0
 
 Way1 had an avg of 2836,285100 ns
 Way2 had an avg of 2899,041900 ns
@@ -389,12 +521,12 @@ Min of avgs is 2668,671600 ns and belongs to Way3
 
 Program ran for 12715,462100 ms
 </code></pre>
-      </div>
     </div>
-    <p>Il computer utilizzato ha queste specifiche:</p>
-    <div class="language-plaintext highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>Intel(R) Core(TM) i7-6500U CPU @ 2.50GHz
+  </div>
+  <p>Il computer utilizzato ha queste specifiche:</p>
+  <div class="language-plaintext highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>Intel(R) Core(TM) i7-6500U CPU @ 2.50GHz
 
 Velocità di base:   2,59 GHz
 Processori fisici:  1
@@ -406,11 +538,11 @@ Cache L1:           128 KB
 Cache L2:           512 KB
 Cache L3:           4,0 MB
 </code></pre>
-      </div>
     </div>
-    <p>Quindi in conclusione questo percorso mi ha permesso di comprendere che l’operazione di modulo è effettivamente <strong>lenta</strong>.</p>
-    <p>E oltretutto ho sperimentato che la ricorsione è più onerosa (almeno in Java) dell’iterazione.</p>
-    ]]></content><author><name>kLeZ</name></author><summary type="html"><![CDATA[Oggi vorrei parlarvi di un algoritmo. Di norma un algoritmo talmente semplice da essere usato durante i colloqui per la valutazione della capacità minima di scrivere e leggere codice che comprenda il minimo indispensabile di logica, matematica e pensiero critico. L’algoritmo consiste nell’implementare una funzione che dati i numeri da 1 a 100 faccia quanto segue: stampi la stringa “Fizz” quando il numero è un multiplo di 3 stampi la stringa “Buzz” quando il numero è un multiplo di 5 stampi la stringa “FizzBuzz” quando il numero è un multiplo di 3 o 5 stampi il numero quando non è un multiplo di 3 né di 5 Semplice semplice. Ma allora perché ne parlo?]]></summary></entry><entry><title type="html">Il dilemma del calcolo delle stime</title><link href="https://klez.me/2022/03/25/il-dilemma-del-calcolo-delle-stime/" rel="alternate" type="text/html" title="Il dilemma del calcolo delle stime" /><published>2022-03-25T10:39:26+01:00</published><updated>2022-03-25T10:39:26+01:00</updated><id>https://klez.me/2022/03/25/il-dilemma-del-calcolo-delle-stime</id><content type="html" xml:base="https://klez.me/2022/03/25/il-dilemma-del-calcolo-delle-stime/"><![CDATA[<p>Di norma direi che il calcolo delle stime è qualcosa che facciamo tutti i giorni e che quindi almeno sulla carta ogni programmatore dovrebbe saper farlo.</p>
+  </div>
+  <p>Quindi in conclusione questo percorso mi ha permesso di comprendere che l’operazione di modulo è effettivamente <strong>lenta</strong>.</p>
+  <p>E oltretutto ho sperimentato che la ricorsione è più onerosa (almeno in Java) dell’iterazione.</p>
+  ]]></content><author><name>kLeZ</name></author><summary type="html"><![CDATA[Oggi vorrei parlarvi di un algoritmo. Di norma un algoritmo talmente semplice da essere usato durante i colloqui per la valutazione della capacità minima di scrivere e leggere codice che comprenda il minimo indispensabile di logica, matematica e pensiero critico. L’algoritmo consiste nell’implementare una funzione che dati i numeri da 1 a 100 faccia quanto segue: stampi la stringa “Fizz” quando il numero è un multiplo di 3 stampi la stringa “Buzz” quando il numero è un multiplo di 5 stampi la stringa “FizzBuzz” quando il numero è un multiplo di 3 o 5 stampi il numero quando non è un multiplo di 3 né di 5 Semplice semplice. Ma allora perché ne parlo?]]></summary></entry><entry><title type="html">Il dilemma del calcolo delle stime</title><link href="https://klez.me/2022/03/25/il-dilemma-del-calcolo-delle-stime/" rel="alternate" type="text/html" title="Il dilemma del calcolo delle stime" /><published>2022-03-25T10:39:26+01:00</published><updated>2022-03-25T10:39:26+01:00</updated><id>https://klez.me/2022/03/25/il-dilemma-del-calcolo-delle-stime</id><content type="html" xml:base="https://klez.me/2022/03/25/il-dilemma-del-calcolo-delle-stime/"><![CDATA[<p>Di norma direi che il calcolo delle stime è qualcosa che facciamo tutti i giorni e che quindi almeno sulla carta ogni programmatore dovrebbe saper farlo.</p>
   <p>Di norma direi anche che ci dovrebbe essere una procedura, una <em>best practice</em> una formula che possa calcolare una stima.</p>
   <p>Siamo programmatori, quindi siamo ingegneri (più o meno)!</p>
   <!--more-->
@@ -903,83 +1035,4 @@ Cache L3:           4,0 MB
     <p>Certo è, che ho da studiare qualcosina durante le vacanze :grin:.</p>
   </blockquote>
   <p>Ringrazio il mio collega per la particolare domanda che mi ha spinto a studiare un argomento così interessante!</p>
-  ]]></content><author><name>kLeZ</name></author><category term="spring" /><category term="eventi" /><summary type="html"><![CDATA[Venerdì scorso ho tenuto un talk interno alla mia azienda sulle basi (molto basi) del framework Spring. Mi sono concentrato poco sui dettagli, ho preferito puntare verso le potenzialità del framework e le feature più innovative e interessanti, con un occhio buono al cloud, vera punta di diamante di tutta la tecnologia Spring.]]></summary></entry><entry><title type="html">Il revisionismo del ritardo cronico</title><link href="https://klez.me/2019/07/19/il-revisionismo-del-ritardo-cronico/" rel="alternate" type="text/html" title="Il revisionismo del ritardo cronico" /><published>2019-07-19T19:50:00+02:00</published><updated>2019-07-19T19:50:00+02:00</updated><id>https://klez.me/2019/07/19/il-revisionismo-del-ritardo-cronico</id><content type="html" xml:base="https://klez.me/2019/07/19/il-revisionismo-del-ritardo-cronico/"><![CDATA[<p>Qualche sera fa ragionavo sul mio pregresso lavorativo, e nello specifico mi concentravo sull’ambiente di lavoro. Il <em>trigger</em> è stato il treno che ho preso quella sera, <strong>Ostiense, 20.40</strong>, che non è proprio il massimo della vita, questo posso dirlo, perché mi porta a casa alle 21.45 circa.</p>
-  <p>Alla fine dell’analisi preliminare ho stabilito che volevo concentrare il mio ragionamento sull’orario di lavoro (ancora una volta) tentando di sviscerare il perché mi riduco sempre a sopportare certi orari.</p>
-  <p>Mi sono trovato a dover confutare una ipotesi che portavo con me da lungo tempo.</p>
-  <p>Avevo già verificato sperimentalmente questa ipotesi anni fa, e sembrava reggere. Fino a ora.</p>
-  <!--more-->
-  <p class="m-0 invisible zero-size">
-    <a class="invisible" id="read-more" href="#">read more</a>
-  </p>
-  <h2 id="lipotesi">L’ipotesi</h2>
-  <p>Avevo stabilito, sulla base di osservazioni, che il problema degli orari era sempre dovuto a questi pochi motivi:</p>
-  <ul>
-    <li>pianificazione errata delle attività</li>
-    <li>team leader e manager stacanovisti</li>
-    <li>ufficio HR assente o distratto</li>
-    <li>disorganizzazione generale</li>
-  </ul>
-  <p>Quindi, quando molti anni fa, da junior, formulai questa ipotesi, osservai che <strong>aveva senso</strong> e la diedi per corretta, su base sperimentale.</p>
-  <p>Negli anni ho raffinato questa ipotesi, partendo sempre dal preconcetto, in parte giusto, che la “colpa” (passami il termine) fosse sempre di chi faceva le regole.</p>
-  <p>Via via ho aggiunto strati su strati che evidenziavano come ci sia sempre qualcuno che ha più potere decisionale della persona che reputi di “più alto grado” (anche se la catena non è così gerarchica).</p>
-  <blockquote>
-    <p>Poi il crack.</p>
-  </blockquote>
-  <h2 id="il-periodo-del-revisionismo">Il periodo del revisionismo</h2>
-  <p>Mi sono trovato a un certo punto della mia carriera, purtroppo o per fortuna, a stare <em>dall’altra parte</em>.</p>
-  <p>A questo punto, anche un po’ per amor proprio, ho dovuto comprendere <strong>cosa stava succedendo a me</strong>. Si perché anche io da <em>team leader</em> ho avuto necessità o sono stato costretto a fare orari non molto piacevoli.</p>
-  <blockquote>
-    <p>Il revisionismo è stato traumatico per me.</p>
-  </blockquote>
-  <p>Da questo ho tratto altri motivi da aggiungere alla lista sopra, senza però scendere mai profondamente nella causa radice.</p>
-  <blockquote>
-    <p>Sostanzialmente non ho seguito la regola dei 5 perché</p>
-  </blockquote>
-  <p>La nuova lista quindi è aggiornata nel modo seguente:</p>
-  <ul>
-    <li>pianificazione errata delle attività</li>
-    <li>manager stacanovisti</li>
-    <li>ufficio HR assente o distratto</li>
-    <li>commerciali che vendono funzionalità impossibili nei tempi</li>
-    <li>accordi blindati tra <em>executive</em></li>
-    <li>imposizioni da parte del cliente</li>
-    <li>disorganizzazione generale</li>
-  </ul>
-  <p>Ne ho aggiunti 3 sfilando i <em>team leader</em>, solo perché questa lista vede le cose da quel medesimo punto di vista.</p>
-  <p><em>Stranamente</em> c’è ancora il punto sulla pianificazione errata, e il motivo è semplice: capita spesso che pur essendo <em>team leader</em> sia comunque il manager ad avere l’ultima parola sui numeri delle stime per le attività, che praticamente sempre subiscono riduzioni. Capita meno spesso, ma capita, che il <em>team leader</em> si basi su assunzioni errate nel formulare le stime, risultando quindi in stime errate, perché troppo ottimistiche o perché <em>pressappochistiche</em>.</p>
-  <p>Tutto questo però non mi bastava, sapevo di non essermi fatto abbastanza domande, sapevo che c’era ancora qualche <strong>perché</strong> non espresso.</p>
-  <h2 id="lintrospezione">L’introspezione</h2>
-  <p>Il perché che ha sbloccato il ragionamento ha portato alla risposta seguente, che mi ha un po’ spiazzato e un po’ sollevato.</p>
-  <blockquote>
-    <p>Le persone fanno tardi in ufficio perché vogliono</p>
-  </blockquote>
-  <p>Mi ha spiazzato, devo ammetterlo. Realizzare che i miei orari in ufficio sono causati da me stesso non è proprio quello che mi aspettavo di scoprire.<br />
-    Ma la cosa più particolare è che non sono arrivato a questa conclusione tramite una mia introspezione personale, piuttosto l’ho realizzato osservando altri, da un po’ più vicino.</p>
-  <h2 id="il-dato">Il dato</h2>
-  <p>L’osservazione ha richiesto diverso tempo e campioni eterogenei, e fortunatamente da consulente ne ho avuti un bel po’ a disposizione.</p>
-  <p>Non rivelo nulla di quello che ho visto, quindi il sunto è che ho visto persone preferire il lavoro alla famiglia, ho visto persone che avevano la loro famiglia al lavoro e ho visto persone senza famiglia o lontano da casa avere amici solo dentro al lavoro. Poi però ho visto anche chi metteva la famiglia al di sopra di tutto, chi era scientificamente preciso nel rispettare gli orari e chi aveva interessi ben oltre l’informatica.</p>
-  <p>Questi ultimi mi hanno fatto vedere qualcosa che mi ha aperto gli occhi.</p>
-  <h2 id="il-famoso-ambiente-tossico">Il famoso “ambiente tossico”</h2>
-  <blockquote>
-    <p>Si sa che le aziende tentano di evitare di creare ambienti tossici per il lavoro.</p>
-  </blockquote>
-  <p>Questa sembra una battuta. Ma non lo è.</p>
-  <p>Ci provano davvero, si <em>sforzano seriamente</em>.</p>
-  <p>Ma allora perché <strong>sembra</strong> <em>così tanto</em> <strong>falso</strong>?</p>
-  <p>Sembra falso perché, come ho sempre immaginato e questa osservazione conferma l’idea, il fine non giustifica <em>mai</em> i mezzi. <strong>Mai</strong>.</p>
-  <p>Il mezzo ovviamente è lo straordinario, mentre il fine, beh, quello è palese, la consegna in tempi brevi.<br />
-    Il problema è sempre <strong>quanto</strong> brevi e quanto veramente è utile o necessario che questi tempi siano brevi.</p>
-  <p>La maggior parte delle volte non è utile, anzi è deleterio per la qualità del prodotto consegnato e per la qualità della vita del lavoratore.</p>
-  <p>Fatto sta che succede, gli orari cambiano poco se non nulla e alla fine per un motivo o per un altro si torna a casa sempre a orari imprecisati della sera.</p>
-  <p>La conclusione più ovvia sarebbe “facciamo in modo che le aziende si sforzino di più per raggiungere questo risultato”.<br />
-    Si, se solo il lavoratore non avesse così tanta voglia di fare degli straordinari non pagati.</p>
-  <p>Quindi la conclusione definitiva alla fine della mia introspezione è:</p>
-  <blockquote>
-    <p>Fai tardi quanto vuoi, se vuoi, ma dai la colpa a te stesso (o non darla a nessuno)<br />
-      Altrimenti, non fare tardi “<em>‘ché c’hai ‘na famiglia</em>”</p>
-  </blockquote>
-  <p>Grazie ad Alberto che mi segue sempre con tanta dedizione, pure che è più di un mese che non pubblico (e avevo detto che avrei scritto qualcosa ogni giorno).</p>
-  <blockquote>
-    <p>Vai a casa Albè, che è tardi!</p>
-  </blockquote>
-  ]]></content><author><name>kLeZ</name></author><summary type="html"><![CDATA[Qualche sera fa ragionavo sul mio pregresso lavorativo, e nello specifico mi concentravo sull’ambiente di lavoro. Il trigger è stato il treno che ho preso quella sera, Ostiense, 20.40, che non è proprio il massimo della vita, questo posso dirlo, perché mi porta a casa alle 21.45 circa. Alla fine dell’analisi preliminare ho stabilito che volevo concentrare il mio ragionamento sull’orario di lavoro (ancora una volta) tentando di sviscerare il perché mi riduco sempre a sopportare certi orari. Mi sono trovato a dover confutare una ipotesi che portavo con me da lungo tempo. Avevo già verificato sperimentalmente questa ipotesi anni fa, e sembrava reggere. Fino a ora.]]></summary></entry></feed>
+  ]]></content><author><name>kLeZ</name></author><category term="spring" /><category term="eventi" /><summary type="html"><![CDATA[Venerdì scorso ho tenuto un talk interno alla mia azienda sulle basi (molto basi) del framework Spring. Mi sono concentrato poco sui dettagli, ho preferito puntare verso le potenzialità del framework e le feature più innovative e interessanti, con un occhio buono al cloud, vera punta di diamante di tutta la tecnologia Spring.]]></summary></entry></feed>
