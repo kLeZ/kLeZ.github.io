@@ -42,7 +42,7 @@ header.masthead {
 	}
 
 	background: no-repeat center center;
-	background-color: $gray-600;
+	background-color: lighten($dark, 33);
 	background-attachment: scroll;
 	position: relative;
 
@@ -54,7 +54,7 @@ header.masthead {
 		left: 0;
 		height: 100%;
 		width: 100%;
-		background-color: $gray-900;
+		background-color: $dark;
 		opacity: 0.5;
 	}
 
@@ -62,7 +62,7 @@ header.masthead {
 	.post-heading,
 	.site-heading {
 		padding: 200px 0 150px;
-		color: white;
+		color: $light;
 
 		@media only screen and (min-width: 768px) {
 			padding: 200px 0;
@@ -125,7 +125,7 @@ header.masthead {
 			@include serif-font;
 
 			a {
-				color: $white;
+				color: $light;
 			}
 		}
 

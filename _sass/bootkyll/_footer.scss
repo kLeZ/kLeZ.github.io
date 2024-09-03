@@ -30,7 +30,7 @@ footer.site-footer {
 	.svg-icon {
 		width: 22px;
 		height: 22px;
-		fill: #{$grey-650};
-		color: #{$grey-650};
+		fill: #{lighten($dark, 30)};
+		color: #{lighten($dark, 30)};
 	}
 }

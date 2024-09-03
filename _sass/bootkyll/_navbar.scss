@@ -1,8 +1,8 @@
 // Styling for the navbar
 #mainNav {
 	position: absolute;
-	border-bottom: 1px solid $gray-200;
-	background-color: white;
+	border-bottom: 1px solid lighten($dark, 80);
+	background-color: $light;
 
 	@include sans-serif-font;
 
@@ -34,7 +34,7 @@
 
 			&.active {
 				> a {
-					color: $green;
+					color: $accent;
 				}
 			}
 		}
@@ -46,11 +46,11 @@
 
 		.navbar-brand {
 			padding: 10px 20px;
-			color: $white;
+			color: $light;
 
 			&:focus,
 			&:hover {
-				color: fade-out($white, 0.2);
+				color: fade-out($light, 0.2);
 			}
 		}
 
@@ -58,17 +58,17 @@
 			> li.nav-item {
 				> a {
 					padding: 10px 20px;
-					color: $white;
+					color: $light;
 
 					&:focus,
 					&:hover {
-						color: fade-out($white, 0.2);
+						color: fade-out($light, 0.2);
 					}
 				}
 
 				&.active {
 					> a {
-						color: $green;
+						color: $accent;
 					}
 				}
 			}
@@ -95,11 +95,11 @@
 			-webkit-transition: -webkit-transform 0.2s;
 			-moz-transition: -moz-transform 0.2s;
 			transition: transform 0.2s;
-			border-bottom: 1px solid darken($white, 0.05);
+			border-bottom: 1px solid darken($light, 0.05);
 			background-color: fade-out($white, 0.1);
 
 			.navbar-brand {
-				color: $gray-900;
+				color: $dark;
 
 				&:focus,
 				&:hover {
@@ -110,7 +110,7 @@
 			.navbar-nav {
 				> li.nav-item {
 					> a {
-						color: $gray-900;
+						color: $dark;
 
 						&:focus,
 						&:hover {
@@ -120,7 +120,7 @@
 
 					&.active {
 						> a {
-							color: $green;
+							color: $accent;
 						}
 					}
 				}

@@ -4,8 +4,8 @@ service: true
 title: Alessandro Accardo
 permalink: /cv/
 left_image: /assets/cv-photo.jpeg
-right_content: cv-includes/cv-right-content.md
-toc: cv-includes/cv-toc.md
+right_content: includes/cv-right-content.md
+toc: includes/cv-toc.md
 ---
 
 ## Badges

@@ -1,7 +1,7 @@
 // Styling for the post page
 .post-preview {
 	>a {
-		color: $gray-900;
+		color: $dark;
 
 		&:focus,
 		&:hover {
@@ -25,11 +25,11 @@
 		font-size: 18px;
 		font-style: italic;
 		margin-top: 0;
-		color: $gray-600;
+		color: lighten($dark, 33);
 
 		>a {
 			text-decoration: none;
-			color: $gray-900;
+			color: $dark;
 
 			&:focus,
 			&:hover {

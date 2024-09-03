@@ -1,8 +1,8 @@
 // Global styling for this template
 body {
 	font-size: 20px;
-	color: $gray-900;
-
+	color: $dark;
+	background-color: $light;
 	@include serif-font;
 }
 
@@ -31,13 +31,13 @@ h2 {
 }
 
 a {
-	color: $blue;
+	color: $primary;
 
 	@include transition-all;
 
 	&:focus,
 	&:hover {
-		color: $primary;
+		color: $secondary;
 		text-decoration: underline;
 	}
 }
@@ -60,24 +60,24 @@ a {
 }
 
 ::-moz-selection {
-	color: $white;
+	color: $light;
 	background: $primary;
 	text-shadow: none;
 }
 
 ::selection {
-	color: $white;
+	color: $light;
 	background: $primary;
 	text-shadow: none;
 }
 
 img::selection {
-	color: $white;
+	color: $light;
 	background: transparent;
 }
 
 img::-moz-selection {
-	color: $white;
+	color: $light;
 	background: transparent;
 }
 
@@ -89,5 +89,26 @@ img::-moz-selection {
 div.badge-bin {
 	img {
 		width: 147px;
+	}
+}
+
+.text-responsive {
+	font-size: calc(100% + 1vw);
+}
+
+.bg {
+	background-color: $light;
+	$opacities: 0 15 25 30 35 50 60 65 75 80 85 100;
+	@each $opacity in $opacities {
+		&.opacity-#{$opacity} {
+			opacity: $opacity / 100;
+		}
+	}
+
+	$rounds: 0 1 2 3 4 5;
+	@each $round in $rounds {
+		&.rounded-#{$round} {
+			border-radius: #{$round}rem;
+		}
 	}
 }
