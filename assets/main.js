@@ -22,7 +22,7 @@
 					}
 				} else if (currentTop > this.previousTop) {
 					//if scrolling down...
-					$('#mainNav').removeClass('is-visible');
+					$('#mainNav').addClass('is-visible');
 					if (currentTop > headerHeight && !$('#mainNav').hasClass('is-fixed')) $('#mainNav').addClass('is-fixed');
 				}
 				this.previousTop = currentTop;
