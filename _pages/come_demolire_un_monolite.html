@@ -1,0 +1,511 @@
+---
+permalink: /lf/come_demolire_un_monolite.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Coffe Tech - Come demolire un monolite (anzi due)</title>
+<meta name="author" content="Alessandro Accardo"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/dist/theme/black.css" id="theme"/>
+<style>#text-table-of-contents, .src { overflow-x: auto !important; overflow-y: auto !important; max-height: 75vh; max-width: 85vw; }</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1>Coffe Tech - Come demolire un monolite (anzi due)</h1><h2>Coffee Tech del 19/02/2025</h2><h3> Alessandro Accardo</h3><p><a href="https://klez.me/lf/come_demolire_un_monolite.html"><img src="./come_demolire_un_monolite/slides_qr.png" alt="permalink qr code" /></a></p>
+</section>
+
+<section>
+<section id="slide-org6d0cb06">
+<h2 id="org6d0cb06">Chi sono</h2>
+<p>
+Ciao, sono Alessandro Accardo, forse vi ricorderete di me per altri Learning Friday come <i>Introduzione a Docker</i>, <i>Introduzione a Kubernetes</i> o <i>Kubernetes e come toccare le nuvole per meri mortali</i>.
+</p>
+
+<p>
+Ecco chi sono.
+</p>
+
+<ul>
+<li class="fragment appear">Senior Developer</li>
+<li class="fragment appear">Solution Architect</li>
+<li class="fragment appear">Specializzato in soluzioni Cloud-Native</li>
+<li class="fragment appear">Nerd</li>
+<li class="fragment appear">Appassionato di tecnologia</li>
+<li class="fragment appear"><i>Hacker</i></li>
+
+</ul>
+
+</section>
+<section>
+
+<p>
+Oggi vi racconto come sto affrontando, e continuo a farlo,
+la sfida di migrare un vecchio sistema monolitico in un'architettura a
+microservizi e microfrontend. E sì, parlo di un "merdone" &#x2013; un sistema
+legacy che, per oltre 15 anni, è stato mantenuto e aggiornato da
+innumerevoli sviluppatori, fino a trasformarsi in un groviglio di
+spaghetti code che farebbe arrossire anche il programmatore più esperto.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org03652c4">
+<h2 id="org03652c4">Scenario Attuale: Il Punto di Partenza</h2>
+<p>
+Immaginate un'applicazione sviluppata in Java 8, basata su Apache
+Struts2 e Spring, costruita in un'epoca in cui modularità e best
+practice erano quasi un optional. Io mi sono trovato davanti a questo
+sistema, un "merdone" che ha accumulato anni di manutenzioni, patch
+improvvisate e soluzioni ad hoc, fino a diventare un labirinto di
+accoppiamenti stretti e logiche confuse. Il sistema, seppur funzionante,
+mostra ogni giorno le sue debolezze: difficoltà nella manutenzione,
+limitata scalabilità e, diciamolo, performance che lasciano molto a
+desiderare.
+</p>
+
+</section>
+<section>
+
+
+<div id="orgf20f7a0" class="figure">
+<p><img src="./come_demolire_un_monolite/itsatrap.jpg" alt="itsatrap.jpg" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Il vecchio monolite legacy è una trappola di spaghetti code - 'It's a trap!' - Da <b>Return of the Jedi</b> (1983).</p>
+</div>
+
+</section>
+<section>
+
+<p>
+Il desiderio del cliente &#x2013; e, in fondo, anche mio &#x2013; è chiaro:
+abbandonare il vecchio paradigma e abbracciare una nuova architettura
+che sia modulare, scalabile e, soprattutto, mantenibile nel tempo. E il
+piano d'azione che sto seguendo è audace: migrare verso microservizi
+sviluppati in Spring Boot e Spring Cloud, abbinati a una rivoluzionaria
+implementazione di microfrontend, il tutto supportato da una
+infrastruttura CI/CD e orchestrata su Kubernetes. Ah, e per non farci
+mancare un colpo epocale, stiamo migrando da Java 8 a Java 21 &#x2013; e con
+l'orizzonte già puntato su Java 24!
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org93e1c71">
+<h2 id="org93e1c71">Il Problema Tecnico: Tra Legacy e Innovazione</h2>
+<p>
+Analizzare questo "merdone" significa affrontare una realtà fatta di
+codice scritto "un po' male", dove ogni modifica è un rischio e ogni
+aggiornamento potrebbe trasformarsi in una partita a Jenga. Il sistema
+si basa su un'architettura a layer che, nel tempo, ha favorito un
+accoppiamento troppo stretto tra le componenti, rendendo il refactoring
+un'impresa titanica.
+</p>
+
+
+<div id="org251cba8" class="figure">
+<p><img src="./come_demolire_un_monolite/imsorrydave.jpg" alt="imsorrydave.jpg" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Quando il legacy code resiste ai cambiamenti&#x2026; 'I'm sorry, Dave. I'm afraid I can't do that.' - Da <b>2001: A Space Odyssey</b> (1968).</p>
+</div>
+
+</section>
+<section>
+
+<p>
+Per poter avanzare, ho deciso di mettere in campo alcuni principi
+fondamentali tratti dal Domain Driven Design (DDD). Come ricorda Eric
+Evans, "il cuore di ogni applicazione è il dominio", e ho iniziato a
+ridefinire l'architettura concentrandomi sulla suddivisione in domini
+ben delimitati. Questo mi ha permesso di individuare i bounded context
+e, da lì, di progettare una migrazione graduale che abbracci il pattern
+Strangler Fig.
+</p>
+
+<p>
+Il pattern Strangler Fig, che adoro definire quasi come il "supereroe"
+della migrazione, mi consente di isolare le funzionalità del vecchio
+sistema e riscriverle come microservizi indipendenti, riducendo così
+gradualmente il carico del monolite. È come costruire un ponte &#x2013; un
+pezzo alla volta &#x2013; che porta dal caos del legacy verso l'ordine di
+un'architettura moderna e modulare.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfcee2b0">
+<h2 id="orgfcee2b0">Qualità del Codice: Il Quality Gate come Bussola</h2>
+<p>
+Una trasformazione così radicale non può prescindere da un cambiamento
+profondo anche nella qualità del codice. Io credo fermamente che il
+codice debba essere un riflesso fedele dei processi aziendali, e per
+questo ho imposto standard rigorosi sin dall'inizio.
+</p>
+
+
+<div id="orgeaf9ee9" class="figure">
+<p><img src="./come_demolire_un_monolite/withgreatpower.png" alt="withgreatpower.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>In un sistema dove ogni riga conta, ricordarsi che 'With great power comes great responsibility.' - Da <b>Spider-Man</b> (2002).</p>
+</div>
+
+</section>
+<section>
+
+<p>
+Nel nuovo percorso, ogni commit viene valutato da un sistema di Quality
+Gate che integra linting, formatting, static analysis e, soprattutto,
+test automation. Anche se, scherzosamente, dubitavo che il vecchio
+sistema avesse mai visto una suite di test decente, ora ogni nuova
+funzionalità viene sviluppata con un occhio attento alla qualità e alla
+manutenibilità. In questo modo, applicando il principio "less moving
+parts, less broken parts", mi assicuro che ogni componente sia il più
+possibile isolato e facile da aggiornare.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org1393623">
+<h2 id="org1393623">Strumenti e Infrastruttura: Dalla Manualità all'Automazione Totale</h2>
+<p>
+Se prima il deploy era un rituale manuale su macchine virtuali Windows
+Server, oggi il nostro processo è totalmente automatizzato grazie a un
+flusso CI/CD che gestisce build, test, analisi statica,
+containerizzazione e deploy su un cluster Kubernetes &#x2013; tutto gestito
+in-house, per mantenere il pieno controllo sull'infrastruttura, senza
+dipendere da cloud provider esterni.
+</p>
+
+<p>
+Questa automazione non solo riduce gli errori umani, ma accelera lo
+sviluppo e garantisce un ciclo di rilascio continuo, in perfetta
+sinergia con la filosofia dei microservizi.
+</p>
+
+</section>
+<section>
+
+
+<div id="orgcbdec73" class="figure">
+<p><img src="./come_demolire_un_monolite/hastalavistababy.jpg" alt="hastalavistababy.jpg" />
+</p>
+<p><span class="figure-number">Figure 4: </span>Addio ai vecchi processi manuali: 'Hasta la vista, baby.' - Da <b>Terminator 2: Judgment Day</b> (1991).</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org45b2dfb">
+<h2 id="org45b2dfb">La Rivoluzione della Sicurezza: Da Custom a SSO</h2>
+<p>
+Una delle trasformazioni più significative riguarda la sicurezza. Nel
+vecchio sistema, l'autenticazione era gestita in maniera custom, con
+user, password e persino un terzo fattore direttamente sulla webapp &#x2013;
+una soluzione che, oltre ad essere poco scalabile, lasciava spazio a
+numerose vulnerabilità.
+</p>
+
+
+<div id="org8a2cd94" class="figure">
+<p><img src="./come_demolire_un_monolite/youshallnotpass.jpg" alt="youshallnotpass.jpg" width="500px" />
+</p>
+<p><span class="figure-number">Figure 5: </span>Implementando il nuovo SSO, proteggiamo il sistema come Gandalf: 'You shall not pass!' - Da <b>The Lord of the Rings: The Fellowship of the Ring</b> (2001).</p>
+</div>
+
+</section>
+<section>
+
+<p>
+Ho deciso di introdurre un sistema di Single Sign-On basato su OAuth
+2.1, che ha rivoluzionato completamente la gestione della sicurezza.
+Oggi, l'autenticazione è centralizzata e il sistema di autorizzazioni è
+stato ripensato per offrire una granularità mai vista: partiamo dalla
+profilazione degli utenti fino ad arrivare a definire i permessi di
+invocazione per singoli metodi. Questa trasformazione non solo aumenta
+la sicurezza, ma rende anche il sistema molto più flessibile e
+adattabile alle esigenze future.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org3b80117">
+<h2 id="org3b80117">Microfrontend: La Rivoluzione Anche sul Frontend</h2>
+<p>
+Parlando di innovazione, non posso non soffermarmi sul fronte del
+client. La nuova architettura, headless per natura, apre la porta a un
+approccio a microfrontend che ho deciso di adottare con entusiasmo.
+</p>
+
+
+<div id="org9a0c0eb" class="figure">
+<p><img src="./come_demolire_un_monolite/one-does-not-simply-walk-into-mordor.jpg" alt="one-does-not-simply-walk-into-mordor.jpg" />
+</p>
+<p><span class="figure-number">Figure 6: </span>Non si integra un frontend monolitico senza una strategia modulare: 'One does not simply walk into Mordor.' - Da <b>The Lord of the Rings: The Fellowship of the Ring</b> (2001).</p>
+</div>
+
+</section>
+<section>
+
+<p>
+Mentre in altri progetti si è optato per frontend monolitici &#x2013; con
+conseguenti problemi di build e integrazione dovuti all'interazione di
+decine di sviluppatori su un unico codice &#x2013; io ho scelto di dividere il
+frontend in microfrontend. Questa scelta mi consente di avere progetti
+più piccoli, "less moving parts, less broken parts", e garantisce una
+migliore manutenibilità. Inoltre, grazie all'adozione di librerie di
+componenti comuni, riesco a ottenere un'UI/UX uniforme e a ridurre il
+codice duplicato, aumentando così notevolmente la velocità di sviluppo e
+la qualità del prodotto finale.
+</p>
+
+<p>
+Il vantaggio è duplice: non solo i microservizi, ma anche i
+microfrontend beneficiano di una struttura modulare e di una maggiore
+flessibilità, permettendo di comporre la pagina finale in modo dinamico
+e di integrare facilmente nuovi componenti senza rischiare effetti
+collaterali indesiderati.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org03ff08e">
+<h2 id="org03ff08e">Integrazioni esterne, outsourcing e le sfide della comunicazione</h2>
+<p>
+Non possiamo dimenticare le sfide legate alle integrazioni con terze
+parti e, in alcuni casi, l'outsourcing di parti del lavoro. Il nuovo
+sistema deve essere in grado di dialogare con applicazioni esterne in
+maniera robusta e resiliente. Questo significa definire contratti API
+chiari e prevedere meccanismi di fallback, per non far crollare l'intero
+ecosistema nel caso in cui un partner esterno vada in tilt. La
+comunicazione, sia sincrona che asincrona, diventa dunque una questione
+di design, dove la scelta del protocollo e del pattern (RPC, REST,
+Eventi) deve essere fatta con la dovuta attenzione alle esigenze
+specifiche del dominio.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org4bb93af">
+<h2 id="org4bb93af">Transazioni distribuite e multi-tenancy: gestire il caos con stile</h2>
+<p>
+Uno dei nodi più critici in un'architettura a microservizi è la gestione
+delle transazioni distribuite. Qui la scelta tra orchestrazione e
+coreografia non è solo tecnica, ma strategica. Un coordinatore centrale
+può garantire una sequenza di operazioni coerente, ma a scapito della
+flessibilità; mentre la coreografia, che permette a ciascun servizio di
+reagire agli eventi in maniera indipendente, richiede una maggiore
+attenzione alla consistenza dei dati.
+</p>
+
+<p>
+A complicare ulteriormente il quadro c'è il requisito di multi-tenancy e
+multi-level tenancy. Sistemi che devono servire clienti diversi (o
+livelli differenti all'interno della stessa organizzazione) impongono
+una separazione dei dati e delle logiche di business che, ancora una
+volta, trovano risposta nei principi del Domain Driven Design. Come dice
+un vecchio adagio tra architetti software, "Se non separi i domini, ti
+ritrovi a litigare con i dati come in una famiglia numerosa: ognuno tira
+per la sua parte".
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org34f2523">
+<h2 id="org34f2523">Observability e il coraggio di abbracciare il caos</h2>
+<p>
+Monitorare un sistema distribuito è come cercare di tenere sotto
+controllo il tempo in mezzo a una tempesta: bisogna avere gli strumenti
+giusti per non perdersi in mezzo al caos. Logging, monitoring, tracing e
+dashboard in tempo reale diventano fondamentali per avere visibilità
+sull'intero ecosistema. E sì, abbracciare il caos è quasi una filosofia:
+come in un giro del mondo in solitaria, dove il controllo totale è
+un'illusione, la resilienza e la capacità di reagire rapidamente agli
+imprevisti diventano le vere chiavi del successo.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org6f192c8">
+<h2 id="org6f192c8">L'Analisi in Corso: Un Percorso in Evoluzione</h2>
+<p>
+Devo sottolineare che il percorso non è ancora finito. Ogni giorno mi
+trovo a confrontarmi con nuove sfide, nuove intuizioni e, sì, anche
+qualche imprevisto &#x2013; perché lavorare con un sistema così complesso
+significa abbracciare il caos con un sorriso ironico sulle labbra.
+</p>
+
+<p>
+Quello che sto facendo è un continuo processo di analisi, deduzioni e
+affinamenti, che coinvolge non solo la parte tecnica, ma anche la
+collaborazione con un team di sviluppo che sta implementando le
+soluzioni progettate insieme a me. La migrazione è un percorso in
+evoluzione, un cammino lungo e stimolante, dove ogni iterazione mi dà
+l'opportunità di migliorare ulteriormente il sistema e di dimostrare
+che, anche partendo da un "merdone" fatto di spaghetti code, è possibile
+costruire un'architettura moderna, scalabile e sicura.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org33c55b6">
+<h2 id="org33c55b6">Il futuro è un evento</h2>
+<p>
+In chiusura, non possiamo non guardare al futuro, fatto di architetture
+basate su eventi (EDA). L'adozione di un Event Driven Architecture non
+solo favorisce la scalabilità, ma rende il sistema intrinsecamente
+reattivo, capace di adattarsi in tempo reale ai cambiamenti. Anche in
+sistemi che, per ora, non sono nativamente EDA, l'introduzione di
+componenti di messaggistica può rappresentare il primo passo verso una
+trasformazione ancora più radicale.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org60955fa">
+<h2 id="org60955fa">Conclusioni</h2>
+<p>
+In sostanza, demolire un monolite &#x2013; e in questo caso, non uno ma due &#x2013;
+significa intraprendere un viaggio che va ben oltre il semplice
+refactoring. Significa abbracciare una visione in cui il codice non è
+più una massa informe di righe incastrate insieme, ma il riflesso fedele
+di domini ben definiti, dove ogni microservizio rappresenta una piccola,
+autonoma, e robusta parte di un sistema complesso.
+</p>
+
+<p>
+Il percorso richiede coraggio, precisione tecnica e, soprattutto, una
+buona dose di ironia. Perché, diciamocelo, se non si ride un po' davanti
+al caos degli spaghetti code, cosa rimane? Seguendo i principi del
+Domain Driven Design, applicando con maestria il pattern Strangler Fig e
+dotandosi degli strumenti e delle infrastrutture più moderni, il vecchio
+merdone può essere trasformato in un sistema scalabile, manutenibile e,
+sì, anche un po' più bello da vedere.
+</p>
+
+<p>
+In fin dei conti, demolire per ricostruire non è solo una questione
+tecnica: è un atto di rinascita, dove ogni bug, ogni accoppiamento
+forzato, ogni riga di codice maledettamente "vintage" diventa il
+trampolino di lancio verso un futuro innovativo. E se dopo tutto questo
+viaggio vi ritrovate a sorridere (o a ridere amaramente) pensando al
+vecchio sistema, sappiate che ogni ruga del tempo è il segno di
+un'evoluzione inevitabile e, in fondo, affascinante.
+</p>
+
+</section>
+<section>
+
+<p>
+Non posso proclamare una vittoria definitiva &#x2013; il lavoro continua, e
+ogni giorno sono impegnato a far evolvere il sistema secondo i principi
+del Domain Driven Design e del pattern Strangler Fig. La mia esperienza
+finora mi insegna che demolire il passato per abbracciare il futuro
+richiede coraggio, attenzione ai dettagli e, ovviamente, un buon senso
+dell'umorismo.
+</p>
+
+<p>
+Se state affrontando una sfida simile, vi invito a considerare non solo
+la parte tecnica, ma anche l'importanza di definire domini chiari, di
+adottare standard di qualità rigorosi e di sfruttare ogni strumento a
+disposizione per automatizzare e rendere resiliente l'intero ecosistema.
+Io sono ancora in corsa, ma posso dirvi con sicurezza che, passo dopo
+passo, stiamo trasformando quel vecchio "merdone" in una piattaforma che
+guarda al futuro &#x2013; con microservizi, microfrontend e una sicurezza
+all'avanguardia.
+</p>
+
+<p>
+Spero che questo resoconto, intriso di tecnicismo, ironia e qualche
+citazione dai classici, vi abbia regalato spunti interessanti e qualche
+sorriso durante la lettura. Spero inoltre, che con questo post io vi
+abbia fornito un po' di motivazione, fondamentale per affrontare le
+sfide della modernizzazione del vostro software. Buona demolizione &#x2013; e,
+soprattutto, buona rinascita del vostro software!
+</p>
+
+</section>
+<section>
+
+
+<div id="org22d8c61" class="figure">
+<p><img src="./come_demolire_un_monolite/Dont-Panic.jpg" alt="Dont-Panic.jpg" />
+</p>
+<p><span class="figure-number">Figure 7: </span>Il viaggio è ancora lungo, ma ricordate: 'Don't Panic.' - Da <b>The Hitchhiker's Guide to the Galaxy</b> (1981).</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org1e3c06c">
+<h2 id="org1e3c06c">Saluti</h2>
+<p>
+Grazie a tutti per essere arrivati fin qui!
+</p>
+
+
+<div id="org937e1a3" class="figure">
+<p><img src="./come_demolire_un_monolite/thanks_for_watching.jpeg" alt="thanks_for_watching.jpeg" />
+</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/plugin/markdown/markdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/plugin/search/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/plugin/zoom/zoom.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+width: 1800,
+height: 1000,
+
+transition: 'convex',
+transitionSpeed: 'default',
+
+// Plugins with reveal.js 4.x
+plugins: [ RevealMarkdown, RevealNotes, RevealSearch, RevealZoom ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+});
+</script>
+</body>
+</html>
