@@ -18,13 +18,13 @@
       <div class="slides">
         <section id="sec-title-slide">
           <h1>Coffe Tech - Come demolire un monolite (anzi due)</h1>
-          <h2>Coffee Tech del 19/02/2025</h2>
+          <h2>Coffee Tech del 26/02/2025</h2>
           <h3> Alessandro Accardo</h3>
           <p><a href="https://klez.me/lf/come_demolire_un_monolite.html"><img src="./come_demolire_un_monolite/slides_qr.png" alt="permalink qr code" /></a></p>
         </section>
         <section>
-          <section id="slide-org6d0cb06">
-            <h2 id="org6d0cb06">Chi sono</h2>
+          <section id="slide-org2508aa4">
+            <h2 id="org2508aa4">Chi sono</h2>
             <p>
               Ciao, sono Alessandro Accardo, forse vi ricorderete di me per altri Learning Friday come <i>Introduzione a Docker</i>, <i>Introduzione a Kubernetes</i> o <i>Kubernetes e come toccare le nuvole per meri mortali</i>.
             </p>
@@ -50,10 +50,17 @@
               spaghetti code che farebbe arrossire anche il programmatore più esperto.
             </p>
           </section>
+          <section>
+            <div id="org7604d96" class="figure">
+              <p><img src="./come_demolire_un_monolite/humor-pain.jpg" alt="humor-pain.jpg" />
+              </p>
+              <p><span class="figure-number">Figure 1: </span>Quella che sto raccontarvi è una storia di sangue e lacrime, ma presa con (molta) ironia - 'Ahhh. Humor based on my pain. Ah ah ah.' - Da <b>Friends: S6E23 "The One With The Ring"</b> (2000).</p>
+            </div>
+          </section>
         </section>
         <section>
-          <section id="slide-org03652c4">
-            <h2 id="org03652c4">Scenario Attuale: Il Punto di Partenza</h2>
+          <section id="slide-org35f6267">
+            <h2 id="org35f6267">Scenario Attuale: Il Punto di Partenza</h2>
             <p>
               Immaginate un'applicazione sviluppata in Java 8, basata su Apache
               Struts2 e Spring, costruita in un'epoca in cui modularità e best
@@ -67,10 +74,10 @@
             </p>
           </section>
           <section>
-            <div id="orgf20f7a0" class="figure">
+            <div id="orged7990e" class="figure">
               <p><img src="./come_demolire_un_monolite/itsatrap.jpg" alt="itsatrap.jpg" />
               </p>
-              <p><span class="figure-number">Figure 1: </span>Il vecchio monolite legacy è una trappola di spaghetti code - 'It's a trap!' - Da <b>Return of the Jedi</b> (1983).</p>
+              <p><span class="figure-number">Figure 2: </span>Il vecchio monolite legacy è una trappola di spaghetti code - 'It's a trap!' - Da <b>Return of the Jedi</b> (1983).</p>
             </div>
           </section>
           <section>
@@ -88,8 +95,8 @@
           </section>
         </section>
         <section>
-          <section id="slide-org93e1c71">
-            <h2 id="org93e1c71">Il Problema Tecnico: Tra Legacy e Innovazione</h2>
+          <section id="slide-orgc8ba040">
+            <h2 id="orgc8ba040">Il Problema Tecnico: Tra Legacy e Innovazione</h2>
             <p>
               Analizzare questo "merdone" significa affrontare una realtà fatta di
               codice scritto "un po' male", dove ogni modifica è un rischio e ogni
@@ -98,10 +105,10 @@
               accoppiamento troppo stretto tra le componenti, rendendo il refactoring
               un'impresa titanica.
             </p>
-            <div id="org251cba8" class="figure">
+            <div id="orgfcbba21" class="figure">
               <p><img src="./come_demolire_un_monolite/imsorrydave.jpg" alt="imsorrydave.jpg" />
               </p>
-              <p><span class="figure-number">Figure 2: </span>Quando il legacy code resiste ai cambiamenti&#x2026; 'I'm sorry, Dave. I'm afraid I can't do that.' - Da <b>2001: A Space Odyssey</b> (1968).</p>
+              <p><span class="figure-number">Figure 3: </span>Quando il legacy code resiste ai cambiamenti&#x2026; 'I'm sorry, Dave. I'm afraid I can't do that.' - Da <b>2001: A Space Odyssey</b> (1968).</p>
             </div>
           </section>
           <section>
@@ -125,18 +132,18 @@
           </section>
         </section>
         <section>
-          <section id="slide-orgfcee2b0">
-            <h2 id="orgfcee2b0">Qualità del Codice: Il Quality Gate come Bussola</h2>
+          <section id="slide-orge7372cf">
+            <h2 id="orge7372cf">Qualità del Codice: Il Quality Gate come Bussola</h2>
             <p>
               Una trasformazione così radicale non può prescindere da un cambiamento
               profondo anche nella qualità del codice. Io credo fermamente che il
               codice debba essere un riflesso fedele dei processi aziendali, e per
               questo ho imposto standard rigorosi sin dall'inizio.
             </p>
-            <div id="orgeaf9ee9" class="figure">
+            <div id="orgf554c25" class="figure">
               <p><img src="./come_demolire_un_monolite/withgreatpower.png" alt="withgreatpower.png" />
               </p>
-              <p><span class="figure-number">Figure 3: </span>In un sistema dove ogni riga conta, ricordarsi che 'With great power comes great responsibility.' - Da <b>Spider-Man</b> (2002).</p>
+              <p><span class="figure-number">Figure 4: </span>In un sistema dove ogni riga conta, ricordarsi che 'With great power comes great responsibility.' - Da <b>Spider-Man</b> (2002).</p>
             </div>
           </section>
           <section>
@@ -153,8 +160,8 @@
           </section>
         </section>
         <section>
-          <section id="slide-org1393623">
-            <h2 id="org1393623">Strumenti e Infrastruttura: Dalla Manualità all'Automazione Totale</h2>
+          <section id="slide-org3d293b3">
+            <h2 id="org3d293b3">Strumenti e Infrastruttura: Dalla Manualità all'Automazione Totale</h2>
             <p>
               Se prima il deploy era un rituale manuale su macchine virtuali Windows
               Server, oggi il nostro processo è totalmente automatizzato grazie a un
@@ -170,16 +177,16 @@
             </p>
           </section>
           <section>
-            <div id="orgcbdec73" class="figure">
+            <div id="org840dd30" class="figure">
               <p><img src="./come_demolire_un_monolite/hastalavistababy.jpg" alt="hastalavistababy.jpg" />
               </p>
-              <p><span class="figure-number">Figure 4: </span>Addio ai vecchi processi manuali: 'Hasta la vista, baby.' - Da <b>Terminator 2: Judgment Day</b> (1991).</p>
+              <p><span class="figure-number">Figure 5: </span>Addio ai vecchi processi manuali: 'Hasta la vista, baby.' - Da <b>Terminator 2: Judgment Day</b> (1991).</p>
             </div>
           </section>
         </section>
         <section>
-          <section id="slide-org45b2dfb">
-            <h2 id="org45b2dfb">La Rivoluzione della Sicurezza: Da Custom a SSO</h2>
+          <section id="slide-org5dec58d">
+            <h2 id="org5dec58d">La Rivoluzione della Sicurezza: Da Custom a SSO</h2>
             <p>
               Una delle trasformazioni più significative riguarda la sicurezza. Nel
               vecchio sistema, l'autenticazione era gestita in maniera custom, con
@@ -187,10 +194,10 @@
               una soluzione che, oltre ad essere poco scalabile, lasciava spazio a
               numerose vulnerabilità.
             </p>
-            <div id="org8a2cd94" class="figure">
+            <div id="org466b52d" class="figure">
               <p><img src="./come_demolire_un_monolite/youshallnotpass.jpg" alt="youshallnotpass.jpg" width="500px" />
               </p>
-              <p><span class="figure-number">Figure 5: </span>Implementando il nuovo SSO, proteggiamo il sistema come Gandalf: 'You shall not pass!' - Da <b>The Lord of the Rings: The Fellowship of the Ring</b> (2001).</p>
+              <p><span class="figure-number">Figure 6: </span>Implementando il nuovo SSO, proteggiamo il sistema come Gandalf: 'You shall not pass!' - Da <b>The Lord of the Rings: The Fellowship of the Ring</b> (2001).</p>
             </div>
           </section>
           <section>
@@ -207,17 +214,17 @@
           </section>
         </section>
         <section>
-          <section id="slide-org3b80117">
-            <h2 id="org3b80117">Microfrontend: La Rivoluzione Anche sul Frontend</h2>
+          <section id="slide-org8cf5752">
+            <h2 id="org8cf5752">Microfrontend: La Rivoluzione Anche sul Frontend</h2>
             <p>
               Parlando di innovazione, non posso non soffermarmi sul fronte del
               client. La nuova architettura, headless per natura, apre la porta a un
               approccio a microfrontend che ho deciso di adottare con entusiasmo.
             </p>
-            <div id="org9a0c0eb" class="figure">
+            <div id="org0dfb264" class="figure">
               <p><img src="./come_demolire_un_monolite/one-does-not-simply-walk-into-mordor.jpg" alt="one-does-not-simply-walk-into-mordor.jpg" />
               </p>
-              <p><span class="figure-number">Figure 6: </span>Non si integra un frontend monolitico senza una strategia modulare: 'One does not simply walk into Mordor.' - Da <b>The Lord of the Rings: The Fellowship of the Ring</b> (2001).</p>
+              <p><span class="figure-number">Figure 7: </span>Non si integra un frontend monolitico senza una strategia modulare: 'One does not simply walk into Mordor.' - Da <b>The Lord of the Rings: The Fellowship of the Ring</b> (2001).</p>
             </div>
           </section>
           <section>
@@ -242,8 +249,8 @@
           </section>
         </section>
         <section>
-          <section id="slide-org03ff08e">
-            <h2 id="org03ff08e">Integrazioni esterne, outsourcing e le sfide della comunicazione</h2>
+          <section id="slide-orgef2b7e1">
+            <h2 id="orgef2b7e1">Integrazioni esterne, outsourcing e le sfide della comunicazione</h2>
             <p>
               Non possiamo dimenticare le sfide legate alle integrazioni con terze
               parti e, in alcuni casi, l'outsourcing di parti del lavoro. Il nuovo
@@ -259,8 +266,8 @@
           </section>
         </section>
         <section>
-          <section id="slide-org4bb93af">
-            <h2 id="org4bb93af">Transazioni distribuite e multi-tenancy: gestire il caos con stile</h2>
+          <section id="slide-org701cf71">
+            <h2 id="org701cf71">Transazioni distribuite e multi-tenancy: gestire il caos con stile</h2>
             <p>
               Uno dei nodi più critici in un'architettura a microservizi è la gestione
               delle transazioni distribuite. Qui la scelta tra orchestrazione e
@@ -283,8 +290,8 @@
           </section>
         </section>
         <section>
-          <section id="slide-org34f2523">
-            <h2 id="org34f2523">Observability e il coraggio di abbracciare il caos</h2>
+          <section id="slide-org8ae2b27">
+            <h2 id="org8ae2b27">Observability e il coraggio di abbracciare il caos</h2>
             <p>
               Monitorare un sistema distribuito è come cercare di tenere sotto
               controllo il tempo in mezzo a una tempesta: bisogna avere gli strumenti
@@ -298,8 +305,8 @@
           </section>
         </section>
         <section>
-          <section id="slide-org6f192c8">
-            <h2 id="org6f192c8">L'Analisi in Corso: Un Percorso in Evoluzione</h2>
+          <section id="slide-orgeb6492b">
+            <h2 id="orgeb6492b">L'Analisi in Corso: Un Percorso in Evoluzione</h2>
             <p>
               Devo sottolineare che il percorso non è ancora finito. Ogni giorno mi
               trovo a confrontarmi con nuove sfide, nuove intuizioni e, sì, anche
@@ -319,8 +326,8 @@
           </section>
         </section>
         <section>
-          <section id="slide-org33c55b6">
-            <h2 id="org33c55b6">Il futuro è un evento</h2>
+          <section id="slide-orgbf5c8b7">
+            <h2 id="orgbf5c8b7">Il futuro è un evento</h2>
             <p>
               In chiusura, non possiamo non guardare al futuro, fatto di architetture
               basate su eventi (EDA). L'adozione di un Event Driven Architecture non
@@ -333,8 +340,8 @@
           </section>
         </section>
         <section>
-          <section id="slide-org60955fa">
-            <h2 id="org60955fa">Conclusioni</h2>
+          <section id="slide-org80a069a">
+            <h2 id="org80a069a">Conclusioni</h2>
             <p>
               In sostanza, demolire un monolite &#x2013; e in questo caso, non uno ma due &#x2013;
               significa intraprendere un viaggio che va ben oltre il semplice
@@ -391,20 +398,20 @@
             </p>
           </section>
           <section>
-            <div id="org22d8c61" class="figure">
+            <div id="orgff228ba" class="figure">
               <p><img src="./come_demolire_un_monolite/Dont-Panic.jpg" alt="Dont-Panic.jpg" />
               </p>
-              <p><span class="figure-number">Figure 7: </span>Il viaggio è ancora lungo, ma ricordate: 'Don't Panic.' - Da <b>The Hitchhiker's Guide to the Galaxy</b> (1981).</p>
+              <p><span class="figure-number">Figure 8: </span>Il viaggio è ancora lungo, ma ricordate: 'Don't Panic.' - Da <b>The Hitchhiker's Guide to the Galaxy</b> (1981).</p>
             </div>
           </section>
         </section>
         <section>
-          <section id="slide-org1e3c06c">
-            <h2 id="org1e3c06c">Saluti</h2>
+          <section id="slide-org6cc02f6">
+            <h2 id="org6cc02f6">Saluti</h2>
             <p>
               Grazie a tutti per essere arrivati fin qui!
             </p>
-            <div id="org937e1a3" class="figure">
+            <div id="orged96911" class="figure">
               <p><img src="./come_demolire_un_monolite/thanks_for_watching.jpeg" alt="thanks_for_watching.jpeg" />
               </p>
             </div>
