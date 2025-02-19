@@ -13,13 +13,5 @@
 				</div>
 			</div>
 		</div>
-{%- if page.landing == true -%}
-		<div class="row">
-			<div class="col-lg-8 col-md-10 mx-auto bg opacity-85 rounded-2">
-				{% capture incl_about %}{% include_relative includes/about.md %}{% endcapture %}
-				{{ incl_about | markdownify }}
-			</div>
-		</div>
-{%- endif -%}
 	</div>
 </header>
