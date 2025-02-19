@@ -8,14 +8,15 @@ In questa pagina elenco gli eventi a cui ho partecipato e di cui esiste traccia 
 
 Principalmente talk, mi verrebbe da dire, messi in ordine *vagamente* cronologico **inverso**, in cui parlo di cose, faccio cose, vedo gente.
 
-### Coffee Tech #1 - Come demolire un monolite (anzi due) (19/02/2025)
+### Coffee Tech #1 - Come demolire un monolite (anzi due) (26/02/2025)
 
 I Learning Friday diventano Coffee Tech, non si fanno più di venerdì ma di mercoledì (il prezzemolo della settimana) e il format è un pelo più compatto (c'è circa un'ora di tempo).  
 Ho parlato di come si porta avanti un programma di migrazione architetturale da un monolite (anzi due) vecchio di 15 anni a un sistema a microservizi moderno e (ovviamente) orchestrato su Kubernetes.
 
 [Slide]({% link _pages/come_demolire_un_monolite.html %})
 
-> *NOTA*: di questo evento non c'è una registrazione.
+> *NOTA*: di questo evento non c'è una registrazione.  
+> L'evento è interno a Key2 (*sadly*, avrei voluto pubblicare su YT).
 
 ### Learning Friday #3 - Kubernetes e come toccare le nuvole per meri mortali (07/07/2023)
 
