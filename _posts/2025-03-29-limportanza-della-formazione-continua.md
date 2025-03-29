@@ -1,7 +1,10 @@
 ---
 title: L'importanza della formazione continua
-tags: basi formazione java
-date: 2025-03-29
+tags:
+- basi
+- formazione
+- java
+date: 2025-03-29 01:59:42+02:00
 ---
 
 Nel vasto e caotico universo dell'informatica, fermarsi equivale a scegliere deliberatamente di diventare il prossimo fossile digitale. Immagina un consulente Java che, forte delle sue certezze, si crogiola nel comfort delle sue conoscenze consolidate. Peccato che, mentre lui si rilassa, il mondo del codice continua a girare vorticosamente, lasciandolo indietro come un floppy disk in un'era di cloud computing.
