@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+    <title>Literate Programming e Org-mode: Quando il Codice e la Prosa Fanno Pace | Alessandro ‘kLeZ’ Accardo personal website</title>
+    <meta name="generator" content="Jekyll v3.9.3" />
+    <meta property="og:title" content="Literate Programming e Org-mode: Quando il Codice e la Prosa Fanno Pace" />
+    <meta name="author" content="kLeZ" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="Il literate programming è un approccio alla programmazione che integra codice e documentazione in un unico flusso naturale, permettendo di pensare come esseri umani invece che come macchine. In questo articolo esploro come Org-mode di Emacs rappresenti l’implementazione più elegante e potente di questa filosofia, trasformando la documentazione da faticoso obbligo a parte organica e piacevole del processo di sviluppo." />
+    <meta property="og:description" content="Il literate programming è un approccio alla programmazione che integra codice e documentazione in un unico flusso naturale, permettendo di pensare come esseri umani invece che come macchine. In questo articolo esploro come Org-mode di Emacs rappresenti l’implementazione più elegante e potente di questa filosofia, trasformando la documentazione da faticoso obbligo a parte organica e piacevole del processo di sviluppo." />
+    <link rel="canonical" href="https://klez.me/2025/04/20/literate-programming-org-mode/" />
+    <meta property="og:url" content="https://klez.me/2025/04/20/literate-programming-org-mode/" />
+    <meta property="og:site_name" content="Alessandro ‘kLeZ’ Accardo personal website" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2025-04-20T10:42:37+02:00" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="Literate Programming e Org-mode: Quando il Codice e la Prosa Fanno Pace" />
+    <meta name="twitter:site" content="@kLeZhAcK" />
+    <meta name="twitter:creator" content="@kLeZhAcK" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"kLeZ"},"dateModified":"2025-04-20T10:42:37+02:00","datePublished":"2025-04-20T10:42:37+02:00","description":"Il literate programming è un approccio alla programmazione che integra codice e documentazione in un unico flusso naturale, permettendo di pensare come esseri umani invece che come macchine. In questo articolo esploro come Org-mode di Emacs rappresenti l’implementazione più elegante e potente di questa filosofia, trasformando la documentazione da faticoso obbligo a parte organica e piacevole del processo di sviluppo.","headline":"Literate Programming e Org-mode: Quando il Codice e la Prosa Fanno Pace","mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2025/04/20/literate-programming-org-mode/"},"url":"https://klez.me/2025/04/20/literate-programming-org-mode/"}
+    </script>
+    <!-- End Jekyll SEO tag -->
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/katex/katex.min.css" />
+    <link rel="stylesheet" href="/assets/main.css" />
+    <link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro &apos;kLeZ&apos; Accardo personal website" />
+  </head>
+  <body class="post-page">
+    <header class="masthead" style="background-image: url(/assets/img/home-bg.jpg)">
+      <div class="overlay"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Alessandro 'kLeZ' Accardo personal website</h1>
+              <span class="subheading">This is the personal website of an Italian developer once called 'kLeZ'.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="/">kLeZ</a>
+        <a class="navbar-brand" href="https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml" target="_blank">
+          <img src="https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml/badge.svg?branch=dev" alt="build status badge" />
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/build.html">Build</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/blog">Posts</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">About me <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="/about">About</a>
+                <a class="dropdown-item " href="/contatti">Contatti</a>
+                <a class="dropdown-item " href="/cv">Curriculum Vitae</a>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="https://github.com/kLeZ/kLeZ.github.io">Repository</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Progetti <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
+                <a class="dropdown-item " href="https://klez.me/PassMan">PassMan</a>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/eventi">Eventi</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container-fluid" aria-label="Content">
+      <div class="row">
+        <div class="col-lg-2 col-md-12">
+          <aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
+            <p class="text-muted">
+              This article will take 8 minutes to read.
+            </p>
+          </aside>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <article itemscope itemtype="http://schema.org/BlogPosting">
+            <header>
+              <h2>Literate Programming e Org-mode: Quando il Codice e la Prosa Fanno Pace</h2>
+              <small class="text-muted">Posted on
+                <time datetime="2025-04-20T10:42:37+02:00" itemprop="datePublished">20 Apr 2025</time><span> • by <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
+            </header>
+            <section itemprop="articleBody">
+              <p>Il literate programming è un approccio alla programmazione che integra codice e documentazione in un unico flusso naturale, permettendo di pensare come esseri umani invece che come macchine. In questo articolo esploro come Org-mode di Emacs rappresenti l’implementazione più elegante e potente di questa filosofia, trasformando la documentazione da faticoso obbligo a parte organica e piacevole del processo di sviluppo.</p>
+              <!--more-->
+              <p class="m-0 invisible zero-size">
+                <a class="invisible" id="read-more" href="#">read more</a>
+              </p>
+              <h1 id="literate-programming-e-org-mode-quando-il-codice-e-la-prosa-fanno-pace">Literate Programming e Org-mode: Quando il Codice e la Prosa Fanno Pace</h1>
+              <p>Ah, la documentazione del codice. Quell’attività che tutti i programmatori amano detestare e che, puntualmente, viene rimandata a un domani che non arriva mai. Come se esistesse davvero un momento in cui, improvvisamente, avremo quell’ispirazione divina e quella pazienza certosina necessarie per spiegare perché diavolo abbiamo scritto quel blocco di codice incomprensibile tre mesi fa, alle tre di notte, con più caffeina nel sangue che neuroni attivi nel cervello.</p>
+              <p>Ma se vi dicessi che esiste un approccio dove la documentazione non è quel famigerato “male necessario” da fare controvoglia alla fine di un progetto, ma parte integrante, organica e persino <em>piacevole</em> del processo di sviluppo? Se vi dicessi che questo approccio ha più di quarant’anni, ma solo ora sta trovando il suo tempo di gloria? E se vi dicessi che uno strumento gratuito, open-source e sorprendentemente potente può trasformare questo concetto da utopia accademica a pratica quotidiana? Benvenuti nel mondo del literate programming e del suo campione contemporaneo: Org-mode.</p>
+              <h2 id="la-rivoluzione-del-literate-programming-unidea-vecchia-come-il-debugging">La Rivoluzione del Literate Programming: Un’Idea Vecchia Come il Debugging</h2>
+              <p>Il concetto di literate programming nacque nella mente brillante (e leggermente ossessiva) di Donald Knuth negli anni ‘80. Stanco di documentare il suo codice a posteriori – e probabilmente di maledire se stesso per non capire il proprio codice scritto solo pochi giorni prima – Knuth ebbe un’illuminazione: e se, invece di scrivere codice con qualche commento sparso qua e là, scrivessimo un vero e proprio saggio dove il codice è semplicemente parte della narrazione? L’idea era rivoluzionaria: invece di adattare i nostri pensieri all’ordine imposto dal computer, adattiamo il codice all’ordine naturale del pensiero umano. Come se un programmatore potesse finalmente smettere di pensare come una macchina e tornare a pensare come un essere umano (o almeno provarci, dopo anni di condizionamento algoritimico).</p>
+              <p>Questa visione sovversiva del processo di programmazione non ebbe immediatamente il successo che meritava. D’altronde, in un’epoca in cui i programmatori consideravano un lusso avere più di 640KB di memoria, l’idea di “sprecare” risorse preziose per una documentazione dettagliata sembrava quasi un’eresia. “Chi ha bisogno di spiegazioni quando il codice parla da sé?” era il mantra dei puristi. Peccato che il codice “parlasse da sé” come un libro di Finnegans Wake: tecnicamente in inglese, ma comprensibile solo all’autore, e nemmeno sempre. Il risultato? Generazioni di programmatori che hanno passato più tempo a decifrare il codice altrui che a scriverne di nuovo, in un circolo vizioso di bestemmie silenziose e refactoring disperati.</p>
+              <p>La genialità di Knuth stava nel capire che il vero problema non era la documentazione in sé, ma il divorzio innaturale tra codice e spiegazione. Quando scriviamo codice, stiamo in realtà traducendo un pensiero umano, con tutte le sue sfumature e contestualizzazioni, in una serie di istruzioni rigide per una macchina implacabilmente letterale. È come tradurre poesia: se ti limiti a una traduzione parola per parola, perdi l’anima dell’opera. Il literate programming era il tentativo di riconciliare questi due mondi, permettendo al programmatore di esprimere la propria intenzione in un flusso naturale, intrecciando codice e spiegazioni in un unico tessuto narrativo coerente.</p>
+              <h2 id="org-mode-quando-emacs-decise-di-diventare-il-tuo-secondo-cervello">Org-mode: Quando Emacs Decise di Diventare il Tuo Secondo Cervello</h2>
+              <p>Se Knuth ha piantato il seme del literate programming, Org-mode è l’albero maestoso che ne è germogliato nell’ecosistema di Emacs. Per chi non lo sapesse (e vi compatisco, vivete nel buio), Emacs è quell’editor di testo che è cresciuto fino a diventare praticamente un sistema operativo, con la modestia tipica di chi pensa “perché limitarsi a fare una cosa sola quando puoi fare qualunque cosa?”. In questo contesto di megalomaniacità software, Org-mode si è ritagliato il suo spazio come l’implementazione più versatile, elegante e potente del literate programming che sia mai stata creata.</p>
+              <p>A prima vista, Org-mode sembra solo un altro formato di markup, come Markdown per gli hipster o LaTeX per i masochisti accademici. File di testo semplice con simboli speciali che indicano intestazioni, elenchi, enfasi e così via. Ma questa è come descrivere un Ferrari come “una macchina con quattro ruote”. Sotto quella superficie apparentemente semplice si nasconde un mostro di potenza e flessibilità. Org-mode non è solo un modo per formattare testo: è un sistema completo per organizzare pensieri, gestire progetti, prendere appunti, tenere traccia del tempo, eseguire calcoli, pianificare il futuro e, sì, scrivere documenti tecnici che mescolano codice e spiegazioni in modo fluido e naturale.</p>
+              <p>La bellezza di Org-mode come strumento per il literate programming sta nella sua capacità di mantenere il codice “vivo” all’interno del documento. I blocchi di codice non sono semplici citazioni statiche: possono essere eseguiti, modificati, esportati e persino collegati tra loro in modi complessi. Immaginatelo come un notebook Jupyter con steroidi e un dottorato in filosofia. Potete scrivere un blocco di codice Python che genera un grafico, poi un blocco di R che analizza i dati, poi un blocco di shell che crea una directory per salvare i risultati, e tutto questo all’interno di un documento che spiega passo dopo passo cosa state facendo e perché. E il bello è che potete eseguire ciascun blocco individualmente, o eseguirli tutti in sequenza, o esportare solo il codice, o solo le spiegazioni, o entrambi in formati diversi. È come avere un assistente di laboratorio instancabile che capisce esattamente cosa volete fare e lo fa senza lamentarsi (a differenza dei vostri colleghi umani).</p>
+              <p>Org-mode supporta praticamente qualsiasi linguaggio di programmazione possiate immaginare, dal vecchio e venerabile C fino all’ultimo framework JavaScript nato la settimana scorsa che sarà già obsoleto quando finirete di leggere questo articolo. Questa universalità lo rende ideale per progetti complessi che coinvolgono più linguaggi e tecnologie, o per quei momenti in cui volete sperimentare senza dover aprire un nuovo IDE ogni due minuti. È come avere una Swiss Army knife digitale, ma con più lame di quante ne possiate contare e senza il rischio di tagliarvi le dita (metaforicamente parlando, s’intende; le ferite all’ego quando provate a masterizzare Emacs sono un altro discorso).</p>
+              <h2 id="dalla-teoria-alla-pratica-come-org-mode-salva-sanità-mentale-e-progetti">Dalla Teoria alla Pratica: Come Org-mode Salva Sanità Mentale e Progetti</h2>
+              <p>Passiamo ora dalla teoria astratta alla cruda realtà quotidiana di chi lavora con il codice. Come si traduce tutta questa potenza e flessibilità nella vita di un programmatore, analista, ricercatore o blogger tecnico? La risposta è sorprendentemente semplice: Org-mode diventa il punto centrale dove convergono tutte le vostre attività intellettuali, il luogo dove pensieri, codice, dati e pianificazione si fondono in un flusso di lavoro coerente.</p>
+              <p>Prendiamo la scrittura di documenti tecnici, una di quelle attività che la maggior parte dei tecnici affronta con lo stesso entusiasmo con cui andrebbe dal dentista per un’estrazione senza anestesia. Con Org-mode, il processo diventa quasi – oso dire – piacevole. Invece di scrivere prima il codice e poi, con la morte nel cuore, cercare di ricostruire il vostro ragionamento in un documento separato, procedete organicamente: descrivete il problema, delineate l’approccio, scrivete un pezzo di codice, eseguito, commentate i risultati, modificate il codice, rieseguitelo… in un ciclo naturale che riflette il vero processo di sviluppo. Il risultato non è solo un documento più coerente e comprensibile, ma anche un processo di sviluppo più riflessivo e metodico. Vi ritroverete a scrivere codice migliore semplicemente perché siete costretti a spiegarlo mentre lo create.</p>
+              <p>Per gli appunti di riunioni tecniche, poi, Org-mode è una benedizione. Chi non ha mai vissuto l’esperienza di trovarsi, settimane dopo una riunione cruciale, con appunti criptici che sembrano scritti da un’intelligenza aliena in un codice che nemmeno la NSA riuscirebbe a decifrare? “Implementare cosa?”, “Parlare con chi?”, “Perché ho scritto ‘rampino rosso!!!’ con tre punti esclamativi?”. Con Org-mode, i vostri appunti possono includere snippet di codice eseguibili, link a documenti e ticket, liste di TODO con priorità e scadenze, e persino registrazioni audio o screenshot. È come avere un archivista personale che organizza meticolosamente ogni neurone sparato durante le vostre riunioni.</p>
+              <p>Ma è forse nella gestione di un blog tecnico che Org-mode brilla di luce particolare. Io stesso uso Org-mode per il mio blog, dove mescolo riflessioni, tutoriali, snippets e persino la programmazione dei post futuri. La capacità di Org-mode di esportare in praticamente qualsiasi formato (HTML, PDF, LaTeX, Markdown, e persino presentazioni) significa che posso scrivere una volta e pubblicare ovunque. Posso includere grafici generati al volo, equazioni matematiche, codice colourizzato e completamente funzionale, e tutto viene renderizzato perfettamente. È come avere un esercito di assistenti editoriali esperti in ogni aspetto della pubblicazione tecnica, ma senza dover pagare stipendi o sopportare battute sulla vostra dipendenza dalla caffeina.</p>
+              <p>Un aspetto particolarmente sottovalutato di Org-mode è la sua capacità di evolvere con voi. Iniziate con semplici documenti con intestazioni e elenchi. Poi aggiungete qualche snippet di codice. Prima che ve ne accorgiate, state usando tabelle che calcolano automaticamente totali, gestite progetti con dipendenze complesse, tenete traccia del tempo speso su diverse attività, generate grafici con GnuPlot integrato, e vi chiedete come abbiate mai potuto vivere senza. È come un videogioco di strategia dove ogni nuova abilità sbloccata apre possibilità che non sapevate nemmeno di desiderare.</p>
+              <h1 id="conclusioni-un-invito-al-matrimonio-tra-pensiero-e-codice">Conclusioni: Un Invito al Matrimonio tra Pensiero e Codice</h1>
+              <p>Arrivati a questo punto, potreste pensare che io sia solo un altro evangelista di Emacs, uno di quei programmatori barbuti che parlano di editor di testo con lo stesso fervore religioso con cui altri parlano di calcio o politica. E avreste ragione. Ma oltre il fanatismo c’è una verità fondamentale: il literate programming, e strumenti come Org-mode che lo rendono accessibile, rappresentano un cambio di paradigma nel modo in cui interagiamo con il codice e la conoscenza tecnica.</p>
+              <p>Non si tratta solo di avere documentazione migliore (anche se questo, di per sé, salverebbe innumerevoli ore di fatiche e imprecazioni). Si tratta di riconciliare il modo in cui pensiamo naturalmente con il modo in cui programmiamo. Si tratta di riconoscere che il codice è comunicazione: con il computer, certo, ma anche con altri esseri umani e con il nostro io futuro che, vi assicuro, vi odierà profondamente per quel blocco di codice non commentato che sembrava così ovvio alle 2 di notte.</p>
+              <p>Se siete stanchi di saltare tra editor, IDE, wiki, sistemi di gestione progetti e blocchi note, se desiderate un flusso di lavoro più coerente e riflessivo, se volete che la vostra documentazione sia finalmente all’altezza del vostro codice (o viceversa), vi invito a dare una possibilità a Org-mode e al literate programming. Non prometto che sarà facile – nulla che valga la pena lo è mai – ma prometto che cambierà il vostro modo di pensare al rapporto tra codice e comunicazione.</p>
+              <p>E magari, solo magari, la prossima volta che un collega vi chiederà “Come funziona questo codice?”, invece di rispondere con un’alzata di spalle e un vago “Beh, funziona…”, potrete inviargli un documento elegante, completo e comprensibile. E credetemi, nel mondo della programmazione, questo vi renderà più rari e preziosi di un commento utile in un progetto legacy.</p>
+              <p>Ora, se volete scusarmi, devo tornare a configurare Emacs. Ho sentito che c’è un nuovo pacchetto che promette di farmi il caffè mentre formatto automaticamente le mie email. La ricerca della produttività perfetta non finisce mai.</p>
+              <details>
+                <summary>Prompt utilizzato per questo articolo</summary>
+                ciao claude, sei un consulente informatico esperto, un programmatore competente in diversi linguaggi e un software architect. il tuo stile di scrittura lo trovi sul tuo blog https://klez.me e sei una penna tagliente e ironica, con un po' di cinismo che spesso non guasta. Articola bene il discorso, sviluppa l'articolo per una lettura lenta e profonda, di almeno 7-8 minuti, e ricordati lo stile di klez fino alla fine dell'articolo. Inserisci dei capitoli, ma non farli troppo corti, che siano almeno di 100 parole e almeno 4 frasi lunghe, per evitare che siano di intralcio allo scorrere del testo e alla fluidità della lettura. Segui la struttura di tre capitoli al massimo per tutto il testo, più un'introduzione, e delle conclusioni.
+                Un articolo sul literate programming e in particolare su Org-mode.
+                Io lo uso per scrivere documenti tecnici, prendere appunti, e scrivere il mio blog (il più delle volte).
+                Usa questi link come reference.
+                - http://howardism.org/Technical/Emacs/literate-programming-tutorial.html
+                - http://cachestocaches.com/2018/6/org-literate-programming/
+              </details>
+            </section>
+            <a href="/2025/04/20/literate-programming-org-mode/" hidden></a>
+          </article>
+        </div>
+        <div class="col-lg-2 col-md-12">
+        </div>
+      </div>
+      <div class="row justify-content-end text-right">
+        <div class="col-6">
+          <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page" href="#">
+            <i class="fa fa-5x fa-chevron-up"></i>
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer bg-light w-100 py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a rel="me" href="https://github.com/kLeZ">
+                  <i class="svg-icon fab fa-github"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://twitter.com/kLeZhAcK">
+                  <i class="svg-icon fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://mastodon.uno/web/@klez">
+                  <i class="svg-icon fab fa-mastodon"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://www.linkedin.com/in/alessandroaccardo">
+                  <i class="svg-icon fab fa-linkedin"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://telegram.me/julius8774">
+                  <i class="svg-icon fab fa-telegram"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="/feed.xml">
+                  <i class="svg-icon fa fa-rss"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="mailto:klez@pm.me">
+                  <i class="svg-icon fa fa-envelope"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-left">
+            <small class="text-muted">Last build on <time datetime="2025-04-20T17:45:26+02:00">Sun, 20 Apr 2025 17:45:26 +0200</time></small>
+          </div>
+          <div class="col text-right">
+            <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />
+            <small class="text-muted">
+              This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+            </small>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="/assets/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/assets/popper/popper.min.js"></script>
+    <script src="/assets/popper/tooltip.min.js"></script>
+    <script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/assets/fontawesome-free/js/all.min.js"></script>
+    <script src="/assets/main.js"></script><script data-goatcounter="https://klez.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+    <noscript>
+      <img src="https://klez.goatcounter.com/count?rnd&p=https://klez.me/2025/04/20/literate-programming-org-mode/&t=Literate%20Programming%20e%20Org-mode:%20Quando%20il%20Codice%20e%20la%20Prosa%20Fanno%20Pace" alt="goat-counter" />
+    </noscript>
+  </body>
+</html>
