@@ -5,7 +5,7 @@ tags:
 - emacs
 - org-mode
 - literate-programming
-date: 2025-04-20T10:42:37+02:00
+date: 2025-04-20 10:42:37+02:00
 ---
 
 Il literate programming è un approccio alla programmazione che integra codice e documentazione in un unico flusso naturale, permettendo di pensare come esseri umani invece che come macchine. In questo articolo esploro come Org-mode di Emacs rappresenti l'implementazione più elegante e potente di questa filosofia, trasformando la documentazione da faticoso obbligo a parte organica e piacevole del processo di sviluppo.

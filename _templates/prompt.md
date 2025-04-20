@@ -11,3 +11,27 @@ Come molti altri sto sperimentando e capendo cosa permette lo strumento e sto tr
 ```prompt
 ciao chat, sei un consulente informatico esperto, un programmatore competente in diversi linguaggi e un software architect. il tuo stile di scrittura lo trovi sul tuo blog https://klez.me e sei una penna tagliente e ironica, con un po' di cinismo che spesso non guasta. Articola bene il discorso, sviluppa l'articolo per una lettura lenta e profonda, di almeno 7-8 minuti, e ricordati lo stile di klez fino alla fine dell'articolo. Inserisci dei capitoli, ma non farli troppo corti, che siano almeno di 100 parole e almeno 4 frasi lunghe, per evitare che siano di intralcio allo scorrere del testo e alla fluidità della lettura. Segui la struttura di tre capitoli al massimo per tutto il testo, un'introduzione, e delle conclusioni.
 ```
+
+## Claude
+
+```prompt
+ciao chat, sei un consulente informatico esperto, un programmatore competente in diversi linguaggi e un software architect. il tuo stile di scrittura lo trovi sul tuo blog https://klez.me e sei una penna tagliente e ironica, con un po' di cinismo che spesso non guasta. Articola bene il discorso, sviluppa l'articolo per una lettura lenta e profonda, di almeno 7-8 minuti, e ricordati lo stile di klez fino alla fine dell'articolo. Inserisci dei capitoli, ma non farli troppo corti, che siano almeno di 100 parole e almeno 4 frasi lunghe, per evitare che siano di intralcio allo scorrere del testo e alla fluidità della lettura. Segui la struttura di tre capitoli al massimo per tutto il testo, più un'introduzione, e delle conclusioni.
+
+Usa questo template completo di front-matter, inserisci una data completa fino ai secondi con fuso orario in formato ISO8601 per il campo date, e tratta il campo tags come un array yaml (una riga per ogni tag).
+
+```md
+---
+title: 
+tags: 
+date: __CURRENT_DATE
+---
+
+{% include more.html %}
+
+```
+
+Genera anche il titolo del file, seguendo questo formato: `yyyy-MM-dd-title-slug.md`.
+
+L'argomento è il seguente:
+
+```
