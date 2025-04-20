@@ -1,5 +1,5 @@
 ---
-title: Literate Programming e Org-mode: Quando il Codice e la Prosa Fanno Pace
+title: "Literate Programming e Org-mode: Quando il Codice e la Prosa Fanno Pace"
 tags:
 - programming
 - emacs

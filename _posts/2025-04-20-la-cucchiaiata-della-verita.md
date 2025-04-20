@@ -1,5 +1,5 @@
 ---
-title: La Cucchiaiata della Verità - Perché Investire negli Altri (Anche se Non Ti Piace)
+title: "La Cucchiaiata della Verità - Perché Investire negli Altri (Anche se Non Ti Piace)"
 tags:
 - società
 - istruzione
