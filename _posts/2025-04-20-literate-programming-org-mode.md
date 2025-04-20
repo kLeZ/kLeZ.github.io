@@ -1,6 +1,10 @@
 ---
 title: Literate Programming e Org-mode: Quando il Codice e la Prosa Fanno Pace
-tags: programming emacs org-mode literate-programming
+tags:
+- programming
+- emacs
+- org-mode
+- literate-programming
 date: 2025-04-20T10:42:37+02:00
 ---
 
