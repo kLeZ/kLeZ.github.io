@@ -1,0 +1,2753 @@
+---
+permalink: /lf/introduzione_al_testing.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Introduzione al Testing Automatico per Sviluppatori Backend (Spring Boot/Java 21)</title>
+<meta name="author" content="Alessandro Accardo"/>
+<meta name="description" content="Una guida completa al testing automatico per applicazioni backend sviluppate con Spring Boot e Java 21"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/dist/theme/black.css" id="theme"/>
+<style>#text-table-of-contents, .src { overflow-x: auto !important; overflow-y: auto !important; max-height: 65vh; max-width: 85vw; }</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1>Introduzione al Testing Automatico per Sviluppatori Backend (Spring Boot/Java 21)</h1><h2>Attività di formazione interna Key2</h2><h3> Alessandro Accardo</h3><p><a href="https://klez.me/lf/introduzione_al_testing.html"><img src="./introduzione_al_testing/slides_qr.png" alt="permalink qr code" /></a></p>
+</section>
+<section>
+<section id="slide-overview">
+<h2 id="overview">Panoramica generale del Testing Automatico</h2>
+<p>
+Hey! Stai per immergerti nel fantastico mondo del testing automatico, specificamente pensato per le applicazioni backend sviluppate con Spring Boot e Java 21. Preparati a un viaggio che trasformerà il tuo codice da "sembra funzionare" a "sono dannatamente sicuro che funzioni".
+</p>
+
+<p>
+Il testing automatico è quel processo magico che verifica in modo sistematico e ripetibile il corretto funzionamento del tuo codice. Non si tratta semplicemente di far correre qualche test prima di rilasciare in produzione, ma di integrare una vera e propria cultura della qualità nel processo di sviluppo.
+</p>
+</section>
+<section id="slide-why-care">
+<h3 id="why-care">Perché dovresti interessarti al testing automatico?</h3>
+<p>
+Parliamoci chiaro: nessuno vuole essere svegliato alle 3 di notte perché qualcosa è esploso in produzione. Ecco perché il testing automatico è cruciale:
+</p>
+
+<ul>
+<li class="fragment appear"><b>Qualità del software</b>: Individua i bug prima che i tuoi utenti lo facciano</li>
+<li class="fragment appear"><b>Refactoring sicuro</b>: Modifica il codice esistente senza il terrore di rompere funzionalità esistenti</li>
+<li class="fragment appear"><b>Documentazione viva</b>: I test sono la documentazione più affidabile del comportamento atteso del sistema</li>
+<li class="fragment appear"><b>Sviluppo più veloce</b>: Sì, scrivere test richiede tempo, ma riduce drasticamente il debugging a lungo termine</li>
+<li class="fragment appear"><b>Fiducia</b>: Puoi rilasciare nuove funzionalità con la certezza che tutto funzionerà</li>
+
+</ul>
+</section>
+<section id="slide-testing-pyramid">
+<h3 id="testing-pyramid">La Piramide del Testing</h3>
+<p>
+La piramide del testing è un modello concettuale che ci aiuta a capire come strutturare efficacemente i nostri test. È stata proposta inizialmente da Mike Cohn nel suo libro "Succeeding with Agile" e rimane fondamentale per organizzare una strategia di testing efficace.
+</p>
+
+
+<div id="orge5bd4a4" class="figure">
+<p><img src="./introduzione_al_testing/Test-Pyramid.png" alt="Test-Pyramid.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>La Piramide del Testing</p>
+</div>
+
+</section>
+<section>
+<h3>La Piramide del Testing</h3>
+
+<p>
+Come puoi vedere nell'immagine, la piramide è suddivisa in tre livelli principali:
+</p>
+
+<ol>
+<li class="fragment appear"><b>Test Unitari</b> (alla base della piramide): 
+<ul>
+<li class="fragment appear">Sono i più numerosi, veloci ed economici</li>
+<li class="fragment appear">Testano singole unità di codice in isolamento</li>
+<li class="fragment appear">Danno feedback immediato agli sviluppatori</li>
+
+</ul></li>
+
+<li class="fragment appear"><b>Test di Integrazione</b> (al centro): 
+<ul>
+<li class="fragment appear">Testano l'interazione tra componenti diversi</li>
+<li class="fragment appear">Verificano che le parti lavorino bene insieme</li>
+<li class="fragment appear">Sono più lenti e complessi dei test unitari</li>
+
+</ul></li>
+
+<li class="fragment appear"><b>Test End-to-End/UI</b> (al vertice): 
+<ul>
+<li class="fragment appear">Testano l'applicazione nel suo complesso</li>
+<li class="fragment appear">Simulano il comportamento reale dell'utente</li>
+<li class="fragment appear">Sono i più costosi in termini di tempo e risorse</li>
+
+</ul></li>
+
+</ol>
+
+<p>
+La forma a piramide non è casuale: dovremmo avere molti test unitari, un numero moderato di test di integrazione e pochi test end-to-end. Questo approccio ci permette di massimizzare l'efficacia dei nostri test mantenendo tempi di esecuzione ragionevoli.
+</p>
+</section>
+<section id="slide-frameworks-libraries">
+<h3 id="frameworks-libraries">Framework e Librerie per il Testing in Spring Boot/Java 21</h3>
+<p>
+Per le applicazioni Spring Boot con Java 21, abbiamo a disposizione un arsenale completo di strumenti per il testing. Ecco i principali che utilizzeremo:
+</p>
+
+<ul>
+<li class="fragment appear"><b>JUnit 5 (Jupiter)</b>: Il framework base per la creazione ed esecuzione dei test</li>
+<li class="fragment appear"><b>Mockito</b>: Per creare mock di dipendenze e simulare comportamenti</li>
+<li class="fragment appear"><b>AssertJ</b>: Per asserzioni fluenti e leggibili che rendono i test più espressivi</li>
+<li class="fragment appear"><b>Spring Test</b>: Integrazione specifica per testare applicazioni Spring</li>
+<li class="fragment appear"><b>JPA-Unit</b>: Per testare specificamente il layer di persistenza</li>
+<li class="fragment appear"><b>HTML-Unit</b>: Per testare componenti web senza browser reali</li>
+<li class="fragment appear"><b>JSON-Unit</b>: Per testare e comparare strutture JSON</li>
+<li class="fragment appear"><b>Arch-Unit</b>: Per verificare che l'architettura dell'applicazione rispetti i vincoli definiti</li>
+<li class="fragment appear"><b>TestContainers</b>: Per creare e gestire container Docker nei test</li>
+
+</ul>
+
+<p>
+Non preoccuparti se questi nomi ti sembrano intimidatori. Li esploreremo uno per uno nelle prossime sessioni, vedrai che diventeranno presto i tuoi migliori amici nello sviluppo di applicazioni robuste e affidabili.
+</p>
+</section>
+<section id="slide-comparison">
+<h3 id="comparison">Test Unitari vs. Test di Integrazione vs. Test End-to-End</h3>
+<p>
+Per capire meglio le differenze tra i vari tipi di test, facciamo un esempio concreto. Immagina di sviluppare un'applicazione per la gestione degli ordini in un e-commerce:
+</p>
+
+</section>
+<section>
+<h3>Test Unitari vs. Test di Integrazione vs. Test End-to-End</h3>
+<p>
+<b>Test Unitari</b>:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@Test</span>
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">calcolaTotaleOrdine_conDueArticoli_restituisceSommaPrezzi</span>() {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Dato un ordine con due articoli</span>
+    <span style="color: #afd8af;">Articolo</span> <span style="color: #ff69b4;">articolo1</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">Articolo</span>(<span style="color: #61CE3C;">"Libro"</span>, 10.0);
+    <span style="color: #afd8af;">Articolo</span> <span style="color: #ff69b4;">articolo2</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">Articolo</span>(<span style="color: #61CE3C;">"Penna"</span>, 2.0);
+    <span style="color: #afd8af;">List</span>&lt;<span style="color: #afd8af;">Articolo</span>&gt; <span style="color: #ff69b4;">articoli</span> = List.of(articolo1, articolo2);
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Quando calcolo il totale</span>
+    <span style="color: #afd8af;">double</span> <span style="color: #ff69b4;">totale</span> = calcolatorePrezzi.calcolaTotale(articoli);
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Allora il risultato deve essere la somma dei prezzi</span>
+    assertThat(totale).isEqualTo(12.0);
+}
+</pre>
+</div>
+
+</section>
+<section>
+<h3>Test Unitari vs. Test di Integrazione vs. Test End-to-End</h3>
+<p>
+<b>Test di Integrazione</b>:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@SpringBootTest</span>
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">OrdineServiceIntegrationTest</span> {
+    
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">OrdineService</span> <span style="color: #ff69b4;">ordineService</span>;
+    
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">OrdineRepository</span> <span style="color: #ff69b4;">ordineRepository</span>;
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">creaOrdine_salvaNelDatabase</span>() {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Dato un nuovo ordine</span>
+        <span style="color: #afd8af;">OrdineDto</span> <span style="color: #ff69b4;">ordineDto</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">OrdineDto</span>(<span style="color: #61CE3C;">"cliente1"</span>, List.of(
+            <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">ArticoloDto</span>(<span style="color: #61CE3C;">"Libro"</span>, 10.0),
+            <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">ArticoloDto</span>(<span style="color: #61CE3C;">"Penna"</span>, 2.0)
+        ));
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Quando creo l'ordine</span>
+        <span style="color: #afd8af;">Ordine</span> <span style="color: #ff69b4;">ordineCreato</span> = ordineService.creaOrdine(ordineDto);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Allora l'ordine viene salvato nel database</span>
+        <span style="color: #afd8af;">Ordine</span> <span style="color: #ff69b4;">ordineDalDb</span> = ordineRepository.findById(ordineCreato.getId()).orElseThrow();
+        assertThat(ordineDalDb).isNotNull();
+        assertThat(ordineDalDb.getTotale()).isEqualTo(12.0);
+    }
+}
+</pre>
+</div>
+
+</section>
+<section>
+<h3>Test Unitari vs. Test di Integrazione vs. Test End-to-End</h3>
+<p>
+<b>Test End-to-End</b>:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@SpringBootTest</span>(webEnvironment = <span style="color: #96CBFE;">WebEnvironment</span>.RANDOM_PORT)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">OrdineControllerE2ETest</span> {
+    
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">TestRestTemplate</span> <span style="color: #ff69b4;">restTemplate</span>;
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">creazioneOrdineCompletaFlusso</span>() {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Dato un nuovo ordine</span>
+        <span style="color: #afd8af;">OrdineDto</span> <span style="color: #ff69b4;">ordineDto</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">OrdineDto</span>(<span style="color: #61CE3C;">"cliente1"</span>, List.of(
+            <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">ArticoloDto</span>(<span style="color: #61CE3C;">"Libro"</span>, 10.0),
+            <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">ArticoloDto</span>(<span style="color: #61CE3C;">"Penna"</span>, 2.0)
+        ));
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Quando invio la richiesta REST per creare l'ordine</span>
+        <span style="color: #afd8af;">ResponseEntity</span>&lt;<span style="color: #afd8af;">OrdineResponseDto</span>&gt; <span style="color: #ff69b4;">response</span> = restTemplate.postForEntity(
+            <span style="color: #61CE3C;">"/api/ordini"</span>, ordineDto, OrdineResponseDto.<span style="color: #4c83ff;">class</span>);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Allora l'ordine viene creato correttamente</span>
+        assertThat(response.getStatusCode()).isEqualTo(<span style="color: #96CBFE;">HttpStatus</span>.CREATED);
+        assertThat(response.getBody().getTotale()).isEqualTo(12.0);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">E posso verificare l'ordine creato </span>
+        <span style="color: #afd8af;">ResponseEntity</span>&lt;<span style="color: #afd8af;">OrdineResponseDto</span>&gt; <span style="color: #ff69b4;">ordineRecuperato</span> = restTemplate.getForEntity(
+            <span style="color: #61CE3C;">"/api/ordini/{id}"</span>, OrdineResponseDto.<span style="color: #4c83ff;">class</span>, response.getBody().getId());
+        assertThat(ordineRecuperato.getStatusCode()).isEqualTo(<span style="color: #96CBFE;">HttpStatus</span>.OK);
+        assertThat(ordineRecuperato.getBody().getArticoli()).hasSize(2);
+    }
+}
+</pre>
+</div>
+
+</section>
+<section>
+<h3>Test Unitari vs. Test di Integrazione vs. Test End-to-End</h3>
+
+<p>
+Come vedi, man mano che saliamo nella piramide, i test diventano più complessi e testano più parti del sistema insieme. Ma tutti hanno il loro ruolo fondamentale nella verifica della correttezza del nostro codice.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-test-types">
+<h2 id="test-types">Tipologie di Test Automatici in Spring Boot/Java</h2>
+<p>
+Ok, adesso entriamo nel vivo della questione ed esploriamo in dettaglio le diverse tipologie di test automatici che possiamo implementare nelle nostre applicazioni Spring Boot con Java 21. Ogni tipologia ha le sue peculiarità, i suoi punti di forza e i suoi casi d'uso ideali.
+</p>
+</section>
+<section id="slide-unit-tests">
+<h3 id="unit-tests">Test Unitari</h3>
+<p>
+I test unitari sono i mattoncini LEGO della tua strategia di testing. Piccoli, precisi e fondamentali.
+</p>
+</section>
+<section id="slide-org26c2630">
+<h4 id="org26c2630">Definizione e scopo</h4>
+<p>
+Un test unitario verifica il corretto funzionamento di una singola "unità" di codice in isolamento dal resto del sistema. Un'unità è tipicamente un metodo, una classe o un gruppo di classi strettamente correlate. Lo scopo principale è assicurarsi che ogni componente atomico funzioni correttamente secondo le specifiche.
+</p>
+</section>
+<section id="slide-orgc70f36a">
+<h4 id="orgc70f36a">Caratteristiche</h4>
+<ul>
+<li class="fragment appear"><b>Isolamento</b>: L'unità testata deve essere completamente isolata dalle sue dipendenze</li>
+<li class="fragment appear"><b>Velocità</b>: Estremamente veloci (millisecondi per l'esecuzione)</li>
+<li class="fragment appear"><b>Semplicità</b>: Focalizzati su un comportamento specifico</li>
+<li class="fragment appear"><b>Indipendenza</b>: Non dipendono da altre parti del sistema o da risorse esterne</li>
+<li class="fragment appear"><b>Ripetibilità</b>: Producono sempre lo stesso risultato in condizioni identiche</li>
+
+</ul>
+</section>
+<section id="slide-orgf233c56">
+<h4 id="orgf233c56">Schema AAA (Arrange-Act-Assert)</h4>
+<p>
+Un buon test unitario segue lo schema AAA:
+</p>
+<ol>
+<li class="fragment appear"><b>Arrange</b>: Prepara i dati e configura l'ambiente</li>
+<li class="fragment appear"><b>Act</b>: Esegui l'azione da testare</li>
+<li class="fragment appear"><b>Assert</b>: Verifica che il risultato sia quello atteso</li>
+
+</ol>
+</section>
+<section id="slide-orgba2a626">
+<h4 id="orgba2a626">Esempio di test unitario con JUnit 5 e Mockito</h4>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@ExtendWith</span>(MockitoExtension.<span style="color: #4c83ff;">class</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserServiceTest</span> {
+    
+    <span style="color: #96CBFE;">@Mock</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserRepository</span> <span style="color: #ff69b4;">userRepository</span>;
+    
+    <span style="color: #96CBFE;">@InjectMocks</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserService</span> <span style="color: #ff69b4;">userService</span>;
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">findById_dovrebbeRestituireUtente_quandoEsiste</span>() {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Arrange</span>
+        <span style="color: #afd8af;">Long</span> <span style="color: #ff69b4;">userId</span> = 1L;
+        <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">expectedUser</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">User</span>(userId, <span style="color: #61CE3C;">"test@example.com"</span>);
+        when(userRepository.findById(userId)).thenReturn(Optional.of(expectedUser));
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Act</span>
+        <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">result</span> = userService.findById(userId);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Assert</span>
+        assertThat(result).isNotNull();
+        assertThat(result.getId()).isEqualTo(userId);
+        assertThat(result.getEmail()).isEqualTo(<span style="color: #61CE3C;">"test@example.com"</span>);
+    }
+}
+</pre>
+</div>
+
+<p>
+In questo esempio, stiamo testando il metodo `findById` del nostro `UserService`. Nota come utilizziamo Mockito per simulare il comportamento del `UserRepository`, isolando completamente il service dal repository reale.
+</p>
+</section>
+<section id="slide-orge14a907">
+<h4 id="orge14a907">Quando usare i test unitari</h4>
+<p>
+I test unitari sono particolarmente utili per:
+</p>
+<ul>
+<li class="fragment appear">Verificare la logica di business complessa</li>
+<li class="fragment appear">Testare casi limite ed eccezioni</li>
+<li class="fragment appear">Assicurarsi che le modifiche non rompano funzionalità esistenti</li>
+<li class="fragment appear">Guidare lo sviluppo attraverso il TDD (Test-Driven Development)</li>
+
+</ul>
+</section>
+<section id="slide-integration-tests">
+<h3 id="integration-tests">Test di Integrazione</h3>
+<p>
+Se i test unitari verificano che i singoli pezzi funzionino correttamente, i test di integrazione verificano che questi pezzi funzionino bene insieme. È come passare dal testare i singoli ingredienti al testare la ricetta completa.
+</p>
+</section>
+<section id="slide-org7e76515">
+<h4 id="org7e76515">Definizione e scopo</h4>
+<p>
+I test di integrazione verificano il corretto funzionamento dell'interazione tra diversi componenti o moduli dell'applicazione. Lo scopo è assicurarsi che le diverse parti dell'applicazione si integrino correttamente.
+</p>
+</section>
+<section id="slide-org341fea9">
+<h4 id="org341fea9">Caratteristiche</h4>
+<ul>
+<li class="fragment appear"><b>Ambito più ampio</b>: Coinvolgono più componenti o servizi</li>
+<li class="fragment appear"><b>Realismo</b>: Più vicini al comportamento reale dell'applicazione</li>
+<li class="fragment appear"><b>Complessità</b>: Più complessi da impostare e mantenere</li>
+<li class="fragment appear"><b>Velocità</b>: Più lenti dei test unitari, ma più veloci dei test end-to-end</li>
+<li class="fragment appear"><b>Configurazione</b>: Spesso richiedono configurazioni specifiche</li>
+
+</ul>
+</section>
+<section id="slide-orgf0ce25d">
+<h4 id="orgf0ce25d">Approcci ai test di integrazione</h4>
+<p>
+Spring Boot offre diverse soluzioni per i test di integrazione:
+</p>
+<ul>
+<li class="fragment appear"><b>@SpringBootTest</b>: Per test di integrazione completi con contesto Spring</li>
+<li class="fragment appear">Test slice con <b>@DataJpaTest</b>, <b>@WebMvcTest</b>, ecc.: Per testare "fette" specifiche dell'applicazione</li>
+
+</ul>
+</section>
+<section id="slide-org8beab7b">
+<h4 id="org8beab7b">Esempio di test di integrazione con @SpringBootTest</h4>
+<p>
+In questo esempio, stiamo testando l'integrazione tra il `UserService` e il `UserRepository` reale. Il test verifica che l'utente venga correttamente salvato nel database.
+</p>
+
+</section>
+<section>
+<h4>Esempio di test di integrazione con @SpringBootTest</h4>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@SpringBootTest</span>
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserIntegrationTest</span> {
+    
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserService</span> <span style="color: #ff69b4;">userService</span>;
+    
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserRepository</span> <span style="color: #ff69b4;">userRepository</span>;
+    
+    <span style="color: #96CBFE;">@BeforeEach</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">setup</span>() {
+        userRepository.deleteAll();
+    }
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">createUser_dovrebbeSalvareUtente</span>() {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Arrange</span>
+        <span style="color: #afd8af;">UserDto</span> <span style="color: #ff69b4;">userDto</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">UserDto</span>(<span style="color: #96CBFE;">null</span>, <span style="color: #61CE3C;">"test@example.com"</span>, <span style="color: #61CE3C;">"password"</span>);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Act</span>
+        <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">savedUser</span> = userService.createUser(userDto);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Assert</span>
+        assertThat(savedUser).isNotNull();
+        assertThat(savedUser.getId()).isNotNull();
+        assertThat(savedUser.getEmail()).isEqualTo(<span style="color: #61CE3C;">"test@example.com"</span>);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Verifica nel database</span>
+        <span style="color: #afd8af;">Optional</span>&lt;<span style="color: #afd8af;">User</span>&gt; <span style="color: #ff69b4;">fromDb</span> = userRepository.findById(savedUser.getId());
+        assertThat(fromDb).isPresent();
+    }
+}
+</pre>
+</div>
+</section>
+<section id="slide-orgf6cc647">
+<h4 id="orgf6cc647">Quando usare i test di integrazione</h4>
+<p>
+I test di integrazione sono particolarmente utili per:
+</p>
+<ul>
+<li class="fragment appear">Verificare l'interazione con database</li>
+<li class="fragment appear">Testare l'integrazione tra diversi servizi</li>
+<li class="fragment appear">Assicurarsi che le API REST funzionino correttamente</li>
+<li class="fragment appear">Verificare il comportamento dell'applicazione in scenari più completi</li>
+
+</ul>
+</section>
+<section id="slide-slice-tests">
+<h3 id="slice-tests">Test delle Slices (Test di Strato)</h3>
+<p>
+I test delle slices rappresentano un approccio intelligente introdotto da Spring Boot: testare "fette" specifiche dell'applicazione senza caricare l'intero contesto. È come testare singoli capitoli di un libro anziché l'intero volume.
+</p>
+</section>
+<section id="slide-org44c57eb">
+<h4 id="org44c57eb">Definizione e scopo</h4>
+<p>
+I test delle slices permettono di testare un componente specifico dell'applicazione caricando solo le parti necessarie del contesto Spring, migliorando le performance e l'isolamento dei test.
+</p>
+</section>
+<section id="slide-orgfeed816">
+<h4 id="orgfeed816">Principali annotazioni per il testing di slices</h4>
+<ol>
+<li class="fragment appear"><b>@WebMvcTest</b>: Per testare i controller MVC</li>
+<li class="fragment appear"><b>@DataJpaTest</b>: Per testare i repository JPA</li>
+<li class="fragment appear"><b>@JdbcTest</b>: Per testare componenti JDBC</li>
+<li class="fragment appear"><b>@JsonTest</b>: Per testare la serializzazione/deserializzazione JSON</li>
+<li class="fragment appear"><b>@WebServiceClientTest</b>: Per testare client di web service</li>
+<li class="fragment appear"><b>@DataMongoTest</b>: Per testare componenti MongoDB</li>
+
+</ol>
+</section>
+<section id="slide-org3c0a88e">
+<h4 id="org3c0a88e">Esempio di test della slice web con @WebMvcTest</h4>
+<p>
+In questo esempio, stiamo testando solo il layer dei controller, utilizzando un mock per il `UserService`. Questo approccio è molto più leggero rispetto a caricare l'intero contesto Spring.
+</p>
+
+</section>
+<section>
+<h4>Esempio di test della slice web con @WebMvcTest</h4>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@WebMvcTest</span>(UserController.<span style="color: #4c83ff;">class</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserControllerTest</span> {
+    
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">MockMvc</span> <span style="color: #ff69b4;">mockMvc</span>;
+    
+    <span style="color: #96CBFE;">@MockBean</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserService</span> <span style="color: #ff69b4;">userService</span>;
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">getUserById_dovrebbeRestituireUtente</span>() <span style="color: #4c83ff;">throws</span> <span style="color: #afd8af;">Exception</span> {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Arrange</span>
+        <span style="color: #afd8af;">Long</span> <span style="color: #ff69b4;">userId</span> = 1L;
+        <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">user</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">User</span>(userId, <span style="color: #61CE3C;">"test@example.com"</span>);
+        when(userService.findById(userId)).thenReturn(user);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Act &amp; Assert</span>
+        mockMvc.perform(get(<span style="color: #61CE3C;">"/api/users/{id}"</span>, userId)
+                .contentType(<span style="color: #96CBFE;">MediaType</span>.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath(<span style="color: #61CE3C;">"$.id"</span>).value(userId))
+                .andExpect(jsonPath(<span style="color: #61CE3C;">"$.email"</span>).value(<span style="color: #61CE3C;">"test@example.com"</span>));
+    }
+}
+</pre>
+</div>
+</section>
+<section id="slide-org8375228">
+<h4 id="org8375228">Quando usare i test delle slices</h4>
+<p>
+I test delle slices sono particolarmente utili per:
+</p>
+<ul>
+<li class="fragment appear">Testare rapidamente strati specifici dell'applicazione</li>
+<li class="fragment appear">Ridurre i tempi di esecuzione dei test</li>
+<li class="fragment appear">Isolare problemi in componenti specifici</li>
+<li class="fragment appear">Creare test più focalizzati e manutenibili</li>
+
+</ul>
+</section>
+<section id="slide-contract-tests">
+<h3 id="contract-tests">Test dei Contract</h3>
+<p>
+I test dei contract assicurano che produttori e consumatori di API rispettino un "contratto" predefinito. È come verificare che due persone parlino la stessa lingua prima di iniziare una conversazione.
+</p>
+</section>
+<section id="slide-org8861218">
+<h4 id="org8861218">Definizione e scopo</h4>
+<p>
+I test dei contract verificano che le interfacce di comunicazione tra servizi rispettino un contratto stabilito, garantendo che le modifiche in un servizio non rompano l'interazione con altri servizi.
+</p>
+</section>
+<section id="slide-orgfef3cba">
+<h4 id="orgfef3cba">Caratteristiche</h4>
+<ul>
+<li class="fragment appear"><b>Focus sull'interfaccia</b>: Testano il formato dei messaggi scambiati</li>
+<li class="fragment appear"><b>Bi-direzionali</b>: Possono essere scritti dal punto di vista del provider o del consumer</li>
+<li class="fragment appear"><b>Prevenzione dei problemi di integrazione</b>: Individuano incompatibilità prima del deploy</li>
+
+</ul>
+</section>
+<section id="slide-org822dcb0">
+<h4 id="org822dcb0">Strumenti</h4>
+<ul>
+<li><b>Spring Cloud Contract</b>: Framework per il consumer-driven contract testing</li>
+
+</ul>
+</section>
+<section id="slide-orgbb65845">
+<h4 id="orgbb65845">Esempio di test del contract (provider side)</h4>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@SpringBootTest</span>(webEnvironment = <span style="color: #96CBFE;">SpringBootTest</span>.<span style="color: #96CBFE;">WebEnvironment</span>.MOCK)
+<span style="color: #96CBFE;">@AutoConfigureMockMvc</span>
+<span style="color: #96CBFE;">@AutoConfigureMessageVerifier</span>
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">ContractVerifierTest</span> {
+
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">MockMvc</span> <span style="color: #ff69b4;">mockMvc</span>;
+
+    <span style="color: #96CBFE;">@MockBean</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserService</span> <span style="color: #ff69b4;">userService</span>;
+
+    <span style="color: #96CBFE;">@BeforeEach</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">setup</span>() {
+        <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">user</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">User</span>(1L, <span style="color: #61CE3C;">"test@example.com"</span>);
+        when(userService.findById(1L)).thenReturn(user);
+    }
+}
+</pre>
+</div>
+
+<p>
+Questo è solo un esempio di base. I test dei contract richiedono anche la definizione del contratto stesso, tipicamente in formato YAML o Groovy.
+</p>
+</section>
+<section id="slide-orgff4d952">
+<h4 id="orgff4d952">Quando usare i test dei contract</h4>
+<p>
+I test dei contract sono particolarmente utili per:
+</p>
+<ul>
+<li class="fragment appear">Microservizi che interagiscono tra loro</li>
+<li class="fragment appear">API pubbliche</li>
+<li class="fragment appear">Integrazione con servizi esterni</li>
+<li class="fragment appear">Ambienti con sviluppo distribuito tra più team</li>
+
+</ul>
+</section>
+<section id="slide-component-tests">
+<h3 id="component-tests">Test di Componente</h3>
+<p>
+I test di componente si concentrano su un componente specifico dell'applicazione, testando la sua funzionalità in un contesto limitato ma realistico. È come testare un singolo organo del corpo, assicurandosi che funzioni correttamente con i sistemi direttamente collegati ad esso.
+</p>
+</section>
+<section id="slide-org7baf601">
+<h4 id="org7baf601">Definizione e scopo</h4>
+<p>
+I test di componente verificano il comportamento di un componente software specifico (un servizio, un controller) in un contesto che include le sue dipendenze immediate.
+</p>
+</section>
+<section id="slide-org1117f10">
+<h4 id="org1117f10">Caratteristiche</h4>
+<ul>
+<li class="fragment appear"><b>Ambito intermedio</b>: Più ampi dei test unitari ma più focalizzati dei test di integrazione completa</li>
+<li class="fragment appear"><b>Configurazione specifica</b>: Caricano solo ciò che è necessario per testare il componente</li>
+<li class="fragment appear"><b>Velocità moderata</b>: Più rapidi dei test di integrazione completi</li>
+
+</ul>
+</section>
+<section id="slide-org8dba49b">
+<h4 id="org8dba49b">Esempio di test di componente</h4>
+<p>
+In questo esempio, stiamo testando il `UserService` in un contesto che include un'implementazione in-memory del repository e un mock del servizio di email.
+</p>
+
+</section>
+<section>
+<h4>Esempio di test di componente</h4>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@SpringBootTest</span>
+<span style="color: #96CBFE;">@Import</span>(TestConfiguration.<span style="color: #4c83ff;">class</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserServiceComponentTest</span> {
+    
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserService</span> <span style="color: #ff69b4;">userService</span>;
+    
+    <span style="color: #96CBFE;">@MockBean</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">EmailService</span> <span style="color: #ff69b4;">emailService</span>;
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">registerUser_dovrebbeInviareEmailBenvenuto</span>() {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Arrange</span>
+        <span style="color: #afd8af;">UserRegistrationRequest</span> <span style="color: #ff69b4;">request</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">UserRegistrationRequest</span>(<span style="color: #61CE3C;">"test@example.com"</span>, <span style="color: #61CE3C;">"password"</span>);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Act</span>
+        userService.registerUser(request);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Assert</span>
+        verify(emailService).sendWelcomeEmail(eq(<span style="color: #61CE3C;">"test@example.com"</span>), any());
+    }
+    
+    <span style="color: #96CBFE;">@TestConfiguration</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">TestConfig</span> {
+        <span style="color: #96CBFE;">@Bean</span>
+        <span style="color: #4c83ff;">public</span> <span style="color: #afd8af;">UserRepository</span> <span style="color: #ff1493;">userRepository</span>() {
+            <span style="color: #4c83ff;">return</span> <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">InMemoryUserRepository</span>();
+        }
+    }
+}
+</pre>
+</div>
+</section>
+<section id="slide-orgeb21dfa">
+<h4 id="orgeb21dfa">Quando usare i test di componente</h4>
+<p>
+I test di componente sono particolarmente utili per:
+</p>
+<ul>
+<li class="fragment appear">Testare componenti complessi con molte dipendenze</li>
+<li class="fragment appear">Verificare scenari di business end-to-end all'interno di un componente</li>
+<li class="fragment appear">Testare la corretta integrazione di un componente con le sue dipendenze immediate</li>
+
+</ul>
+</section>
+<section id="slide-functional-tests">
+<h3 id="functional-tests">Test Funzionali</h3>
+<p>
+I test funzionali verificano che l'applicazione implementi correttamente le specifiche funzionali dal punto di vista dell'utente. È come sedersi al posto dell'utente e verificare che tutto funzioni come ci si aspetta.
+</p>
+</section>
+<section id="slide-orgefa3b1d">
+<h4 id="orgefa3b1d">Definizione e scopo</h4>
+<p>
+I test funzionali verificano che l'applicazione soddisfi i requisiti funzionali specificati, testando i flussi di utilizzo reali dell'utente.
+</p>
+</section>
+<section id="slide-orgd10b2dd">
+<h4 id="orgd10b2dd">Caratteristiche</h4>
+<ul>
+<li class="fragment appear"><b>Orientati ai casi d'uso</b>: Testano scenari di utilizzo reali</li>
+<li class="fragment appear"><b>Black box</b>: Non si preoccupano dell'implementazione interna</li>
+<li class="fragment appear"><b>Copertura delle funzionalità</b>: Verificano che tutte le funzionalità richieste siano implementate correttamente</li>
+
+</ul>
+</section>
+<section id="slide-org8110661">
+<h4 id="org8110661">Esempio di test funzionale in Spring Boot</h4>
+<p>
+In questo esempio, stiamo testando l'intera funzionalità di registrazione utente, dalla richiesta HTTP fino al salvataggio nel database.
+</p>
+
+</section>
+<section>
+<h4>Esempio di test funzionale in Spring Boot</h4>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@SpringBootTest</span>(webEnvironment = <span style="color: #96CBFE;">WebEnvironment</span>.RANDOM_PORT)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserRegistrationFunctionalTest</span> {
+    
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">TestRestTemplate</span> <span style="color: #ff69b4;">restTemplate</span>;
+    
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserRepository</span> <span style="color: #ff69b4;">userRepository</span>;
+    
+    <span style="color: #96CBFE;">@BeforeEach</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">setup</span>() {
+        userRepository.deleteAll();
+    }
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">registrazioneUtente_dovrebbeCreareUtenteERestituireRispostaSuccesso</span>() {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Arrange</span>
+        <span style="color: #afd8af;">UserRegistrationRequest</span> <span style="color: #ff69b4;">request</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">UserRegistrationRequest</span>(<span style="color: #61CE3C;">"test@example.com"</span>, <span style="color: #61CE3C;">"password"</span>);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Act</span>
+        <span style="color: #afd8af;">ResponseEntity</span>&lt;<span style="color: #afd8af;">RegistrationResponse</span>&gt; <span style="color: #ff69b4;">response</span> = restTemplate.postForEntity(
+                <span style="color: #61CE3C;">"/api/register"</span>, request, RegistrationResponse.<span style="color: #4c83ff;">class</span>);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Assert</span>
+        assertThat(response.getStatusCode()).isEqualTo(<span style="color: #96CBFE;">HttpStatus</span>.OK);
+        assertThat(response.getBody().isSuccess()).isTrue();
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Verifica che l'utente sia stato creato nel database</span>
+        <span style="color: #afd8af;">Optional</span>&lt;<span style="color: #afd8af;">User</span>&gt; <span style="color: #ff69b4;">user</span> = userRepository.findByEmail(<span style="color: #61CE3C;">"test@example.com"</span>);
+        assertThat(user).isPresent();
+    }
+}
+</pre>
+</div>
+</section>
+<section id="slide-orge594b7c">
+<h4 id="orge594b7c">Quando usare i test funzionali</h4>
+<p>
+I test funzionali sono particolarmente utili per:
+</p>
+<ul>
+<li class="fragment appear">Verificare il comportamento end-to-end dell'applicazione</li>
+<li class="fragment appear">Assicurarsi che i requisiti funzionali siano soddisfatti</li>
+<li class="fragment appear">Testare flussi di utilizzo completi</li>
+<li class="fragment appear">Simulare il comportamento dell'utente</li>
+
+</ul>
+</section>
+<section id="slide-architecture-tests">
+<h3 id="architecture-tests">Test di Architettura</h3>
+<p>
+I test di architettura verificano che l'applicazione rispetti i vincoli e i pattern architetturali definiti. È come assicurarsi che un edificio segua il progetto dell'architetto, rispettando le normative edilizie.
+</p>
+</section>
+<section id="slide-orgccb1648">
+<h4 id="orgccb1648">Definizione e scopo</h4>
+<p>
+I test di architettura verificano che il codice rispetti le regole architetturali definite, come la separazione degli strati, la dipendenza tra package, i pattern di denominazione, ecc.
+</p>
+</section>
+<section id="slide-orgd6d6d9d">
+<h4 id="orgd6d6d9d">Caratteristiche</h4>
+<ul>
+<li class="fragment appear"><b>Regole strutturali</b>: Verificano l'aderenza a vincoli architetturali</li>
+<li class="fragment appear"><b>Prevenzione del degrado</b>: Evitano il deterioramento dell'architettura nel tempo</li>
+<li class="fragment appear"><b>Documentazione vivente</b>: Documentano le regole architetturali in modo eseguibile</li>
+
+</ul>
+</section>
+<section id="slide-org380a959">
+<h4 id="org380a959">Strumenti</h4>
+<ul>
+<li><b>ArchUnit</b>: Libreria per testare l'architettura del codice Java</li>
+
+</ul>
+</section>
+<section id="slide-orga1a3a9a">
+<h4 id="orga1a3a9a">Esempio di test di architettura con ArchUnit</h4>
+<p>
+In questo esempio, stiamo verificando che:
+</p>
+<ol>
+<li>Le dipendenze tra i layer rispettino l'architettura a strati (controller -&gt; service -&gt; repository)</li>
+<li>Le classi nel package service abbiano il suffisso "Service"</li>
+
+</ol>
+
+</section>
+<section>
+<h4>Esempio di test di architettura con ArchUnit</h4>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@AnalyzeClasses</span>(packages = <span style="color: #61CE3C;">"com.example.application"</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">ArchitectureTest</span> {
+    
+    <span style="color: #96CBFE;">@ArchTest</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #4c83ff;">final</span> <span style="color: #afd8af;">ArchRule</span> <span style="color: #ff69b4;">layerDependenciesRule</span> = layeredArchitecture()
+            .layer(<span style="color: #61CE3C;">"Controller"</span>).definedBy(<span style="color: #61CE3C;">"..controller.."</span>)
+            .layer(<span style="color: #61CE3C;">"Service"</span>).definedBy(<span style="color: #61CE3C;">"..service.."</span>)
+            .layer(<span style="color: #61CE3C;">"Repository"</span>).definedBy(<span style="color: #61CE3C;">"..repository.."</span>)
+            .whereLayer(<span style="color: #61CE3C;">"Controller"</span>).mayNotBeAccessedByAnyLayer()
+            .whereLayer(<span style="color: #61CE3C;">"Service"</span>).mayOnlyBeAccessedByLayers(<span style="color: #61CE3C;">"Controller"</span>)
+            .whereLayer(<span style="color: #61CE3C;">"Repository"</span>).mayOnlyBeAccessedByLayers(<span style="color: #61CE3C;">"Service"</span>);
+    
+    <span style="color: #96CBFE;">@ArchTest</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #4c83ff;">final</span> <span style="color: #afd8af;">ArchRule</span> <span style="color: #ff69b4;">serviceClassesShouldHaveServiceSuffix</span> = 
+            classes().that().resideInAPackage(<span style="color: #61CE3C;">"..service.."</span>)
+                    .should().haveSimpleNameEndingWith(<span style="color: #61CE3C;">"Service"</span>);
+}
+</pre>
+</div>
+</section>
+<section id="slide-orgd3ae85e">
+<h4 id="orgd3ae85e">Quando usare i test di architettura</h4>
+<p>
+I test di architettura sono particolarmente utili per:
+</p>
+<ul>
+<li class="fragment appear">Mantenere l'integrità architetturale nel tempo</li>
+<li class="fragment appear">Prevenire il degrado dell'architettura con l'evoluzione dell'applicazione</li>
+<li class="fragment appear">Documentare e far rispettare le regole architetturali</li>
+<li class="fragment appear">Facilitare l'onboarding di nuovi sviluppatori</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-best-practices">
+<h2 id="best-practices">Best Practices per il Testing Automatico</h2>
+<p>
+Ora che abbiamo visto le principali tipologie di test, vediamo alcune best practices che ci aiuteranno a scrivere test efficaci, manutenibili e che aggiungono reale valore al nostro processo di sviluppo.
+</p>
+
+<p>
+Mi piace pensare al testing come all'arte di dormire tranquilli la notte. Seguendo queste best practices, potrai affrontare i rilasci con fiducia anziché con terrore.
+</p>
+</section>
+<section id="slide-test-organization">
+<h3 id="test-organization">Organizzazione dei Test</h3>
+<p>
+Un codice di test ben organizzato è più facile da comprendere, mantenere ed estendere. Ecco alcune linee guida:
+</p>
+</section>
+<section id="slide-orgf3a65e4">
+<h4 id="orgf3a65e4">Naming espressivo</h4>
+<p>
+I nomi dei test dovrebbero essere descrittivi e seguire un pattern coerente. Un buon pattern è:
+`nomeMetodo<sub>comportamentoAtteso</sub><sub>condizioni</sub>`
+</p>
+
+<p>
+Esempio:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@Test</span>
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">saveUser_shouldThrowException_whenEmailIsInvalid</span>() {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+</pre>
+</div>
+
+<p>
+Questo nome ci dice chiaramente:
+</p>
+<ul>
+<li>Cosa stiamo testando: il metodo `saveUser`</li>
+<li>Cosa ci aspettiamo: che lanci un'eccezione</li>
+<li>In quali condizioni: quando l'email è invalida</li>
+
+</ul>
+</section>
+<section id="slide-orgbc3e012">
+<h4 id="orgbc3e012">Struttura AAA o Given-When-Then</h4>
+<p>
+Organizza i test seguendo una struttura chiara:
+</p>
+
+<ul>
+<li><b>Arrange/Given</b>: Preparazione dello scenario</li>
+<li><b>Act/When</b>: Esecuzione dell'azione da testare</li>
+<li><b>Assert/Then</b>: Verifica dei risultati</li>
+
+</ul>
+
+<p>
+Questa struttura rende i test più leggibili e manutenibili.
+</p>
+</section>
+<section id="slide-orgf51b114">
+<h4 id="orgf51b114">Organizzazione dei package</h4>
+<p>
+Mantieni una struttura dei package di test che rispecchia quella del codice principale. Ad esempio:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-text">src/
+&#9500;&#9472;&#9472; main/
+&#9474;   &#9492;&#9472;&#9472; java/
+&#9474;       &#9492;&#9472;&#9472; com/
+&#9474;           &#9492;&#9472;&#9472; example/
+&#9474;               &#9500;&#9472;&#9472; controller/
+&#9474;               &#9500;&#9472;&#9472; service/
+&#9474;               &#9492;&#9472;&#9472; repository/
+&#9492;&#9472;&#9472; test/
+    &#9492;&#9472;&#9472; java/
+        &#9492;&#9472;&#9472; com/
+            &#9492;&#9472;&#9472; example/
+                &#9500;&#9472;&#9472; controller/
+                &#9500;&#9472;&#9472; service/
+                &#9492;&#9472;&#9472; repository/
+</pre>
+</div>
+</section>
+<section id="slide-org54f6c22">
+<h4 id="org54f6c22">Separazione per tipologia</h4>
+<p>
+Separa i test in base alla loro natura:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-text">src/
+&#9500;&#9472;&#9472; test/
+&#9474;   &#9492;&#9472;&#9472; java/
+&#9474;       &#9492;&#9472;&#9472; com/
+&#9474;           &#9492;&#9472;&#9472; example/
+&#9474;               &#9500;&#9472;&#9472; unit/
+&#9474;               &#9500;&#9472;&#9472; integration/
+&#9474;               &#9492;&#9472;&#9472; e2e/
+&#9492;&#9472;&#9472; // ...
+</pre>
+</div>
+
+<p>
+Questo ti permette di eseguire selettivamente i test unitari, più veloci, durante lo sviluppo, e i test di integrazione o end-to-end in fasi specifiche del processo di CI/CD.
+</p>
+</section>
+<section id="slide-independence-isolation">
+<h3 id="independence-isolation">Indipendenza e Isolamento</h3>
+<p>
+Test indipendenti e isolati sono più affidabili, più facili da debuggare e più resistenti ai cambiamenti. 
+</p>
+</section>
+<section id="slide-org17b1d03">
+<h4 id="org17b1d03">Test indipendenti</h4>
+<p>
+Ogni test dovrebbe essere completamente indipendente dagli altri. Un test non dovrebbe mai dipendere dall'esecuzione di un altro test o dai suoi risultati.
+</p>
+</section>
+<section id="slide-org08919c2">
+<h4 id="org08919c2">Stato iniziale pulito</h4>
+<p>
+Assicurati che ogni test inizi da uno stato noto e pulito. Usa `@BeforeEach` o `@BeforeAll` per configurare lo stato iniziale:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@BeforeEach</span>
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">setup</span>() {
+    userRepository.deleteAll(); <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Pulisce il database prima di ogni test</span>
+}
+</pre>
+</div>
+</section>
+<section id="slide-org986fe07">
+<h4 id="org986fe07">Dati di test isolati</h4>
+<p>
+Usa dati specifici per ogni test o ripulisci l'ambiente tra i test. Evita di condividere stato tra i test.
+</p>
+</section>
+<section id="slide-org93d1720">
+<h4 id="org93d1720">Profili Spring specifici</h4>
+<p>
+Utilizza profili Spring specifici per i test:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@ActiveProfiles</span>(<span style="color: #61CE3C;">"test"</span>)
+<span style="color: #96CBFE;">@SpringBootTest</span>
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserServiceIntegrationTest</span> {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+</pre>
+</div>
+</section>
+<section id="slide-org3ba960f">
+<h4 id="org3ba960f">Database indipendenti</h4>
+<p>
+Utilizza database in-memory o TestContainers per i test che richiedono un database:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@DataJpaTest</span>
+<span style="color: #96CBFE;">@AutoConfigureTestDatabase</span>(replace = <span style="color: #96CBFE;">AutoConfigureTestDatabase</span>.<span style="color: #96CBFE;">Replace</span>.NONE)
+<span style="color: #96CBFE;">@Testcontainers</span>
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserRepositoryTest</span> {
+    
+    <span style="color: #96CBFE;">@Container</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #afd8af;">PostgreSQLContainer</span>&lt;?&gt; <span style="color: #ff69b4;">postgres</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">PostgreSQLContainer</span>&lt;&gt;(<span style="color: #61CE3C;">"postgres:14"</span>)
+            .withDatabaseName(<span style="color: #61CE3C;">"testdb"</span>)
+            .withUsername(<span style="color: #61CE3C;">"test"</span>)
+            .withPassword(<span style="color: #61CE3C;">"test"</span>);
+    
+    <span style="color: #96CBFE;">@DynamicPropertySource</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">registerPgProperties</span>(<span style="color: #afd8af;">DynamicPropertyRegistry</span> <span style="color: #ff69b4;">registry</span>) {
+        registry.add(<span style="color: #61CE3C;">"spring.datasource.url"</span>, postgres::getJdbcUrl);
+        registry.add(<span style="color: #61CE3C;">"spring.datasource.username"</span>, postgres::getUsername);
+        registry.add(<span style="color: #61CE3C;">"spring.datasource.password"</span>, postgres::getPassword);
+    }
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+</pre>
+</div>
+</section>
+<section id="slide-performance">
+<h3 id="performance">Performance</h3>
+<p>
+Test performanti rendono il ciclo di feedback più rapido e migliorano l'esperienza di sviluppo.
+</p>
+</section>
+<section id="slide-org6e18968">
+<h4 id="org6e18968">Utilizzo delle test slices</h4>
+<p>
+Utilizza le test slices di Spring Boot quando possibile, anziché caricare l'intero contesto:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Invece di:</span>
+<span style="color: #96CBFE;">@SpringBootTest</span>
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserControllerTest</span> { <span style="color: #8B8989; font-style: italic;">/* </span><span style="color: #8B8989; font-style: italic;">...</span><span style="color: #8B8989; font-style: italic;"> */</span> }
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Usa:</span>
+<span style="color: #96CBFE;">@WebMvcTest</span>(UserController.<span style="color: #4c83ff;">class</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserControllerTest</span> { <span style="color: #8B8989; font-style: italic;">/* </span><span style="color: #8B8989; font-style: italic;">...</span><span style="color: #8B8989; font-style: italic;"> */</span> }
+</pre>
+</div>
+</section>
+<section id="slide-org98ced59">
+<h4 id="org98ced59">Limita l'uso di @SpringBootTest</h4>
+<p>
+Usa `@SpringBootTest` solo quando necessario, ad esempio per test di integrazione completi. Per test più focalizzati, preferisci approcci più leggeri.
+</p>
+</section>
+<section id="slide-org4e3ba77">
+<h4 id="org4e3ba77">Organizzazione in suite</h4>
+<p>
+Organizza i test in suite per poterli eseguire separatamente:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@Suite</span>
+<span style="color: #96CBFE;">@SelectPackages</span>({
+    <span style="color: #61CE3C;">"com.example.unit"</span>,
+    <span style="color: #61CE3C;">"com.example.integration"</span>
+})
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">AllTests</span> { }
+
+<span style="color: #96CBFE;">@Suite</span>
+<span style="color: #96CBFE;">@SelectPackages</span>(<span style="color: #61CE3C;">"com.example.unit"</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UnitTests</span> { }
+</pre>
+</div>
+</section>
+<section id="slide-org9a30aa2">
+<h4 id="org9a30aa2">Esecuzione parallela</h4>
+<p>
+Configura JUnit per eseguire i test in parallelo:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">junit-platform.properties</span>
+junit.jupiter.execution.parallel.enabled = <span style="color: #96CBFE;">true</span>
+junit.jupiter.execution.parallel.mode.<span style="color: #4c83ff;">default</span> = concurrent
+</pre>
+</div>
+</section>
+<section id="slide-mocking-stubbing">
+<h3 id="mocking-stubbing">Mocking e Stubbing</h3>
+<p>
+L'uso appropriato di mock e stub rende i test più isolati, affidabili e focalizzati.
+</p>
+</section>
+<section id="slide-org9fec5f6">
+<h4 id="org9fec5f6">Utilizza mock per dipendenze esterne</h4>
+<p>
+Utilizza mock per isolare l'unità in test dalle sue dipendenze esterne:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@ExtendWith</span>(MockitoExtension.<span style="color: #4c83ff;">class</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserServiceTest</span> {
+    
+    <span style="color: #96CBFE;">@Mock</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserRepository</span> <span style="color: #ff69b4;">userRepository</span>;
+    
+    <span style="color: #96CBFE;">@InjectMocks</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserService</span> <span style="color: #ff69b4;">userService</span>;
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+</pre>
+</div>
+</section>
+<section id="slide-org713ba76">
+<h4 id="org713ba76">Preferisci i mock creati tramite annotazioni</h4>
+<p>
+Usa `@Mock` e `@MockBean` anziché creare mock manualmente.
+</p>
+</section>
+<section id="slide-orga218834">
+<h4 id="orga218834">Limita lo stubbing al necessario</h4>
+<p>
+Stub solo i metodi che vengono effettivamente chiamati dal codice in test:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Bene:</span>
+when(userRepository.findById(1L)).thenReturn(Optional.of(<span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">User</span>(1L, <span style="color: #61CE3C;">"test@example.com"</span>)));
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Evita:</span>
+when(userRepository.findById(any())).thenReturn(Optional.of(<span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">User</span>(1L, <span style="color: #61CE3C;">"test@example.com"</span>)));
+</pre>
+</div>
+</section>
+<section id="slide-org3d9766a">
+<h4 id="org3d9766a">Verifica solo ciò che è rilevante</h4>
+<p>
+Limita le verifiche a ciò che è effettivamente rilevante per il test:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Verifica solo che il metodo sia stato chiamato con i parametri corretti</span>
+verify(<span style="color: #afd8af;">userRepository</span>).save(argThat(user -&gt; 
+    user.getEmail().equals(<span style="color: #61CE3C;">"test@example.com"</span>) &amp;&amp; 
+    user.getName().equals(<span style="color: #61CE3C;">"Test User"</span>)
+));
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Evita di verificare troppi dettagli:</span>
+verify(userRepository).save(user);
+verify(emailService).sendWelcomeEmail(user);
+verify(loggingService).logUserCreation(user);
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">...</span>
+</pre>
+</div>
+</section>
+<section id="slide-assertions">
+<h3 id="assertions">Asserzioni</h3>
+<p>
+Asserzioni ben strutturate rendono i test più espressivi e facilitano l'identificazione dei problemi.
+</p>
+</section>
+<section id="slide-org745ae2b">
+<h4 id="org745ae2b">Utilizza asserzioni espressive</h4>
+<p>
+Sfrutta AssertJ per asserzioni fluenti e leggibili:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Invece di:</span>
+assertEquals(<span style="color: #61CE3C;">"test@example.com"</span>, user.getEmail());
+assertTrue(user.isActive());
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Usa:</span>
+assertThat(user.getEmail()).isEqualTo(<span style="color: #61CE3C;">"test@example.com"</span>);
+assertThat(user.isActive()).isTrue();
+</pre>
+</div>
+</section>
+<section id="slide-orged5c47b">
+<h4 id="orged5c47b">Verifica un solo concetto per test</h4>
+<p>
+Ogni test dovrebbe verificare un solo concetto o comportamento:
+</p>
+
+</section>
+<section>
+<h4>Verifica un solo concetto per test</h4>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Invece di:</span>
+<span style="color: #96CBFE;">@Test</span>
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">userRegistration</span>() {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Registro un utente</span>
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">...</span>
+    assertThat(user.getId()).isNotNull();
+    assertThat(user.getEmail()).isEqualTo(<span style="color: #61CE3C;">"test@example.com"</span>);
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Verifico che l'email sia stata inviata</span>
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">...</span>
+    assertThat(emailSent).isTrue();
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Verifico che l'utente possa fare login</span>
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">...</span>
+    assertThat(loginSuccessful).isTrue();
+}
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Meglio:</span>
+<span style="color: #96CBFE;">@Test</span>
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">registerUser_shouldCreateUserWithCorrectData</span>() { <span style="color: #8B8989; font-style: italic;">/* </span><span style="color: #8B8989; font-style: italic;">...</span><span style="color: #8B8989; font-style: italic;"> */</span> }
+
+<span style="color: #96CBFE;">@Test</span>
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">registerUser_shouldSendWelcomeEmail</span>() { <span style="color: #8B8989; font-style: italic;">/* </span><span style="color: #8B8989; font-style: italic;">...</span><span style="color: #8B8989; font-style: italic;"> */</span> }
+
+<span style="color: #96CBFE;">@Test</span>
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">registerUser_shouldAllowImmediateLogin</span>() { <span style="color: #8B8989; font-style: italic;">/* </span><span style="color: #8B8989; font-style: italic;">...</span><span style="color: #8B8989; font-style: italic;"> */</span> }
+</pre>
+</div>
+</section>
+<section id="slide-orgec6ee23">
+<h4 id="orgec6ee23">Usa asserzioni specifiche per eccezioni</h4>
+<p>
+Per testare le eccezioni, usa approcci specifici:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Opzione 1: assertThrows</span>
+<span style="color: #afd8af;">Exception</span> <span style="color: #ff69b4;">exception</span> = assertThrows(UserNotFoundException.<span style="color: #4c83ff;">class</span>, () -&gt; 
+    userService.getUserById(999L)
+);
+assertThat(exception.getMessage()).contains(<span style="color: #61CE3C;">"999"</span>);
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Opzione 2: assertThatThrownBy (AssertJ)</span>
+assertThatThrownBy(() -&gt; userService.getUserById(999L))
+    .isInstanceOf(UserNotFoundException.<span style="color: #4c83ff;">class</span>)
+    .hasMessageContaining(<span style="color: #61CE3C;">"999"</span>);
+</pre>
+</div>
+</section>
+<section id="slide-maintainability">
+<h3 id="maintainability">Manutenibilità</h3>
+<p>
+Test manutenibili restano utili nel tempo e non diventano un peso per lo sviluppo.
+</p>
+</section>
+<section id="slide-org1fb4689">
+<h4 id="org1fb4689">Evita la duplicazione nei test</h4>
+<p>
+Utilizza metodi di supporto per evitare la duplicazione:
+</p>
+
+</section>
+<section>
+<h4>Evita la duplicazione nei test</h4>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Invece di ripetere questa logica in ogni test:</span>
+<span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">user</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">User</span>();
+user.setId(1L);
+user.setEmail(<span style="color: #61CE3C;">"test@example.com"</span>);
+user.setName(<span style="color: #61CE3C;">"Test User"</span>);
+user.setActive(<span style="color: #96CBFE;">true</span>);
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">...</span>
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Crea un metodo di factory:</span>
+<span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">User</span> <span style="color: #ff1493;">createTestUser</span>() {
+    <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">user</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">User</span>();
+    user.setId(1L);
+    user.setEmail(<span style="color: #61CE3C;">"test@example.com"</span>);
+    user.setName(<span style="color: #61CE3C;">"Test User"</span>);
+    user.setActive(<span style="color: #96CBFE;">true</span>);
+    <span style="color: #4c83ff;">return</span> user;
+}
+</pre>
+</div>
+</section>
+<section id="slide-org7e38e2e">
+<h4 id="org7e38e2e">Utilizza fixture riutilizzabili</h4>
+<p>
+Per dati complessi, usa fixture riutilizzabili:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">TestFixtures</span> {
+    <span style="color: #4c83ff;">static</span> <span style="color: #4c83ff;">final</span> <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">ADMIN_USER</span> = createUser(1L, <span style="color: #61CE3C;">"admin@example.com"</span>, <span style="color: #61CE3C;">"Admin"</span>, <span style="color: #96CBFE;">true</span>, Set.of(<span style="color: #96CBFE;">Role</span>.ADMIN));
+    <span style="color: #4c83ff;">static</span> <span style="color: #4c83ff;">final</span> <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">REGULAR_USER</span> = createUser(2L, <span style="color: #61CE3C;">"user@example.com"</span>, <span style="color: #61CE3C;">"User"</span>, <span style="color: #96CBFE;">true</span>, Set.of(<span style="color: #96CBFE;">Role</span>.USER));
+    
+    <span style="color: #4c83ff;">private</span> <span style="color: #4c83ff;">static</span> <span style="color: #afd8af;">User</span> <span style="color: #ff1493;">createUser</span>(<span style="color: #afd8af;">Long</span> <span style="color: #ff69b4;">id</span>, <span style="color: #afd8af;">String</span> <span style="color: #ff69b4;">email</span>, <span style="color: #afd8af;">String</span> <span style="color: #ff69b4;">name</span>, <span style="color: #afd8af;">boolean</span> <span style="color: #ff69b4;">active</span>, <span style="color: #afd8af;">Set</span>&lt;<span style="color: #afd8af;">Role</span>&gt; <span style="color: #ff69b4;">roles</span>) {
+        <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">user</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">User</span>();
+        user.setId(id);
+        user.setEmail(email);
+        user.setName(name);
+        user.setActive(active);
+        user.setRoles(roles);
+        <span style="color: #4c83ff;">return</span> user;
+    }
+}
+</pre>
+</div>
+</section>
+<section id="slide-orgf8e5b53">
+<h4 id="orgf8e5b53">Mantieni i test semplici</h4>
+<p>
+I test dovrebbero essere più semplici del codice che testano. Evita logica complessa nei test.
+</p>
+</section>
+<section id="slide-orgc938ead">
+<h4 id="orgc938ead">Refactoring delle utility di test</h4>
+<p>
+Estrai utility di test riutilizzabili:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #4c83ff;">public</span> <span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">TestUtils</span> {
+    
+    <span style="color: #4c83ff;">public</span> <span style="color: #4c83ff;">static</span> &lt;<span style="color: #afd8af;">T</span>&gt; <span style="color: #afd8af;">ResponseEntity</span>&lt;<span style="color: #afd8af;">T</span>&gt; <span style="color: #ff1493;">createOkResponse</span>(<span style="color: #afd8af;">T</span> <span style="color: #ff69b4;">body</span>) {
+        <span style="color: #4c83ff;">return</span> ResponseEntity.ok(body);
+    }
+    
+    <span style="color: #4c83ff;">public</span> <span style="color: #4c83ff;">static</span> &lt;<span style="color: #afd8af;">T</span>&gt; <span style="color: #afd8af;">ResponseEntity</span>&lt;<span style="color: #afd8af;">T</span>&gt; <span style="color: #ff1493;">createCreatedResponse</span>(<span style="color: #afd8af;">T</span> <span style="color: #ff69b4;">body</span>) {
+        <span style="color: #4c83ff;">return</span> ResponseEntity.status(<span style="color: #96CBFE;">HttpStatus</span>.CREATED).body(body);
+    }
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">...</span>
+}
+</pre>
+</div>
+</section>
+<section id="slide-coverage">
+<h3 id="coverage">Copertura</h3>
+<p>
+Una buona copertura dei test aumenta la fiducia nel codice e riduce il rischio di regressioni.
+</p>
+</section>
+<section id="slide-orge8480d7">
+<h4 id="orge8480d7">Mira a una copertura adeguata</h4>
+<p>
+Non inseguire necessariamente il 100% di copertura, ma assicurati che le parti critiche e complesse del codice siano ben coperte.
+</p>
+</section>
+<section id="slide-org36839b8">
+<h4 id="org36839b8">Concentrati sui casi limite</h4>
+<p>
+Assicurati di testare i casi limite e i percorsi alternativi:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@Test</span>
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">findUser_shouldReturnUser_whenUserExists</span>() { <span style="color: #8B8989; font-style: italic;">/* </span><span style="color: #8B8989; font-style: italic;">...</span><span style="color: #8B8989; font-style: italic;"> */</span> }
+
+<span style="color: #96CBFE;">@Test</span>
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">findUser_shouldThrowException_whenUserDoesNotExist</span>() { <span style="color: #8B8989; font-style: italic;">/* </span><span style="color: #8B8989; font-style: italic;">...</span><span style="color: #8B8989; font-style: italic;"> */</span> }
+
+<span style="color: #96CBFE;">@Test</span>
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">findUser_shouldThrowException_whenIdIsNull</span>() { <span style="color: #8B8989; font-style: italic;">/* </span><span style="color: #8B8989; font-style: italic;">...</span><span style="color: #8B8989; font-style: italic;"> */</span> }
+</pre>
+</div>
+</section>
+<section id="slide-org95f38be">
+<h4 id="org95f38be">Utilizza strumenti di copertura</h4>
+<p>
+Configura strumenti come JaCoCo per monitorare la copertura dei test:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-xml"><span style="color: #8B8989; font-style: italic;">&lt;!-- </span><span style="color: #8B8989; font-style: italic;">pom.xml</span><span style="color: #8B8989; font-style: italic;"> --&gt;</span>
+<span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">plugin</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+    <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">groupId</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span><span style="color: #d3d3d3; background-color: #000000;">org.jacoco</span><span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">groupId</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+    <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">artifactId</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span><span style="color: #d3d3d3; background-color: #000000;">jacoco-maven-plugin</span><span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">artifactId</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+    <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">version</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span><span style="color: #d3d3d3; background-color: #000000;">0.8.7</span><span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">version</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+    <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">executions</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+        <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">execution</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+            <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">goals</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+                <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">goal</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span><span style="color: #d3d3d3; background-color: #000000;">prepare-agent</span><span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">goal</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+            <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">goals</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+        <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">execution</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+        <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">execution</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+            <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">id</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span><span style="color: #d3d3d3; background-color: #000000;">report</span><span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">id</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+            <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">phase</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span><span style="color: #d3d3d3; background-color: #000000;">test</span><span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">phase</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+            <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">goals</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+                <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">goal</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span><span style="color: #d3d3d3; background-color: #000000;">report</span><span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">goal</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+            <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">goals</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+        <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">execution</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+    <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">executions</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+<span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">plugin</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+</pre>
+</div>
+</section>
+<section id="slide-orgd174f1c">
+<h4 id="orgd174f1c">Definisci soglie di copertura</h4>
+<p>
+Imposta soglie minime di copertura per il tuo progetto:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-xml"><span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">configuration</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+    <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">rules</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+        <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">rule</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+            <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">element</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span><span style="color: #d3d3d3; background-color: #000000;">BUNDLE</span><span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">element</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+            <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">limits</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+                <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">limit</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+                    <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">counter</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span><span style="color: #d3d3d3; background-color: #000000;">INSTRUCTION</span><span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">counter</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+                    <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">value</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span><span style="color: #d3d3d3; background-color: #000000;">COVEREDRATIO</span><span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">value</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+                    <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #ff1493;">minimum</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span><span style="color: #d3d3d3; background-color: #000000;">0.80</span><span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">minimum</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+                <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">limit</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+            <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">limits</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+        <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">rule</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+    <span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">rules</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+<span style="color: #d3d3d3; background-color: #000000;">&lt;</span><span style="color: #d3d3d3; background-color: #000000;">/</span><span style="color: #ff1493;">configuration</span><span style="color: #d3d3d3; background-color: #000000;">&gt;</span>
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-bdd-testing">
+<h2 id="bdd-testing">Strategie di Testing in Stile BDD per Spring Boot</h2>
+<p>
+Il Behavior-Driven Development (BDD) non è solo una metodologia di sviluppo, ma anche un approccio al testing che si concentra sul comportamento atteso del sistema dal punto di vista dell'utente o del business. Adottare uno stile BDD per i test può migliorare significativamente la loro leggibilità e il loro valore come documentazione.
+</p>
+</section>
+<section id="slide-bdd-intro">
+<h3 id="bdd-intro">Cos'è il BDD e perché dovrebbe interessarti</h3>
+<p>
+In parole povere, il BDD sposta il focus dal "come funziona il codice" al "cosa dovrebbe fare il sistema". È come passare dal pensare "questo metodo dovrebbe restituire un oggetto User con id=1" a "quando un utente richiede i propri dati, il sistema dovrebbe mostrargli le informazioni corrette".
+</p>
+
+<p>
+I vantaggi principali sono:
+</p>
+<ol>
+<li class="fragment appear"><b>Comunicazione</b>: Migliora la comunicazione tra sviluppatori, tester e stakeholder</li>
+<li class="fragment appear"><b>Leggibilità</b>: I test diventano più leggibili e comprensibili</li>
+<li class="fragment appear"><b>Focus sul valore</b>: Ci si concentra sul valore per l'utente piuttosto che sui dettagli implementativi</li>
+<li class="fragment appear"><b>Documentazione viva</b>: I test diventano una documentazione eseguibile delle specifiche</li>
+
+</ol>
+</section>
+<section id="slide-given-when-then">
+<h3 id="given-when-then">La struttura Given-When-Then</h3>
+<p>
+Il cuore del BDD è la struttura "Given-When-Then" (Dato-Quando-Allora), che rende i test più narrativi e comprensibili:
+</p>
+
+<ol>
+<li class="fragment appear"><b>Given (Dato)</b>: Stabilisce il contesto iniziale, le precondizioni per il test</li>
+<li class="fragment appear"><b>When (Quando)</b>: Descrive l'azione o l'evento che si sta testando</li>
+<li class="fragment appear"><b>Then (Allora)</b>: Specifica il risultato atteso o il comportamento previsto</li>
+
+</ol>
+
+<p>
+È una struttura che si allinea naturalmente con lo schema AAA (Arrange-Act-Assert) che abbiamo visto in precedenza, ma con un focus più marcato sul comportamento anziché sulla struttura del test.
+</p>
+
+</section>
+<section>
+<h3>La struttura Given-When-Then</h3>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Struttura AAA</span>
+<span style="color: #96CBFE;">@Test</span>
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">saveUser</span>() {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Arrange</span>
+    <span style="color: #afd8af;">UserDto</span> <span style="color: #ff69b4;">userDto</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">UserDto</span>(<span style="color: #61CE3C;">"test@example.com"</span>, <span style="color: #61CE3C;">"password"</span>);
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Act</span>
+    <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">savedUser</span> = userService.saveUser(userDto);
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Assert</span>
+    assertThat(savedUser.getEmail()).isEqualTo(<span style="color: #61CE3C;">"test@example.com"</span>);
+}
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Struttura BDD Given-When-Then</span>
+<span style="color: #96CBFE;">@Test</span>
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">givenValidUserData_whenSavingUser_thenUserIsSavedCorrectly</span>() {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Given</span>
+    <span style="color: #afd8af;">UserDto</span> <span style="color: #ff69b4;">userDto</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">UserDto</span>(<span style="color: #61CE3C;">"test@example.com"</span>, <span style="color: #61CE3C;">"password"</span>);
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">When</span>
+    <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">savedUser</span> = userService.saveUser(userDto);
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Then</span>
+    assertThat(savedUser.getEmail()).isEqualTo(<span style="color: #61CE3C;">"test@example.com"</span>);
+}
+</pre>
+</div>
+
+</section>
+<section>
+<h3>La struttura Given-When-Then</h3>
+
+<p>
+La differenza può sembrare sottile, ma il secondo approccio comunica molto più chiaramente l'intento del test.
+</p>
+</section>
+<section id="slide-bdd-implementation">
+<h3 id="bdd-implementation">Implementazione con JUnit 5, Mockito e AssertJ</h3>
+<p>
+Vediamo come implementare test in stile BDD utilizzando le librerie che abbiamo a disposizione.
+</p>
+</section>
+<section id="slide-orgd49106d">
+<h4 id="orgd49106d">JUnit 5</h4>
+<p>
+JUnit 5 non ha un supporto nativo per il BDD, ma possiamo adattarlo facilmente usando naming e struttura appropriati:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@DisplayName</span>(<span style="color: #61CE3C;">"User registration"</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserRegistrationTest</span> {
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #96CBFE;">@DisplayName</span>(<span style="color: #61CE3C;">"Given valid user data, when registering a new user, then the user is created"</span>)
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">givenValidUserData_whenRegisteringNewUser_thenUserIsCreated</span>() {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+    }
+}
+</pre>
+</div>
+
+<p>
+L'annotazione `@DisplayName` ci aiuta a rendere i test più leggibili anche nell'output dei report.
+</p>
+</section>
+<section id="slide-orgece1701">
+<h4 id="orgece1701">Mockito BDD</h4>
+<p>
+Mockito offre un'API in stile BDD che rende i test più espressivi:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Approccio standard</span>
+when(userRepository.findByEmail(<span style="color: #61CE3C;">"test@example.com"</span>)).thenReturn(Optional.of(user));
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Approccio BDD</span>
+given(userRepository.findByEmail(<span style="color: #61CE3C;">"test@example.com"</span>)).willReturn(Optional.of(user));
+</pre>
+</div>
+
+<p>
+Per le verifiche:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Approccio standard</span>
+verify(<span style="color: #afd8af;">userRepository</span>).save(user);
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Approccio BDD</span>
+then(userRepository).should().save(user);
+</pre>
+</div>
+</section>
+<section id="slide-org841e230">
+<h4 id="org841e230">AssertJ</h4>
+<p>
+AssertJ ha già una sintassi fluente che si integra perfettamente con lo stile BDD:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Given</span>
+<span style="color: #afd8af;">UserDto</span> <span style="color: #ff69b4;">userDto</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">UserDto</span>(<span style="color: #61CE3C;">"test@example.com"</span>, <span style="color: #61CE3C;">"password"</span>);
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">When</span>
+<span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">result</span> = userService.registerUser(userDto);
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Then</span>
+assertThat(result)
+    .isNotNull()
+    .extracting(User::getEmail, User::isActive)
+    .containsExactly(<span style="color: #61CE3C;">"test@example.com"</span>, <span style="color: #96CBFE;">true</span>);
+</pre>
+</div>
+</section>
+<section id="slide-bdd-unit-tests">
+<h3 id="bdd-unit-tests">Test Unitari in Stile BDD</h3>
+<p>
+Ecco un esempio completo di test unitario in stile BDD:
+</p>
+
+</section>
+<section>
+<h3>Test Unitari in Stile BDD</h3>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@ExtendWith</span>(MockitoExtension.<span style="color: #4c83ff;">class</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserServiceTest</span> {
+
+    <span style="color: #96CBFE;">@Mock</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserRepository</span> <span style="color: #ff69b4;">userRepository</span>;
+    
+    <span style="color: #96CBFE;">@Mock</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">PasswordEncoder</span> <span style="color: #ff69b4;">passwordEncoder</span>;
+    
+    <span style="color: #96CBFE;">@InjectMocks</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserService</span> <span style="color: #ff69b4;">userService</span>;
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">givenExistingEmail_whenRegisteringUser_thenThrowsException</span>() {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Given</span>
+        <span style="color: #afd8af;">String</span> <span style="color: #ff69b4;">email</span> = <span style="color: #61CE3C;">"existing@example.com"</span>;
+        <span style="color: #afd8af;">UserRegistrationDto</span> <span style="color: #ff69b4;">dto</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">UserRegistrationDto</span>(email, <span style="color: #61CE3C;">"password"</span>, <span style="color: #61CE3C;">"John Doe"</span>);
+        
+        given(userRepository.existsByEmail(email)).willReturn(<span style="color: #96CBFE;">true</span>);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">When &amp; Then</span>
+        assertThatThrownBy(() -&gt; userService.registerUser(dto))
+            .isInstanceOf(UserAlreadyExistsException.<span style="color: #4c83ff;">class</span>)
+            .hasMessageContaining(email);
+            
+        then(passwordEncoder).shouldHaveNoInteractions();
+        then(userRepository).should(never()).save(any());
+    }
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">givenValidRegistrationData_whenRegisteringUser_thenUserIsSaved</span>() {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Given</span>
+        <span style="color: #afd8af;">String</span> <span style="color: #ff69b4;">email</span> = <span style="color: #61CE3C;">"new@example.com"</span>;
+        <span style="color: #afd8af;">String</span> <span style="color: #ff69b4;">password</span> = <span style="color: #61CE3C;">"password"</span>;
+        <span style="color: #afd8af;">String</span> <span style="color: #ff69b4;">encodedPassword</span> = <span style="color: #61CE3C;">"encoded"</span>;
+        <span style="color: #afd8af;">String</span> <span style="color: #ff69b4;">name</span> = <span style="color: #61CE3C;">"John Doe"</span>;
+        
+        <span style="color: #afd8af;">UserRegistrationDto</span> <span style="color: #ff69b4;">dto</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">UserRegistrationDto</span>(email, password, name);
+        <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">savedUser</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">User</span>(1L, email, encodedPassword, name, <span style="color: #96CBFE;">true</span>);
+        
+        given(userRepository.existsByEmail(email)).willReturn(<span style="color: #96CBFE;">false</span>);
+        given(passwordEncoder.encode(password)).willReturn(encodedPassword);
+        given(userRepository.save(any(User.<span style="color: #4c83ff;">class</span>))).willReturn(savedUser);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">When</span>
+        <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">result</span> = userService.registerUser(dto);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Then</span>
+        assertThat(result).isNotNull();
+        assertThat(result.getId()).isEqualTo(1L);
+        assertThat(result.getEmail()).isEqualTo(email);
+        assertThat(result.getName()).isEqualTo(name);
+        
+        then(userRepository).should().save(argThat(user -&gt; 
+            user.getEmail().equals(email) &amp;&amp;
+            user.getPassword().equals(encodedPassword) &amp;&amp;
+            user.getName().equals(name)
+        ));
+    }
+}
+</pre>
+</div>
+</section>
+<section id="slide-bdd-controller-tests">
+<h3 id="bdd-controller-tests">Test di Controller in Stile BDD</h3>
+<p>
+I test dei controller si prestano particolarmente bene allo stile BDD, dato che riflettono direttamente le interazioni degli utenti:
+</p>
+
+</section>
+<section>
+<h3>Test di Controller in Stile BDD</h3>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@WebMvcTest</span>(UserController.<span style="color: #4c83ff;">class</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserControllerTest</span> {
+
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">MockMvc</span> <span style="color: #ff69b4;">mockMvc</span>;
+    
+    <span style="color: #96CBFE;">@MockBean</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserService</span> <span style="color: #ff69b4;">userService</span>;
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">givenExistingUser_whenGetUserById_thenReturnsUser</span>() <span style="color: #4c83ff;">throws</span> <span style="color: #afd8af;">Exception</span> {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Given</span>
+        <span style="color: #afd8af;">Long</span> <span style="color: #ff69b4;">userId</span> = 1L;
+        <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">user</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">User</span>(userId, <span style="color: #61CE3C;">"test@example.com"</span>, <span style="color: #61CE3C;">"encoded"</span>, <span style="color: #61CE3C;">"Test User"</span>, <span style="color: #96CBFE;">true</span>);
+        <span style="color: #afd8af;">UserDto</span> <span style="color: #ff69b4;">userDto</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">UserDto</span>(userId, <span style="color: #61CE3C;">"test@example.com"</span>, <span style="color: #61CE3C;">"Test User"</span>);
+        
+        given(userService.findById(userId)).willReturn(user);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">When &amp; Then</span>
+        mockMvc.perform(get(<span style="color: #61CE3C;">"/api/users/{id}"</span>, userId)
+                .contentType(<span style="color: #96CBFE;">MediaType</span>.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath(<span style="color: #61CE3C;">"$.id"</span>).value(userId))
+                .andExpect(jsonPath(<span style="color: #61CE3C;">"$.email"</span>).value(<span style="color: #61CE3C;">"test@example.com"</span>))
+                .andExpect(jsonPath(<span style="color: #61CE3C;">"$.name"</span>).value(<span style="color: #61CE3C;">"Test User"</span>));
+                
+        then(userService).should().findById(userId);
+    }
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">givenNonExistingUser_whenGetUserById_thenReturns404</span>() <span style="color: #4c83ff;">throws</span> <span style="color: #afd8af;">Exception</span> {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Given</span>
+        <span style="color: #afd8af;">Long</span> <span style="color: #ff69b4;">userId</span> = 999L;
+        
+        given(userService.findById(userId))
+            .willThrow(<span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">UserNotFoundException</span>(<span style="color: #61CE3C;">"User not found with id: "</span> + userId));
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">When &amp; Then</span>
+        mockMvc.perform(get(<span style="color: #61CE3C;">"/api/users/{id}"</span>, userId)
+                .contentType(<span style="color: #96CBFE;">MediaType</span>.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath(<span style="color: #61CE3C;">"$.message"</span>).value(containsString(<span style="color: #61CE3C;">"User not found"</span>)))
+                .andExpect(jsonPath(<span style="color: #61CE3C;">"$.message"</span>).value(containsString(userId.toString())));
+    }
+}
+</pre>
+</div>
+</section>
+<section id="slide-bdd-repository-tests">
+<h3 id="bdd-repository-tests">Test di Repository in Stile BDD</h3>
+<p>
+Anche i test dei repository possono beneficiare dello stile BDD:
+</p>
+
+</section>
+<section>
+<h3>Test di Repository in Stile BDD</h3>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@DataJpaTest</span>
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserRepositoryTest</span> {
+
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserRepository</span> <span style="color: #ff69b4;">userRepository</span>;
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">givenUserInDatabase_whenFindByEmail_thenReturnsUser</span>() {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Given</span>
+        <span style="color: #afd8af;">String</span> <span style="color: #ff69b4;">email</span> = <span style="color: #61CE3C;">"test@example.com"</span>;
+        <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">user</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">User</span>();
+        user.setEmail(email);
+        user.setName(<span style="color: #61CE3C;">"Test User"</span>);
+        user.setPassword(<span style="color: #61CE3C;">"encoded"</span>);
+        user.setActive(<span style="color: #96CBFE;">true</span>);
+        
+        userRepository.save(user);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">When</span>
+        <span style="color: #afd8af;">Optional</span>&lt;<span style="color: #afd8af;">User</span>&gt; <span style="color: #ff69b4;">result</span> = userRepository.findByEmail(email);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Then</span>
+        assertThat(result)
+            .isPresent()
+            .get()
+            .satisfies(foundUser -&gt; {
+                assertThat(foundUser.getEmail()).isEqualTo(email);
+                assertThat(foundUser.getName()).isEqualTo(<span style="color: #61CE3C;">"Test User"</span>);
+            });
+    }
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">givenNonExistingEmail_whenFindByEmail_thenReturnsEmpty</span>() {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Given</span>
+        <span style="color: #afd8af;">String</span> <span style="color: #ff69b4;">email</span> = <span style="color: #61CE3C;">"nonexisting@example.com"</span>;
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">When</span>
+        <span style="color: #afd8af;">Optional</span>&lt;<span style="color: #afd8af;">User</span>&gt; <span style="color: #ff69b4;">result</span> = userRepository.findByEmail(email);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Then</span>
+        assertThat(result).isEmpty();
+    }
+}
+</pre>
+</div>
+</section>
+<section id="slide-bdd-integration-tests">
+<h3 id="bdd-integration-tests">Test di Integrazione in Stile BDD</h3>
+<p>
+I test di integrazione sono un'ottima opportunità per adottare lo stile BDD, dato che testano flussi di utilizzo più completi:
+</p>
+
+</section>
+<section>
+<h3>Test di Integrazione in Stile BDD</h3>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@SpringBootTest</span>
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserServiceIntegrationTest</span> {
+
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserService</span> <span style="color: #ff69b4;">userService</span>;
+    
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserRepository</span> <span style="color: #ff69b4;">userRepository</span>;
+    
+    <span style="color: #96CBFE;">@BeforeEach</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">setup</span>() {
+        userRepository.deleteAll();
+    }
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">givenNewUser_whenRegisterUser_thenUserIsPersistedAndReturned</span>() {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Given</span>
+        <span style="color: #afd8af;">UserRegistrationDto</span> <span style="color: #ff69b4;">registrationDto</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">UserRegistrationDto</span>(
+            <span style="color: #61CE3C;">"test@example.com"</span>, <span style="color: #61CE3C;">"password"</span>, <span style="color: #61CE3C;">"Test User"</span>);
+            
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">When</span>
+        <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">result</span> = userService.registerUser(registrationDto);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Then</span>
+        assertThat(result).isNotNull();
+        assertThat(result.getId()).isNotNull();
+        assertThat(result.getEmail()).isEqualTo(<span style="color: #61CE3C;">"test@example.com"</span>);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Verify user is in the database</span>
+        <span style="color: #afd8af;">Optional</span>&lt;<span style="color: #afd8af;">User</span>&gt; <span style="color: #ff69b4;">fromDb</span> = userRepository.findById(result.getId());
+        assertThat(fromDb)
+            .isPresent()
+            .get()
+            .satisfies(user -&gt; {
+                assertThat(user.getEmail()).isEqualTo(<span style="color: #61CE3C;">"test@example.com"</span>);
+                assertThat(user.getName()).isEqualTo(<span style="color: #61CE3C;">"Test User"</span>);
+                assertThat(user.isActive()).isTrue();
+            });
+    }
+}
+</pre>
+</div>
+</section>
+<section id="slide-bdd-benefits">
+<h3 id="bdd-benefits">Vantaggi dell'Approccio BDD</h3>
+<p>
+Adottare un approccio BDD per i test offre numerosi vantaggi:
+</p>
+
+<ol>
+<li class="fragment appear"><b>Leggibilità</b>: I test sono più facili da comprendere, anche per non sviluppatori</li>
+<li class="fragment appear"><b>Focus sul comportamento</b>: Ci si concentra su cosa il sistema dovrebbe fare, non su come lo fa</li>
+<li class="fragment appear"><b>Documentazione vivente</b>: I test diventano documentazione eseguibile delle specifiche</li>
+<li class="fragment appear"><b>Comunicazione</b>: Migliora la comunicazione tra sviluppatori, tester e stakeholder</li>
+<li class="fragment appear"><b>Manutenibilità</b>: I test risultano più facili da mantenere e aggiornare</li>
+
+</ol>
+
+<p>
+L'approccio BDD incoraggia anche a pensare prima al comportamento atteso e poi all'implementazione, il che porta spesso a un design migliore del codice.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-testing-libraries">
+<h2 id="testing-libraries">Panoramica delle Librerie di Testing per Spring Boot/Java 21</h2>
+<p>
+Ora approfondiamo le principali librerie che abbiamo a disposizione per il testing di applicazioni Spring Boot con Java 21. Conoscere a fondo questi strumenti è fondamentale per scrivere test efficaci e manutenibili.
+</p>
+</section>
+<section id="slide-junit5">
+<h3 id="junit5">JUnit 5 (Jupiter)</h3>
+<p>
+JUnit 5 è il framework standard per il testing in Java, completamente riscritto rispetto alle versioni precedenti. È composto da diversi moduli:
+</p>
+
+
+<div id="orge56ec7b" class="figure">
+<p><img src="./introduzione_al_testing/junit-component-diagram.svg" alt="junit-component-diagram.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Architettura di JUnit 5</p>
+</div>
+
+</section>
+<section>
+<h3>JUnit 5 (Jupiter)</h3>
+
+<ul>
+<li class="fragment appear"><b>JUnit Platform</b>: L'infrastruttura per eseguire i test</li>
+<li class="fragment appear"><b>JUnit Jupiter</b>: API per scrivere test in JUnit 5</li>
+<li class="fragment appear"><b>JUnit Vintage</b>: Supporto per eseguire test JUnit 3 e 4</li>
+
+</ul>
+</section>
+<section id="slide-org27b5a0a">
+<h4 id="org27b5a0a">Annotazioni principali</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Annotazione</th>
+<th scope="col" class="org-left">Descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">@Test</td>
+<td class="org-left">Marca un metodo come test</td>
+</tr>
+
+<tr>
+<td class="org-left">@BeforeEach</td>
+<td class="org-left">Esegue il metodo prima di ogni test</td>
+</tr>
+
+<tr>
+<td class="org-left">@AfterEach</td>
+<td class="org-left">Esegue il metodo dopo ogni test</td>
+</tr>
+
+<tr>
+<td class="org-left">@BeforeAll</td>
+<td class="org-left">Esegue il metodo una volta prima di tutti i test</td>
+</tr>
+
+<tr>
+<td class="org-left">@AfterAll</td>
+<td class="org-left">Esegue il metodo una volta dopo tutti i test</td>
+</tr>
+
+<tr>
+<td class="org-left">@DisplayName</td>
+<td class="org-left">Specifica un nome personalizzato per il test</td>
+</tr>
+
+<tr>
+<td class="org-left">@Disabled</td>
+<td class="org-left">Disabilita un test</td>
+</tr>
+
+<tr>
+<td class="org-left">@Timeout</td>
+<td class="org-left">Specifica un timeout per il test</td>
+</tr>
+
+<tr>
+<td class="org-left">@ExtendWith</td>
+<td class="org-left">Estende il test con funzionalità aggiuntive</td>
+</tr>
+
+<tr>
+<td class="org-left">@ParameterizedTest</td>
+<td class="org-left">Marca un metodo come test parametrizzato</td>
+</tr>
+
+<tr>
+<td class="org-left">@RepeatedTest</td>
+<td class="org-left">Marca un metodo come test da ripetere</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-orga48255a">
+<h4 id="orga48255a">Asserzioni</h4>
+<p>
+JUnit 5 include un set completo di asserzioni:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Asserzioni di base</span>
+assertEquals(<span style="color: #afd8af;">expected</span>, <span style="color: #afd8af;">actual</span>);
+assertTrue(condition);
+assertFalse(condition);
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Asserzioni per eccezioni</span>
+assertThrows(ExpectedException.<span style="color: #4c83ff;">class</span>, () -&gt; { <span style="color: #8B8989; font-style: italic;">/* </span><span style="color: #8B8989; font-style: italic;">code</span><span style="color: #8B8989; font-style: italic;"> */</span> });
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Asserzioni multiple</span>
+assertAll(
+    () -&gt; assertEquals(expected1, actual1),
+    () -&gt; assertEquals(expected2, actual2)
+);
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Asserzioni con messaggi personalizzati</span>
+assertEquals(expected, actual, <span style="color: #61CE3C;">"Il valore non corrisponde"</span>);
+</pre>
+</div>
+</section>
+<section id="slide-orgbe80949">
+<h4 id="orgbe80949">Test parametrizzati</h4>
+<p>
+I test parametrizzati permettono di eseguire lo stesso test con input diversi:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@ParameterizedTest</span>
+<span style="color: #96CBFE;">@ValueSource</span>(strings = {<span style="color: #61CE3C;">"test@example.com"</span>, <span style="color: #61CE3C;">"another@example.com"</span>})
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">isEmailValid_shouldReturnTrue_forValidEmails</span>(<span style="color: #afd8af;">String</span> <span style="color: #ff69b4;">email</span>) {
+    assertTrue(EmailValidator.isValid(email));
+}
+
+<span style="color: #96CBFE;">@ParameterizedTest</span>
+<span style="color: #96CBFE;">@CsvSource</span>({
+    <span style="color: #61CE3C;">"test@example.com, true"</span>,
+    <span style="color: #61CE3C;">"invalid-email, false"</span>,
+    <span style="color: #61CE3C;">"@example.com, false"</span>
+})
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">isEmailValid_shouldReturnExpectedResult</span>(<span style="color: #afd8af;">String</span> <span style="color: #ff69b4;">email</span>, <span style="color: #afd8af;">boolean</span> <span style="color: #ff69b4;">expected</span>) {
+    assertEquals(expected, EmailValidator.isValid(email));
+}
+</pre>
+</div>
+</section>
+<section id="slide-org762df92">
+<h4 id="org762df92">Test ripetuti</h4>
+<p>
+I test ripetuti permettono di eseguire lo stesso test più volte:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@RepeatedTest</span>(5)
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">repeatedTest</span>() {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+
+<span style="color: #96CBFE;">@RepeatedTest</span>(value = 5, name = <span style="color: #61CE3C;">"Ripetizione {currentRepetition} di {totalRepetitions}"</span>)
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">repeatedTestWithCustomName</span>() {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+</pre>
+</div>
+</section>
+<section id="slide-orgfbc48ee">
+<h4 id="orgfbc48ee">Estensioni</h4>
+<p>
+JUnit 5 offre un meccanismo di estensione molto potente:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@ExtendWith</span>(SpringExtension.<span style="color: #4c83ff;">class</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">SpringTest</span> {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+
+<span style="color: #96CBFE;">@ExtendWith</span>(MockitoExtension.<span style="color: #4c83ff;">class</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">MockitoTest</span> {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+
+<span style="color: #96CBFE;">@ExtendWith</span>({SpringExtension.<span style="color: #4c83ff;">class</span>, MockitoExtension.<span style="color: #4c83ff;">class</span>})
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">MultipleExtensionsTest</span> {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+</pre>
+</div>
+</section>
+<section id="slide-mockito">
+<h3 id="mockito">Mockito</h3>
+<p>
+Mockito è un framework per il mocking in Java che consente di creare e configurare oggetti finti (mock) per isolare il codice in test.
+</p>
+</section>
+<section id="slide-org1591976">
+<h4 id="org1591976">Creazione di mock</h4>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Creazione con annotazioni</span>
+<span style="color: #96CBFE;">@ExtendWith</span>(MockitoExtension.<span style="color: #4c83ff;">class</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserServiceTest</span> {
+    
+    <span style="color: #96CBFE;">@Mock</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserRepository</span> <span style="color: #ff69b4;">userRepository</span>;
+    
+    <span style="color: #96CBFE;">@InjectMocks</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserService</span> <span style="color: #ff69b4;">userService</span>;
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Creazione manuale</span>
+<span style="color: #afd8af;">UserRepository</span> <span style="color: #ff69b4;">mockRepository</span> = Mockito.mock(UserRepository.<span style="color: #4c83ff;">class</span>);
+<span style="color: #afd8af;">UserService</span> <span style="color: #ff69b4;">userService</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">UserService</span>(mockRepository);
+</pre>
+</div>
+</section>
+<section id="slide-org79c6251">
+<h4 id="org79c6251">Stubbing</h4>
+<p>
+Lo stubbing consente di definire il comportamento dei mock:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Approccio standard</span>
+when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+when(userRepository.findById(999L)).thenThrow(<span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">NotFoundException</span>());
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Approccio BDD</span>
+given(userRepository.findById(1L)).willReturn(Optional.of(user));
+given(userRepository.findById(999L)).willThrow(<span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">NotFoundException</span>());
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Stubbing con argomenti generici</span>
+when(userRepository.findById(any())).thenReturn(Optional.of(user));
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Stubbing con match personalizzato</span>
+when(userRepository.save(argThat(u -&gt; u.getEmail().contains(<span style="color: #61CE3C;">"example.com"</span>))))
+    .thenReturn(savedUser);
+</pre>
+</div>
+</section>
+<section id="slide-orgcf29d53">
+<h4 id="orgcf29d53">Verifica</h4>
+<p>
+La verifica consente di controllare che i mock siano stati chiamati correttamente:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Verifica base</span>
+verify(<span style="color: #afd8af;">userRepository</span>).save(user);
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Verifica del numero di invocazioni</span>
+verify(userRepository, times(2)).save(any());
+verify(userRepository, never()).delete(any());
+verify(userRepository, atLeastOnce()).findById(any());
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Verifica dell'ordine</span>
+<span style="color: #afd8af;">InOrder</span> <span style="color: #ff69b4;">inOrder</span> = inOrder(userRepository, emailService);
+inOrder.verify(userRepository).save(any());
+inOrder.verify(emailService).sendWelcomeEmail(any());
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Verifica con argomenti specifici</span>
+verify(userRepository).save(argThat(user -&gt; 
+    user.getEmail().equals(<span style="color: #61CE3C;">"test@example.com"</span>) &amp;&amp;
+    user.getName().equals(<span style="color: #61CE3C;">"Test User"</span>)
+));
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Approccio BDD</span>
+then(userRepository).should().save(user);
+then(userRepository).should(times(2)).findById(any());
+then(userRepository).should(never()).delete(any());
+</pre>
+</div>
+</section>
+<section id="slide-org8d5fb29">
+<h4 id="org8d5fb29">Cattura argomenti</h4>
+<p>
+La cattura degli argomenti permette di catturare e verificare gli argomenti passati ai mock:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@Test</span>
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">shouldSaveUserWithEncryptedPassword</span>() {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Arrange</span>
+    <span style="color: #afd8af;">UserDto</span> <span style="color: #ff69b4;">userDto</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">UserDto</span>(<span style="color: #61CE3C;">"test@example.com"</span>, <span style="color: #61CE3C;">"password"</span>);
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Act</span>
+    userService.saveUser(userDto);
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Cattura l'utente passato al repository</span>
+    <span style="color: #afd8af;">ArgumentCaptor</span>&lt;<span style="color: #afd8af;">User</span>&gt; <span style="color: #ff69b4;">userCaptor</span> = ArgumentCaptor.forClass(User.<span style="color: #4c83ff;">class</span>);
+    verify(userRepository).save(userCaptor.capture());
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Assert</span>
+    <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">savedUser</span> = userCaptor.getValue();
+    assertThat(savedUser.getEmail()).isEqualTo(<span style="color: #61CE3C;">"test@example.com"</span>);
+    assertThat(savedUser.getPassword()).isNotEqualTo(<span style="color: #61CE3C;">"password"</span>); <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Password criptata</span>
+}
+</pre>
+</div>
+</section>
+<section id="slide-org4c58dd9">
+<h4 id="org4c58dd9">Spy</h4>
+<p>
+Gli spy sono versioni "spiate" di oggetti reali:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Creazione di uno spy</span>
+<span style="color: #afd8af;">List</span>&lt;<span style="color: #afd8af;">String</span>&gt; <span style="color: #ff69b4;">spyList</span> = spy(<span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">ArrayList</span>&lt;&gt;());
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Uso dello spy</span>
+spyList.add(<span style="color: #61CE3C;">"item1"</span>);
+spyList.add(<span style="color: #61CE3C;">"item2"</span>);
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Verifica</span>
+verify(spyList).add(<span style="color: #61CE3C;">"item1"</span>);
+assertThat(spyList).hasSize(2);
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Stubbing su spy</span>
+doReturn(100).when(spyList).size();
+assertThat(spyList.size()).isEqualTo(100);
+</pre>
+</div>
+</section>
+<section id="slide-assertj">
+<h3 id="assertj">AssertJ</h3>
+<p>
+AssertJ è una libreria di asserzioni fluenti che rende i test più leggibili ed espressivi.
+</p>
+</section>
+<section id="slide-orga3903b0">
+<h4 id="orga3903b0">Asserzioni di base</h4>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Asserzioni sui valori</span>
+assertThat(<span style="color: #afd8af;">actual</span>).isEqualTo(expected);
+assertThat(actual).isNotEqualTo(unexpected);
+assertThat(actual).isIn(possibleValues);
+assertThat(actual).isNotIn(impossibleValues);
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Asserzioni sui booleani</span>
+assertThat(condition).isTrue();
+assertThat(condition).isFalse();
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Asserzioni sulle stringhe</span>
+assertThat(string).isEqualTo(<span style="color: #61CE3C;">"expected"</span>);
+assertThat(string).contains(<span style="color: #61CE3C;">"substring"</span>);
+assertThat(string).startsWith(<span style="color: #61CE3C;">"prefix"</span>);
+assertThat(string).endsWith(<span style="color: #61CE3C;">"suffix"</span>);
+assertThat(string).matches(<span style="color: #61CE3C;">"regex"</span>);
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Asserzioni sui numeri</span>
+assertThat(number).isPositive();
+assertThat(number).isNegative();
+assertThat(number).isZero();
+assertThat(number).isBetween(min, max);
+assertThat(number).isCloseTo(expected, within(0.01));
+</pre>
+</div>
+</section>
+<section id="slide-org9051352">
+<h4 id="org9051352">Asserzioni su collezioni</h4>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Asserzioni su liste</span>
+assertThat(<span style="color: #afd8af;">list</span>).hasSize(3);
+assertThat(list).contains(<span style="color: #61CE3C;">"item1"</span>, <span style="color: #61CE3C;">"item2"</span>);
+assertThat(list).containsExactly(<span style="color: #61CE3C;">"item1"</span>, <span style="color: #61CE3C;">"item2"</span>, <span style="color: #61CE3C;">"item3"</span>);
+assertThat(list).containsExactlyInAnyOrder(<span style="color: #61CE3C;">"item3"</span>, <span style="color: #61CE3C;">"item1"</span>, <span style="color: #61CE3C;">"item2"</span>);
+assertThat(list).doesNotContain(<span style="color: #61CE3C;">"item4"</span>);
+assertThat(list).isEmpty();
+assertThat(list).isNotEmpty();
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Asserzioni su mappe</span>
+assertThat(map).containsKey(<span style="color: #61CE3C;">"key"</span>);
+assertThat(map).containsValue(<span style="color: #61CE3C;">"value"</span>);
+assertThat(map).containsEntry(<span style="color: #61CE3C;">"key"</span>, <span style="color: #61CE3C;">"value"</span>);
+</pre>
+</div>
+</section>
+<section id="slide-org41a3001">
+<h4 id="org41a3001">Asserzioni su eccezioni</h4>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Asserzioni su eccezioni</span>
+assertThatThrownBy(() -&gt; { <span style="color: #4c83ff;">throw</span> <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">Exception</span>(<span style="color: #61CE3C;">"error"</span>); })
+    .isInstanceOf(Exception.<span style="color: #4c83ff;">class</span>)
+    .hasMessage(<span style="color: #61CE3C;">"error"</span>);
+
+assertThatExceptionOfType(NotFoundException.<span style="color: #4c83ff;">class</span>)
+    .isThrownBy(() -&gt; service.findById(999L))
+    .withMessage(<span style="color: #61CE3C;">"User not found with id: 999"</span>);
+
+assertThatNoException().isThrownBy(() -&gt; service.doSomething());
+</pre>
+</div>
+</section>
+<section id="slide-org171785f">
+<h4 id="org171785f">Asserzioni su oggetti complessi</h4>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Asserzioni con estrazione di propriet&#224;</span>
+assertThat(<span style="color: #afd8af;">user</span>)
+    .extracting(User::getName, User::getEmail)
+    .containsExactly(<span style="color: #61CE3C;">"Test User"</span>, <span style="color: #61CE3C;">"test@example.com"</span>);
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Asserzioni con predicati</span>
+assertThat(user).satisfies(u -&gt; {
+    assertThat(u.getName()).isEqualTo(<span style="color: #61CE3C;">"Test User"</span>);
+    assertThat(u.getEmail()).isEqualTo(<span style="color: #61CE3C;">"test@example.com"</span>);
+    assertThat(u.isActive()).isTrue();
+});
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Asserzioni sofisticate</span>
+assertThat(users)
+    .filteredOn(user -&gt; user.getEmail().contains(<span style="color: #61CE3C;">"example.com"</span>))
+    .extracting(User::getName)
+    .containsExactly(<span style="color: #61CE3C;">"User 1"</span>, <span style="color: #61CE3C;">"User 2"</span>);
+</pre>
+</div>
+</section>
+<section id="slide-spring-test">
+<h3 id="spring-test">Spring Test</h3>
+<p>
+Spring Test è il modulo di testing di Spring Framework che include supporto per il testing di applicazioni Spring.
+</p>
+</section>
+<section id="slide-org4bec5e0">
+<h4 id="org4bec5e0">Test slices</h4>
+<p>
+Spring Boot offre annotazioni specifiche per testare "fette" dell'applicazione:
+</p>
+
+</section>
+<section>
+<h4>Test slices</h4>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test completo con contesto Spring</span>
+<span style="color: #96CBFE;">@SpringBootTest</span>
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">FullIntegrationTest</span> {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test solo dei controller MVC</span>
+<span style="color: #96CBFE;">@WebMvcTest</span>(UserController.<span style="color: #4c83ff;">class</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserControllerTest</span> {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test solo dei repository JPA</span>
+<span style="color: #96CBFE;">@DataJpaTest</span>
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserRepositoryTest</span> {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test solo della serializzazione JSON</span>
+<span style="color: #96CBFE;">@JsonTest</span>
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserDtoJsonTest</span> {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+
+<span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test solo dei client REST</span>
+<span style="color: #96CBFE;">@RestClientTest</span>(UserClient.<span style="color: #4c83ff;">class</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserClientTest</span> {
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+</pre>
+</div>
+</section>
+<section id="slide-org21278b2">
+<h4 id="org21278b2">MockBean</h4>
+<p>
+`@MockBean` permette di sostituire bean nel contesto Spring con mock:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@WebMvcTest</span>(UserController.<span style="color: #4c83ff;">class</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserControllerTest</span> {
+    
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">MockMvc</span> <span style="color: #ff69b4;">mockMvc</span>;
+    
+    <span style="color: #96CBFE;">@MockBean</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserService</span> <span style="color: #ff69b4;">userService</span>;
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+</pre>
+</div>
+</section>
+<section id="slide-orge8c7350">
+<h4 id="orge8c7350">MockMvc</h4>
+<p>
+MockMvc permette di testare i controller MVC senza un server reale:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@WebMvcTest</span>(UserController.<span style="color: #4c83ff;">class</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserControllerTest</span> {
+    
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">MockMvc</span> <span style="color: #ff69b4;">mockMvc</span>;
+    
+    <span style="color: #96CBFE;">@MockBean</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserService</span> <span style="color: #ff69b4;">userService</span>;
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">testGetUser</span>() <span style="color: #4c83ff;">throws</span> <span style="color: #afd8af;">Exception</span> {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Arrange</span>
+        given(userService.findById(1L)).willReturn(<span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">User</span>(1L, <span style="color: #61CE3C;">"test@example.com"</span>));
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Act &amp; Assert</span>
+        mockMvc.perform(get(<span style="color: #61CE3C;">"/api/users/1"</span>)
+                .contentType(<span style="color: #96CBFE;">MediaType</span>.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath(<span style="color: #61CE3C;">"$.id"</span>).value(1))
+                .andExpect(jsonPath(<span style="color: #61CE3C;">"$.email"</span>).value(<span style="color: #61CE3C;">"test@example.com"</span>))
+                .andDo(print()); <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Per debug</span>
+    }
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">testCreateUser</span>() <span style="color: #4c83ff;">throws</span> <span style="color: #afd8af;">Exception</span> {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Arrange</span>
+        <span style="color: #afd8af;">UserDto</span> <span style="color: #ff69b4;">userDto</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">UserDto</span>(<span style="color: #61CE3C;">"test@example.com"</span>, <span style="color: #61CE3C;">"password"</span>);
+        <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">savedUser</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">User</span>(1L, <span style="color: #61CE3C;">"test@example.com"</span>);
+        
+        given(userService.saveUser(any())).willReturn(savedUser);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Act &amp; Assert</span>
+        mockMvc.perform(post(<span style="color: #61CE3C;">"/api/users"</span>)
+                .contentType(<span style="color: #96CBFE;">MediaType</span>.APPLICATION_JSON)
+                .content(<span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">ObjectMapper</span>().writeValueAsString(userDto)))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath(<span style="color: #61CE3C;">"$.id"</span>).value(1))
+                .andExpect(jsonPath(<span style="color: #61CE3C;">"$.email"</span>).value(<span style="color: #61CE3C;">"test@example.com"</span>));
+    }
+}
+</pre>
+</div>
+</section>
+<section id="slide-org49e4481">
+<h4 id="org49e4481">TestRestTemplate</h4>
+<p>
+TestRestTemplate permette di testare i controller REST con un server reale:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@SpringBootTest</span>(webEnvironment = <span style="color: #96CBFE;">WebEnvironment</span>.RANDOM_PORT)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserControllerIntegrationTest</span> {
+    
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">TestRestTemplate</span> <span style="color: #ff69b4;">restTemplate</span>;
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">testGetUser</span>() {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Act</span>
+        <span style="color: #afd8af;">ResponseEntity</span>&lt;<span style="color: #afd8af;">UserDto</span>&gt; <span style="color: #ff69b4;">response</span> = restTemplate.getForEntity(<span style="color: #61CE3C;">"/api/users/1"</span>, UserDto.<span style="color: #4c83ff;">class</span>);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Assert</span>
+        assertThat(response.getStatusCode()).isEqualTo(<span style="color: #96CBFE;">HttpStatus</span>.OK);
+        assertThat(response.getBody()).isNotNull();
+        assertThat(response.getBody().getId()).isEqualTo(1L);
+        assertThat(response.getBody().getEmail()).isEqualTo(<span style="color: #61CE3C;">"test@example.com"</span>);
+    }
+}
+</pre>
+</div>
+</section>
+<section id="slide-testcontainers">
+<h3 id="testcontainers">TestContainers</h3>
+<p>
+TestContainers è una libreria che permette di creare container Docker per i test, ideale per testare l'integrazione con database, messaggistica e altri servizi.
+</p>
+</section>
+<section id="slide-org012eb51">
+<h4 id="org012eb51">Configurazione base</h4>
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@DataJpaTest</span>
+<span style="color: #96CBFE;">@AutoConfigureTestDatabase</span>(replace = <span style="color: #96CBFE;">AutoConfigureTestDatabase</span>.<span style="color: #96CBFE;">Replace</span>.NONE)
+<span style="color: #96CBFE;">@Testcontainers</span>
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserRepositoryTest</span> {
+    
+    <span style="color: #96CBFE;">@Container</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #afd8af;">PostgreSQLContainer</span>&lt;?&gt; <span style="color: #ff69b4;">postgres</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">PostgreSQLContainer</span>&lt;&gt;(<span style="color: #61CE3C;">"postgres:14"</span>)
+            .withDatabaseName(<span style="color: #61CE3C;">"testdb"</span>)
+            .withUsername(<span style="color: #61CE3C;">"test"</span>)
+            .withPassword(<span style="color: #61CE3C;">"test"</span>);
+    
+    <span style="color: #96CBFE;">@DynamicPropertySource</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">registerPgProperties</span>(<span style="color: #afd8af;">DynamicPropertyRegistry</span> <span style="color: #ff69b4;">registry</span>) {
+        registry.add(<span style="color: #61CE3C;">"spring.datasource.url"</span>, postgres::getJdbcUrl);
+        registry.add(<span style="color: #61CE3C;">"spring.datasource.username"</span>, postgres::getUsername);
+        registry.add(<span style="color: #61CE3C;">"spring.datasource.password"</span>, postgres::getPassword);
+    }
+    
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserRepository</span> <span style="color: #ff69b4;">userRepository</span>;
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+</pre>
+</div>
+</section>
+<section id="slide-org19729ec">
+<h4 id="org19729ec">Container multipli</h4>
+<p>
+È possibile utilizzare più container contemporaneamente:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@SpringBootTest</span>
+<span style="color: #96CBFE;">@Testcontainers</span>
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">IntegrationTest</span> {
+    
+    <span style="color: #96CBFE;">@Container</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #afd8af;">PostgreSQLContainer</span>&lt;?&gt; <span style="color: #ff69b4;">postgres</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">PostgreSQLContainer</span>&lt;&gt;(<span style="color: #61CE3C;">"postgres:14"</span>);
+    
+    <span style="color: #96CBFE;">@Container</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #afd8af;">RabbitMQContainer</span> <span style="color: #ff69b4;">rabbitmq</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">RabbitMQContainer</span>(<span style="color: #61CE3C;">"rabbitmq:3.8"</span>);
+    
+    <span style="color: #96CBFE;">@Container</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #afd8af;">RedisContainer</span> <span style="color: #ff69b4;">redis</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">RedisContainer</span>(<span style="color: #61CE3C;">"redis:6"</span>);
+    
+    <span style="color: #96CBFE;">@DynamicPropertySource</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">registerProperties</span>(<span style="color: #afd8af;">DynamicPropertyRegistry</span> <span style="color: #ff69b4;">registry</span>) {
+        registry.add(<span style="color: #61CE3C;">"spring.datasource.url"</span>, postgres::getJdbcUrl);
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">... altre propriet&#224;</span>
+        
+        registry.add(<span style="color: #61CE3C;">"spring.rabbitmq.host"</span>, rabbitmq::getHost);
+        registry.add(<span style="color: #61CE3C;">"spring.rabbitmq.port"</span>, rabbitmq::getAmqpPort);
+        
+        registry.add(<span style="color: #61CE3C;">"spring.redis.host"</span>, redis::getHost);
+        registry.add(<span style="color: #61CE3C;">"spring.redis.port"</span>, redis::getFirstMappedPort);
+    }
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+</pre>
+</div>
+</section>
+<section id="slide-org4f2f2de">
+<h4 id="org4f2f2de">Network condiviso</h4>
+<p>
+I container possono condividere la stessa rete:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@SpringBootTest</span>
+<span style="color: #96CBFE;">@Testcontainers</span>
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">NetworkedContainersTest</span> {
+    
+    <span style="color: #4c83ff;">static</span> <span style="color: #afd8af;">Network</span> <span style="color: #ff69b4;">network</span> = Network.newNetwork();
+    
+    <span style="color: #96CBFE;">@Container</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #afd8af;">PostgreSQLContainer</span>&lt;?&gt; <span style="color: #ff69b4;">postgres</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">PostgreSQLContainer</span>&lt;&gt;(<span style="color: #61CE3C;">"postgres:14"</span>)
+            .withNetwork(network)
+            .withNetworkAliases(<span style="color: #61CE3C;">"postgres"</span>);
+    
+    <span style="color: #96CBFE;">@Container</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #afd8af;">GenericContainer</span>&lt;?&gt; <span style="color: #ff69b4;">app</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">GenericContainer</span>&lt;&gt;(<span style="color: #61CE3C;">"myapp:latest"</span>)
+            .withNetwork(network)
+            .withEnv(<span style="color: #61CE3C;">"DB_HOST"</span>, <span style="color: #61CE3C;">"postgres"</span>)
+            .withExposedPorts(8080);
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code</span>
+}
+</pre>
+</div>
+</section>
+<section id="slide-orgc7aa867">
+<h4 id="orgc7aa867">Container personalizzati</h4>
+<p>
+È possibile creare container personalizzati:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #4c83ff;">static</span> <span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">MyCustomContainer</span> <span style="color: #4c83ff;">extends</span> <span style="color: #afd8af;">GenericContainer</span>&lt;<span style="color: #afd8af;">MyCustomContainer</span>&gt; {
+    
+    <span style="color: #4c83ff;">public</span> <span style="color: #ff1493;">MyCustomContainer</span>() {
+        <span style="color: #4c83ff;">super</span>(<span style="color: #61CE3C;">"my-custom-image:latest"</span>);
+        withExposedPorts(8080);
+        withEnv(<span style="color: #61CE3C;">"APP_ENV"</span>, <span style="color: #61CE3C;">"test"</span>);
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Altre configurazioni</span>
+    }
+    
+    <span style="color: #4c83ff;">public</span> <span style="color: #afd8af;">String</span> <span style="color: #ff1493;">getUrl</span>() {
+        <span style="color: #4c83ff;">return</span> <span style="color: #61CE3C;">"http://"</span> + getHost() + <span style="color: #61CE3C;">":"</span> + getMappedPort(8080);
+    }
+}
+
+<span style="color: #96CBFE;">@Container</span>
+<span style="color: #4c83ff;">static</span> <span style="color: #afd8af;">MyCustomContainer</span> <span style="color: #ff69b4;">myContainer</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">MyCustomContainer</span>();
+</pre>
+</div>
+</section>
+<section id="slide-other-libraries">
+<h3 id="other-libraries">Altre Librerie Utili</h3>
+<p>
+Esistono molte altre librerie utili per il testing di applicazioni Spring Boot:
+</p>
+</section>
+<section id="slide-org7862039">
+<h4 id="org7862039">JPA-Unit</h4>
+<p>
+Per testare specificamente il layer di persistenza:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@ExtendWith</span>(JpaUnitExtension.<span style="color: #4c83ff;">class</span>)
+<span style="color: #96CBFE;">@JpaUnit</span>(persistenceUnit = <span style="color: #61CE3C;">"my-persistence-unit"</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserRepositoryJpaUnitTest</span> {
+    
+    <span style="color: #96CBFE;">@PersistenceContext</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">EntityManager</span> <span style="color: #ff69b4;">em</span>;
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">testSaveUser</span>() {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Test code using EntityManager</span>
+    }
+}
+</pre>
+</div>
+</section>
+<section id="slide-org331ad2e">
+<h4 id="org331ad2e">HTML-Unit</h4>
+<p>
+Per testare applicazioni web a livello di HTML:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@WebMvcTest</span>(UserController.<span style="color: #4c83ff;">class</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">UserControllerHtmlUnitTest</span> {
+    
+    <span style="color: #96CBFE;">@Autowired</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">WebClient</span> <span style="color: #ff69b4;">webClient</span>;
+    
+    <span style="color: #96CBFE;">@MockBean</span>
+    <span style="color: #4c83ff;">private</span> <span style="color: #afd8af;">UserService</span> <span style="color: #ff69b4;">userService</span>;
+    
+    <span style="color: #96CBFE;">@Test</span>
+    <span style="color: #afd8af;">void</span> <span style="color: #ff1493;">testUserPage</span>() <span style="color: #4c83ff;">throws</span> <span style="color: #afd8af;">Exception</span> {
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Arrange</span>
+        <span style="color: #afd8af;">User</span> <span style="color: #ff69b4;">user</span> = <span style="color: #4c83ff;">new</span> <span style="color: #afd8af;">User</span>(1L, <span style="color: #61CE3C;">"test@example.com"</span>, <span style="color: #61CE3C;">"Test User"</span>);
+        given(userService.findById(1L)).willReturn(user);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Act</span>
+        <span style="color: #afd8af;">HtmlPage</span> <span style="color: #ff69b4;">page</span> = webClient.getPage(<span style="color: #61CE3C;">"/users/1"</span>);
+        
+        <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Assert</span>
+        assertThat(page.getTitleText()).isEqualTo(<span style="color: #61CE3C;">"User Details"</span>);
+        assertThat(page.getBody().getTextContent()).contains(<span style="color: #61CE3C;">"test@example.com"</span>);
+    }
+}
+</pre>
+</div>
+</section>
+<section id="slide-org694b3d5">
+<h4 id="org694b3d5">JSON-Unit</h4>
+<p>
+Per testare e confrontare strutture JSON:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@Test</span>
+<span style="color: #afd8af;">void</span> <span style="color: #ff1493;">testJsonEquality</span>() {
+    <span style="color: #afd8af;">String</span> <span style="color: #ff69b4;">expected</span> = <span style="color: #61CE3C;">"{\"id\":1,\"email\":\"test@example.com\"}"</span>;
+    <span style="color: #afd8af;">String</span> <span style="color: #ff69b4;">actual</span> = <span style="color: #61CE3C;">"{\"id\":1,\"email\":\"test@example.com\"}"</span>;
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Asserzione base</span>
+    assertThatJson(actual).isEqualTo(expected);
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Ignora campi specifici</span>
+    assertThatJson(actual).when(IGNORING_EXTRA_FIELDS).isEqualTo(<span style="color: #61CE3C;">"{\"id\":1}"</span>);
+    
+    <span style="color: #8B8989; font-style: italic;">// </span><span style="color: #8B8989; font-style: italic;">Verifica valori specifici</span>
+    assertThatJson(actual).node(<span style="color: #61CE3C;">"email"</span>).isString().isEqualTo(<span style="color: #61CE3C;">"test@example.com"</span>);
+}
+</pre>
+</div>
+</section>
+<section id="slide-orga83fa17">
+<h4 id="orga83fa17">Arch-Unit</h4>
+<p>
+Per testare l'architettura dell'applicazione:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #96CBFE;">@AnalyzeClasses</span>(packages = <span style="color: #61CE3C;">"com.example"</span>)
+<span style="color: #4c83ff;">class</span> <span style="color: #afd8af;">ArchitectureTest</span> {
+    
+    <span style="color: #96CBFE;">@ArchTest</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #4c83ff;">final</span> <span style="color: #afd8af;">ArchRule</span> <span style="color: #ff69b4;">layerDependenciesRule</span> = layeredArchitecture()
+            .layer(<span style="color: #61CE3C;">"Controller"</span>).definedBy(<span style="color: #61CE3C;">"..controller.."</span>)
+            .layer(<span style="color: #61CE3C;">"Service"</span>).definedBy(<span style="color: #61CE3C;">"..service.."</span>)
+            .layer(<span style="color: #61CE3C;">"Repository"</span>).definedBy(<span style="color: #61CE3C;">"..repository.."</span>)
+            .whereLayer(<span style="color: #61CE3C;">"Controller"</span>).mayNotBeAccessedByAnyLayer()
+            .whereLayer(<span style="color: #61CE3C;">"Service"</span>).mayOnlyBeAccessedByLayers(<span style="color: #61CE3C;">"Controller"</span>)
+            .whereLayer(<span style="color: #61CE3C;">"Repository"</span>).mayOnlyBeAccessedByLayers(<span style="color: #61CE3C;">"Service"</span>);
+    
+    <span style="color: #96CBFE;">@ArchTest</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #4c83ff;">final</span> <span style="color: #afd8af;">ArchRule</span> <span style="color: #ff69b4;">namingConventionRule</span> = classes()
+            .that().resideInAPackage(<span style="color: #61CE3C;">"..controller.."</span>)
+            .should().haveSimpleNameEndingWith(<span style="color: #61CE3C;">"Controller"</span>);
+    
+    <span style="color: #96CBFE;">@ArchTest</span>
+    <span style="color: #4c83ff;">static</span> <span style="color: #4c83ff;">final</span> <span style="color: #afd8af;">ArchRule</span> <span style="color: #ff69b4;">dtoShouldBeImmutable</span> = classes()
+            .that().resideInAPackage(<span style="color: #61CE3C;">"..dto.."</span>)
+            .should().haveOnlyFinalFields();
+}
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-conclusion">
+<h2 id="conclusion">Conclusione</h2>
+<p>
+Il testing automatico è una componente fondamentale nello sviluppo di applicazioni Spring Boot di alta qualità. Attraverso un approccio strutturato che combina diversi tipi di test (unitari, di integrazione, di architettura, ecc.) e utilizzando gli strumenti appropriati, è possibile garantire che l'applicazione funzioni correttamente e rimanga mantenibile nel tempo.
+</p>
+
+<p>
+Nel corso di queste sessioni, abbiamo esplorato i principi fondamentali del testing automatico, le diverse tipologie di test e le best practices da seguire. Abbiamo visto come utilizzare JUnit 5, Mockito, AssertJ e altre librerie per scrivere test efficaci e manutenibili. Abbiamo anche approfondito l'approccio BDD (Behavior-Driven Development) e come applicarlo per migliorare la leggibilità e il valore dei test come documentazione.
+</p>
+
+</section>
+<section>
+<h2>Conclusione</h2>
+
+<p>
+La strada verso un'applicazione robusta e affidabile passa necessariamente attraverso una solida strategia di testing. Con le conoscenze acquisite, sarai in grado di implementare questa strategia e garantire la qualità del tuo codice nel lungo periodo.
+</p>
+
+<p>
+Ricorda: un test oggi, più che una spesa, è un investimento. Un investimento che sarà ripagato con interessi ogni volta che il tuo codice cambierà, ogni volta che introdurrai nuove funzionalità e, soprattutto, ogni volta che dormirai sonni tranquilli sapendo che la tua applicazione funziona esattamente come dovrebbe.
+</p>
+
+<p>
+Non resta che mettere in pratica quanto appreso e iniziare a testare. Buon testing!
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/plugin/markdown/markdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/plugin/search/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/plugin/zoom/zoom.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+width: 1800,
+height: 1000,
+
+transition: 'convex',
+transitionSpeed: 'default',
+
+// Plugins with reveal.js 4.x
+plugins: [ RevealMarkdown, RevealNotes, RevealSearch, RevealZoom ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+});
+</script>
+</body>
+</html>
