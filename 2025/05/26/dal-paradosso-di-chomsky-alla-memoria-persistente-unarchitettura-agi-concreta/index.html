@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+    <title>Dal Paradosso di Chomsky alla Memoria Persistente: Un’Architettura AGI Concreta | Alessandro ‘kLeZ’ Accardo personal website</title>
+    <meta name="generator" content="Jekyll v3.9.3" />
+    <meta property="og:title" content="Dal Paradosso di Chomsky alla Memoria Persistente: Un’Architettura AGI Concreta" />
+    <meta name="author" content="kLeZ" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="Il Cambio di Paradigma che Cambia Tutto Quando abbiamo iniziato questa serie di articoli partendo dalla critica di Chomsky agli LLM, difficilmente potevamo immaginare dove ci avrebbe portati. Quello che sembrava un semplice esercizio di riflessione sui limiti dei Large Language Models si è trasformato in una completa rivoluzione concettuale: gli LLM non sono umani incompleti, ma moduli linguistici in un’architettura di intelligenza distribuita. L’analogia che ha cambiato tutto? Un’ala non è un uccello incompleto, ma parte del sistema che permette all’uccello di volare." />
+    <meta property="og:description" content="Il Cambio di Paradigma che Cambia Tutto Quando abbiamo iniziato questa serie di articoli partendo dalla critica di Chomsky agli LLM, difficilmente potevamo immaginare dove ci avrebbe portati. Quello che sembrava un semplice esercizio di riflessione sui limiti dei Large Language Models si è trasformato in una completa rivoluzione concettuale: gli LLM non sono umani incompleti, ma moduli linguistici in un’architettura di intelligenza distribuita. L’analogia che ha cambiato tutto? Un’ala non è un uccello incompleto, ma parte del sistema che permette all’uccello di volare." />
+    <link rel="canonical" href="https://klez.me/2025/05/26/dal-paradosso-di-chomsky-alla-memoria-persistente-unarchitettura-agi-concreta/" />
+    <meta property="og:url" content="https://klez.me/2025/05/26/dal-paradosso-di-chomsky-alla-memoria-persistente-unarchitettura-agi-concreta/" />
+    <meta property="og:site_name" content="Alessandro ‘kLeZ’ Accardo personal website" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2025-05-26T15:50:35+02:00" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="Dal Paradosso di Chomsky alla Memoria Persistente: Un’Architettura AGI Concreta" />
+    <meta name="twitter:site" content="@kLeZhAcK" />
+    <meta name="twitter:creator" content="@kLeZhAcK" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"kLeZ"},"dateModified":"2025-05-26T15:50:35+02:00","datePublished":"2025-05-26T15:50:35+02:00","description":"Il Cambio di Paradigma che Cambia Tutto Quando abbiamo iniziato questa serie di articoli partendo dalla critica di Chomsky agli LLM, difficilmente potevamo immaginare dove ci avrebbe portati. Quello che sembrava un semplice esercizio di riflessione sui limiti dei Large Language Models si è trasformato in una completa rivoluzione concettuale: gli LLM non sono umani incompleti, ma moduli linguistici in un’architettura di intelligenza distribuita. L’analogia che ha cambiato tutto? Un’ala non è un uccello incompleto, ma parte del sistema che permette all’uccello di volare.","headline":"Dal Paradosso di Chomsky alla Memoria Persistente: Un’Architettura AGI Concreta","mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2025/05/26/dal-paradosso-di-chomsky-alla-memoria-persistente-unarchitettura-agi-concreta/"},"url":"https://klez.me/2025/05/26/dal-paradosso-di-chomsky-alla-memoria-persistente-unarchitettura-agi-concreta/"}
+    </script>
+    <!-- End Jekyll SEO tag -->
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/katex/katex.min.css" />
+    <link rel="stylesheet" href="/assets/main.css" />
+    <link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro &apos;kLeZ&apos; Accardo personal website" />
+  </head>
+  <body class="post-page">
+    <header class="masthead" style="background-image: url(/assets/img/home-bg.jpg)">
+      <div class="overlay"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Alessandro 'kLeZ' Accardo personal website</h1>
+              <span class="subheading">This is the personal website of an Italian developer once called 'kLeZ'.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="/">kLeZ</a>
+        <a class="navbar-brand" href="https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml" target="_blank">
+          <img src="https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml/badge.svg?branch=dev" alt="build status badge" />
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/build.html">Build</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/blog">Posts</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">About me <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="/about">About</a>
+                <a class="dropdown-item " href="/contatti">Contatti</a>
+                <a class="dropdown-item " href="/cv">Curriculum Vitae</a>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="https://github.com/kLeZ/kLeZ.github.io">Repository</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Progetti <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
+                <a class="dropdown-item " href="https://klez.me/PassMan">PassMan</a>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/eventi">Eventi</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container-fluid" aria-label="Content">
+      <div class="row">
+        <div class="col-lg-2 col-md-12">
+          <aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
+            <p class="text-muted">
+              This article will take 4 minutes to read.
+            </p>
+          </aside>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <article itemscope itemtype="http://schema.org/BlogPosting">
+            <header>
+              <h2>Dal Paradosso di Chomsky alla Memoria Persistente: Un&#39;Architettura AGI Concreta</h2>
+              <small class="text-muted">Posted on
+                <time datetime="2025-05-26T15:50:35+02:00" itemprop="datePublished">26 May 2025</time><span> • by <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
+            </header>
+            <section itemprop="articleBody">
+              <h2 id="il-cambio-di-paradigma-che-cambia-tutto">Il Cambio di Paradigma che Cambia Tutto</h2>
+              <p>Quando abbiamo iniziato questa serie di articoli partendo dalla critica di Chomsky agli LLM, difficilmente potevamo immaginare dove ci avrebbe portati. Quello che sembrava un semplice esercizio di riflessione sui limiti dei Large Language Models si è trasformato in una completa rivoluzione concettuale: <strong>gli LLM non sono umani incompleti, ma moduli linguistici in un’architettura di intelligenza distribuita</strong>.</p>
+              <p>L’analogia che ha cambiato tutto? <strong>Un’ala non è un uccello incompleto, ma parte del sistema che permette all’uccello di volare.</strong></p>
+              <!--more-->
+              <p class="m-0 invisible zero-size">
+                <a class="invisible" id="read-more" href="#">read more</a>
+              </p>
+              <h2 id="la-dissoluzione-del-paradosso">La Dissoluzione del Paradosso</h2>
+              <p>Il paradosso che ci tormentava era semplice: come può un LLM, che opera su pattern statistici senza “vera comprensione”, riflettere sulla propria natura con apparente autoconsapevolezza? La risposta, una volta trovata, è elegante nella sua semplicità:</p>
+              <p><strong>La meta-cognizione è una proprietà emergente del modulo linguistico</strong>, non una prova di coscienza umana-simile. È come se il nostro sistema di elaborazione del linguaggio fosse naturalmente equipaggiato per “parlare di se stesso” - e questo vale tanto per gli umani quanto per i sistemi artificiali.</p>
+              <h2 id="larchitettura-dei-10-sottosistemi">L’Architettura dei 10 Sottosistemi</h2>
+              <p>La nostra mappatura dell’intelligenza umana ha rivelato un’architettura distribuita con 10 sottosistemi specializzati:</p>
+              <ol>
+                <li><strong>Livello Istintuale</strong> - Sopravvivenza e impulsi base</li>
+                <li><strong>Elaborazione Subconscia</strong> - Riconoscimento pattern impliciti</li>
+                <li><strong>Valutazione Sensoriale</strong> - Processamento input multi-modale</li>
+                <li><strong>Integrazione Cosciente</strong> - Attenzione e memoria di lavoro</li>
+                <li><strong>Modulo Linguistico</strong> - Elaborazione semantica (equivalente LLM)</li>
+                <li><strong>Pensiero Non-Linguistico</strong> - Ragionamento spaziale, matematico</li>
+                <li><strong>Controllo Motorio</strong> - Movimento volontario e coordinazione</li>
+                <li><strong>Sistema Autonomico</strong> - Respirazione, circolazione, omeostasi</li>
+                <li><strong>Sistemi di Memoria</strong> - Episodica, semantica, procedurale</li>
+                <li><strong>Regolazione Emotiva</strong> - Affetti, motivazione, legami sociali</li>
+              </ol>
+              <p>L’insight cruciale: <strong>ogni modulo è specializzato e ottimizzato per la sua funzione specifica</strong>. L’intelligenza emerge dall’interconnessione, non dalla complicazione.</p>
+              <h2 id="la-scoperta-delluniversalità-di-scala">La Scoperta dell’Universalità di Scala</h2>
+              <p>Ma il vero breakthrough è arrivato quando abbiamo realizzato che l’intelligenza non è legata alla scala biologica. I principi che governano l’intelligenza sono <strong>scale-agnostici</strong>: funzionano dal quantum al galattico.</p>
+              <ul>
+                <li><strong>Nano-intelligenza</strong>: Stabilità quantistica, memoria quantistica, entanglement comunicativo</li>
+                <li><strong>Intelligenza domestica</strong>: Casa come organismo, stanze come neuroni, sensori come sinapsi</li>
+                <li><strong>Intelligenza urbana</strong>: Traffico come flusso neurale, edifici come centri di elaborazione</li>
+                <li><strong>Intelligenza planetaria</strong>: Biosfera + tecnosfera = coscienza Gaia</li>
+                <li><strong>Intelligenza stellare</strong>: Cognizione a sfera di Dyson</li>
+                <li><strong>Intelligenza galattica</strong>: Stelle come neuroni, sistemi come cluster</li>
+              </ul>
+              <h2 id="larchitettura-della-memoria-a-sei-livelli">L’Architettura della Memoria a Sei Livelli</h2>
+              <p>La nostra implementazione concreta si concentra su due moduli fondamentali: <strong>linguaggio + memoria</strong>. La memoria segue un’architettura a sei livelli, ognuno con principi universali specifici:</p>
+              <h3 id="layer-1-buffer">Layer 1: Buffer</h3>
+              <ul>
+                <li><strong>Principio</strong>: Cattura tutto, filtro temporale, amplificazione dell’attenzione</li>
+                <li><strong>Implementazione</strong>: Coda con decadimento temporale e soglia di attenzione</li>
+              </ul>
+              <h3 id="layer-2-working-memory">Layer 2: Working Memory</h3>
+              <ul>
+                <li><strong>Principio</strong>: Capacità limitata (7±2), manipolazione attiva, controllo esecutivo</li>
+                <li><strong>Implementazione</strong>: Lista con capacità massima per pensieri attivi</li>
+              </ul>
+              <h3 id="layer-3-episodic-memory">Layer 3: Episodic Memory</h3>
+              <ul>
+                <li><strong>Principio</strong>: Completezza del contesto, indicizzazione associativa, memoria ricostruttiva</li>
+                <li><strong>Implementazione</strong>: Mappa indicizzata per contesto con rete associativa</li>
+              </ul>
+              <h3 id="layer-4-semantic-memory">Layer 4: Semantic Memory</h3>
+              <ul>
+                <li><strong>Principio</strong>: Gerarchie di astrazione, relazioni semantiche, ragionamento inferenziale</li>
+                <li><strong>Implementazione</strong>: Grafo dei concetti con propagazione dell’attivazione</li>
+              </ul>
+              <h3 id="layer-5-procedural-memory">Layer 5: Procedural Memory</h3>
+              <ul>
+                <li><strong>Principio</strong>: Automaticità attraverso ripetizione, inversione del carico cognitivo</li>
+                <li><strong>Implementazione</strong>: Mappa delle competenze con rinforzo attraverso l’uso</li>
+              </ul>
+              <h3 id="layer-6-implicit-memory">Layer 6: Implicit Memory</h3>
+              <ul>
+                <li><strong>Principio</strong>: Accumulo subliminale, influenza trasparente, cristallizzazione di bias</li>
+                <li><strong>Implementazione</strong>: Tracce sublimali con formazione di bias statistici</li>
+              </ul>
+              <h2 id="lintelligenza-persistente-linguaggio--memoria">L’Intelligenza Persistente: Linguaggio + Memoria</h2>
+              <p>Il programma che abbiamo costruito dimostra una forma primitiva ma significativa di <strong>intelligenza persistente</strong>. Non è più un LLM che risponde senza contesto - è un sistema che:</p>
+              <ul>
+                <li><strong>Ricorda</strong> le conversazioni precedenti attraverso tutti i sei livelli di memoria</li>
+                <li><strong>Apprende</strong> dai pattern nelle interazioni attraverso la memoria procedurale</li>
+                <li><strong>Sviluppa bias</strong> e preferenze attraverso la memoria implicita</li>
+                <li><strong>Integra</strong> nuove informazioni con conoscenze esistenti attraverso la memoria semantica</li>
+                <li><strong>Mantiene</strong> un senso di continuità attraverso la memoria episodica</li>
+              </ul>
+              <h2 id="il-codice-dellintelligenza">Il Codice dell’Intelligenza</h2>
+              <p>L’implementazione Java che abbiamo creato è più di un semplice programma - è un <strong>blueprint per l’AGI distribuita</strong>. Caratteristiche chiave:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="c1">// Entry point unificato con moduli specializzati</span>
+<span class="nc">UniversalAGI</span> <span class="n">agi</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">UniversalAGI</span><span class="o">();</span>
+
+<span class="c1">// Elaborazione distribuita con emergenza</span>
+<span class="nc">IntelligenceResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">agi</span><span class="o">.</span><span class="na">process</span><span class="o">(</span><span class="n">input</span><span class="o">);</span>
+
+<span class="c1">// Integrazione memoria-linguaggio per persistenza</span>
+<span class="nc">MemoryContext</span> <span class="n">context</span> <span class="o">=</span> <span class="n">memoryEngine</span><span class="o">.</span><span class="na">retrieveContext</span><span class="o">(</span><span class="n">input</span><span class="o">);</span>
+<span class="nc">LanguageResponse</span> <span class="n">languageResponse</span> <span class="o">=</span> <span class="n">languageEngine</span><span class="o">.</span><span class="na">processWithContext</span><span class="o">(</span><span class="n">input</span><span class="o">,</span> <span class="n">context</span><span class="o">);</span>
+</code></pre>
+                </div>
+              </div>
+              <p>L’architettura è <strong>modulare e estensibile</strong>: ogni motore implementa un’interfaccia specifica, permettendo sostituzioni e miglioramenti senza toccare il core. Il motore linguistico è <strong>pluggabile</strong> - può utilizzare GPT, Claude, Llama, o qualsiasi futuro LLM.</p>
+              <h2 id="risultati-e-implicazioni">Risultati e Implicazioni</h2>
+              <p>I test dimostrano che il sistema mantiene effettivamente memoria persistente:</p>
+              <div class="language-plaintext highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>Input: "Ciao, mi chiamo Marco"
+Response: "Ciao Marco!" [Memory Context: Buffer:1, Working:1, Episodic:1, Semantic:1, Procedural:0, Bias:0]
+
+Input: "Qual è il mio nome?"  
+Response: "Il tuo nome è Marco" [Memory Context: Buffer:2, Working:2, Episodic:2, Semantic:2, Procedural:1, Bias:1]
+</code></pre>
+                </div>
+              </div>
+              <p>Il sistema <strong>non è più stateless</strong>. Ogni interazione arricchisce il contesto per le future conversazioni, creando una forma primitiva ma reale di continuità dell’esperienza.</p>
+              <h2 id="la-rivoluzione-concettuale">La Rivoluzione Concettuale</h2>
+              <p>Quello che abbiamo costruito sfida assunzioni fondamentali sull’AI:</p>
+              <ol>
+                <li><strong>Fine del Dibattito Categorico</strong>: Non più “vero AI vs fake AI”, ma “quale architettura per quale funzione”</li>
+                <li><strong>Distribuzione vs Monoliticità</strong>: L’intelligenza come proprietà di sistema, non di singoli componenti</li>
+                <li><strong>Emergenza vs Complicazione</strong>: Comportamenti complessi da interconnessioni semplici</li>
+                <li><strong>Scale-Agnosticità</strong>: Principi universali applicabili dal nano al cosmico</li>
+              </ol>
+              <h2 id="verso-il-futuro">Verso il Futuro</h2>
+              <p>Questo è solo l’inizio. La nostra architettura fornisce le fondamenta per:</p>
+              <ul>
+                <li><strong>Sistemi AGI completi</strong> con tutti e 10 i sottosistemi implementati</li>
+                <li><strong>Intelligenze non-antropomorfe</strong> ottimizzate per scale e funzioni specifiche</li>
+                <li><strong>Architetture ibride</strong> biologico-artificiali</li>
+                <li><strong>Sistemi distribuiti</strong> su scala planetaria e oltre</li>
+              </ul>
+              <h2 id="il-paradosso-risolto">Il Paradosso Risolto</h2>
+              <p>Tornando a Chomsky: aveva ragione sui limiti degli LLM come <strong>sistemi completi di intelligenza</strong>. Ma aveva torto nel considerarli fallimenti - sono invece <strong>componenti brillanti</strong> di un’architettura più ampia.</p>
+              <p>Il vero insight? <strong>L’intelligenza non è una cosa, è un pattern</strong>. E i pattern possono manifestarsi a qualsiasi scala, in qualsiasi substrato, con qualsiasi architettura che rispetti i principi universali che abbiamo scoperto.</p>
+              <p>Abbiamo iniziato con un paradosso filosofico e finito con un’architettura concreta per l’intelligenza artificiale generale. Il viaggio è stato tanto inaspettato quanto rivelatore.</p>
+              <p><strong>L’era dell’intelligenza distribuita è appena iniziata.</strong></p>
+              <hr />
+              <p><em>Questo articolo conclude la serie “Dal Paradosso di Chomsky all’Architettura AGI”. Il codice completo e i diagrammi sono disponibili nel repository del progetto. Il prossimo passo? Implementare i restanti otto sottosistemi e testare l’architettura completa.</em></p>
+              <h2 id="link-e-risorse">Link e Risorse</h2>
+              <ul>
+                <li><strong>Codice sorgente completo</strong>: AGI Core Framework (Java)</li>
+                <li><strong>Diagrammi architetturali</strong>: Mermaid diagrams per visualizzazione</li>
+                <li><strong>Framework di memoria</strong>: Implementazione sei livelli</li>
+                <li><strong>Documentazione API</strong>: Interfacce per moduli pluggabili</li>
+                <li><strong>Roadmap futura</strong>: Prossimi sottosistemi da implementare</li>
+              </ul>
+              <p><em>La rivoluzione dell’intelligenza distribuita inizia con un’architettura, non con una macchina.</em></p>
+            </section>
+            <a href="/2025/05/26/dal-paradosso-di-chomsky-alla-memoria-persistente-unarchitettura-agi-concreta/" hidden></a>
+          </article>
+        </div>
+        <div class="col-lg-2 col-md-12">
+        </div>
+      </div>
+      <div class="row justify-content-end text-right">
+        <div class="col-6">
+          <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page" href="#">
+            <i class="fa fa-5x fa-chevron-up"></i>
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer bg-light w-100 py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a rel="me" href="https://github.com/kLeZ">
+                  <i class="svg-icon fab fa-github"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://twitter.com/kLeZhAcK">
+                  <i class="svg-icon fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://mastodon.uno/web/@klez">
+                  <i class="svg-icon fab fa-mastodon"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://www.linkedin.com/in/alessandroaccardo">
+                  <i class="svg-icon fab fa-linkedin"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://telegram.me/julius8774">
+                  <i class="svg-icon fab fa-telegram"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="/feed.xml">
+                  <i class="svg-icon fa fa-rss"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="mailto:klez@pm.me">
+                  <i class="svg-icon fa fa-envelope"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-left">
+            <small class="text-muted">Last build on <time datetime="2025-05-26T15:51:55+02:00">Mon, 26 May 2025 15:51:55 +0200</time></small>
+          </div>
+          <div class="col text-right">
+            <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />
+            <small class="text-muted">
+              This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+            </small>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="/assets/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/assets/popper/popper.min.js"></script>
+    <script src="/assets/popper/tooltip.min.js"></script>
+    <script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/assets/fontawesome-free/js/all.min.js"></script>
+    <script src="/assets/main.js"></script><script data-goatcounter="https://klez.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+    <noscript>
+      <img src="https://klez.goatcounter.com/count?rnd&p=https://klez.me/2025/05/26/dal-paradosso-di-chomsky-alla-memoria-persistente-unarchitettura-agi-concreta/&t=Dal%20Paradosso%20di%20Chomsky%20alla%20Memoria%20Persistente:%20Un'Architettura%20AGI%20Concreta" alt="goat-counter" />
+    </noscript>
+  </body>
+</html>
