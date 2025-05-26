@@ -1,6 +1,10 @@
 ---
 title: "L'Epifania Cosmica: Quando l'Intelligenza Diventa Infinita"
-tags: 
+tags:
+- AI
+- LLM
+- Architettura
+- Pensiero Profondo
 date: 2025-05-26 12:24:26+02:00
 ---
 
