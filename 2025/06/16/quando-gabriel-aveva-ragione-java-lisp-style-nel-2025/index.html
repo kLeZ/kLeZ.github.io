@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+    <title>Quando Gabriel Aveva Ragione: Java Lisp-Style nel 2025 | Alessandro ‘kLeZ’ Accardo personal website</title>
+    <meta name="generator" content="Jekyll v3.9.3" />
+    <meta property="og:title" content="Quando Gabriel Aveva Ragione: Java Lisp-Style nel 2025" />
+    <meta name="author" content="kLeZ" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="Oggi parlo di evoluzione dei linguaggi di programmazione, tema a me caro, chi mi conosce di persona sa quanto mi diverta seguire l’evoluzione tecnica degli strumenti che uso quotidianamente. L’occasione me l’ha data la rilettura di un pezzo di Richard Gabriel del 2003, “The Art of Lisp &amp; Writing”, che inizialmente avevo catalogato come “ennesima difesa d’ufficio di Lisp da parte di un fan sfegatato”. Poi ho scoperto un dettaglio che cambia tutto: l’articolo è stato scritto come introduzione al libro “Successful Lisp” di David Lamkins nel 2003." />
+    <meta property="og:description" content="Oggi parlo di evoluzione dei linguaggi di programmazione, tema a me caro, chi mi conosce di persona sa quanto mi diverta seguire l’evoluzione tecnica degli strumenti che uso quotidianamente. L’occasione me l’ha data la rilettura di un pezzo di Richard Gabriel del 2003, “The Art of Lisp &amp; Writing”, che inizialmente avevo catalogato come “ennesima difesa d’ufficio di Lisp da parte di un fan sfegatato”. Poi ho scoperto un dettaglio che cambia tutto: l’articolo è stato scritto come introduzione al libro “Successful Lisp” di David Lamkins nel 2003." />
+    <link rel="canonical" href="https://klez.me/2025/06/16/quando-gabriel-aveva-ragione-java-lisp-style-nel-2025/" />
+    <meta property="og:url" content="https://klez.me/2025/06/16/quando-gabriel-aveva-ragione-java-lisp-style-nel-2025/" />
+    <meta property="og:site_name" content="Alessandro ‘kLeZ’ Accardo personal website" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2025-06-16T15:49:11+02:00" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="Quando Gabriel Aveva Ragione: Java Lisp-Style nel 2025" />
+    <meta name="twitter:site" content="@kLeZhAcK" />
+    <meta name="twitter:creator" content="@kLeZhAcK" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"kLeZ"},"dateModified":"2025-06-16T15:49:11+02:00","datePublished":"2025-06-16T15:49:11+02:00","description":"Oggi parlo di evoluzione dei linguaggi di programmazione, tema a me caro, chi mi conosce di persona sa quanto mi diverta seguire l’evoluzione tecnica degli strumenti che uso quotidianamente. L’occasione me l’ha data la rilettura di un pezzo di Richard Gabriel del 2003, “The Art of Lisp &amp; Writing”, che inizialmente avevo catalogato come “ennesima difesa d’ufficio di Lisp da parte di un fan sfegatato”. Poi ho scoperto un dettaglio che cambia tutto: l’articolo è stato scritto come introduzione al libro “Successful Lisp” di David Lamkins nel 2003.","headline":"Quando Gabriel Aveva Ragione: Java Lisp-Style nel 2025","mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2025/06/16/quando-gabriel-aveva-ragione-java-lisp-style-nel-2025/"},"url":"https://klez.me/2025/06/16/quando-gabriel-aveva-ragione-java-lisp-style-nel-2025/"}
+    </script>
+    <!-- End Jekyll SEO tag -->
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/katex/katex.min.css" />
+    <link rel="stylesheet" href="/assets/main.css" />
+    <link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro &apos;kLeZ&apos; Accardo personal website" />
+  </head>
+  <body class="post-page">
+    <header class="masthead" style="background-image: url(/assets/img/home-bg.jpg)">
+      <div class="overlay"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Alessandro 'kLeZ' Accardo personal website</h1>
+              <span class="subheading">This is the personal website of an Italian developer once called 'kLeZ'.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="/">kLeZ</a>
+        <a class="navbar-brand" href="https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml" target="_blank">
+          <img src="https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml/badge.svg?branch=dev" alt="build status badge" />
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/build.html">Build</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/blog">Posts</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">About me <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="/about">About</a>
+                <a class="dropdown-item " href="/contatti">Contatti</a>
+                <a class="dropdown-item " href="/cv">Curriculum Vitae</a>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="https://github.com/kLeZ/kLeZ.github.io">Repository</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Progetti <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
+                <a class="dropdown-item " href="https://klez.me/PassMan">PassMan</a>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/eventi">Eventi</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container-fluid" aria-label="Content">
+      <div class="row">
+        <div class="col-lg-2 col-md-12">
+          <aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
+            <p class="text-muted">
+              This article will take 4 minutes to read.
+            </p>
+          </aside>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <article itemscope itemtype="http://schema.org/BlogPosting">
+            <header>
+              <h2>Quando Gabriel Aveva Ragione: Java Lisp-Style nel 2025</h2>
+              <small class="text-muted">Posted on
+                <time datetime="2025-06-16T15:49:11+02:00" itemprop="datePublished">16 Jun 2025</time><span> • by <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
+            </header>
+            <section itemprop="articleBody">
+              <p>Oggi parlo di evoluzione dei linguaggi di programmazione, tema a me caro, chi mi conosce di persona sa quanto mi diverta seguire l’evoluzione tecnica degli strumenti che uso quotidianamente. L’occasione me l’ha data la rilettura di un pezzo di Richard Gabriel del 2003, <a href="https://www.dreamsongs.com/ArtOfLisp.html">“The Art of Lisp &amp; Writing”</a>, che inizialmente avevo catalogato come “ennesima difesa d’ufficio di Lisp da parte di un fan sfegatato”. Poi ho scoperto un dettaglio che cambia tutto: l’articolo è stato scritto come introduzione al libro “Successful Lisp” di David Lamkins nel 2003.</p>
+              <!--more-->
+              <p class="m-0 invisible zero-size">
+                <a class="invisible" id="read-more" href="#">read more</a>
+              </p>
+              <p>Improvvisamente tutto ha senso. Gabriel non stava confrontando Lisp moderno con Java moderno, stava confrontando Lisp del 2003 con Java 1.4 del 2003. E da quella prospettiva, capiamoci, Gabriel aveva sostanzialmente ragione su tutto. Java 1.4 era effettivamente rigido, verboso, e richiedeva pianificazione anticipata di tipo e strutture. L’idea di sviluppo esplorativo con Java 1.4 era francamente masochistica.</p>
+              <p>La cosa interessante è che ora, 22 anni dopo, possiamo usare Gabriel come una specie di “specifica dei requisiti” per vedere quanto Java si sia evoluto. Ogni critica che muoveva a Java nel 2003 è diventata, senza volerlo, un test case per misurare i progressi del linguaggio. E i risultati, devo dire, sono sorprendentemente positivi.</p>
+              <h2 id="la-profezia-auto-realizzante-di-gabriel">La Profezia Auto-Realizzante di Gabriel</h2>
+              <p>Gabriel nel 2003 descriveva Lisp come un “medium” per l’esplorazione computazionale, in contrasto con Java come “linguaggio” per descrivere programmi finiti. La sua argomentazione centrale era che per fare sviluppo esplorativo servono strumenti che permettano cambiamenti rapidi e frequenti senza costringere a “pinnare decisioni troppo presto”.</p>
+              <p>In pratica Gabriel stava descrivendo quella che oggi chiamiamo metodologia REPL-driven development: iniziare con un’idea minima, testarla immediatamente, scoprire nuovi requisiti, evolvere gradualmente mantenendo sempre il sistema funzionante. Nel 2003 questa metodologia era effettivamente molto più naturale in Lisp che in Java.</p>
+              <p>Il punto è che Gabriel non stava semplicemente difendendo Lisp, stava identificando caratteristiche essenziali per lo sviluppo moderno. E questi requisiti sono diventati, nei 20 anni successivi, driver di evoluzione per praticamente tutti i linguaggi mainstream, Java incluso.</p>
+              <p>Proviamo a vedere cosa succede quando applico la metodologia “Gabriel style” con Java moderno. Partiamo da un esempio che nel 2003 sarebbe stato impensabile e oggi è routine:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="c1">// Inizio esplorativo - accetto qualsiasi cosa e vedo cosa succede</span>
+<span class="kd">public</span> <span class="nc">Object</span> <span class="nf">process</span><span class="o">(</span><span class="nc">Object</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Processing: "</span> <span class="o">+</span> <span class="n">input</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">input</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// Scopro che mi servono comportamenti specifici, evolvo gradualmente</span>
+<span class="kd">public</span> <span class="nc">Object</span> <span class="nf">process</span><span class="o">(</span><span class="nc">Object</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="nf">switch</span> <span class="o">(</span><span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="nc">String</span> <span class="n">s</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">();</span>
+        <span class="k">case</span> <span class="nc">Number</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span><span class="o">.</span><span class="na">doubleValue</span><span class="o">()</span> <span class="o">*</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="k">case</span> <span class="nc">List</span><span class="o">&lt;?&gt;</span> <span class="n">list</span> <span class="o">-&gt;</span> <span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+        <span class="k">default</span> <span class="o">-&gt;</span> <span class="s">"Unknown: "</span> <span class="o">+</span> <span class="n">input</span><span class="o">;</span>
+    <span class="o">};</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Questo non è più Java 1.4. È Java 21 con pattern matching, type inference, e una flessibilità che nel 2003 Gabriel poteva solo sognare per linguaggi staticamente tipizzati.</p>
+              <h2 id="la-metodologia-repl-applicata-a-java">La Metodologia REPL Applicata a Java</h2>
+              <p>Una delle critiche principali di Gabriel era che Java costringeva a definire tutto upfront - tipi, interfacce, gerarchie - prima di poter testare qualsiasi funzionalità. Nel 2003 era vero. Oggi Java ha JShell, un REPL completo che permette sviluppo esplorativo identico a quello che Gabriel descriveva per Lisp.</p>
+              <p>Il workflow che propongo è questo: iniziare con JShell per esplorare l’idea, poi migrare gradualmente verso codice strutturato quando i requisiti si stabilizzano. È esattamente la metodologia “flow + revision” che Gabriel descriveva, ma applicata a un linguaggio con type safety.</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="c1">// In JShell - esplorazione libera</span>
+<span class="kt">var</span> <span class="n">data</span> <span class="o">=</span> <span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"hello"</span><span class="o">,</span> <span class="mi">42</span><span class="o">,</span> <span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span>
+<span class="n">data</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">process</span><span class="o">(</span><span class="n">x</span><span class="o">)).</span><span class="na">forEach</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
+
+<span class="c1">// Scopro pattern interessanti, cristallizo in codice</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DataProcessor</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="nc">Object</span> <span class="nf">process</span><span class="o">(</span><span class="no">T</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">switch</span> <span class="o">(</span><span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="nc">String</span> <span class="n">s</span> <span class="o">-&gt;</span> <span class="n">processText</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+            <span class="k">case</span> <span class="nc">Number</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="n">processNumber</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
+            <span class="k">case</span> <span class="nc">List</span><span class="o">&lt;?&gt;</span> <span class="n">l</span> <span class="o">-&gt;</span> <span class="n">processList</span><span class="o">(</span><span class="n">l</span><span class="o">);</span>
+            <span class="k">default</span> <span class="o">-&gt;</span> <span class="n">processGeneric</span><span class="o">(</span><span class="n">input</span><span class="o">);</span>
+        <span class="o">};</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Il bello è che posso mantenere la flessibilità di Lisp (accetto qualsiasi tipo, scopro comportamenti a runtime) con la sicurezza di Java (se sbaglio qualcosa me lo dice il compilatore, non l’utente finale).</p>
+              <h2 id="metaprogrammazione-controllata">Metaprogrammazione Controllata</h2>
+              <p>Gabriel nel 2003 citava come vantaggio di Lisp la possibilità di modificare classi e comportamenti a runtime. Java 1.4 non permetteva nulla del genere. Java moderno, diciamo, ha trovato un compromesso elegante attraverso method handles, lambda expressions, e dependency injection.</p>
+              <p>Invece di modificare classi esistenti (che può creare problemi di manutenibilità), Java moderno permette composizione dinamica di comportamenti:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="c1">// Sistema configurabile a runtime - equivalente alla flessibilità Lisp</span>
+<span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Function</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="n">processors</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+
+<span class="c1">// Registro comportamenti dinamicamente</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">configureProcessor</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">expression</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Function</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">processor</span> <span class="o">=</span> <span class="k">switch</span> <span class="o">(</span><span class="n">expression</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="s">"toString"</span> <span class="o">-&gt;</span> <span class="nl">Object:</span><span class="o">:</span><span class="n">toString</span><span class="o">;</span>
+        <span class="k">case</span> <span class="s">"describe"</span> <span class="o">-&gt;</span> <span class="n">obj</span> <span class="o">-&gt;</span> <span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getSimpleName</span><span class="o">()</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">obj</span><span class="o">;</span>
+        <span class="k">case</span> <span class="s">"count"</span> <span class="o">-&gt;</span> <span class="n">obj</span> <span class="o">-&gt;</span> <span class="s">"Length: "</span> <span class="o">+</span> <span class="n">obj</span><span class="o">.</span><span class="na">toString</span><span class="o">().</span><span class="na">length</span><span class="o">();</span>
+        <span class="k">default</span> <span class="o">-&gt;</span> <span class="n">obj</span> <span class="o">-&gt;</span> <span class="s">"Unknown processor for "</span> <span class="o">+</span> <span class="n">obj</span><span class="o">;</span>
+    <span class="o">};</span>
+    <span class="n">processors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">processor</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="c1">// Uso esattamente come farei in Lisp</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">process</span><span class="o">(</span><span class="nc">Object</span> <span class="n">data</span><span class="o">,</span> <span class="nc">String</span> <span class="n">processorName</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">processors</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">processorName</span><span class="o">,</span> <span class="nl">Object:</span><span class="o">:</span><span class="n">toString</span><span class="o">).</span><span class="na">apply</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Non è identico alla metaprogrammazione Lisp, ma per il 90% dei casi pratici è equivalente. E ha il vantaggio che quando qualcuno modifica il comportamento di un processor, lo fa esplicitamente e tracciabilmente.</p>
+              <h2 id="il-principio-di-postel-applicato">Il Principio di Postel Applicato</h2>
+              <p>Gabriel citava il principio di Postel (“liberal in what you accept, conservative in what you send”) come esempio di flessibilità necessaria. Java 1.4 era rigidamente conservativo in tutto. Java moderno permette di applicare questo principio elegantemente:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="c1">// Liberale nell'accettare input</span>
+<span class="kd">public</span> <span class="nc">Result</span> <span class="nf">processRequest</span><span class="o">(</span><span class="nc">Object</span> <span class="n">request</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">switch</span> <span class="o">(</span><span class="n">request</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="nc">Map</span><span class="o">&lt;?,</span> <span class="o">?&gt;</span> <span class="n">map</span> <span class="o">-&gt;</span> <span class="n">processMap</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+            <span class="k">case</span> <span class="nc">String</span> <span class="n">json</span> <span class="o">-&gt;</span> <span class="n">processJson</span><span class="o">(</span><span class="n">json</span><span class="o">);</span>
+            <span class="k">case</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">-&gt;</span> <span class="n">processBytes</span><span class="o">(</span><span class="n">bytes</span><span class="o">);</span>
+            <span class="k">default</span> <span class="o">-&gt;</span> <span class="n">processGeneric</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+        <span class="o">};</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">Result</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Could not process: "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// Conservativo nell'output</span>
+<span class="kd">public</span> <span class="n">record</span> <span class="nf">Result</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">success</span><span class="o">,</span> <span class="nc">String</span> <span class="n">data</span><span class="o">,</span> <span class="nc">String</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Result</span> <span class="nf">ok</span><span class="o">(</span><span class="nc">String</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="k">new</span> <span class="nc">Result</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="n">data</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Result</span> <span class="nf">error</span><span class="o">(</span><span class="nc">String</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="k">new</span> <span class="nc">Result</span><span class="o">(</span><span class="kc">false</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">error</span><span class="o">);</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Questo codice è “robusto” esattamente nel senso che Gabriel intendeva: accetta praticamente qualsiasi input sensato, gestisce gracefully situazioni impreviste, ma mantiene un contratto di output chiaro e type-safe.</p>
+              <h2 id="i-limiti-rimangono-e-va-bene-così">I Limiti Rimangono (E Va Bene Così)</h2>
+              <p>Capiamoci, non sto dicendo che Java 2025 sia diventato Lisp. Ci sono ancora differenze fondamentali. Java non ha homoiconicità (codice come dati), la metaprogrammazione è più limitata, e il sistema di tipi, per quanto flessibile, rimane più rigido di quello di Lisp.</p>
+              <p>Ma Gabriel nel 2003 non stava criticando questi aspetti teorici. Stava criticando l’impossibilità pratica di fare sviluppo esplorativo con Java. E questa impossibilità, purtroppo per i fan di Lisp, non esiste più.</p>
+              <p>Al di là di questo, molte delle “limitazioni” che Gabriel attribuiva alla tipizzazione statica si sono rivelate, con il senno di poi, vantaggi nascosti. La possibilità di refactoring automatico, l’IDE support, la documentazione vivente che rappresenta il sistema di tipi - queste sono capacità che Lisp può invidiare a Java.</p>
+              <h2 id="levoluzione-convergente">L’Evoluzione Convergente</h2>
+              <p>La cosa più interessante è che negli ultimi 20 anni abbiamo assistito a una convergenza evolutiva impressionante. I linguaggi dinamici hanno aggiunto type hints e static analysis (Python, JavaScript), mentre i linguaggi statici hanno aggiunto type inference e flessibilità runtime (Java, C#, Rust).</p>
+              <p>Il risultato è che oggi la scelta tra linguaggi è meno una questione di capacità fondamentali e più una questione di trade-off specifici e preferenze di team. Posso fare sviluppo esplorativo tanto in Java quanto in Lisp, ma con compromessi diversi tra safety e flessibilità.</p>
+              <p>Gabriel aveva ragione quando diceva che la programmazione è un’arte che richiede strumenti flessibili. Ma si sbagliava (comprensibilmente, dato il contesto del 2003) quando pensava che questa flessibilità fosse monopolio dei linguaggi dinamici.</p>
+              <p>Oggi possiamo dire che l’intuizione di Gabriel era corretta ma la sua implementazione era limitata dagli strumenti disponibili nel 2003. La buona notizia è che i suoi “requisiti” sono diventati standard di fatto per praticamente tutti i linguaggi moderni.</p>
+              <p>Non smentisco che Lisp rimanga un linguaggio affascinante con capacità uniche, né tanto meno voglio negare che per certi domini possa essere ancora la scelta migliore. Però, ovvio che c’era un però, l’epoca in cui la scelta del linguaggio determinava se potevi fare o meno sviluppo esplorativo è definitivamente finita.</p>
+              <p>E forse è proprio questo il messaggio più importante: che l’arte della programmazione, come diceva Gabriel, risiede nel programmatore più che nello strumento. Oggi abbiamo strumenti così potenti e flessibili che la differenza la fa davvero l’abilità del musicista, non la marca del violino.</p>
+            </section>
+            <a href="/2025/06/16/quando-gabriel-aveva-ragione-java-lisp-style-nel-2025/" hidden></a>
+          </article>
+        </div>
+        <div class="col-lg-2 col-md-12">
+        </div>
+      </div>
+      <div class="row justify-content-end text-right">
+        <div class="col-6">
+          <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page" href="#">
+            <i class="fa fa-5x fa-chevron-up"></i>
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer bg-light w-100 py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a rel="me" href="https://github.com/kLeZ">
+                  <i class="svg-icon fab fa-github"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://twitter.com/kLeZhAcK">
+                  <i class="svg-icon fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://mastodon.uno/web/@klez">
+                  <i class="svg-icon fab fa-mastodon"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://www.linkedin.com/in/alessandroaccardo">
+                  <i class="svg-icon fab fa-linkedin"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://telegram.me/julius8774">
+                  <i class="svg-icon fab fa-telegram"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="/feed.xml">
+                  <i class="svg-icon fa fa-rss"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="mailto:klez@pm.me">
+                  <i class="svg-icon fa fa-envelope"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-left">
+            <small class="text-muted">Last build on <time datetime="2025-06-16T16:05:06+02:00">Mon, 16 Jun 2025 16:05:06 +0200</time></small>
+          </div>
+          <div class="col text-right">
+            <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />
+            <small class="text-muted">
+              This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+            </small>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="/assets/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/assets/popper/popper.min.js"></script>
+    <script src="/assets/popper/tooltip.min.js"></script>
+    <script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/assets/fontawesome-free/js/all.min.js"></script>
+    <script src="/assets/main.js"></script><script data-goatcounter="https://klez.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+    <noscript>
+      <img src="https://klez.goatcounter.com/count?rnd&p=https://klez.me/2025/06/16/quando-gabriel-aveva-ragione-java-lisp-style-nel-2025/&t=Quando%20Gabriel%20Aveva%20Ragione:%20Java%20Lisp-Style%20nel%202025" alt="goat-counter" />
+    </noscript>
+  </body>
+</html>
