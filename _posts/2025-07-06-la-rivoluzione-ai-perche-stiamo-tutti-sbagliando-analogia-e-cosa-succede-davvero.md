@@ -8,8 +8,6 @@ tags:
 date: 2025-07-06 14:30:42+02:00
 ---
 
-# La Rivoluzione AI: Perché Stiamo Tutti Sbagliando Analogia (E Cosa Succede Davvero)
-
 *Ovvero: come l'intelligenza artificiale sta riscrivendo le regole dell'economia più velocemente di quanto i nostri cervelli analogici riescano a capire (forse)*
 
 Se dovessi fare un drink ogni volta che qualcuno paragona l'intelligenza artificiale alla rivoluzione industriale, a quest'ora sarei già morto per coma etilico. È diventato il paragone del momento, quel cliché che esce fuori a ogni conferenza TED, l'introduzione obbligatoria di praticamente ogni articolo che si rispetti sull'AI. "Proprio come la macchina a vapore ha cambiato tutto..." iniziano tutti, e io già so che nei prossimi dieci minuti sentirò variazioni sul tema che fanno sembrare ChatGPT l'equivalente digitale della prima locomotiva.
