@@ -1,206 +1,300 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="https://klez.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://klez.me/" rel="alternate" type="text/html" /><updated>2025-07-09T01:52:06+02:00</updated><id>https://klez.me/feed.xml</id><title type="html">Alessandro ‘kLeZ’ Accardo personal website</title><subtitle>This is the personal website of an Italian developer once called &apos;kLeZ&apos;.</subtitle><entry><title type="html">La Zanzara, Mascitti e l’Arte di Vedere Complotti Dove Non Ci Sono</title><link href="https://klez.me/2025/07/09/la-zanzara-Mascitti-e-arte-di-vedere-complotti/" rel="alternate" type="text/html" title="La Zanzara, Mascitti e l’Arte di Vedere Complotti Dove Non Ci Sono" /><published>2025-07-09T01:42:00+02:00</published><updated>2025-07-09T01:42:00+02:00</updated><id>https://klez.me/2025/07/09/la-zanzara-Mascitti-e-arte-di-vedere-complotti</id><content type="html" xml:base="https://klez.me/2025/07/09/la-zanzara-Mascitti-e-arte-di-vedere-complotti/"><![CDATA[<p>Ieri mattina stavo scrollando LinkedIn - già, lo so, pessima idea - quando un mio contatto condivide l’articolo di Maurizio Mascitti “Oltre Telemeloni”. Apro, vedo due grafici, e sento quella sensazione familiare di quando qualcuno sta per sparare una cazzata metodologica grossa come una casa.</p>
-      <p>L’articolo sostiene che La Zanzara sia uno strumento di egemonia culturale della destra per conquistare i giovani. La “dimostrazione”? FdI è debole tra i 18-24 anni, La Zanzara ha successo in quella fascia, ergo La Zanzara lavora per FdI.</p>
-      <p>Ho provato a spiegare nei commenti che correlation is not causation. Risposta di Mascitti? Negare. A quel punto ho capito che serviva qualcosa di più di un commento su LinkedIn per smontare questa perla di analisi pseudoscientifica.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="https://klez.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://klez.me/" rel="alternate" type="text/html" /><updated>2025-07-09T11:52:28+02:00</updated><id>https://klez.me/feed.xml</id><title type="html">Alessandro ‘kLeZ’ Accardo personal website</title><subtitle>This is the personal website of an Italian developer once called &apos;kLeZ&apos;.</subtitle><entry><title type="html">Mascitti e il Moonwalk Argomentativo</title><link href="https://klez.me/2025/07/09/mascitti-e-il-moonwalk-argomentativo/" rel="alternate" type="text/html" title="Mascitti e il Moonwalk Argomentativo" /><published>2025-07-09T11:32:00+02:00</published><updated>2025-07-09T11:32:00+02:00</updated><id>https://klez.me/2025/07/09/mascitti-e-il-moonwalk-argomentativo</id><content type="html" xml:base="https://klez.me/2025/07/09/mascitti-e-il-moonwalk-argomentativo/"><![CDATA[<h4 id="ovvero-quando-strumento-di-propaganda-diventa-possibile-investimento"><em>Ovvero, quando “Strumento di Propaganda” Diventa “Possibile Investimento”</em></h4>
+      <p>A volte nella vita ti capita di assistere a retromarce spettacolari. Tipo quando il politico dice “non ho mai detto quello che ho detto” mentre c’è il video su YouTube. O quando Maurizio Mascitti sostiene che il suo articolo “La vera telemeloni è La Zanzara” non dice quello che dice.</p>
       <!--more-->
       <p class="m-0 invisible zero-size">
         <a class="invisible" id="read-more" href="#">read more</a>
       </p>
-      <h2 id="quando-due-grafici-non-fanno-una-dimostrazione">Quando Due Grafici Non Fanno Una Dimostrazione</h2>
-      <p>L’articolo di Mascitti si basa su questa osservazione:</p>
-      <blockquote>
-        <p>“Nel 2022 Fratelli d’Italia aveva ricevuto voti trasversalmente da tutte le fasce di età […] c’era un solo gruppo in cui non era riuscito a primeggiare: quello dei giovani di età compresa tra i 18 e i 24 anni. La stessa fascia di età che negli ultimi anni sembra interessarsi di più ai contenuti della trasmissione La Zanzara”</p>
-      </blockquote>
-      <p>Da qui, il nostro conclude che La Zanzara stia lavorando per colmare questo gap elettorale. È il classico errore del post hoc ergo propter hoc, quello che alle superiori il prof di filosofia ti spiegava con l’esempio del gallo che canta prima dell’alba.</p>
-      <p>Ma evidentemente Mascitti preferisce ignorare duemila anni di logica aristotelica quando c’è una narrativa accattivante da costruire.</p>
-      <h2 id="il-festival-del-cherry-picking">Il Festival del Cherry Picking</h2>
-      <p>Quando qualcuno vuole dimostrare una tesi preconcetta, la prima cosa che fa è selezionare accuratamente solo i dati che la supportano. Mascitti eccelle in quest’arte.</p>
-      <p>Ci racconta che:</p>
-      <ul>
-        <li>FdI è debole tra i giovani</li>
-        <li>La Zanzara spacca su Spotify</li>
-        <li>Vannacci va ospite al programma</li>
-        <li>Trump ha usato i podcast per vincere</li>
-      </ul>
-      <p>Stranamente dimentica di menzionare che:</p>
-      <ul>
-        <li>La Zanzara esiste dal 2006, quando Meloni era una giovane missina sconosciuta</li>
-        <li>Parenzo è di centro-sinistra e litiga con Cruciani in diretta da 20 anni</li>
-        <li>Al programma vanno ospiti di ogni colore politico, da Luxuria a Salvini</li>
-        <li>Il formato provocatorio è rimasto identico attraverso governi di ogni orientamento</li>
-      </ul>
-      <p>Ma questi dettagli rovinerebbero la bella storia del complotto, quindi meglio ometterli.</p>
-      <h2 id="la-logica-che-non-cè">La Logica Che Non C’è</h2>
-      <p>Il sillogismo di Mascitti funziona così:</p>
+      <p>Ieri (sta notte) ho pubblicato una critica metodologica all’articolo di Mascitti. La sua risposta finale su LinkedIn è stata illuminante, perché ha chiarito definitivamente cosa sostiene. O meglio, cosa sostiene di sostenere ora che gliel’ho contestato.</p>
+      <h2 id="la-tesi-che-si-trasforma">La Tesi che Si Trasforma</h2>
+      <p>Secondo Mascitti, io non avrei capito il suo articolo. La sua vera tesi non sarebbe che La Zanzara È uno strumento di propaganda, ma che “può diventare un possibile strumento di propaganda su cui investire perché raggiunge di più quella fetta di pubblico su cui FdI non è forte.”</p>
+      <p>Ah.</p>
+      <p>Quindi siamo passati da “La vera telemeloni è La Zanzara” (titolo dell’articolo) a “potrebbe forse diventare un possibile investimento”. È come passare da “il gelato fa annegare” a “il gelato potrebbe teoricamente essere correlato a possibili futuri annegamenti se qualcuno decidesse di investirci sopra”.</p>
+      <p>Ma ok, accettiamo questa versione annacquata della tesi e vediamo se regge meglio.</p>
+      <h2 id="spoiler-non-regge">Spoiler: Non Regge</h2>
+      <p>Il problema fondamentale rimane identico. Anche nella versione “soft”, Mascitti sta suggerendo che:</p>
       <ol>
-        <li>I giovani ascoltano La Zanzara</li>
-        <li>FdI vuole i voti dei giovani</li>
-        <li>Quindi La Zanzara è uno strumento di FdI</li>
+        <li>La Zanzara raggiunge giovani istruiti</li>
+        <li>FdI è debole tra i giovani istruiti</li>
+        <li>Quindi FdI potrebbe/dovrebbe usare La Zanzara per raggiungerli</li>
       </ol>
-      <p>Proviamo ad applicare la stessa logica ad altro:</p>
-      <ol>
-        <li>I giovani bevono spritz</li>
-        <li>FdI vuole i voti dei giovani</li>
-        <li>Quindi l’Aperol è controllato dalla Meloni</li>
-      </ol>
-      <p>Suona ridicolo? Perché lo è. Eppure è esattamente lo stesso ragionamento.</p>
-      <h2 id="come-si-fa-unanalisi-che-non-faccia-ridere">Come Si Fa Un’Analisi Che Non Faccia Ridere</h2>
-      <p>Visto che Mascitti ha negato quando gli ho fatto notare l’errore, facciamo un corso accelerato di metodologia della ricerca.</p>
-      <h3 id="prima-di-tutto-lipotesi">Prima di Tutto, l’Ipotesi</h3>
-      <p>Se vuoi dimostrare che La Zanzara influenza politicamente i giovani, devi partire da un’ipotesi falsificabile. Qualcosa tipo:</p>
-      <p>“L’esposizione regolare alla Zanzara modifica significativamente l’orientamento politico dei giovani ascoltatori in direzione del centro-destra”</p>
-      <p>Nota la parola “modifica”. Non “è associata a” o “si correla con”. Modifica. Implica causalità, non semplice correlazione.</p>
-      <h3 id="poi-servono-i-dati-veri">Poi Servono i Dati Veri</h3>
-      <p>Non basta prendere due grafici a caso e dire “vedete? Salgono insieme!”. Quello lo facevano anche con le nascite e le cicogne.</p>
-      <p>Servirebbe uno studio longitudinale:</p>
+      <p>Ma questo ragionamento ha diverse falle logiche enormi.</p>
+      <h2 id="falla-numero-uno-laudience-non-è-un-terreno-vergine">Falla Numero Uno: L’Audience Non È un Terreno Vergine</h2>
+      <p>Mascitti assume che siccome La Zanzara raggiunge giovani istruiti, questi siano influenzabili politicamente attraverso il programma. Ma chi l’ha detto?</p>
+      <p>Gli ascoltatori della Zanzara non sono pagine bianche su cui scrivere messaggi politici. Sono persone che hanno già:</p>
       <ul>
-        <li>Prendi un campione di giovani</li>
-        <li>Misuri le loro preferenze politiche</li>
-        <li>Una parte ascolta La Zanzara, una parte no</li>
-        <li>Dopo un periodo adeguato, rimisuri</li>
-        <li>Confronti i cambiamenti</li>
+        <li>Orientamenti politici formati</li>
+        <li>Capacità critica (sono istruiti, ricordi?)</li>
+        <li>Motivazioni specifiche per ascoltare (spoiler: ridere)</li>
       </ul>
-      <p>Oppure, se proprio non puoi fare un esperimento, almeno un’analisi osservazionale seria:</p>
+      <p>Pensare che basti “investire” su un programma per convertire il suo pubblico è come pensare che basti comprare spazi pubblicitari su Repubblica per convertire i suoi lettori al fascismo. Good luck with that.</p>
+      <h2 id="falla-numero-due-il-formato-non-si-presta">Falla Numero Due: Il Formato Non Si Presta</h2>
+      <p>La Zanzara funziona perché è caotica, provocatoria, contraddittoria. Cruciani provoca, Parenzo controbatte, gli ascoltatori chiamano per dire cose assurde.</p>
+      <p>Come pensi di veicolare un messaggio politico coerente in questo casino? È come cercare di fare una lezione di filosofia durante una rissa da bar. Il medium non si presta al messaggio.</p>
+      <p>E se cambiassi il formato per renderlo più “propagandistico”, perderesti esattamente il pubblico che volevi raggiungere. Catch-22.</p>
+      <h2 id="falla-numero-tre-parenzo-esiste-ancora">Falla Numero Tre: Parenzo Esiste Ancora</h2>
+      <p>Anche nella versione “potrebbe diventare”, Mascitti continua a ignorare l’elefante nella stanza: David Parenzo.</p>
+      <p>Per trasformare La Zanzara in strumento di propaganda di destra dovresti:</p>
       <ul>
-        <li>Raccogli dati su migliaia di giovani</li>
-        <li>Controlli per tutte le variabili confondenti (educazione, reddito, area geografica, famiglia, etc.)</li>
-        <li>Usi tecniche statistiche appropriate per isolare l’effetto</li>
-        <li>Verifichi che il risultato sia robusto</li>
+        <li>Silenziare Parenzo (auguri)</li>
+        <li>Sostituirlo (e perdere metà del format)</li>
+        <li>Convincerlo a cambiare orientamento (lol)</li>
       </ul>
-      <h3 id="e-poi-devi-considerare-le-alternative">E Poi Devi Considerare le Alternative</h3>
-      <p>Anche se trovassi una correlazione (spoiler: probabilmente no), dovresti chiederti:</p>
-      <p>È possibile che sia causalità inversa? Magari chi è già di destra cerca programmi “politicamente scorretti”?</p>
-      <p>Ci sono variabili nascoste? Tipo che sia i giovani di destra che gli ascoltatori della Zanzara condividono altre caratteristiche?</p>
-      <p>L’effetto è davvero rilevante? Anche se ci fosse, quanto conta? Lo 0.1%? Il 10%?</p>
-      <h2 id="il-mistero-di-parenzo">Il Mistero di Parenzo</h2>
-      <p>C’è un elefante nella stanza che Mascitti finge di non vedere: David Parenzo.</p>
-      <p>Il co-conduttore della Zanzara è notoriamente di centro-sinistra. Passa metà programma a litigare con Cruciani, a difendere posizioni progressiste, a criticare la destra.</p>
-      <p>Se La Zanzara fosse propaganda di destra, sarebbe come fare pubblicità alla Coca-Cola con uno che ogni cinque minuti dice “però la Pepsi è più buona”. Non il massimo dell’efficienza propagandistica.</p>
-      <h2 id="la-verità-banale-che-nessuno-vuole-sentire">La Verità Banale Che Nessuno Vuole Sentire</h2>
-      <p>La spiegazione più semplice e probabilmente corretta è che:</p>
+      <p>Nessuna di queste opzioni è realistica. E finché Parenzo c’è, ogni tentativo di propaganda verrebbe smontato in diretta. Non proprio l’ideale per il lavaggio del cervello.</p>
+      <h2 id="falla-numero-quattro-confondere-reach-con-influence">Falla Numero Quattro: Confondere Reach con Influence</h2>
+      <p>Mascitti confonde la capacità di raggiungere un pubblico con la capacità di influenzarlo. È un errore classico del marketing dilettantesco.</p>
+      <p>Solo perché un medium raggiunge molte persone non significa che possa cambiargli idea su questioni fondamentali come l’orientamento politico. Altrimenti basterebbe comprare pubblicità durante il Super Bowl per vincere le elezioni.</p>
+      <p>La realtà è che l’influenza politica è complessa, multifattoriale, e certamente non si ottiene semplicemente “investendo” su un programma radio dove due tizi urlano.</p>
+      <h2 id="falla-numero-cinque-non-conosci-cruciani-né-parenzo">Falla Numero Cinque: Non Conosci Cruciani (Né Parenzo)</h2>
+      <p>Ma facciamo finta per un secondo che Mascitti abbia ragione nella sua versione annacquata. Facciamo finta che FdI voglia davvero “investire” sulla Zanzara.</p>
+      <p>Spoiler: non funzionerebbe comunque.</p>
+      <p>Chiunque abbia ascoltato più di dieci minuti del programma sa che Cruciani è un anarco-liberista che morirebbe piuttosto che farsi condizionare da un “investitore”. La sua intera persona radiofonica si basa sul dire quello che pensa senza filtri. È letteralmente il motivo per cui il programma funziona.</p>
+      <p>E Parenzo? È un progressista democratico moderato che non venderebbe la sua anima politica nemmeno per tutti i soldi di Confindustria (che già paga il suo stipendio, tra l’altro).</p>
+      <p>Quindi anche se la Meloni in persona volesse “investire” - e ovviamente non lo farebbe direttamente per conflitto d’interessi, dovrebbe usare qualche società prestanome che però alla fine si scoprirebbe essere riconducibile a FdI - si troverebbe davanti due opzioni:</p>
       <ol>
-        <li>La Zanzara ha successo perché la gente ama il casino e le provocazioni</li>
-        <li>I giovani ascoltano podcast perché è il loro medium</li>
-        <li>FdI cerca di intercettare i giovani come tutti i partiti</li>
-        <li>Questi tre fatti coesistono senza che uno causi l’altro</li>
+        <li>
+          <p><strong>Approccio diretto</strong>: “Ciao Giuseppe, ecco dei soldi per spingere la nostra agenda”. Risposta di Cruciani: una pernacchia in diretta radio seguita da due ore di sfottò.</p>
+        </li>
+        <li>
+          <p><strong>Approccio indiretto</strong>: Pressioni sottili, suggerimenti velati, “consigli” su quali ospiti invitare. Risultato: Cruciani fa esattamente l’opposto per principio, Parenzo gongola.</p>
+        </li>
       </ol>
-      <p>Non c’è nessun grande disegno. Nessun complotto. Nessuna strategia segreta.</p>
-      <p>Solo un programma radio che fa audience con due che litigano, giovani che consumano media digitali, e politici che cercano voti. Tutto qui.</p>
-      <h2 id="perché-mi-incazzo-con-questi-articoli">Perché Mi Incazzo Con Questi Articoli</h2>
-      <p>Non è solo una questione di rigore metodologico, anche se quello basterebbe. È che questi articoli creano narrative false che poi vengono riprese, amplificate, credute.</p>
-      <p>Quando scrivi di fenomeni sociali hai una responsabilità. Non puoi sparare correlazioni a caso e costruirci sopra teorie del complotto. Non quando parliamo di temi seri come l’influenza mediatica e la formazione del consenso politico.</p>
-      <p>E soprattutto, quando qualcuno ti fa notare l’errore metodologico, non puoi negare. Devi fermarti, riflettere, verificare. Altrimenti non stai facendo giornalismo, stai scrivendo fan fiction politica.</p>
+      <p>L’autonomia editoriale non è un dettaglio per La Zanzara. È il prodotto stesso. Toglila e hai ucciso il programma. E con esso, ironicamente, la sua capacità di raggiungere quel pubblico che Mascitti pensa sia così prezioso.</p>
+      <h2 id="il-vero-problema-la-tesi-non-falsificabile">Il Vero Problema: La Tesi Non Falsificabile</h2>
+      <p>Il problema più grave della nuova formulazione di Mascitti è che non è falsificabile. “Potrebbe diventare un possibile strumento” è una non-affermazione.</p>
+      <p>Qualsiasi cosa “potrebbe” diventare qualsiasi cosa:</p>
+      <ul>
+        <li>Il calcetto del giovedì potrebbe diventare un covo di terroristi</li>
+        <li>Il club del libro potrebbe diventare una cellula sovversiva</li>
+        <li>La pizzeria sotto casa potrebbe diventare centrale dello spaccio</li>
+      </ul>
+      <p>Sì, tecnicamente è vero. Ma è anche completamente inutile come analisi.</p>
+      <h2 id="sui-dati-ter">Sui Dati TER</h2>
+      <p>Mascitti chiude dicendo che “in realtà ho messo il link ai dati TER”. Ok, bravo. Ma il problema non è mai stato l’accesso ai dati. Il problema è come li usi.</p>
+      <p>Avere i dati grezzi non ti autorizza a fare inferenze selvagge. È come dire “ho accesso alle statistiche sul consumo di gelato e sugli annegamenti, quindi posso dedurre quello che voglio sulla loro relazione”.</p>
+      <p>No. Non funziona così. I dati sono solo l’inizio. Poi serve metodo, rigore, e onestà intellettuale nel non suggerire relazioni che i dati non supportano.</p>
+      <h2 id="la-morale-della-storia">La Morale della Storia</h2>
+      <p>L’evoluzione della tesi di Mascitti da “La Zanzara È la vera telemeloni” a “potrebbe forse diventare un possibile investimento” è un classico esempio di motte-and-bailey argument:</p>
+      <ol>
+        <li><strong>Bailey</strong> (posizione indifendibile ma accattivante): “La Zanzara è uno strumento di egemonia culturale della destra!”</li>
+        <li><strong>Motte</strong> (posizione difendibile ma banale): “Beh, potrebbe teoricamente diventarlo se qualcuno ci investisse”</li>
+      </ol>
+      <p>Quando attaccato sulla prima, si ritira sulla seconda. Ma poi il titolo resta “La vera telemeloni”, perché quello fa click.</p>
       <h2 id="in-conclusione">In Conclusione</h2>
-      <p>L’articolo di Mascitti è un esempio da manuale di come NON si fa analisi sociale. Parte da una conclusione, cerca dati che la supportino, ignora tutto il resto, e quando gli fai notare che correlation is not causation, nega pure.</p>
-      <p>La realtà è che non sappiamo se La Zanzara influenzi politicamente i suoi ascoltatori. E non lo sappiamo perché nessuno ha fatto uno studio serio per verificarlo. Quello che sappiamo è che vedere due fenomeni che accadono insieme non significa che uno causi l’altro.</p>
-      <p>È una lezione che si impara al primo anno di statistica. Peccato che Mascitti quel giorno fosse assente.</p>
+      <p>Caro Maurizio, il problema non è che non ho letto o capito il tuo articolo. Il problema è che l’ho capito troppo bene, incluse le sue contraddizioni interne e i suoi scivolamenti argomentativi.</p>
+      <p>Se la tua tesi è davvero solo che La Zanzara “potrebbe” diventare uno strumento di propaganda, allora:</p>
+      <ol>
+        <li>Cambia quel titolo clickbait</li>
+        <li>Smetti di presentare correlazioni come se fossero significative</li>
+        <li>Ammetti che stai solo speculando su scenari ipotetici</li>
+      </ol>
+      <p>Altrimenti continuerai a fare la figura di chi grida “al lupo” quando vede un barboncino, per poi dire “beh, tecnicamente potrebbe evolversi in un lupo” quando qualcuno ti fa notare l’assurdità.</p>
+      <p>La metodologia della ricerca esiste proprio per evitare questi errori. Usala.</p>
       <hr />
-      <p><em>P.S. Mascitti, se leggi questo, l’invito a confrontarci sui metodi di analisi resta valido. Ma con i dati alla mano, non con le correlazioni spurie.</em></p>
-      <p><em>P.P.S. E no, continuare a negare su LinkedIn non fa sparire il problema metodologico. Lo rende solo più evidente.</em></p>
-      ]]></content><author><name>kLeZ</name></author><category term="metodo scientifico" /><category term="rant" /><category term="someone&apos;s wrong on the internet" /><category term="statistica" /><category term="correlation is not causation" /><summary type="html"><![CDATA[Ieri mattina stavo scrollando LinkedIn - già, lo so, pessima idea - quando un mio contatto condivide l’articolo di Maurizio Mascitti “Oltre Telemeloni”. Apro, vedo due grafici, e sento quella sensazione familiare di quando qualcuno sta per sparare una cazzata metodologica grossa come una casa. L’articolo sostiene che La Zanzara sia uno strumento di egemonia culturale della destra per conquistare i giovani. La “dimostrazione”? FdI è debole tra i 18-24 anni, La Zanzara ha successo in quella fascia, ergo La Zanzara lavora per FdI. Ho provato a spiegare nei commenti che correlation is not causation. Risposta di Mascitti? Negare. A quel punto ho capito che serviva qualcosa di più di un commento su LinkedIn per smontare questa perla di analisi pseudoscientifica.]]></summary></entry><entry><title type="html">La Rivoluzione AI: Perché Stiamo Tutti Sbagliando Analogia (E Cosa Succede Davvero)</title><link href="https://klez.me/2025/07/06/la-rivoluzione-ai-perche-stiamo-tutti-sbagliando-analogia-e-cosa-succede-davvero/" rel="alternate" type="text/html" title="La Rivoluzione AI: Perché Stiamo Tutti Sbagliando Analogia (E Cosa Succede Davvero)" /><published>2025-07-06T14:30:42+02:00</published><updated>2025-07-06T14:30:42+02:00</updated><id>https://klez.me/2025/07/06/la-rivoluzione-ai-perche-stiamo-tutti-sbagliando-analogia-e-cosa-succede-davvero</id><content type="html" xml:base="https://klez.me/2025/07/06/la-rivoluzione-ai-perche-stiamo-tutti-sbagliando-analogia-e-cosa-succede-davvero/"><![CDATA[<p><em>Ovvero: come l’intelligenza artificiale sta riscrivendo le regole dell’economia più velocemente di quanto i nostri cervelli analogici riescano a capire (forse)</em></p>
-    <p>Se dovessi fare un drink ogni volta che qualcuno paragona l’intelligenza artificiale alla rivoluzione industriale, a quest’ora sarei già morto per coma etilico. È diventato il paragone del momento, quel cliché che esce fuori a ogni conferenza TED, l’introduzione obbligatoria di praticamente ogni articolo che si rispetti sull’AI. “Proprio come la macchina a vapore ha cambiato tutto…” iniziano tutti, e io già so che nei prossimi dieci minuti sentirò variazioni sul tema che fanno sembrare ChatGPT l’equivalente digitale della prima locomotiva.</p>
+      <p><em>P.S.: Per la cronaca, anche il panettone “potrebbe diventare” uno strumento di propaganda della destra. Basta che la Meloni investa sui fornai. Quick, someone write an article!</em></p>
+      <p><em>P.P.S.: I dati TER sono interessanti. Peccato che tu li usi come un ubriaco usa un lampione: per sostegno, non per illuminazione.</em></p>
+      ]]></content><author><name>kLeZ</name></author><category term="metodo scientifico" /><category term="rant" /><category term="someone&apos;s wrong on the internet" /><category term="statistica" /><category term="correlation is not causation" /><summary type="html"><![CDATA[Ovvero, quando “Strumento di Propaganda” Diventa “Possibile Investimento” A volte nella vita ti capita di assistere a retromarce spettacolari. Tipo quando il politico dice “non ho mai detto quello che ho detto” mentre c’è il video su YouTube. O quando Maurizio Mascitti sostiene che il suo articolo “La vera telemeloni è La Zanzara” non dice quello che dice.]]></summary></entry><entry><title type="html">La Zanzara, Mascitti e l’Arte di Vedere Complotti Dove Non Ci Sono</title><link href="https://klez.me/2025/07/09/la-zanzara-Mascitti-e-arte-di-vedere-complotti/" rel="alternate" type="text/html" title="La Zanzara, Mascitti e l’Arte di Vedere Complotti Dove Non Ci Sono" /><published>2025-07-09T01:42:00+02:00</published><updated>2025-07-09T01:42:00+02:00</updated><id>https://klez.me/2025/07/09/la-zanzara-Mascitti-e-arte-di-vedere-complotti</id><content type="html" xml:base="https://klez.me/2025/07/09/la-zanzara-Mascitti-e-arte-di-vedere-complotti/"><![CDATA[<p>Ieri mattina stavo scrollando LinkedIn - già, lo so, pessima idea - quando un mio contatto condivide l’articolo di Maurizio Mascitti “Oltre Telemeloni”. Apro, vedo due grafici, e sento quella sensazione familiare di quando qualcuno sta per sparare una cazzata metodologica grossa come una casa.</p>
+    <p>L’articolo sostiene che La Zanzara sia uno strumento di egemonia culturale della destra per conquistare i giovani. La “dimostrazione”? FdI è debole tra i 18-24 anni, La Zanzara ha successo in quella fascia, ergo La Zanzara lavora per FdI.</p>
+    <p>Ho provato a spiegare nei commenti che correlation is not causation. Risposta di Mascitti? Negare. A quel punto ho capito che serviva qualcosa di più di un commento su LinkedIn per smontare questa perla di analisi pseudoscientifica.</p>
     <!--more-->
     <p class="m-0 invisible zero-size">
       <a class="invisible" id="read-more" href="#">read more</a>
     </p>
-    <p>(Per inciso, scrivo questo articolo nella speranza che almeno tre persone lo leggano fino in fondo senza addormentarsi. Se sei arrivato fin qui, congratulazioni: fai già parte di una minoranza statistica.)</p>
-    <p>Il problema è che questo paragone, per quanto rassicurante e di moda, mi sembra tanto generico quanto inutile. È un po’ come dire che “mangiare è come nutrirsi” - tecnicamente vero, ma che ci dice? E soprattutto, ho la sensazione che ci stia facendo perdere di vista qualcosa di molto più interessante (e forse preoccupante) di quello che sta davvero succedendo.</p>
-    <p>Non che io abbia la verità in tasca, per carità. Ma dopo vent’anni che programmo e vedo come cambia questo settore (sì, sono uno di quelli che ha iniziato quando Java era ancora “rivoluzionario” e tutti dicevano che C++ era il futuro), alcune cose mi sembrano… strane. E forse vale la pena ragionarci su.</p>
-    <p>Un po’ come quando vedi il tuo coinquilino che continua a mettere la pasta nell’acqua fredda e dici “mmh, forse c’è un modo migliore”, ma poi realizzi che in realtà non sei sicuro neanche tu se stai facendo tutto giusto.</p>
-    <h2 id="il-teatrino-della-quarta-rivoluzione">Il teatrino della “quarta rivoluzione”</h2>
-    <p>Ok, facciamo un passo indietro. L’idea standard che va per la maggiore è questa: abbiamo avuto la prima rivoluzione industriale con vapore e carbone, la seconda con elettricità e catene di montaggio, la terza con computer e internet, e ora eccoci qua alla quarta con AI e automazione. Tutto molto ordinato, molto progressivo. Una bella timeline da PowerPoint aziendale che fa sentire tutti intelligenti.</p>
-    <p>Gli economisti di mezzo mondo stanno sfornando paper su come “l’AI sostituirà i lavoratori proprio come fecero i telai meccanici con i tessitori”, mentre i politici fanno i loro bei discorsi su come “dobbiamo prepararci al cambiamento come fecero i nostri antenati”. Tutto molto rassicurante, tutto molto “ce l’abbiamo già fatta una volta, ce la faremo anche stavolta”.</p>
-    <p>Ma ecco, io ho un dubbio. Anzi, più di uno.</p>
-    <p>La rivoluzione industriale classica ha preso <strong>decenni</strong> per dispiegarsi completamente. La ferrovia inglese non è mica spuntata fuori in tre anni, e i tessitori non sono stati rimpiazzati da un giorno all’altro. C’è stato tempo per adattarsi, per riqualificarsi, per inventare nuovi mestieri. Il tutto con un ritmo che, seppur drammatico per l’epoca, oggi ci sembrerebbe quasi glaciale.</p>
-    <p>L’AI, invece, mi sa che sta facendo tutto questo in <strong>mesi</strong>. ChatGPT è passato da zero a 100 milioni di utenti più velocemente di quanto io riesca a finire una serie Netflix (e non è che sono lento con Netflix). E mentre sto scrivendo queste righe, stanno uscendo nuovi modelli che rendono obsoleti quelli di sei mesi fa.</p>
-    <p>Forse sto esagerando, ma qualcosa non torna.</p>
-    <h2 id="forse-stiamo-sbagliando-analogia">Forse stiamo sbagliando analogia</h2>
-    <p>Ecco dove secondo me tutti sbagliano analogia. Non dovremmo paragonare la programmazione al settore tessile - quello che è stato praticamente spazzato via dalla meccanizzazione. Dovremmo paragonarla alla lavorazione del legno, del ferro, della ceramica. O almeno, questa è la mia teoria.</p>
-    <p>Prendiamo IKEA. È un’azienda che ha industrializzato la produzione di mobili, eppure non ha mica ucciso l’artigianato del legno. Ha semplicemente creato due mercati paralleli: quello industriale (scaffali Billy da 29 euro che montiamo tutti bestemmiando contro le istruzioni in svedese) e quello artigianale (tavoli su misura che costano quanto una macchina usata e ti fanno sentire un riccone per averli ordinati).</p>
-    <p>La differenza? IKEA ha investito una fortuna nella <strong>progettazione a monte</strong>. Hanno capito - o almeno così mi sembra - che il valore non stava nell’assemblaggio (che infatti fanno fare a noi poveri clienti), ma nel design del sistema che rende l’assemblaggio scalabile. È geniale, in un modo leggermente psicopatico.</p>
-    <p>Ecco dove penso stiamo andando con la programmazione. I programmatori di domani probabilmente non saranno quelli che scrivono righe di codice (quello lo farà l’AI), ma quelli che <strong>progettano sistemi</strong> che orchestrano l’AI. Un po’ come i falegnami moderni che non segano tavole a mano, ma progettano pezzi e supervisionano macchine.</p>
-    <p>Il settore tessile, invece, è praticamente sparito. Quando l’ultima nonna ha smesso di fare calze ai ferri, non è rimasto granché di un “mercato premium delle calze artigianali”. Perché? Forse perché fare calze non richiedeva creatività progettuale - era pura esecuzione ripetitiva.</p>
-    <p>Boh, magari sbaglio completamente. Ma mi sembra una distinzione importante.</p>
-    <h2 id="il-problema-della-velocità">Il problema della velocità</h2>
-    <p>Le rivoluzioni industriali precedenti avevano una cosa in comune: erano <strong>energeticamente limitate</strong>. Potevi costruire solo un numero finito di fabbriche, assumere solo un numero finito di operai, produrre solo una quantità finita di merci. I vincoli fisici imponevano un ritmo, volente o nolente.</p>
-    <p>L’AI, invece, vive nel mondo digitale dove i <strong>vincoli fisici sono… be’, opzionali</strong>. Una volta addestrato un modello, puoi replicarlo all’infinito istantaneamente. Non hai bisogno di costruire nuove fabbriche - basta copiare il file. È come se, nel 1800, invece di dover costruire ogni singola macchina a vapore, bastasse dire “Ctrl+C, Ctrl+V” e apparissero magicamente cento locomotive identiche.</p>
-    <p>Questo crea un problema che, per quello che ne so, gli economisti non avevano mai visto prima: cicli di innovazione <strong>compressi nel tempo</strong> ma <strong>amplificati in scala</strong>. Invece di decenni di adattamento graduale, abbiamo anni (forse) di sconvolgimento totale.</p>
-    <p>E qui entra in gioco una teoria che, non so perché, nessuno sembra aver considerato: i <strong>cicli inflattivi-deflattivi accelerati</strong>. O almeno, non ne ho mai sentito parlare. Magari esiste già e io non lo so (se qualcuno dei miei tre lettori ha fonti, le accetto volentieri).</p>
-    <p>Piccola digressione: questo è uno di quei momenti in cui spero davvero di sbagliarmi, perché se ho ragione significa che stiamo tutti guidando verso un muro a 200 all’ora convinti di essere in autostrada. Ma andiamo avanti.</p>
-    <h2 id="i-cicli-a-fisarmonica">I cicli a fisarmonica</h2>
-    <p>Nelle rivoluzioni industriali classiche, i cicli economici erano lenti e abbastanza prevedibili. Prima una lunga fase “inflattiva” di investimenti massicci in infrastrutture (ferrovie, fabbriche, centrali elettriche), poi una fase “deflattiva” di ottimizzazione ed efficientamento che durava decenni.</p>
-    <p>Il boom delle ferrovie americane, per dire, è durato dal 1840 al 1890. Cinquant’anni di “buttiamo soldi nelle rotaie” seguiti da altrettanti anni di “ora ottimizziamo i treni”. Ritmi glaciali, ma forse per questo sostenibili.</p>
-    <p>Con l’AI, invece, ho l’impressione che i cicli si stiano <strong>comprimendo drasticamente</strong>. Potremmo avere fasi inflattive di 2-3 anni (tutti a comprare GPU come se fossero diamanti) seguite da fasi deflattive altrettanto brevi (tutti a ottimizzare algoritmi per fare la stessa cosa con meno potenza).</p>
-    <p>E indovinate un po’? Mi sa che siamo proprio nel mezzo di questo casino.</p>
-    <h2 id="perché-non-ci-fermiamo">Perché non ci fermiamo?</h2>
-    <p>Ora arriviamo alla parte che mi incuriosisce di più. Secondo la logica economica naturale - sempre che io la capisca qualcosa - dovremmo <strong>già essere</strong> in fase deflattiva. I modelli di AI generativa di base esistono, funzionano discretamente, e ora dovremmo concentrarci sull’ottimizzazione. Invece di continuare a pompare energia bruta nel sistema, dovremmo essere nella fase “facciamo meglio con meno”.</p>
-    <p>Ma non sta succedendo. Perché? Ho un paio di teorie, ma magari sono completamente sbagliate.</p>
-    <p><strong>Primo motivo: il capitalismo non vuole frenare</strong>. Nelle fasi inflattive, chi ha i soldi può moltiplicarli velocemente vendendo prodotti ad alto valore aggiunto. È il momento in cui i capitalisti fanno la pacchia. Nelle fasi deflattive, invece, vince chi fa ricerca - e la ricerca costa tanto, rende dopo anni, e non garantisce profitti immediati.</p>
-    <p>Chi pensate che preferisca vendere servizi AI da centinaia di migliaia di dollari <strong>oggi</strong>, o investire tre anni in ricerca per renderli più efficienti <strong>domani</strong>? Mmh. È come chiedere a un drogato se preferisce la dose immediata o il programma di riabilitazione.</p>
-    <p><strong>Secondo motivo: la geopolitica</strong>. L’AI sembra essere diventata la nuova “corsa allo spazio” della Guerra Fredda 2.0. USA e Cina si stanno sfidando a chi ha l’intelligenza artificiale più grossa, e presumibilmente nessuno vuole essere il primo a dire “Ok, fermiamoci a ottimizzare”. È come una gara di muscoli dove il primo che si rilassa viene visto come debole.</p>
-    <p>Il risultato? Stiamo <strong>artificialmente</strong> mantenendo la fase inflattiva oltre il suo ciclo naturale, pompando risorse nella macchina invece di renderla più efficiente.</p>
-    <p>O almeno, questa è la mia impressione. Potrei sbagliarmi completamente.</p>
-    <h2 id="i-chip-specializzati-che-nessuno-nota">I chip specializzati che nessuno nota</h2>
-    <p>Ma se guardate attentamente - e ammetto che potrei vedere cose che non ci sono - la fase deflattiva sembra già iniziata <strong>sottotraccia</strong>. Mentre tutti fanno rumore sulle GPU sempre più potenti, c’è un’intera industria che sta silenziosamente lavorando sull’efficientamento.</p>
-    <p>Groq sta sviluppando chip LPU progettati specificamente per elaborare linguaggio, non per la grafica. Google ha le sue TPU giunte alla sesta generazione. Amazon ha i suoi Trainium. Microsoft sta preparando Maia. Persino OpenAI sta collaborando con Broadcom per un chip custom.</p>
-    <p>Tutti questi chip hanno una cosa in comune: sono progettati per fare <strong>la stessa cosa con meno energia</strong>. Non per essere più potenti, ma per essere più efficienti. È esattamente quello che ti aspetteresti in una fase deflattiva.</p>
-    <p>Ma siccome il mercato è ancora in modalità “più grande = meglio”, questi sviluppi passano in secondo piano rispetto alle GPU da mille watt che fanno più rumore mediatico.</p>
-    <p>Forse sto leggendo troppo in questi segnali. Ma mi sembrano interessanti.</p>
-    <h2 id="lelefante-quantistico">L’elefante quantistico</h2>
-    <p>E poi c’è l’elefante nella stanza che tutti sembrano ignorare: il quantum computing.</p>
-    <p>Teoricamente, un computer quantistico potrebbe risolvere certi problemi di AI con una frazione dell’energia di un data center tradizionale. È l’efficientamento definitivo - come passare dalla macchina a vapore al motore elettrico. Teoricamente.</p>
-    <p>Indovinate chi ci sta lavorando? Gli stessi che stanno pompando miliardi in GPU tradizionali: Google, IBM, Microsoft. È come se stessero giocando su due tavoli contemporaneamente - uno pubblico dove fanno rumore con l’hardware bruto, uno privato dove preparano la rivoluzione dell’efficientamento.</p>
-    <p>Il fatto che ne parlino relativamente poco mi sembra indicativo. Se fossimo in fase naturale deflattiva, il quantum computing per AI dovrebbe essere al centro del dibattito. Invece è relegato a comunicati stampa di aziende specializzate e paper accademici che legge giusto qualche nerd come me (e probabilmente tu, se sei arrivato fin qui).</p>
-    <p>Ma potrei sbagliarmi. Magari il quantum computing per l’AI è ancora troppo acerbo per essere rilevante. O magari stanno tutti zitti perché sanno qualcosa che noi non sappiamo. Il che è sempre rassicurante.</p>
-    <h2 id="la-contraddizione-climatica">La contraddizione climatica</h2>
-    <p>E qui arriviamo alla contraddizione che mi lascia più perplesso.</p>
-    <p>Siamo ufficialmente in crisi climatica. Ogni conferenza internazionale ci ricorda che dovremmo ridurre i consumi energetici. Parallelamente, stiamo costruendo data center che consumano come piccole nazioni per far girare modelli AI che spesso vengono usati per creare meme di gatti con sei zampe.</p>
-    <p>La logica vorrebbe che ci concentrassimo sull’efficientamento energetico dell’AI. Invece continuiamo a buttare energia nel sistema come se i watt fossero gratis e il pianeta fosse immortale.</p>
-    <p>Perché? La mia teoria è che fermarsi a ottimizzare significherebbe ammettere che la fase di crescita infinita è finita. E né i capitalisti né i governi sembrano pronti per quella conversazione.</p>
-    <p>Ma boh, magari sono io che vedo contraddizioni dove non ce ne sono.</p>
-    <h2 id="il-palloncino-usa-cina">Il palloncino USA-Cina</h2>
-    <p>Nel frattempo, USA e Cina continuano la loro pantomima della “supremazia AI”, ognuno terrorizzato dall’idea che l’altro possa prendergli il posto di “egemone tecnologico mondiale”.</p>
-    <p>È interessante notare che questa competizione sembra artificialmente <strong>estendere</strong> la fase inflattiva ben oltre il suo ciclo naturale. È come se due bambini facessero a gara a chi riesce a gonfiare di più un palloncino, ignorando il fatto che prima o poi scoppierà.</p>
-    <p>Gli americani bloccano l’export di chip avanzati verso la Cina. I cinesi sviluppano le loro alternative. Entrambi pompano miliardi in ricerca. Il risultato? Un’accelerazione artificiale che sta bruciando risorse a velocità industriale per mantenere una competizione che, dal punto di vista economico puro, forse dovrebbe già essere nella fase di consolidamento.</p>
-    <p>O almeno, così mi sembra. Magari è normale che funzioni così.</p>
-    <h2 id="segnali-sottotraccia">Segnali sottotraccia</h2>
-    <p>Ma i segnali che il ciclo naturale sta provando a riemergere mi sembrano esserci tutti:</p>
+    <h2 id="quando-due-grafici-non-fanno-una-dimostrazione">Quando Due Grafici Non Fanno Una Dimostrazione</h2>
+    <p>L’articolo di Mascitti si basa su questa osservazione:</p>
+    <blockquote>
+      <p>“Nel 2022 Fratelli d’Italia aveva ricevuto voti trasversalmente da tutte le fasce di età […] c’era un solo gruppo in cui non era riuscito a primeggiare: quello dei giovani di età compresa tra i 18 e i 24 anni. La stessa fascia di età che negli ultimi anni sembra interessarsi di più ai contenuti della trasmissione La Zanzara”</p>
+    </blockquote>
+    <p>Da qui, il nostro conclude che La Zanzara stia lavorando per colmare questo gap elettorale. È il classico errore del post hoc ergo propter hoc, quello che alle superiori il prof di filosofia ti spiegava con l’esempio del gallo che canta prima dell’alba.</p>
+    <p>Ma evidentemente Mascitti preferisce ignorare duemila anni di logica aristotelica quando c’è una narrativa accattivante da costruire.</p>
+    <h2 id="il-festival-del-cherry-picking">Il Festival del Cherry Picking</h2>
+    <p>Quando qualcuno vuole dimostrare una tesi preconcetta, la prima cosa che fa è selezionare accuratamente solo i dati che la supportano. Mascitti eccelle in quest’arte.</p>
+    <p>Ci racconta che:</p>
     <ul>
-      <li><strong>Standardizzazione</strong>: I modelli AI stanno convergendo verso architetture simili</li>
-      <li><strong>Specializzazione hardware</strong>: Chip custom per carichi di lavoro specifici</li>
-      <li><strong>Focus sull’efficienza</strong>: Algoritmi che fanno di più con meno parametri</li>
-      <li><strong>Costi operativi</strong>: Le aziende iniziano a calcolare quanto costa davvero far girare questi modelli</li>
+      <li>FdI è debole tra i giovani</li>
+      <li>La Zanzara spacca su Spotify</li>
+      <li>Vannacci va ospite al programma</li>
+      <li>Trump ha usato i podcast per vincere</li>
     </ul>
-    <p>È la classica transizione da “più potenza bruta” a “più intelligenza nell’usare la potenza”. Esattamente quello che ti aspetteresti quando una tecnologia matura.</p>
-    <p>Il problema è che questa transizione naturale sembra essere <strong>combattuta</strong> artificialmente da forze economiche e geopolitiche che hanno interesse a mantenere il boom il più a lungo possibile.</p>
-    <p>Ma ripeto, potrei sbagliarmi completamente su tutto.</p>
-    <h2 id="le-mie-previsioni-probabilmente-sbagliate">Le mie previsioni (probabilmente sbagliate)</h2>
-    <p>Ecco la mia previsione, che potete tranquillamente usare per scommettere contro di me fra qualche anno. Probabilmente perderete i soldi perché ci azzecco raramente.</p>
-    <p>Nei prossimi 2-3 anni penso vedremo una transizione forzata verso la fase deflattiva, probabilmente innescata da uno di questi fattori:</p>
+    <p>Stranamente dimentica di menzionare che:</p>
+    <ul>
+      <li>La Zanzara esiste dal 2006, quando Meloni era una giovane missina sconosciuta</li>
+      <li>Parenzo è di centro-sinistra e litiga con Cruciani in diretta da 20 anni</li>
+      <li>Al programma vanno ospiti di ogni colore politico, da Luxuria a Salvini</li>
+      <li>Il formato provocatorio è rimasto identico attraverso governi di ogni orientamento</li>
+    </ul>
+    <p>Ma questi dettagli rovinerebbero la bella storia del complotto, quindi meglio ometterli.</p>
+    <h2 id="la-logica-che-non-cè">La Logica Che Non C’è</h2>
+    <p>Il sillogismo di Mascitti funziona così:</p>
     <ol>
-      <li><strong>Crisi energetica</strong>: I costi dell’energia diventeranno insostenibili</li>
-      <li><strong>Pressione climatica</strong>: Governi costretti a limitare i consumi dei data center</li>
-      <li><strong>Saturazione del mercato</strong>: I clienti smetteranno di pagare prezzi assurdi per AI marginalmente migliore</li>
-      <li><strong>Breakthrough tecnologico</strong>: Qualcuno (forse Google o un player cinese) lancerà una soluzione drasticamente più efficiente</li>
+      <li>I giovani ascoltano La Zanzara</li>
+      <li>FdI vuole i voti dei giovani</li>
+      <li>Quindi La Zanzara è uno strumento di FdI</li>
     </ol>
-    <p>A quel punto, avremo una fase deflattiva accelerata dove l’efficientamento diventerà il nome del gioco. Chi avrà investito silenziosamente in chip specializzati, algoritmi ottimizzati e soluzioni quantum potrebbe dominare il mercato. Chi sarà rimasto attaccato alle GPU da mille watt si ritroverà con hardware obsoleto che vale quanto un Hummer in tempo di crisi petrolifera.</p>
-    <p>E poi? Poi forse inizierà il prossimo ciclo inflattivo, probabilmente centrato su qualche altra tecnologia che oggi nemmeno immaginiamo.</p>
-    <p>Ma ammetto che potrei aver capito tutto male.</p>
-    <h2 id="storia-che-si-ripete-ma-più-veloce">Storia che si ripete, ma più veloce</h2>
-    <p>La cosa che mi affascina di più di tutto questo è che mi sembra stiamo ripetendo esattamente gli stessi errori delle bolle tecnologiche precedenti, ma <strong>più velocemente</strong>.</p>
-    <p>Negli anni ‘90 avevamo la bolla dot-com: tutti convinti che internet fosse magia, investimenti folli in aziende senza business model, crash inevitabile, poi ricostruzione su basi più solide. Ci sono voluti anni.</p>
-    <p>Oggi abbiamo quella che mi sembra la bolla AI: tutti convinti che l’intelligenza artificiale sia magia, investimenti folli in data center energivori, e probabilmente un crash inevitabile quando la realtà economica busserà alla porta. Ma stavolta tutto potrebbe succedere in una frazione del tempo.</p>
-    <p>La differenza è che l’AI, a differenza di molte startup dot-com, <strong>funziona davvero</strong>. Il problema non è la tecnologia, è il modo in cui stiamo artificialmente accelerando e prolungando i cicli economici per ragioni che hanno poco a che fare con l’efficienza economica.</p>
-    <p>È come guidare una Ferrari in prima marcia perché hai paura di scalare. Funziona, ma stai sprecando un sacco di carburante e prima o poi il motore si surriscalda.</p>
-    <p>O almeno, questa è la mia impressione. Magari è tutto normale e io non ci capisco niente.</p>
+    <p>Proviamo ad applicare la stessa logica ad altro:</p>
+    <ol>
+      <li>I giovani bevono spritz</li>
+      <li>FdI vuole i voti dei giovani</li>
+      <li>Quindi l’Aperol è controllato dalla Meloni</li>
+    </ol>
+    <p>Suona ridicolo? Perché lo è. Eppure è esattamente lo stesso ragionamento.</p>
+    <h2 id="come-si-fa-unanalisi-che-non-faccia-ridere">Come Si Fa Un’Analisi Che Non Faccia Ridere</h2>
+    <p>Visto che Mascitti ha negato quando gli ho fatto notare l’errore, facciamo un corso accelerato di metodologia della ricerca.</p>
+    <h3 id="prima-di-tutto-lipotesi">Prima di Tutto, l’Ipotesi</h3>
+    <p>Se vuoi dimostrare che La Zanzara influenza politicamente i giovani, devi partire da un’ipotesi falsificabile. Qualcosa tipo:</p>
+    <p>“L’esposizione regolare alla Zanzara modifica significativamente l’orientamento politico dei giovani ascoltatori in direzione del centro-destra”</p>
+    <p>Nota la parola “modifica”. Non “è associata a” o “si correla con”. Modifica. Implica causalità, non semplice correlazione.</p>
+    <h3 id="poi-servono-i-dati-veri">Poi Servono i Dati Veri</h3>
+    <p>Non basta prendere due grafici a caso e dire “vedete? Salgono insieme!”. Quello lo facevano anche con le nascite e le cicogne.</p>
+    <p>Servirebbe uno studio longitudinale:</p>
+    <ul>
+      <li>Prendi un campione di giovani</li>
+      <li>Misuri le loro preferenze politiche</li>
+      <li>Una parte ascolta La Zanzara, una parte no</li>
+      <li>Dopo un periodo adeguato, rimisuri</li>
+      <li>Confronti i cambiamenti</li>
+    </ul>
+    <p>Oppure, se proprio non puoi fare un esperimento, almeno un’analisi osservazionale seria:</p>
+    <ul>
+      <li>Raccogli dati su migliaia di giovani</li>
+      <li>Controlli per tutte le variabili confondenti (educazione, reddito, area geografica, famiglia, etc.)</li>
+      <li>Usi tecniche statistiche appropriate per isolare l’effetto</li>
+      <li>Verifichi che il risultato sia robusto</li>
+    </ul>
+    <h3 id="e-poi-devi-considerare-le-alternative">E Poi Devi Considerare le Alternative</h3>
+    <p>Anche se trovassi una correlazione (spoiler: probabilmente no), dovresti chiederti:</p>
+    <p>È possibile che sia causalità inversa? Magari chi è già di destra cerca programmi “politicamente scorretti”?</p>
+    <p>Ci sono variabili nascoste? Tipo che sia i giovani di destra che gli ascoltatori della Zanzara condividono altre caratteristiche?</p>
+    <p>L’effetto è davvero rilevante? Anche se ci fosse, quanto conta? Lo 0.1%? Il 10%?</p>
+    <h2 id="il-mistero-di-parenzo">Il Mistero di Parenzo</h2>
+    <p>C’è un elefante nella stanza che Mascitti finge di non vedere: David Parenzo.</p>
+    <p>Il co-conduttore della Zanzara è notoriamente di centro-sinistra. Passa metà programma a litigare con Cruciani, a difendere posizioni progressiste, a criticare la destra.</p>
+    <p>Se La Zanzara fosse propaganda di destra, sarebbe come fare pubblicità alla Coca-Cola con uno che ogni cinque minuti dice “però la Pepsi è più buona”. Non il massimo dell’efficienza propagandistica.</p>
+    <h2 id="la-verità-banale-che-nessuno-vuole-sentire">La Verità Banale Che Nessuno Vuole Sentire</h2>
+    <p>La spiegazione più semplice e probabilmente corretta è che:</p>
+    <ol>
+      <li>La Zanzara ha successo perché la gente ama il casino e le provocazioni</li>
+      <li>I giovani ascoltano podcast perché è il loro medium</li>
+      <li>FdI cerca di intercettare i giovani come tutti i partiti</li>
+      <li>Questi tre fatti coesistono senza che uno causi l’altro</li>
+    </ol>
+    <p>Non c’è nessun grande disegno. Nessun complotto. Nessuna strategia segreta.</p>
+    <p>Solo un programma radio che fa audience con due che litigano, giovani che consumano media digitali, e politici che cercano voti. Tutto qui.</p>
+    <h2 id="perché-mi-incazzo-con-questi-articoli">Perché Mi Incazzo Con Questi Articoli</h2>
+    <p>Non è solo una questione di rigore metodologico, anche se quello basterebbe. È che questi articoli creano narrative false che poi vengono riprese, amplificate, credute.</p>
+    <p>Quando scrivi di fenomeni sociali hai una responsabilità. Non puoi sparare correlazioni a caso e costruirci sopra teorie del complotto. Non quando parliamo di temi seri come l’influenza mediatica e la formazione del consenso politico.</p>
+    <p>E soprattutto, quando qualcuno ti fa notare l’errore metodologico, non puoi negare. Devi fermarti, riflettere, verificare. Altrimenti non stai facendo giornalismo, stai scrivendo fan fiction politica.</p>
+    <h2 id="in-conclusione">In Conclusione</h2>
+    <p>L’articolo di Mascitti è un esempio da manuale di come NON si fa analisi sociale. Parte da una conclusione, cerca dati che la supportino, ignora tutto il resto, e quando gli fai notare che correlation is not causation, nega pure.</p>
+    <p>La realtà è che non sappiamo se La Zanzara influenzi politicamente i suoi ascoltatori. E non lo sappiamo perché nessuno ha fatto uno studio serio per verificarlo. Quello che sappiamo è che vedere due fenomeni che accadono insieme non significa che uno causi l’altro.</p>
+    <p>È una lezione che si impara al primo anno di statistica. Peccato che Mascitti quel giorno fosse assente.</p>
     <hr />
-    <p>La prossima volta che qualcuno vi paragona l’AI alla rivoluzione industriale, provate a fare loro una domanda semplice: “Quale rivoluzione industriale hai in mente? Quella che è durata decenni o quella che stiamo artificialmente accelerando per ragioni geopolitiche?”</p>
-    <p>Poi preparatevi a una lunga pausa imbarazzata. O magari vi risponderanno con qualcosa di molto intelligente e scoprirete che avevo torto su tutto. (Se succede, scrivetemi. Amo essere smentito quando imparo qualcosa di nuovo.)</p>
-    <p>Perché la verità è che non credo stiamo vivendo una rivoluzione industriale normale. Mi sembra che stiamo vivendo la prima rivoluzione industriale <strong>compressa nel tempo e distorta dalla politica</strong>. E francamente, nessuno sa davvero come andrà a finire.</p>
-    <p>L’unica cosa di cui sono ragionevolmente sicuro è che sarà molto più veloce, molto più caotico, e probabilmente molto più costoso di quello che chiunque stia prevedendo.</p>
-    <p>Benvenuti nel futuro. Allacciate le cinture. E se avete idee migliori delle mie, scrivetemi - anche solo per dirmi che sono un idiota. Almeno saprò che qualcuno ha letto fino alla fine.</p>
-    <hr />
-    <p><em>P.S. Se questo articolo vi è piaciuto e volete deprimervi ancora di più, nei prossimi giorni probabilmente scriverò qualcosa sui motivi per cui tutti i nostri smartphone diventeranno obsoleti prima di Natale. O forse no, dipende da quanta voglia avrò di farmi odiare.</em></p>
-    ]]></content><author><name>kLeZ</name></author><category term="AI" /><category term="rivoluzione industriale" /><category term="analogie" /><category term="riflessioni" /><summary type="html"><![CDATA[Ovvero: come l’intelligenza artificiale sta riscrivendo le regole dell’economia più velocemente di quanto i nostri cervelli analogici riescano a capire (forse) Se dovessi fare un drink ogni volta che qualcuno paragona l’intelligenza artificiale alla rivoluzione industriale, a quest’ora sarei già morto per coma etilico. È diventato il paragone del momento, quel cliché che esce fuori a ogni conferenza TED, l’introduzione obbligatoria di praticamente ogni articolo che si rispetti sull’AI. “Proprio come la macchina a vapore ha cambiato tutto…” iniziano tutti, e io già so che nei prossimi dieci minuti sentirò variazioni sul tema che fanno sembrare ChatGPT l’equivalente digitale della prima locomotiva.]]></summary></entry><entry><title type="html">Quando Gabriel Aveva Ragione: Java Lisp-Style nel 2025</title><link href="https://klez.me/2025/06/16/quando-gabriel-aveva-ragione-java-lisp-style-nel-2025/" rel="alternate" type="text/html" title="Quando Gabriel Aveva Ragione: Java Lisp-Style nel 2025" /><published>2025-06-16T15:49:11+02:00</published><updated>2025-06-16T15:49:11+02:00</updated><id>https://klez.me/2025/06/16/quando-gabriel-aveva-ragione-java-lisp-style-nel-2025</id><content type="html" xml:base="https://klez.me/2025/06/16/quando-gabriel-aveva-ragione-java-lisp-style-nel-2025/"><![CDATA[<p>Oggi parlo di evoluzione dei linguaggi di programmazione, tema a me caro, chi mi conosce di persona sa quanto mi diverta seguire l’evoluzione tecnica degli strumenti che uso quotidianamente. L’occasione me l’ha data la rilettura di un pezzo di Richard Gabriel del 2003, <a href="https://www.dreamsongs.com/ArtOfLisp.html">“The Art of Lisp &amp; Writing”</a>, che inizialmente avevo catalogato come “ennesima difesa d’ufficio di Lisp da parte di un fan sfegatato”. Poi ho scoperto un dettaglio che cambia tutto: l’articolo è stato scritto come introduzione al libro “Successful Lisp” di David Lamkins nel 2003.</p>
+    <p><em>P.S. Mascitti, se leggi questo, l’invito a confrontarci sui metodi di analisi resta valido. Ma con i dati alla mano, non con le correlazioni spurie.</em></p>
+    <p><em>P.P.S. E no, continuare a negare su LinkedIn non fa sparire il problema metodologico. Lo rende solo più evidente.</em></p>
+    ]]></content><author><name>kLeZ</name></author><category term="metodo scientifico" /><category term="rant" /><category term="someone&apos;s wrong on the internet" /><category term="statistica" /><category term="correlation is not causation" /><summary type="html"><![CDATA[Ieri mattina stavo scrollando LinkedIn - già, lo so, pessima idea - quando un mio contatto condivide l’articolo di Maurizio Mascitti “Oltre Telemeloni”. Apro, vedo due grafici, e sento quella sensazione familiare di quando qualcuno sta per sparare una cazzata metodologica grossa come una casa. L’articolo sostiene che La Zanzara sia uno strumento di egemonia culturale della destra per conquistare i giovani. La “dimostrazione”? FdI è debole tra i 18-24 anni, La Zanzara ha successo in quella fascia, ergo La Zanzara lavora per FdI. Ho provato a spiegare nei commenti che correlation is not causation. Risposta di Mascitti? Negare. A quel punto ho capito che serviva qualcosa di più di un commento su LinkedIn per smontare questa perla di analisi pseudoscientifica.]]></summary></entry><entry><title type="html">La Rivoluzione AI: Perché Stiamo Tutti Sbagliando Analogia (E Cosa Succede Davvero)</title><link href="https://klez.me/2025/07/06/la-rivoluzione-ai-perche-stiamo-tutti-sbagliando-analogia-e-cosa-succede-davvero/" rel="alternate" type="text/html" title="La Rivoluzione AI: Perché Stiamo Tutti Sbagliando Analogia (E Cosa Succede Davvero)" /><published>2025-07-06T14:30:42+02:00</published><updated>2025-07-06T14:30:42+02:00</updated><id>https://klez.me/2025/07/06/la-rivoluzione-ai-perche-stiamo-tutti-sbagliando-analogia-e-cosa-succede-davvero</id><content type="html" xml:base="https://klez.me/2025/07/06/la-rivoluzione-ai-perche-stiamo-tutti-sbagliando-analogia-e-cosa-succede-davvero/"><![CDATA[<p><em>Ovvero: come l’intelligenza artificiale sta riscrivendo le regole dell’economia più velocemente di quanto i nostri cervelli analogici riescano a capire (forse)</em></p>
+  <p>Se dovessi fare un drink ogni volta che qualcuno paragona l’intelligenza artificiale alla rivoluzione industriale, a quest’ora sarei già morto per coma etilico. È diventato il paragone del momento, quel cliché che esce fuori a ogni conferenza TED, l’introduzione obbligatoria di praticamente ogni articolo che si rispetti sull’AI. “Proprio come la macchina a vapore ha cambiato tutto…” iniziano tutti, e io già so che nei prossimi dieci minuti sentirò variazioni sul tema che fanno sembrare ChatGPT l’equivalente digitale della prima locomotiva.</p>
+  <!--more-->
+  <p class="m-0 invisible zero-size">
+    <a class="invisible" id="read-more" href="#">read more</a>
+  </p>
+  <p>(Per inciso, scrivo questo articolo nella speranza che almeno tre persone lo leggano fino in fondo senza addormentarsi. Se sei arrivato fin qui, congratulazioni: fai già parte di una minoranza statistica.)</p>
+  <p>Il problema è che questo paragone, per quanto rassicurante e di moda, mi sembra tanto generico quanto inutile. È un po’ come dire che “mangiare è come nutrirsi” - tecnicamente vero, ma che ci dice? E soprattutto, ho la sensazione che ci stia facendo perdere di vista qualcosa di molto più interessante (e forse preoccupante) di quello che sta davvero succedendo.</p>
+  <p>Non che io abbia la verità in tasca, per carità. Ma dopo vent’anni che programmo e vedo come cambia questo settore (sì, sono uno di quelli che ha iniziato quando Java era ancora “rivoluzionario” e tutti dicevano che C++ era il futuro), alcune cose mi sembrano… strane. E forse vale la pena ragionarci su.</p>
+  <p>Un po’ come quando vedi il tuo coinquilino che continua a mettere la pasta nell’acqua fredda e dici “mmh, forse c’è un modo migliore”, ma poi realizzi che in realtà non sei sicuro neanche tu se stai facendo tutto giusto.</p>
+  <h2 id="il-teatrino-della-quarta-rivoluzione">Il teatrino della “quarta rivoluzione”</h2>
+  <p>Ok, facciamo un passo indietro. L’idea standard che va per la maggiore è questa: abbiamo avuto la prima rivoluzione industriale con vapore e carbone, la seconda con elettricità e catene di montaggio, la terza con computer e internet, e ora eccoci qua alla quarta con AI e automazione. Tutto molto ordinato, molto progressivo. Una bella timeline da PowerPoint aziendale che fa sentire tutti intelligenti.</p>
+  <p>Gli economisti di mezzo mondo stanno sfornando paper su come “l’AI sostituirà i lavoratori proprio come fecero i telai meccanici con i tessitori”, mentre i politici fanno i loro bei discorsi su come “dobbiamo prepararci al cambiamento come fecero i nostri antenati”. Tutto molto rassicurante, tutto molto “ce l’abbiamo già fatta una volta, ce la faremo anche stavolta”.</p>
+  <p>Ma ecco, io ho un dubbio. Anzi, più di uno.</p>
+  <p>La rivoluzione industriale classica ha preso <strong>decenni</strong> per dispiegarsi completamente. La ferrovia inglese non è mica spuntata fuori in tre anni, e i tessitori non sono stati rimpiazzati da un giorno all’altro. C’è stato tempo per adattarsi, per riqualificarsi, per inventare nuovi mestieri. Il tutto con un ritmo che, seppur drammatico per l’epoca, oggi ci sembrerebbe quasi glaciale.</p>
+  <p>L’AI, invece, mi sa che sta facendo tutto questo in <strong>mesi</strong>. ChatGPT è passato da zero a 100 milioni di utenti più velocemente di quanto io riesca a finire una serie Netflix (e non è che sono lento con Netflix). E mentre sto scrivendo queste righe, stanno uscendo nuovi modelli che rendono obsoleti quelli di sei mesi fa.</p>
+  <p>Forse sto esagerando, ma qualcosa non torna.</p>
+  <h2 id="forse-stiamo-sbagliando-analogia">Forse stiamo sbagliando analogia</h2>
+  <p>Ecco dove secondo me tutti sbagliano analogia. Non dovremmo paragonare la programmazione al settore tessile - quello che è stato praticamente spazzato via dalla meccanizzazione. Dovremmo paragonarla alla lavorazione del legno, del ferro, della ceramica. O almeno, questa è la mia teoria.</p>
+  <p>Prendiamo IKEA. È un’azienda che ha industrializzato la produzione di mobili, eppure non ha mica ucciso l’artigianato del legno. Ha semplicemente creato due mercati paralleli: quello industriale (scaffali Billy da 29 euro che montiamo tutti bestemmiando contro le istruzioni in svedese) e quello artigianale (tavoli su misura che costano quanto una macchina usata e ti fanno sentire un riccone per averli ordinati).</p>
+  <p>La differenza? IKEA ha investito una fortuna nella <strong>progettazione a monte</strong>. Hanno capito - o almeno così mi sembra - che il valore non stava nell’assemblaggio (che infatti fanno fare a noi poveri clienti), ma nel design del sistema che rende l’assemblaggio scalabile. È geniale, in un modo leggermente psicopatico.</p>
+  <p>Ecco dove penso stiamo andando con la programmazione. I programmatori di domani probabilmente non saranno quelli che scrivono righe di codice (quello lo farà l’AI), ma quelli che <strong>progettano sistemi</strong> che orchestrano l’AI. Un po’ come i falegnami moderni che non segano tavole a mano, ma progettano pezzi e supervisionano macchine.</p>
+  <p>Il settore tessile, invece, è praticamente sparito. Quando l’ultima nonna ha smesso di fare calze ai ferri, non è rimasto granché di un “mercato premium delle calze artigianali”. Perché? Forse perché fare calze non richiedeva creatività progettuale - era pura esecuzione ripetitiva.</p>
+  <p>Boh, magari sbaglio completamente. Ma mi sembra una distinzione importante.</p>
+  <h2 id="il-problema-della-velocità">Il problema della velocità</h2>
+  <p>Le rivoluzioni industriali precedenti avevano una cosa in comune: erano <strong>energeticamente limitate</strong>. Potevi costruire solo un numero finito di fabbriche, assumere solo un numero finito di operai, produrre solo una quantità finita di merci. I vincoli fisici imponevano un ritmo, volente o nolente.</p>
+  <p>L’AI, invece, vive nel mondo digitale dove i <strong>vincoli fisici sono… be’, opzionali</strong>. Una volta addestrato un modello, puoi replicarlo all’infinito istantaneamente. Non hai bisogno di costruire nuove fabbriche - basta copiare il file. È come se, nel 1800, invece di dover costruire ogni singola macchina a vapore, bastasse dire “Ctrl+C, Ctrl+V” e apparissero magicamente cento locomotive identiche.</p>
+  <p>Questo crea un problema che, per quello che ne so, gli economisti non avevano mai visto prima: cicli di innovazione <strong>compressi nel tempo</strong> ma <strong>amplificati in scala</strong>. Invece di decenni di adattamento graduale, abbiamo anni (forse) di sconvolgimento totale.</p>
+  <p>E qui entra in gioco una teoria che, non so perché, nessuno sembra aver considerato: i <strong>cicli inflattivi-deflattivi accelerati</strong>. O almeno, non ne ho mai sentito parlare. Magari esiste già e io non lo so (se qualcuno dei miei tre lettori ha fonti, le accetto volentieri).</p>
+  <p>Piccola digressione: questo è uno di quei momenti in cui spero davvero di sbagliarmi, perché se ho ragione significa che stiamo tutti guidando verso un muro a 200 all’ora convinti di essere in autostrada. Ma andiamo avanti.</p>
+  <h2 id="i-cicli-a-fisarmonica">I cicli a fisarmonica</h2>
+  <p>Nelle rivoluzioni industriali classiche, i cicli economici erano lenti e abbastanza prevedibili. Prima una lunga fase “inflattiva” di investimenti massicci in infrastrutture (ferrovie, fabbriche, centrali elettriche), poi una fase “deflattiva” di ottimizzazione ed efficientamento che durava decenni.</p>
+  <p>Il boom delle ferrovie americane, per dire, è durato dal 1840 al 1890. Cinquant’anni di “buttiamo soldi nelle rotaie” seguiti da altrettanti anni di “ora ottimizziamo i treni”. Ritmi glaciali, ma forse per questo sostenibili.</p>
+  <p>Con l’AI, invece, ho l’impressione che i cicli si stiano <strong>comprimendo drasticamente</strong>. Potremmo avere fasi inflattive di 2-3 anni (tutti a comprare GPU come se fossero diamanti) seguite da fasi deflattive altrettanto brevi (tutti a ottimizzare algoritmi per fare la stessa cosa con meno potenza).</p>
+  <p>E indovinate un po’? Mi sa che siamo proprio nel mezzo di questo casino.</p>
+  <h2 id="perché-non-ci-fermiamo">Perché non ci fermiamo?</h2>
+  <p>Ora arriviamo alla parte che mi incuriosisce di più. Secondo la logica economica naturale - sempre che io la capisca qualcosa - dovremmo <strong>già essere</strong> in fase deflattiva. I modelli di AI generativa di base esistono, funzionano discretamente, e ora dovremmo concentrarci sull’ottimizzazione. Invece di continuare a pompare energia bruta nel sistema, dovremmo essere nella fase “facciamo meglio con meno”.</p>
+  <p>Ma non sta succedendo. Perché? Ho un paio di teorie, ma magari sono completamente sbagliate.</p>
+  <p><strong>Primo motivo: il capitalismo non vuole frenare</strong>. Nelle fasi inflattive, chi ha i soldi può moltiplicarli velocemente vendendo prodotti ad alto valore aggiunto. È il momento in cui i capitalisti fanno la pacchia. Nelle fasi deflattive, invece, vince chi fa ricerca - e la ricerca costa tanto, rende dopo anni, e non garantisce profitti immediati.</p>
+  <p>Chi pensate che preferisca vendere servizi AI da centinaia di migliaia di dollari <strong>oggi</strong>, o investire tre anni in ricerca per renderli più efficienti <strong>domani</strong>? Mmh. È come chiedere a un drogato se preferisce la dose immediata o il programma di riabilitazione.</p>
+  <p><strong>Secondo motivo: la geopolitica</strong>. L’AI sembra essere diventata la nuova “corsa allo spazio” della Guerra Fredda 2.0. USA e Cina si stanno sfidando a chi ha l’intelligenza artificiale più grossa, e presumibilmente nessuno vuole essere il primo a dire “Ok, fermiamoci a ottimizzare”. È come una gara di muscoli dove il primo che si rilassa viene visto come debole.</p>
+  <p>Il risultato? Stiamo <strong>artificialmente</strong> mantenendo la fase inflattiva oltre il suo ciclo naturale, pompando risorse nella macchina invece di renderla più efficiente.</p>
+  <p>O almeno, questa è la mia impressione. Potrei sbagliarmi completamente.</p>
+  <h2 id="i-chip-specializzati-che-nessuno-nota">I chip specializzati che nessuno nota</h2>
+  <p>Ma se guardate attentamente - e ammetto che potrei vedere cose che non ci sono - la fase deflattiva sembra già iniziata <strong>sottotraccia</strong>. Mentre tutti fanno rumore sulle GPU sempre più potenti, c’è un’intera industria che sta silenziosamente lavorando sull’efficientamento.</p>
+  <p>Groq sta sviluppando chip LPU progettati specificamente per elaborare linguaggio, non per la grafica. Google ha le sue TPU giunte alla sesta generazione. Amazon ha i suoi Trainium. Microsoft sta preparando Maia. Persino OpenAI sta collaborando con Broadcom per un chip custom.</p>
+  <p>Tutti questi chip hanno una cosa in comune: sono progettati per fare <strong>la stessa cosa con meno energia</strong>. Non per essere più potenti, ma per essere più efficienti. È esattamente quello che ti aspetteresti in una fase deflattiva.</p>
+  <p>Ma siccome il mercato è ancora in modalità “più grande = meglio”, questi sviluppi passano in secondo piano rispetto alle GPU da mille watt che fanno più rumore mediatico.</p>
+  <p>Forse sto leggendo troppo in questi segnali. Ma mi sembrano interessanti.</p>
+  <h2 id="lelefante-quantistico">L’elefante quantistico</h2>
+  <p>E poi c’è l’elefante nella stanza che tutti sembrano ignorare: il quantum computing.</p>
+  <p>Teoricamente, un computer quantistico potrebbe risolvere certi problemi di AI con una frazione dell’energia di un data center tradizionale. È l’efficientamento definitivo - come passare dalla macchina a vapore al motore elettrico. Teoricamente.</p>
+  <p>Indovinate chi ci sta lavorando? Gli stessi che stanno pompando miliardi in GPU tradizionali: Google, IBM, Microsoft. È come se stessero giocando su due tavoli contemporaneamente - uno pubblico dove fanno rumore con l’hardware bruto, uno privato dove preparano la rivoluzione dell’efficientamento.</p>
+  <p>Il fatto che ne parlino relativamente poco mi sembra indicativo. Se fossimo in fase naturale deflattiva, il quantum computing per AI dovrebbe essere al centro del dibattito. Invece è relegato a comunicati stampa di aziende specializzate e paper accademici che legge giusto qualche nerd come me (e probabilmente tu, se sei arrivato fin qui).</p>
+  <p>Ma potrei sbagliarmi. Magari il quantum computing per l’AI è ancora troppo acerbo per essere rilevante. O magari stanno tutti zitti perché sanno qualcosa che noi non sappiamo. Il che è sempre rassicurante.</p>
+  <h2 id="la-contraddizione-climatica">La contraddizione climatica</h2>
+  <p>E qui arriviamo alla contraddizione che mi lascia più perplesso.</p>
+  <p>Siamo ufficialmente in crisi climatica. Ogni conferenza internazionale ci ricorda che dovremmo ridurre i consumi energetici. Parallelamente, stiamo costruendo data center che consumano come piccole nazioni per far girare modelli AI che spesso vengono usati per creare meme di gatti con sei zampe.</p>
+  <p>La logica vorrebbe che ci concentrassimo sull’efficientamento energetico dell’AI. Invece continuiamo a buttare energia nel sistema come se i watt fossero gratis e il pianeta fosse immortale.</p>
+  <p>Perché? La mia teoria è che fermarsi a ottimizzare significherebbe ammettere che la fase di crescita infinita è finita. E né i capitalisti né i governi sembrano pronti per quella conversazione.</p>
+  <p>Ma boh, magari sono io che vedo contraddizioni dove non ce ne sono.</p>
+  <h2 id="il-palloncino-usa-cina">Il palloncino USA-Cina</h2>
+  <p>Nel frattempo, USA e Cina continuano la loro pantomima della “supremazia AI”, ognuno terrorizzato dall’idea che l’altro possa prendergli il posto di “egemone tecnologico mondiale”.</p>
+  <p>È interessante notare che questa competizione sembra artificialmente <strong>estendere</strong> la fase inflattiva ben oltre il suo ciclo naturale. È come se due bambini facessero a gara a chi riesce a gonfiare di più un palloncino, ignorando il fatto che prima o poi scoppierà.</p>
+  <p>Gli americani bloccano l’export di chip avanzati verso la Cina. I cinesi sviluppano le loro alternative. Entrambi pompano miliardi in ricerca. Il risultato? Un’accelerazione artificiale che sta bruciando risorse a velocità industriale per mantenere una competizione che, dal punto di vista economico puro, forse dovrebbe già essere nella fase di consolidamento.</p>
+  <p>O almeno, così mi sembra. Magari è normale che funzioni così.</p>
+  <h2 id="segnali-sottotraccia">Segnali sottotraccia</h2>
+  <p>Ma i segnali che il ciclo naturale sta provando a riemergere mi sembrano esserci tutti:</p>
+  <ul>
+    <li><strong>Standardizzazione</strong>: I modelli AI stanno convergendo verso architetture simili</li>
+    <li><strong>Specializzazione hardware</strong>: Chip custom per carichi di lavoro specifici</li>
+    <li><strong>Focus sull’efficienza</strong>: Algoritmi che fanno di più con meno parametri</li>
+    <li><strong>Costi operativi</strong>: Le aziende iniziano a calcolare quanto costa davvero far girare questi modelli</li>
+  </ul>
+  <p>È la classica transizione da “più potenza bruta” a “più intelligenza nell’usare la potenza”. Esattamente quello che ti aspetteresti quando una tecnologia matura.</p>
+  <p>Il problema è che questa transizione naturale sembra essere <strong>combattuta</strong> artificialmente da forze economiche e geopolitiche che hanno interesse a mantenere il boom il più a lungo possibile.</p>
+  <p>Ma ripeto, potrei sbagliarmi completamente su tutto.</p>
+  <h2 id="le-mie-previsioni-probabilmente-sbagliate">Le mie previsioni (probabilmente sbagliate)</h2>
+  <p>Ecco la mia previsione, che potete tranquillamente usare per scommettere contro di me fra qualche anno. Probabilmente perderete i soldi perché ci azzecco raramente.</p>
+  <p>Nei prossimi 2-3 anni penso vedremo una transizione forzata verso la fase deflattiva, probabilmente innescata da uno di questi fattori:</p>
+  <ol>
+    <li><strong>Crisi energetica</strong>: I costi dell’energia diventeranno insostenibili</li>
+    <li><strong>Pressione climatica</strong>: Governi costretti a limitare i consumi dei data center</li>
+    <li><strong>Saturazione del mercato</strong>: I clienti smetteranno di pagare prezzi assurdi per AI marginalmente migliore</li>
+    <li><strong>Breakthrough tecnologico</strong>: Qualcuno (forse Google o un player cinese) lancerà una soluzione drasticamente più efficiente</li>
+  </ol>
+  <p>A quel punto, avremo una fase deflattiva accelerata dove l’efficientamento diventerà il nome del gioco. Chi avrà investito silenziosamente in chip specializzati, algoritmi ottimizzati e soluzioni quantum potrebbe dominare il mercato. Chi sarà rimasto attaccato alle GPU da mille watt si ritroverà con hardware obsoleto che vale quanto un Hummer in tempo di crisi petrolifera.</p>
+  <p>E poi? Poi forse inizierà il prossimo ciclo inflattivo, probabilmente centrato su qualche altra tecnologia che oggi nemmeno immaginiamo.</p>
+  <p>Ma ammetto che potrei aver capito tutto male.</p>
+  <h2 id="storia-che-si-ripete-ma-più-veloce">Storia che si ripete, ma più veloce</h2>
+  <p>La cosa che mi affascina di più di tutto questo è che mi sembra stiamo ripetendo esattamente gli stessi errori delle bolle tecnologiche precedenti, ma <strong>più velocemente</strong>.</p>
+  <p>Negli anni ‘90 avevamo la bolla dot-com: tutti convinti che internet fosse magia, investimenti folli in aziende senza business model, crash inevitabile, poi ricostruzione su basi più solide. Ci sono voluti anni.</p>
+  <p>Oggi abbiamo quella che mi sembra la bolla AI: tutti convinti che l’intelligenza artificiale sia magia, investimenti folli in data center energivori, e probabilmente un crash inevitabile quando la realtà economica busserà alla porta. Ma stavolta tutto potrebbe succedere in una frazione del tempo.</p>
+  <p>La differenza è che l’AI, a differenza di molte startup dot-com, <strong>funziona davvero</strong>. Il problema non è la tecnologia, è il modo in cui stiamo artificialmente accelerando e prolungando i cicli economici per ragioni che hanno poco a che fare con l’efficienza economica.</p>
+  <p>È come guidare una Ferrari in prima marcia perché hai paura di scalare. Funziona, ma stai sprecando un sacco di carburante e prima o poi il motore si surriscalda.</p>
+  <p>O almeno, questa è la mia impressione. Magari è tutto normale e io non ci capisco niente.</p>
+  <hr />
+  <p>La prossima volta che qualcuno vi paragona l’AI alla rivoluzione industriale, provate a fare loro una domanda semplice: “Quale rivoluzione industriale hai in mente? Quella che è durata decenni o quella che stiamo artificialmente accelerando per ragioni geopolitiche?”</p>
+  <p>Poi preparatevi a una lunga pausa imbarazzata. O magari vi risponderanno con qualcosa di molto intelligente e scoprirete che avevo torto su tutto. (Se succede, scrivetemi. Amo essere smentito quando imparo qualcosa di nuovo.)</p>
+  <p>Perché la verità è che non credo stiamo vivendo una rivoluzione industriale normale. Mi sembra che stiamo vivendo la prima rivoluzione industriale <strong>compressa nel tempo e distorta dalla politica</strong>. E francamente, nessuno sa davvero come andrà a finire.</p>
+  <p>L’unica cosa di cui sono ragionevolmente sicuro è che sarà molto più veloce, molto più caotico, e probabilmente molto più costoso di quello che chiunque stia prevedendo.</p>
+  <p>Benvenuti nel futuro. Allacciate le cinture. E se avete idee migliori delle mie, scrivetemi - anche solo per dirmi che sono un idiota. Almeno saprò che qualcuno ha letto fino alla fine.</p>
+  <hr />
+  <p><em>P.S. Se questo articolo vi è piaciuto e volete deprimervi ancora di più, nei prossimi giorni probabilmente scriverò qualcosa sui motivi per cui tutti i nostri smartphone diventeranno obsoleti prima di Natale. O forse no, dipende da quanta voglia avrò di farmi odiare.</em></p>
+  ]]></content><author><name>kLeZ</name></author><category term="AI" /><category term="rivoluzione industriale" /><category term="analogie" /><category term="riflessioni" /><summary type="html"><![CDATA[Ovvero: come l’intelligenza artificiale sta riscrivendo le regole dell’economia più velocemente di quanto i nostri cervelli analogici riescano a capire (forse) Se dovessi fare un drink ogni volta che qualcuno paragona l’intelligenza artificiale alla rivoluzione industriale, a quest’ora sarei già morto per coma etilico. È diventato il paragone del momento, quel cliché che esce fuori a ogni conferenza TED, l’introduzione obbligatoria di praticamente ogni articolo che si rispetti sull’AI. “Proprio come la macchina a vapore ha cambiato tutto…” iniziano tutti, e io già so che nei prossimi dieci minuti sentirò variazioni sul tema che fanno sembrare ChatGPT l’equivalente digitale della prima locomotiva.]]></summary></entry><entry><title type="html">Quando Gabriel Aveva Ragione: Java Lisp-Style nel 2025</title><link href="https://klez.me/2025/06/16/quando-gabriel-aveva-ragione-java-lisp-style-nel-2025/" rel="alternate" type="text/html" title="Quando Gabriel Aveva Ragione: Java Lisp-Style nel 2025" /><published>2025-06-16T15:49:11+02:00</published><updated>2025-06-16T15:49:11+02:00</updated><id>https://klez.me/2025/06/16/quando-gabriel-aveva-ragione-java-lisp-style-nel-2025</id><content type="html" xml:base="https://klez.me/2025/06/16/quando-gabriel-aveva-ragione-java-lisp-style-nel-2025/"><![CDATA[<p>Oggi parlo di evoluzione dei linguaggi di programmazione, tema a me caro, chi mi conosce di persona sa quanto mi diverta seguire l’evoluzione tecnica degli strumenti che uso quotidianamente. L’occasione me l’ha data la rilettura di un pezzo di Richard Gabriel del 2003, <a href="https://www.dreamsongs.com/ArtOfLisp.html">“The Art of Lisp &amp; Writing”</a>, che inizialmente avevo catalogato come “ennesima difesa d’ufficio di Lisp da parte di un fan sfegatato”. Poi ho scoperto un dettaglio che cambia tutto: l’articolo è stato scritto come introduzione al libro “Successful Lisp” di David Lamkins nel 2003.</p>
   <!--more-->
   <p class="m-0 invisible zero-size">
     <a class="invisible" id="read-more" href="#">read more</a>
@@ -717,42 +811,4 @@ Response: "Il tuo nome è Marco" [Memory Context: Buffer:2, Working:2, Episodic:
     <p>Alla fine, la questione non è “perché devo pagare per i figli degli altri?”, ma “posso permettermi di non farlo?”. La risposta è no, non puoi. Non perché sei un buon samaritano o un filantropo, ma perché è nel tuo interesse egoistico vivere in una società stabile, prospera e sicura. E una tale società richiede cittadini istruiti, competenti e capaci di contribuire positivamente al bene comune.</p>
     <p>Il sistema delle tasse scolastiche, così come molti altri servizi pubblici, è basato su un principio fondamentale: ci nutriamo a vicenda con lunghi cucchiai, perché altrimenti la vita sarebbe un inferno. Non è una questione di altruismo, ma di pragmatismo. Investire nell’istruzione degli altri non è un atto di carità, ma una strategia di sopravvivenza e prosperità collettiva.</p>
     <p>Quindi, la prossima volta che ti lamenti delle tasse scolastiche o di qualsiasi altro contributo al bene comune, ricorda la metafora dei lunghi cucchiai e chiediti: vuoi vivere all’inferno o in paradiso? Perché la scelta, in fondo, è tua. E di tutti noi. E personalmente, preferisco di gran lunga un mondo dove tutti possono nutrirsi, anche se questo significa dover allungare ogni tanto un cucchiaio verso qualcun altro. Chiamatemi cinico, ma alla fine, è solo matematica.</p>
-    ]]></content><author><name>kLeZ</name></author><category term="società" /><category term="istruzione" /><category term="tasse" /><category term="filosofia" /><category term="quora" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Literate Programming e Org-mode: Quando il Codice e la Prosa Fanno Pace</title><link href="https://klez.me/2025/04/20/literate-programming-org-mode/" rel="alternate" type="text/html" title="Literate Programming e Org-mode: Quando il Codice e la Prosa Fanno Pace" /><published>2025-04-20T10:42:37+02:00</published><updated>2025-04-20T10:42:37+02:00</updated><id>https://klez.me/2025/04/20/literate-programming-org-mode</id><content type="html" xml:base="https://klez.me/2025/04/20/literate-programming-org-mode/"><![CDATA[<p>Il literate programming è un approccio alla programmazione che integra codice e documentazione in un unico flusso naturale, permettendo di pensare come esseri umani invece che come macchine. In questo articolo esploro come Org-mode di Emacs rappresenti l’implementazione più elegante e potente di questa filosofia, trasformando la documentazione da faticoso obbligo a parte organica e piacevole del processo di sviluppo.</p>
-  <!--more-->
-  <p class="m-0 invisible zero-size">
-    <a class="invisible" id="read-more" href="#">read more</a>
-  </p>
-  <h1 id="literate-programming-e-org-mode-quando-il-codice-e-la-prosa-fanno-pace">Literate Programming e Org-mode: Quando il Codice e la Prosa Fanno Pace</h1>
-  <p>Ah, la documentazione del codice. Quell’attività che tutti i programmatori amano detestare e che, puntualmente, viene rimandata a un domani che non arriva mai. Come se esistesse davvero un momento in cui, improvvisamente, avremo quell’ispirazione divina e quella pazienza certosina necessarie per spiegare perché diavolo abbiamo scritto quel blocco di codice incomprensibile tre mesi fa, alle tre di notte, con più caffeina nel sangue che neuroni attivi nel cervello.</p>
-  <p>Ma se vi dicessi che esiste un approccio dove la documentazione non è quel famigerato “male necessario” da fare controvoglia alla fine di un progetto, ma parte integrante, organica e persino <em>piacevole</em> del processo di sviluppo? Se vi dicessi che questo approccio ha più di quarant’anni, ma solo ora sta trovando il suo tempo di gloria? E se vi dicessi che uno strumento gratuito, open-source e sorprendentemente potente può trasformare questo concetto da utopia accademica a pratica quotidiana? Benvenuti nel mondo del literate programming e del suo campione contemporaneo: Org-mode.</p>
-  <h2 id="la-rivoluzione-del-literate-programming-unidea-vecchia-come-il-debugging">La Rivoluzione del Literate Programming: Un’Idea Vecchia Come il Debugging</h2>
-  <p>Il concetto di literate programming nacque nella mente brillante (e leggermente ossessiva) di Donald Knuth negli anni ‘80. Stanco di documentare il suo codice a posteriori – e probabilmente di maledire se stesso per non capire il proprio codice scritto solo pochi giorni prima – Knuth ebbe un’illuminazione: e se, invece di scrivere codice con qualche commento sparso qua e là, scrivessimo un vero e proprio saggio dove il codice è semplicemente parte della narrazione? L’idea era rivoluzionaria: invece di adattare i nostri pensieri all’ordine imposto dal computer, adattiamo il codice all’ordine naturale del pensiero umano. Come se un programmatore potesse finalmente smettere di pensare come una macchina e tornare a pensare come un essere umano (o almeno provarci, dopo anni di condizionamento algoritimico).</p>
-  <p>Questa visione sovversiva del processo di programmazione non ebbe immediatamente il successo che meritava. D’altronde, in un’epoca in cui i programmatori consideravano un lusso avere più di 640KB di memoria, l’idea di “sprecare” risorse preziose per una documentazione dettagliata sembrava quasi un’eresia. “Chi ha bisogno di spiegazioni quando il codice parla da sé?” era il mantra dei puristi. Peccato che il codice “parlasse da sé” come un libro di Finnegans Wake: tecnicamente in inglese, ma comprensibile solo all’autore, e nemmeno sempre. Il risultato? Generazioni di programmatori che hanno passato più tempo a decifrare il codice altrui che a scriverne di nuovo, in un circolo vizioso di bestemmie silenziose e refactoring disperati.</p>
-  <p>La genialità di Knuth stava nel capire che il vero problema non era la documentazione in sé, ma il divorzio innaturale tra codice e spiegazione. Quando scriviamo codice, stiamo in realtà traducendo un pensiero umano, con tutte le sue sfumature e contestualizzazioni, in una serie di istruzioni rigide per una macchina implacabilmente letterale. È come tradurre poesia: se ti limiti a una traduzione parola per parola, perdi l’anima dell’opera. Il literate programming era il tentativo di riconciliare questi due mondi, permettendo al programmatore di esprimere la propria intenzione in un flusso naturale, intrecciando codice e spiegazioni in un unico tessuto narrativo coerente.</p>
-  <h2 id="org-mode-quando-emacs-decise-di-diventare-il-tuo-secondo-cervello">Org-mode: Quando Emacs Decise di Diventare il Tuo Secondo Cervello</h2>
-  <p>Se Knuth ha piantato il seme del literate programming, Org-mode è l’albero maestoso che ne è germogliato nell’ecosistema di Emacs. Per chi non lo sapesse (e vi compatisco, vivete nel buio), Emacs è quell’editor di testo che è cresciuto fino a diventare praticamente un sistema operativo, con la modestia tipica di chi pensa “perché limitarsi a fare una cosa sola quando puoi fare qualunque cosa?”. In questo contesto di megalomaniacità software, Org-mode si è ritagliato il suo spazio come l’implementazione più versatile, elegante e potente del literate programming che sia mai stata creata.</p>
-  <p>A prima vista, Org-mode sembra solo un altro formato di markup, come Markdown per gli hipster o LaTeX per i masochisti accademici. File di testo semplice con simboli speciali che indicano intestazioni, elenchi, enfasi e così via. Ma questa è come descrivere un Ferrari come “una macchina con quattro ruote”. Sotto quella superficie apparentemente semplice si nasconde un mostro di potenza e flessibilità. Org-mode non è solo un modo per formattare testo: è un sistema completo per organizzare pensieri, gestire progetti, prendere appunti, tenere traccia del tempo, eseguire calcoli, pianificare il futuro e, sì, scrivere documenti tecnici che mescolano codice e spiegazioni in modo fluido e naturale.</p>
-  <p>La bellezza di Org-mode come strumento per il literate programming sta nella sua capacità di mantenere il codice “vivo” all’interno del documento. I blocchi di codice non sono semplici citazioni statiche: possono essere eseguiti, modificati, esportati e persino collegati tra loro in modi complessi. Immaginatelo come un notebook Jupyter con steroidi e un dottorato in filosofia. Potete scrivere un blocco di codice Python che genera un grafico, poi un blocco di R che analizza i dati, poi un blocco di shell che crea una directory per salvare i risultati, e tutto questo all’interno di un documento che spiega passo dopo passo cosa state facendo e perché. E il bello è che potete eseguire ciascun blocco individualmente, o eseguirli tutti in sequenza, o esportare solo il codice, o solo le spiegazioni, o entrambi in formati diversi. È come avere un assistente di laboratorio instancabile che capisce esattamente cosa volete fare e lo fa senza lamentarsi (a differenza dei vostri colleghi umani).</p>
-  <p>Org-mode supporta praticamente qualsiasi linguaggio di programmazione possiate immaginare, dal vecchio e venerabile C fino all’ultimo framework JavaScript nato la settimana scorsa che sarà già obsoleto quando finirete di leggere questo articolo. Questa universalità lo rende ideale per progetti complessi che coinvolgono più linguaggi e tecnologie, o per quei momenti in cui volete sperimentare senza dover aprire un nuovo IDE ogni due minuti. È come avere una Swiss Army knife digitale, ma con più lame di quante ne possiate contare e senza il rischio di tagliarvi le dita (metaforicamente parlando, s’intende; le ferite all’ego quando provate a masterizzare Emacs sono un altro discorso).</p>
-  <h2 id="dalla-teoria-alla-pratica-come-org-mode-salva-sanità-mentale-e-progetti">Dalla Teoria alla Pratica: Come Org-mode Salva Sanità Mentale e Progetti</h2>
-  <p>Passiamo ora dalla teoria astratta alla cruda realtà quotidiana di chi lavora con il codice. Come si traduce tutta questa potenza e flessibilità nella vita di un programmatore, analista, ricercatore o blogger tecnico? La risposta è sorprendentemente semplice: Org-mode diventa il punto centrale dove convergono tutte le vostre attività intellettuali, il luogo dove pensieri, codice, dati e pianificazione si fondono in un flusso di lavoro coerente.</p>
-  <p>Prendiamo la scrittura di documenti tecnici, una di quelle attività che la maggior parte dei tecnici affronta con lo stesso entusiasmo con cui andrebbe dal dentista per un’estrazione senza anestesia. Con Org-mode, il processo diventa quasi – oso dire – piacevole. Invece di scrivere prima il codice e poi, con la morte nel cuore, cercare di ricostruire il vostro ragionamento in un documento separato, procedete organicamente: descrivete il problema, delineate l’approccio, scrivete un pezzo di codice, eseguito, commentate i risultati, modificate il codice, rieseguitelo… in un ciclo naturale che riflette il vero processo di sviluppo. Il risultato non è solo un documento più coerente e comprensibile, ma anche un processo di sviluppo più riflessivo e metodico. Vi ritroverete a scrivere codice migliore semplicemente perché siete costretti a spiegarlo mentre lo create.</p>
-  <p>Per gli appunti di riunioni tecniche, poi, Org-mode è una benedizione. Chi non ha mai vissuto l’esperienza di trovarsi, settimane dopo una riunione cruciale, con appunti criptici che sembrano scritti da un’intelligenza aliena in un codice che nemmeno la NSA riuscirebbe a decifrare? “Implementare cosa?”, “Parlare con chi?”, “Perché ho scritto ‘rampino rosso!!!’ con tre punti esclamativi?”. Con Org-mode, i vostri appunti possono includere snippet di codice eseguibili, link a documenti e ticket, liste di TODO con priorità e scadenze, e persino registrazioni audio o screenshot. È come avere un archivista personale che organizza meticolosamente ogni neurone sparato durante le vostre riunioni.</p>
-  <p>Ma è forse nella gestione di un blog tecnico che Org-mode brilla di luce particolare. Io stesso uso Org-mode per il mio blog, dove mescolo riflessioni, tutoriali, snippets e persino la programmazione dei post futuri. La capacità di Org-mode di esportare in praticamente qualsiasi formato (HTML, PDF, LaTeX, Markdown, e persino presentazioni) significa che posso scrivere una volta e pubblicare ovunque. Posso includere grafici generati al volo, equazioni matematiche, codice colourizzato e completamente funzionale, e tutto viene renderizzato perfettamente. È come avere un esercito di assistenti editoriali esperti in ogni aspetto della pubblicazione tecnica, ma senza dover pagare stipendi o sopportare battute sulla vostra dipendenza dalla caffeina.</p>
-  <p>Un aspetto particolarmente sottovalutato di Org-mode è la sua capacità di evolvere con voi. Iniziate con semplici documenti con intestazioni e elenchi. Poi aggiungete qualche snippet di codice. Prima che ve ne accorgiate, state usando tabelle che calcolano automaticamente totali, gestite progetti con dipendenze complesse, tenete traccia del tempo speso su diverse attività, generate grafici con GnuPlot integrato, e vi chiedete come abbiate mai potuto vivere senza. È come un videogioco di strategia dove ogni nuova abilità sbloccata apre possibilità che non sapevate nemmeno di desiderare.</p>
-  <h1 id="conclusioni-un-invito-al-matrimonio-tra-pensiero-e-codice">Conclusioni: Un Invito al Matrimonio tra Pensiero e Codice</h1>
-  <p>Arrivati a questo punto, potreste pensare che io sia solo un altro evangelista di Emacs, uno di quei programmatori barbuti che parlano di editor di testo con lo stesso fervore religioso con cui altri parlano di calcio o politica. E avreste ragione. Ma oltre il fanatismo c’è una verità fondamentale: il literate programming, e strumenti come Org-mode che lo rendono accessibile, rappresentano un cambio di paradigma nel modo in cui interagiamo con il codice e la conoscenza tecnica.</p>
-  <p>Non si tratta solo di avere documentazione migliore (anche se questo, di per sé, salverebbe innumerevoli ore di fatiche e imprecazioni). Si tratta di riconciliare il modo in cui pensiamo naturalmente con il modo in cui programmiamo. Si tratta di riconoscere che il codice è comunicazione: con il computer, certo, ma anche con altri esseri umani e con il nostro io futuro che, vi assicuro, vi odierà profondamente per quel blocco di codice non commentato che sembrava così ovvio alle 2 di notte.</p>
-  <p>Se siete stanchi di saltare tra editor, IDE, wiki, sistemi di gestione progetti e blocchi note, se desiderate un flusso di lavoro più coerente e riflessivo, se volete che la vostra documentazione sia finalmente all’altezza del vostro codice (o viceversa), vi invito a dare una possibilità a Org-mode e al literate programming. Non prometto che sarà facile – nulla che valga la pena lo è mai – ma prometto che cambierà il vostro modo di pensare al rapporto tra codice e comunicazione.</p>
-  <p>E magari, solo magari, la prossima volta che un collega vi chiederà “Come funziona questo codice?”, invece di rispondere con un’alzata di spalle e un vago “Beh, funziona…”, potrete inviargli un documento elegante, completo e comprensibile. E credetemi, nel mondo della programmazione, questo vi renderà più rari e preziosi di un commento utile in un progetto legacy.</p>
-  <p>Ora, se volete scusarmi, devo tornare a configurare Emacs. Ho sentito che c’è un nuovo pacchetto che promette di farmi il caffè mentre formatto automaticamente le mie email. La ricerca della produttività perfetta non finisce mai.</p>
-  <details>
-    <summary>Prompt utilizzato per questo articolo</summary>
-    ciao claude, sei un consulente informatico esperto, un programmatore competente in diversi linguaggi e un software architect. il tuo stile di scrittura lo trovi sul tuo blog https://klez.me e sei una penna tagliente e ironica, con un po' di cinismo che spesso non guasta. Articola bene il discorso, sviluppa l'articolo per una lettura lenta e profonda, di almeno 7-8 minuti, e ricordati lo stile di klez fino alla fine dell'articolo. Inserisci dei capitoli, ma non farli troppo corti, che siano almeno di 100 parole e almeno 4 frasi lunghe, per evitare che siano di intralcio allo scorrere del testo e alla fluidità della lettura. Segui la struttura di tre capitoli al massimo per tutto il testo, più un'introduzione, e delle conclusioni.
-    Un articolo sul literate programming e in particolare su Org-mode.
-    Io lo uso per scrivere documenti tecnici, prendere appunti, e scrivere il mio blog (il più delle volte).
-    Usa questi link come reference.
-    - http://howardism.org/Technical/Emacs/literate-programming-tutorial.html
-    - http://cachestocaches.com/2018/6/org-literate-programming/
-  </details>
-  ]]></content><author><name>kLeZ</name></author><category term="programming" /><category term="emacs" /><category term="org-mode" /><category term="literate-programming" /><summary type="html"><![CDATA[Il literate programming è un approccio alla programmazione che integra codice e documentazione in un unico flusso naturale, permettendo di pensare come esseri umani invece che come macchine. In questo articolo esploro come Org-mode di Emacs rappresenti l’implementazione più elegante e potente di questa filosofia, trasformando la documentazione da faticoso obbligo a parte organica e piacevole del processo di sviluppo.]]></summary></entry></feed>
+    ]]></content><author><name>kLeZ</name></author><category term="società" /><category term="istruzione" /><category term="tasse" /><category term="filosofia" /><category term="quora" /><summary type="html"><![CDATA[]]></summary></entry></feed>
