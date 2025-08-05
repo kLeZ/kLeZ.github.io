@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+    <title>Java: quando il codice racconta 30 anni di errori e rivoluzioni | Alessandro ‘kLeZ’ Accardo personal website</title>
+    <meta name="generator" content="Jekyll v3.9.3" />
+    <meta property="og:title" content="Java: quando il codice racconta 30 anni di errori e rivoluzioni" />
+    <meta name="author" content="kLeZ" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="Oggi voglio raccontarvi una storia. Non una di quelle storie edificanti sui “pionieri visionari” che troviamo nei manuali, ma la storia vera e cruda di come Java sia passato da linguaggio che ti odiava cordialmente a linguaggio che cerca almeno di capirti. È la storia di 30 anni di errori, testardaggine, rivoluzioni silenziose e quello che alla fine si rivela essere il più grande esperimento di ingegneria sociale mai tentato su 9 milioni di programmatori." />
+    <meta property="og:description" content="Oggi voglio raccontarvi una storia. Non una di quelle storie edificanti sui “pionieri visionari” che troviamo nei manuali, ma la storia vera e cruda di come Java sia passato da linguaggio che ti odiava cordialmente a linguaggio che cerca almeno di capirti. È la storia di 30 anni di errori, testardaggine, rivoluzioni silenziose e quello che alla fine si rivela essere il più grande esperimento di ingegneria sociale mai tentato su 9 milioni di programmatori." />
+    <link rel="canonical" href="https://klez.me/2025/08/05/java-quando-il-codice-racconta-30-anni-di-errori-e-rivoluzioni/" />
+    <meta property="og:url" content="https://klez.me/2025/08/05/java-quando-il-codice-racconta-30-anni-di-errori-e-rivoluzioni/" />
+    <meta property="og:site_name" content="Alessandro ‘kLeZ’ Accardo personal website" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2025-08-05T14:43:55+02:00" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="Java: quando il codice racconta 30 anni di errori e rivoluzioni" />
+    <meta name="twitter:site" content="@kLeZhAcK" />
+    <meta name="twitter:creator" content="@kLeZhAcK" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"kLeZ"},"dateModified":"2025-08-05T14:43:55+02:00","datePublished":"2025-08-05T14:43:55+02:00","description":"Oggi voglio raccontarvi una storia. Non una di quelle storie edificanti sui “pionieri visionari” che troviamo nei manuali, ma la storia vera e cruda di come Java sia passato da linguaggio che ti odiava cordialmente a linguaggio che cerca almeno di capirti. È la storia di 30 anni di errori, testardaggine, rivoluzioni silenziose e quello che alla fine si rivela essere il più grande esperimento di ingegneria sociale mai tentato su 9 milioni di programmatori.","headline":"Java: quando il codice racconta 30 anni di errori e rivoluzioni","mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2025/08/05/java-quando-il-codice-racconta-30-anni-di-errori-e-rivoluzioni/"},"url":"https://klez.me/2025/08/05/java-quando-il-codice-racconta-30-anni-di-errori-e-rivoluzioni/"}
+    </script>
+    <!-- End Jekyll SEO tag -->
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/katex/katex.min.css" />
+    <link rel="stylesheet" href="/assets/main.css" />
+    <link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro &apos;kLeZ&apos; Accardo personal website" />
+  </head>
+  <body class="post-page">
+    <header class="masthead" style="background-image: url(/assets/img/home-bg.jpg)">
+      <div class="overlay"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Alessandro 'kLeZ' Accardo personal website</h1>
+              <span class="subheading">This is the personal website of an Italian developer once called 'kLeZ'.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="/">kLeZ</a>
+        <a class="navbar-brand" href="https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml" target="_blank">
+          <img src="https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml/badge.svg?branch=dev" alt="build status badge" />
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/build.html">Build</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/blog">Posts</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">About me <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="/about">About</a>
+                <a class="dropdown-item " href="/contatti">Contatti</a>
+                <a class="dropdown-item " href="/cv">Curriculum Vitae</a>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="https://github.com/kLeZ/kLeZ.github.io">Repository</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Progetti <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
+                <a class="dropdown-item " href="https://klez.me/PassMan">PassMan</a>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/eventi">Eventi</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container-fluid" aria-label="Content">
+      <div class="row">
+        <div class="col-lg-2 col-md-12">
+          <aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
+            <p class="text-muted">
+              This article will take 11 minutes to read.
+            </p>
+          </aside>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <article itemscope itemtype="http://schema.org/BlogPosting">
+            <header>
+              <h2>Java: quando il codice racconta 30 anni di errori e rivoluzioni</h2>
+              <small class="text-muted">Posted on
+                <time datetime="2025-08-05T14:43:55+02:00" itemprop="datePublished">05 Aug 2025</time><span> • by <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
+            </header>
+            <section itemprop="articleBody">
+              <p>Oggi voglio raccontarvi una storia. Non una di quelle storie edificanti sui “pionieri visionari” che troviamo nei manuali, ma la storia vera e cruda di come Java sia passato da linguaggio che ti odiava cordialmente a linguaggio che cerca almeno di capirti. È la storia di 30 anni di errori, testardaggine, rivoluzioni silenziose e quello che alla fine si rivela essere il più grande esperimento di ingegneria sociale mai tentato su 9 milioni di programmatori.</p>
+              <!--more-->
+              <p class="m-0 invisible zero-size">
+                <a class="invisible" id="read-more" href="#">read more</a>
+              </p>
+              <p>Se hai iniziato a programmare in Java dopo il 2010, probabilmente non hai mai visto certe brutture. Se invece hai vissuto Java 1.0, sai quanto male si potesse stare. E se sei come me, che ho iniziato quando Vector era ancora considerato “best practice”, beh… abbiamo visto cose che voi umani non potreste immaginare.</p>
+              <p>Ma diciamo le cose come stanno: Java nasce il 23 gennaio 1996 con un’ossessione malata per la sicurezza. E quando dico malata, intendo proprio patologica. James Gosling e il suo team avevano assistito ai massacri del C++, dove un puntatore sbagliato mandava in crash l’intero sistema, dove la gestione manuale della memoria era come giocare a Russian Roulette bendati, dove il multithreading era una disciplina esoterica per masochisti con tendenze suicide.</p>
+              <p>La loro risposta fu quella che oggi chiameremmo “helicopter parenting” applicato al design di linguaggi: tutto automatico, tutto sicuro, tutto controllato, tutto deciso per te. Non ci fidiamo di te neanche a respirare da solo.</p>
+              <p>Ecco perché Vector e Hashtable erano sincronizzati per default. Non era una scelta tecnica, era una dichiarazione filosofica: “Il multithreading è così pericoloso che lo rendiamo obbligatorio ovunque, anche quando non serve”. Il fatto che questo rallentasse anche le applicazioni single-thread era considerato un prezzo accettabile per la sicurezza. I progettisti di Sun avevano una visione apocalittica del futuro: ogni applicazione sarebbe stata multi-thread, ogni oggetto sarebbe stato condiviso, ogni accesso concorrente sarebbe stato una potenziale catastrofe.</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nc">Vector</span> <span class="n">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Vector</span><span class="o">();</span>
+<span class="n">items</span><span class="o">.</span><span class="na">addElement</span><span class="o">(</span><span class="s">"item1"</span><span class="o">);</span>
+<span class="n">items</span><span class="o">.</span><span class="na">addElement</span><span class="o">(</span><span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">42</span><span class="o">));</span> <span class="c1">// Mix di tipi? Normale all'epoca</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">items</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="nc">Object</span> <span class="n">item</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="na">elementAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span> <span class="c1">// Tutto è Object</span>
+    <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">item</span><span class="o">;</span> <span class="c1">// Preghiera e cast</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Questo codice incarnava perfettamente la filosofia Java 1.0: paternalismo tecnologico allo stato puro. Non potevi scegliere il tipo di sincronizzazione, non potevi evitare i cast, non potevi nemmeno fidarti che un elemento di una collezione fosse del tipo che pensavi. Java decideva per te, sempre.</p>
+              <p>E poi c’era Date. Madonna santa, la classe Date. Se devo nominare l’API più odiosa mai partorita dalla mente umana, Date di Java 1.0 vince a mani basse. Era come se l’avessero progettata apposta per farti bestemmiare in lingue che non sapevi neanche di conoscere:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nc">Date</span> <span class="n">christmas</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">();</span>
+<span class="n">christmas</span><span class="o">.</span><span class="na">setYear</span><span class="o">(</span><span class="mi">2023</span> <span class="o">-</span> <span class="mi">1900</span><span class="o">);</span> <span class="c1">// Perché -1900? Perché MAGIA!</span>
+<span class="n">christmas</span><span class="o">.</span><span class="na">setMonth</span><span class="o">(</span><span class="mi">11</span><span class="o">);</span> <span class="c1">// Dicembre è 11, non 12. Logico, no?</span>
+<span class="n">christmas</span><span class="o">.</span><span class="na">setDate</span><span class="o">(</span><span class="mi">25</span><span class="o">);</span> <span class="c1">// Ma il giorno è 1-based. Coerenza? Mai sentita.</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Ogni volta che vedevo questo codice, una parte della mia anima moriva. Date era mutabile (quindi poteva essere modificata alle tue spalle), SimpleDateFormat non era thread-safe (quindi condividerlo tra thread era come giocare alla roulette russa), ed entrambi sembravano progettati da qualcuno che odiava profondamente sia il tempo che l’umanità.</p>
+              <p>Il garbage collector Serial di Java 1.0 seguiva la stessa logica del “papà sa meglio”: “La gestione della memoria è troppo complicata per voi mortali, quindi la facciamo noi. Non importa se fermiamo tutto per secondi interi, almeno non avrete memory leak”. Era la filosofia del “meglio paralizzato che morto”, portata all’estremo del ridicolo.</p>
+              <p>Ma già con Java 1.2, iniziarono a emergere le prime crepe in questa muraglia paternalistica. Le Collection Framework introdussero ArrayList e HashMap non sincronizzati, affiancati da Collections.synchronizedList() per quando la sincronizzazione serviva davvero. Era un piccolo passo per il codice, ma un grande passo per l’umanità dei programmatori: per la prima volta, Java ammetteva che il programmatore potesse essere abbastanza intelligente da scegliere.</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nc">List</span> <span class="n">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">();</span> <span class="c1">// Scelta: velocità</span>
+<span class="nc">List</span> <span class="n">safeItems</span> <span class="o">=</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">synchronizedList</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">());</span> <span class="c1">// Scelta: sicurezza</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Questa non era solo una questione di prestazioni. Era l’inizio di un nuovo contratto sociale tra linguaggio e programmatore: “Ti diamo gli strumenti, tu scegli come usarli”. Il gruppo di sviluppo stava iniziando a capire che la flessibilità era più importante della protezione totale.</p>
+              <p>Il Parallel GC che arrivò con Java 1.2 rifletteva lo stesso cambio di mentalità. Invece di imporre una strategia unica di garbage collection, iniziarono a sperimentare con approcci diversi. Era l’ammissione implicita che il Serial GC non era la soluzione universale che avevano immaginato.</p>
+              <p>Con Java 1.4 e NIO, assistiamo al primo vero atto di fiducia verso il programmatore. L’I/O non bloccante era complesso come assemblare un mobile IKEA senza istruzioni, ostico come una conversazione con l’ex, pieno di insidie come un campo minato:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nc">Selector</span> <span class="n">selector</span> <span class="o">=</span> <span class="nc">Selector</span><span class="o">.</span><span class="na">open</span><span class="o">();</span>
+<span class="nc">SocketChannel</span> <span class="n">channel</span> <span class="o">=</span> <span class="nc">SocketChannel</span><span class="o">.</span><span class="na">open</span><span class="o">();</span>
+<span class="n">channel</span><span class="o">.</span><span class="na">configureBlocking</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+<span class="n">channel</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">selector</span><span class="o">,</span> <span class="nc">SelectionKey</span><span class="o">.</span><span class="na">OP_READ</span><span class="o">);</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Questo codice era l’antitesi totale della filosofia Java 1.0. Era complesso, richiedeva comprensione profonda, poteva facilmente essere usato male. Ma i progettisti lo inclusero comunque, perché stavano iniziando a capire una cosa fondamentale: nascondere la complessità sotto il tappeto non la elimina, la sposta solo nel posto più scomodo possibile.</p>
+              <p>E poi arrivò la vera rivoluzione filosofica con Java 5. I generics non erano solo una funzionalità tecnica, erano una dichiarazione di guerra al paternalismo: “Ci fidiamo di voi abbastanza da darvi un sistema di tipi più sofisticato”. Era l’ammissione che i programmatori potevano gestire la complessità aggiuntiva in cambio di maggiore sicurezza e espressività.</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+<span class="c1">// Il programmatore dichiara l'intenzione, il compilatore la verifica</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Il passaggio da cast runtime a controlli compile-time rappresentava un cambio filosofico più profondo di una crisi di mezza età: da “proteggiamo il programmatore nascondendo i problemi sotto il materasso” a “aiutiamo il programmatore a identificare i problemi prima che facciano danni”. Era la nascita di una collaborazione vera tra linguaggio e sviluppatore, come Batman e Robin, ma senza i mutandoni.</p>
+              <p>Le annotazioni di Java 5 portarono questa filosofia ancora più avanti. Invece di nascondere metadati nel codice o in file esterni, li esponevano direttamente:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="s">"Person"</span><span class="o">;</span> <span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Era un’ammissione che il programmatore non solo poteva gestire metadati espliciti, ma che questi potevano rendere il codice più chiaro e verificabile. Le annotazioni trasformarono Java da linguaggio che nascondeva l’intenzione a linguaggio che la celebrava.</p>
+              <p>Gli enum di Java 5 demolirono il modello “typesafe enum” che tutti usavamo, sostituendolo con una soluzione nativa. Ma la vera lezione non era tecnica: era che il linguaggio poteva e doveva imparare dalle convenzioni della comunità, codificandole invece di ignorarle.</p>
+              <p>Il periodo Java 6-7 fu di consolidamento, ma le poche novità mostravano una tendenza chiara come l’acqua di montagna. Il try-with-resources di Java 7 era l’esempio perfetto di come la filosofia fosse cambiata da “paternalismo tossico” a “collaborazione intelligente”:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="k">try</span> <span class="o">(</span><span class="nc">BufferedReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">FileReader</span><span class="o">(</span><span class="s">"file.txt"</span><span class="o">)))</span> <span class="o">{</span>
+    <span class="c1">// Il compilatore si occupa della chiusura automatica</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Non era paternalismo (“non ci fidiamo a lasciarti gestire le risorse perché sei un idiota”) ma collaborazione (“ti diamo uno strumento che rende impossibile dimenticare di chiudere le risorse perché siamo tutti umani”). La differenza è sottile come un filo di ragno ma fondamentale come l’ossigeno: non toglieva controllo al programmatore, gli dava un modo migliore di esprimere l’intenzione.</p>
+              <p>Java 8 rappresentò la rottura definitiva con la filosofia originale. L’introduzione della programmazione funzionale non era solo un’aggiunta di funzionalità, era un’ammissione che il paradigma object-oriented puro non era sufficiente per tutti i problemi. Era Java che diceva: “Abbiamo sbagliato a pensare che tutto dovesse essere un oggetto”.</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">person</span> <span class="o">-&gt;</span> <span class="n">person</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">person</span> <span class="o">-&gt;</span> <span class="n">person</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">toUpperCase</span><span class="o">())</span>
+    <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Gli stream rappresentavano un cambio di paradigma da imperativo a dichiarativo, da “come fare” a “cosa fare”. Ma più profondamente, rappresentavano la fiducia che i programmatori potessero gestire un modello mentale più astratto in cambio di codice più espressivo.</p>
+              <p>Optional fu ancora più rivoluzionario dal punto di vista filosofico, tipo la scoperta che la Terra non è piatta:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">getCustomerCity</span><span class="o">(</span><span class="nc">Long</span> <span class="n">customerId</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">customerRepository</span><span class="o">.</span><span class="na">findById</span><span class="o">(</span><span class="n">customerId</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Customer:</span><span class="o">:</span><span class="n">getAddress</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Address:</span><span class="o">:</span><span class="n">getCity</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Era l’ammissione che nascondere la possibilità di valori null era stato un errore colossale, come nascondere le chiavi dell’auto a un adolescente. Invece di “proteggere” il programmatore dai null, Optional li rendeva espliciti e gestibili. Era un perfetto esempio della nuova filosofia: collaborazione trasparente invece di protezione opaca.</p>
+              <p>Le lambda di Java 8 completarono questa trasformazione meglio di un makeover televisivo. Permettere funzioni come cittadini di prima classe significava abbandonare completamente l’ortodossia object-oriented originale. Era Java che ammetteva: “I paradigmi sono strumenti, non religioni. E noi non siamo più fondamentalisti”.</p>
+              <p>Nel frattempo, l’evoluzione dei garbage collector rifletteva lo stesso cambio di mentalità. Da un GC unico e universale (“una taglia va bene per tutti, come i cappelli da baseball”), si passò a un ecosistema di GC specializzati: G1 per bassa latenza, Parallel per velocità di elaborazione pura, CMS per reattività. Era l’ammissione che non esiste una soluzione perfetta per tutti i casi d’uso, come non esiste una scarpa perfetta per tutti i piedi.</p>
+              <p>Java 9 e il Project Jigsaw rappresentarono forse il tentativo più ambizioso (e coraggioso) di applicare la nuova filosofia. I moduli erano un sistema complesso come una centrale nucleare, potente come un reattore a fusione, che richiedeva comprensione profonda:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="n">module</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">myapp</span> <span class="o">{</span>
+    <span class="n">requires</span> <span class="n">java</span><span class="o">.</span><span class="na">base</span><span class="o">;</span>
+    <span class="n">exports</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">myapp</span><span class="o">.</span><span class="na">api</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Era Java che diceva: “Vi diamo un sistema di modularità di livello enterprise, anche se è complesso da imparare come il cinese mandarino e vi farà bestemmiare in ostrogoto”. Il fatto che molti sviluppatori l’abbiano ignorato come un parente fastidioso non cambia la filosofia sottostante: meglio dare strumenti potenti che possono essere ignorati, che non darli affatto e lamentarsi dopo.</p>
+              <p>Con i moduli arrivarono anche gli strumenti per creare distribuzioni personalizzate. jlink permetteva di costruire runtime Java su misura, contenenti solo i moduli necessari:</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>jlink <span class="nt">--module-path</span> <span class="nv">$JAVA_HOME</span>/jmods:myapp.jar <span class="se">\</span>
+      <span class="nt">--add-modules</span> com.example.myapp <span class="se">\</span>
+      <span class="nt">--output</span> myapp-runtime
+</code></pre>
+                </div>
+              </div>
+              <p>Era l’ammissione finale che Java monolitico non era sempre la risposta giusta. Meglio dare la possibilità di personalizzare che imporre una soluzione universale.</p>
+              <p>L’introduzione di var in Java 10 fu quasi simbolica. Era l’ammissione finale che la verbosità non era sinonimo di chiarezza:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="kt">var</span> <span class="n">complexMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;();</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Per un linguaggio nato con l’ossessione della dichiaratività esplicita, permettere l’inferenza di tipo era una rivoluzione. Era Java che finalmente diceva: “Ci fidiamo di voi abbastanza da lasciare che il compilatore deduca ciò che è ovvio”.</p>
+              <p>Java 11 consolidò molte di queste idee, aggiungendo strumenti più moderni come HttpClient:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nc">HttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="nc">HttpClient</span><span class="o">.</span><span class="na">newHttpClient</span><span class="o">();</span>
+<span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">send</span><span class="o">(</span>
+    <span class="nc">HttpRequest</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">().</span><span class="na">uri</span><span class="o">(</span><span class="no">URI</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">"https://api.example.com"</span><span class="o">)).</span><span class="na">build</span><span class="o">(),</span>
+    <span class="nc">HttpResponse</span><span class="o">.</span><span class="na">BodyHandlers</span><span class="o">.</span><span class="na">ofString</span><span class="o">()</span>
+<span class="o">);</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Non era solo un’API migliore, era l’ammissione che le API originali di Java erano inadeguate per il mondo moderno. Era Java che diceva: “Sbagliamo, impariamo, miglioriamo”.</p>
+              <p>Le switch expression di Java 12-13 continuarono questa tendenza:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">switch</span> <span class="o">(</span><span class="n">day</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="no">MONDAY</span><span class="o">,</span> <span class="no">FRIDAY</span> <span class="o">-&gt;</span> <span class="s">"Giorno intenso"</span><span class="o">;</span>
+    <span class="k">case</span> <span class="no">TUESDAY</span> <span class="o">-&gt;</span> <span class="s">"Giorno tranquillo"</span><span class="o">;</span>
+    <span class="k">default</span> <span class="o">-&gt;</span> <span class="s">"Giorno normale"</span><span class="o">;</span>
+<span class="o">};</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Più concise, meno soggette a errori (niente break dimenticati), più funzionali. Era l’evoluzione naturale del pensiero “collaboriamo con il programmatore invece di costringerlo a verbosità inutile”.</p>
+              <p>I text block di Java 13 eliminarono anni di frustrazione con le stringhe multi-riga:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nc">String</span> <span class="n">json</span> <span class="o">=</span> <span class="s">"""
+    {
+      "</span><span class="n">name</span><span class="s">": "</span><span class="nc">John</span><span class="s">",
+      "</span><span class="n">age</span><span class="s">": 30
+    }
+    """</span><span class="o">;</span>
+</code></pre>
+                </div>
+              </div>
+              <p>JSON, SQL, HTML finalmente leggibili nel codice. Era l’ammissione che la sintassi delle stringhe di Java 1.0 era inadeguata per il mondo moderno.</p>
+              <p>I record di Java 14 completarono un altro cerchio filosofico. Java era nato con l’idea che tutto dovesse essere un oggetto complesso con comportamenti. I record ammettevano che a volte i dati sono semplicemente dati:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="n">record</span> <span class="nf">Person</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="nc">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Era l’abbandono del dogma “tutto deve avere metodi” in favore di un approccio più pragmatico: i dati sono importanti quanto i comportamenti, e meritano rappresentazioni dedicate.</p>
+              <p>Le sealed class di Java 17 rappresentarono un altro tipo di fiducia nel programmatore. Invece di nascondere le gerarchie di tipi, le rendevano esplicite e controllabili:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="n">sealed</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Shape</span> <span class="n">permits</span> <span class="nc">Circle</span><span class="o">,</span> <span class="nc">Rectangle</span> <span class="o">{</span>
+    <span class="c1">// Il programmatore dichiara esplicitamente tutte le implementazioni possibili</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Era Java che diceva: “Vi diamo il controllo totale sulla vostra gerarchia di tipi, e confidiamo nel fatto che lo userete saggiamente”.</p>
+              <p>Nel frattempo, la guerra dei garbage collector si intensificava. Shenandoah di Red Hat prometteva pause sub-millisecondo:</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>java <span class="nt">-XX</span>:+UseShenandoahGC MyApp
+<span class="c"># Pause GC &lt; 1ms, indipendentemente dalla dimensione dell'heap</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Oracle rispose con ZGC, ancora più aggressivo:</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>java <span class="nt">-XX</span>:+UseZGC MyApp
+<span class="c"># Pause &lt; 10ms, heap fino a 16TB</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Era la competizione a portare benefici: invece di un garbage collector unico imposto dall’alto, c’era scelta basata sulle necessità specifiche.</p>
+              <p>I virtual thread di Java 19 rappresentano forse l’esempio più perfetto della nuova filosofia Java, come la sintesi perfetta di una sinfonia. Invece di costringere i programmatori a scegliere tra semplicità (thread platform) e scalabilità (programmazione asincrona da mal di testa), offrono entrambe come un buffet all-you-can-eat:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="k">try</span> <span class="o">(</span><span class="kt">var</span> <span class="n">executor</span> <span class="o">=</span> <span class="nc">Executors</span><span class="o">.</span><span class="na">newVirtualThreadPerTaskExecutor</span><span class="o">())</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">executor</span><span class="o">.</span><span class="na">submit</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="nc">Duration</span><span class="o">.</span><span class="na">ofSeconds</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+                <span class="c1">// Codice sincrono che scala come asincrono, magia pura</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">interrupt</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>È la sintesi perfetta di 30 anni di evoluzione: uno strumento potente che non sacrifica la semplicità, che collabora con il programmatore invece di sostituirsi a lui come un genitore invadente.</p>
+              <p>Il pattern matching moderno chiude il cerchio iniziato con i cast del terrore di Java 1.0:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="k">return</span> <span class="k">switch</span> <span class="o">(</span><span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">String</span> <span class="n">s</span> <span class="o">-&gt;</span> <span class="s">"String of length "</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>
+    <span class="k">case</span> <span class="nc">Integer</span> <span class="n">i</span> <span class="o">-&gt;</span> <span class="s">"Integer with value "</span> <span class="o">+</span> <span class="n">i</span><span class="o">;</span>
+    <span class="k">case</span> <span class="kc">null</span> <span class="o">-&gt;</span> <span class="s">"null value"</span><span class="o">;</span>
+    <span class="k">default</span> <span class="o">-&gt;</span> <span class="s">"Unknown type"</span><span class="o">;</span>
+<span class="o">};</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Da cast manuali e madonne a pattern matching che non sbaglia mai. È la differenza tra “non ci fidiamo neanche a farti scegliere i calzini” e “ecco gli strumenti giusti, facci vedere cosa sai fare”.</p>
+              <p>L’evoluzione degli strumenti di sviluppo riflette la stessa filosofia. Da javac spartano che dava errori criptici, siamo passati a IDE intelligenti che predicono l’intenzione del programmatore. Da JUnit con ereditarietà obbligatoria a framework basati su annotazioni che rispettano la struttura del tuo codice:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="c1">// JUnit 3 - ereditarietà forzata</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyTest</span> <span class="kd">extends</span> <span class="nc">TestCase</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSomething</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="s">"expected"</span><span class="o">,</span> <span class="n">actual</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// JUnit 4+ - annotazioni collaborative</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyTest</span> <span class="o">{</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSomething</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="s">"expected"</span><span class="o">,</span> <span class="n">actual</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Persino l’ecosistema più ampio riflette questo cambio. Maven standardizzò il processo di build ma lasciò flessibilità nella configurazione. Gradle andò oltre, rendendo il processo di build stesso programmabile. Spring Boot automatizzò la configurazione ma lasciò tutti i punti di estensione necessari:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nd">@RestController</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloController</span> <span class="o">{</span>
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/hello"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">hello</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"Hello World"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Un’annotazione e hai un web server. Nel 2000 servivano 50 righe di XML e 3 file war.</p>
+              <p>I garbage collector moderni come ZGC e Shenandoah rappresentano l’apice di questa evoluzione: pause sub-millisecondo anche con heap multi-terabyte, senza richiedere cambiamenti al codice applicativo. È la collaborazione perfetta: la JVM si occupa di prestazioni estreme, il programmatore si concentra sulla logica di business.</p>
+              <p>Ma il futuro è già qui, e stavolta è vero (non come quando ce lo dicevano nel 2000). Le Foreign Function &amp; Memory API, dopo anni di sviluppo come Project Panama e più preview di un film Marvel, sono diventate stabili con Java 22 nel marzo 2024. Non sono più preview, sono production-ready come un panettone a Natale:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="c1">// Java 22+ - FFM API finalmente adulta</span>
+<span class="nc">Linker</span> <span class="n">linker</span> <span class="o">=</span> <span class="nc">Linker</span><span class="o">.</span><span class="na">nativeLinker</span><span class="o">();</span>
+<span class="nc">SymbolLookup</span> <span class="n">stdlib</span> <span class="o">=</span> <span class="n">linker</span><span class="o">.</span><span class="na">defaultLookup</span><span class="o">();</span>
+<span class="nc">MemorySegment</span> <span class="n">strlenAddress</span> <span class="o">=</span> <span class="n">stdlib</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="s">"strlen"</span><span class="o">).</span><span class="na">orElseThrow</span><span class="o">();</span>
+
+<span class="nc">FunctionDescriptor</span> <span class="n">descriptor</span> <span class="o">=</span> <span class="nc">FunctionDescriptor</span><span class="o">.</span><span class="na">of</span><span class="o">(</span>
+    <span class="nc">ValueLayout</span><span class="o">.</span><span class="na">JAVA_LONG</span><span class="o">,</span> 
+    <span class="nc">ValueLayout</span><span class="o">.</span><span class="na">ADDRESS</span>
+<span class="o">);</span>
+<span class="nc">MethodHandle</span> <span class="n">strlen</span> <span class="o">=</span> <span class="n">linker</span><span class="o">.</span><span class="na">downcallHandle</span><span class="o">(</span><span class="n">strlenAddress</span><span class="o">,</span> <span class="n">descriptor</span><span class="o">);</span>
+
+<span class="k">try</span> <span class="o">(</span><span class="nc">Arena</span> <span class="n">offHeap</span> <span class="o">=</span> <span class="nc">Arena</span><span class="o">.</span><span class="na">ofConfined</span><span class="o">())</span> <span class="o">{</span>
+    <span class="nc">MemorySegment</span> <span class="n">str</span> <span class="o">=</span> <span class="n">offHeap</span><span class="o">.</span><span class="na">allocateUtf8String</span><span class="o">(</span><span class="s">"Hello FFM!"</span><span class="o">);</span>
+    <span class="kt">long</span> <span class="n">len</span> <span class="o">=</span> <span class="o">(</span><span class="kt">long</span><span class="o">)</span> <span class="n">strlen</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Length: "</span> <span class="o">+</span> <span class="n">len</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>È l’integrazione perfetta di sicurezza e potenza: accesso diretto al codice nativo, gestione automatica della memoria con Arena, prestazioni 4-5 volte superiori a JNI. È Java che finalmente dice: “Ti diamo il controllo totale, ma con tutti i guard rail necessari. Divertiti ma non farti male”.</p>
+              <p>Java 24, uscito proprio questo marzo 2025, porta questa filosofia a livelli che sarebbero sembrati fantascienza nel 1995. Con i suoi 24 JEP (un record che nemmeno i Pearl Jam!), rappresenta il culmine di anni di evoluzione. I virtual thread finalmente non si bloccano più sui synchronized - il problema del “pinning” è stato risolto come si risolve un Cubo di Rubik: con pazienza, ingegno e parecchie bestemmie (probabilmente):</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="c1">// Java 24 - virtual threads liberi finalmente!</span>
+<span class="k">try</span> <span class="o">(</span><span class="kt">var</span> <span class="n">executor</span> <span class="o">=</span> <span class="nc">Executors</span><span class="o">.</span><span class="na">newVirtualThreadPerTaskExecutor</span><span class="o">())</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1000000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">executor</span><span class="o">.</span><span class="na">submit</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="kd">synchronized</span> <span class="o">(</span><span class="n">sharedResource</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Prima il thread platform si bloccava, ora è libero!</span>
+                <span class="n">doBlockingIO</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>La Stream Gatherers API è finalmente stabile, e puoi scrivere operazioni stream custom che prima richiedevano la laurea in contorsionismo mentale:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="c1">// Java 24 - stream operations su misura</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">stream</span>
+    <span class="o">.</span><span class="na">gather</span><span class="o">(</span><span class="n">windowFixed</span><span class="o">(</span><span class="mi">3</span><span class="o">))</span> <span class="c1">// Finestre di 3 elementi</span>
+    <span class="o">.</span><span class="na">gather</span><span class="o">(</span><span class="n">scan</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Integer:</span><span class="o">:</span><span class="n">sum</span><span class="o">))</span> <span class="c1">// Somma cumulativa</span>
+    <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">String:</span><span class="o">:</span><span class="n">valueOf</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">toList</span><span class="o">();</span>
+</code></pre>
+                </div>
+              </div>
+              <p>E poi ci sono i Compact Object Headers che riducono l’overhead di memoria da 12 a 8 byte per oggetto. Sembra poco, ma per applicazioni con milioni di oggetti è come passare da un SUV a una bicicletta in termini di consumo.</p>
+              <p>Il supporto per crittografia quantistica-resistente con ML-KEM e ML-DSA prepara Java per un futuro dove i computer quantistici renderanno obsoleta la crittografia attuale. È Java che anticipa problemi che ancora non abbiamo.</p>
+              <p>E Java 25, il prossimo LTS in arrivo a settembre 2025? Sarà a pochi mesi dal vero trentesimo compleanno (23 gennaio 2026 - data che per me ha un significato speciale oltre a Java), e promette di essere una celebrazione degna. Il pattern matching finalmente funzionerà con i tipi primitivi:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="c1">// Java 25 - pattern matching con primitivi</span>
+<span class="kd">static</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(</span><span class="nc">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">switch</span> <span class="o">(</span><span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="kt">int</span> <span class="n">i</span> <span class="n">when</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Positive int: "</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="k">case</span> <span class="kt">double</span> <span class="n">d</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Double: "</span> <span class="o">+</span> <span class="n">d</span><span class="o">);</span>
+        <span class="k">case</span> <span class="nc">String</span> <span class="n">s</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"String: "</span> <span class="o">+</span> <span class="n">s</span><span class="o">);</span>
+        <span class="k">default</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Something else"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Le module import declarations semplificheranno la gestione delle dipendenze:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="c1">// Java 25 - import di moduli completi</span>
+<span class="kn">import</span> <span class="nn">module</span> <span class="n">java</span><span class="o">.</span><span class="na">base</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">module</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">;</span>
+<span class="c1">// Tutto il contenuto del modulo disponibile</span>
+</code></pre>
+                </div>
+              </div>
+              <p>I file sorgente semplificati permetteranno finalmente di scrivere script Java senza classi (finalmente Java-Script <em>done right</em>):</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="c1">// Java 25 - script senza classi</span>
+<span class="kt">void</span> <span class="nf">main</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello Java 30th anniversary!"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+                </div>
+              </div>
+              <p>È Java che ammette: “Non tutto deve essere enterprise-grade. A volte serve solo semplicità”.</p>
+              <p>E all’orizzonte c’è Project Valhalla con i value types, che promettono di rivoluzionare ancora una volta le prestazioni:</p>
+              <div class="language-java highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="c1">// Project Valhalla - futuro</span>
+<span class="kd">public</span> <span class="n">value</span> <span class="kd">class</span> <span class="nc">Point</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">Point</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// Array di value types - nessun overhead di oggetti</span>
+<span class="nc">Point</span><span class="o">[]</span> <span class="n">points</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">[</span><span class="mi">1000000</span><span class="o">];</span> <span class="c1">// Packed in memoria, prestazioni native</span>
+</code></pre>
+                </div>
+              </div>
+              <p>Sarà l’ultimo tassello: oggetti senza identità ma con prestazioni estreme, array densi come in C ma con la sicurezza di Java.</p>
+              <p>Quello che mi colpisce di più guardando questo percorso dal 1996 al 2025 è quanto sia stata inconsapevole per molto tempo questa evoluzione. I progettisti di Java non si sono svegliati una mattina decidendo di cambiare filosofia. È stato un processo graduale, guidato dai riscontri della comunità, dai limiti dei paradigmi esistenti, dalle necessità del mondo reale.</p>
+              <p>Ogni funzionalità aggiunta, ogni paradigma introdotto, ogni strumento migliorato ha seguito lo stesso modello: identificare dove la protezione paternalistica limitava più di quanto aiutasse, e sostituirla con strumenti collaborativi più potenti. Da Vector sincronizzato ad ArrayList con scelta di sincronizzazione. Da cast ciechi a generics verificati. Da cicli imperativi a stream dichiarativi. Da thread costosi a virtual thread scalabili. Da JNI pericolosa a FFM API sicura.</p>
+              <p>Java 2025 è un linguaggio che si fida del programmatore. Non perfettamente, non sempre, ma infinitamente di più del Java 1996. È un linguaggio che dice: “Ti diamo strumenti potenti, tu decidi come usarli”. È un linguaggio che preferisce dare scelte anche complesse piuttosto che imporre semplificazioni artificiali.</p>
+              <p>La lezione più grande di questi 30 anni non è tecnica, è filosofica: i linguaggi migliori non sono quelli che proteggono i programmatori dai loro errori, ma quelli che li aiutano a non commetterli. Non sono quelli che nascondono la complessità, ma quelli che la rendono gestibile. Non sono quelli che impongono paradigmi, ma quelli che offrono gli strumenti giusti per ogni problema.</p>
+              <p>Java ha imparato questa lezione lentamente, a volte dolorosamente, ma l’ha imparata. E continua a impararla. Ogni nuova versione è un passo ulteriore verso un linguaggio che non ti tratta come un bambino pericoloso, ma come un professionista capace. È stata una lunga strada da Vector a virtual thread, da Date a LocalDate, da JNI a FFM API, ma ne è valsa la pena.</p>
+              <p>Guardando questa evoluzione trentennale, mi viene in mente una riflessione che sintetizza perfettamente quello che Java è diventato:</p>
+              <div class="premonition citation">
+                <div class="fas fa-quote-left"></div>
+                <blockquote class="content blockquote">
+                  <p>Java dovrebbe rendere l’impossibile possibile, il difficile fattibile, il fattibile semplice e il semplice ovvio.</p>
+                  <footer class="blockquote-footer"><cite title="kLeZ">kLeZ</cite></footer>
+                </blockquote>
+              </div>
+              <p>Ed è esattamente quello che è successo: dai cast impossibili da verificare ai generics sicuri, dal multithreading difficile ai virtual thread scalabili, dalla gestione delle date faticosa a LocalDate intuitivo, dalla verbosità ovvia alla concisione moderna.</p>
+              <p>E la cosa più bella? La storia non è finita. Java 25 sarà LTS, ma Java 26, 27, 28 continueranno a evolvere. Project Valhalla arriverà, nuovi paradigmi emergeranno, nuovi problemi saranno risolti. Perché alla fine, Java non è solo un linguaggio di programmazione: è un ecosistema che cresce, impara e si adatta. È un linguaggio che ha 30 anni ma pensa ancora al futuro.</p>
+            </section>
+            <a href="/2025/08/05/java-quando-il-codice-racconta-30-anni-di-errori-e-rivoluzioni/" hidden></a>
+          </article>
+        </div>
+        <div class="col-lg-2 col-md-12">
+        </div>
+      </div>
+      <div class="row justify-content-end text-right">
+        <div class="col-6">
+          <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page" href="#">
+            <i class="fa fa-5x fa-chevron-up"></i>
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer bg-light w-100 py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a rel="me" href="https://github.com/kLeZ">
+                  <i class="svg-icon fab fa-github"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://twitter.com/kLeZhAcK">
+                  <i class="svg-icon fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://mastodon.uno/web/@klez">
+                  <i class="svg-icon fab fa-mastodon"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://www.linkedin.com/in/alessandroaccardo">
+                  <i class="svg-icon fab fa-linkedin"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://telegram.me/julius8774">
+                  <i class="svg-icon fab fa-telegram"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="/feed.xml">
+                  <i class="svg-icon fa fa-rss"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="mailto:klez@pm.me">
+                  <i class="svg-icon fa fa-envelope"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-left">
+            <small class="text-muted">Last build on <time datetime="2025-08-05T15:08:48+02:00">Tue, 05 Aug 2025 15:08:48 +0200</time></small>
+          </div>
+          <div class="col text-right">
+            <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />
+            <small class="text-muted">
+              This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+            </small>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="/assets/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/assets/popper/popper.min.js"></script>
+    <script src="/assets/popper/tooltip.min.js"></script>
+    <script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/assets/fontawesome-free/js/all.min.js"></script>
+    <script src="/assets/main.js"></script><script data-goatcounter="https://klez.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+    <noscript>
+      <img src="https://klez.goatcounter.com/count?rnd&p=https://klez.me/2025/08/05/java-quando-il-codice-racconta-30-anni-di-errori-e-rivoluzioni/&t=Java:%20quando%20il%20codice%20racconta%2030%20anni%20di%20errori%20e%20rivoluzioni" alt="goat-counter" />
+    </noscript>
+  </body>
+</html>
