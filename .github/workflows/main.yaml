@@ -21,6 +21,7 @@ on:
     paths-ignore:
       - "LICENSE"
       - "README.md"
+  workflow_dispatch:
 
 env:
   RUBY_VERSION: 3.2.0
