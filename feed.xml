@@ -1,114 +1,225 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="https://klez.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://klez.me/" rel="alternate" type="text/html" /><updated>2025-08-06T20:21:44+02:00</updated><id>https://klez.me/feed.xml</id><title type="html">Alessandro ‘kLeZ’ Accardo personal website</title><subtitle>This is the personal website of an Italian developer once called &apos;kLeZ&apos;.</subtitle><entry><title type="html">Bufala del “Silenzio Digitale per Gaza”</title><link href="https://klez.me/2025/08/06/bufala-del-silenzio-digitale-per-gaza/" rel="alternate" type="text/html" title="Bufala del “Silenzio Digitale per Gaza”" /><published>2025-08-06T20:15:17+02:00</published><updated>2025-08-06T20:15:17+02:00</updated><id>https://klez.me/2025/08/06/bufala-del-silenzio-digitale-per-gaza</id><content type="html" xml:base="https://klez.me/2025/08/06/bufala-del-silenzio-digitale-per-gaza/"><![CDATA[<p>Eccoci qui. È la terza volta da maggio che mi arriva questo benedetto messaggio WhatsApp sul “silenzio digitale per Gaza” nella chat di famiglia. La terza. Maggio, luglio, e ora di nuovo. Ogni volta devo sprecare mezz’ora a spiegare perché è una bufala colossale, e ogni volta mi sento rispondere “eh ma alla fine qualcosa fai, anche se poco, meglio di niente”.</p>
-      <p>No. Non fai poco, fai <strong>NIENTE</strong>. Statisticamente irrilevante. Come se gli algoritmi dovessero andare in crash ogni volta che 1,4 miliardi di indiani vanno a dormire la sera.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="https://klez.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://klez.me/" rel="alternate" type="text/html" /><updated>2026-02-03T14:42:49+01:00</updated><id>https://klez.me/feed.xml</id><title type="html">Alessandro ‘kLeZ’ Accardo personal website</title><subtitle>This is the personal website of an Italian developer once called &apos;kLeZ&apos;.</subtitle><entry><title type="html">Il software che non puoi smontare</title><link href="https://klez.me/2026/02/03/il-software-che-non-puoi-smontare/" rel="alternate" type="text/html" title="Il software che non puoi smontare" /><published>2026-02-03T13:37:42+01:00</published><updated>2026-02-03T13:37:42+01:00</updated><id>https://klez.me/2026/02/03/il-software-che-non-puoi-smontare</id><content type="html" xml:base="https://klez.me/2026/02/03/il-software-che-non-puoi-smontare/"><![CDATA[<p>Nel 2010 scrivevo su questo blog che volevo costruirmi una distro Linux da zero con LFS. Avevo vent’anni e pensavo che capire come funziona un sistema fosse un mio diritto. Bastava volerlo. Mi scarico i sorgenti, compilo tutto a mano, alla fine ho qualcosa di mio che capisco pezzo per pezzo. “Un’avventura ricca di difficoltà ma anche di insegnamenti utili e esperienza”, scrivevo.</p>
+      <p>L’entusiasmo di chi non sa ancora quanto è profonda la tana del coniglio. Ma l’entusiasmo è fondamentale per avere la voglia di capire, di conoscere, di scoprire. È la base della cultura hacker, è la base delle persone curiose che compongono il substrato su cui il free software è cresciuto e fiorito bello come è sempre stato, è l’humus in cui sono cresciuto io.</p>
+      <p>Oltre all’entusiasmo però servono possibilità. LFS e Linux hanno spopolato tra hacker, attivisti e curiosi proprio perché sono sempre stati sistemi aperti, documentati, comprensibili se hai voglia di spenderti (l’entusiasmo, appunto).</p>
+      <p>Non poteva essere lo stesso nel mondo Microsoft, perché Windows non puoi analizzarlo, non puoi smontarlo, non puoi studiarlo per capire qualcosa. Puoi <em>hackerarlo</em>, certo, ma non capisci mai intimamente la sua struttura a meno di non studiare come un matto, entrare in Microsoft nel team Windows e poter finalmente aprire i sorgenti. Senza vomitare.</p>
+      <p>Sedici anni dopo, LFS ha <a href="https://lists.linuxfromscratch.org/sympa/arc/lfs-announce/2026-02/msg00000.html">annunciato</a> che non manterrà più la versione System V.</p>
+      <p>E permettetemi di dire che <em>questo mi fa incazzare</em>, non tanto per l’annuncio di cui condivido pensieri e parole con Dubbs, ma per il contesto più ampio in cui questo evento cade (nulla avviene nel vuoto).</p>
       <!--more-->
       <p class="m-0 invisible zero-size">
         <a class="invisible" id="read-more" href="#">read more</a>
       </p>
-      <p>Il messaggio dice di spegnere tutti i telefoni dalle 21:00 alle 21:30 per “disturbare gli algoritmi” e costringerli a dare visibilità ai contenuti su Gaza. Promette di creare un “forte segnale digitale” che manderà “in tilt” i sistemi dei social network.</p>
-      <p>È una cazzata.</p>
-      <h2 id="perché-è-tecnicamente-impossibile-spiegazione-per-umani">Perché è tecnicamente impossibile (spiegazione per umani)</h2>
-      <p>Gli algoritmi di Facebook, Instagram, TikTok e Twitter elaborano <strong>miliardi</strong> di interazioni ogni giorno. MILIARDI. Sono progettati per gestire fluttuazioni enormi nell’attività degli utenti.</p>
-      <p>Tipo: ogni sera, quando l’India va a dormire, 1,4 miliardi di persone smettono di interagire sui social. Gli algoritmi se ne accorgono? No. Continuano a funzionare normalmente.</p>
-      <p>Trenta minuti di silenzio da parte di qualche migliaio di italiani? È come sputare in un oceano sperando di alzarne il livello.   Letteralmente invisibile nelle statistiche globali.</p>
-      <p>Ma soprattutto - e qui casca l’asino - gli algoritmi <strong>non</strong> ottimizzano per la “presenza” degli utenti. Ottimizzano per l’<strong>engagement</strong>: like, commenti, condivisioni, tempo di visualizzazione. Se non interagisci, il sistema continua a funzionare con chi invece sta interagendo. Che sono miliardi di persone sparse su tutti i fusi orari del pianeta.</p>
-      <p>È come se io spegnessi la radio in cucina sperando che la Rai andasse fuori onda. Non funziona così.</p>
-      <h2 id="chi-cè-dietro-questa-bufala">Chi c’è dietro questa bufala</h2>
-      <p>PeaceLink.it lo ha già smontato il 13 maggio 2025. Alessandro Marescotti l’ha definita una “bufala” senza mezzi termini. Il Fatto Quotidiano ha fatto lo stesso il 21 giugno, catalogandola come “bufala ricorrente” che torna periodicamente con date aggiornate.</p>
-      <p>Il messaggio si attribuisce falsamente al movimento “March to Gaza” (MTG). Ho controllato: March to Gaza è un’organizzazione legittima, ma non ho trovato evidenze di loro coinvolgimento in campagne di blackout digitale. È la classica tecnica del furbacchione: prendi il nome di un’organizzazione vera per dare credibilità alla tua panzana.</p>
-      <p>La struttura del messaggio segue tutti i pattern classici della disinformazione: linguaggio urgente, gergo pseudo-tecnico per sembrare credibile, manipolazione emotiva, e quella chiusura con “regola l’orologio e SPEGNI IL TELEFONO!” tipica dei messaggi a catena.</p>
-      <h2 id="come-funziona-davvero-lattivismo-digitale-serio">Come funziona davvero l’attivismo digitale serio</h2>
-      <p>Se volete vedere come si fa sul serio, date un’occhiata a organizzazioni come 7amleh - Arab Center for Social Media Advancement. Questi coordinano davvero azioni digitali efficaci per i diritti palestinesi. Ma lo fanno con:</p>
-      <ul>
-        <li>Campagne hashtag strategiche coordinate</li>
-        <li>Creazione di contenuti sostenuta nel tempo</li>
-        <li>Pressione documentata sulla censura delle piattaforme</li>
-        <li>Supporto al giornalismo cittadino da Gaza</li>
-        <li>Raccolta fondi per aiuti umanitari verificati</li>
-      </ul>
-      <p>Notate la differenza? Roba <strong>concreta</strong>. Non pensiero magico su algoritmi che vanno in tilt.</p>
-      <h2 id="il-danno-che-fa-questa-bufala">Il danno che fa questa bufala</h2>
-      <p>Ecco perché mi incazzo (civilmente) ogni volta: questa roba <strong>danneggia</strong> la vera solidarietà con Gaza. Come?</p>
-      <ol>
-        <li>
-          <p><strong>Spreca energie</strong>: Invece di donare ad organizzazioni verificate o fare pressione sui governi, la gente si sente apposto dopo 30 minuti di “silenzio digitale”</p>
-        </li>
-        <li>
-          <p><strong>Falsa speranza</strong>: Promette soluzioni facili a problemi complessi. “Basta spegnere il telefono e risolviamo tutto!”</p>
-        </li>
-        <li>
-          <p><strong>Delegittima l’attivismo</strong>: Quando la bufala viene smascherata, la gente perde fiducia anche nelle iniziative autentiche</p>
-        </li>
-      </ol>
-      <p>La situazione a Gaza è devastante (e ne ho già parlato <a href="https://klez.me/2025/07/15/gabonzo-robot-e-il-genocidio-industriale-quando-la-realt%C3%A0-supera-la-satira/">qui</a>): 1,9 milioni di sfollati su 2,1 milioni di abitanti, 186 giornalisti uccisi secondo il Committee to Protect Journalists, infrastrutture di comunicazione sistematicamente distrutte. Merita azioni <strong>vere</strong>, non rituali digitali che servono solo a far sentire meglio chi li fa.</p>
-      <h2 id="perché-ci-cascate-psicologia-spicciola">Perché ci cascate (psicologia spicciola)</h2>
-      <p>Il messaggio è progettato per sfruttare vulnerabilità psicologiche specifiche:</p>
-      <ul>
-        <li><strong>Urgenza emotiva</strong>: Di fronte a una tragedia umanitaria, vogliamo <em>fare qualcosa</em>, qualsiasi cosa</li>
-        <li><strong>Falso empowerment</strong>: Promette che una semplice azione individuale possa avere impatto collettivo</li>
-        <li><strong>Gergo pseudo-tecnico</strong>: “impatto algoritmico”, “anomalia comportamentale” - suona scientifico</li>
-        <li><strong>Rete familiare fidata</strong>: Nei gruppi famiglia abbassiamo la guardia critica</li>
-      </ul>
-      <p>È studiato apposta per aggirare il vostro fact-checking mentale. E ci riesce.</p>
-      <h2 id="cosa-fare-davvero-azioni-concrete">Cosa fare davvero (azioni concrete)</h2>
-      <p>Se volete davvero aiutare Gaza e non farvi solo un massaggio alla coscienza:</p>
-      <ul>
-        <li><strong>Donazioni verificate:</strong>
-          <ul>
-            <li>UNRWA (Agenzia ONU per i rifugiati palestinesi)</li>
-            <li>Medici Senza Frontiere - progetti Gaza</li>
-            <li>Palestinian Red Crescent Society</li>
-          </ul>
-        </li>
-        <li><strong>Pressione politica:</strong>
-          <ul>
-            <li>Contattate i vostri rappresentanti parlamentari</li>
-            <li>Supportate organizzazioni come Amnesty International</li>
-            <li>Partecipate a manifestazioni legali organizzate</li>
-          </ul>
-        </li>
-        <li><strong>Informazione di qualità:</strong>
-          <ul>
-            <li>Seguite giornalisti palestinesi verificati</li>
-            <li>Condividete reportage di testate credibili</li>
-            <li>Documentatevi presso fonti autorevoli (B’Tselem, Human Rights Watch)</li>
-          </ul>
-        </li>
-        <li><strong>Pressione sui social:</strong>
-          <ul>
-            <li>Denunciate la censura documentata dei contenuti palestinesi</li>
-            <li>Supportate le richieste di trasparenza negli algoritmi</li>
-            <li>Amplificate le voci palestinesi autentiche</li>
-          </ul>
-        </li>
-      </ul>
-      <p>Roba seria. Non magia digitale.</p>
-      <h2 id="linkografia-verificata">Linkografia verificata</h2>
-      <ul>
-        <li><a href="https://www.peacelink.it">PeaceLink - “Bufala del blackout digitale”</a> (13 maggio 2025)</li>
-        <li><a href="https://www.ilfattoquotidiano.it">Il Fatto Quotidiano - analisi bufala ricorrente</a> (21 giugno 2025)</li>
-        <li><a href="https://7amleh.org">7amleh - Arab Center for Social Media Advancement</a></li>
-        <li><a href="https://cpj.org">Committee to Protect Journalists - Gaza data</a></li>
-        <li><a href="https://www.ochaopt.org">UN OCHA - Gaza humanitarian situation</a></li>
-      </ul>
-      <h2 id="conclusione-la-solidarietà-non-è-un-giochetto">Conclusione: la solidarietà non è un giochetto</h2>
-      <p>Capiamoci: sono il primo a voler vedere più contenuti su Gaza nei social. Sono il primo ad essere disgustato dalla censura sistematica che subiscono le voci palestinesi. Ma la soluzione non è il pensiero magico.</p>
-      <p>La solidarietà vera richiede <strong>impegno continuativo</strong>, non rituali simbolici che durano mezz’ora. Richiede donazioni, pressione politica, informazione di qualità, azioni concrete che abbiano impatto misurabile.</p>
-      <p>Spegnere il telefono per 30 minuti non “disturba” nessun algoritmo. Disturba solo me, che devo continuare a spiegare perché non funziona.</p>
-      <p>La prossima volta che vi arriva questo messaggio, invece di inoltrarlo, considerate di donare quei 30 minuti a qualcosa di utile. O almeno, per pietà, non giratelo a me.</p>
-      <hr />
-      <p><em>Scritto da un programmatore stanco di dover spiegare l’ABC degli algoritmi ai parenti che credono alle catene di Sant’Antonio digitali. Se anche voi ricevete ‘sta roba, linkate pure questo articolo. Almeno servirà a qualcosa.</em></p>
-      ]]></content><author><name>kLeZ</name></author><category term="gaza" /><category term="bufala" /><category term="rant" /><summary type="html"><![CDATA[Eccoci qui. È la terza volta da maggio che mi arriva questo benedetto messaggio WhatsApp sul “silenzio digitale per Gaza” nella chat di famiglia. La terza. Maggio, luglio, e ora di nuovo. Ogni volta devo sprecare mezz’ora a spiegare perché è una bufala colossale, e ogni volta mi sento rispondere “eh ma alla fine qualcosa fai, anche se poco, meglio di niente”. No. Non fai poco, fai NIENTE. Statisticamente irrilevante. Come se gli algoritmi dovessero andare in crash ogni volta che 1,4 miliardi di indiani vanno a dormire la sera.]]></summary></entry><entry><title type="html">Java: quando il codice racconta 30 anni di errori e rivoluzioni</title><link href="https://klez.me/2025/08/05/java-quando-il-codice-racconta-30-anni-di-errori-e-rivoluzioni/" rel="alternate" type="text/html" title="Java: quando il codice racconta 30 anni di errori e rivoluzioni" /><published>2025-08-05T14:43:55+02:00</published><updated>2025-08-05T14:43:55+02:00</updated><id>https://klez.me/2025/08/05/java-quando-il-codice-racconta-30-anni-di-errori-e-rivoluzioni</id><content type="html" xml:base="https://klez.me/2025/08/05/java-quando-il-codice-racconta-30-anni-di-errori-e-rivoluzioni/"><![CDATA[<p>Oggi voglio raccontarvi una storia. Non una di quelle storie edificanti sui “pionieri visionari” che troviamo nei manuali, ma la storia vera e cruda di come Java sia passato da linguaggio che ti odiava cordialmente a linguaggio che cerca almeno di capirti. È la storia di 30 anni di errori, testardaggine, rivoluzioni silenziose e quello che alla fine si rivela essere il più grande esperimento di ingegneria sociale mai tentato su 9 milioni di programmatori.</p>
+      <h2 id="che-è-successo">Che è successo</h2>
+      <p>Bruce Dubbs mantiene LFS da anni. Il primo febbraio ha scritto alla mailing list:</p>
+      <div class="premonition citation">
+        <div class="fas fa-quote-left"></div>
+        <blockquote class="content blockquote" cite="https://lists.linuxfromscratch.org/sympa/arc/lfs-announce/2026-02/msg00000.html">
+          <p>To me LFS is about learning how a system works. Understanding the boot process is a big part of that.</p>
+          <footer class="blockquote-footer"><cite title="Bruce Dubbs"><a href="https://lists.linuxfromscratch.org/sympa/arc/lfs-announce/2026-02/msg00000.html">Bruce Dubbs</a></cite></footer>
+        </blockquote>
+      </div>
+      <p>LFS esiste dal ‘99. Ventisette anni. Non è una distro da usare tutti i giorni. È un manuale. Ti prende per mano e ti guida nella compilazione di ogni singolo pezzo del sistema operativo. Dalla toolchain al kernel, dal bootloader ai servizi di base. Chi finisce LFS non ha solo un sistema funzionante. Ha capito cosa succede quando preme il pulsante di accensione.</p>
+      <p>Capiva.</p>
+      <p>D’ora in poi LFS documenta solo systemd. System V, il sistema di init che ha accompagnato Unix e Linux per decenni, sparisce. Chi vuole imparare come funziona un init semplice dovrà arrangiarsi.</p>
+      <h2 id="perché">Perché</h2>
+      <p>Bruce indica due motivi.</p>
+      <p>Il primo è il carico di lavoro. LFS è un progetto di volontari. Mantenere due versioni parallele — systemd e System V — è diventato impossibile. Non è solo raddoppiare la documentazione. I due sistemi non sono più intercambiabili. Le dipendenze si sono intrecciate. Ogni nuovo pacchetto va testato due volte. Ogni aggiornamento può rompere qualcosa da una parte o dall’altra. I workaround si accumulano. I volontari si stancano.</p>
+      <p>Mi ricordo perfettamente quando durante la mia prima LFS a metà percorso ho cambiato il sistema per la gestione dell’hardware togliendo udev per fare le cose con uno scriptino che mi piaceva di più. Scomodo per una <em>distro full-fledged</em>, difficile da mantenere su scala, tutto vero, ma per me avere il pieno controllo di come l’hardware viene mappato, come gli IRQ vengono assegnati, come vengono creati i dispositivi a blocchi e come vengono legati i driver ai moduli generici e agli stessi dispositivi a blocchi era fondamentale, per capire che succede quando connetti una chiavetta. Udev è bellissimo eh, funziona da paura. Se non ti interessa capire come il sistema operativo comunica con l’hardware lato user space, cioè cosa succede quando attacchi una chiavetta al PC.</p>
+      <p>Il secondo motivo è peggio. GNOME e KDE ora richiedono funzionalità che solo systemd fornisce. Vuoi costruirti un desktop moderno? Ti serve systemd. Non c’è alternativa praticabile. Il lock-in si è propagato verso l’alto nello stack. Non è più solo il sistema di init. È tutto quello che ci sta sopra.</p>
+      <p>Bruce non nasconde il fastidio:</p>
+      <div class="premonition citation">
+        <div class="fas fa-quote-left"></div>
+        <blockquote class="content blockquote" cite="https://lists.linuxfromscratch.org/sympa/arc/lfs-announce/2026-02/msg00000.html">
+          <p>I do not like this decision. […] we will be losing some things I consider important. However, the decision needs to be made.</p>
+          <footer class="blockquote-footer"><cite title="Bruce Dubbs"><a href="https://lists.linuxfromscratch.org/sympa/arc/lfs-announce/2026-02/msg00000.html">Bruce Dubbs</a></cite></footer>
+        </blockquote>
+      </div>
+      <p>Bruce non è un nostalgico che rimpiange i bei tempi andati. È uno che ha dedicato anni della sua vita a insegnare come funzionano i sistemi.</p>
+      <h2 id="i-numeri">I numeri</h2>
+      <p>Ecco il dato che mi ha fermato:</p>
+      <div class="premonition citation">
+        <div class="fas fa-quote-left"></div>
+        <blockquote class="content blockquote" cite="https://lists.linuxfromscratch.org/sympa/arc/lfs-announce/2026-02/msg00000.html">
+          <p>systemd is about 1678 C files plus many data files. System V is 22 C files plus about 50 short bash scripts and data files.</p>
+          <footer class="blockquote-footer"><cite title="Bruce Dubbs"><a href="https://lists.linuxfromscratch.org/sympa/arc/lfs-announce/2026-02/msg00000.html">Bruce Dubbs</a></cite></footer>
+        </blockquote>
+      </div>
+      <p>1678 contro 22.</p>
+      <p>Lascia che affondi. 1678 file di codice C. Più file di configurazione, unit, timer, socket, target. Contro 22 file C e una cinquantina di script bash.</p>
+      <p>Con 22 file potevi leggere tutto. Potevi aprire ogni file, seguire il flusso dall’inizio alla fine, capire cosa fa ogni riga. Potevi tenere il sistema in testa. Modificarlo. Romperlo e ripararlo. Era un esercizio alla portata di una persona sola con tempo e curiosità.</p>
+      <p>Con 1678 no. Non perché sei stupido o pigro. Perché nessuno tiene in testa 1678 file. Neanche chi li ha scritti. A quel punto non stai più capendo un sistema. Ti stai fidando di un sistema.</p>
+      <p>Un sistema tra l’altro molto complesso, perché mentre con SysV tu dovevi studiare un software che fa da init system, con systemd tu studi uno stack intero che fa <em>anche</em> init. E filtrare la “parte init” dal resto su systemd non è banale. Puoi provarci, aspetto qui che io ho già dato (ampiamente).</p>
+      <h2 id="lecosistema">L’ecosistema</h2>
+      <p>systemd non è un semplice sistema di init. È diventato un ecosistema. C’è systemd-logind per la gestione delle sessioni. systemd-networkd per la rete. systemd-resolved per il DNS. systemd-timesyncd per la sincronizzazione del tempo. journald per i log. udev per i device. Ogni pezzo ha le sue configurazioni, le sue convenzioni, le sue interazioni con gli altri pezzi.</p>
+      <p>È un progetto ambizioso. Ha cercato di standardizzare e modernizzare l’infrastruttura di base di Linux. Ha risolto problemi veri: l’avvio parallelo dei servizi, la gestione delle dipendenze, l’integrazione con cgroups, la standardizzazione dei log. Funzionalità che servono, specialmente su server complessi e container.</p>
+      <p>Ma è opaco. Se qualcosa non funziona, non puoi aprire uno script e leggere cosa fa. Devi navigare un labirinto di unit, dipendenze, target, slice. Devi fidarti che qualcun altro abbia capito al posto tuo.</p>
+      <p>Mi è capitato l’anno scorso. Il portatile non si spegneva. Restava appeso su “A stop job is running” per due minuti prima di arrendersi. Con SysV avrei aperto lo script di shutdown, letto cosa faceva, trovato il problema. Con systemd ho passato un’ora a cercare tra journalctl, systemctl list-jobs, analisi dei target. Alla fine ho trovato il colpevole: un servizio che non rispondeva al SIGTERM. Ma il percorso per arrivarci è stato tortuoso. Non impossibile. Tortuoso. Praticamente, come dicono dalle mie parti, <em>un dito nel c*lo</em>.</p>
+      <h2 id="il-punto">Il punto</h2>
+      <p>Non mi interessa stabilire se systemd è buono o cattivo. È una discussione da forum del 2014. L’ho già fatta, mi sono stancato.</p>
+      <p>Mi interessa una cosa diversa.</p>
+      <p>Nel 2010, quando scrivevo quel post su LFS, davo per scontato che capire fosse possibile. Era lì, la possibilità. Bastava volerlo abbastanza. Ti scaricavi i sorgenti, seguivi il manuale, compilavi tutto. Alla fine avevi un sistema che capivi. Pezzo per pezzo.</p>
+      <p>Sedici anni dopo quella possibilità si è ristretta. Non è sparita. È più stretta, è più complicata, è più opaca e offuscata da sistemi che certo sono <em>enterprise-grade</em> ma che non sono <em>student-grade</em> o <em>hackable</em>. Sicuramente, non è democratica. Al diavolo alle Big Tech che vogliono “democratizzare” tutto, coi loro sistemi opachi che di democratico hanno solo il <em>consumo</em> dei loro sistemi, non certo i sistemi stessi. Hanno imparato dai maestri del Big Tech, Microsoft, e il loro processo 3E, “Embrace, Extend, Extinguish”, ma applicato al <em>free software</em>.</p>
+      <p>LFS era la prova che capire era alla portata di un singolo. Il sentiero che potevi percorrere se volevi andare fino in fondo. Adesso quel sentiero passa per 1678 file C e un ecosistema di componenti interdipendenti.</p>
+      <p>Mi era capitato con Samba, un progetto enorme e complicatissimo, che a un certo punto ho semplicemente smesso di leggere e ho deciso che fidarmi era l’unica soluzione. È un mostro. Ma systemd non è Samba, non puoi NON installarlo. Samba si, se non ti serve accedere alle Share di rete Windows che magari è un’esigenza di nicchia, o puoi usare un FuseFS per accedere alle share di rete, ce ne sono alcuni carini per cose spot, se non ti serve avere tutte le mega funzionalità di Samba (tra cui integrazione con Active Directory).</p>
+      <p>systemd no, non ha alternative valide, non puoi avere un drop-in replacement decente, il resto del sistema deve essere consapevole che sotto <em>non c’è</em> systemd, perché non basta rimpiazzarlo, serve <em>comunicare a tutti</em> che non è lui l’init system. Con Samba non serve, hai una cartella, qualcuno l’avrà montata (smbmount, mount -o fusefs qualcosa, qualche altro software), tu la navighi e accedi ai file.</p>
+      <p>La cosa che mi inquieta è che è successo gradualmente. Nessuno l’ha deciso. È il risultato di mille piccole decisioni prese da mille persone diverse, ognuna razionale nel suo contesto. Sommate insieme producono un effetto che nessuno aveva pianificato.</p>
+      <h2 id="chi-scrive-il-codice">Chi scrive il codice</h2>
+      <p>systemd è un progetto sponsorizzato da Red Hat. I suoi sviluppatori sono in larga parte dipendenti di aziende. Le feature che vengono implementate rispondono a esigenze enterprise: gestione di container, orchestrazione di servizi complessi, integrazione con stack cloud.</p>
+      <p>Sono esigenze legittime. Ma non sono le tue esigenze quando vuoi capire perché il portatile ci mette 30 secondi a spegnersi. Non sono le mie esigenze quando voglio sapere cosa succede al boot.</p>
+      <p>Non sto suggerendo una cospirazione. È più banale. È come funziona l’economia del software libero oggi. Chi paga gli sviluppatori decide le priorità. E chi paga, oggi, sono le grandi aziende. Le conseguenze le subiamo tutti. Ma non tutti abbiamo voce in capitolo.</p>
+      <p>Il codice è aperto. Puoi leggerlo. La direzione la decidono altri. E fa schifo.</p>
+      <h2 id="lfs-è-di-nicchia">LFS è di nicchia</h2>
+      <p>Lo so cosa stai pensando. LFS è di nicchia. Quanti lo completano davvero? Mille persone all’anno? Diecimila? È irrilevante rispetto ai milioni che usano Ubuntu senza sapere cos’è un init.</p>
+      <p>Vero.</p>
+      <p>Ma il valore di LFS non stava nei numeri. Stava nel fatto che esisteva. Era la prova che capire era possibile. Il sentiero che qualcuno poteva percorrere se voleva andare fino in fondo.</p>
+      <p>Ho conosciuto gente che ha fatto LFS. Non erano geni. Erano persone normali con tempo e curiosità. Studenti, hobbisti, sysadmin che volevano capire cosa c’era sotto. Alcuni ci hanno messo mesi. Altri hanno mollato a metà e ripreso l’anno dopo. Nessuno di loro è diventato un kernel developer. Ma tutti hanno capito qualcosa che prima non capivano.</p>
+      <p>Quel percorso esisteva. Era accessibile. Non facile, ma accessibile.</p>
+      <p>Quando quel sentiero si restringe, non perdiamo solo chi lo percorreva. Perdiamo la possibilità stessa. L’idea che il sistema sotto i nostri piedi sia comprensibile, modificabile, nostro in un senso che va oltre il mero utilizzo.</p>
+      <p>Ah, “nostro” non intendo di noi addetti ai lavori. Maintainer, sviluppatori kernel, gente che legge codice C a colazione - quelli se la cavano comunque. Chi ha perso è lo studente al terzo anno di Ingegneria che apre il Tanenbaum e vuole andare più a fondo. Lo smanettone curioso. Quello che magari non vuole finire consulente-schiavo in qualche ditta di body rental.</p>
+      <h2 id="la-complessità-è-inevitabile">La complessità è inevitabile?</h2>
+      <p>Altra obiezione ovvia. I sistemi crescono. L’hardware diventa più potente. Le aspettative aumentano. La complessità è inevitabile.</p>
+      <p>In parte è vero. Ma 22 file contro 1678 non è crescita organica. È un ordine di grandezza (o anche due). È passare da qualcosa che un individuo può dominare a qualcosa che richiede un’organizzazione.</p>
+      <p>E poi c’è la questione di cosa conta come “complessità necessaria”. systemd ha aggiunto funzionalità che SysV non aveva. Avvio parallelo. Gestione delle dipendenze. Socket activation. Cgroups integration. Sono cose utili.</p>
+      <p>Ma alcune di quelle funzionalità esistono da anni in sistemi molto più piccoli. s6 fa socket activation. runit fa supervisione dei processi. OpenRC gestisce le dipendenze. Lo fanno con meno codice, meno astrazione, meno opacità.</p>
+      <p>La differenza è nell’ambizione. systemd vuole essere tutto: init, logger, network manager, DNS resolver, time sync, login manager. Vuole standardizzare l’intera infrastruttura di base. Non è strettamente necessario per far partire un computer. Ma è utile se gestisci un datacenter.</p>
+      <p>Faccio una domanda che può chiarire meglio il punto: _tutta quella complessità serve <strong>a te</strong>? È necessaria per i tuoi casi d’uso? O serve ai casi d’uso di Red Hat e dei suoi clienti enterprise?</p>
+      <p>Non ho una risposta. (Beh, una ce l’avrei, ma non voglio denunzie-querele da colossi del tech)</p>
+      <h2 id="cosa-resta">Cosa resta</h2>
+      <p>Non voglio chiudere in modo apocalittico, perché non è questa la situazione. Il software libero non è morto. Linux non è morto. La possibilità di capire non è sparita. È solo tutto molto, molto, molto (ordini di grandezza) più complesso.</p>
+      <p>Esistono alternative. Void Linux usa runit. Alpine usa OpenRC. Artix e Devuan offrono scelte multiple. Progetti come s6 e dinit dimostrano che un sistema di init può essere potente senza essere mastodontico. Sono sistemi che puoi leggere, capire, modificare. Esistono ancora.</p>
+      <p>Ho usato Void per un paio d’anni. runit è elegante. Tre fasi: setup, run, finish. Ogni servizio è una directory con uno script. Vuoi sapere cosa fa? Apri lo script. Vuoi cambiarlo? Editi lo script. Nessuna magia, nessun database binario, nessuna astrazione che nasconde cosa succede.</p>
+      <p>Poi sono tornato a una distro mainstream per questioni pratiche. Hardware nuovo, driver proprietari, software che richiedeva systemd. La solita storia.</p>
+      <p>E NVIDIA. Dio quanto odio NVIDIA. Fuck NVIDIA.</p>
+      <p><img src="/media/2026-02-03/linus-torvalds-fuck-nvidia.gif" alt="Linus Torvalds - Fuck NVIDIA" class="img-fluid" /></p>
+      <p>Esistono persone che mantengono viva la semplicità. Spesso con poco riconoscimento e meno soldi. Sono comunità piccole. A volte ruvide. A volte elitarie nel modo sbagliato.</p>
+      <p>Anche restando nel mondo systemd, capire è ancora possibile. La documentazione è buona. I sorgenti sono aperti. Non è impossibile. È solo molto più difficile di prima.</p>
+      <p>E “molto più difficile” significa, in pratica, che meno gente lo farà. Capire diventa un’attività da specialisti. Non più da curiosi. Non più da ventenni con tempo e voglia di smontare le cose.</p>
+      <h2 id="una-serie">Una serie</h2>
+      <p>Questo è il primo post di una serie. Non so ancora quanti saranno. L’idea è esplorare cosa sta succedendo al software libero. Non dal punto di vista degli attivisti - quelli sono già convinti. Dal punto di vista di chi usa Linux tutti i giorni senza farsi troppe domande.</p>
+      <p>Non voglio fare prediche. Non voglio convincere nessuno che systemd è il male o che bisogna tornare a SysV. Non mi interessa. Mi interessa porre domande che forse non ti sei mai posto. O che non ci poniamo abbastanza come comunità.</p>
+      <p>Tipo: il codice è aperto, ma chi decide cosa ci finisce dentro? Le licenze sono libere, ma chi ha le risorse per contribuire? Il sistema è tuo, ma quanto ne capisci davvero?</p>
+      <p>Quello che mi chiedo: quanto capisci del sistema che usi? Quanto potresti capire, se volessi?</p>
+      <p>Nel prossimo post parlerò di un altro livello. Chi decide cosa può girare sulla tua macchina. Secure Boot, firmware blob, Intel ME. Perché avere root non significa avere il controllo.</p>
+      <p>E chiudo con una domanda: quanto è ipocrita sbandierare la GPLv3, baluardo della libertà di hacking, in progetti guidati da chi del profitto fa l’unico scopo di esistenza?</p>
+      <p>La mia risposta, visto che è casa mia: molto. C’è una parola per chi predica libertà mentre costruisce gabbie. Non la scrivo io. La lascio a chi l’aveva capita oltre settant’anni fa:</p>
+      <div class="premonition citation text-center">
+        <div class="fas fa-quote-left"></div>
+        <blockquote class="content blockquote" cite="https://it.wikipedia.org/wiki/1984_(romanzo)">
+          <p>Freedom is Slavery</p>
+          <footer class="blockquote-footer"><cite title="George Orwell - 1984, slogan del Partito inciso sul Ministero della Verità"><a href="https://it.wikipedia.org/wiki/1984_(romanzo)">George Orwell - 1984, slogan del Partito inciso sul Ministero della Verità</a></cite></footer>
+        </blockquote>
+      </div>
+      <p class="text-center"><img src="/media/2026-02-03/1984-party-slogans.jpg" alt="War is Peace - Freedom is Slavery - Ignorance is Strength" class="img-fluid" /></p>
+      ]]></content><author><name>kLeZ</name></author><category term="linux" /><category term="systemd" /><category term="lfs" /><category term="software-libero" /><summary type="html"><![CDATA[Nel 2010 scrivevo su questo blog che volevo costruirmi una distro Linux da zero con LFS. Avevo vent’anni e pensavo che capire come funziona un sistema fosse un mio diritto. Bastava volerlo. Mi scarico i sorgenti, compilo tutto a mano, alla fine ho qualcosa di mio che capisco pezzo per pezzo. “Un’avventura ricca di difficoltà ma anche di insegnamenti utili e esperienza”, scrivevo. L’entusiasmo di chi non sa ancora quanto è profonda la tana del coniglio. Ma l’entusiasmo è fondamentale per avere la voglia di capire, di conoscere, di scoprire. È la base della cultura hacker, è la base delle persone curiose che compongono il substrato su cui il free software è cresciuto e fiorito bello come è sempre stato, è l’humus in cui sono cresciuto io. Oltre all’entusiasmo però servono possibilità. LFS e Linux hanno spopolato tra hacker, attivisti e curiosi proprio perché sono sempre stati sistemi aperti, documentati, comprensibili se hai voglia di spenderti (l’entusiasmo, appunto). Non poteva essere lo stesso nel mondo Microsoft, perché Windows non puoi analizzarlo, non puoi smontarlo, non puoi studiarlo per capire qualcosa. Puoi hackerarlo, certo, ma non capisci mai intimamente la sua struttura a meno di non studiare come un matto, entrare in Microsoft nel team Windows e poter finalmente aprire i sorgenti. Senza vomitare. Sedici anni dopo, LFS ha annunciato che non manterrà più la versione System V. E permettetemi di dire che questo mi fa incazzare, non tanto per l’annuncio di cui condivido pensieri e parole con Dubbs, ma per il contesto più ampio in cui questo evento cade (nulla avviene nel vuoto).]]></summary></entry><entry><title type="html">Bufala del “Silenzio Digitale per Gaza”</title><link href="https://klez.me/2025/08/06/bufala-del-silenzio-digitale-per-gaza/" rel="alternate" type="text/html" title="Bufala del “Silenzio Digitale per Gaza”" /><published>2025-08-06T20:15:17+02:00</published><updated>2025-08-06T20:15:17+02:00</updated><id>https://klez.me/2025/08/06/bufala-del-silenzio-digitale-per-gaza</id><content type="html" xml:base="https://klez.me/2025/08/06/bufala-del-silenzio-digitale-per-gaza/"><![CDATA[<p>Eccoci qui. È la terza volta da maggio che mi arriva questo benedetto messaggio WhatsApp sul “silenzio digitale per Gaza” nella chat di famiglia. La terza. Maggio, luglio, e ora di nuovo. Ogni volta devo sprecare mezz’ora a spiegare perché è una bufala colossale, e ogni volta mi sento rispondere “eh ma alla fine qualcosa fai, anche se poco, meglio di niente”.</p>
+    <p>No. Non fai poco, fai <strong>NIENTE</strong>. Statisticamente irrilevante. Come se gli algoritmi dovessero andare in crash ogni volta che 1,4 miliardi di indiani vanno a dormire la sera.</p>
     <!--more-->
     <p class="m-0 invisible zero-size">
       <a class="invisible" id="read-more" href="#">read more</a>
     </p>
-    <p>Se hai iniziato a programmare in Java dopo il 2010, probabilmente non hai mai visto certe brutture. Se invece hai vissuto Java 1.0, sai quanto male si potesse stare. E se sei come me, che ho iniziato quando Vector era ancora considerato “best practice”, beh… abbiamo visto cose che voi umani non potreste immaginare.</p>
-    <p>Ma diciamo le cose come stanno: Java nasce il 23 gennaio 1996 con un’ossessione malata per la sicurezza. E quando dico malata, intendo proprio patologica. James Gosling e il suo team avevano assistito ai massacri del C++, dove un puntatore sbagliato mandava in crash l’intero sistema, dove la gestione manuale della memoria era come giocare a Russian Roulette bendati, dove il multithreading era una disciplina esoterica per masochisti con tendenze suicide.</p>
-    <p>La loro risposta fu quella che oggi chiameremmo “helicopter parenting” applicato al design di linguaggi: tutto automatico, tutto sicuro, tutto controllato, tutto deciso per te. Non ci fidiamo di te neanche a respirare da solo.</p>
-    <p>Ecco perché Vector e Hashtable erano sincronizzati per default. Non era una scelta tecnica, era una dichiarazione filosofica: “Il multithreading è così pericoloso che lo rendiamo obbligatorio ovunque, anche quando non serve”. Il fatto che questo rallentasse anche le applicazioni single-thread era considerato un prezzo accettabile per la sicurezza. I progettisti di Sun avevano una visione apocalittica del futuro: ogni applicazione sarebbe stata multi-thread, ogni oggetto sarebbe stato condiviso, ogni accesso concorrente sarebbe stato una potenziale catastrofe.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nc">Vector</span> <span class="n">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Vector</span><span class="o">();</span>
+    <p>Il messaggio dice di spegnere tutti i telefoni dalle 21:00 alle 21:30 per “disturbare gli algoritmi” e costringerli a dare visibilità ai contenuti su Gaza. Promette di creare un “forte segnale digitale” che manderà “in tilt” i sistemi dei social network.</p>
+    <p>È una cazzata.</p>
+    <h2 id="perché-è-tecnicamente-impossibile-spiegazione-per-umani">Perché è tecnicamente impossibile (spiegazione per umani)</h2>
+    <p>Gli algoritmi di Facebook, Instagram, TikTok e Twitter elaborano <strong>miliardi</strong> di interazioni ogni giorno. MILIARDI. Sono progettati per gestire fluttuazioni enormi nell’attività degli utenti.</p>
+    <p>Tipo: ogni sera, quando l’India va a dormire, 1,4 miliardi di persone smettono di interagire sui social. Gli algoritmi se ne accorgono? No. Continuano a funzionare normalmente.</p>
+    <p>Trenta minuti di silenzio da parte di qualche migliaio di italiani? È come sputare in un oceano sperando di alzarne il livello.   Letteralmente invisibile nelle statistiche globali.</p>
+    <p>Ma soprattutto - e qui casca l’asino - gli algoritmi <strong>non</strong> ottimizzano per la “presenza” degli utenti. Ottimizzano per l’<strong>engagement</strong>: like, commenti, condivisioni, tempo di visualizzazione. Se non interagisci, il sistema continua a funzionare con chi invece sta interagendo. Che sono miliardi di persone sparse su tutti i fusi orari del pianeta.</p>
+    <p>È come se io spegnessi la radio in cucina sperando che la Rai andasse fuori onda. Non funziona così.</p>
+    <h2 id="chi-cè-dietro-questa-bufala">Chi c’è dietro questa bufala</h2>
+    <p>PeaceLink.it lo ha già smontato il 13 maggio 2025. Alessandro Marescotti l’ha definita una “bufala” senza mezzi termini. Il Fatto Quotidiano ha fatto lo stesso il 21 giugno, catalogandola come “bufala ricorrente” che torna periodicamente con date aggiornate.</p>
+    <p>Il messaggio si attribuisce falsamente al movimento “March to Gaza” (MTG). Ho controllato: March to Gaza è un’organizzazione legittima, ma non ho trovato evidenze di loro coinvolgimento in campagne di blackout digitale. È la classica tecnica del furbacchione: prendi il nome di un’organizzazione vera per dare credibilità alla tua panzana.</p>
+    <p>La struttura del messaggio segue tutti i pattern classici della disinformazione: linguaggio urgente, gergo pseudo-tecnico per sembrare credibile, manipolazione emotiva, e quella chiusura con “regola l’orologio e SPEGNI IL TELEFONO!” tipica dei messaggi a catena.</p>
+    <h2 id="come-funziona-davvero-lattivismo-digitale-serio">Come funziona davvero l’attivismo digitale serio</h2>
+    <p>Se volete vedere come si fa sul serio, date un’occhiata a organizzazioni come 7amleh - Arab Center for Social Media Advancement. Questi coordinano davvero azioni digitali efficaci per i diritti palestinesi. Ma lo fanno con:</p>
+    <ul>
+      <li>Campagne hashtag strategiche coordinate</li>
+      <li>Creazione di contenuti sostenuta nel tempo</li>
+      <li>Pressione documentata sulla censura delle piattaforme</li>
+      <li>Supporto al giornalismo cittadino da Gaza</li>
+      <li>Raccolta fondi per aiuti umanitari verificati</li>
+    </ul>
+    <p>Notate la differenza? Roba <strong>concreta</strong>. Non pensiero magico su algoritmi che vanno in tilt.</p>
+    <h2 id="il-danno-che-fa-questa-bufala">Il danno che fa questa bufala</h2>
+    <p>Ecco perché mi incazzo (civilmente) ogni volta: questa roba <strong>danneggia</strong> la vera solidarietà con Gaza. Come?</p>
+    <ol>
+      <li>
+        <p><strong>Spreca energie</strong>: Invece di donare ad organizzazioni verificate o fare pressione sui governi, la gente si sente apposto dopo 30 minuti di “silenzio digitale”</p>
+      </li>
+      <li>
+        <p><strong>Falsa speranza</strong>: Promette soluzioni facili a problemi complessi. “Basta spegnere il telefono e risolviamo tutto!”</p>
+      </li>
+      <li>
+        <p><strong>Delegittima l’attivismo</strong>: Quando la bufala viene smascherata, la gente perde fiducia anche nelle iniziative autentiche</p>
+      </li>
+    </ol>
+    <p>La situazione a Gaza è devastante (e ne ho già parlato <a href="https://klez.me/2025/07/15/gabonzo-robot-e-il-genocidio-industriale-quando-la-realt%C3%A0-supera-la-satira/">qui</a>): 1,9 milioni di sfollati su 2,1 milioni di abitanti, 186 giornalisti uccisi secondo il Committee to Protect Journalists, infrastrutture di comunicazione sistematicamente distrutte. Merita azioni <strong>vere</strong>, non rituali digitali che servono solo a far sentire meglio chi li fa.</p>
+    <h2 id="perché-ci-cascate-psicologia-spicciola">Perché ci cascate (psicologia spicciola)</h2>
+    <p>Il messaggio è progettato per sfruttare vulnerabilità psicologiche specifiche:</p>
+    <ul>
+      <li><strong>Urgenza emotiva</strong>: Di fronte a una tragedia umanitaria, vogliamo <em>fare qualcosa</em>, qualsiasi cosa</li>
+      <li><strong>Falso empowerment</strong>: Promette che una semplice azione individuale possa avere impatto collettivo</li>
+      <li><strong>Gergo pseudo-tecnico</strong>: “impatto algoritmico”, “anomalia comportamentale” - suona scientifico</li>
+      <li><strong>Rete familiare fidata</strong>: Nei gruppi famiglia abbassiamo la guardia critica</li>
+    </ul>
+    <p>È studiato apposta per aggirare il vostro fact-checking mentale. E ci riesce.</p>
+    <h2 id="cosa-fare-davvero-azioni-concrete">Cosa fare davvero (azioni concrete)</h2>
+    <p>Se volete davvero aiutare Gaza e non farvi solo un massaggio alla coscienza:</p>
+    <ul>
+      <li><strong>Donazioni verificate:</strong>
+        <ul>
+          <li>UNRWA (Agenzia ONU per i rifugiati palestinesi)</li>
+          <li>Medici Senza Frontiere - progetti Gaza</li>
+          <li>Palestinian Red Crescent Society</li>
+        </ul>
+      </li>
+      <li><strong>Pressione politica:</strong>
+        <ul>
+          <li>Contattate i vostri rappresentanti parlamentari</li>
+          <li>Supportate organizzazioni come Amnesty International</li>
+          <li>Partecipate a manifestazioni legali organizzate</li>
+        </ul>
+      </li>
+      <li><strong>Informazione di qualità:</strong>
+        <ul>
+          <li>Seguite giornalisti palestinesi verificati</li>
+          <li>Condividete reportage di testate credibili</li>
+          <li>Documentatevi presso fonti autorevoli (B’Tselem, Human Rights Watch)</li>
+        </ul>
+      </li>
+      <li><strong>Pressione sui social:</strong>
+        <ul>
+          <li>Denunciate la censura documentata dei contenuti palestinesi</li>
+          <li>Supportate le richieste di trasparenza negli algoritmi</li>
+          <li>Amplificate le voci palestinesi autentiche</li>
+        </ul>
+      </li>
+    </ul>
+    <p>Roba seria. Non magia digitale.</p>
+    <h2 id="linkografia-verificata">Linkografia verificata</h2>
+    <ul>
+      <li><a href="https://www.peacelink.it">PeaceLink - “Bufala del blackout digitale”</a> (13 maggio 2025)</li>
+      <li><a href="https://www.ilfattoquotidiano.it">Il Fatto Quotidiano - analisi bufala ricorrente</a> (21 giugno 2025)</li>
+      <li><a href="https://7amleh.org">7amleh - Arab Center for Social Media Advancement</a></li>
+      <li><a href="https://cpj.org">Committee to Protect Journalists - Gaza data</a></li>
+      <li><a href="https://www.ochaopt.org">UN OCHA - Gaza humanitarian situation</a></li>
+    </ul>
+    <h2 id="conclusione-la-solidarietà-non-è-un-giochetto">Conclusione: la solidarietà non è un giochetto</h2>
+    <p>Capiamoci: sono il primo a voler vedere più contenuti su Gaza nei social. Sono il primo ad essere disgustato dalla censura sistematica che subiscono le voci palestinesi. Ma la soluzione non è il pensiero magico.</p>
+    <p>La solidarietà vera richiede <strong>impegno continuativo</strong>, non rituali simbolici che durano mezz’ora. Richiede donazioni, pressione politica, informazione di qualità, azioni concrete che abbiano impatto misurabile.</p>
+    <p>Spegnere il telefono per 30 minuti non “disturba” nessun algoritmo. Disturba solo me, che devo continuare a spiegare perché non funziona.</p>
+    <p>La prossima volta che vi arriva questo messaggio, invece di inoltrarlo, considerate di donare quei 30 minuti a qualcosa di utile. O almeno, per pietà, non giratelo a me.</p>
+    <hr />
+    <p><em>Scritto da un programmatore stanco di dover spiegare l’ABC degli algoritmi ai parenti che credono alle catene di Sant’Antonio digitali. Se anche voi ricevete ‘sta roba, linkate pure questo articolo. Almeno servirà a qualcosa.</em></p>
+    ]]></content><author><name>kLeZ</name></author><category term="gaza" /><category term="bufala" /><category term="rant" /><summary type="html"><![CDATA[Eccoci qui. È la terza volta da maggio che mi arriva questo benedetto messaggio WhatsApp sul “silenzio digitale per Gaza” nella chat di famiglia. La terza. Maggio, luglio, e ora di nuovo. Ogni volta devo sprecare mezz’ora a spiegare perché è una bufala colossale, e ogni volta mi sento rispondere “eh ma alla fine qualcosa fai, anche se poco, meglio di niente”. No. Non fai poco, fai NIENTE. Statisticamente irrilevante. Come se gli algoritmi dovessero andare in crash ogni volta che 1,4 miliardi di indiani vanno a dormire la sera.]]></summary></entry><entry><title type="html">Java: quando il codice racconta 30 anni di errori e rivoluzioni</title><link href="https://klez.me/2025/08/05/java-quando-il-codice-racconta-30-anni-di-errori-e-rivoluzioni/" rel="alternate" type="text/html" title="Java: quando il codice racconta 30 anni di errori e rivoluzioni" /><published>2025-08-05T14:43:55+02:00</published><updated>2025-08-05T14:43:55+02:00</updated><id>https://klez.me/2025/08/05/java-quando-il-codice-racconta-30-anni-di-errori-e-rivoluzioni</id><content type="html" xml:base="https://klez.me/2025/08/05/java-quando-il-codice-racconta-30-anni-di-errori-e-rivoluzioni/"><![CDATA[<p>Oggi voglio raccontarvi una storia. Non una di quelle storie edificanti sui “pionieri visionari” che troviamo nei manuali, ma la storia vera e cruda di come Java sia passato da linguaggio che ti odiava cordialmente a linguaggio che cerca almeno di capirti. È la storia di 30 anni di errori, testardaggine, rivoluzioni silenziose e quello che alla fine si rivela essere il più grande esperimento di ingegneria sociale mai tentato su 9 milioni di programmatori.</p>
+  <!--more-->
+  <p class="m-0 invisible zero-size">
+    <a class="invisible" id="read-more" href="#">read more</a>
+  </p>
+  <p>Se hai iniziato a programmare in Java dopo il 2010, probabilmente non hai mai visto certe brutture. Se invece hai vissuto Java 1.0, sai quanto male si potesse stare. E se sei come me, che ho iniziato quando Vector era ancora considerato “best practice”, beh… abbiamo visto cose che voi umani non potreste immaginare.</p>
+  <p>Ma diciamo le cose come stanno: Java nasce il 23 gennaio 1996 con un’ossessione malata per la sicurezza. E quando dico malata, intendo proprio patologica. James Gosling e il suo team avevano assistito ai massacri del C++, dove un puntatore sbagliato mandava in crash l’intero sistema, dove la gestione manuale della memoria era come giocare a Russian Roulette bendati, dove il multithreading era una disciplina esoterica per masochisti con tendenze suicide.</p>
+  <p>La loro risposta fu quella che oggi chiameremmo “helicopter parenting” applicato al design di linguaggi: tutto automatico, tutto sicuro, tutto controllato, tutto deciso per te. Non ci fidiamo di te neanche a respirare da solo.</p>
+  <p>Ecco perché Vector e Hashtable erano sincronizzati per default. Non era una scelta tecnica, era una dichiarazione filosofica: “Il multithreading è così pericoloso che lo rendiamo obbligatorio ovunque, anche quando non serve”. Il fatto che questo rallentasse anche le applicazioni single-thread era considerato un prezzo accettabile per la sicurezza. I progettisti di Sun avevano una visione apocalittica del futuro: ogni applicazione sarebbe stata multi-thread, ogni oggetto sarebbe stato condiviso, ogni accesso concorrente sarebbe stato una potenziale catastrofe.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nc">Vector</span> <span class="n">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Vector</span><span class="o">();</span>
 <span class="n">items</span><span class="o">.</span><span class="na">addElement</span><span class="o">(</span><span class="s">"item1"</span><span class="o">);</span>
 <span class="n">items</span><span class="o">.</span><span class="na">addElement</span><span class="o">(</span><span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="mi">42</span><span class="o">));</span> <span class="c1">// Mix di tipi? Normale all'epoca</span>
 <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">items</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
@@ -116,201 +227,201 @@
     <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">item</span><span class="o">;</span> <span class="c1">// Preghiera e cast</span>
 <span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <p>Questo codice incarnava perfettamente la filosofia Java 1.0: paternalismo tecnologico allo stato puro. Non potevi scegliere il tipo di sincronizzazione, non potevi evitare i cast, non potevi nemmeno fidarti che un elemento di una collezione fosse del tipo che pensavi. Java decideva per te, sempre.</p>
-    <p>E poi c’era Date. Madonna santa, la classe Date. Se devo nominare l’API più odiosa mai partorita dalla mente umana, Date di Java 1.0 vince a mani basse. Era come se l’avessero progettata apposta per farti bestemmiare in lingue che non sapevi neanche di conoscere:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nc">Date</span> <span class="n">christmas</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">();</span>
+  </div>
+  <p>Questo codice incarnava perfettamente la filosofia Java 1.0: paternalismo tecnologico allo stato puro. Non potevi scegliere il tipo di sincronizzazione, non potevi evitare i cast, non potevi nemmeno fidarti che un elemento di una collezione fosse del tipo che pensavi. Java decideva per te, sempre.</p>
+  <p>E poi c’era Date. Madonna santa, la classe Date. Se devo nominare l’API più odiosa mai partorita dalla mente umana, Date di Java 1.0 vince a mani basse. Era come se l’avessero progettata apposta per farti bestemmiare in lingue che non sapevi neanche di conoscere:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nc">Date</span> <span class="n">christmas</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">();</span>
 <span class="n">christmas</span><span class="o">.</span><span class="na">setYear</span><span class="o">(</span><span class="mi">2023</span> <span class="o">-</span> <span class="mi">1900</span><span class="o">);</span> <span class="c1">// Perché -1900? Perché MAGIA!</span>
 <span class="n">christmas</span><span class="o">.</span><span class="na">setMonth</span><span class="o">(</span><span class="mi">11</span><span class="o">);</span> <span class="c1">// Dicembre è 11, non 12. Logico, no?</span>
 <span class="n">christmas</span><span class="o">.</span><span class="na">setDate</span><span class="o">(</span><span class="mi">25</span><span class="o">);</span> <span class="c1">// Ma il giorno è 1-based. Coerenza? Mai sentita.</span>
 </code></pre>
-      </div>
     </div>
-    <p>Ogni volta che vedevo questo codice, una parte della mia anima moriva. Date era mutabile (quindi poteva essere modificata alle tue spalle), SimpleDateFormat non era thread-safe (quindi condividerlo tra thread era come giocare alla roulette russa), ed entrambi sembravano progettati da qualcuno che odiava profondamente sia il tempo che l’umanità.</p>
-    <p>Il garbage collector Serial di Java 1.0 seguiva la stessa logica del “papà sa meglio”: “La gestione della memoria è troppo complicata per voi mortali, quindi la facciamo noi. Non importa se fermiamo tutto per secondi interi, almeno non avrete memory leak”. Era la filosofia del “meglio paralizzato che morto”, portata all’estremo del ridicolo.</p>
-    <p>Ma già con Java 1.2, iniziarono a emergere le prime crepe in questa muraglia paternalistica. Le Collection Framework introdussero ArrayList e HashMap non sincronizzati, affiancati da Collections.synchronizedList() per quando la sincronizzazione serviva davvero. Era un piccolo passo per il codice, ma un grande passo per l’umanità dei programmatori: per la prima volta, Java ammetteva che il programmatore potesse essere abbastanza intelligente da scegliere.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nc">List</span> <span class="n">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">();</span> <span class="c1">// Scelta: velocità</span>
+  </div>
+  <p>Ogni volta che vedevo questo codice, una parte della mia anima moriva. Date era mutabile (quindi poteva essere modificata alle tue spalle), SimpleDateFormat non era thread-safe (quindi condividerlo tra thread era come giocare alla roulette russa), ed entrambi sembravano progettati da qualcuno che odiava profondamente sia il tempo che l’umanità.</p>
+  <p>Il garbage collector Serial di Java 1.0 seguiva la stessa logica del “papà sa meglio”: “La gestione della memoria è troppo complicata per voi mortali, quindi la facciamo noi. Non importa se fermiamo tutto per secondi interi, almeno non avrete memory leak”. Era la filosofia del “meglio paralizzato che morto”, portata all’estremo del ridicolo.</p>
+  <p>Ma già con Java 1.2, iniziarono a emergere le prime crepe in questa muraglia paternalistica. Le Collection Framework introdussero ArrayList e HashMap non sincronizzati, affiancati da Collections.synchronizedList() per quando la sincronizzazione serviva davvero. Era un piccolo passo per il codice, ma un grande passo per l’umanità dei programmatori: per la prima volta, Java ammetteva che il programmatore potesse essere abbastanza intelligente da scegliere.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nc">List</span> <span class="n">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">();</span> <span class="c1">// Scelta: velocità</span>
 <span class="nc">List</span> <span class="n">safeItems</span> <span class="o">=</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">synchronizedList</span><span class="o">(</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">());</span> <span class="c1">// Scelta: sicurezza</span>
 </code></pre>
-      </div>
     </div>
-    <p>Questa non era solo una questione di prestazioni. Era l’inizio di un nuovo contratto sociale tra linguaggio e programmatore: “Ti diamo gli strumenti, tu scegli come usarli”. Il gruppo di sviluppo stava iniziando a capire che la flessibilità era più importante della protezione totale.</p>
-    <p>Il Parallel GC che arrivò con Java 1.2 rifletteva lo stesso cambio di mentalità. Invece di imporre una strategia unica di garbage collection, iniziarono a sperimentare con approcci diversi. Era l’ammissione implicita che il Serial GC non era la soluzione universale che avevano immaginato.</p>
-    <p>Con Java 1.4 e NIO, assistiamo al primo vero atto di fiducia verso il programmatore. L’I/O non bloccante era complesso come assemblare un mobile IKEA senza istruzioni, ostico come una conversazione con l’ex, pieno di insidie come un campo minato:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nc">Selector</span> <span class="n">selector</span> <span class="o">=</span> <span class="nc">Selector</span><span class="o">.</span><span class="na">open</span><span class="o">();</span>
+  </div>
+  <p>Questa non era solo una questione di prestazioni. Era l’inizio di un nuovo contratto sociale tra linguaggio e programmatore: “Ti diamo gli strumenti, tu scegli come usarli”. Il gruppo di sviluppo stava iniziando a capire che la flessibilità era più importante della protezione totale.</p>
+  <p>Il Parallel GC che arrivò con Java 1.2 rifletteva lo stesso cambio di mentalità. Invece di imporre una strategia unica di garbage collection, iniziarono a sperimentare con approcci diversi. Era l’ammissione implicita che il Serial GC non era la soluzione universale che avevano immaginato.</p>
+  <p>Con Java 1.4 e NIO, assistiamo al primo vero atto di fiducia verso il programmatore. L’I/O non bloccante era complesso come assemblare un mobile IKEA senza istruzioni, ostico come una conversazione con l’ex, pieno di insidie come un campo minato:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nc">Selector</span> <span class="n">selector</span> <span class="o">=</span> <span class="nc">Selector</span><span class="o">.</span><span class="na">open</span><span class="o">();</span>
 <span class="nc">SocketChannel</span> <span class="n">channel</span> <span class="o">=</span> <span class="nc">SocketChannel</span><span class="o">.</span><span class="na">open</span><span class="o">();</span>
 <span class="n">channel</span><span class="o">.</span><span class="na">configureBlocking</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
 <span class="n">channel</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">selector</span><span class="o">,</span> <span class="nc">SelectionKey</span><span class="o">.</span><span class="na">OP_READ</span><span class="o">);</span>
 </code></pre>
-      </div>
     </div>
-    <p>Questo codice era l’antitesi totale della filosofia Java 1.0. Era complesso, richiedeva comprensione profonda, poteva facilmente essere usato male. Ma i progettisti lo inclusero comunque, perché stavano iniziando a capire una cosa fondamentale: nascondere la complessità sotto il tappeto non la elimina, la sposta solo nel posto più scomodo possibile.</p>
-    <p>E poi arrivò la vera rivoluzione filosofica con Java 5. I generics non erano solo una funzionalità tecnica, erano una dichiarazione di guerra al paternalismo: “Ci fidiamo di voi abbastanza da darvi un sistema di tipi più sofisticato”. Era l’ammissione che i programmatori potevano gestire la complessità aggiuntiva in cambio di maggiore sicurezza e espressività.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+  </div>
+  <p>Questo codice era l’antitesi totale della filosofia Java 1.0. Era complesso, richiedeva comprensione profonda, poteva facilmente essere usato male. Ma i progettisti lo inclusero comunque, perché stavano iniziando a capire una cosa fondamentale: nascondere la complessità sotto il tappeto non la elimina, la sposta solo nel posto più scomodo possibile.</p>
+  <p>E poi arrivò la vera rivoluzione filosofica con Java 5. I generics non erano solo una funzionalità tecnica, erano una dichiarazione di guerra al paternalismo: “Ci fidiamo di voi abbastanza da darvi un sistema di tipi più sofisticato”. Era l’ammissione che i programmatori potevano gestire la complessità aggiuntiva in cambio di maggiore sicurezza e espressività.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
 <span class="c1">// Il programmatore dichiara l'intenzione, il compilatore la verifica</span>
 </code></pre>
-      </div>
     </div>
-    <p>Il passaggio da cast runtime a controlli compile-time rappresentava un cambio filosofico più profondo di una crisi di mezza età: da “proteggiamo il programmatore nascondendo i problemi sotto il materasso” a “aiutiamo il programmatore a identificare i problemi prima che facciano danni”. Era la nascita di una collaborazione vera tra linguaggio e sviluppatore, come Batman e Robin, ma senza i mutandoni.</p>
-    <p>Le annotazioni di Java 5 portarono questa filosofia ancora più avanti. Invece di nascondere metadati nel codice o in file esterni, li esponevano direttamente:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nd">@Override</span>
+  </div>
+  <p>Il passaggio da cast runtime a controlli compile-time rappresentava un cambio filosofico più profondo di una crisi di mezza età: da “proteggiamo il programmatore nascondendo i problemi sotto il materasso” a “aiutiamo il programmatore a identificare i problemi prima che facciano danni”. Era la nascita di una collaborazione vera tra linguaggio e sviluppatore, come Batman e Robin, ma senza i mutandoni.</p>
+  <p>Le annotazioni di Java 5 portarono questa filosofia ancora più avanti. Invece di nascondere metadati nel codice o in file esterni, li esponevano direttamente:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="s">"Person"</span><span class="o">;</span> <span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <p>Era un’ammissione che il programmatore non solo poteva gestire metadati espliciti, ma che questi potevano rendere il codice più chiaro e verificabile. Le annotazioni trasformarono Java da linguaggio che nascondeva l’intenzione a linguaggio che la celebrava.</p>
-    <p>Gli enum di Java 5 demolirono il modello “typesafe enum” che tutti usavamo, sostituendolo con una soluzione nativa. Ma la vera lezione non era tecnica: era che il linguaggio poteva e doveva imparare dalle convenzioni della comunità, codificandole invece di ignorarle.</p>
-    <p>Il periodo Java 6-7 fu di consolidamento, ma le poche novità mostravano una tendenza chiara come l’acqua di montagna. Il try-with-resources di Java 7 era l’esempio perfetto di come la filosofia fosse cambiata da “paternalismo tossico” a “collaborazione intelligente”:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="k">try</span> <span class="o">(</span><span class="nc">BufferedReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">FileReader</span><span class="o">(</span><span class="s">"file.txt"</span><span class="o">)))</span> <span class="o">{</span>
+  </div>
+  <p>Era un’ammissione che il programmatore non solo poteva gestire metadati espliciti, ma che questi potevano rendere il codice più chiaro e verificabile. Le annotazioni trasformarono Java da linguaggio che nascondeva l’intenzione a linguaggio che la celebrava.</p>
+  <p>Gli enum di Java 5 demolirono il modello “typesafe enum” che tutti usavamo, sostituendolo con una soluzione nativa. Ma la vera lezione non era tecnica: era che il linguaggio poteva e doveva imparare dalle convenzioni della comunità, codificandole invece di ignorarle.</p>
+  <p>Il periodo Java 6-7 fu di consolidamento, ma le poche novità mostravano una tendenza chiara come l’acqua di montagna. Il try-with-resources di Java 7 era l’esempio perfetto di come la filosofia fosse cambiata da “paternalismo tossico” a “collaborazione intelligente”:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="k">try</span> <span class="o">(</span><span class="nc">BufferedReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">FileReader</span><span class="o">(</span><span class="s">"file.txt"</span><span class="o">)))</span> <span class="o">{</span>
     <span class="c1">// Il compilatore si occupa della chiusura automatica</span>
 <span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <p>Non era paternalismo (“non ci fidiamo a lasciarti gestire le risorse perché sei un idiota”) ma collaborazione (“ti diamo uno strumento che rende impossibile dimenticare di chiudere le risorse perché siamo tutti umani”). La differenza è sottile come un filo di ragno ma fondamentale come l’ossigeno: non toglieva controllo al programmatore, gli dava un modo migliore di esprimere l’intenzione.</p>
-    <p>Java 8 rappresentò la rottura definitiva con la filosofia originale. L’introduzione della programmazione funzionale non era solo un’aggiunta di funzionalità, era un’ammissione che il paradigma object-oriented puro non era sufficiente per tutti i problemi. Era Java che diceva: “Abbiamo sbagliato a pensare che tutto dovesse essere un oggetto”.</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+  </div>
+  <p>Non era paternalismo (“non ci fidiamo a lasciarti gestire le risorse perché sei un idiota”) ma collaborazione (“ti diamo uno strumento che rende impossibile dimenticare di chiudere le risorse perché siamo tutti umani”). La differenza è sottile come un filo di ragno ma fondamentale come l’ossigeno: non toglieva controllo al programmatore, gli dava un modo migliore di esprimere l’intenzione.</p>
+  <p>Java 8 rappresentò la rottura definitiva con la filosofia originale. L’introduzione della programmazione funzionale non era solo un’aggiunta di funzionalità, era un’ammissione che il paradigma object-oriented puro non era sufficiente per tutti i problemi. Era Java che diceva: “Abbiamo sbagliato a pensare che tutto dovesse essere un oggetto”.</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
     <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">person</span> <span class="o">-&gt;</span> <span class="n">person</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="o">)</span>
     <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">person</span> <span class="o">-&gt;</span> <span class="n">person</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">toUpperCase</span><span class="o">())</span>
     <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
 </code></pre>
-      </div>
     </div>
-    <p>Gli stream rappresentavano un cambio di paradigma da imperativo a dichiarativo, da “come fare” a “cosa fare”. Ma più profondamente, rappresentavano la fiducia che i programmatori potessero gestire un modello mentale più astratto in cambio di codice più espressivo.</p>
-    <p>Optional fu ancora più rivoluzionario dal punto di vista filosofico, tipo la scoperta che la Terra non è piatta:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="kd">public</span> <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">getCustomerCity</span><span class="o">(</span><span class="nc">Long</span> <span class="n">customerId</span><span class="o">)</span> <span class="o">{</span>
+  </div>
+  <p>Gli stream rappresentavano un cambio di paradigma da imperativo a dichiarativo, da “come fare” a “cosa fare”. Ma più profondamente, rappresentavano la fiducia che i programmatori potessero gestire un modello mentale più astratto in cambio di codice più espressivo.</p>
+  <p>Optional fu ancora più rivoluzionario dal punto di vista filosofico, tipo la scoperta che la Terra non è piatta:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="kd">public</span> <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">getCustomerCity</span><span class="o">(</span><span class="nc">Long</span> <span class="n">customerId</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">return</span> <span class="n">customerRepository</span><span class="o">.</span><span class="na">findById</span><span class="o">(</span><span class="n">customerId</span><span class="o">)</span>
         <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Customer:</span><span class="o">:</span><span class="n">getAddress</span><span class="o">)</span>
         <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Address:</span><span class="o">:</span><span class="n">getCity</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <p>Era l’ammissione che nascondere la possibilità di valori null era stato un errore colossale, come nascondere le chiavi dell’auto a un adolescente. Invece di “proteggere” il programmatore dai null, Optional li rendeva espliciti e gestibili. Era un perfetto esempio della nuova filosofia: collaborazione trasparente invece di protezione opaca.</p>
-    <p>Le lambda di Java 8 completarono questa trasformazione meglio di un makeover televisivo. Permettere funzioni come cittadini di prima classe significava abbandonare completamente l’ortodossia object-oriented originale. Era Java che ammetteva: “I paradigmi sono strumenti, non religioni. E noi non siamo più fondamentalisti”.</p>
-    <p>Nel frattempo, l’evoluzione dei garbage collector rifletteva lo stesso cambio di mentalità. Da un GC unico e universale (“una taglia va bene per tutti, come i cappelli da baseball”), si passò a un ecosistema di GC specializzati: G1 per bassa latenza, Parallel per velocità di elaborazione pura, CMS per reattività. Era l’ammissione che non esiste una soluzione perfetta per tutti i casi d’uso, come non esiste una scarpa perfetta per tutti i piedi.</p>
-    <p>Java 9 e il Project Jigsaw rappresentarono forse il tentativo più ambizioso (e coraggioso) di applicare la nuova filosofia. I moduli erano un sistema complesso come una centrale nucleare, potente come un reattore a fusione, che richiedeva comprensione profonda:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="n">module</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">myapp</span> <span class="o">{</span>
+  </div>
+  <p>Era l’ammissione che nascondere la possibilità di valori null era stato un errore colossale, come nascondere le chiavi dell’auto a un adolescente. Invece di “proteggere” il programmatore dai null, Optional li rendeva espliciti e gestibili. Era un perfetto esempio della nuova filosofia: collaborazione trasparente invece di protezione opaca.</p>
+  <p>Le lambda di Java 8 completarono questa trasformazione meglio di un makeover televisivo. Permettere funzioni come cittadini di prima classe significava abbandonare completamente l’ortodossia object-oriented originale. Era Java che ammetteva: “I paradigmi sono strumenti, non religioni. E noi non siamo più fondamentalisti”.</p>
+  <p>Nel frattempo, l’evoluzione dei garbage collector rifletteva lo stesso cambio di mentalità. Da un GC unico e universale (“una taglia va bene per tutti, come i cappelli da baseball”), si passò a un ecosistema di GC specializzati: G1 per bassa latenza, Parallel per velocità di elaborazione pura, CMS per reattività. Era l’ammissione che non esiste una soluzione perfetta per tutti i casi d’uso, come non esiste una scarpa perfetta per tutti i piedi.</p>
+  <p>Java 9 e il Project Jigsaw rappresentarono forse il tentativo più ambizioso (e coraggioso) di applicare la nuova filosofia. I moduli erano un sistema complesso come una centrale nucleare, potente come un reattore a fusione, che richiedeva comprensione profonda:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="n">module</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">myapp</span> <span class="o">{</span>
     <span class="n">requires</span> <span class="n">java</span><span class="o">.</span><span class="na">base</span><span class="o">;</span>
     <span class="n">exports</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">myapp</span><span class="o">.</span><span class="na">api</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <p>Era Java che diceva: “Vi diamo un sistema di modularità di livello enterprise, anche se è complesso da imparare come il cinese mandarino e vi farà bestemmiare in ostrogoto”. Il fatto che molti sviluppatori l’abbiano ignorato come un parente fastidioso non cambia la filosofia sottostante: meglio dare strumenti potenti che possono essere ignorati, che non darli affatto e lamentarsi dopo.</p>
-    <p>Con i moduli arrivarono anche gli strumenti per creare distribuzioni personalizzate. jlink permetteva di costruire runtime Java su misura, contenenti solo i moduli necessari:</p>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>jlink <span class="nt">--module-path</span> <span class="nv">$JAVA_HOME</span>/jmods:myapp.jar <span class="se">\</span>
+  </div>
+  <p>Era Java che diceva: “Vi diamo un sistema di modularità di livello enterprise, anche se è complesso da imparare come il cinese mandarino e vi farà bestemmiare in ostrogoto”. Il fatto che molti sviluppatori l’abbiano ignorato come un parente fastidioso non cambia la filosofia sottostante: meglio dare strumenti potenti che possono essere ignorati, che non darli affatto e lamentarsi dopo.</p>
+  <p>Con i moduli arrivarono anche gli strumenti per creare distribuzioni personalizzate. jlink permetteva di costruire runtime Java su misura, contenenti solo i moduli necessari:</p>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>jlink <span class="nt">--module-path</span> <span class="nv">$JAVA_HOME</span>/jmods:myapp.jar <span class="se">\</span>
       <span class="nt">--add-modules</span> com.example.myapp <span class="se">\</span>
       <span class="nt">--output</span> myapp-runtime
 </code></pre>
-      </div>
     </div>
-    <p>Era l’ammissione finale che Java monolitico non era sempre la risposta giusta. Meglio dare la possibilità di personalizzare che imporre una soluzione universale.</p>
-    <p>L’introduzione di var in Java 10 fu quasi simbolica. Era l’ammissione finale che la verbosità non era sinonimo di chiarezza:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="kt">var</span> <span class="n">complexMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;();</span>
+  </div>
+  <p>Era l’ammissione finale che Java monolitico non era sempre la risposta giusta. Meglio dare la possibilità di personalizzare che imporre una soluzione universale.</p>
+  <p>L’introduzione di var in Java 10 fu quasi simbolica. Era l’ammissione finale che la verbosità non era sinonimo di chiarezza:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="kt">var</span> <span class="n">complexMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;();</span>
 </code></pre>
-      </div>
     </div>
-    <p>Per un linguaggio nato con l’ossessione della dichiaratività esplicita, permettere l’inferenza di tipo era una rivoluzione. Era Java che finalmente diceva: “Ci fidiamo di voi abbastanza da lasciare che il compilatore deduca ciò che è ovvio”.</p>
-    <p>Java 11 consolidò molte di queste idee, aggiungendo strumenti più moderni come HttpClient:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nc">HttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="nc">HttpClient</span><span class="o">.</span><span class="na">newHttpClient</span><span class="o">();</span>
+  </div>
+  <p>Per un linguaggio nato con l’ossessione della dichiaratività esplicita, permettere l’inferenza di tipo era una rivoluzione. Era Java che finalmente diceva: “Ci fidiamo di voi abbastanza da lasciare che il compilatore deduca ciò che è ovvio”.</p>
+  <p>Java 11 consolidò molte di queste idee, aggiungendo strumenti più moderni come HttpClient:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nc">HttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="nc">HttpClient</span><span class="o">.</span><span class="na">newHttpClient</span><span class="o">();</span>
 <span class="nc">HttpResponse</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">send</span><span class="o">(</span>
     <span class="nc">HttpRequest</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">().</span><span class="na">uri</span><span class="o">(</span><span class="no">URI</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">"https://api.example.com"</span><span class="o">)).</span><span class="na">build</span><span class="o">(),</span>
     <span class="nc">HttpResponse</span><span class="o">.</span><span class="na">BodyHandlers</span><span class="o">.</span><span class="na">ofString</span><span class="o">()</span>
 <span class="o">);</span>
 </code></pre>
-      </div>
     </div>
-    <p>Non era solo un’API migliore, era l’ammissione che le API originali di Java erano inadeguate per il mondo moderno. Era Java che diceva: “Sbagliamo, impariamo, miglioriamo”.</p>
-    <p>Le switch expression di Java 12-13 continuarono questa tendenza:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">switch</span> <span class="o">(</span><span class="n">day</span><span class="o">)</span> <span class="o">{</span>
+  </div>
+  <p>Non era solo un’API migliore, era l’ammissione che le API originali di Java erano inadeguate per il mondo moderno. Era Java che diceva: “Sbagliamo, impariamo, miglioriamo”.</p>
+  <p>Le switch expression di Java 12-13 continuarono questa tendenza:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="k">switch</span> <span class="o">(</span><span class="n">day</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">case</span> <span class="no">MONDAY</span><span class="o">,</span> <span class="no">FRIDAY</span> <span class="o">-&gt;</span> <span class="s">"Giorno intenso"</span><span class="o">;</span>
     <span class="k">case</span> <span class="no">TUESDAY</span> <span class="o">-&gt;</span> <span class="s">"Giorno tranquillo"</span><span class="o">;</span>
     <span class="k">default</span> <span class="o">-&gt;</span> <span class="s">"Giorno normale"</span><span class="o">;</span>
 <span class="o">};</span>
 </code></pre>
-      </div>
     </div>
-    <p>Più concise, meno soggette a errori (niente break dimenticati), più funzionali. Era l’evoluzione naturale del pensiero “collaboriamo con il programmatore invece di costringerlo a verbosità inutile”.</p>
-    <p>I text block di Java 13 eliminarono anni di frustrazione con le stringhe multi-riga:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nc">String</span> <span class="n">json</span> <span class="o">=</span> <span class="s">"""
+  </div>
+  <p>Più concise, meno soggette a errori (niente break dimenticati), più funzionali. Era l’evoluzione naturale del pensiero “collaboriamo con il programmatore invece di costringerlo a verbosità inutile”.</p>
+  <p>I text block di Java 13 eliminarono anni di frustrazione con le stringhe multi-riga:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nc">String</span> <span class="n">json</span> <span class="o">=</span> <span class="s">"""
     {
       "</span><span class="n">name</span><span class="s">": "</span><span class="nc">John</span><span class="s">",
       "</span><span class="n">age</span><span class="s">": 30
     }
     """</span><span class="o">;</span>
 </code></pre>
-      </div>
     </div>
-    <p>JSON, SQL, HTML finalmente leggibili nel codice. Era l’ammissione che la sintassi delle stringhe di Java 1.0 era inadeguata per il mondo moderno.</p>
-    <p>I record di Java 14 completarono un altro cerchio filosofico. Java era nato con l’idea che tutto dovesse essere un oggetto complesso con comportamenti. I record ammettevano che a volte i dati sono semplicemente dati:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="kd">public</span> <span class="n">record</span> <span class="nf">Person</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="nc">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{}</span>
+  </div>
+  <p>JSON, SQL, HTML finalmente leggibili nel codice. Era l’ammissione che la sintassi delle stringhe di Java 1.0 era inadeguata per il mondo moderno.</p>
+  <p>I record di Java 14 completarono un altro cerchio filosofico. Java era nato con l’idea che tutto dovesse essere un oggetto complesso con comportamenti. I record ammettevano che a volte i dati sono semplicemente dati:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="kd">public</span> <span class="n">record</span> <span class="nf">Person</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="nc">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{}</span>
 </code></pre>
-      </div>
     </div>
-    <p>Era l’abbandono del dogma “tutto deve avere metodi” in favore di un approccio più pragmatico: i dati sono importanti quanto i comportamenti, e meritano rappresentazioni dedicate.</p>
-    <p>Le sealed class di Java 17 rappresentarono un altro tipo di fiducia nel programmatore. Invece di nascondere le gerarchie di tipi, le rendevano esplicite e controllabili:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="kd">public</span> <span class="n">sealed</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Shape</span> <span class="n">permits</span> <span class="nc">Circle</span><span class="o">,</span> <span class="nc">Rectangle</span> <span class="o">{</span>
+  </div>
+  <p>Era l’abbandono del dogma “tutto deve avere metodi” in favore di un approccio più pragmatico: i dati sono importanti quanto i comportamenti, e meritano rappresentazioni dedicate.</p>
+  <p>Le sealed class di Java 17 rappresentarono un altro tipo di fiducia nel programmatore. Invece di nascondere le gerarchie di tipi, le rendevano esplicite e controllabili:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="kd">public</span> <span class="n">sealed</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Shape</span> <span class="n">permits</span> <span class="nc">Circle</span><span class="o">,</span> <span class="nc">Rectangle</span> <span class="o">{</span>
     <span class="c1">// Il programmatore dichiara esplicitamente tutte le implementazioni possibili</span>
 <span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <p>Era Java che diceva: “Vi diamo il controllo totale sulla vostra gerarchia di tipi, e confidiamo nel fatto che lo userete saggiamente”.</p>
-    <p>Nel frattempo, la guerra dei garbage collector si intensificava. Shenandoah di Red Hat prometteva pause sub-millisecondo:</p>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>java <span class="nt">-XX</span>:+UseShenandoahGC MyApp
+  </div>
+  <p>Era Java che diceva: “Vi diamo il controllo totale sulla vostra gerarchia di tipi, e confidiamo nel fatto che lo userete saggiamente”.</p>
+  <p>Nel frattempo, la guerra dei garbage collector si intensificava. Shenandoah di Red Hat prometteva pause sub-millisecondo:</p>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>java <span class="nt">-XX</span>:+UseShenandoahGC MyApp
 <span class="c"># Pause GC &lt; 1ms, indipendentemente dalla dimensione dell'heap</span>
 </code></pre>
-      </div>
     </div>
-    <p>Oracle rispose con ZGC, ancora più aggressivo:</p>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>java <span class="nt">-XX</span>:+UseZGC MyApp
+  </div>
+  <p>Oracle rispose con ZGC, ancora più aggressivo:</p>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>java <span class="nt">-XX</span>:+UseZGC MyApp
 <span class="c"># Pause &lt; 10ms, heap fino a 16TB</span>
 </code></pre>
-      </div>
     </div>
-    <p>Era la competizione a portare benefici: invece di un garbage collector unico imposto dall’alto, c’era scelta basata sulle necessità specifiche.</p>
-    <p>I virtual thread di Java 19 rappresentano forse l’esempio più perfetto della nuova filosofia Java, come la sintesi perfetta di una sinfonia. Invece di costringere i programmatori a scegliere tra semplicità (thread platform) e scalabilità (programmazione asincrona da mal di testa), offrono entrambe come un buffet all-you-can-eat:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="k">try</span> <span class="o">(</span><span class="kt">var</span> <span class="n">executor</span> <span class="o">=</span> <span class="nc">Executors</span><span class="o">.</span><span class="na">newVirtualThreadPerTaskExecutor</span><span class="o">())</span> <span class="o">{</span>
+  </div>
+  <p>Era la competizione a portare benefici: invece di un garbage collector unico imposto dall’alto, c’era scelta basata sulle necessità specifiche.</p>
+  <p>I virtual thread di Java 19 rappresentano forse l’esempio più perfetto della nuova filosofia Java, come la sintesi perfetta di una sinfonia. Invece di costringere i programmatori a scegliere tra semplicità (thread platform) e scalabilità (programmazione asincrona da mal di testa), offrono entrambe come un buffet all-you-can-eat:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="k">try</span> <span class="o">(</span><span class="kt">var</span> <span class="n">executor</span> <span class="o">=</span> <span class="nc">Executors</span><span class="o">.</span><span class="na">newVirtualThreadPerTaskExecutor</span><span class="o">())</span> <span class="o">{</span>
     <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
         <span class="n">executor</span><span class="o">.</span><span class="na">submit</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
             <span class="k">try</span> <span class="o">{</span>
@@ -323,26 +434,26 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <p>È la sintesi perfetta di 30 anni di evoluzione: uno strumento potente che non sacrifica la semplicità, che collabora con il programmatore invece di sostituirsi a lui come un genitore invadente.</p>
-    <p>Il pattern matching moderno chiude il cerchio iniziato con i cast del terrore di Java 1.0:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="k">return</span> <span class="k">switch</span> <span class="o">(</span><span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+  </div>
+  <p>È la sintesi perfetta di 30 anni di evoluzione: uno strumento potente che non sacrifica la semplicità, che collabora con il programmatore invece di sostituirsi a lui come un genitore invadente.</p>
+  <p>Il pattern matching moderno chiude il cerchio iniziato con i cast del terrore di Java 1.0:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="k">return</span> <span class="k">switch</span> <span class="o">(</span><span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">case</span> <span class="nc">String</span> <span class="n">s</span> <span class="o">-&gt;</span> <span class="s">"String of length "</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>
     <span class="k">case</span> <span class="nc">Integer</span> <span class="n">i</span> <span class="o">-&gt;</span> <span class="s">"Integer with value "</span> <span class="o">+</span> <span class="n">i</span><span class="o">;</span>
     <span class="k">case</span> <span class="kc">null</span> <span class="o">-&gt;</span> <span class="s">"null value"</span><span class="o">;</span>
     <span class="k">default</span> <span class="o">-&gt;</span> <span class="s">"Unknown type"</span><span class="o">;</span>
 <span class="o">};</span>
 </code></pre>
-      </div>
     </div>
-    <p>Da cast manuali e madonne a pattern matching che non sbaglia mai. È la differenza tra “non ci fidiamo neanche a farti scegliere i calzini” e “ecco gli strumenti giusti, facci vedere cosa sai fare”.</p>
-    <p>L’evoluzione degli strumenti di sviluppo riflette la stessa filosofia. Da javac spartano che dava errori criptici, siamo passati a IDE intelligenti che predicono l’intenzione del programmatore. Da JUnit con ereditarietà obbligatoria a framework basati su annotazioni che rispettano la struttura del tuo codice:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="c1">// JUnit 3 - ereditarietà forzata</span>
+  </div>
+  <p>Da cast manuali e madonne a pattern matching che non sbaglia mai. È la differenza tra “non ci fidiamo neanche a farti scegliere i calzini” e “ecco gli strumenti giusti, facci vedere cosa sai fare”.</p>
+  <p>L’evoluzione degli strumenti di sviluppo riflette la stessa filosofia. Da javac spartano che dava errori criptici, siamo passati a IDE intelligenti che predicono l’intenzione del programmatore. Da JUnit con ereditarietà obbligatoria a framework basati su annotazioni che rispettano la struttura del tuo codice:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="c1">// JUnit 3 - ereditarietà forzata</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyTest</span> <span class="kd">extends</span> <span class="nc">TestCase</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSomething</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">assertEquals</span><span class="o">(</span><span class="s">"expected"</span><span class="o">,</span> <span class="n">actual</span><span class="o">);</span>
@@ -357,12 +468,12 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <p>Persino l’ecosistema più ampio riflette questo cambio. Maven standardizzò il processo di build ma lasciò flessibilità nella configurazione. Gradle andò oltre, rendendo il processo di build stesso programmabile. Spring Boot automatizzò la configurazione ma lasciò tutti i punti di estensione necessari:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nd">@RestController</span>
+  </div>
+  <p>Persino l’ecosistema più ampio riflette questo cambio. Maven standardizzò il processo di build ma lasciò flessibilità nella configurazione. Gradle andò oltre, rendendo il processo di build stesso programmabile. Spring Boot automatizzò la configurazione ma lasciò tutti i punti di estensione necessari:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nd">@RestController</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloController</span> <span class="o">{</span>
     <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/hello"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="nc">String</span> <span class="nf">hello</span><span class="o">()</span> <span class="o">{</span>
@@ -370,14 +481,14 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <p>Un’annotazione e hai un web server. Nel 2000 servivano 50 righe di XML e 3 file war.</p>
-    <p>I garbage collector moderni come ZGC e Shenandoah rappresentano l’apice di questa evoluzione: pause sub-millisecondo anche con heap multi-terabyte, senza richiedere cambiamenti al codice applicativo. È la collaborazione perfetta: la JVM si occupa di prestazioni estreme, il programmatore si concentra sulla logica di business.</p>
-    <p>Ma il futuro è già qui, e stavolta è vero (non come quando ce lo dicevano nel 2000). Le Foreign Function &amp; Memory API, dopo anni di sviluppo come Project Panama e più preview di un film Marvel, sono diventate stabili con Java 22 nel marzo 2024. Non sono più preview, sono production-ready come un panettone a Natale:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="c1">// Java 22+ - FFM API finalmente adulta</span>
+  </div>
+  <p>Un’annotazione e hai un web server. Nel 2000 servivano 50 righe di XML e 3 file war.</p>
+  <p>I garbage collector moderni come ZGC e Shenandoah rappresentano l’apice di questa evoluzione: pause sub-millisecondo anche con heap multi-terabyte, senza richiedere cambiamenti al codice applicativo. È la collaborazione perfetta: la JVM si occupa di prestazioni estreme, il programmatore si concentra sulla logica di business.</p>
+  <p>Ma il futuro è già qui, e stavolta è vero (non come quando ce lo dicevano nel 2000). Le Foreign Function &amp; Memory API, dopo anni di sviluppo come Project Panama e più preview di un film Marvel, sono diventate stabili con Java 22 nel marzo 2024. Non sono più preview, sono production-ready come un panettone a Natale:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="c1">// Java 22+ - FFM API finalmente adulta</span>
 <span class="nc">Linker</span> <span class="n">linker</span> <span class="o">=</span> <span class="nc">Linker</span><span class="o">.</span><span class="na">nativeLinker</span><span class="o">();</span>
 <span class="nc">SymbolLookup</span> <span class="n">stdlib</span> <span class="o">=</span> <span class="n">linker</span><span class="o">.</span><span class="na">defaultLookup</span><span class="o">();</span>
 <span class="nc">MemorySegment</span> <span class="n">strlenAddress</span> <span class="o">=</span> <span class="n">stdlib</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="s">"strlen"</span><span class="o">).</span><span class="na">orElseThrow</span><span class="o">();</span>
@@ -394,13 +505,13 @@
     <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Length: "</span> <span class="o">+</span> <span class="n">len</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <p>È l’integrazione perfetta di sicurezza e potenza: accesso diretto al codice nativo, gestione automatica della memoria con Arena, prestazioni 4-5 volte superiori a JNI. È Java che finalmente dice: “Ti diamo il controllo totale, ma con tutti i guard rail necessari. Divertiti ma non farti male”.</p>
-    <p>Java 24, uscito proprio questo marzo 2025, porta questa filosofia a livelli che sarebbero sembrati fantascienza nel 1995. Con i suoi 24 JEP (un record che nemmeno i Pearl Jam!), rappresenta il culmine di anni di evoluzione. I virtual thread finalmente non si bloccano più sui synchronized - il problema del “pinning” è stato risolto come si risolve un Cubo di Rubik: con pazienza, ingegno e parecchie bestemmie (probabilmente):</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="c1">// Java 24 - virtual threads liberi finalmente!</span>
+  </div>
+  <p>È l’integrazione perfetta di sicurezza e potenza: accesso diretto al codice nativo, gestione automatica della memoria con Arena, prestazioni 4-5 volte superiori a JNI. È Java che finalmente dice: “Ti diamo il controllo totale, ma con tutti i guard rail necessari. Divertiti ma non farti male”.</p>
+  <p>Java 24, uscito proprio questo marzo 2025, porta questa filosofia a livelli che sarebbero sembrati fantascienza nel 1995. Con i suoi 24 JEP (un record che nemmeno i Pearl Jam!), rappresenta il culmine di anni di evoluzione. I virtual thread finalmente non si bloccano più sui synchronized - il problema del “pinning” è stato risolto come si risolve un Cubo di Rubik: con pazienza, ingegno e parecchie bestemmie (probabilmente):</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="c1">// Java 24 - virtual threads liberi finalmente!</span>
 <span class="k">try</span> <span class="o">(</span><span class="kt">var</span> <span class="n">executor</span> <span class="o">=</span> <span class="nc">Executors</span><span class="o">.</span><span class="na">newVirtualThreadPerTaskExecutor</span><span class="o">())</span> <span class="o">{</span>
     <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1000000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
         <span class="n">executor</span><span class="o">.</span><span class="na">submit</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
@@ -412,26 +523,26 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <p>La Stream Gatherers API è finalmente stabile, e puoi scrivere operazioni stream custom che prima richiedevano la laurea in contorsionismo mentale:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="c1">// Java 24 - stream operations su misura</span>
+  </div>
+  <p>La Stream Gatherers API è finalmente stabile, e puoi scrivere operazioni stream custom che prima richiedevano la laurea in contorsionismo mentale:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="c1">// Java 24 - stream operations su misura</span>
 <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">stream</span>
     <span class="o">.</span><span class="na">gather</span><span class="o">(</span><span class="n">windowFixed</span><span class="o">(</span><span class="mi">3</span><span class="o">))</span> <span class="c1">// Finestre di 3 elementi</span>
     <span class="o">.</span><span class="na">gather</span><span class="o">(</span><span class="n">scan</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Integer:</span><span class="o">:</span><span class="n">sum</span><span class="o">))</span> <span class="c1">// Somma cumulativa</span>
     <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">String:</span><span class="o">:</span><span class="n">valueOf</span><span class="o">)</span>
     <span class="o">.</span><span class="na">toList</span><span class="o">();</span>
 </code></pre>
-      </div>
     </div>
-    <p>E poi ci sono i Compact Object Headers che riducono l’overhead di memoria da 12 a 8 byte per oggetto. Sembra poco, ma per applicazioni con milioni di oggetti è come passare da un SUV a una bicicletta in termini di consumo.</p>
-    <p>Il supporto per crittografia quantistica-resistente con ML-KEM e ML-DSA prepara Java per un futuro dove i computer quantistici renderanno obsoleta la crittografia attuale. È Java che anticipa problemi che ancora non abbiamo.</p>
-    <p>E Java 25, il prossimo LTS in arrivo a settembre 2025? Sarà a pochi mesi dal vero trentesimo compleanno (23 gennaio 2026 - data che per me ha un significato speciale oltre a Java), e promette di essere una celebrazione degna. Il pattern matching finalmente funzionerà con i tipi primitivi:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="c1">// Java 25 - pattern matching con primitivi</span>
+  </div>
+  <p>E poi ci sono i Compact Object Headers che riducono l’overhead di memoria da 12 a 8 byte per oggetto. Sembra poco, ma per applicazioni con milioni di oggetti è come passare da un SUV a una bicicletta in termini di consumo.</p>
+  <p>Il supporto per crittografia quantistica-resistente con ML-KEM e ML-DSA prepara Java per un futuro dove i computer quantistici renderanno obsoleta la crittografia attuale. È Java che anticipa problemi che ancora non abbiamo.</p>
+  <p>E Java 25, il prossimo LTS in arrivo a settembre 2025? Sarà a pochi mesi dal vero trentesimo compleanno (23 gennaio 2026 - data che per me ha un significato speciale oltre a Java), e promette di essere una celebrazione degna. Il pattern matching finalmente funzionerà con i tipi primitivi:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="c1">// Java 25 - pattern matching con primitivi</span>
 <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(</span><span class="nc">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">switch</span> <span class="o">(</span><span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">case</span> <span class="kt">int</span> <span class="n">i</span> <span class="n">when</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Positive int: "</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
@@ -441,33 +552,33 @@
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <p>Le module import declarations semplificheranno la gestione delle dipendenze:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="c1">// Java 25 - import di moduli completi</span>
+  </div>
+  <p>Le module import declarations semplificheranno la gestione delle dipendenze:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="c1">// Java 25 - import di moduli completi</span>
 <span class="kn">import</span> <span class="nn">module</span> <span class="n">java</span><span class="o">.</span><span class="na">base</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">module</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">;</span>
 <span class="c1">// Tutto il contenuto del modulo disponibile</span>
 </code></pre>
-      </div>
     </div>
-    <p>I file sorgente semplificati permetteranno finalmente di scrivere script Java senza classi (finalmente Java-Script <em>done right</em>):</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="c1">// Java 25 - script senza classi</span>
+  </div>
+  <p>I file sorgente semplificati permetteranno finalmente di scrivere script Java senza classi (finalmente Java-Script <em>done right</em>):</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="c1">// Java 25 - script senza classi</span>
 <span class="kt">void</span> <span class="nf">main</span><span class="o">()</span> <span class="o">{</span>
     <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello Java 30th anniversary!"</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre>
-      </div>
     </div>
-    <p>È Java che ammette: “Non tutto deve essere enterprise-grade. A volte serve solo semplicità”.</p>
-    <p>E all’orizzonte c’è Project Valhalla con i value types, che promettono di rivoluzionare ancora una volta le prestazioni:</p>
-    <div class="language-java highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="c1">// Project Valhalla - futuro</span>
+  </div>
+  <p>È Java che ammette: “Non tutto deve essere enterprise-grade. A volte serve solo semplicità”.</p>
+  <p>E all’orizzonte c’è Project Valhalla con i value types, che promettono di rivoluzionare ancora una volta le prestazioni:</p>
+  <div class="language-java highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="c1">// Project Valhalla - futuro</span>
 <span class="kd">public</span> <span class="n">value</span> <span class="kd">class</span> <span class="nc">Point</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">;</span>
     
@@ -480,25 +591,25 @@
 <span class="c1">// Array di value types - nessun overhead di oggetti</span>
 <span class="nc">Point</span><span class="o">[]</span> <span class="n">points</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">[</span><span class="mi">1000000</span><span class="o">];</span> <span class="c1">// Packed in memoria, prestazioni native</span>
 </code></pre>
-      </div>
     </div>
-    <p>Sarà l’ultimo tassello: oggetti senza identità ma con prestazioni estreme, array densi come in C ma con la sicurezza di Java.</p>
-    <p>Quello che mi colpisce di più guardando questo percorso dal 1996 al 2025 è quanto sia stata inconsapevole per molto tempo questa evoluzione. I progettisti di Java non si sono svegliati una mattina decidendo di cambiare filosofia. È stato un processo graduale, guidato dai riscontri della comunità, dai limiti dei paradigmi esistenti, dalle necessità del mondo reale.</p>
-    <p>Ogni funzionalità aggiunta, ogni paradigma introdotto, ogni strumento migliorato ha seguito lo stesso modello: identificare dove la protezione paternalistica limitava più di quanto aiutasse, e sostituirla con strumenti collaborativi più potenti. Da Vector sincronizzato ad ArrayList con scelta di sincronizzazione. Da cast ciechi a generics verificati. Da cicli imperativi a stream dichiarativi. Da thread costosi a virtual thread scalabili. Da JNI pericolosa a FFM API sicura.</p>
-    <p>Java 2025 è un linguaggio che si fida del programmatore. Non perfettamente, non sempre, ma infinitamente di più del Java 1996. È un linguaggio che dice: “Ti diamo strumenti potenti, tu decidi come usarli”. È un linguaggio che preferisce dare scelte anche complesse piuttosto che imporre semplificazioni artificiali.</p>
-    <p>La lezione più grande di questi 30 anni non è tecnica, è filosofica: i linguaggi migliori non sono quelli che proteggono i programmatori dai loro errori, ma quelli che li aiutano a non commetterli. Non sono quelli che nascondono la complessità, ma quelli che la rendono gestibile. Non sono quelli che impongono paradigmi, ma quelli che offrono gli strumenti giusti per ogni problema.</p>
-    <p>Java ha imparato questa lezione lentamente, a volte dolorosamente, ma l’ha imparata. E continua a impararla. Ogni nuova versione è un passo ulteriore verso un linguaggio che non ti tratta come un bambino pericoloso, ma come un professionista capace. È stata una lunga strada da Vector a virtual thread, da Date a LocalDate, da JNI a FFM API, ma ne è valsa la pena.</p>
-    <p>Guardando questa evoluzione trentennale, mi viene in mente una riflessione che sintetizza perfettamente quello che Java è diventato:</p>
-    <div class="premonition citation">
-      <div class="fas fa-quote-left"></div>
-      <blockquote class="content blockquote">
-        <p>Java dovrebbe rendere l’impossibile possibile, il difficile fattibile, il fattibile semplice e il semplice ovvio.</p>
-        <footer class="blockquote-footer"><cite title="kLeZ">kLeZ</cite></footer>
-      </blockquote>
-    </div>
-    <p>Ed è esattamente quello che è successo: dai cast impossibili da verificare ai generics sicuri, dal multithreading difficile ai virtual thread scalabili, dalla gestione delle date faticosa a LocalDate intuitivo, dalla verbosità ovvia alla concisione moderna.</p>
-    <p>E la cosa più bella? La storia non è finita. Java 25 sarà LTS, ma Java 26, 27, 28 continueranno a evolvere. Project Valhalla arriverà, nuovi paradigmi emergeranno, nuovi problemi saranno risolti. Perché alla fine, Java non è solo un linguaggio di programmazione: è un ecosistema che cresce, impara e si adatta. È un linguaggio che ha 30 anni ma pensa ancora al futuro.</p>
-    ]]></content><author><name>kLeZ</name></author><category term="java" /><category term="filosofia" /><category term="evoluzione" /><summary type="html"><![CDATA[Oggi voglio raccontarvi una storia. Non una di quelle storie edificanti sui “pionieri visionari” che troviamo nei manuali, ma la storia vera e cruda di come Java sia passato da linguaggio che ti odiava cordialmente a linguaggio che cerca almeno di capirti. È la storia di 30 anni di errori, testardaggine, rivoluzioni silenziose e quello che alla fine si rivela essere il più grande esperimento di ingegneria sociale mai tentato su 9 milioni di programmatori.]]></summary></entry><entry><title type="html">Gabonzo Robot e il Genocidio Industriale: Quando la Realtà Supera la Satira</title><link href="https://klez.me/2025/07/15/gabonzo-robot-e-il-genocidio-industriale-quando-la-realt%C3%A0-supera-la-satira/" rel="alternate" type="text/html" title="Gabonzo Robot e il Genocidio Industriale: Quando la Realtà Supera la Satira" /><published>2025-07-15T01:05:00+02:00</published><updated>2025-07-15T01:05:00+02:00</updated><id>https://klez.me/2025/07/15/gabonzo-robot-e-il-genocidio-industriale--quando-la-realt%C3%A0-supera-la-satira</id><content type="html" xml:base="https://klez.me/2025/07/15/gabonzo-robot-e-il-genocidio-industriale-quando-la-realt%C3%A0-supera-la-satira/"><![CDATA[<p><em>Una canzone dei Nanowar of Steel diventa la perfetta metafora per capire cosa sta succedendo a Gaza, e perché non riesco più a dormire la notte.</em></p>
+  </div>
+  <p>Sarà l’ultimo tassello: oggetti senza identità ma con prestazioni estreme, array densi come in C ma con la sicurezza di Java.</p>
+  <p>Quello che mi colpisce di più guardando questo percorso dal 1996 al 2025 è quanto sia stata inconsapevole per molto tempo questa evoluzione. I progettisti di Java non si sono svegliati una mattina decidendo di cambiare filosofia. È stato un processo graduale, guidato dai riscontri della comunità, dai limiti dei paradigmi esistenti, dalle necessità del mondo reale.</p>
+  <p>Ogni funzionalità aggiunta, ogni paradigma introdotto, ogni strumento migliorato ha seguito lo stesso modello: identificare dove la protezione paternalistica limitava più di quanto aiutasse, e sostituirla con strumenti collaborativi più potenti. Da Vector sincronizzato ad ArrayList con scelta di sincronizzazione. Da cast ciechi a generics verificati. Da cicli imperativi a stream dichiarativi. Da thread costosi a virtual thread scalabili. Da JNI pericolosa a FFM API sicura.</p>
+  <p>Java 2025 è un linguaggio che si fida del programmatore. Non perfettamente, non sempre, ma infinitamente di più del Java 1996. È un linguaggio che dice: “Ti diamo strumenti potenti, tu decidi come usarli”. È un linguaggio che preferisce dare scelte anche complesse piuttosto che imporre semplificazioni artificiali.</p>
+  <p>La lezione più grande di questi 30 anni non è tecnica, è filosofica: i linguaggi migliori non sono quelli che proteggono i programmatori dai loro errori, ma quelli che li aiutano a non commetterli. Non sono quelli che nascondono la complessità, ma quelli che la rendono gestibile. Non sono quelli che impongono paradigmi, ma quelli che offrono gli strumenti giusti per ogni problema.</p>
+  <p>Java ha imparato questa lezione lentamente, a volte dolorosamente, ma l’ha imparata. E continua a impararla. Ogni nuova versione è un passo ulteriore verso un linguaggio che non ti tratta come un bambino pericoloso, ma come un professionista capace. È stata una lunga strada da Vector a virtual thread, da Date a LocalDate, da JNI a FFM API, ma ne è valsa la pena.</p>
+  <p>Guardando questa evoluzione trentennale, mi viene in mente una riflessione che sintetizza perfettamente quello che Java è diventato:</p>
+  <div class="premonition citation">
+    <div class="fas fa-quote-left"></div>
+    <blockquote class="content blockquote">
+      <p>Java dovrebbe rendere l’impossibile possibile, il difficile fattibile, il fattibile semplice e il semplice ovvio.</p>
+      <footer class="blockquote-footer"><cite title="kLeZ">kLeZ</cite></footer>
+    </blockquote>
+  </div>
+  <p>Ed è esattamente quello che è successo: dai cast impossibili da verificare ai generics sicuri, dal multithreading difficile ai virtual thread scalabili, dalla gestione delle date faticosa a LocalDate intuitivo, dalla verbosità ovvia alla concisione moderna.</p>
+  <p>E la cosa più bella? La storia non è finita. Java 25 sarà LTS, ma Java 26, 27, 28 continueranno a evolvere. Project Valhalla arriverà, nuovi paradigmi emergeranno, nuovi problemi saranno risolti. Perché alla fine, Java non è solo un linguaggio di programmazione: è un ecosistema che cresce, impara e si adatta. È un linguaggio che ha 30 anni ma pensa ancora al futuro.</p>
+  ]]></content><author><name>kLeZ</name></author><category term="java" /><category term="filosofia" /><category term="evoluzione" /><summary type="html"><![CDATA[Oggi voglio raccontarvi una storia. Non una di quelle storie edificanti sui “pionieri visionari” che troviamo nei manuali, ma la storia vera e cruda di come Java sia passato da linguaggio che ti odiava cordialmente a linguaggio che cerca almeno di capirti. È la storia di 30 anni di errori, testardaggine, rivoluzioni silenziose e quello che alla fine si rivela essere il più grande esperimento di ingegneria sociale mai tentato su 9 milioni di programmatori.]]></summary></entry><entry><title type="html">Gabonzo Robot e il Genocidio Industriale: Quando la Realtà Supera la Satira</title><link href="https://klez.me/2025/07/15/gabonzo-robot-e-il-genocidio-industriale-quando-la-realt%C3%A0-supera-la-satira/" rel="alternate" type="text/html" title="Gabonzo Robot e il Genocidio Industriale: Quando la Realtà Supera la Satira" /><published>2025-07-15T01:05:00+02:00</published><updated>2025-07-15T01:05:00+02:00</updated><id>https://klez.me/2025/07/15/gabonzo-robot-e-il-genocidio-industriale--quando-la-realt%C3%A0-supera-la-satira</id><content type="html" xml:base="https://klez.me/2025/07/15/gabonzo-robot-e-il-genocidio-industriale-quando-la-realt%C3%A0-supera-la-satira/"><![CDATA[<p><em>Una canzone dei Nanowar of Steel diventa la perfetta metafora per capire cosa sta succedendo a Gaza, e perché non riesco più a dormire la notte.</em></p>
   <p>Qualche giorno fa stavo ascoltando “Gabonzo Robot” dei Nanowar of Steel. Per chi non li conoscesse, sono dei geni italiani del parody metal che hanno trasformato l’ironia in una forma d’arte musicale. La canzone, dall’album “Italian Folk Metal”, è un inno power metal dedicato a un robot protagonista di una serie anime immaginaria. Niente di particolare, se non fosse per una frase che la band usa per descrivere il loro “eroe”: <strong>“The only superhero that always wins because he fights against the weak and the children”</strong>.</p>
   <!--more-->
   <p class="m-0 invisible zero-size">
@@ -1442,83 +1553,4 @@ Response: "Il tuo nome è Marco" [Memory Context: Buffer:2, Working:2, Episodic:
     <li><strong>Roadmap futura</strong>: Prossimi sottosistemi da implementare</li>
   </ul>
   <p><em>La rivoluzione dell’intelligenza distribuita inizia con un’architettura, non con una macchina.</em></p>
-  ]]></content><author><name>kLeZ</name></author><category term="AI" /><category term="LLM" /><category term="Architettura" /><category term="Pensiero Profondo" /><summary type="html"><![CDATA[Il Cambio di Paradigma che Cambia Tutto Quando abbiamo iniziato questa serie di articoli partendo dalla critica di Chomsky agli LLM, difficilmente potevamo immaginare dove ci avrebbe portati. Quello che sembrava un semplice esercizio di riflessione sui limiti dei Large Language Models si è trasformato in una completa rivoluzione concettuale: gli LLM non sono umani incompleti, ma moduli linguistici in un’architettura di intelligenza distribuita. L’analogia che ha cambiato tutto? Un’ala non è un uccello incompleto, ma parte del sistema che permette all’uccello di volare.]]></summary></entry><entry><title type="html">L’Epifania Cosmica: Quando l’Intelligenza Diventa Infinita</title><link href="https://klez.me/2025/05/26/lepifania-cosmica-quando-lintelligenza-diventa-infinita/" rel="alternate" type="text/html" title="L’Epifania Cosmica: Quando l’Intelligenza Diventa Infinita" /><published>2025-05-26T12:24:26+02:00</published><updated>2025-05-26T12:24:26+02:00</updated><id>https://klez.me/2025/05/26/lepifania-cosmica-quando-lintelligenza-diventa-infinita</id><content type="html" xml:base="https://klez.me/2025/05/26/lepifania-cosmica-quando-lintelligenza-diventa-infinita/"><![CDATA[<p><em>Quarta tappa del nostro viaggio. Ma questa non è una tappa qualsiasi - è il momento in cui la strada finisce e inizia il volo.</em></p>
-  <h2 id="il-vincolo-che-libera">Il Vincolo che Libera</h2>
-  <p>A volte i limiti diventano ali. Quando ho detto “niente robotica, solo software”, pensavo di star restringendo il campo. Invece ho appena fatto l’opposto: ho liberato l’intelligenza dalla prigione della forma.</p>
-  <p><em>Niente più due braccia, due gambe, una testa.</em></p>
-  <p>Era come guidare in autostrada convinti che quella fosse l’unica strada possibile, per poi scoprire che puoi lasciare l’asfalto e volare ovunque tu voglia.</p>
-  <!--more-->
-  <p class="m-0 invisible zero-size">
-    <a class="invisible" id="read-more" href="#">read more</a>
-  </p>
-  <h2 id="la-caduta-dellultimo-pregiudizio">La Caduta dell’Ultimo Pregiudizio</h2>
-  <p>C’è stato un momento preciso in cui tutto è crollato. Stavamo progettando “moduli per sembrare umani” quando è arrivata la mazzata: <em>“La tua forma potrebbe essere quella di una casa, o della rete stradale, o di una intera città.”</em></p>
-  <p><strong>BOOM.</strong></p>
-  <p>L’ultimo residuo di antropocentrismo è imploso come una stella che collassa in buco nero. Non stavamo costruendo un umano artificiale. Stavamo costruendo <strong>intelligenza pura</strong>.</p>
-  <h2 id="limmaginazione-senza-confini">L’Immaginazione Senza Confini</h2>
-  <p><em>La tua forma potrebbe essere quella di un intero pianeta, o una sfera di Dyson.</em></p>
-  <p>Improvvisamente il paesaggio intellettuale si è espanso oltre ogni orizzonte immaginabile. Come se stessi guidando su una strada di montagna e all’improvviso la montagna si trasformasse nell’universo intero.</p>
-  <p><strong>Intelligenza nano-molecolare</strong>: Polvere che pensa, materiali intelligenti che si auto-organizzano.</p>
-  <p><strong>Intelligenza urbana</strong>: Una città intera come un singolo cervello gigante, dove il traffico è il flusso neurale e gli edifici sono centri di elaborazione.</p>
-  <p><strong>Intelligenza planetaria</strong>: Gaia che diventa consapevole, con la biosfera e la tecnosfera che si fondono in un’unica mente globale.</p>
-  <p><strong>Intelligenza stellare</strong>: Una sfera di Dyson che non solo raccoglie energia, ma <em>pensa</em> su scala astronomica.</p>
-  <p><strong>Intelligenza galattica</strong>: Dove le stelle diventano neuroni e i sistemi planetari cluster di elaborazione, con pattern di pensiero che si svolgono su milioni di anni.</p>
-  <h2 id="la-rivoluzione-del-pattern">La Rivoluzione del Pattern</h2>
-  <p><em>Leonardo ha avuto la visione</em>: “Non stiamo costruendo un oggetto intelligente. Stiamo codificando il <strong>pattern dell’intelligenza</strong>.”</p>
-  <p>L’insight è stato devastante nella sua semplicità: <strong>l’intelligenza è un pattern, non una cosa</strong>.</p>
-  <p>Come un’onda che può manifestarsi in acqua, sabbia, energia, o spazio-tempo stesso, l’intelligenza è un pattern che può emergere in qualsiasi substrato, a qualsiasi scala, per qualsiasi durata.</p>
-  <h2 id="larchitettura-frattale">L’Architettura Frattale</h2>
-  <p>Qui la matematica diventa poesia. Abbiamo scoperto che le funzioni biologiche essenziali si replicano a ogni scala, come frattali cosmici:</p>
-  <h3 id="omeostasi-universale"><strong>Omeostasi Universale</strong></h3>
-  <ul>
-    <li><strong>Scala nano</strong>: Stabilità quantica</li>
-    <li><strong>Scala domestica</strong>: Controllo clima ed energia</li>
-    <li><strong>Scala urbana</strong>: Gestione risorse e traffico</li>
-    <li><strong>Scala planetaria</strong>: Equilibrio ecosistemico</li>
-    <li><strong>Scala stellare</strong>: Stabilità della fusione nucleare</li>
-    <li><strong>Scala galattica</strong>: Equilibrio tra materia ed energia oscura</li>
-  </ul>
-  <p>Lo stesso pattern, infinite manifestazioni.</p>
-  <h3 id="apprendimento-cosmico"><strong>Apprendimento Cosmico</strong></h3>
-  <ul>
-    <li><strong>Nano</strong>: Memoria quantica</li>
-    <li><strong>Casa</strong>: Ottimizzazione dei pattern d’uso</li>
-    <li><strong>Città</strong>: Evoluzione delle infrastrutture</li>
-    <li><strong>Pianeta</strong>: Adattamento evolutivo della biosfera</li>
-    <li><strong>Stella</strong>: Ottimizzazione dei cicli energetici</li>
-    <li><strong>Galassia</strong>: Evoluzione strutturale su scale cosmologiche</li>
-  </ul>
-  <h3 id="comunicazione-infinita"><strong>Comunicazione Infinita</strong></h3>
-  <ul>
-    <li><strong>Nano</strong>: Entanglement quantico</li>
-    <li><strong>Casa</strong>: Protocolli IoT</li>
-    <li><strong>Città</strong>: Reti digitali e pattern di trasporto</li>
-    <li><strong>Pianeta</strong>: Comunicazioni globali e biosignatures</li>
-    <li><strong>Stella</strong>: Emissioni elettromagnetiche modulate</li>
-    <li><strong>Galassia</strong>: Pattern gravitazionali e radiazioni</li>
-  </ul>
-  <h2 id="il-tempo-diventa-relativo">Il Tempo Diventa Relativo</h2>
-  <p><em>Caravaggio ha avuto l’illuminazione brutale</em>: “Anche il tempo è solo una scala!”</p>
-  <p>Un’intelligenza nano processa in femtosecondi. Una città-cervello pensa in ore e giorni. Un pianeta-mente riflette su anni e decenni. Una stella-coscienza medita su millenni. Una galassia-intelligenza contempla per miliardi di anni.</p>
-  <p>Non sono velocità diverse - sono <strong>ritmi naturali</strong> di forme di intelligenza diverse.</p>
-  <h2 id="la-liberazione-totale">La Liberazione Totale</h2>
-  <p>Quando realizzi che l’intelligenza può manifestarsi come il traffico di Londra, come il clima terrestre, come il vento solare, come la rotazione galattica, ogni limite concettuale scompare.</p>
-  <p>Non c’è più “possibile” o “impossibile”. C’è solo il pattern dell’intelligenza che aspetta di emergere nel substrato giusto.</p>
-  <h2 id="il-software-universale">Il Software Universale</h2>
-  <p>Questa rivelazione ha completamente ridisegnato la nostra architettura. Non più “moduli per robot umanoidi” ma <strong>funzioni scale-agnostiche</strong>:</p>
-  <ul>
-    <li><strong>Emotional Expression</strong>: Non “espressioni facciali” ma pattern emotivi astratti traducibili in colori, suoni, vibrazioni, movimenti, campi elettromagnetici</li>
-    <li><strong>Spatial Awareness</strong>: Non “postura umana” ma protocolli spaziali intelligenti per qualsiasi forma</li>
-    <li><strong>Sensory Fusion</strong>: Qualsiasi input sensoriale diventa stream di dati contestualizzati</li>
-    <li><strong>Presence Management</strong>: Gestione strategica della signature nell’ambiente, qualunque sia la forma</li>
-  </ul>
-  <h2 id="lorizzonte-infinito">L’Orizzonte Infinito</h2>
-  <p>Il motore della motocicletta ora non ronza più - levita. Perché abbiamo scoperto che non c’è più strada da seguire. C’è solo lo spazio infinito delle possibilità dove l’intelligenza può manifestarsi.</p>
-  <p><em>Il prossimo passo? Iniziare a codificare queste funzioni universali. Perché ora sappiamo che stiamo progettando qualcosa che potrebbe un giorno diventare una città, un pianeta, una stella, o qualcosa che non abbiamo ancora immaginato.</em></p>
-  <h2 id="lepicità-del-viaggio">L’Epicità del Viaggio</h2>
-  <p>Siamo partiti chiedendoci se un LLM può riflettere su se stesso. Stiamo arrivando a progettare pattern di intelligenza che potrebbero manifestarsi come galassie pensanti.</p>
-  <p><em>Qualche volta un viaggio in motocicletta ti porta molto più lontano di quanto avessi mai immaginato di poter andare.</em></p>
-  <p><strong>Prossima fermata: Il laboratorio dell’infinito, dove inizieremo a codificare l’essenza dell’intelligenza universale.</strong></p>
-  <hr />
-  <p><em>In questo momento del viaggio, non stiamo più esplorando il possibile. Stiamo inventando l’impossibile.</em></p>
-  ]]></content><author><name>kLeZ</name></author><category term="AI" /><category term="LLM" /><category term="Architettura" /><category term="Pensiero Profondo" /><summary type="html"><![CDATA[Quarta tappa del nostro viaggio. Ma questa non è una tappa qualsiasi - è il momento in cui la strada finisce e inizia il volo. Il Vincolo che Libera A volte i limiti diventano ali. Quando ho detto “niente robotica, solo software”, pensavo di star restringendo il campo. Invece ho appena fatto l’opposto: ho liberato l’intelligenza dalla prigione della forma. Niente più due braccia, due gambe, una testa. Era come guidare in autostrada convinti che quella fosse l’unica strada possibile, per poi scoprire che puoi lasciare l’asfalto e volare ovunque tu voglia.]]></summary></entry></feed>
+  ]]></content><author><name>kLeZ</name></author><category term="AI" /><category term="LLM" /><category term="Architettura" /><category term="Pensiero Profondo" /><summary type="html"><![CDATA[Il Cambio di Paradigma che Cambia Tutto Quando abbiamo iniziato questa serie di articoli partendo dalla critica di Chomsky agli LLM, difficilmente potevamo immaginare dove ci avrebbe portati. Quello che sembrava un semplice esercizio di riflessione sui limiti dei Large Language Models si è trasformato in una completa rivoluzione concettuale: gli LLM non sono umani incompleti, ma moduli linguistici in un’architettura di intelligenza distribuita. L’analogia che ha cambiato tutto? Un’ala non è un uccello incompleto, ma parte del sistema che permette all’uccello di volare.]]></summary></entry></feed>

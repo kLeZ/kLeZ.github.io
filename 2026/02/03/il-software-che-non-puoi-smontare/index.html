@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+    <title>Il software che non puoi smontare | Alessandro ‘kLeZ’ Accardo personal website</title>
+    <meta name="generator" content="Jekyll v3.9.3" />
+    <meta property="og:title" content="Il software che non puoi smontare" />
+    <meta name="author" content="kLeZ" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="Nel 2010 scrivevo su questo blog che volevo costruirmi una distro Linux da zero con LFS. Avevo vent’anni e pensavo che capire come funziona un sistema fosse un mio diritto. Bastava volerlo. Mi scarico i sorgenti, compilo tutto a mano, alla fine ho qualcosa di mio che capisco pezzo per pezzo. “Un’avventura ricca di difficoltà ma anche di insegnamenti utili e esperienza”, scrivevo. L’entusiasmo di chi non sa ancora quanto è profonda la tana del coniglio. Ma l’entusiasmo è fondamentale per avere la voglia di capire, di conoscere, di scoprire. È la base della cultura hacker, è la base delle persone curiose che compongono il substrato su cui il free software è cresciuto e fiorito bello come è sempre stato, è l’humus in cui sono cresciuto io. Oltre all’entusiasmo però servono possibilità. LFS e Linux hanno spopolato tra hacker, attivisti e curiosi proprio perché sono sempre stati sistemi aperti, documentati, comprensibili se hai voglia di spenderti (l’entusiasmo, appunto). Non poteva essere lo stesso nel mondo Microsoft, perché Windows non puoi analizzarlo, non puoi smontarlo, non puoi studiarlo per capire qualcosa. Puoi hackerarlo, certo, ma non capisci mai intimamente la sua struttura a meno di non studiare come un matto, entrare in Microsoft nel team Windows e poter finalmente aprire i sorgenti. Senza vomitare. Sedici anni dopo, LFS ha annunciato che non manterrà più la versione System V. E permettetemi di dire che questo mi fa incazzare, non tanto per l’annuncio di cui condivido pensieri e parole con Dubbs, ma per il contesto più ampio in cui questo evento cade (nulla avviene nel vuoto)." />
+    <meta property="og:description" content="Nel 2010 scrivevo su questo blog che volevo costruirmi una distro Linux da zero con LFS. Avevo vent’anni e pensavo che capire come funziona un sistema fosse un mio diritto. Bastava volerlo. Mi scarico i sorgenti, compilo tutto a mano, alla fine ho qualcosa di mio che capisco pezzo per pezzo. “Un’avventura ricca di difficoltà ma anche di insegnamenti utili e esperienza”, scrivevo. L’entusiasmo di chi non sa ancora quanto è profonda la tana del coniglio. Ma l’entusiasmo è fondamentale per avere la voglia di capire, di conoscere, di scoprire. È la base della cultura hacker, è la base delle persone curiose che compongono il substrato su cui il free software è cresciuto e fiorito bello come è sempre stato, è l’humus in cui sono cresciuto io. Oltre all’entusiasmo però servono possibilità. LFS e Linux hanno spopolato tra hacker, attivisti e curiosi proprio perché sono sempre stati sistemi aperti, documentati, comprensibili se hai voglia di spenderti (l’entusiasmo, appunto). Non poteva essere lo stesso nel mondo Microsoft, perché Windows non puoi analizzarlo, non puoi smontarlo, non puoi studiarlo per capire qualcosa. Puoi hackerarlo, certo, ma non capisci mai intimamente la sua struttura a meno di non studiare come un matto, entrare in Microsoft nel team Windows e poter finalmente aprire i sorgenti. Senza vomitare. Sedici anni dopo, LFS ha annunciato che non manterrà più la versione System V. E permettetemi di dire che questo mi fa incazzare, non tanto per l’annuncio di cui condivido pensieri e parole con Dubbs, ma per il contesto più ampio in cui questo evento cade (nulla avviene nel vuoto)." />
+    <link rel="canonical" href="https://klez.me/2026/02/03/il-software-che-non-puoi-smontare/" />
+    <meta property="og:url" content="https://klez.me/2026/02/03/il-software-che-non-puoi-smontare/" />
+    <meta property="og:site_name" content="Alessandro ‘kLeZ’ Accardo personal website" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2026-02-03T13:37:42+01:00" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="Il software che non puoi smontare" />
+    <meta name="twitter:site" content="@kLeZhAcK" />
+    <meta name="twitter:creator" content="@kLeZhAcK" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"kLeZ"},"dateModified":"2026-02-03T13:37:42+01:00","datePublished":"2026-02-03T13:37:42+01:00","description":"Nel 2010 scrivevo su questo blog che volevo costruirmi una distro Linux da zero con LFS. Avevo vent’anni e pensavo che capire come funziona un sistema fosse un mio diritto. Bastava volerlo. Mi scarico i sorgenti, compilo tutto a mano, alla fine ho qualcosa di mio che capisco pezzo per pezzo. “Un’avventura ricca di difficoltà ma anche di insegnamenti utili e esperienza”, scrivevo. L’entusiasmo di chi non sa ancora quanto è profonda la tana del coniglio. Ma l’entusiasmo è fondamentale per avere la voglia di capire, di conoscere, di scoprire. È la base della cultura hacker, è la base delle persone curiose che compongono il substrato su cui il free software è cresciuto e fiorito bello come è sempre stato, è l’humus in cui sono cresciuto io. Oltre all’entusiasmo però servono possibilità. LFS e Linux hanno spopolato tra hacker, attivisti e curiosi proprio perché sono sempre stati sistemi aperti, documentati, comprensibili se hai voglia di spenderti (l’entusiasmo, appunto). Non poteva essere lo stesso nel mondo Microsoft, perché Windows non puoi analizzarlo, non puoi smontarlo, non puoi studiarlo per capire qualcosa. Puoi hackerarlo, certo, ma non capisci mai intimamente la sua struttura a meno di non studiare come un matto, entrare in Microsoft nel team Windows e poter finalmente aprire i sorgenti. Senza vomitare. Sedici anni dopo, LFS ha annunciato che non manterrà più la versione System V. E permettetemi di dire che questo mi fa incazzare, non tanto per l’annuncio di cui condivido pensieri e parole con Dubbs, ma per il contesto più ampio in cui questo evento cade (nulla avviene nel vuoto).","headline":"Il software che non puoi smontare","mainEntityOfPage":{"@type":"WebPage","@id":"https://klez.me/2026/02/03/il-software-che-non-puoi-smontare/"},"url":"https://klez.me/2026/02/03/il-software-che-non-puoi-smontare/"}
+    </script>
+    <!-- End Jekyll SEO tag -->
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/katex/katex.min.css" />
+    <link rel="stylesheet" href="/assets/main.css" />
+    <link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro &apos;kLeZ&apos; Accardo personal website" />
+  </head>
+  <body class="post-page">
+    <header class="masthead" style="background-image: url(/assets/img/home-bg.jpg)">
+      <div class="overlay"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Alessandro 'kLeZ' Accardo personal website</h1>
+              <span class="subheading">This is the personal website of an Italian developer once called 'kLeZ'.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="/">kLeZ</a>
+        <a class="navbar-brand" href="https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml" target="_blank">
+          <img src="https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml/badge.svg?branch=dev" alt="build status badge" />
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/build.html">Build</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/blog">Posts</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">About me <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="/about">About</a>
+                <a class="dropdown-item " href="/contatti">Contatti</a>
+                <a class="dropdown-item " href="/cv">Curriculum Vitae</a>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="https://github.com/kLeZ/kLeZ.github.io">Repository</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Progetti <span class="caret"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item " href="https://klez.me/wash-ideas">Wash Ideas (Alpha)</a>
+                <a class="dropdown-item " href="https://klez.me/PassMan">PassMan</a>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/eventi">Eventi</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container-fluid" aria-label="Content">
+      <div class="row">
+        <div class="col-lg-2 col-md-12">
+          <aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
+            <p class="text-muted">
+              This article will take 10 minutes to read.
+            </p>
+          </aside>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <article itemscope itemtype="http://schema.org/BlogPosting">
+            <header>
+              <h2>Il software che non puoi smontare</h2>
+              <small class="text-muted">Posted on
+                <time datetime="2026-02-03T13:37:42+01:00" itemprop="datePublished">03 Feb 2026</time><span> • by <span class="font-italic" itemprop="author" itemscope itemtype="http://schema.org/Person">kLeZ</span></span></small>
+            </header>
+            <section itemprop="articleBody">
+              <p>Nel 2010 scrivevo su questo blog che volevo costruirmi una distro Linux da zero con LFS. Avevo vent’anni e pensavo che capire come funziona un sistema fosse un mio diritto. Bastava volerlo. Mi scarico i sorgenti, compilo tutto a mano, alla fine ho qualcosa di mio che capisco pezzo per pezzo. “Un’avventura ricca di difficoltà ma anche di insegnamenti utili e esperienza”, scrivevo.</p>
+              <p>L’entusiasmo di chi non sa ancora quanto è profonda la tana del coniglio. Ma l’entusiasmo è fondamentale per avere la voglia di capire, di conoscere, di scoprire. È la base della cultura hacker, è la base delle persone curiose che compongono il substrato su cui il free software è cresciuto e fiorito bello come è sempre stato, è l’humus in cui sono cresciuto io.</p>
+              <p>Oltre all’entusiasmo però servono possibilità. LFS e Linux hanno spopolato tra hacker, attivisti e curiosi proprio perché sono sempre stati sistemi aperti, documentati, comprensibili se hai voglia di spenderti (l’entusiasmo, appunto).</p>
+              <p>Non poteva essere lo stesso nel mondo Microsoft, perché Windows non puoi analizzarlo, non puoi smontarlo, non puoi studiarlo per capire qualcosa. Puoi <em>hackerarlo</em>, certo, ma non capisci mai intimamente la sua struttura a meno di non studiare come un matto, entrare in Microsoft nel team Windows e poter finalmente aprire i sorgenti. Senza vomitare.</p>
+              <p>Sedici anni dopo, LFS ha <a href="https://lists.linuxfromscratch.org/sympa/arc/lfs-announce/2026-02/msg00000.html">annunciato</a> che non manterrà più la versione System V.</p>
+              <p>E permettetemi di dire che <em>questo mi fa incazzare</em>, non tanto per l’annuncio di cui condivido pensieri e parole con Dubbs, ma per il contesto più ampio in cui questo evento cade (nulla avviene nel vuoto).</p>
+              <!--more-->
+              <p class="m-0 invisible zero-size">
+                <a class="invisible" id="read-more" href="#">read more</a>
+              </p>
+              <h2 id="che-è-successo">Che è successo</h2>
+              <p>Bruce Dubbs mantiene LFS da anni. Il primo febbraio ha scritto alla mailing list:</p>
+              <div class="premonition citation">
+                <div class="fas fa-quote-left"></div>
+                <blockquote class="content blockquote" cite="https://lists.linuxfromscratch.org/sympa/arc/lfs-announce/2026-02/msg00000.html">
+                  <p>To me LFS is about learning how a system works. Understanding the boot process is a big part of that.</p>
+                  <footer class="blockquote-footer"><cite title="Bruce Dubbs"><a href="https://lists.linuxfromscratch.org/sympa/arc/lfs-announce/2026-02/msg00000.html">Bruce Dubbs</a></cite></footer>
+                </blockquote>
+              </div>
+              <p>LFS esiste dal ‘99. Ventisette anni. Non è una distro da usare tutti i giorni. È un manuale. Ti prende per mano e ti guida nella compilazione di ogni singolo pezzo del sistema operativo. Dalla toolchain al kernel, dal bootloader ai servizi di base. Chi finisce LFS non ha solo un sistema funzionante. Ha capito cosa succede quando preme il pulsante di accensione.</p>
+              <p>Capiva.</p>
+              <p>D’ora in poi LFS documenta solo systemd. System V, il sistema di init che ha accompagnato Unix e Linux per decenni, sparisce. Chi vuole imparare come funziona un init semplice dovrà arrangiarsi.</p>
+              <h2 id="perché">Perché</h2>
+              <p>Bruce indica due motivi.</p>
+              <p>Il primo è il carico di lavoro. LFS è un progetto di volontari. Mantenere due versioni parallele — systemd e System V — è diventato impossibile. Non è solo raddoppiare la documentazione. I due sistemi non sono più intercambiabili. Le dipendenze si sono intrecciate. Ogni nuovo pacchetto va testato due volte. Ogni aggiornamento può rompere qualcosa da una parte o dall’altra. I workaround si accumulano. I volontari si stancano.</p>
+              <p>Mi ricordo perfettamente quando durante la mia prima LFS a metà percorso ho cambiato il sistema per la gestione dell’hardware togliendo udev per fare le cose con uno scriptino che mi piaceva di più. Scomodo per una <em>distro full-fledged</em>, difficile da mantenere su scala, tutto vero, ma per me avere il pieno controllo di come l’hardware viene mappato, come gli IRQ vengono assegnati, come vengono creati i dispositivi a blocchi e come vengono legati i driver ai moduli generici e agli stessi dispositivi a blocchi era fondamentale, per capire che succede quando connetti una chiavetta. Udev è bellissimo eh, funziona da paura. Se non ti interessa capire come il sistema operativo comunica con l’hardware lato user space, cioè cosa succede quando attacchi una chiavetta al PC.</p>
+              <p>Il secondo motivo è peggio. GNOME e KDE ora richiedono funzionalità che solo systemd fornisce. Vuoi costruirti un desktop moderno? Ti serve systemd. Non c’è alternativa praticabile. Il lock-in si è propagato verso l’alto nello stack. Non è più solo il sistema di init. È tutto quello che ci sta sopra.</p>
+              <p>Bruce non nasconde il fastidio:</p>
+              <div class="premonition citation">
+                <div class="fas fa-quote-left"></div>
+                <blockquote class="content blockquote" cite="https://lists.linuxfromscratch.org/sympa/arc/lfs-announce/2026-02/msg00000.html">
+                  <p>I do not like this decision. […] we will be losing some things I consider important. However, the decision needs to be made.</p>
+                  <footer class="blockquote-footer"><cite title="Bruce Dubbs"><a href="https://lists.linuxfromscratch.org/sympa/arc/lfs-announce/2026-02/msg00000.html">Bruce Dubbs</a></cite></footer>
+                </blockquote>
+              </div>
+              <p>Bruce non è un nostalgico che rimpiange i bei tempi andati. È uno che ha dedicato anni della sua vita a insegnare come funzionano i sistemi.</p>
+              <h2 id="i-numeri">I numeri</h2>
+              <p>Ecco il dato che mi ha fermato:</p>
+              <div class="premonition citation">
+                <div class="fas fa-quote-left"></div>
+                <blockquote class="content blockquote" cite="https://lists.linuxfromscratch.org/sympa/arc/lfs-announce/2026-02/msg00000.html">
+                  <p>systemd is about 1678 C files plus many data files. System V is 22 C files plus about 50 short bash scripts and data files.</p>
+                  <footer class="blockquote-footer"><cite title="Bruce Dubbs"><a href="https://lists.linuxfromscratch.org/sympa/arc/lfs-announce/2026-02/msg00000.html">Bruce Dubbs</a></cite></footer>
+                </blockquote>
+              </div>
+              <p>1678 contro 22.</p>
+              <p>Lascia che affondi. 1678 file di codice C. Più file di configurazione, unit, timer, socket, target. Contro 22 file C e una cinquantina di script bash.</p>
+              <p>Con 22 file potevi leggere tutto. Potevi aprire ogni file, seguire il flusso dall’inizio alla fine, capire cosa fa ogni riga. Potevi tenere il sistema in testa. Modificarlo. Romperlo e ripararlo. Era un esercizio alla portata di una persona sola con tempo e curiosità.</p>
+              <p>Con 1678 no. Non perché sei stupido o pigro. Perché nessuno tiene in testa 1678 file. Neanche chi li ha scritti. A quel punto non stai più capendo un sistema. Ti stai fidando di un sistema.</p>
+              <p>Un sistema tra l’altro molto complesso, perché mentre con SysV tu dovevi studiare un software che fa da init system, con systemd tu studi uno stack intero che fa <em>anche</em> init. E filtrare la “parte init” dal resto su systemd non è banale. Puoi provarci, aspetto qui che io ho già dato (ampiamente).</p>
+              <h2 id="lecosistema">L’ecosistema</h2>
+              <p>systemd non è un semplice sistema di init. È diventato un ecosistema. C’è systemd-logind per la gestione delle sessioni. systemd-networkd per la rete. systemd-resolved per il DNS. systemd-timesyncd per la sincronizzazione del tempo. journald per i log. udev per i device. Ogni pezzo ha le sue configurazioni, le sue convenzioni, le sue interazioni con gli altri pezzi.</p>
+              <p>È un progetto ambizioso. Ha cercato di standardizzare e modernizzare l’infrastruttura di base di Linux. Ha risolto problemi veri: l’avvio parallelo dei servizi, la gestione delle dipendenze, l’integrazione con cgroups, la standardizzazione dei log. Funzionalità che servono, specialmente su server complessi e container.</p>
+              <p>Ma è opaco. Se qualcosa non funziona, non puoi aprire uno script e leggere cosa fa. Devi navigare un labirinto di unit, dipendenze, target, slice. Devi fidarti che qualcun altro abbia capito al posto tuo.</p>
+              <p>Mi è capitato l’anno scorso. Il portatile non si spegneva. Restava appeso su “A stop job is running” per due minuti prima di arrendersi. Con SysV avrei aperto lo script di shutdown, letto cosa faceva, trovato il problema. Con systemd ho passato un’ora a cercare tra journalctl, systemctl list-jobs, analisi dei target. Alla fine ho trovato il colpevole: un servizio che non rispondeva al SIGTERM. Ma il percorso per arrivarci è stato tortuoso. Non impossibile. Tortuoso. Praticamente, come dicono dalle mie parti, <em>un dito nel c*lo</em>.</p>
+              <h2 id="il-punto">Il punto</h2>
+              <p>Non mi interessa stabilire se systemd è buono o cattivo. È una discussione da forum del 2014. L’ho già fatta, mi sono stancato.</p>
+              <p>Mi interessa una cosa diversa.</p>
+              <p>Nel 2010, quando scrivevo quel post su LFS, davo per scontato che capire fosse possibile. Era lì, la possibilità. Bastava volerlo abbastanza. Ti scaricavi i sorgenti, seguivi il manuale, compilavi tutto. Alla fine avevi un sistema che capivi. Pezzo per pezzo.</p>
+              <p>Sedici anni dopo quella possibilità si è ristretta. Non è sparita. È più stretta, è più complicata, è più opaca e offuscata da sistemi che certo sono <em>enterprise-grade</em> ma che non sono <em>student-grade</em> o <em>hackable</em>. Sicuramente, non è democratica. Al diavolo alle Big Tech che vogliono “democratizzare” tutto, coi loro sistemi opachi che di democratico hanno solo il <em>consumo</em> dei loro sistemi, non certo i sistemi stessi. Hanno imparato dai maestri del Big Tech, Microsoft, e il loro processo 3E, “Embrace, Extend, Extinguish”, ma applicato al <em>free software</em>.</p>
+              <p>LFS era la prova che capire era alla portata di un singolo. Il sentiero che potevi percorrere se volevi andare fino in fondo. Adesso quel sentiero passa per 1678 file C e un ecosistema di componenti interdipendenti.</p>
+              <p>Mi era capitato con Samba, un progetto enorme e complicatissimo, che a un certo punto ho semplicemente smesso di leggere e ho deciso che fidarmi era l’unica soluzione. È un mostro. Ma systemd non è Samba, non puoi NON installarlo. Samba si, se non ti serve accedere alle Share di rete Windows che magari è un’esigenza di nicchia, o puoi usare un FuseFS per accedere alle share di rete, ce ne sono alcuni carini per cose spot, se non ti serve avere tutte le mega funzionalità di Samba (tra cui integrazione con Active Directory).</p>
+              <p>systemd no, non ha alternative valide, non puoi avere un drop-in replacement decente, il resto del sistema deve essere consapevole che sotto <em>non c’è</em> systemd, perché non basta rimpiazzarlo, serve <em>comunicare a tutti</em> che non è lui l’init system. Con Samba non serve, hai una cartella, qualcuno l’avrà montata (smbmount, mount -o fusefs qualcosa, qualche altro software), tu la navighi e accedi ai file.</p>
+              <p>La cosa che mi inquieta è che è successo gradualmente. Nessuno l’ha deciso. È il risultato di mille piccole decisioni prese da mille persone diverse, ognuna razionale nel suo contesto. Sommate insieme producono un effetto che nessuno aveva pianificato.</p>
+              <h2 id="chi-scrive-il-codice">Chi scrive il codice</h2>
+              <p>systemd è un progetto sponsorizzato da Red Hat. I suoi sviluppatori sono in larga parte dipendenti di aziende. Le feature che vengono implementate rispondono a esigenze enterprise: gestione di container, orchestrazione di servizi complessi, integrazione con stack cloud.</p>
+              <p>Sono esigenze legittime. Ma non sono le tue esigenze quando vuoi capire perché il portatile ci mette 30 secondi a spegnersi. Non sono le mie esigenze quando voglio sapere cosa succede al boot.</p>
+              <p>Non sto suggerendo una cospirazione. È più banale. È come funziona l’economia del software libero oggi. Chi paga gli sviluppatori decide le priorità. E chi paga, oggi, sono le grandi aziende. Le conseguenze le subiamo tutti. Ma non tutti abbiamo voce in capitolo.</p>
+              <p>Il codice è aperto. Puoi leggerlo. La direzione la decidono altri. E fa schifo.</p>
+              <h2 id="lfs-è-di-nicchia">LFS è di nicchia</h2>
+              <p>Lo so cosa stai pensando. LFS è di nicchia. Quanti lo completano davvero? Mille persone all’anno? Diecimila? È irrilevante rispetto ai milioni che usano Ubuntu senza sapere cos’è un init.</p>
+              <p>Vero.</p>
+              <p>Ma il valore di LFS non stava nei numeri. Stava nel fatto che esisteva. Era la prova che capire era possibile. Il sentiero che qualcuno poteva percorrere se voleva andare fino in fondo.</p>
+              <p>Ho conosciuto gente che ha fatto LFS. Non erano geni. Erano persone normali con tempo e curiosità. Studenti, hobbisti, sysadmin che volevano capire cosa c’era sotto. Alcuni ci hanno messo mesi. Altri hanno mollato a metà e ripreso l’anno dopo. Nessuno di loro è diventato un kernel developer. Ma tutti hanno capito qualcosa che prima non capivano.</p>
+              <p>Quel percorso esisteva. Era accessibile. Non facile, ma accessibile.</p>
+              <p>Quando quel sentiero si restringe, non perdiamo solo chi lo percorreva. Perdiamo la possibilità stessa. L’idea che il sistema sotto i nostri piedi sia comprensibile, modificabile, nostro in un senso che va oltre il mero utilizzo.</p>
+              <p>Ah, “nostro” non intendo di noi addetti ai lavori. Maintainer, sviluppatori kernel, gente che legge codice C a colazione - quelli se la cavano comunque. Chi ha perso è lo studente al terzo anno di Ingegneria che apre il Tanenbaum e vuole andare più a fondo. Lo smanettone curioso. Quello che magari non vuole finire consulente-schiavo in qualche ditta di body rental.</p>
+              <h2 id="la-complessità-è-inevitabile">La complessità è inevitabile?</h2>
+              <p>Altra obiezione ovvia. I sistemi crescono. L’hardware diventa più potente. Le aspettative aumentano. La complessità è inevitabile.</p>
+              <p>In parte è vero. Ma 22 file contro 1678 non è crescita organica. È un ordine di grandezza (o anche due). È passare da qualcosa che un individuo può dominare a qualcosa che richiede un’organizzazione.</p>
+              <p>E poi c’è la questione di cosa conta come “complessità necessaria”. systemd ha aggiunto funzionalità che SysV non aveva. Avvio parallelo. Gestione delle dipendenze. Socket activation. Cgroups integration. Sono cose utili.</p>
+              <p>Ma alcune di quelle funzionalità esistono da anni in sistemi molto più piccoli. s6 fa socket activation. runit fa supervisione dei processi. OpenRC gestisce le dipendenze. Lo fanno con meno codice, meno astrazione, meno opacità.</p>
+              <p>La differenza è nell’ambizione. systemd vuole essere tutto: init, logger, network manager, DNS resolver, time sync, login manager. Vuole standardizzare l’intera infrastruttura di base. Non è strettamente necessario per far partire un computer. Ma è utile se gestisci un datacenter.</p>
+              <p>Faccio una domanda che può chiarire meglio il punto: _tutta quella complessità serve <strong>a te</strong>? È necessaria per i tuoi casi d’uso? O serve ai casi d’uso di Red Hat e dei suoi clienti enterprise?</p>
+              <p>Non ho una risposta. (Beh, una ce l’avrei, ma non voglio denunzie-querele da colossi del tech)</p>
+              <h2 id="cosa-resta">Cosa resta</h2>
+              <p>Non voglio chiudere in modo apocalittico, perché non è questa la situazione. Il software libero non è morto. Linux non è morto. La possibilità di capire non è sparita. È solo tutto molto, molto, molto (ordini di grandezza) più complesso.</p>
+              <p>Esistono alternative. Void Linux usa runit. Alpine usa OpenRC. Artix e Devuan offrono scelte multiple. Progetti come s6 e dinit dimostrano che un sistema di init può essere potente senza essere mastodontico. Sono sistemi che puoi leggere, capire, modificare. Esistono ancora.</p>
+              <p>Ho usato Void per un paio d’anni. runit è elegante. Tre fasi: setup, run, finish. Ogni servizio è una directory con uno script. Vuoi sapere cosa fa? Apri lo script. Vuoi cambiarlo? Editi lo script. Nessuna magia, nessun database binario, nessuna astrazione che nasconde cosa succede.</p>
+              <p>Poi sono tornato a una distro mainstream per questioni pratiche. Hardware nuovo, driver proprietari, software che richiedeva systemd. La solita storia.</p>
+              <p>E NVIDIA. Dio quanto odio NVIDIA. Fuck NVIDIA.</p>
+              <p><img src="/media/2026-02-03/linus-torvalds-fuck-nvidia.gif" alt="Linus Torvalds - Fuck NVIDIA" class="img-fluid" /></p>
+              <p>Esistono persone che mantengono viva la semplicità. Spesso con poco riconoscimento e meno soldi. Sono comunità piccole. A volte ruvide. A volte elitarie nel modo sbagliato.</p>
+              <p>Anche restando nel mondo systemd, capire è ancora possibile. La documentazione è buona. I sorgenti sono aperti. Non è impossibile. È solo molto più difficile di prima.</p>
+              <p>E “molto più difficile” significa, in pratica, che meno gente lo farà. Capire diventa un’attività da specialisti. Non più da curiosi. Non più da ventenni con tempo e voglia di smontare le cose.</p>
+              <h2 id="una-serie">Una serie</h2>
+              <p>Questo è il primo post di una serie. Non so ancora quanti saranno. L’idea è esplorare cosa sta succedendo al software libero. Non dal punto di vista degli attivisti - quelli sono già convinti. Dal punto di vista di chi usa Linux tutti i giorni senza farsi troppe domande.</p>
+              <p>Non voglio fare prediche. Non voglio convincere nessuno che systemd è il male o che bisogna tornare a SysV. Non mi interessa. Mi interessa porre domande che forse non ti sei mai posto. O che non ci poniamo abbastanza come comunità.</p>
+              <p>Tipo: il codice è aperto, ma chi decide cosa ci finisce dentro? Le licenze sono libere, ma chi ha le risorse per contribuire? Il sistema è tuo, ma quanto ne capisci davvero?</p>
+              <p>Quello che mi chiedo: quanto capisci del sistema che usi? Quanto potresti capire, se volessi?</p>
+              <p>Nel prossimo post parlerò di un altro livello. Chi decide cosa può girare sulla tua macchina. Secure Boot, firmware blob, Intel ME. Perché avere root non significa avere il controllo.</p>
+              <p>E chiudo con una domanda: quanto è ipocrita sbandierare la GPLv3, baluardo della libertà di hacking, in progetti guidati da chi del profitto fa l’unico scopo di esistenza?</p>
+              <p>La mia risposta, visto che è casa mia: molto. C’è una parola per chi predica libertà mentre costruisce gabbie. Non la scrivo io. La lascio a chi l’aveva capita oltre settant’anni fa:</p>
+              <div class="premonition citation text-center">
+                <div class="fas fa-quote-left"></div>
+                <blockquote class="content blockquote" cite="https://it.wikipedia.org/wiki/1984_(romanzo)">
+                  <p>Freedom is Slavery</p>
+                  <footer class="blockquote-footer"><cite title="George Orwell - 1984, slogan del Partito inciso sul Ministero della Verità"><a href="https://it.wikipedia.org/wiki/1984_(romanzo)">George Orwell - 1984, slogan del Partito inciso sul Ministero della Verità</a></cite></footer>
+                </blockquote>
+              </div>
+              <p class="text-center"><img src="/media/2026-02-03/1984-party-slogans.jpg" alt="War is Peace - Freedom is Slavery - Ignorance is Strength" class="img-fluid" /></p>
+            </section>
+            <a href="/2026/02/03/il-software-che-non-puoi-smontare/" hidden></a>
+          </article>
+        </div>
+        <div class="col-lg-2 col-md-12">
+        </div>
+      </div>
+      <div class="row justify-content-end text-right">
+        <div class="col-6">
+          <a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page" href="#">
+            <i class="fa fa-5x fa-chevron-up"></i>
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer bg-light w-100 py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a rel="me" href="https://github.com/kLeZ">
+                  <i class="svg-icon fab fa-github"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://twitter.com/kLeZhAcK">
+                  <i class="svg-icon fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://mastodon.uno/web/@klez">
+                  <i class="svg-icon fab fa-mastodon"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://www.linkedin.com/in/alessandroaccardo">
+                  <i class="svg-icon fab fa-linkedin"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="https://telegram.me/julius8774">
+                  <i class="svg-icon fab fa-telegram"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="/feed.xml">
+                  <i class="svg-icon fa fa-rss"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a rel="me" href="mailto:klez@pm.me">
+                  <i class="svg-icon fa fa-envelope"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-left">
+            <small class="text-muted">Last build on <time datetime="2026-02-03T14:42:49+01:00">Tue, 03 Feb 2026 14:42:49 +0100</time></small>
+          </div>
+          <div class="col text-right">
+            <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />
+            <small class="text-muted">
+              This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+            </small>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="/assets/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/assets/popper/popper.min.js"></script>
+    <script src="/assets/popper/tooltip.min.js"></script>
+    <script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/assets/fontawesome-free/js/all.min.js"></script>
+    <script src="/assets/main.js"></script><script data-goatcounter="https://klez.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+    <noscript>
+      <img src="https://klez.goatcounter.com/count?rnd&p=https://klez.me/2026/02/03/il-software-che-non-puoi-smontare/&t=Il%20software%20che%20non%20puoi%20smontare" alt="goat-counter" />
+    </noscript>
+  </body>
+</html>
