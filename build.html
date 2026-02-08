@@ -32,6 +32,16 @@
     <link rel="stylesheet" href="/assets/katex/katex.min.css" />
     <link rel="stylesheet" href="/assets/main.css" />
     <link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro &apos;kLeZ&apos; Accardo personal website" />
+    <script>
+      (function() {
+      	var t = 'system';
+      	try { t = localStorage.getItem('theme-preference') || 'system'; } catch(e) {}
+      	var d = (t === 'system')
+      		? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      		: t;
+      	if (d === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      })();
+    </script>
   </head>
   <body class="service-page">
     <header class="masthead" style="background-image: url(/assets/img/home-bg.jpg)">
@@ -87,6 +97,10 @@
               <a class="nav-link" href="/eventi">Eventi</a>
             </li>
           </ul>
+          <button class="theme-toggle" type="button" title="Toggle theme" aria-label="Toggle theme">
+            <i class="fas fa-circle-half-stroke theme-icon"></i>
+            <span class="theme-label">Auto</span>
+          </button>
         </div>
       </div>
     </nav>
@@ -103,21 +117,16 @@
               <div class="col-md-6 col-sm-12">
                 <h3>Commit Info</h3>
                 <small class="text-muted">
-                  <a href="https://github.com/kLeZ/kLeZ.github.io/commit/9bc3f0cc8506c5e655a6a54e655ae8d8c4504a7d" target="_blank">9bc3f0c</a> on
-                  <time datetime="2026-02-03T14:41:49+01:00">03 Feb 2026</time>
+                  <a href="https://github.com/kLeZ/kLeZ.github.io/commit/05e01a8dcc68c1a673dbc57dda9f60e352f49462" target="_blank">05e01a8</a> on
+                  <time datetime="2026-02-09T00:09:31+01:00">09 Feb 2026</time>
                 </small>
-                <h1 id="nuovo-post">Nuovo post!</h1>
-                <p><strong>Il software che non puoi smontare</strong> - primo post di una serie sul software libero.</p>
-                <p>LFS ha annunciato che non manterrà più la versione System V. Bruce Dubbs, maintainer storico, ha scritto che non gli piace questa decisione ma è necessaria. Il motivo? 1678 file C contro 22. La complessità ha vinto.</p>
-                <p>Il post esplora cosa significa per chi voleva capire come funziona un sistema operativo. Non è un rant su systemd. È una domanda: quanto capisci del sistema che usi?</p>
-                <h2 id="chiude-con-orwell-chi-sa-sa">Chiude con Orwell. Chi sa, sa.</h2>
-                <p>Serie: “Il codice che ci appartiene” (1/9)</p>
+                <p>First jekyll version, still developing, not suitable for production use yet (#130)</p>
               </div>
               <div class="col-md-6 col-sm-12">
                 <h3>Build</h3>
                 <blockquote>
-                  <a href="https://github.com/kLeZ/kLeZ.github.io/actions/runs/21632545993">
-                    63 <sup>(21632545993)</sup>
+                  <a href="https://github.com/kLeZ/kLeZ.github.io/actions/runs/21807118641">
+                    64 <sup>(21807118641)</sup>
                   </a>
                 </blockquote>
               </div>
@@ -186,7 +195,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2026-02-03T14:42:49+01:00">Tue, 03 Feb 2026 14:42:49 +0100</time></small>
+            <small class="text-muted">Last build on <time datetime="2026-02-09T00:10:02+01:00">Mon, 09 Feb 2026 00:10:02 +0100</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
@@ -207,6 +216,7 @@
     <script src="/assets/popper/tooltip.min.js"></script>
     <script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="/assets/fontawesome-free/js/all.min.js"></script>
+    <script src="/assets/theme-toggle.js"></script>
     <script src="/assets/main.js"></script><script data-goatcounter="https://klez.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
     <noscript>
       <img src="https://klez.goatcounter.com/count?rnd&p=https://klez.me/build.html&t=Build%20information" alt="goat-counter" />

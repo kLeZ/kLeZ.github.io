@@ -33,6 +33,16 @@
     <link rel="stylesheet" href="/assets/katex/katex.min.css" />
     <link rel="stylesheet" href="/assets/main.css" />
     <link type="application/atom+xml" rel="alternate" href="https://klez.me/feed.xml" title="Alessandro &apos;kLeZ&apos; Accardo personal website" />
+    <script>
+      (function() {
+      	var t = 'system';
+      	try { t = localStorage.getItem('theme-preference') || 'system'; } catch(e) {}
+      	var d = (t === 'system')
+      		? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      		: t;
+      	if (d === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      })();
+    </script>
   </head>
   <body class="post-page">
     <header class="masthead" style="background-image: url(/assets/img/home-bg.jpg)">
@@ -88,6 +98,10 @@
               <a class="nav-link" href="/eventi">Eventi</a>
             </li>
           </ul>
+          <button class="theme-toggle" type="button" title="Toggle theme" aria-label="Toggle theme">
+            <i class="fas fa-circle-half-stroke theme-icon"></i>
+            <span class="theme-label">Auto</span>
+          </button>
         </div>
       </div>
     </nav>
@@ -189,7 +203,7 @@
         </div>
         <div class="row">
           <div class="col text-left">
-            <small class="text-muted">Last build on <time datetime="2026-02-03T14:42:49+01:00">Tue, 03 Feb 2026 14:42:49 +0100</time></small>
+            <small class="text-muted">Last build on <time datetime="2026-02-09T00:10:02+01:00">Mon, 09 Feb 2026 00:10:02 +0100</time></small>
           </div>
           <div class="col text-right">
             <small class="text-muted">Copyright © Alessandro 'kLeZ' Accardo 2019</small>
@@ -210,6 +224,7 @@
     <script src="/assets/popper/tooltip.min.js"></script>
     <script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="/assets/fontawesome-free/js/all.min.js"></script>
+    <script src="/assets/theme-toggle.js"></script>
     <script src="/assets/main.js"></script><script data-goatcounter="https://klez.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
     <noscript>
       <img src="https://klez.goatcounter.com/count?rnd&p=https://klez.me/2013/07/30/secureboot-the-last-microsoft-weapon-to-keep-its-users-locked-on-windows-8/&t=SecureBoot%20[The%20last%20Microsoft%20weapon%20to%20keep%20its%20users%20locked%20on%20Windows...%208]" alt="goat-counter" />
