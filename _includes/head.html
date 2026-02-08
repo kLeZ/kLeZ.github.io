@@ -11,4 +11,14 @@
 	<link rel="stylesheet" href="{{ '/assets/katex/katex.min.css' | relative_url }}" />
 	<link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}" />
 	{% feed_meta %}
+	<script>
+		(function() {
+			var t = 'system';
+			try { t = localStorage.getItem('theme-preference') || 'system'; } catch(e) {}
+			var d = (t === 'system')
+				? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+				: t;
+			if (d === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+		})();
+	</script>
 </head>
