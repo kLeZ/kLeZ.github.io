@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>contapapà</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fdf3e3;
+    --ink:#3a2e26;
+    --muted:#9a8676;
+    --card:#fffaf2;
+    --line:#ecdcc4;
+    --build:#5aa9e6;   /* zone: still encouraging */
+    --sweet:#2fb37a;   /* zone: perfect band   */
+    --over:#e8743b;    /* zone: too many        */
+    --star:#f4b740;
+    --shadow:0 18px 40px rgba(120,84,40,.16);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%}
+  body{
+    font-family:"Nunito",system-ui,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 600px at 50% -10%, #fff7e8 0%, transparent 60%),
+      var(--bg);
+    display:flex;justify-content:center;
+    padding:18px 14px 36px;
+    min-height:100%;
+  }
+  .app{width:100%;max-width:460px}
+  header{display:flex;align-items:baseline;justify-content:space-between;margin:2px 4px 14px}
+  h1{font-family:"Fredoka",sans-serif;font-weight:700;font-size:30px;margin:0;letter-spacing:.3px}
+  h1 .dot{color:var(--over)}
+  .date{font-size:13px;color:var(--muted);font-weight:700}
+
+  /* ---- child stage ---- */
+  .stage{
+    background:var(--card);border:1px solid var(--line);border-radius:28px;
+    box-shadow:var(--shadow);padding:22px 18px 24px;text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .stage::before{ /* soft top wash that tints with the zone */
+    content:"";position:absolute;inset:0 0 auto 0;height:140px;
+    background:var(--zone,var(--build));opacity:.10;transition:background .35s ease;
+  }
+  .face{width:150px;height:150px;margin:2px auto 6px;position:relative;z-index:1}
+  .msg{font-family:"Fredoka",sans-serif;font-weight:600;font-size:20px;margin:2px 0 16px;min-height:26px;color:var(--zone,var(--build));transition:color .35s}
+
+  .gauge{position:relative;width:230px;height:230px;margin:0 auto}
+  .gauge svg{transform:rotate(-90deg)}
+  .gauge .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .count{font-family:"Fredoka",sans-serif;font-weight:700;font-size:74px;line-height:.9;color:var(--ink)}
+  .count small{display:block;font-family:"Nunito";font-weight:800;font-size:13px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-top:6px}
+  .limitlbl{font-size:13px;color:var(--muted);font-weight:700;margin-top:2px}
+
+  .stars{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin:14px 0 4px;min-height:24px}
+  .stars svg{width:22px;height:22px}
+  .star-on{fill:var(--star)}
+  .star-off{fill:#e9ddc9}
+
+  .levelbar{margin:14px 22px 2px}
+  .levelbar .row{display:flex;justify-content:space-between;font-size:13px;font-weight:800;color:var(--muted);margin-bottom:6px}
+  .levelbar .row b{color:var(--ink)}
+  .track{height:12px;background:#efe2cd;border-radius:99px;overflow:hidden}
+  .fill{height:100%;width:0;background:linear-gradient(90deg,var(--star),#f59331);border-radius:99px;transition:width .4s ease}
+
+  /* ---- controls (dad) ---- */
+  .panel{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+  .panel summary{list-style:none;cursor:pointer;padding:15px 18px;font-family:"Fredoka";font-weight:600;font-size:16px;display:flex;justify-content:space-between;align-items:center}
+  .panel summary::-webkit-details-marker{display:none}
+  .panel summary .chev{transition:transform .25s;color:var(--muted)}
+  .panel[open] summary .chev{transform:rotate(180deg)}
+  .panel .body{padding:4px 18px 20px;border-top:1px solid var(--line)}
+
+  .mic{display:flex;gap:10px;align-items:center;margin:14px 0 6px}
+  button{font-family:"Fredoka";font-weight:600;border:none;border-radius:16px;padding:14px 16px;font-size:16px;cursor:pointer;transition:transform .08s,filter .15s}
+  button:active{transform:scale(.97)}
+  .btn-mic{flex:1;background:var(--sweet);color:#fff}
+  .btn-mic.live{background:var(--over);animation:pulse 1.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,116,59,.5)}50%{box-shadow:0 0 0 12px rgba(232,116,59,0)}}
+  .btn-plus{background:var(--build);color:#fff;flex:0 0 auto;padding:14px 20px}
+  .micstate{font-size:13px;font-weight:700;color:var(--muted);margin:2px 2px 12px}
+  .micstate.err{color:var(--over)}
+
+  .fields{display:flex;gap:12px;margin-top:8px}
+  .field{flex:1}
+  .field label{display:block;font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin:0 2px 6px}
+  .field input{width:100%;font-family:"Fredoka";font-weight:600;font-size:20px;text-align:center;padding:12px 8px;border:2px solid var(--line);border-radius:14px;background:#fff;color:var(--ink)}
+  .field input:focus{outline:none;border-color:var(--build)}
+  .hint{font-size:12px;color:var(--muted);margin:10px 2px 0;line-height:1.5}
+  .secondary{display:flex;gap:10px;margin-top:14px}
+  .btn-ghost{flex:1;background:#f3e7d2;color:var(--ink)}
+  .heard{font-size:12px;color:var(--muted);margin-top:12px;min-height:16px;font-style:italic}
+  footer{font-size:11px;color:var(--muted);text-align:center;margin-top:18px;line-height:1.6;padding:0 8px}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>contapapà<span class="dot">.</span></h1>
+    <div class="date" id="date"></div>
+  </header>
+
+  <!-- ===== child-facing stage ===== -->
+  <section class="stage" id="stage">
+    <div class="face" id="face"></div>
+    <div class="msg" id="msg"></div>
+
+    <div class="gauge">
+      <svg width="230" height="230" viewBox="0 0 230 230">
+        <circle cx="115" cy="115" r="100" fill="none" stroke="#efe2cd" stroke-width="20"/>
+        <circle id="ring" cx="115" cy="115" r="100" fill="none" stroke="var(--zone,#5aa9e6)"
+                stroke-width="20" stroke-linecap="round"
+                stroke-dasharray="628" stroke-dashoffset="628"
+                style="transition:stroke-dashoffset .45s ease, stroke .35s ease"/>
+      </svg>
+      <div class="center">
+        <div class="count" id="count">0<small>papà oggi</small></div>
+      </div>
+    </div>
+    <div class="limitlbl" id="limitlbl"></div>
+
+    <div class="stars" id="stars"></div>
+
+    <div class="levelbar">
+      <div class="row"><span>livello <b id="level">1</b></span><span><b id="points">0</b> punti</span></div>
+      <div class="track"><div class="fill" id="fill"></div></div>
+    </div>
+  </section>
+
+  <!-- ===== dad-facing controls ===== -->
+  <details class="panel" id="panel">
+    <summary>comandi papà <span class="chev">v</span></summary>
+    <div class="body">
+      <div class="mic">
+        <button class="btn-mic" id="btnMic">avvia ascolto</button>
+        <button class="btn-plus" id="btnPlus" title="conta un papà a mano">+1</button>
+      </div>
+      <div class="micstate" id="micstate">microfono spento</div>
+      <div class="heard" id="heard"></div>
+
+      <div class="fields">
+        <div class="field">
+          <label>obiettivo</label>
+          <input id="goal" type="number" min="0" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label>limite</label>
+          <input id="limit" type="number" min="1" inputmode="numeric">
+        </div>
+      </div>
+      <div class="hint">
+        Sotto l'<b>obiettivo</b> il bambino e incoraggiato a dire papà (punti pieni).
+        Tra obiettivo e <b>limite</b> e la fascia giusta. Oltre il limite il personaggio
+        chiede una pausa e i punti calano.
+      </div>
+
+      <div class="secondary">
+        <button class="btn-ghost" id="btnReset">azzera oggi</button>
+        <button class="btn-ghost" id="btnHard">azzera tutto</button>
+      </div>
+    </div>
+  </details>
+
+  <footer>
+    Il microfono funziona solo aprendo questo file in Chrome/Edge (serve internet).
+    Non distingue chi parla: conta ogni papà che sente.
+  </footer>
+</div>
+
+<script>
+"use strict";
+
+/* ---------------- persistence (degrades gracefully in sandboxes) -------- */
+const KEY = "contapapa.v1";
+function todayStr(){ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+
+const def = { goal:5, limit:25, count:0, points:0, date:todayStr() };
+let state = load();
+
+function load(){
+  try{ const raw = localStorage.getItem(KEY); if(raw){ return Object.assign({}, def, JSON.parse(raw)); } }catch(e){}
+  return Object.assign({}, def);
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+/* roll over to a new day: reset the daily count, keep cumulative points/level */
+function rollDay(){ const t=todayStr(); if(state.date!==t){ state.date=t; state.count=0; save(); } }
+
+/* ---------------- gamification rules ------------------------------------ */
+const PTS = { build:10, sweet:6, over:-4 };           // points per detected papà, by zone
+const LEVEL_STEP = 120;                               // points needed per level
+
+function zoneOf(count){
+  if(count < state.goal) return "build";
+  if(count <= state.limit) return "sweet";
+  return "over";
+}
+function levelOf(points){ return Math.floor(Math.max(0,points)/LEVEL_STEP)+1; }
+
+/* a detected papà: score it against the zone it lands in, then increment */
+function addPapa(n){
+  rollDay();
+  for(let i=0;i<n;i++){
+    const z = zoneOf(state.count);          // score based on the slot being filled
+    state.points = Math.max(0, state.points + PTS[z]);
+    state.count += 1;
+  }
+  save();
+  render(true);
+}
+
+/* ---------------- rendering --------------------------------------------- */
+const el = id => document.getElementById(id);
+const ZONE_COLOR = { build:"var(--build)", sweet:"var(--sweet)", over:"var(--over)" };
+const ZONE_MSG = {
+  build:["Ancora!","Dimmi papà!","Forza, chiamami!"],
+  sweet:["Perfetto!","Sei un campione!","Cosi va benissimo!"],
+  over:["Ok ok, ho capito!","Facciamo una pausa?","Bastano per ora!"]
+};
+
+const FACES = {
+  build:`
+    <circle cx="75" cy="75" r="70" fill="#cfe6fb"/>
+    <circle cx="54" cy="64" r="9" fill="#3a2e26"/><circle cx="96" cy="64" r="9" fill="#3a2e26"/>
+    <circle cx="51" cy="61" r="3" fill="#fff"/><circle cx="93" cy="61" r="3" fill="#fff"/>
+    <path d="M55 95 Q75 110 95 95" stroke="#3a2e26" stroke-width="6" fill="none" stroke-linecap="round"/>`,
+  sweet:`
+    <circle cx="75" cy="75" r="70" fill="#bfe9d4"/>
+    <path d="M44 66 Q54 56 64 66" stroke="#3a2e26" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M86 66 Q96 56 106 66" stroke="#3a2e26" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <circle cx="50" cy="88" r="9" fill="#f3a9a0" opacity=".7"/><circle cx="100" cy="88" r="9" fill="#f3a9a0" opacity=".7"/>
+    <path d="M50 92 Q75 120 100 92" stroke="#3a2e26" stroke-width="7" fill="none" stroke-linecap="round"/>`,
+  over:`
+    <circle cx="75" cy="75" r="70" fill="#f8d2bd"/>
+    <path d="M46 60 l18 12 M64 60 l-18 12" stroke="#3a2e26" stroke-width="6" stroke-linecap="round"/>
+    <path d="M86 60 l18 12 M104 60 l-18 12" stroke="#3a2e26" stroke-width="6" stroke-linecap="round"/>
+    <path d="M52 100 q11 -10 23 0 q11 10 23 0" stroke="#3a2e26" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M120 40 q8 12 0 20 q-8 -8 0 -20" fill="#5aa9e6"/>`
+};
+
+function starSvg(on){
+  return `<svg viewBox="0 0 24 24"><path class="${on?'star-on':'star-off'}"
+    d="M12 2l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.8 6.1 20.7l1.3-6.6L2.5 8.9l6.6-.8z"/></svg>`;
+}
+
+let lastZone = null;
+function render(animate){
+  rollDay();
+  const z = zoneOf(state.count);
+  document.documentElement.style.setProperty("--zone", ZONE_COLOR[z]);
+  el("stage").style.setProperty("--zone", ZONE_COLOR[z]);
+
+  el("date").textContent = new Date().toLocaleDateString("it-IT",{weekday:"short",day:"numeric",month:"long"});
+  el("count").innerHTML = state.count + "<small>papà oggi</small>";
+  el("limitlbl").textContent = "obiettivo " + state.goal + " - limite " + state.limit;
+
+  // ring fills 0..limit; once over, it stays full and turns orange
+  const ringMax = Math.max(1, state.limit);
+  const frac = Math.min(1, state.count / ringMax);
+  el("ring").style.strokeDashoffset = (628 * (1 - frac)).toFixed(1);
+
+  // face + message (re-pick a message only when the zone changes, to avoid flicker)
+  el("face").innerHTML = `<svg viewBox="0 0 150 150" width="150" height="150">${FACES[z]}</svg>`;
+  if(z!==lastZone){
+    const m = ZONE_MSG[z];
+    el("msg").textContent = m[Math.floor(Math.random()*m.length)];
+    lastZone = z;
+  }
+
+  // stars: how full is the sweet band (goal..limit)
+  const band = Math.max(1, state.limit - state.goal);
+  const got = Math.max(0, Math.min(band, state.count - state.goal));
+  const totalStars = 5;
+  const onStars = z==="build" ? 0 : Math.round((got/band)*totalStars);
+  let s=""; for(let i=0;i<totalStars;i++) s+=starSvg(i<onStars);
+  el("stars").innerHTML = s;
+
+  // level + progress to next level
+  const lvl = levelOf(state.points);
+  el("level").textContent = lvl;
+  el("points").textContent = state.points;
+  el("fill").style.width = ((state.points % LEVEL_STEP)/LEVEL_STEP*100).toFixed(0)+"%";
+
+  // keep inputs in sync (but not while the user is typing in them)
+  if(document.activeElement!==el("goal")) el("goal").value = state.goal;
+  if(document.activeElement!==el("limit")) el("limit").value = state.limit;
+}
+
+/* ---------------- speech recognition ------------------------------------ */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+let recog = null, listening = false, restartTimer = null;
+
+function setMicState(txt, isErr){
+  el("micstate").textContent = txt;
+  el("micstate").classList.toggle("err", !!isErr);
+}
+
+/* count papà-like tokens in a final transcript */
+function countPapa(text){
+  const tokens = text.toLowerCase().split(/\s+/);
+  let n=0;
+  for(const raw of tokens){
+    const t = raw.replace(/[^a-zàèéìòù]/g,"");   // strip punctuation
+    if(/^pap+[aà]$/.test(t)) n++;                // papà, papa, pappà, ...
+  }
+  return n;
+}
+
+function startMic(){
+  if(!SR){ setMicState("non supportato su questo browser (usa Chrome)", true); return; }
+  recog = new SR();
+  recog.lang = "it-IT";
+  recog.continuous = true;
+  recog.interimResults = true;
+
+  recog.onresult = (ev)=>{
+    let interim="";
+    for(let i=ev.resultIndex;i<ev.results.length;i++){
+      const r = ev.results[i];
+      if(r.isFinal){
+        const txt = r[0].transcript;
+        const n = countPapa(txt);
+        if(n>0) addPapa(n);
+        el("heard").textContent = txt.trim() ? "...\u201c"+txt.trim()+"\u201d" : "";
+      } else {
+        interim += r[0].transcript;
+      }
+    }
+    if(interim) el("heard").textContent = "..."+interim.trim();
+  };
+  recog.onerror = (e)=>{
+    if(e.error==="not-allowed" || e.error==="service-not-allowed"){
+      setMicState("permesso microfono negato", true); stopMic(); return;
+    }
+    // no-speech / aborted / network: let onend handle the restart
+  };
+  recog.onend = ()=>{
+    // continuous mode stops on its own; restart while the user wants to listen
+    if(listening){ clearTimeout(restartTimer); restartTimer=setTimeout(()=>{ try{recog.start();}catch(e){} },300); }
+  };
+
+  try{
+    recog.start(); listening=true;
+    el("btnMic").textContent="ferma ascolto"; el("btnMic").classList.add("live");
+    setMicState("in ascolto...");
+  }catch(e){ setMicState("impossibile avviare il microfono", true); }
+}
+
+function stopMic(){
+  listening=false; clearTimeout(restartTimer);
+  if(recog){ try{recog.onend=null; recog.stop();}catch(e){} recog=null; }
+  el("btnMic").textContent="avvia ascolto"; el("btnMic").classList.remove("live");
+  setMicState("microfono spento");
+}
+
+/* ---------------- wiring ------------------------------------------------ */
+el("btnMic").onclick = ()=> listening ? stopMic() : startMic();
+el("btnPlus").onclick = ()=> addPapa(1);
+el("btnReset").onclick = ()=>{ state.count=0; save(); lastZone=null; render(); };
+el("btnHard").onclick = ()=>{ state=Object.assign({},def,{date:todayStr()}); save(); lastZone=null; render(); };
+
+el("goal").addEventListener("change", e=>{ let v=parseInt(e.target.value,10); if(isNaN(v)||v<0)v=0; state.goal=v; if(state.goal>=state.limit)state.limit=state.goal+1; save(); lastZone=null; render(); });
+el("limit").addEventListener("change", e=>{ let v=parseInt(e.target.value,10); if(isNaN(v)||v<1)v=1; state.limit=v; if(state.goal>=state.limit)state.goal=Math.max(0,state.limit-1); save(); lastZone=null; render(); });
+
+if(!SR){ setMicState("microfono non supportato su questo browser (usa Chrome/Edge)", true); }
+render();
+</script>
+</body>
+</html>
