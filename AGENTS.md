@@ -3,6 +3,10 @@
 > Operating guide for AI agents (and humans) working in this repository.
 > Read this together with [`CONTEXT.md`](CONTEXT.md), which explains the
 > project architecture, branch model, and toolchain.
+>
+> Task-specific companions: [`AUTHORING.md`](AUTHORING.md) (writing posts),
+> [`ACCESS-FILES.md`](ACCESS-FILES.md) (robots/sitemap/security.txt/llms.txt &
+> friends), [`SPEC-AUDIT.md`](SPEC-AUDIT.md) (standards-compliance audit).
 
 ## Maintenance contract (MANDATORY)
 

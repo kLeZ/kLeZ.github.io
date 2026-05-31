@@ -1,4 +1,6 @@
 timezone: Europe/Rome
+lang: it
+locale: it_IT
 title: Alessandro 'kLeZ' Accardo personal website
 description: >-
     This is the personal website of an Italian developer once called 'kLeZ'.
@@ -29,6 +31,7 @@ sass:
 
 include:
     - _pages
+    - .well-known
 
 defaults:
     - scope:
@@ -72,6 +75,7 @@ emoji:
 
 plugins:
     - jekyll-feed
+    - jekyll-sitemap
     - jekyll-tidy
     - jekyll-katex
     - liquid_reading_time

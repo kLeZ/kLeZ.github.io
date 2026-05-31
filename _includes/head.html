@@ -3,7 +3,17 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="color-scheme" content="light dark" />
+	<meta name="theme-color" content="#f8f9fa" media="(prefers-color-scheme: light)" />
+	<meta name="theme-color" content="#1a1d21" media="(prefers-color-scheme: dark)" />
 	{% seo %}
+	{%- comment -%} seo-tag non emette og:image senza `image` in front matter: lo aggiungiamo con un default {%- endcomment -%}
+	{%- assign page_image = page.image | default: '/assets/img/home-bg.jpg' -%}
+	<meta property="og:image" content="{{ page_image | absolute_url }}" />
+	<meta name="twitter:image" content="{{ page_image | absolute_url }}" />
+	<link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any" />
+	<link rel="apple-touch-icon" href="{{ '/favicon.ico' | relative_url }}" />
+	<link rel="manifest" href="{{ '/manifest.webmanifest' | relative_url }}" />
 	<link rel="stylesheet" href="{{ '/assets/bootstrap/bootstrap-reboot.min.css' | relative_url }}" />
 	<link rel="stylesheet" href="{{ '/assets/bootstrap/bootstrap-grid.min.css' | relative_url }}" />
 	<link rel="stylesheet" href="{{ '/assets/bootstrap/bootstrap.min.css' | relative_url }}" />

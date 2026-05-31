@@ -1,0 +1,45 @@
+---
+# This file is rendered by Jekyll (the front matter triggers Liquid processing).
+# It overrides the minimal robots.txt that jekyll-sitemap would generate.
+# See ACCESS-FILES.md for the rationale and maintenance notes.
+---
+# robots.txt for {{ site.url }}
+# Standard: RFC 9309 (https://www.rfc-editor.org/rfc/rfc9309.html)
+
+# --- General crawlers (search engines) -------------------------------------
+User-agent: *
+Allow: /
+
+# --- AI crawlers / LLM agents ----------------------------------------------
+# These are ALLOWED on purpose: this is a personal/professional site and being
+# discoverable by AI agents is a feature, not a bug (see /llms.txt).
+# To opt a specific bot OUT, add a block like:
+#   User-agent: GPTBot
+#   Disallow: /
+# Reference lists: https://darkvisitors.com/ and each vendor's docs.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# --- Sitemap ---------------------------------------------------------------
+Sitemap: {{ '/sitemap.xml' | absolute_url }}

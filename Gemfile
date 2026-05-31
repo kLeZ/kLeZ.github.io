@@ -9,6 +9,7 @@ gem "webrick"
 
 group :jekyll_plugins do
   gem "jekyll-feed"
+  gem "jekyll-sitemap"
   gem "jekyll-tidy"
   gem "jekyll-katex"
   gem "liquid_reading_time"

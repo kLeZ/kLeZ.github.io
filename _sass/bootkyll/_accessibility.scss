@@ -1,0 +1,34 @@
+// Accessibility helpers.
+
+// "Skip to content" link: hidden off-screen until it receives keyboard focus,
+// then it slides into the top-left corner so keyboard/screen-reader users can
+// jump past the masthead and navbar.
+.skip-link {
+	position: absolute;
+	top: 0;
+	left: -9999px;
+	z-index: 2000;
+	padding: 0.6rem 1rem;
+	background-color: $dark;
+	color: $light;
+	font-weight: 600;
+	text-decoration: none;
+	border-radius: 0 0 0.25rem 0;
+
+	&:focus {
+		left: 0;
+	}
+}
+
+// Respect the user's reduced-motion preference: neutralise animations,
+// transitions and smooth scrolling for people who get motion sickness.
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}

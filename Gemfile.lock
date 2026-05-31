@@ -77,6 +77,8 @@ GEM
       sass (~> 3.4)
     jekyll-seo-tag (2.8.0)
       jekyll (>= 3.8, < 5.0)
+    jekyll-sitemap (1.4.0)
+      jekyll (>= 3.7, < 5.0)
     jekyll-tidy (0.2.2)
       htmlbeautifier
       htmlcompressor
@@ -149,6 +151,7 @@ DEPENDENCIES
   jekyll-katex
   jekyll-postfiles
   jekyll-seo-tag
+  jekyll-sitemap
   jekyll-tidy
   jemoji
   kramdown

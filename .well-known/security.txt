@@ -1,0 +1,12 @@
+---
+# Rendered by Jekyll. The .well-known directory is published because it is listed
+# under `include:` in _config.yml (Jekyll skips dotfiles/dirs by default).
+# RFC 9116: https://www.rfc-editor.org/rfc/rfc9116.html
+# `Expires` is computed at build time as build-date + ~1 year, so every deploy
+# pushes it forward automatically. See ACCESS-FILES.md.
+---
+# Security contact for {{ site.url }}
+Contact: mailto:{{ site.data.author.email }}
+Expires: {{ site.time | date: "%s" | plus: 31557600 | date: "%Y-%m-%dT%H:%M:%SZ" }}
+Preferred-Languages: it, en
+Canonical: {{ '/.well-known/security.txt' | absolute_url }}

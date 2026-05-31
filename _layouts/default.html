@@ -9,9 +9,10 @@
 	{%- assign classes = classes_arr | join: " " -%}
 
 	<body class="{{ classes }}">
+		<a class="skip-link" href="#main">Salta al contenuto</a>
 		{% include header.html %}
 		{% include navbar.html items=site.data.navigation %}
-		<main class="container-fluid" aria-label="Content">
+		<main id="main" class="container-fluid" aria-label="Content">
 			<div class="row">
 				<div class="col-lg-2 col-md-12">
 					{% if page.layout == 'post' or page.reading_time == true %}
