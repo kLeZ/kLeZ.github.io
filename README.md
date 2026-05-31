@@ -12,6 +12,15 @@ Double licensing is provided: [GNU GPL v3] for the site code which you can freel
 
 Please be gentle :-)
 
+## Development
+
+Working on this repo (humans and AI agents alike)? Start here:
+
+- [`AGENTS.md`](AGENTS.md) — how to set up, build, test, and the working conventions.
+- [`CONTEXT.md`](CONTEXT.md) — project architecture, branch model, and toolchain.
+
+Note: develop on `dev` (the source branch); `master` only holds the deployed output.
+
 [Jekyll]: https://jekyllrb.com/
 [GitHub-Actions]: https://github.com/features/actions
 [GitHub]: https://github.com
