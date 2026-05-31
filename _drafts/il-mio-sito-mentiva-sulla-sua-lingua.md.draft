@@ -6,7 +6,7 @@ tags:
 - jekyll
 - lavoro
 - accessibilità
-date: 2026-05-31 11:30:00+02:00
+##date: __CURRENT_DATE
 ---
 
 Per anni il mio sito ha dichiarato di essere in inglese. `<html lang="en">`, in
