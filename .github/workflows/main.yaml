@@ -104,6 +104,9 @@ jobs:
         with:
           name: site-release
 
+      - name: Disable GitHub Pages implicit Jekyll build
+        run: touch .nojekyll
+
       - name: Add Files to index
         run: |
           ls -l deployed*
