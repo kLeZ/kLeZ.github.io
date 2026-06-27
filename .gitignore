@@ -9,3 +9,6 @@ _site/
 .git-metadata/
 .bundle/
 vendor/
+# File generati dall'estensione Dev Containers di VSCodium (rigenerati ad ogni uso, non committare)
+.devcontainer/Dockerfile.codium-temp
+.devcontainer/entrypoint.sh

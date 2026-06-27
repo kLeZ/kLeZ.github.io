@@ -1,5 +1,7 @@
 tasks:
   - init: |
-      bundle install && bash ./_scripts/build
+      git submodule update --init --recursive
+      bundle install
+      bash ./_scripts/build
     command: |
       bash ./_scripts/serve

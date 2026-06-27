@@ -1,0 +1,16 @@
+{
+    "recommendations": [
+        // VSCodium: dev container via Docker+SSH (Open VSX)
+        "DDorch.codium-devcontainer",
+        "jeanp413.open-remote-ssh",
+        // Editing
+        "redhat.vscode-yaml",
+        "DavidAnson.vscode-markdownlint",
+        "Shopify.ruby-lsp",
+        "bierner.emojisense"
+    ],
+    "unwantedRecommendations": [
+        // Non funziona in VSCodium (URL server Microsoft hard-coded → 404)
+        "ms-vscode-remote.remote-containers"
+    ]
+}

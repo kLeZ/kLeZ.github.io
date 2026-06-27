@@ -54,6 +54,30 @@ runs `bundle install`, and persists `RBENV_VERSION`/`LANG`/`LC_ALL` for the
 session. It only runs when `CLAUDE_CODE_REMOTE=true`. If you change the build,
 dependencies, or required env, **update that hook too**.
 
+On **terminal** (vim, nano, etc.), workspace setup is fully automatic:
+`.devcontainer/init.sh` runs as Docker ENTRYPOINT after volume mount and handles
+submodule init + `bundle install` without any manual steps. Use `make`:
+```bash
+make build    # first time or after Dockerfile changes (~5-10 min, compiles Ruby)
+make shell    # interactive shell
+make serve    # Jekyll serve → http://localhost:4000
+```
+
+On **VS Code standard**, "Reopen in Container" works out of the box with
+`ms-vscode-remote.remote-containers` (Microsoft Marketplace). Zero extra config.
+
+On **VSCodium**, `ms-vscode-remote.remote-containers` fails with 404 (hard-coded
+Microsoft CDN URL, incompatible with VSCodium builds, not on Open VSX). Use
+`DDorch.codium-devcontainer` + `jeanp413.open-remote-ssh` from Open VSX instead —
+both install directly from the VSCodium Extensions sidebar. Fallback: `make up`
+(SSH daemon on port 2222) + Remote SSH to `dev@localhost:2222`.
+
+On **Emacs**, run `make up` then open `/docker:klez-me-daemon:/workspace/` via
+TRAMP (Emacs 29+ built-in `tramp-container.el`; Emacs <29: install `docker-tramp`
+from MELPA). SSH alternative: `/ssh:dev@localhost#2222:/workspace/`.
+
+See CONTEXT.md for full workflow details for each client.
+
 ## Common commands
 
 All commands assume the environment above (UTF-8 locale + Ruby 3.2.x).
