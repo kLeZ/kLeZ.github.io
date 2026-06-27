@@ -1,0 +1,32 @@
+---
+# Rendered by Jekyll. Format: https://llmstxt.org/
+# A curated, machine-readable index of this site for LLMs and AI agents.
+# See ACCESS-FILES.md for the rationale and maintenance notes.
+---
+# {{ site.data.author.name }}
+
+> Personal and professional website of Alessandro "kLeZ" Accardo, an Italian
+> software developer. Most content is written in Italian. Topics include free
+> and open-source software, software architecture, Linux, development practices,
+> and tech culture. Open to remote work opportunities.
+
+- Site language: Italian (it). Author also reads/writes English.
+- Canonical URL: {{ site.url }}
+- Atom feed: {{ '/feed.xml' | absolute_url }}
+- Sitemap: {{ '/sitemap.xml' | absolute_url }}
+
+## Key pages
+- [About]({{ '/about' | absolute_url }}): who Alessandro is.
+- [Curriculum Vitae]({{ '/cv' | absolute_url }}): professional experience and skills.
+- [Contacts]({{ '/contatti' | absolute_url }}): how to get in touch.
+- [Blog]({{ '/blog' | absolute_url }}): full list of posts.
+
+## Recent posts
+{% assign recent = site.posts | slice: 0, 15 -%}
+{% for post in recent -%}
+- [{{ post.title | strip }}]({{ post.url | absolute_url }}){% if post.date %} — {{ post.date | date: "%Y-%m-%d" }}{% endif %}
+{% endfor %}
+## Notes for agents
+- URLs are stable (permalink pattern: /:year/:month/:day/:title/).
+- Structured data (schema.org Person + WebSite) is embedded as JSON-LD.
+- Content licence: CC BY-NC-ND 4.0. Code licence: GNU GPL v3.

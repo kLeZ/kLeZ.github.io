@@ -1,0 +1,63 @@
+---
+title: "Il mio sito mentiva sulla sua lingua"
+tags:
+- web
+- standard
+- jekyll
+- lavoro
+- accessibilità
+date: 2026-06-27 16:50:37+00:00
+---
+
+Per anni il mio sito ha dichiarato di essere in inglese. `<html lang="en">`, in cima a ogni pagina, su un blog che scrivo in italiano da quando avevo vent'anni.
+
+Non l'avevo mai notato. È una di quelle cose che non vedi perché non le guardi: il sito si apre, le pagine si leggono, i post escono. Funziona. Ma sotto il cofano diceva una cosa falsa a chiunque non fosse un essere umano con gli occhi: agli screen reader, ai motori di ricerca, ai traduttori automatici, e — sempre di più — agli agenti che leggono il web al posto delle persone.
+
+Una riga sbagliata. Due lettere. `en` invece di `it`. E nessuno me l'aveva mai detto, perché nessuno *legge* davvero un sito personale a quel livello. Lo leggono le macchine. E le macchine, a differenza degli amici, non ti fanno notare che hai la patta aperta.
+
+{% include more.html %}
+
+## Come l'ho scoperto
+
+C'è un progetto che si chiama [The Website Specification](https://specification.website): centoventotto regole su come dovrebbe essere fatto un sito web nel 2026, divise in dieci categorie — fondamenta, SEO, accessibilità, sicurezza, privacy, internazionalizzazione, e una categoria nuova di zecca, "agent readiness", cioè quanto il tuo sito è leggibile dagli agenti AI.
+
+L'ho preso come una checklist e ci ho passato il mio sito contro. Non per feticismo del punteggio — anche se sì, ho fatto pure il punteggio — ma perché ogni tanto vale la pena alzare il cofano e guardare cosa c'è sotto. Esattamente quello di cui parlavo nel [post su LFS]({% link _posts/2026-02-03-il-software-che-non-puoi-smontare.md %}): capire i sistemi che usi, anche quando il sistema sei tu che l'hai costruito.
+
+Il referto non è stato indolore. Oltre alla lingua sbagliata mancavano un sacco di cose che do per scontate sui siti degli altri e non avevo mai messo sul mio: niente `sitemap.xml`, niente `robots.txt`, niente `security.txt`, nessuna pagina sulla privacy, metadati per la condivisione social a metà, il tema scuro che c'è ma il browser non lo sa finché non carica il CSS. Roba da poco, presa una per una. Tutta insieme, il segnale che la mia vetrina aveva la polvere.
+
+## La vetrina
+
+Perché di vetrina si tratta. Un sito personale non è un diario chiuso a chiave. È la cosa che qualcuno trova quando cerca il mio nome. È il posto dove un recruiter, un cliente, un'azienda — magari estera — si fa un'idea di chi sono prima ancora di scrivermi.
+
+E qui devo essere onesto su una cosa che di solito non scrivo. Voglio essere trovato. Voglio che, da qualche parte fuori dall'Italia, qualcuno cerchi uno che sa fare le cose che so fare io e finisca qui. Voglio fare il salto del lavoro remoto con qualcuno che mi paga per quello che valgo, e non per quello che il mercato del body rental italiano ha deciso che vale un'ora del mio tempo.
+
+Per farlo, il sito deve essere due cose insieme. Deve dire la verità sulla sua lingua — è italiano, ed è giusto così, è casa mia — ma deve anche esporre delle superfici in inglese per chi (o cosa) arriva da fuori. I metadati, la descrizione, un file nuovo che si chiama `llms.txt` dove, in inglese, c'è scritto chiaro: questo è il sito di uno sviluppatore italiano, ecco di cosa parla, ed è aperto a lavorare da remoto. Un biglietto da visita per le macchine.
+
+## La parte che mi fa storcere il naso
+
+Sì, ho appena scritto che ho reso il mio sito più leggibile agli agenti AI. Io. Quello che nei post precedenti se la prende con le Big Tech e con l'*Embrace-Extend-Extinguish* applicato al software libero.
+
+Non mi sfugge la contraddizione. La tengo lì, in piena vista, perché fingere il contrario sarebbe peggio. La verità è che il web del 2026 lo mediano sempre di più quei crawler lì. Se voglio essere trovato, devo decidere se parlare la lingua che parlano le macchine o restare puro ma invisibile. Ho scelto di parlare — ma alle mie condizioni.
+
+Nel mio `robots.txt` i crawler AI sono ammessi, perché *essere scoperti* è il punto. Ma il file è scritto in modo che disattivarne uno sia una riga. E sto già guardando agli standard che stanno arrivando — i "content signals", la proposta IETF sulle preferenze AI — che un domani mi lasceranno dire la cosa più onesta di tutte: *cercami pure, rispondi a chi mi cerca, ma non addestrarci sopra il tuo modello senza chiedere*. La differenza tra farsi trovare e farsi mungere. Voglio la prima, non la seconda.
+
+> citation "The Website Specification — Agent readiness" [https://specification.website/spec/agent-readiness/agent-readiness-overview/]
+> Agent readiness is the set of choices that make a site legible to AI agents
+> and LLMs: stable URLs, structured data, clean semantics, robots controls, and
+> machine-readable endpoints.
+
+URL stabili, dati strutturati, semantica pulita. Detta così è esattamente la roba che un hacker dovrebbe volere comunque, agenti o non agenti: un sito ordinato, comprensibile, che non mente su cosa è. Il fatto che faccia comodo anche alle macchine è un effetto collaterale, non il fine.
+
+## Le cose noiose contano
+
+C'è poi tutta la parte che non si vede e che ho sistemato lo stesso. Un link "salta al contenuto" per chi naviga da tastiera. Il rispetto della preferenza `prefers-reduced-motion`, per chi sta male con le animazioni. Le icone social che adesso hanno un nome leggibile da uno screen reader invece di essere quadratini muti. Una pagina privacy che dice, nero su bianco, che non ti traccio e non uso cookie — perché è vero, e perché dirlo è il minimo.
+
+Sono le cose noiose. Quelle che non fanno effetto, che nessuno nota se ci sono e tutti subiscono se mancano. Ma l'accessibilità non è un fronzolo da mettere alla fine se avanza tempo. È la differenza tra un sito che è di tutti e uno che è solo di quelli fatti come me: che ci vedono, che usano il mouse, che non hanno la nausea da movimento. Costruire per il caso fortunato è facile. Costruire perché il sito funzioni anche per chi parte svantaggiato è il lavoro vero.
+
+## Niente di magico
+
+Non ho rifatto il sito. Non ho cambiato grafica, non ho riscritto niente da zero. Ho aggiunto un plugin, sistemato una manciata di file, scritto qualche riga di configurazione e un po' di documentazione perché la prossima volta — io o chi mi dà una mano — non debba ripartire da zero a capire come gira tutto.
+
+È manutenzione. Quella cosa poco eroica che separa una cosa viva da una cosa abbandonata. Il sito c'è da più di quindici anni. Ogni tanto rimettere in ordine la vetrina, togliere la polvere, raddrizzare l'insegna e — finalmente — scrivere nell'insegna la lingua giusta, è un modo di dirgli che ci tengo ancora.
+
+E magari, già che l'insegna adesso si legge anche da fuori, qualcuno la legge.

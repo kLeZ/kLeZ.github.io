@@ -1,0 +1,72 @@
+{
+  "name": "klez.me Jekyll",
+
+  // Build da Dockerfile locale (debian:bookworm-slim + rbenv + Ruby 3.2.3).
+  // Il context è la radice del progetto (..): necessario per COPY .devcontainer/init.sh.
+  //
+  // NOTA: questa configurazione è per VS Code standard / devcontainer CLI.
+  // VSCodium: l'estensione Dev Containers fallisce con "404 VS Code Server" perché
+  // scarica vscode-server da Microsoft (incompatibile con VSCodium). Usare invece
+  // il workflow SSH daemon: `make up` + estensione open-remote-ssh (vedi CONTEXT.md).
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+
+  // Porte esposte all'host
+  "forwardPorts": [4000, 35729],
+  "portsAttributes": {
+    "4000": {
+      "label": "Jekyll serve",
+      "onAutoForward": "notify"
+    },
+    "35729": {
+      "label": "LiveReload",
+      "onAutoForward": "silent"
+    }
+  },
+
+  // Locale UTF-8 obbligatoria: html-proofer/Nokogiri legge le pagine col default
+  // di processo — senza UTF-8 testa 0 link ma esce 0 (silenziosamente).
+  "containerEnv": {
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8",
+    "JEKYLL_ENV": "development"
+  },
+
+  // postCreateCommand è intenzionalmente assente.
+  // Il setup workspace è gestito dall'ENTRYPOINT (init.sh) che gira a runtime,
+  // dopo il mount del volume — non a build-time come farebbe postCreateCommand
+  // nell'estensione VSCodium.
+
+  // containerUser: utente per docker exec (VSCodium terminal, lifecycle scripts).
+  // Senza questo, VSCodium usa root (default del container, nessun USER nel Dockerfile).
+  // Non influisce sull'ENTRYPOINT (che gira come root per setup privilegiato + sshd).
+  "containerUser": "dev",
+  "remoteUser": "dev",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // YAML (per _config.yml, front matter) — disponibile su Open VSX
+        "redhat.vscode-yaml",
+        // Markdown linting — disponibile su Open VSX
+        "DavidAnson.vscode-markdownlint",
+        // Ruby LSP — disponibile su Open VSX
+        "Shopify.ruby-lsp",
+        // Emojisense
+        "bierner.emojisense"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        // Esclude cartelle pesanti dal file watcher
+        "files.watcherExclude": {
+          "**/_site/**": true,
+          "**/vendor/**": true,
+          "**/.jekyll-cache/**": true,
+          "**/.sass-cache/**": true
+        }
+      }
+    }
+  }
+}

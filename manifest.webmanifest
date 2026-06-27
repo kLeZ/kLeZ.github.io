@@ -1,0 +1,23 @@
+---
+# Rendered by Jekyll. Web App Manifest (https://www.w3.org/TR/appmanifest/).
+# NOTE: icons currently point to favicon.ico as a stopgap. For a proper PWA add
+# 192x192 and 512x512 PNG icons (one `purpose: maskable`). See ACCESS-FILES.md.
+---
+{
+  "name": {{ site.title | jsonify }},
+  "short_name": {{ site.data.author.brand | jsonify }},
+  "description": {{ site.description | strip | jsonify }},
+  "lang": "it",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f8f9fa",
+  "theme_color": "#1a1d21",
+  "icons": [
+    {
+      "src": "{{ '/favicon.ico' | relative_url }}",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+services:
+  # Modalità interattiva: make shell, make serve, make draft, ecc.
+  dev:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - .:/workspace
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+    environment:
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+      JEKYLL_ENV: development
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+
+  # Modalità daemon SSH: make up → VSCodium (DDorch.codium-devcontainer o open-remote-ssh)
+  # o Emacs TRAMP (/docker:klez-me-daemon:/workspace/ oppure /ssh:dev@localhost#2222:/workspace/).
+  # Richiede ~/.ssh con chiavi pubbliche sull'host.
+  daemon:
+    container_name: klez-me-daemon
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - .:/workspace
+      - "${HOME}/.ssh:/home/dev/.ssh-host:ro"
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+      - "2222:22"
+    environment:
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+      JEKYLL_ENV: development
+    working_dir: /workspace
+    command: /usr/sbin/sshd -D

@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e # halt script on error
 
-bundle exec jekyll serve --livereload --drafts
+bundle exec jekyll serve --livereload --drafts --host 0.0.0.0
