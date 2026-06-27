@@ -96,3 +96,13 @@ exclude:
     - vendor/ruby/
     - blog-vector-icon-27.jpg
     - staticman.yml
+    - LICENSE
+    - README.md
+    - AGENTS.md
+    - CONTEXT.md
+    - AUTHORING.md
+    - SPEC-AUDIT.md
+    - ACCESS-FILES.md
+    - docker-compose.yml
+    - Makefile
+    - _pages/include/
