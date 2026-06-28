@@ -26,8 +26,21 @@ Write these files in **English** and keep them human-readable.
 
 ## Golden rules
 
-- **Develop on a short-lived branch off `master`.** `master` is the single
-  long-lived branch and holds the source. Pull requests MUST use `base: master`.
+- **Branching follows a content/source matrix.** `master` is the single
+  long-lived branch and holds the source. **Pure blog content** (`_posts/`,
+  `_drafts/`, `_xp/`, `_pages/`, and content assets) authored **on the owner's
+  own machine** is committed **directly to `master`**. **Everything else** —
+  any change to site source (layouts, includes, sass, `_config.yml`, `_plugins/`,
+  `_scripts/`, `.github/`, `.devcontainer/`, `docker-compose.yml`, these docs,
+  `Gemfile`, discovery files) **or any change that does not originate from the
+  owner's machine** (e.g. Claude Code on the web) — goes on a **short-lived
+  branch off `master` + PR** (`base: master`). A change mixing content with
+  source counts as source. The agent does **not** auto-classify or auto-detect
+  context: the owner says "commit directly" or "branch + PR" per change. See
+  [Git & PR conventions](#git--pr-conventions).
+- **Never add tool/AI attribution.** No `Co-Authored-By`, no "Generated with
+  Claude Code", no 🤖 — not in commits, not in PR bodies, not in content. The
+  tool does not announce itself (Git doesn't sign "Made with Git").
 - **Never commit build artifacts.** `_site/`, `vendor/`, `.bundle/`,
   `.jekyll-cache/`, etc. are git-ignored — keep them that way.
 - **Keep `Gemfile.lock` stable.** Don't let an incidental `bundle install`
@@ -131,7 +144,14 @@ bundle exec jekyll doctor \
 
 ## Git & PR conventions
 
-- Branch off `master`; push your feature branch; open PRs against `master`.
+- **Apply the branching matrix from "Golden rules".** Pure blog content from the
+  owner's machine → commit straight to `master`. Source/feature/fix changes, or
+  anything not originating from the owner's machine → short-lived branch off
+  `master` + PR (`base: master`). Mixed content+source counts as source. The
+  agent follows the owner's explicit per-change instruction; it does not decide
+  the flow on its own.
 - CI runs only on push to `master`, so PRs won't show project CI status — verify
   locally instead (see above).
-- Don't open a PR unless asked. Don't push to branches you weren't asked to.
+- **No tool/AI attribution anywhere** — commits, PR titles/bodies, content. No
+  `Co-Authored-By`, no "Generated with Claude Code", no 🤖.
+- Don't open a PR or push a branch unless asked.

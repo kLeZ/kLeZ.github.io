@@ -1,11 +1,11 @@
 # SPEC-AUDIT.md — Audit di klez.me contro The Website Specification
 
-> Audit del sito **https://klez.me** (sorgente: branch `dev` di questo repository)
+> Audit del sito **https://klez.me** (sorgente: branch `master` di questo repository)
 > rispetto alla checklist di **[The Website Specification](https://specification.website)**:
 > **128 regole in 10 categorie**, interrogate via il suo MCP server
 > (`https://mcp.specification.website/mcp`).
 >
-> **Data audit:** 2026-05-31 · **Branch analizzato:** `dev` (allineato) · **Tipo:** solo report, nessuna modifica applicata.
+> **Data audit:** 2026-05-31 · **Branch analizzato:** `master` · **Tipo:** solo report, nessuna modifica applicata.
 
 ---
 
@@ -13,7 +13,7 @@
 
 Le evidenze provengono da **due fonti**:
 
-1. **Sorgente** del branch `dev` (`_config.yml`, `_layouts/`, `_includes/`, `Gemfile`, `_pages/`, `_sass/`, ecc.).
+1. **Sorgente** del branch `master` (`_config.yml`, `_layouts/`, `_includes/`, `Gemfile`, `_pages/`, `_sass/`, ecc.).
 2. **Sito live** `https://klez.me`: header HTTP, negoziazione TLS/ALPN, presenza di
    `/robots.txt`, `/sitemap.xml`, `/feed.xml`, `/.well-known/*`, gestione 404, redirect.
 
@@ -289,7 +289,7 @@ restando su GitHub Pages "puro", che non consente header HTTP custom. La leva
 strutturale è anteporre una **CDN/proxy** (es. Cloudflare) che inietti gli header
 di sicurezza, abiliti HTTP/3 e brotli, e gestisca cache e `Link` header. Tutto il
 resto (lingua, sitemap, robots, security.txt, llms.txt, metadati, accessibilità,
-ottimizzazione asset) è realizzabile **interamente nel sorgente** del branch `dev`.
+ottimizzazione asset) è realizzabile **interamente nel sorgente** del branch `master`.
 
 ---
 
