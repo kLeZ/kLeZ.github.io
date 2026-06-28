@@ -1,4 +1,6 @@
 #!/bin/bash
 set -e # halt script on error
+# Esegue dalla radice del repo anche se invocato come 'serve' dal PATH.
+cd "$(dirname "$(readlink -f "$0")")/.."
 
 bundle exec jekyll serve --livereload --drafts --host 0.0.0.0

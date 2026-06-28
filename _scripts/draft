@@ -1,4 +1,6 @@
 #!/bin/bash
+# Esegue dalla radice del repo anche se invocato come 'draft' dal PATH.
+cd "$(dirname "$(readlink -f "$0")")/.."
 
 title="$@"
 safe_title=$(echo $title | tr '[:upper:]' '[:lower:]' | iconv -f utf-8 -t ascii//translit | tr '[ \t]' '-' | tr -cd '[^a-z0-9-+_.]')
@@ -8,5 +10,11 @@ if [[ -n $safe_title ]]; then
 	new_file="_drafts/$safe_title.md.draft"
 	cp _templates/post.md $new_file
 	sed -i "s/title: /title: \"$title\"/" $new_file
-	$JEKYLL_EDITOR $new_file
+	echo "Creato: $new_file"
+	# Apre l'editor solo se configurato (JEKYLL_EDITOR o EDITOR); altrimenti
+	# apri il file dal tuo IDE attaccato al container.
+	editor="${JEKYLL_EDITOR:-$EDITOR}"
+	if [ -n "$editor" ]; then
+		$editor "$new_file"
+	fi
 fi

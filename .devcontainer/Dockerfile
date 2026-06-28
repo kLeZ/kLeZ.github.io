@@ -2,7 +2,7 @@ FROM debian:bookworm-slim
 
 ENV DEBIAN_FRONTEND=noninteractive \
     RBENV_ROOT=/usr/local/rbenv \
-    PATH=/usr/local/rbenv/bin:/usr/local/rbenv/shims:$PATH \
+    PATH=/usr/local/rbenv/bin:/usr/local/rbenv/shims:/workspace/_scripts:$PATH \
     LANG=C.UTF-8 \
     LC_ALL=C.UTF-8
 
@@ -13,6 +13,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 #   openssh-client: per git submodule update su HTTPS/SSH
 #   openssh-server: modalità daemon SSH per VSCodium open-remote-ssh
 #   sudo: operazioni privilegiate dall'utente dev
+#   gosu: drop dei privilegi da root a 'dev' nell'ENTRYPOINT (exec pulito, no fork)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     git curl ca-certificates \
@@ -23,6 +24,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openssh-client \
     openssh-server \
     sudo \
+    gosu \
     && rm -rf /var/lib/apt/lists/* \
     && git config --system --add safe.directory '*'
 
@@ -58,7 +60,7 @@ RUN mkdir -p /var/run/sshd \
 # /etc/profile.d/ è letto solo da shell login; le sessioni non-login (SSH senza -l,
 # docker exec, VSCodium terminal) richiedono /etc/bash.bashrc e ~/.bashrc.
 RUN printf 'export RBENV_ROOT=/usr/local/rbenv\n\
-export PATH=/usr/local/rbenv/bin:/usr/local/rbenv/shims:$PATH\n\
+export PATH=/usr/local/rbenv/bin:/usr/local/rbenv/shims:/workspace/_scripts:$PATH\n\
 export LANG=C.UTF-8\n\
 export LC_ALL=C.UTF-8\n' > /etc/profile.d/klez-dev.sh \
     && for f in /etc/bash.bashrc /home/dev/.bashrc /root/.bashrc; do \

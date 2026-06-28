@@ -1,5 +1,7 @@
 #!/bin/bash
 set -e # halt script on error
+# Esegue dalla radice del repo anche se invocato come 'build' dal PATH.
+cd "$(dirname "$(readlink -f "$0")")/.."
 
 bundle exec jekyll doctor
 

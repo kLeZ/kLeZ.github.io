@@ -1,4 +1,6 @@
 #!/bin/bash
+# Esegue dalla radice del repo anche se invocato come 'publish' dal PATH.
+cd "$(dirname "$(readlink -f "$0")")/.."
 
 for f in `ls _drafts/*.draft`;
 do

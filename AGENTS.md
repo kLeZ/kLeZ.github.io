@@ -62,6 +62,19 @@ make shell    # interactive shell
 make serve    # Jekyll serve → http://localhost:4000
 ```
 
+**File ownership.** The entrypoint reconciles the container `dev` user's UID/GID to
+the host's (`HOST_UID`/`HOST_GID`, default 1000 — the `Makefile` exports them from
+`id -u`/`id -g`) and runs both setup and the command as `dev` via `gosu`. So every
+generated file (`vendor/`, `_site/`, `_drafts/*.draft`, …) is host-owned on every
+path. The `_scripts/` helpers are on the container `PATH`, so inside the container you
+can run them bare: `serve`, `draft "Title"`, `publish`, `build`, `emojis`. With
+`AUTO_SERVE=1` (daemon / devcontainer) Jekyll serve starts in the background at
+container start (output in the container logs: `make logs`). When the daemon is already running, `make
+shell/draft/publish/emojis` run *inside* it (`docker compose exec`) to avoid a second
+container clashing on port 4000. One-time: if old root-owned `vendor/`, `_site/`,
+`.jekyll-cache/`, `.bundle/` exist, remove them once
+(`sudo rm -rf vendor _site .jekyll-cache .bundle`) — they're git-ignored and regenerated.
+
 On **VS Code standard**, "Reopen in Container" works out of the box with
 `ms-vscode-remote.remote-containers` (Microsoft Marketplace). Zero extra config.
 
@@ -97,7 +110,9 @@ Notes on `_scripts/`:
   `_data/ci-status.yml` and runs `jekyll build`; otherwise it publishes drafts,
   regenerates emojis, builds with `--drafts --trace`. It finishes with
   `htmlproofer ./_site --disable-external`.
-- `draft` — scaffolds `_drafts/<slug>.md.draft` from `_templates/post.md`.
+- `draft` — scaffolds `_drafts/<slug>.md.draft` from `_templates/post.md`, prints the
+  path, and opens it in an editor only if `$JEKYLL_EDITOR` or `$EDITOR` is set
+  (otherwise open it from your attached IDE).
 - `publish` — promotes `_drafts/*.draft` into dated `_posts/` entries.
 - `emojis` — extracts emoji shortcodes from posts into `assets/img/emoji/`
   (Python 3 + the SgEExt submodule).

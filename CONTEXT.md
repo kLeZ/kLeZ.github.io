@@ -133,8 +133,27 @@ VSCodium e Emacs (TRAMP). Tutti partono dalla stessa immagine Docker.
   l'ENTRYPOINT. `.devcontainer/init.sh` gira ad ogni avvio e in modo idempotente
   inizializza i submodule e installa i gem (solo se mancanti). Nessun comando
   manuale richiesto.
-- **Utente `dev` (UID 1000)**: i file creati nel workspace appartengono all'utente
-  host con lo stesso UID (primo utente tipico su Linux).
+- **Permessi / UID-GID**: l'ENTRYPOINT parte come root, **riconcilia l'uid/gid
+  dell'utente `dev` a quelli dell'host** (`HOST_UID`/`HOST_GID`, default 1000) e poi
+  **scende a `dev` via `gosu`** (con `HOME=/home/dev`) sia per il setup sia per il
+  comando. Risultato: ogni file prodotto (`vendor/`, `_site/`, `_drafts/*.draft`, …) è
+  di proprietà dell'host su *ogni* percorso (make, VS Code, VSCodium, Emacs). In
+  modalità daemon `sshd` resta root (lo richiede), ma le sessioni SSH entrano come
+  `dev`. `HOST_UID`/`HOST_GID` arrivano da `docker-compose.yml` (il `Makefile` li
+  esporta da `id -u`/`id -g`) e da `devcontainer.json` (`${localEnv:UID/GID}`; sul
+  percorso codium l'IDE di solito non esporta `UID`/`GID`, quindi vale il default
+  1000 — corretto per l'host attuale).
+- **`_scripts/` nel PATH**: dentro il container `serve`, `draft "…"`, `publish`,
+  `build`, `emojis` sono invocabili nudi da qualsiasi cartella.
+- **Auto-serve** (`AUTO_SERVE=1`, attivo su daemon/devcontainer): all'avvio del
+  container Jekyll serve parte in background (output nei log del container,
+  `make logs`); http://localhost:4000 risponde appena finisce il primo build
+  (qualche minuto alla prima esecuzione per via di post/katex/emoji, poi i rebuild
+  sono di ~2s). I one-shot da `make` non lo attivano.
+- **Pulizia una-tantum**: se in passato si sono creati `vendor/`, `_site/`,
+  `.jekyll-cache/`, `.bundle/` di proprietà root, rimuoverli una volta
+  (`sudo rm -rf vendor _site .jekyll-cache .bundle`) prima del nuovo avvio: sono
+  git-ignored e rigenerati come utente host.
 
 ### Workflow terminale (make / docker compose)
 
@@ -146,6 +165,11 @@ make draft TITLE="Titolo"   # nuovo draft
 make publish        # promuovi draft in _posts/
 make help           # lista tutti i target
 ```
+
+Se il container daemon è già attivo (`make up` / VSCodium / Emacs), `make
+shell/draft/publish/emojis` vengono **eseguiti dentro quel container** (`docker
+compose exec`, non un nuovo container) per evitare il conflitto sulla porta 4000;
+`make serve` segnala che il server è già su grazie all'auto-serve.
 
 Equivalente senza Make:
 ```bash
@@ -180,6 +204,15 @@ Soluzione: due estensioni da Open VSX (installabili direttamente in VSCodium):
 
 Workflow: installa entrambe le estensioni → apri la cartella → usa il comando
 "Open in Container" di DDorch. Nessuna modifica a `~/.ssh/config` richiesta.
+
+> **Nota su permessi/auto-serve con DDorch.** DDorch costruisce una *propria*
+> immagine e può sostituire l'`ENTRYPOINT`, quindi `init.sh` (riconciliazione
+> UID/GID, drop a `dev`, auto-serve, setup submodule/gem) potrebbe **non girare**
+> su questo percorso. Su un host con UID/GID 1000 i file creati dall'editor restano
+> comunque di proprietà dell'host (`remoteUser: dev`), ma setup e auto-serve vanno
+> avviati a mano. Il percorso che **garantisce** il comportamento descritto sopra è
+> il fallback `make up` (daemon SSH), verificato end-to-end. Alla prima apertura con
+> DDorch, controlla l'ownership con `ls -ln _drafts` / `ls -ldn vendor`.
 
 **Fallback** (se DDorch non funziona):
 ```bash

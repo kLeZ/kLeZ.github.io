@@ -31,7 +31,12 @@
   "containerEnv": {
     "LANG": "C.UTF-8",
     "LC_ALL": "C.UTF-8",
-    "JEKYLL_ENV": "development"
+    "JEKYLL_ENV": "development",
+    // Allinea l'uid/gid di 'dev' all'host (l'entrypoint usa 1000 se questi sono vuoti).
+    "HOST_UID": "${localEnv:UID}",
+    "HOST_GID": "${localEnv:GID}",
+    // Avvia Jekyll serve in background all'apertura del container (anteprima su :4000).
+    "AUTO_SERVE": "1"
   },
 
   // postCreateCommand è intenzionalmente assente.
