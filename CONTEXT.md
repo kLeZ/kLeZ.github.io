@@ -29,28 +29,26 @@ Markdown, push, and the public site updates within minutes.
 
 ## Branch architecture & CI/CD
 
-This repository uses **two long-lived branches with different roles**:
+This repository uses a **single long-lived branch**, `master` (the default
+branch), which is the **source of truth**: Jekyll source, scripts, config, and
+the CI definition. There is no separate deploy branch — the built site is
+published straight to GitHub Pages as a deployment artifact (Pages **Source =
+"GitHub Actions"**).
 
-| Branch   | Role                                                                 |
-| -------- | -------------------------------------------------------------------- |
-| `dev`    | **Source of truth.** Jekyll source, scripts, config, CI definition.  |
-| `master` | **Deploy target only.** Contains the built static output (`_site/`). |
+CI/CD (`.github/workflows/main.yaml`) is triggered **on push to `master`** (and
+manual `workflow_dispatch`):
 
-CI/CD (`.github/workflows/main.yaml`) is triggered **only on push to `dev`**:
-
-1. **build** job — checks out `dev` (with submodules), sets up Ruby, runs
-   `bundle install`, then `./_scripts/build`, and uploads `_site/` as an
-   artifact.
-2. **deploy** job — checks out `master`, downloads the `_site/` artifact, and
-   commits/pushes it back to `master` (the "Deployed new klez.me version"
-   commits).
+1. **build** job — checks out the repo (with submodules), sets up Ruby, runs
+   `bundle install`, then `./_scripts/build`, and uploads `_site/` with
+   `actions/upload-pages-artifact`.
+2. **deploy** job — publishes that artifact with `actions/deploy-pages` to the
+   `github-pages` environment. Nothing is committed back to the repo.
 
 Implications:
-- **Develop on `dev`** (or a branch based on it). Pull requests must target
-  `dev`, **never `master`**.
-- Never hand-edit `master`; it is machine-generated.
+- **Develop on short-lived branches off `master`.** Pull requests target
+  `master`.
 - The CI workflow does **not** run on `pull_request` events, only on push to
-  `dev`. PRs therefore show no project CI status — that is expected.
+  `master`. PRs therefore show no project CI status — that is expected.
 
 ## Toolchain
 
@@ -84,7 +82,7 @@ Implications:
   `/.well-known/` is served only because `.well-known` is listed under
   `include:` in `_config.yml`. See [`ACCESS-FILES.md`](ACCESS-FILES.md).
 
-## Directory layout (on `dev`)
+## Directory layout (on `master`)
 
 ```
 _config.yml        Jekyll configuration (site metadata, plugins, sass, katex...)

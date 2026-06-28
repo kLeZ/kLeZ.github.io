@@ -178,4 +178,5 @@ CI=true ./_scripts/build
 bundle exec jekyll build && bundle exec htmlproofer ./_site --disable-external
 ```
 Confirm: the post builds, images resolve, KaTeX doesn't error, and the excerpt
-cut is where you want it. Then commit on a branch off `dev` (never `master`).
+cut is where you want it. Then commit on a short-lived branch off `master` and
+open a PR against `master`.

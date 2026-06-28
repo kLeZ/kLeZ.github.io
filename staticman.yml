@@ -1,7 +1,7 @@
 comments:
     allowedFields: ["name", "email", "url", "message"]
     requiredFields: ["name", "email", "message"]
-    branch: "dev"
+    branch: "master"
     commitMessage: "Hey, human! Here's a comment from {fields.name} on {options.slug}!"
     path: "_data/comments/{options.slug}"
     filename: "comment-{@timestamp}"

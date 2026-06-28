@@ -1,6 +1,6 @@
 # kLeZ.github.io
 
-[![Build Status](https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml/badge.svg?branch=dev)](https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml)
+[![Build Status](https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml/badge.svg?branch=master)](https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml)
 
 My personal (static) website built with [Jekyll] and continuously deployed by [GitHub-Actions].  
 It's all completely automated (full CI & CD), to the point where I can write a simple markdown document with a smartphone, push it to [GitHub], and see it in "production" (a.k.a. the public facing website) in seconds (or very few minutes).  
@@ -19,7 +19,10 @@ Working on this repo (humans and AI agents alike)? Start here:
 - [`AGENTS.md`](AGENTS.md) — how to set up, build, test, and the working conventions.
 - [`CONTEXT.md`](CONTEXT.md) — project architecture, branch model, and toolchain.
 
-Note: develop on `dev` (the source branch); `master` only holds the deployed output.
+Note: `master` is the single long-lived branch — it holds the Jekyll source and
+is the default branch. Pushing to it builds the site and publishes it to GitHub
+Pages via GitHub Actions (Pages Source = "GitHub Actions"). Work on short-lived
+branches off `master` and open PRs against `master`.
 
 [Jekyll]: https://jekyllrb.com/
 [GitHub-Actions]: https://github.com/features/actions

@@ -26,9 +26,8 @@ Write these files in **English** and keep them human-readable.
 
 ## Golden rules
 
-- **Develop on `dev`** (or a branch based on `dev`). `dev` holds the source.
-- **Never edit or target `master`.** It is the machine-generated deploy output.
-  Pull requests MUST use `base: dev`.
+- **Develop on a short-lived branch off `master`.** `master` is the single
+  long-lived branch and holds the source. Pull requests MUST use `base: master`.
 - **Never commit build artifacts.** `_site/`, `vendor/`, `.bundle/`,
   `.jekyll-cache/`, etc. are git-ignored — keep them that way.
 - **Keep `Gemfile.lock` stable.** Don't let an incidental `bundle install`
@@ -117,7 +116,7 @@ bundle exec jekyll doctor \
 
 ## Git & PR conventions
 
-- Branch off `dev`; push your feature branch; open PRs against `dev`.
-- CI runs only on push to `dev`, so PRs won't show project CI status — verify
+- Branch off `master`; push your feature branch; open PRs against `master`.
+- CI runs only on push to `master`, so PRs won't show project CI status — verify
   locally instead (see above).
 - Don't open a PR unless asked. Don't push to branches you weren't asked to.

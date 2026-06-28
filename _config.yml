@@ -10,7 +10,7 @@ copyright: Copyright © Alessandro 'kLeZ' Accardo 2019
 repo: https://github.com/kLeZ/kLeZ.github.io
 build:
     server: https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml
-    status: https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml/badge.svg?branch=dev
+    status: https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml/badge.svg?branch=master
 
 twitter:
     username: kLeZhAcK
@@ -22,7 +22,7 @@ collections:
 comments:
     enabled: false
     type: staticman
-    post_url: https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/dev/comments/
+    post_url: https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/master/comments/
     avatar_provider: gravatar
 
 sass:

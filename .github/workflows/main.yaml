@@ -17,7 +17,7 @@ name: CI
 on:
   push:
     branches:
-      - dev
+      - master
     paths-ignore:
       - "LICENSE"
       - "README.md"
@@ -52,7 +52,6 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v2
         with:
-          ref: dev
           submodules: true
 
       - name: Set up Ruby
