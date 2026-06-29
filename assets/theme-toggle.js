@@ -5,7 +5,7 @@
 	// Modes: "system", "light", "dark"
 	var MODES = ["system", "light", "dark"];
 	var ICONS = {
-		system: "fa-circle-half-stroke",
+		system: "fa-adjust",
 		light: "fa-sun",
 		dark: "fa-moon"
 	};
@@ -59,7 +59,7 @@
 
 			if (icon) {
 				// Remove all theme icons
-				icon.classList.remove("fa-sun", "fa-moon", "fa-circle-half-stroke");
+				icon.classList.remove("fa-sun", "fa-moon", "fa-adjust");
 				// Add current icon
 				icon.classList.add(ICONS[mode]);
 			}
