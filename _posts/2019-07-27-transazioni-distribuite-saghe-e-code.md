@@ -1,4 +1,5 @@
 ---
+lang: it
 title: Transazioni distribuite saghe e code
 tags: spring eventi
 date: 2019-07-27 12:56:10+02:00

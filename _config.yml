@@ -1,6 +1,14 @@
 timezone: Europe/Rome
 lang: it
 locale: it_IT
+
+# Multilingua (jekyll-polyglot): IT alla root, EN sotto /en/
+languages: ["it", "en"]
+default_lang: "it"
+exclude_from_localization: ["assets", "favicon.ico", "robots.txt", "manifest.webmanifest", ".well-known"]
+parallel_localization: true
+# I contenuti non tradotti (fallback) puntano in canonical alla versione IT: niente duplicate content
+fallback_canonical_to_default_lang: true
 title: Alessandro 'kLeZ' Accardo personal website
 description: >-
     This is the personal website of an Italian developer once called 'kLeZ'.
@@ -84,6 +92,7 @@ plugins:
     - jekyll-seo-tag
     - jemoji
     - jekyll-postfiles
+    - jekyll-polyglot
 
 # Defaults. IF you want to change the exclude make sure you keep those sane defaults
 exclude:

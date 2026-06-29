@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "La Zanzara, Mascitti e l'Arte di Vedere Complotti Dove Non Ci Sono"
 tags:
 - metodo scientifico

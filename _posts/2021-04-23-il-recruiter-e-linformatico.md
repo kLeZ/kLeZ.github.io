@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Il recruiter e l'informatico"
 tags: 
 date: 2021-04-23 12:58:01+02:00

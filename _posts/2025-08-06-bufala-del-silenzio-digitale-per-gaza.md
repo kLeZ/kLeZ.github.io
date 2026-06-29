@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Bufala del \"Silenzio Digitale per Gaza\""
 tags:
 - gaza

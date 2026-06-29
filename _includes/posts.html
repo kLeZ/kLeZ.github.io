@@ -1,3 +1,4 @@
+{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
 {%- if include.posts.size > 0 -%}
 <div class="row">
 	<div class="col-xl-10 col-lg-12 mx-auto">
@@ -17,14 +18,14 @@
 				{%- if post.content contains "<!--more-->" -%}
 				<div class="row justify-content-end text-right">
 					<div class="col-12">
-						<a href="{{ post.url | relative_url }}#read-more" class="card-link btn btn-dark text-nowrap">Read more</a>
+						<a href="{{ post.url | relative_url }}#read-more" class="card-link btn btn-dark text-nowrap">{{ loc.read_more }}</a>
 					</div>
 				</div>
 				{%- endif -%}
 			</section>
 			{%- unless post.tags.size == 0 -%}
 			<footer class="card-footer">
-				<small class="text-muted">Tags: {{ post.tags | sort | join: ", " }}</small>
+				<small class="text-muted">{{ loc.tags }} {{ post.tags | sort | join: ", " }}</small>
 			</footer>
 			{%- endunless -%}
 		</article>

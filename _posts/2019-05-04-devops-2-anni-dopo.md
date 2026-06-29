@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "DevOps: 2 anni dopo"
 tags: 
 date: 2019-05-04 18:56:31+02:00

@@ -1,4 +1,5 @@
 ---
+lang: it
 date: 2010-12-16 09:48:07+01:00
 layout: post
 slug: discorsi-confusi

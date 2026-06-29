@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Il mio primo commento sul blog!"
 tags: 
 date: 2019-05-10 08:17:31+02:00
@@ -18,7 +19,7 @@ Si, hai letto bene: il primo commento su questo blog è stato uno *spam*, un po'
 
 Se sei curioso di vedere cosa lo *spam* contenesse, puoi vedere la *Pull Request* di *Staticman* [qui](https://github.com/kLeZ/kLeZ.github.io/pull/7).
 
-Di Staticman, di cos'è e come funziona e come l'ho integrato nel mio blog, ne parlo [qui]({% post_url 2019-03-21-staticman %}) e [qui]({% post_url 2019-03-25-staticman-c-e %}).
+Di Staticman, di cos'è e come funziona e come l'ho integrato nel mio blog, ne parlo [qui](/2019/03/21/staticman/) e [qui](/2019/03/25/staticman-c-e/).
 
 Il commento non è interessante nel contenuto ovviamente, ma è interessante usarlo per risalire all'origine e per capire il funzionamento e le motivazioni dietro allo *spam*.
 

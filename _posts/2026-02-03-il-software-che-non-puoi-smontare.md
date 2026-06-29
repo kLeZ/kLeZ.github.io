@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Il software che non puoi smontare"
 tags:
 - linux

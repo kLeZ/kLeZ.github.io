@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Quando Gabriel Aveva Ragione: Java Lisp-Style nel 2025"
 tags:
 - linguaggi

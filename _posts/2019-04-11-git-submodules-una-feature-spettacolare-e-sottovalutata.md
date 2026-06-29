@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Git submodules: una feature spettacolare e sottovalutata"
 tags:
     - best practice
@@ -75,7 +76,7 @@ Ma io non voglio che un domani questo script, presente su github, venga aggiorna
 
 ### La questione
 
-Soddisfatto, anche dell'[articolo precedente a questo]({% post_url 2019-04-09-aggiornamenti-sulla-direttiva-per-il-copyright %}), decido che è il caso di pubblicare tutto in "produzione". Git **add**, **commit** e **push** e sono "live" (sempre live).
+Soddisfatto, anche dell'[articolo precedente a questo](/2019/04/09/aggiornamenti-sulla-direttiva-per-il-copyright/), decido che è il caso di pubblicare tutto in "produzione". Git **add**, **commit** e **push** e sono "live" (sempre live).
 
 Arriva una mail però in cui Travis mi avvisa che la _build_ è fallita, i log affermano che c'è un problema nel trovare un file **SASS**, "{...}/premonition.scss".
 

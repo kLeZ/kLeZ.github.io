@@ -1,4 +1,5 @@
 ---
+lang: it
 title: La sostanza dell'intelligenza
 tags:
 - riflessione

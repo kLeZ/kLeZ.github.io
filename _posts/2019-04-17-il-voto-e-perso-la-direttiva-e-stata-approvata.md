@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Il voto è perso, la direttiva è stata approvata"
 tags: 
 date: 2019-04-17 09:17:47+02:00

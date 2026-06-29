@@ -1,4 +1,5 @@
 ---
+lang: it
 title: Grazie Travis CI, meno grazie a GitHub
 tags: [ "travis-ci", "github", "questo blog", deployment ]
 date: 2019-03-14 20:05:00+01:00

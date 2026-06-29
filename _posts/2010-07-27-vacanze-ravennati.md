@@ -1,4 +1,5 @@
 ---
+lang: it
 date: 2010-07-27 12:56:15+01:00
 layout: post
 slug: vacanze-ravennati

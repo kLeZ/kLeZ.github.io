@@ -1,4 +1,5 @@
 ---
+lang: it
 title: Il Death Metal non rende violenti
 tags: music research metal
 date: 2019-03-14 13:05:47+01:00

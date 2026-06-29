@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "FLOSSness di una distro Android"
 tags: 
 date: 2019-05-27 20:37:41+02:00

@@ -1,0 +1,26 @@
+# Glossario di traduzione IT -> EN.
+# - keep:  termini da lasciare INVARIATI in inglese (case incluso).
+# - terms: rese fisse per garantire coerenza sui post (chiave IT -> valore EN).
+# Modifica liberamente man mano che traduci i contenuti.
+
+keep:
+  - kLeZ
+  - Alessandro Accardo
+  - GitHub
+  - Jekyll
+  - Bootstrap
+  - KaTeX
+  - Creative Commons
+  - PassMan
+  - Wash Ideas
+  - open source
+  - commit
+  - repository
+  - front matter
+
+terms:
+  Curriculum Vitae: Curriculum Vitae
+  Chi sono: About me
+  Contatti: Contact
+  Eventi: Events
+  Progetti: Projects

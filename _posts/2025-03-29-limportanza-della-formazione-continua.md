@@ -1,4 +1,5 @@
 ---
+lang: it
 title: L'importanza della formazione continua
 tags:
 - basi

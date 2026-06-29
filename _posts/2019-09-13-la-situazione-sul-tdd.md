@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "La situazione sul TDD"
 tags: 
 date: 2019-09-13 19:00:57+02:00
@@ -23,7 +24,7 @@ Esistono diversi tipi di test che si usano per diversi scopi e in diversi contes
 
 ### Unit test
 
-I test unitari o *unit test* sono i componenti principali di una qualsiasi *suite* di test. Con uno *unit test* andiamo a verificare il funzionamento di singole unità di codice, singoli metodi o singole funzioni, che dovrebbero fare una sola cosa e dovrebbero farla bene. Questo rientra nel [Clean Code]({% post_url 2019-03-28-spaghetti-code-its-that-bad %}), l'abbiamo già trattato.
+I test unitari o *unit test* sono i componenti principali di una qualsiasi *suite* di test. Con uno *unit test* andiamo a verificare il funzionamento di singole unità di codice, singoli metodi o singole funzioni, che dovrebbero fare una sola cosa e dovrebbero farla bene. Questo rientra nel [Clean Code](/2019/03/28/spaghetti-code-its-that-bad/), l'abbiamo già trattato.
 
 ### Integration test
 

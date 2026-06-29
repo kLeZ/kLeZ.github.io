@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Mascitti e il Moonwalk Argomentativo"
 tags:
 - metodo scientifico

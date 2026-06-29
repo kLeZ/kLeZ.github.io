@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "The kLeZ reboot: an infinite journey"
 ---
 
@@ -15,7 +16,7 @@ Lo so, sono come l'[Olandese Volante], che vuoi farci. È il _bello della dirett
 Ancora una volta torno su un blog, sta volta spero per sempre (o almeno mai più); fatto sta che un blog lo voglio, e l'ho sempre voluto ed è difficile poi però mantenerlo perché sono particolarmente _lazy_ come dicono gli inglesi (thanks [Deep Purple MKII]).  
 Questa volta ho preso una serie di decisioni non da poco: non usare tecnologie che mi potrebbero portare a un _lock-in_, usare una tecnologia che in futuro posso ospitare con poco sforzo a casa, usare una tecnologia che mi fornisca qualcosa di molto semplice e flessibile e usare una tecnologia che renda semplice l'editing offline e la scrittura dei post. Questa tecnologia a mio avviso si chiama [Jekyll].
 
-Ho già ampiamente spiegato [qui]({% post_url 2019-02-15-primo-post-da-smartphone %}) come e perché di molte cose, quindi non sto troppo a dilungarmi.  
+Ho già ampiamente spiegato [qui](/2019/02/15/primo-post-da-smartphone/) come e perché di molte cose, quindi non sto troppo a dilungarmi.  
 Fortunatamente per Jekyll esistono una marea di plugin e programmi utili, tra cui un [importatore da _wordpress_ molto efficiente e completo, scritto in python](https://github.com/thomasf/exitwp). Questo ottimo tool mi ha permesso di importare diversi post provenienti dai miei vecchi blog wordpress.
 
 Storicamente, ho sempre apprezzato wordpress, e continuo ad apprezzarlo, ma volevo qualcosa di un po' diverso, e soprattutto più **sicuro**, wordpress a volte mi fa dubitare della capacità degli sviluppatori che lo portano avanti da questo punto di vista.  

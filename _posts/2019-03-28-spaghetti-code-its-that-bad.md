@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Spaghetti Code: It's **that** bad"
 tags:
 - spaghetti code

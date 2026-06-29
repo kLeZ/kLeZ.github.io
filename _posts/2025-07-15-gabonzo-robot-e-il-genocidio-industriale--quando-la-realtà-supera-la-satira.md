@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Gabonzo Robot e il Genocidio Industriale: Quando la Realtà Supera la Satira"
 tags:
 - rant

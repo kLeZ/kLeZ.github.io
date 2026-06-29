@@ -1,4 +1,5 @@
 ---
+lang: it
 date: 2010-06-21 09:56:08+01:00
 layout: post
 slug: narrativa-per-tutti-il-dd-parte-3

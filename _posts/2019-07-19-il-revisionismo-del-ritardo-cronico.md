@@ -1,4 +1,5 @@
 ---
+lang: it
 title: Il revisionismo del ritardo cronico
 tags: 
 date: 2019-07-19 19:50:00+02:00

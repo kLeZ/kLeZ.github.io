@@ -1,4 +1,5 @@
 ---
+lang: it
 date: 2010-06-26 23:08:11+01:00
 layout: post
 slug: mi-piace-come-ragiona

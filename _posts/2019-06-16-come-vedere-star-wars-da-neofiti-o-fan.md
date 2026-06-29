@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Come vedere Star Wars da neofiti o fan"
 tags: 
 date: 2019-06-16 17:19:14+02:00

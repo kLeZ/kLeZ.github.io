@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Il mio sito mentiva sulla sua lingua"
 tags:
 - web
@@ -21,7 +22,7 @@ Una riga sbagliata. Due lettere. `en` invece di `it`. E nessuno me l'aveva mai d
 
 C'è un progetto che si chiama [The Website Specification](https://specification.website): centoventotto regole su come dovrebbe essere fatto un sito web nel 2026, divise in dieci categorie — fondamenta, SEO, accessibilità, sicurezza, privacy, internazionalizzazione, e una categoria nuova di zecca, "agent readiness", cioè quanto il tuo sito è leggibile dagli agenti AI.
 
-L'ho preso come una checklist e ci ho passato il mio sito contro. Non per feticismo del punteggio — anche se sì, ho fatto pure il punteggio — ma perché ogni tanto vale la pena alzare il cofano e guardare cosa c'è sotto. Esattamente quello di cui parlavo nel [post su LFS]({% link _posts/2026-02-03-il-software-che-non-puoi-smontare.md %}): capire i sistemi che usi, anche quando il sistema sei tu che l'hai costruito.
+L'ho preso come una checklist e ci ho passato il mio sito contro. Non per feticismo del punteggio — anche se sì, ho fatto pure il punteggio — ma perché ogni tanto vale la pena alzare il cofano e guardare cosa c'è sotto. Esattamente quello di cui parlavo nel [post su LFS](/2026/02/03/il-software-che-non-puoi-smontare/): capire i sistemi che usi, anche quando il sistema sei tu che l'hai costruito.
 
 Il referto non è stato indolore. Oltre alla lingua sbagliata mancavano un sacco di cose che do per scontate sui siti degli altri e non avevo mai messo sul mio: niente `sitemap.xml`, niente `robots.txt`, niente `security.txt`, nessuna pagina sulla privacy, metadati per la condivisione social a metà, il tema scuro che c'è ma il browser non lo sa finché non carica il CSS. Roba da poco, presa una per una. Tutta insieme, il segnale che la mia vetrina aveva la polvere.
 

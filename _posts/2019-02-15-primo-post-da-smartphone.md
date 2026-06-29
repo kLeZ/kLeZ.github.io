@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Primo post da smartphone"
 date: 2019-02-15 20:53:10 +0100
 tags: [github, travisci, jekyll, android, markor, mgit]

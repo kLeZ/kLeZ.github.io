@@ -9,11 +9,17 @@
 		light: "fa-sun",
 		dark: "fa-moon"
 	};
+	// Fallback labels (EN); i template localizzano via data-label-* sul bottone.
 	var LABELS = {
 		system: "Auto",
 		light: "Light",
 		dark: "Dark"
 	};
+
+	function labelFor(btn, mode) {
+		var attr = { system: "data-label-system", light: "data-label-light", dark: "data-label-dark" };
+		return btn.getAttribute(attr[mode]) || LABELS[mode];
+	}
 
 	function getStoredPreference() {
 		try {
@@ -63,12 +69,13 @@
 				// Add current icon
 				icon.classList.add(ICONS[mode]);
 			}
+			var text = labelFor(btn, mode);
 			if (label) {
-				label.textContent = LABELS[mode];
+				label.textContent = text;
 			}
 
-			btn.setAttribute("title", "Theme: " + LABELS[mode] + " (click to change)");
-			btn.setAttribute("aria-label", "Current theme: " + LABELS[mode] + ". Click to change.");
+			btn.setAttribute("title", text);
+			btn.setAttribute("aria-label", text);
 		}
 	}
 

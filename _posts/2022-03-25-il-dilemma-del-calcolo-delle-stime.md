@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Il dilemma del calcolo delle stime"
 tags: 
 date: 2022-03-25 09:39:26+00:00

@@ -1,4 +1,5 @@
 ---
+lang: it
 date: 2010-02-16 14:24:06+01:00
 layout: post
 slug: il-mio-personale-wordpress

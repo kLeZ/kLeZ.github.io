@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "Slop, trust, and a three-line patch"
 tags:
 - open-source

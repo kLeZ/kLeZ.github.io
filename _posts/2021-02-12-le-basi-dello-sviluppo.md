@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Le basi dello sviluppo"
 tags: 
 date: 2021-02-12 16:16:59+01:00

@@ -2,6 +2,7 @@
 layout: page
 title: Contatti
 permalink: /contatti/
+lang: it
 ---
 
 Puoi contattarmi su uno qualsiasi degli account di cui dispongo, non è importante quale, e penso che dipenderà soprattutto dal tuo scopo.

@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Java: quando il codice racconta 30 anni di errori e rivoluzioni"
 tags:
 - java

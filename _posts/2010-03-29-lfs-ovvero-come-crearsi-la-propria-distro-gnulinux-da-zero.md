@@ -1,4 +1,5 @@
 ---
+lang: it
 date: 2010-03-29 11:44:42+01:00
 layout: post
 slug: lfs-ovvero-come-crearsi-la-propria-distro-gnulinux-da-zero

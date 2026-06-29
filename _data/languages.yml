@@ -1,0 +1,9 @@
+# Resa visiva delle lingue nello switcher (solo presentazione).
+# I codici tecnici (URL, html lang, hreflang, og:locale) restano generici: it / en.
+# La bandiera 'gb' (Union Jack) per l'inglese è una scelta estetica, non un locale en-GB.
+it:
+  flag: it
+  name: Italiano
+en:
+  flag: gb
+  name: English

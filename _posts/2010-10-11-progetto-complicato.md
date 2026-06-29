@@ -1,4 +1,5 @@
 ---
+lang: it
 date: 2010-10-11 16:19:18+01:00
 layout: post
 slug: progetto-complicato

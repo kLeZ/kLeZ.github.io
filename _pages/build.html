@@ -1,16 +1,16 @@
 ---
+lang: it
 layout: page
 title: Build information
 service: true
 permalink: /build.html
 ---
-{%- assign repo = site.data.navigation | where: "title", "Repository" -%}
 {%- assign commit = site.git.last_commit -%}
 <div class="row">
 	<div class="col-md-6 col-sm-12">
 		<h3>Commit Info</h3>
 		<small class="text-muted">
-			<a href="{{ repo.first.url }}/commit/{{ commit.long_sha }}" target="_blank">{{ commit.short_sha }}</a> on
+			<a href="{{ site.repo }}/commit/{{ commit.long_sha }}" target="_blank">{{ commit.short_sha }}</a> on
 			<time datetime="{{ commit.commit_date | date_to_xmlschema }}">{{ commit.commit_date | date_to_string }}</time>
 		</small>
 		{{ commit.message | markdownify }}

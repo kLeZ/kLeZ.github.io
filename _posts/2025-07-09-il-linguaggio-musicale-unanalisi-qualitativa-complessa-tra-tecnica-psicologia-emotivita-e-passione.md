@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Il linguaggio musicale: un'analisi qualitativa complessa, tra tecnica, psicologia, emotività e passione"
 tags:
 - musica

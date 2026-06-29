@@ -6,6 +6,7 @@ permalink: /cv/
 left_image: /assets/cv-photo.jpeg
 right_content: includes/cv-right-content.md
 toc: includes/cv-toc.md
+lang: it
 ---
 
 ## Badges

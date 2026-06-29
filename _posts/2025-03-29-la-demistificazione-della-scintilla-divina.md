@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "La demistificazione della scintilla divina"
 tags:
 - filosofia

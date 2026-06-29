@@ -1,4 +1,5 @@
 ---
+lang: it
 date: 2010-07-08 21:27:12+01:00
 layout: post
 slug: altre-idee-per-fpm

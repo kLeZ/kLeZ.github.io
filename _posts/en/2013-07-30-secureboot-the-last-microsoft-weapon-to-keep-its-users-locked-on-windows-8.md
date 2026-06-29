@@ -1,4 +1,5 @@
 ---
+lang: en
 date: 2013-07-30 02:05:47+01:00
 layout: post
 slug: secureboot-the-last-microsoft-weapon-to-keep-its-users-locked-on-windows-8

@@ -1,4 +1,5 @@
 ---
+lang: it
 date: 2010-02-21 21:44:10+01:00
 layout: post
 slug: narrativa-per-tutti-il-dd-parte-1

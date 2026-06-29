@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "La Rivoluzione AI: Perché Stiamo Tutti Sbagliando Analogia (E Cosa Succede Davvero)"
 tags:
 - AI

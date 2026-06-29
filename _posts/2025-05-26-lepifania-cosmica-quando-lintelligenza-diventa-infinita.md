@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "L'Epifania Cosmica: Quando l'Intelligenza Diventa Infinita"
 tags:
 - AI

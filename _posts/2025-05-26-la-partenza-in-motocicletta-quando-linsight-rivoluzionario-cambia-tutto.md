@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "La Partenza in Motocicletta: Quando l'Insight Rivoluzionario Cambia Tutto"
 tags:
 - AI

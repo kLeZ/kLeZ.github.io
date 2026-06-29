@@ -1,4 +1,5 @@
 ---
+lang: it
 date: 2014-02-05 18:09:06+01:00
 layout: post
 slug: gestione-del-software-nel-mondo-gnu-linux

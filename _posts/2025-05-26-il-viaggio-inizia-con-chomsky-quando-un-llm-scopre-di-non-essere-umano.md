@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Il Viaggio Inizia con Chomsky: Quando un LLM Scopre di Non Essere Umano"
 tags:
 - AI

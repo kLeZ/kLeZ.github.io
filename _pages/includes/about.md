@@ -8,9 +8,9 @@ Dicevo. Tutto molto bello, ma sono solo l'ennesimo che scrive un blog, e non un 
 Ma allora: _ma che diamine ci sei venuto a fare qui?_ Te lo spiego subito (si fa per dire). Probabilmente c'è qualche articolo che ti interessa, o hai parlato con me, ci siamo incontrati, o mi conosci da tutta la vita magari, e vuoi curiosare in quello che sembra essere la cosa più vicina a uno spazio web interamente mio.  
 
 E allora che la festa cominci, in alto gli articoli, e speriamo che ce ne sia almeno uno che tu apprezzi. Verrà il giorno dei commenti, ma non è questo il giorno, perché l'unica opzione valida è disqus, ma è lesivo della privacy, e io ci tengo a questa cosa, chi mi conosce sa e patisce.  
-Nel frattempo ti sarò _estremamente grato_, e sarò _estremamente contento_ di sapere cosa ne pensi di me e di quello che scrivo tramite [uno dei miei contatti]({% link _pages/contatti.md %}). _Oh, mi raccomando, scrivimi anche se ti salta in mente di insultarmi. **Fa piacere** anche quello, in un certo senso._
+Nel frattempo ti sarò _estremamente grato_, e sarò _estremamente contento_ di sapere cosa ne pensi di me e di quello che scrivo tramite [uno dei miei contatti](/contatti/). _Oh, mi raccomando, scrivimi anche se ti salta in mente di insultarmi. **Fa piacere** anche quello, in un certo senso._
 
 Semmai volessi saperne ancora di più su di me (_recruiters, anyone?_) posso consigliarti di leggere il mio [curriculum], qui in queste pagine.
 
-[curriculum]: {% link _pages/cv.md %}
-[blog]: {% link _pages/blog.md %}
+[curriculum]: /cv/
+[blog]: /blog/

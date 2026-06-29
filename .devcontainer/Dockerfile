@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libssl-dev libreadline-dev zlib1g-dev \
     libyaml-dev libffi-dev \
     nodejs \
-    python3 python3-pip python3-requests \
+    python3 python3-pip python3-requests python3-yaml \
     openssh-client \
     openssh-server \
     sudo \

@@ -1,4 +1,5 @@
 ---
+lang: it
 title: Aggiornamenti sulla direttiva Europea per il copyright
 tags: saveyourinternet copyright Europa
 date: 2019-04-09 08:40:04+02:00

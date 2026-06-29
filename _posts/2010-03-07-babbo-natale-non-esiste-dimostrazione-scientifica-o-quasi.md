@@ -1,4 +1,5 @@
 ---
+lang: it
 date: 2010-03-07 11:47:49+01:00
 layout: post
 slug: babbo-natale-non-esiste-dimostrazione-scientifica-o-quasi

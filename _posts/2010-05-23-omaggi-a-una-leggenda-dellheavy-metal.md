@@ -1,4 +1,5 @@
 ---
+lang: it
 date: 2010-05-23 11:29:26+01:00
 layout: post
 slug: omaggi-a-una-leggenda-dellheavy-metal

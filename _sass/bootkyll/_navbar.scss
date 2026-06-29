@@ -137,3 +137,37 @@
 		}
 	}
 }
+
+// Language switcher: dropdown con bandiera + nome. Accanto al theme toggle nella navbar.
+.lang-switcher {
+	display: inline-flex;
+	align-items: center;
+	padding: 0 4px;
+
+	.flag {
+		height: 1em;
+		width: auto;
+		border: 1px solid rgba($black, 0.15);
+		border-radius: 2px;
+		vertical-align: middle;
+		flex-shrink: 0;
+	}
+
+	.lang-name {
+		font-size: 12px;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		@include sans-serif-font;
+	}
+
+	// Voci del menu: bandiera + nome affiancati
+	.dropdown-item {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+
+		&.active,
+		&:active { color: $light; .flag { border-color: rgba($light, 0.4); } }
+	}
+}

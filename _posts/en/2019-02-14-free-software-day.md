@@ -1,4 +1,5 @@
 ---
+lang: en
 title: "Free Software Day"
 date: 2019-02-14 12:48:55 +0100
 tags: [fsfe, ilovefs, floss]

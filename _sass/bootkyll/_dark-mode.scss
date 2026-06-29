@@ -2,8 +2,9 @@
 // Applied via [data-theme="dark"] on <html>
 // Supports three modes: light (default), dark, and system (auto via prefers-color-scheme)
 
-// Theme toggle button
-.theme-toggle {
+// Theme toggle button + language toggle button (stesso reset/colori)
+.theme-toggle,
+.lang-toggle {
 	background: none;
 	border: none;
 	cursor: pointer;
@@ -29,14 +30,18 @@
 	}
 }
 
+.lang-toggle { gap: 6px; }
+
 // Toggle colors on transparent navbar (desktop)
 @media only screen and (min-width: 992px) {
-	#mainNav:not(.is-fixed) .theme-toggle {
+	#mainNav:not(.is-fixed) .theme-toggle,
+	#mainNav:not(.is-fixed) .lang-toggle {
 		color: $light;
 		&:hover { color: fade-out($light, 0.2); }
 	}
 
-	#mainNav.is-fixed .theme-toggle {
+	#mainNav.is-fixed .theme-toggle,
+	#mainNav.is-fixed .lang-toggle {
 		color: $dark;
 		&:hover { color: $primary; }
 	}

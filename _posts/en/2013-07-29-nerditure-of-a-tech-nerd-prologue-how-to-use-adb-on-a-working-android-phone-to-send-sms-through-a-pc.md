@@ -1,4 +1,5 @@
 ---
+lang: en
 date: 2013-07-29 17:38:37+01:00
 layout: post
 slug: nerditure-of-a-tech-nerd-prologue-how-to-use-adb-on-a-working-android-phone-to-send-sms-through-a-pc

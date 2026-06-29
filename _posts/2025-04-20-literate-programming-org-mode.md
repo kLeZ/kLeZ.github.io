@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Literate Programming e Org-mode: Quando il Codice e la Prosa Fanno Pace"
 tags:
 - programming

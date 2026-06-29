@@ -4,8 +4,8 @@
 		<a class="navbar-brand" href="{{ site.build.server }}" target="_blank">
 			<img src="{{ site.build.status }}" alt="build status badge" />
 		</a>
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-			Menu
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="{{ loc.toggle_nav }}">
+			{{ loc.menu }}
 			<i class="fa fa-bars"></i>
 		</button>
 		<div class="collapse navbar-collapse" id="navigation">
@@ -57,10 +57,11 @@
 					{%- endif -%}
 				{%- endfor -%}
 			</ul>
-			<button class="theme-toggle" type="button" title="Toggle theme" aria-label="Toggle theme">
+			<button class="theme-toggle" type="button" title="{{ loc.theme.toggle }}" aria-label="{{ loc.theme.toggle }}" data-label-system="{{ loc.theme.auto }}" data-label-light="{{ loc.theme.light }}" data-label-dark="{{ loc.theme.dark }}">
 				<i class="fas fa-adjust theme-icon"></i>
-				<span class="theme-label">Auto</span>
+				<span class="theme-label">{{ loc.theme.auto }}</span>
 			</button>
+			{% include lang-switcher.html %}
 		</div>
 	</div>
 </nav>

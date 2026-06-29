@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Trova lo st***zo! The IBM Way!"
 tags: 
 date: 2022-05-05 12:00:50+02:00

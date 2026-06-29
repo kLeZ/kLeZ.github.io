@@ -1,0 +1,24 @@
+# Interface strings — English
+skip_to_content: "Skip to content"
+reading_time_one: "This article will take 1 minute to read."
+reading_time_other: "This article will take %count% minutes to read."
+scroll_top: "Scroll to the top of the page"
+last_build: "Last build on"
+privacy: "Privacy"
+cc_license_alt: "Creative Commons License"
+license_html: >-
+  This work is licensed under a <a rel="license"
+  href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative
+  Commons Attribution - NonCommercial - NoDerivatives 4.0 International License</a>.
+read_more: "Read more"
+tags: "Tags:"
+posted_on: "Posted on"
+by: "by"
+comments: "Comments"
+menu: "Menu"
+toggle_nav: "Toggle navigation"
+theme:
+  auto: "Auto"
+  light: "Light"
+  dark: "Dark"
+  toggle: "Toggle theme"

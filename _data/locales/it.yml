@@ -1,0 +1,24 @@
+# Stringhe di interfaccia — italiano (lingua di default)
+skip_to_content: "Salta al contenuto"
+reading_time_one: "Questo articolo richiede 1 minuto di lettura."
+reading_time_other: "Questo articolo richiede %count% minuti di lettura."
+scroll_top: "Torna all'inizio della pagina"
+last_build: "Ultima build il"
+privacy: "Privacy"
+cc_license_alt: "Licenza Creative Commons"
+license_html: >-
+  Quest'opera è distribuita con licenza <a rel="license"
+  href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative
+  Commons Attribuzione - Non commerciale - Non opere derivate 4.0 Internazionale</a>.
+read_more: "Continua a leggere"
+tags: "Tag:"
+posted_on: "Pubblicato il"
+by: "di"
+comments: "Commenti"
+menu: "Menu"
+toggle_nav: "Apri/chiudi navigazione"
+theme:
+  auto: "Auto"
+  light: "Chiaro"
+  dark: "Scuro"
+  toggle: "Cambia tema"

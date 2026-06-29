@@ -1,5 +1,7 @@
+{%- assign lang = site.active_lang | default: site.lang -%}
+{%- assign loc = site.data.locales[lang] -%}
 <!doctype html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: lang | default: "en" }}">
 	{% include head.html %}
 
 	{%- assign classes_arr = " " | split: " " -%}
@@ -9,16 +11,18 @@
 	{%- assign classes = classes_arr | join: " " -%}
 
 	<body class="{{ classes }}">
-		<a class="skip-link" href="#main">Salta al contenuto</a>
+		<a class="skip-link" href="#main">{{ loc.skip_to_content }}</a>
 		{% include header.html %}
-		{% include navbar.html items=site.data.navigation %}
+		{%- assign nav_items = site.data.navigation[lang] -%}
+		{% include navbar.html items=nav_items %}
 		<main id="main" class="container-fluid" aria-label="Content">
 			<div class="row">
 				<div class="col-lg-2 col-md-12">
 					{% if page.layout == 'post' or page.reading_time == true %}
 					<aside class="sticky-top mb-3 mb-lg-0 bg-light px-3 border rounded-lg border-dark shadow">
+						{%- assign rt = content | reading_time | plus: 0 -%}
 						<p class="text-muted">
-							This article will take {{ content | reading_time | pluralize: "minute" }} to read.
+							{%- if rt == 1 -%}{{ loc.reading_time_one }}{%- else -%}{{ loc.reading_time_other | replace: '%count%', rt }}{%- endif -%}
 						</p>
 					</aside>
 					{% endif %}
@@ -37,7 +41,7 @@
 			</div>
 			<div class="row justify-content-end text-right">
 				<div class="col-6">
-					<a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="Scroll to the top of the page" href="#">
+					<a id="scroller" class="btn m-3 p-2 text-light bg-dark rounded" title="{{ loc.scroll_top }}" href="#">
 						<i class="fa fa-5x fa-chevron-up"></i>
 					</a>
 				</div>

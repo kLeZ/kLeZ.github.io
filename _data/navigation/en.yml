@@ -1,0 +1,31 @@
+- title: Build
+  url: /build.html
+  relative: true
+- title: Posts
+  url: /blog
+  relative: true
+- title: About me
+  sublinks:
+      - title: About
+        url: /about
+        relative: true
+      - title: Contact
+        url: /contatti
+        relative: true
+      - title: Curriculum Vitae
+        url: /cv
+        relative: true
+- title: Repository
+  url: https://github.com/kLeZ/kLeZ.github.io
+  relative: false
+- title: Projects
+  sublinks:
+      - title: Wash Ideas (Alpha)
+        url: https://klez.me/wash-ideas
+        relative: false
+      - title: PassMan
+        url: https://klez.me/PassMan
+        relative: false
+- title: Events
+  url: /eventi
+  relative: true

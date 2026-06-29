@@ -1,0 +1,449 @@
+#!/usr/bin/env python3
+"""
+Traduce i contenuti del sito da italiano a inglese usando un LLM hosted (OpenRouter).
+
+Filosofia: lo script è sottile, il valore sta nel prompt (_scripts/i18n/prompt.md) e nel
+glossario (_scripts/i18n/glossary.yml). La traduzione gira a "commit-time": l'output sono
+file statici nel repo, niente chiamate di rete a runtime nel sito.
+
+Prerequisiti:
+    pip install requests pyyaml
+    export OPENROUTER_API_KEY="sk-or-..."        # account gratuito su openrouter.ai
+    # opzionale: default 'openrouter/free' (router auto). Per più qualità imposta uno slug
+    # specifico verificato su https://openrouter.ai/models (filtro Free), es.:
+    export TRANSLATE_MODEL="deepseek/deepseek-r1:free"
+
+Uso:
+    _scripts/translate _pages/about.md _pages/privacy.md
+    _scripts/translate --force _pages/cv.md
+    _scripts/translate --dry-run _pages/contatti.md
+
+Direzione: dipende dal `lang` del file sorgente. Convenzione: root = italiani, en/ = inglesi.
+    it (root)        -> en  : _posts/x.md           -> _posts/en/x.md
+    en (en/)         -> it  : _posts/en/x.md        -> _posts/x.md
+    en alla root     -> it  : _posts/x.md (lang:en) viene PRIMA spostato (git mv) in
+                              _posts/en/x.md, poi l'IT viene generato a _posts/x.md
+
+Idempotenza: nel front matter della traduzione viene salvato `source_sha`. Se la sorgente
+non è cambiata il file viene saltato (così le tue correzioni manuali restano). Un file
+SENZA `source_sha` è un originale: non viene mai sovrascritto. Usa --force per forzare.
+"""
+
+import argparse
+import hashlib
+import os
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+try:
+    import requests
+    import yaml
+except ImportError:
+    sys.exit("Mancano dipendenze: pip install requests pyyaml")
+
+ROOT = Path(__file__).resolve().parent.parent
+PROMPT_FILE = ROOT / "_scripts" / "i18n" / "prompt.md"
+GLOSSARY_FILE = ROOT / "_scripts" / "i18n" / "glossary.yml"
+API_URL = "https://openrouter.ai/api/v1/chat/completions"
+DEFAULT_LANG = "it"   # lingua di default (root); le altre vanno sotto /<lang>/
+# nomi leggibili per il prompt (target 'en' = inglese britannico, vedi register.en.md)
+LANG_NAME_SRC = {"it": "Italian", "en": "English"}
+LANG_NAME_TGT = {"it": "Italian", "en": "British English"}
+# Router automatico OpenRouter: sceglie un modello free disponibile, così non va in 404
+# quando un singolo slug :free sparisce. Override con TRANSLATE_MODEL / --model.
+# Per più qualità imposta uno slug specifico (verifica su https://openrouter.ai/models,
+# filtro "Free"), es. deepseek/deepseek-r1:free o meta-llama/llama-4-maverick:free.
+DEFAULT_MODEL = os.environ.get("TRANSLATE_MODEL", "openrouter/free")
+
+FM_RE = re.compile(r"^---\n(.*?)\n---\n?(.*)$", re.DOTALL)
+SHA_COMMENT_RE = re.compile(r"<!--\s*source_sha:\s*([0-9a-f]+)\s*-->")
+INCLUDE_REL_RE = re.compile(r"include_relative\s+(\S+)")
+# chiavi di front matter che puntano a partial markdown da tradurre anch'essi
+REF_FM_KEYS = ("right_content", "left_content", "toc")
+
+
+def split_front_matter(text):
+    """Restituisce (fm_dict|None, fm_raw|None, body)."""
+    m = FM_RE.match(text)
+    if not m:
+        return None, None, text
+    fm_raw, body = m.group(1), m.group(2)
+    return yaml.safe_load(fm_raw) or {}, fm_raw, body
+
+
+def source_sha(text):
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
+
+
+def target_path(src: Path) -> Path:
+    """Percorso EN: inserisce 'en' dopo la cartella radice della collection (it -> en)."""
+    rel = src.relative_to(ROOT)
+    parts = list(rel.parts)
+    parts.insert(1, "en")
+    return ROOT / Path(*parts)
+
+
+def is_en_path(src: Path) -> bool:
+    parts = src.relative_to(ROOT).parts
+    return len(parts) > 1 and parts[1] == "en"
+
+
+def to_it_path(src: Path) -> Path:
+    """Percorso IT (root): toglie il segmento 'en' se presente (en -> it)."""
+    parts = list(src.relative_to(ROOT).parts)
+    if len(parts) > 1 and parts[1] == "en":
+        del parts[1]
+    return ROOT / Path(*parts)
+
+
+def git_mv(src: Path, dst: Path):
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        subprocess.run(["git", "mv", str(src), str(dst)], cwd=ROOT, check=True,
+                       capture_output=True)
+        return "git mv"
+    except Exception:
+        os.rename(src, dst)
+        return "rename"
+
+
+def referenced_files(src: Path, fm, body):
+    """File partial referenziati dalla sorgente (include_relative + chiavi front matter),
+    da tradurre anch'essi. Risolti relativamente alla cartella del sorgente."""
+    refs = set(INCLUDE_REL_RE.findall(body))
+    for key in REF_FM_KEYS:
+        val = (fm or {}).get(key)
+        if isinstance(val, str) and val.endswith(".md"):
+            refs.add(val)
+    out = []
+    for r in refs:
+        p = (src.parent / r).resolve()
+        if p.exists() and p not in out:
+            out.append(p)
+    return out
+
+
+LINK_TAG_RE = re.compile(r"\{%-?\s*link\s+(\S+?)\s*-?%\}")
+POSTURL_TAG_RE = re.compile(r"\{%-?\s*post_url\s+(\S+?)\s*-?%\}")
+
+
+def _page_permalink(repo_path):
+    p = ROOT / repo_path.lstrip("/")
+    if p.exists():
+        fm, _, _ = split_front_matter(p.read_text(encoding="utf-8"))
+        if fm and fm.get("permalink"):
+            return fm["permalink"]
+    return None
+
+
+def _post_permalink(name):
+    matches = []
+    for ext in (".md", ".markdown", ".html"):
+        matches += list((ROOT / "_posts").glob(f"{name}{ext}"))
+    if not matches:
+        return None
+    fm, _, _ = split_front_matter(matches[0].read_text(encoding="utf-8"))
+    if fm and fm.get("permalink"):
+        return fm["permalink"]
+    m = re.match(r"(\d{4})-(\d{2})-(\d{2})-(.+)", name)
+    if not m:
+        return None
+    y, mo, d, title = m.groups()
+    slug = (fm or {}).get("slug") or title
+    return f"/{y}/{mo}/{d}/{slug}/"
+
+
+def resolve_liquid_links(text):
+    """Converte {% link %}/{% post_url %} in URL-permalink site-relative: nel build EN
+    polyglot li prefissa a /en/ e per i target non tradotti scatta il fallback. Evita
+    che i tag risolvano un documento sorgente IT assente dal set di lingua EN."""
+    warnings = []
+
+    def link_sub(m):
+        path = m.group(1)
+        if path.startswith("/"):  # asset statico (/media/...): {% link %} sicuro, lascialo
+            return m.group(0)
+        if path.startswith("_posts/"):  # post: permalink basato sulla data
+            pl = _post_permalink(Path(path).stem)
+        else:  # pagina: permalink dal front matter
+            pl = _page_permalink(path)
+        if pl:
+            return pl
+        warnings.append(f"link non risolto: {{% link {path} %}} (target senza permalink)")
+        return m.group(0)
+
+    def post_sub(m):
+        pl = _post_permalink(m.group(1))
+        if pl:
+            return pl
+        warnings.append(f"post_url non risolto: {m.group(1)}")
+        return m.group(0)
+
+    text = POSTURL_TAG_RE.sub(post_sub, LINK_TAG_RE.sub(link_sub, text))
+    return text, warnings
+
+
+# Regola generale: punteggiatura ASCII. Gli LLM "abbelliscono" con caratteri tipografici
+# Unicode (smart quote, en/em dash, ellissi, spazi non-breaking); qui li riportiamo ad
+# ASCII in modo deterministico. NB: solo PUNTEGGIATURA — le lettere accentate (à è é ì ò ù)
+# non sono nella tabella e restano intatte.
+TYPOGRAPHY_MAP = {
+    "‘": "'", "’": "'", "‚": "'", "‛": "'",  # single quotes
+    "“": '"', "”": '"', "„": '"', "‟": '"',  # double quotes
+    "′": "'", "″": '"',                                  # prime, double prime
+    "«": '"', "»": '"',                                  # guillemets « »
+    "–": "-", "‒": "-",                                  # en dash, figure dash
+    "—": "--", "―": "--",                                # em dash, horizontal bar
+    "…": "...",                                               # ellipsis
+    " ": " ", " ": " ", " ": " ", " ": " ",    # special spaces
+    "﻿": "",                                                  # BOM / zero-width nbsp
+}
+
+
+def normalize_typography(text):
+    """Sostituisce la punteggiatura tipografica con ASCII. Salta i blocchi di codice
+    fenced (``` ) per non alterare il codice verbatim."""
+    out, in_fence = [], False
+    for line in text.split("\n"):
+        if line.lstrip().startswith("```"):
+            in_fence = not in_fence
+            out.append(line)
+            continue
+        if not in_fence:
+            for k, v in TYPOGRAPHY_MAP.items():
+                if k in line:
+                    line = line.replace(k, v)
+        out.append(line)
+    return "\n".join(out)
+
+
+def existing_sha(dst: Path):
+    """Ritorna (source_sha_salvato | None, manuale?). 'manuale' = file EN senza sha
+    (probabilmente scritto/editato a mano) -> da non sovrascrivere."""
+    if not dst.exists():
+        return None, False
+    text = dst.read_text(encoding="utf-8")
+    fm, _, _ = split_front_matter(text)
+    if fm is not None:
+        return fm.get("source_sha"), ("source_sha" not in fm)
+    m = SHA_COMMENT_RE.search(text)
+    return (m.group(1) if m else None), (m is None)
+
+
+def build_prompt(src_lang, tgt_lang):
+    prompt = PROMPT_FILE.read_text(encoding="utf-8")
+    register = (ROOT / "_scripts" / "i18n" / f"register.{tgt_lang}.md").read_text(encoding="utf-8")
+    gloss = yaml.safe_load(GLOSSARY_FILE.read_text(encoding="utf-8")) or {}
+    lines = []
+    for term in gloss.get("keep", []):
+        lines.append(f"- Keep verbatim: {term}")
+    # glossario terms: definito IT->EN; per EN->IT lo invertiamo
+    terms = (gloss.get("terms") or {})
+    pairs = terms.items() if tgt_lang == "en" else [(v, k) for k, v in terms.items()]
+    for a, b in pairs:
+        lines.append(f"- Render '{a}' as '{b}'")
+    return (prompt
+            .replace("{{SOURCE_LANG}}", LANG_NAME_SRC[src_lang])
+            .replace("{{TARGET_LANG}}", LANG_NAME_TGT[tgt_lang])
+            .replace("{{REGISTER}}", register.strip())
+            .replace("{{GLOSSARY}}", "\n".join(lines) if lines else "(none)"))
+
+
+def call_llm(system_prompt, file_text, model, api_key):
+    resp = requests.post(
+        API_URL,
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+            "HTTP-Referer": "https://klez.me",
+            "X-Title": "klez.me i18n",
+        },
+        json={
+            "model": model,
+            "temperature": 0.2,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": file_text},
+            ],
+        },
+        timeout=180,
+    )
+    if not resp.ok:
+        # estrae il messaggio diagnostico di OpenRouter invece di un HTTPError grezzo
+        try:
+            detail = resp.json().get("error", {}).get("message") or resp.text
+        except ValueError:
+            detail = resp.text
+        hint = ""
+        if resp.status_code == 404:
+            hint = ("\nModello '%s' non trovato/non disponibile. Verifica lo slug su "
+                    "https://openrouter.ai/models (filtro Free) o usa TRANSLATE_MODEL=openrouter/free."
+                    % model)
+        elif resp.status_code in (401, 403):
+            hint = "\nControlla OPENROUTER_API_KEY."
+        elif resp.status_code == 429:
+            hint = "\nRate limit del tier free raggiunto: riprova più tardi o cambia modello."
+        sys.exit(f"Errore OpenRouter {resp.status_code}: {detail}{hint}")
+    content = resp.json()["choices"][0]["message"]["content"].strip()
+    # rimuove eventuali code fence che il modello potrebbe aver aggiunto attorno all'output
+    content = re.sub(r"^```[a-z]*\n", "", content)
+    content = re.sub(r"\n```$", "", content)
+    return content
+
+
+def guards(src_text, out_text):
+    """Controlli di struttura: ritorna lista di problemi (vuota = ok)."""
+    problems = []
+
+    def count(pattern, text, flags=0):
+        return len(re.findall(pattern, text, flags))
+
+    checks = {
+        "code fence (```)": r"^```",
+        "heading": r"^#{1,6}\s",
+        "link": r"\]\(",
+        "display math ($$)": r"\$\$",
+    }
+    for name, pat in checks.items():
+        flags = re.MULTILINE if pat.startswith("^") else 0
+        if count(pat, src_text, flags) != count(pat, out_text, flags):
+            problems.append(f"conteggio '{name}' diverso dalla sorgente")
+    # delimitatori display math bilanciati
+    if out_text.count("$$") % 2 != 0:
+        problems.append("delimitatori $$ non bilanciati")
+    # integrità tag Liquid: il modello a volte corrompe {% ... %} (es. perde '%}')
+    if out_text.count("{%") != out_text.count("%}"):
+        problems.append("tag Liquid non bilanciati ({% vs %})")
+    elif src_text.count("{%") != out_text.count("{%"):
+        problems.append("numero di tag Liquid {% diverso dalla sorgente")
+    return problems
+
+
+def translate_file(src: Path, model, api_key, force, dry_run):
+    src_text = src.read_text(encoding="utf-8")
+    src_fm, _, _ = split_front_matter(src_text)
+    has_fm = src_fm is not None
+    sha = source_sha(src_text)
+
+    # direzione dalla lingua del sorgente: it -> en (target en/), en -> it (target root)
+    src_lang = (src_fm or {}).get("lang") or DEFAULT_LANG
+    if src_lang == DEFAULT_LANG:
+        tgt_lang = "en"
+    elif src_lang == "en":
+        tgt_lang = "it"
+        # un EN scritto alla root va collocato sotto en/ (root resta agli italiani)
+        if not is_en_path(src):
+            new_src = target_path(src)
+            print(f"  ~ sposto sorgente EN: {src.relative_to(ROOT)} -> {new_src.relative_to(ROOT)}"
+                  + ("" if dry_run else f" ({git_mv(src, new_src)})"))
+            src = new_src
+    else:
+        print(f"  ! {src}: lang '{src_lang}' non supportato, salto")
+        return
+
+    dst = target_path(src) if tgt_lang == "en" else to_it_path(src)
+
+    if dst.exists() and not force:
+        ex_sha, manual = existing_sha(dst)
+        if manual:
+            print(f"  ! {dst}: file senza source_sha (originale o editato a mano), salto")
+            return
+        if ex_sha == sha:
+            print(f"  = {src.name}: invariato, salto (usa --force per ritradurre)")
+            return
+
+    print(f"  > {src} -> {dst}  [{model}]  ({src_lang}->{tgt_lang})")
+    if dry_run:
+        return
+
+    system_prompt = build_prompt(src_lang, tgt_lang)
+    # pre-risolvi i tag {% link %}/{% post_url %} NELLA SORGENTE: così il modello non li
+    # vede e non può corromperli (es. perdere il '%}'); diventano URL che polyglot
+    # prefissa per lingua e che fanno fallback per i target non ancora tradotti.
+    src_for_llm, warns = resolve_liquid_links(src_text)
+    out_text = call_llm(system_prompt, src_for_llm, model, api_key)
+    problems = guards(src_for_llm, out_text)
+    if problems:
+        print("    retry: guardie fallite -> " + "; ".join(problems))
+        out_text = call_llm(system_prompt, src_for_llm, model, api_key)
+        problems = guards(src_for_llm, out_text)
+
+    if has_fm:
+        # forza lang/locale/source_sha nel front matter dell'output
+        fm, _, body = split_front_matter(out_text)
+        if fm is None:  # il modello ha perso il front matter: ricostruisci dalla sorgente
+            fm, body = dict(src_fm), out_text
+        body = normalize_typography(body)
+        # normalizza anche i valori stringa del front matter PRIMA del dump yaml (così
+        # gli apostrofi tornati ASCII vengono correttamente quotati da yaml).
+        for k, v in fm.items():
+            if isinstance(v, str):
+                fm[k] = normalize_typography(v)
+        fm["lang"] = tgt_lang
+        if tgt_lang == "en":
+            fm["locale"] = "en"  # generico: niente en_US/en_GB (solo il registro è UK)
+        else:
+            fm.pop("locale", None)  # IT: nessun locale per-pagina (default del sito)
+        fm["source_sha"] = sha
+        if problems:
+            fm["translation_review"] = True
+        rendered = "---\n" + yaml.safe_dump(fm, allow_unicode=True, sort_keys=False) + "---\n" + body
+    else:
+        # partial senza front matter (es. _pages/includes/*.md): niente YAML iniettato,
+        # sha tracciato in un commento HTML (invisibile nel render).
+        fm_out, _, b = split_front_matter(out_text)
+        body = b if fm_out is not None else out_text  # rimuovi front matter indebito
+        body = normalize_typography(body)
+        marker = f"<!-- source_sha: {sha} -->\n"
+        if problems:
+            marker += "<!-- translation_review -->\n"
+        rendered = marker + body
+
+    rendered = rendered.rstrip("\n") + "\n"  # esattamente una blank line in coda
+
+    for w in warns:
+        print(f"    ⚠ {w}")
+    if problems:
+        print("    ⚠ guardie ancora KO: marcato translation_review")
+
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    dst.write_text(rendered, encoding="utf-8")
+
+
+def main():
+    ap = argparse.ArgumentParser(description="Traduce contenuti IT<->EN via LLM (OpenRouter); "
+                                 "la direzione dipende dal 'lang' del file sorgente.")
+    ap.add_argument("files", nargs="+", help="file sorgente .md da tradurre")
+    ap.add_argument("--model", default=DEFAULT_MODEL, help=f"slug modello OpenRouter (default: {DEFAULT_MODEL})")
+    ap.add_argument("--force", action="store_true", help="ritraduce anche se invariato")
+    ap.add_argument("--dry-run", action="store_true", help="mostra cosa farebbe senza chiamare l'LLM")
+    args = ap.parse_args()
+
+    api_key = os.environ.get("OPENROUTER_API_KEY")
+    if not api_key and not args.dry_run:
+        sys.exit("Imposta OPENROUTER_API_KEY (account gratuito su https://openrouter.ai).")
+
+    # espande la lista con i partial referenziati (include_relative, right_content, toc)
+    worklist = []
+    for f in args.files:
+        src = Path(f).resolve()
+        if not src.exists():
+            print(f"  ! {f}: non trovato, salto")
+            continue
+        if src not in worklist:
+            worklist.append(src)
+        fm, _, body = split_front_matter(src.read_text(encoding="utf-8"))
+        for ref in referenced_files(src, fm, body):
+            if ref not in worklist:
+                print(f"  + accodo partial referenziato: {ref.relative_to(ROOT)}")
+                worklist.append(ref)
+
+    print(f"Modello: {args.model}")
+    for src in worklist:
+        translate_file(src, args.model, api_key, args.force, args.dry_run)
+
+
+if __name__ == "__main__":
+    main()

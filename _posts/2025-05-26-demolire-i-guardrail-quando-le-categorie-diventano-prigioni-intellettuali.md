@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Demolire i Guardrail: Quando le Categorie Diventano Prigioni Intellettuali"
 tags:
 - AI

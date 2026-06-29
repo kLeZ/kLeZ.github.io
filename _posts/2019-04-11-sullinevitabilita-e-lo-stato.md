@@ -1,4 +1,5 @@
 ---
+lang: it
 title: "Sull'inevitabilità e lo stato"
 tags: filosofia marx welfare
 date: 2019-04-11 17:48:42+02:00
