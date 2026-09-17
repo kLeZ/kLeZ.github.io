@@ -73,6 +73,7 @@ submodule init + `bundle install` without any manual steps. Use `make`:
 make build    # first time or after Dockerfile changes (~5-10 min, compiles Ruby)
 make shell    # interactive shell
 make serve    # Jekyll serve → http://localhost:4000
+make verify   # Jekyll build + htmlproofer in-container (no draft side effects)
 ```
 
 **File ownership.** The entrypoint reconciles the container `dev` user's UID/GID to
@@ -84,7 +85,7 @@ can run them bare: `serve`, `draft "Title"`, `publish`, `build`, `emojis`. With
 `AUTO_SERVE=1` (daemon / devcontainer) Jekyll serve starts in the background at
 container start (output in the container logs: `make logs`). When the daemon is already running, `make
 shell/draft/publish/emojis` run *inside* it (`docker compose exec`) to avoid a second
-container clashing on port 4000. One-time: if old root-owned `vendor/`, `_site/`,
+container clashing on port 4000. `make verify` routes the same way. One-time: if old root-owned `vendor/`, `_site/`,
 `.jekyll-cache/`, `.bundle/` exist, remove them once
 (`sudo rm -rf vendor _site .jekyll-cache .bundle`) — they're git-ignored and regenerated.
 

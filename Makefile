@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: build shell serve draft publish emojis up down logs help
+.PHONY: build shell serve draft publish emojis verify up down logs help
 
 COMPOSE = docker compose
 
@@ -58,6 +58,9 @@ publish: ## Promuove i draft in _posts/ con data corrente
 
 emojis: ## Rigenera le emoji da _posts/ (richiede Python 3 + SgEExt)
 	$(IN) emojis
+
+verify: ## Jekyll build + htmlproofer nel container (nessun side effect sui draft)
+	$(IN) bash -lc "bundle exec jekyll build && bundle exec htmlproofer ./_site --disable-external"
 
 ## — Aiuto ————————————————————————————————————————————————
 

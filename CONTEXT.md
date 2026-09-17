@@ -169,11 +169,12 @@ make shell          # shell interattiva nel container (vim, nano, ecc.)
 make serve          # Jekyll serve → http://localhost:4000
 make draft TITLE="Titolo"   # nuovo draft
 make publish        # promuovi draft in _posts/
+make verify         # Jekyll build + htmlproofer nel container (nessun side effect sui draft)
 make help           # lista tutti i target
 ```
 
 Se il container daemon è già attivo (`make up` / VSCodium / Emacs), `make
-shell/draft/publish/emojis` vengono **eseguiti dentro quel container** (`docker
+shell/draft/publish/emojis/verify` vengono **eseguiti dentro quel container** (`docker
 compose exec`, non un nuovo container) per evitare il conflitto sulla porta 4000;
 `make serve` segnala che il server è già su grazie all'auto-serve.
 
