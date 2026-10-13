@@ -1,9 +1,9 @@
 last_commit:
-    short_sha: 59748e08
-    long_sha: 59748e08b2c959c22f105b0baca791f22166bf8b
-    message: |- 
-        - changed env vars values, hope it helps
+  short_sha: 59748e08
+  long_sha: 59748e08b2c959c22f105b0baca791f22166bf8b
+  message: |-
+    - changed env vars values, hope it helps
 build:
-    number: 13
-    id: 903937998
-    url: https://github.com/kLeZ/kLeZ.github.io/actions/runs/903937998
+  number: 13
+  id: 903937998
+  url: https://github.com/kLeZ/kLeZ.github.io/actions/runs/903937998

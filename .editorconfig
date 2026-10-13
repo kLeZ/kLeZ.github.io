@@ -1,0 +1,66 @@
+# EditorConfig: https://editorconfig.org
+# Describes the conventions already in use in this repository.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# YAML: two spaces. Tabs are not valid YAML indentation.
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# Posts, pages and drafts. Prose is never hard-wrapped, and two trailing
+# spaces are a Markdown line break, so trailing whitespace is left alone.
+# The YAML front matter follows the two-space rule.
+[*.{md,markdown,draft}]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = false
+max_line_length = off
+
+# Layouts, includes, styles and scripts of the theme use tabs.
+[*.{html,xml,scss,sass,less,css,js}]
+indent_style = tab
+
+[*.{json,webmanifest,code-snippets}]
+indent_style = space
+indent_size = 2
+
+# Editor settings here are mixed (tabs and four spaces): leave indentation alone.
+[.vscode/**]
+indent_style = unset
+indent_size = unset
+
+# Ruby
+[{*.rb,Gemfile,*.gemspec,Rakefile}]
+indent_style = space
+indent_size = 2
+
+[*.py]
+indent_style = space
+indent_size = 4
+
+# Shell: helper scripts in _scripts/ have no extension and use tabs.
+[_scripts/*]
+indent_style = tab
+
+[*.sh]
+indent_style = space
+indent_size = 4
+
+# Make requires tabs.
+[{Makefile,*.mk}]
+indent_style = tab
+
+# Third-party and generated files: do not touch on save.
+[{assets/katex/**,assets/bootstrap/**,assets/fontawesome-free/**,assets/img/**,_plugins/**,vendor/**,_site/**,media/**,Gemfile.lock,*.min.js,*.min.css,*.map,*.svg}]
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+indent_style = unset
+indent_size = unset

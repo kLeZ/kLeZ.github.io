@@ -5,68 +5,70 @@ locale: it_IT
 # Multilingua (jekyll-polyglot): IT alla root, EN sotto /en/
 languages: ["it", "en"]
 default_lang: "it"
-exclude_from_localization: ["assets", "favicon.ico", "robots.txt", "manifest.webmanifest", ".well-known"]
+exclude_from_localization:
+  ["assets", "favicon.ico", "robots.txt", "manifest.webmanifest", ".well-known"]
 parallel_localization: true
 # I contenuti non tradotti (fallback) puntano in canonical alla versione IT: niente duplicate content
 fallback_canonical_to_default_lang: true
 title: Alessandro 'kLeZ' Accardo personal website
 description: >-
-    This is the personal website of an Italian developer once called 'kLeZ'.
+  This is the personal website of an Italian developer once called 'kLeZ'.
 baseurl: ""
 url: https://klez.me
 copyright: Copyright © Alessandro 'kLeZ' Accardo 2019
 repo: https://github.com/kLeZ/kLeZ.github.io
 build:
-    server: https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml
-    status: https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml/badge.svg?branch=master
+  server: https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml
+  status: https://github.com/kLeZ/kLeZ.github.io/actions/workflows/main.yaml/badge.svg?branch=master
 
 twitter:
-    username: kLeZhAcK
-    card: summary
+  username: kLeZhAcK
+  card: summary
 
 collections:
   - xp
 
 comments:
-    enabled: false
-    type: staticman
-    post_url: https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/master/comments/
-    avatar_provider: gravatar
+  enabled: false
+  type: staticman
+  post_url: https://klez-commenter.herokuapp.com/v2/entry/kLeZ/kLeZ.github.io/master/comments/
+  avatar_provider: gravatar
 
 sass:
-    sass_dir: _sass
-    style: compressed
+  sass_dir: _sass
+  style: compressed
 
 include:
-    - _pages
-    - .well-known
+  - _pages
+  - .well-known
 
 defaults:
-    - scope:
-          path: ""
-      values:
-          author:
-              name: kLeZ
-              twitter: kLeZhAcK
-          header_background_url: /assets/img/home-bg.jpg
-    - scope:
-          path: ""
-          type: "posts"
-      values:
-          layout: "post"
-          permalink: /:year/:month/:day/:title/
-          post: true
+  - scope:
+      path: ""
+    values:
+      author:
+        name: kLeZ
+        twitter: kLeZhAcK
+      header_background_url: /assets/img/home-bg.jpg
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      permalink: /:year/:month/:day/:title/
+      post: true
 
 show_excerpts: true
 excerpt_separator: "{% include more.html %}"
 
 markdown: kramdown
+markdown_ext: "markdown,mkdown,mkdn,mkd,md,draft"
 highlighter: rouge
 katex:
-    js_path: "assets/katex"
-    rendering_options:
-        throw_error: true
-        error_color: "#cc0000"
+  js_path: "assets/katex"
+  rendering_options:
+    throw_error: true
+    error_color: "#cc0000"
 
 goat-counter:
   stats-url: https://klez.goatcounter.com
@@ -76,42 +78,42 @@ goat-counter:
   production-url: klez.me
 
 jekyll_tidy:
-    compress_html: false
+  compress_html: false
 
 emoji:
-    src: "/assets/img"
+  src: "/assets/img"
 
 plugins:
-    - jekyll-feed
-    - jekyll-sitemap
-    - jekyll-tidy
-    - jekyll-katex
-    - liquid_reading_time
-    - liquid_pluralize
-    - jekyll-git_metadata
-    - jekyll-seo-tag
-    - jemoji
-    - jekyll-postfiles
-    - jekyll-polyglot
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-tidy
+  - jekyll-katex
+  - liquid_reading_time
+  - liquid_pluralize
+  - jekyll-git_metadata
+  - jekyll-seo-tag
+  - jemoji
+  - jekyll-postfiles
+  - jekyll-polyglot
 
 # Defaults. IF you want to change the exclude make sure you keep those sane defaults
 exclude:
-    - Gemfile
-    - Gemfile.lock
-    - node_modules
-    - vendor/bundle/
-    - vendor/cache/
-    - vendor/gems/
-    - vendor/ruby/
-    - blog-vector-icon-27.jpg
-    - staticman.yml
-    - LICENSE
-    - README.md
-    - AGENTS.md
-    - CONTEXT.md
-    - AUTHORING.md
-    - SPEC-AUDIT.md
-    - ACCESS-FILES.md
-    - docker-compose.yml
-    - Makefile
-    - _pages/include/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - blog-vector-icon-27.jpg
+  - staticman.yml
+  - LICENSE
+  - README.md
+  - AGENTS.md
+  - CONTEXT.md
+  - AUTHORING.md
+  - SPEC-AUDIT.md
+  - ACCESS-FILES.md
+  - docker-compose.yml
+  - Makefile
+  - _pages/include/
