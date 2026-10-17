@@ -31,9 +31,12 @@ Non l'ha scritto tutto lei, dunque. Da architetto questa parte la conosco bene: 
 Un dettaglio, già che ci siamo. Quel codice era scritto a mano nel senso più letterale:
 
 > citation "Margaret Hamilton, storia orale, Computer History Museum, 2017" [https://archive.computerhistory.org/resources/access/text/2022/03/102738243-05-01-acc.pdf]
+> Scrivevamo a mano il codice sulle schede di codifica, poi le consegnavamo alle perforatrici, che le perforavano.
+>
 > We would write things by hand on coding sheets, then we would give them to keypunchers who would punch them.
+> {: .citation-original lang="en"}
 
-A penna su moduli prestampati, poi qualcun altro batteva le schede. Su quel qualcun altro ci torno più avanti.
+Su chi batteva le schede ci torno più avanti.
 
 Sentire proprio del codice scritto da altri capita a chiunque, di mestiere, progetti più di quanto programmi. Progettare vuol dire descrivere come deve funzionare una cosa e consegnare la descrizione a chi la costruirà (con gli edifici si vede meglio: l'architetto, del palazzo, non posa nemmeno un mattone).
 
@@ -60,14 +63,20 @@ Da lì si sposta su quello che chiamavano *software di sistema*. Ed è qui che l
 Una libreria, in pratica, con il suo manuale. E chi mantiene una libreria usata da tutti sa come va a finire.
 
 > citation "Margaret Hamilton, storia orale, Computer History Museum, 2017" [https://archive.computerhistory.org/resources/access/text/2022/03/102738243-05-01-acc.pdf]
+> Il software di sistema era in comune fra modulo di comando e LEM. [...] Era eseguito da tutti.
+>
 > The systems software was shared by the command module software and the LEM software. [...] Everybody went through it.
+> {: .citation-original lang="en"}
 
 Il suo gruppo era di circa 100 persone. Intorno ce n'erano altre 300 o 400, ingegneri di guida e di navigazione che consegnavano il proprio pezzo, e che lei chiamava *guests*, ospiti (in privato, precisa). Gli ospiti pensavano al proprio algoritmo e basta: non gli interessava se la loro priorità pestava i piedi a quella di un altro, o se usavano la stessa memoria di qualcun altro nello stesso momento. A quello doveva pensare lei.
 
 Una volta ha messo una sua modifica nell'area di sistema direttamente nel rilascio del giorno e ha rotto i programmi di tutti. Se li è ritrovati in fila fuori dalla porta. Da quell'errore ha tirato fuori due regole: le modifiche si provano prima in una versione separata, e ogni giorno parte un promemoria che dice cosa è entrato nel rilascio. Quei promemoria esistono ancora. Uno, del 2 maggio 1968, comincia così:
 
 > citation "M. Hamilton, COLOSSUS Memo #56, 2 maggio 1968" [https://www.ibiblio.org/apollo/Documents/COL56.pdf]
+> La revisione 200 era DA BUTTARE.
+>
 > Revision 200 was BAD.
+> {: .citation-original lang="en"}
 
 Seguono venti modifiche numerate. Chiunque abbia scritto un changelog riconosce il genere.
 
@@ -134,7 +143,10 @@ Non l'ha coniato lei. Compare negli annunci di una rivista di settore nel giugno
 La cosa notevole è che lei non l'ha mai preteso. È più prudente di tutti i suoi ammiratori:
 
 > citation "Margaret Hamilton, storia orale, Computer History Museum, 2017" [https://archive.computerhistory.org/resources/access/text/2022/03/102738243-05-01-acc.pdf]
+> Al Draper quella parola non l'aveva mai sentita nessuno. In Russia, o chissà dove? Vallo a sapere.
+>
 > It was a term that had not been heard about at Draper. Had it been heard about in Russia or somewhere else? Who knows.
+> {: .citation-original lang="en"}
 
 Anche i colleghi hanno fatto la loro parte. Eyles, in cinquantanovemila caratteri sull'allunaggio, non la nomina mai. Lei, in tre ore di intervista, non nomina mai lui e nemmeno Laning. Ci ho cercato una lite onestamente, perché sembrava avessero discusso, e non l'ho trovata. Ho trovato due persone che raccontano la stessa impresa ciascuna da dentro il proprio gruppo: lui ricorda il suo algoritmo, lei ricorda il sistema che teneva insieme gli algoritmi degli altri. Il lavoro di integrazione ha questo difetto: quando funziona, non lascia niente da raccontare.
 

@@ -136,6 +136,22 @@ A premonition block is a Markdown blockquote whose **first line** is special:
 
 To disable the header box, use an empty title: `> warning ""`.
 
+#### Quotes in another language
+
+Quotes in an Italian post are always in Italian. The original text may follow inside the same `citation` block, below the translation, marked with the `citation-original` class and its `lang`:
+
+```markdown
+> citation "Margaret Hamilton, storia orale, Computer History Museum, 2017" [https://example.org/source]
+> Il software di sistema era in comune fra modulo di comando e LEM. [...] Era eseguito da tutti.
+>
+> The systems software was shared by the command module software and the LEM software. [...] Everybody went through it.
+> {: .citation-original lang="en"}
+```
+
+The original renders smaller, in italics and muted, under a thin rule, with a badge showing the language code (style in `_sass/bootkyll/_blockquote.scss`). The `lang` attribute also lets screen readers switch pronunciation.
+
+The translation is idiomatic, not literal: with the original right below it, it can be interpretive and should read as natural Italian. No calques. In a technical context use the technical jargon ("everybody went through it", said of shared system code, is "era eseguito da tutti"). Mark stress with italics when the spoken reading would otherwise change the meaning ("il lobbying non c'entra *niente* con le mazzette"). Do not repeat the translation in the paragraph right after the quote.
+
 ### Math (KaTeX)
 
 Inline `$...$` and display `$$...$$` are rendered by `jekyll-katex` at build
@@ -173,7 +189,7 @@ posts, the recognisable traits are:
   questions that the post then answers.
 - **Emphasis with `*italics*`**; occasional strong language for effect — kept
   deliberate, not gratuitous.
-- **Sources quoted** with `citation` premonition blocks, linking the original.
+- **Sources quoted** with `citation` premonition blocks, linking the original; foreign-language quotes translated into Italian, with the original below (see "Quotes in another language").
 - A clear arc: hook → what happened → why it matters *to you* → broader point.
 
 When an agent writes "in kLeZ's style", match *this* — concrete, opinionated,

@@ -9,3 +9,32 @@ blockquote:not(.content) {
 		margin: 0;
 	}
 }
+
+// Quote in its original language, below the Italian translation:
+// > Traduzione.
+// >
+// > Original text.
+// > {: .citation-original lang="en"}
+.premonition .content .citation-original {
+	margin-top: 0.75rem;
+	padding-top: 0.5rem;
+	margin-bottom: 0.5rem;
+	border-top: 1px solid currentColor;
+	font-size: 0.85em;
+	font-style: italic;
+	opacity: 0.75;
+	&[lang]::before {
+		content: attr(lang);
+		content: attr(lang) / "";
+		display: inline-block;
+		margin-right: 0.5em;
+		padding: 0 0.35em;
+		border: 1px solid currentColor;
+		border-radius: 3px;
+		font-size: 0.75em;
+		font-style: normal;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		vertical-align: 0.1em;
+	}
+}
