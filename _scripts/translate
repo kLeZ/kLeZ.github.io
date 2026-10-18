@@ -44,6 +44,7 @@ SENZA `source_sha` è un originale: non viene mai sovrascritto. Usa --force per 
 """
 
 import argparse
+import difflib
 import hashlib
 import os
 import re
@@ -349,7 +350,11 @@ def _call_ollama(system_prompt, text, model):
                 "model": model,
                 "stream": False,
                 "keep_alive": "30m",  # il modello resta caricato tra un pezzo e l'altro
-                "options": {"temperature": 0.2, "num_ctx": OLLAMA_NUM_CTX},
+                # num_predict: tetto all'uscita (~1,5 volte l'ingresso, ~3 caratteri per
+                # token). Un modello piccolo può entrare in loop e generare fino a riempire
+                # il contesto: meglio un errore subito che un quarto d'ora e un testo rotto.
+                "options": {"temperature": 0.2, "num_ctx": OLLAMA_NUM_CTX,
+                            "num_predict": max(512, len(text) // 2)},
                 "messages": [
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": text},
@@ -359,6 +364,8 @@ def _call_ollama(system_prompt, text, model):
         )
     except requests.ConnectionError:
         raise TranslateError(f"Ollama non raggiungibile su {OLLAMA_URL}: è avviato? (ollama serve)")
+    except requests.RequestException as e:
+        raise TranslateError(f"Ollama: {e}")
     if not resp.ok:
         try:
             detail = resp.json().get("error") or resp.text
@@ -394,6 +401,8 @@ def _call_openai_compatible(system_prompt, text, model):
         )
     except requests.ConnectionError:
         raise TranslateError(f"server non raggiungibile su {OPENAI_URL} (TRANSLATE_API_URL)")
+    except requests.RequestException as e:
+        raise TranslateError(f"{OPENAI_URL}: {e}")
     if not resp.ok:
         raise TranslateError(f"Errore {resp.status_code} da {OPENAI_URL}: {resp.text[:500]}")
     choice = resp.json()["choices"][0]
@@ -403,24 +412,10 @@ def _call_openai_compatible(system_prompt, text, model):
 
 
 def _call_openrouter(system_prompt, file_text, model, api_key):
-    resp = requests.post(
-        API_URL,
-        headers={
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json",
-            "HTTP-Referer": "https://klez.me",
-            "X-Title": "klez.me i18n",
-        },
-        json={
-            "model": model,
-            "temperature": 0.2,
-            "messages": [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": file_text},
-            ],
-        },
-        timeout=180,
-    )
+    try:
+        resp = _post_openrouter(system_prompt, file_text, model, api_key)
+    except requests.RequestException as e:
+        raise TranslateError(f"OpenRouter: {e}")
     if not resp.ok:
         # estrae il messaggio diagnostico di OpenRouter invece di un HTTPError grezzo
         try:
@@ -438,6 +433,27 @@ def _call_openrouter(system_prompt, file_text, model, api_key):
             hint = "\nRate limit del tier free raggiunto: riprova più tardi o cambia modello."
         raise TranslateError(f"Errore OpenRouter {resp.status_code}: {detail}{hint}")
     return resp.json()["choices"][0]["message"]["content"].strip()
+
+
+def _post_openrouter(system_prompt, file_text, model, api_key):
+    return requests.post(
+        API_URL,
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+            "HTTP-Referer": "https://klez.me",
+            "X-Title": "klez.me i18n",
+        },
+        json={
+            "model": model,
+            "temperature": 0.2,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": file_text},
+            ],
+        },
+        timeout=180,
+    )
 
 
 def split_blocks(body):
@@ -474,6 +490,21 @@ def chunk_body(body, max_chars):
     return chunks
 
 
+def untranslated(src, out):
+    """Un modello piccolo a volte restituisce la sorgente così com'è. Sopra i 200
+    caratteri di prosa, un'uscita quasi identica all'ingresso è un pezzo non tradotto."""
+    def prose(t):
+        return re.sub(r"```.*?```", "", t, flags=re.DOTALL)
+    a, b = prose(src), prose(out)
+    if len(a.strip()) < 200:
+        return []
+    # confronto sulle parole: italiano e inglese condividono le lettere, non le parole
+    wa, wb = re.findall(r"\w+", a.lower()), re.findall(r"\w+", b.lower())
+    if difflib.SequenceMatcher(None, wa, wb, autojunk=False).ratio() > 0.8:
+        return ["testo quasi identico alla sorgente (non tradotto?)"]
+    return []
+
+
 def translate_text(system_prompt, text, model, api_key, label):
     """Traduce un pezzo con un nuovo tentativo se le guardie falliscono. Conserva le
     righe vuote iniziali e finali del pezzo, che il modello tende a normalizzare.
@@ -485,7 +516,7 @@ def translate_text(system_prompt, text, model, api_key, label):
     out, problems = None, []
     for attempt in (1, 2):
         out = call_llm(system_prompt, text.strip("\n"), model, api_key)
-        problems = guards(text, out)
+        problems = guards(text, out) + untranslated(text, out)
         if not problems:
             break
         print(f"    {label}: guardie fallite (tentativo {attempt}) -> " + "; ".join(problems))
@@ -597,6 +628,12 @@ def translate_file(src: Path, model, api_key, force, dry_run, chunk_chars=0):
             out_text = body_out
     else:
         out_text, problems = translate_text(system_prompt, src_for_llm, model, api_key, "file")
+
+    # un testo rimasto nella lingua di partenza non va scritto: finirebbe pubblicato
+    # come traduzione. Meglio un fallimento, che --pending riprova al giro successivo.
+    if any("non tradotto" in p for p in problems):
+        raise TranslateError("il modello ha restituito il testo non tradotto: file non scritto "
+                             "(prova un modello più grande)")
 
     if has_fm:
         # forza lang/locale/source_sha nel front matter dell'output

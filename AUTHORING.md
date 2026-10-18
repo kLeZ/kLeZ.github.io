@@ -483,7 +483,11 @@ export OPENROUTER_API_KEY="sk-or-..."          # free account on openrouter.ai
 - **Guards**: after translating, the script checks that headings, links, code
   blocks, `$$` math and Liquid tags match the source, piece by piece. A piece that
   fails is retried once; if it still fails the file is written with
-  `translation_review: true` so you can spot it.
+  `translation_review: true` so you can spot it. A piece that comes back almost
+  identical to the source (small models sometimes echo it) is retried too, and if
+  it is still untranslated the file is **not** written and counts as failed.
+- **Runaway output**: with Ollama the reply is capped (`num_predict`, about 1.5x
+  the piece) so a looping model fails fast instead of generating for minutes.
 - **Idempotency**: the English file stores a `source_sha`. Re-running skips files
   whose Italian source hasn't changed, so your manual fixes are preserved. It also
   skips English files that lack a `source_sha` (assumed hand-edited).
