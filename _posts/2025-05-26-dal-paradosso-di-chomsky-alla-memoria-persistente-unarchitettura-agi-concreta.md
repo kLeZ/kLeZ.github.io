@@ -1,6 +1,7 @@
 ---
 lang: it
 title: "Dal Paradosso di Chomsky alla Memoria Persistente: Un'Architettura AGI Concreta"
+series: viaggio-chomsky-llm
 tags:
 - AI
 - LLM

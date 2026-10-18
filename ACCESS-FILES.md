@@ -81,7 +81,10 @@ automatically.
 ### 3.2 `sitemap.xml` *(sitemaps.org)*
 XML list of canonical URLs with `lastmod`. Fully automatic via `jekyll-sitemap`
 — **no maintenance**. New posts/pages appear on the next build. To exclude a
-page, set `sitemap: false` in its front matter.
+page, set `sitemap: false` in its front matter. Generated listings follow the same
+rule (`_plugins/blog_archive.rb`): pages 2+ of the paginated lists and of the tag
+pages, and tag pages that exist only for the language switcher, are left out;
+`search.json` sets `sitemap: false`.
 
 ### 3.3 `feed.xml` *(Atom)*
 Subscription feed produced by `jekyll-feed`, advertised in `<head>` via
@@ -106,6 +109,8 @@ ratified standard**, but cheap and increasingly read by agents. Ours:
   work — this file doubles as a discovery surface for agents acting on behalf of
   recruiters/companies.
 - Auto-lists the 15 most recent posts via Liquid, so it stays fresh on its own.
+- Links the tag and series overviews and `search.json` (full plain text of every
+  post, built for the site search), which agents can read instead of HTML.
 - *Maintain:* update the intro/summary when the site's focus changes; the post
   list is automatic. Optionally add `llms-full.txt` (full concatenated content)
   later — only worth it for small sites.

@@ -25,7 +25,7 @@
 			</section>
 			{%- unless post.tags.size == 0 -%}
 			<footer class="card-footer">
-				<small class="text-muted">{{ loc.tags }} {{ post.tags | sort | join: ", " }}</small>
+				{% include tag-list.html tags=post.tags %}
 			</footer>
 			{%- endunless -%}
 		</article>

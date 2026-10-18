@@ -1,6 +1,7 @@
 ---
 lang: it
 title: "L'Epifania Cosmica: Quando l'Intelligenza Diventa Infinita"
+series: viaggio-chomsky-llm
 tags:
 - AI
 - LLM

@@ -5,6 +5,10 @@
 <script defer src="{{ '/assets/fontawesome-free/js/all.min.js' | relative_url }}"></script>
 <script defer src="{{ '/assets/theme-toggle.js' | relative_url }}"></script>
 <script defer src="{{ '/assets/main.js' | relative_url }}"></script>
+{%- if page.search %}
+<script defer src="{{ '/assets/minisearch/minisearch.min.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/search.js' | relative_url }}"></script>
+{%- endif %}
 {%- assign abs_url = page.url | absolute_url -%}
 {%- if abs_url contains site.goat-counter.production-url -%}
 <script data-goatcounter="{{ site.goat-counter.count-url }}" async src="{{ site.goat-counter.script-url }}"></script>

@@ -1,0 +1,14 @@
+---
+lang: it
+layout: page
+title: Tag
+permalink: /tag/
+---
+{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+<p>{{ loc.tags_intro }}</p>
+<ul class="tag-index list-inline">
+	{%- for tag in site.data.tag_index -%}
+	{%- if tag.count == 1 -%}{%- assign count_label = loc.posts_count_one -%}{%- else -%}{%- assign count_label = loc.posts_count_other | replace: '%count%', tag.count -%}{%- endif -%}
+	<li class="list-inline-item"><a href="{{ tag.url | relative_url }}" rel="tag">{{ tag.name }}</a> <span class="text-muted">({{ tag.count }}<span class="sr-only"> &ndash; {{ count_label }}</span>)</span></li>
+	{%- endfor -%}
+</ul>

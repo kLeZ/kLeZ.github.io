@@ -190,6 +190,50 @@
 		color: $dark-text-muted !important;
 	}
 
+	// Pagination, series, search (_archive.scss)
+	.pagination {
+		.page-link {
+			background-color: $dark-bg-elevated;
+			border-color: $dark-border;
+			color: $dark-primary;
+		}
+
+		.page-item.active .page-link {
+			background-color: $dark-primary;
+			border-color: $dark-primary;
+			color: $dark-bg;
+		}
+
+		.page-item.disabled .page-link {
+			background-color: $dark-bg-elevated;
+			color: $dark-text-muted;
+		}
+	}
+
+	.series-box {
+		border-color: $dark-border;
+		border-left-color: $dark-primary;
+
+		.series-parts a[aria-current] { color: $dark-text-heading; }
+	}
+
+	.series-chain { border-top-color: $dark-border; }
+
+	.form-control {
+		background-color: $dark-bg-sunken;
+		border-color: $dark-border;
+		color: $dark-text;
+
+		&::placeholder { color: $dark-text-muted; }
+	}
+
+	.navbar-search .navbar-search-submit { color: $dark-text; }
+
+	mark {
+		background-color: $dark-primary;
+		color: $dark-bg;
+	}
+
 	// Blockquotes
 	blockquote:not(.content) {
 		background-color: $dark-bg-elevated;

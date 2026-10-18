@@ -12,9 +12,16 @@ layout: default
 			{%- endif -%}
 		</small>
 	</header>
+	{%- include series-nav.html position="top" -%}
 	<section itemprop="articleBody">
 		{{ content }}
 	</section>
+	{%- if page.tags.size > 0 or page.series -%}
+	<footer>
+		{%- include tag-list.html tags=page.tags -%}
+		{%- include series-nav.html position="bottom" -%}
+	</footer>
+	{%- endif -%}
 	<a href="{{ page.url | relative_url }}" hidden></a>
 </article>
 {%- if site.comments.enabled -%}

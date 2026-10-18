@@ -6,6 +6,7 @@ slug: narrativa-per-tutti-il-dd-parte-3
 title: Narrativa per tutti! – Il D&D parte 3
 categories:
 - RPG
+series: narrativa-per-tutti-dd
 tags:
 - d&d
 - importato dal vecchio blog

@@ -1,6 +1,7 @@
 ---
 lang: it
 title: "Social media considered harmful. Forse... (1/5): Loro sapevano"
+series: social-media-considered-harmful
 tags:
 - big-tech
 - società

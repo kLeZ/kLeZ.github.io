@@ -1,6 +1,7 @@
 ---
 lang: it
 title: "Demolire i Guardrail: Quando le Categorie Diventano Prigioni Intellettuali"
+series: viaggio-chomsky-llm
 tags:
 - AI
 - LLM

@@ -1,0 +1,21 @@
+---
+lang: it
+layout: page
+title: Serie
+permalink: /serie/
+---
+{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+<p>{{ loc.series_intro }}</p>
+<ul class="series-index list-unstyled">
+	{%- for entry in site.data.series_index -%}
+	{%- assign s = entry[1] -%}
+	{%- if s.count == 1 -%}{%- assign count_label = loc.posts_count_one -%}{%- else -%}{%- assign count_label = loc.posts_count_other | replace: '%count%', s.count -%}{%- endif -%}
+	<li class="my-4">
+		<article>
+			<h2 class="h4 mb-1"><a href="{{ s.url | relative_url }}">{{ s.title | escape }}</a></h2>
+			<p class="text-muted mb-1">{{ count_label }}{% if s.parts and s.parts > s.count %} &ndash; {{ loc.series_published | replace: '%num%', s.count | replace: '%total%', s.parts }}{% endif %}</p>
+			{%- if s.description -%}{{ s.description | markdownify }}{%- endif -%}
+		</article>
+	</li>
+	{%- endfor -%}
+</ul>

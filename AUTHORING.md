@@ -62,13 +62,36 @@ date: 2026-05-31 14:37:42+02:00   # added by publish; keep tz offset
 
 - **`title`** — required. Rendered as the post heading by the layout, so **do
   not** repeat an `# H1` in the body (see §4).
-- **`tags`** — a YAML list. Use existing tags where possible.
+- **`tags`** — a YAML list. Use existing tags where possible (overview at
+  `/tag/`): every tag gets a page at `/tag/<slug>/`, and tags that differ only
+  in case or accents (`Linux`/`linux`) end up on the same page.
+- **`series:`** — optional series id, for posts published in parts. See
+  "Series" below.
 - **`date`** — full timestamp with timezone offset; `publish` fills it in.
 - **`toc:`** — set to a path to render a table-of-contents aside (optional).
 - **`lang:`** — only set if a *single page* is in another language; the site
   default is `it` (from `_config.yml`).
 - **`image:`** — optional Open Graph image for that post; otherwise the site
   default (`/assets/img/home-bg.jpg`) is used.
+
+### Series
+
+Posts in parts share a `series:` id; the id is declared once in
+`_data/series.yml`:
+
+```yaml
+social-media-considered-harmful:
+  title: "Social media considered harmful. Forse..."
+  description: >-
+    Testo introduttivo in Markdown per la pagina /serie/<id>/.
+  parts: 5        # optional: planned parts, while the series is still running
+```
+
+Parts are ordered by publication `date`. The post layout then shows the list
+of all parts at the top (collapsible) and links to the previous and next part
+at the bottom; `/serie/<id>/` lists the whole series and `/serie/` all series.
+The English translation inherits `series:` from the Italian original if it
+does not set its own.
 
 ---
 

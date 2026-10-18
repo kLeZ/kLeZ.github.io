@@ -1,0 +1,29 @@
+{%- comment -%}
+Contenuto della pagina /serie/<id>/ generata da _plugins/blog_archive.rb.
+{%- endcomment -%}
+{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+{%- assign series = site.data.series_index[page.series_id] -%}
+{%- if series.description -%}
+{{ series.description | markdownify }}
+{%- endif -%}
+<ol class="series-list">
+	{%- for post in series.posts -%}
+	<li>
+		<article class="card my-4">
+			<section class="card-body">
+				<h2 class="card-title h4"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+				<p class="card-subtitle mb-2 text-muted">
+					<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%e %b %Y' | strip }}</time>
+				</p>
+				{%- if site.show_excerpts -%}
+				{{ post.excerpt | strip | replace: '<p>', '<p class="card-text">' }}
+				{%- endif -%}
+			</section>
+		</article>
+	</li>
+	{%- endfor -%}
+</ol>
+{%- if series.parts and series.parts > series.count -%}
+{%- assign part_label = loc.series_published | replace: '%num%', series.count | replace: '%total%', series.parts -%}
+<p class="text-muted">{{ part_label }}</p>
+{%- endif -%}

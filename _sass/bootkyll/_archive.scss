@@ -1,0 +1,129 @@
+// Pagination, tag lists, series navigation and search (_plugins/blog_archive.rb)
+
+.pagination {
+	.page-link {
+		color: $dark;
+	}
+
+	.page-item.active .page-link {
+		background-color: $dark;
+		border-color: $dark;
+		color: $light;
+	}
+
+	// Phones: arrows only, the text stays for screen readers
+	@media only screen and (max-width: 575px) {
+		.page-link {
+			padding: 0.5rem 0.6rem;
+		}
+
+		.page-link-text {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			clip: rect(0, 0, 0, 0);
+			white-space: nowrap;
+		}
+	}
+}
+
+.tag-list-label {
+	margin-right: 0.25rem;
+}
+
+.tag-index {
+	line-height: 2;
+
+	.list-inline-item {
+		margin-right: 1rem;
+	}
+}
+
+.series-box {
+	border: 1px solid $gray-300;
+	border-left: 4px solid $primary;
+	border-radius: 0.25rem;
+	padding: 0.75rem 1rem;
+
+	summary {
+		cursor: pointer;
+		font-weight: 600;
+	}
+
+	.series-parts {
+		margin-top: 0.75rem;
+
+		a[aria-current] {
+			font-weight: 700;
+			color: $dark;
+		}
+	}
+}
+
+.series-chain {
+	border-top: 1px solid $gray-300;
+	padding-top: 1rem;
+
+	li {
+		margin-bottom: 0.5rem;
+		max-width: 32%;
+	}
+
+	.series-next {
+		text-align: right;
+	}
+
+	.series-chain-label {
+		display: block;
+		font-size: 0.8rem;
+		font-weight: 800;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+	}
+
+	@media only screen and (max-width: 767px) {
+		li {
+			max-width: 100%;
+			flex-basis: 100%;
+			text-align: left !important;
+		}
+	}
+}
+
+.series-list {
+	padding-left: 1.5rem;
+}
+
+.search-results mark {
+	padding: 0 0.1em;
+}
+
+.navbar-search {
+	display: flex;
+	align-items: center;
+	margin: 0.5rem 0;
+
+	.form-control {
+		width: 10rem;
+	}
+
+	.navbar-search-submit {
+		background: none;
+		border: none;
+		color: $dark;
+		padding: 6px 10px;
+
+		&:hover { color: $primary; }
+	}
+
+	@media only screen and (min-width: 992px) {
+		margin: 0 0 0 0.5rem;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	#mainNav:not(.is-fixed) .navbar-search-submit {
+		color: $light;
+	}
+}
