@@ -150,7 +150,7 @@ module Klez
 
     def page_data(extra)
       { "layout" => "page", "lang" => @lang,
-        "locale" => @site.data.dig("languages", @lang, "locale") || @lang, }.merge(extra)
+        "locale" => Klez::I18n.meta(@site, @lang)["locale"] || @lang, }.merge(extra)
     end
 
     def tag_pages
@@ -206,12 +206,11 @@ module Klez
       meta = @site.data["series"] || {}
       groups = @posts.reverse.select { |p| p.data["series"] }.group_by { |p| p.data["series"].to_s }
       index = groups.map do |id, posts|
-        info = meta[id] || {}
+        info = (meta[id] || {}).merge(Klez::I18n.locale(@site, @lang).dig("series_translations", id) || {})
         url = "#{Klez::BlogArchive.series_path(@site, @lang)}#{Klez::BlogArchive.slug(id)}/"
         # gaps[i]: whole days between part i and part i-1 (nil for the first part)
         gaps = posts.each_cons(2).map { |a, b| ((b.date - a.date) / 86_400).floor }.unshift(nil)
-        { "id" => id, "title" => info["title_#{@lang}"] || info["title"] || id,
-          "description" => info["description_#{@lang}"] || info["description"],
+        { "id" => id, "title" => info["title"] || id, "description" => info["description"],
           "parts" => info["parts"], "url" => url, "posts" => posts, "count" => posts.size,
           "date" => posts.last.date, "first_date" => posts.first.date, "last_date" => posts.last.date,
           "gaps" => gaps, }
