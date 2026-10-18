@@ -1,0 +1,269 @@
+// Pagination, tag lists, series navigation and search (_plugins/blog_archive.rb)
+
+.pagination {
+	.page-link {
+		color: $dark;
+	}
+
+	.page-item.active .page-link {
+		background-color: $dark;
+		border-color: $dark;
+		color: $light;
+	}
+
+	// Phones: arrows only, the text stays for screen readers
+	@media only screen and (max-width: 575px) {
+		.page-link {
+			padding: 0.5rem 0.6rem;
+		}
+
+		.page-link-text {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			clip: rect(0, 0, 0, 0);
+			white-space: nowrap;
+		}
+	}
+}
+
+.tag-list-label {
+	margin-right: 0.25rem;
+}
+
+.tag-sort-label {
+	margin-right: 0.5rem;
+}
+
+.tag-sort .nav-link.active {
+	background-color: $dark;
+}
+
+.tag-sort-dir {
+	margin-left: 0.5rem;
+	padding-left: 0.5rem;
+	border-left: 1px solid $gray-300;
+}
+
+// Tag overview: two columns on phones and tablets, three on desktop
+.tag-columns {
+	list-style: none;
+	padding-left: 0;
+	column-count: 2;
+	column-gap: 1rem;
+	column-rule: 1px solid $gray-300;
+
+	@media only screen and (min-width: 576px) {
+		column-gap: 2rem;
+	}
+
+	@media only screen and (min-width: 992px) {
+		column-count: 3;
+	}
+
+	li {
+		display: flex;
+		align-items: baseline;
+		gap: 0.5rem;
+		padding: 0.3rem 0;
+		border-bottom: 1px dotted $gray-300;
+		break-inside: avoid;
+	}
+
+	a {
+		flex: 1 1 auto;
+		overflow-wrap: anywhere;
+	}
+
+	.tag-count {
+		flex: 0 0 auto;
+		min-width: 2rem;
+		padding: 0 0.4rem;
+		border-radius: 1rem;
+		background-color: $gray-200;
+		font-size: 0.8rem;
+		text-align: center;
+	}
+}
+
+.tag-ranking {
+	counter-reset: tag-rank;
+
+	li::before {
+		counter-increment: tag-rank;
+		content: counter(tag-rank) ".";
+		flex: 0 0 auto;
+		min-width: 2rem;
+		color: $gray-600;
+		font-size: 0.8rem;
+		text-align: right;
+	}
+}
+
+.series-box {
+	border: 1px solid $gray-300;
+	border-left: 4px solid $primary;
+	border-radius: 0.25rem;
+	padding: 0.75rem 1rem;
+
+	summary {
+		cursor: pointer;
+		font-weight: 600;
+	}
+
+	.series-parts {
+		margin-top: 0.75rem;
+
+		a[aria-current] {
+			font-weight: 700;
+			color: $dark;
+		}
+	}
+}
+
+.series-chain {
+	border-top: 1px solid $gray-300;
+	padding-top: 1rem;
+
+	li {
+		margin-bottom: 0.5rem;
+		max-width: 32%;
+	}
+
+	.series-next {
+		text-align: right;
+	}
+
+	.series-chain-label {
+		display: block;
+		font-size: 0.8rem;
+		font-weight: 800;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+	}
+
+	@media only screen and (max-width: 767px) {
+		li {
+			max-width: 100%;
+			flex-basis: 100%;
+			text-align: left !important;
+		}
+	}
+}
+
+// Series page: parts as a vertical timeline with numbered markers
+.series-timeline {
+	list-style: none;
+	position: relative;
+	margin: 2rem 0;
+	padding-left: 3rem;
+	counter-reset: series-part;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0.5rem;
+		bottom: 0.5rem;
+		left: 1rem;
+		border-left: 2px solid $gray-300;
+	}
+}
+
+.series-timeline-item {
+	position: relative;
+	padding-bottom: 2rem;
+	counter-increment: series-part;
+
+	&::before {
+		content: counter(series-part);
+		position: absolute;
+		left: -3rem;
+		top: 0;
+		width: 2rem;
+		height: 2rem;
+		line-height: calc(2rem - 4px);
+		border: 2px solid $primary;
+		border-radius: 50%;
+		background-color: $light;
+		color: $primary;
+		font-size: 0.9rem;
+		font-weight: 700;
+		text-align: center;
+	}
+
+	&:last-child {
+		padding-bottom: 0;
+	}
+}
+
+.series-timeline-pending {
+	&::before {
+		content: "\2026";
+		border-style: dashed;
+		border-color: $gray-500;
+		color: $gray-600;
+	}
+
+	.series-timeline-meta {
+		color: $gray-600;
+	}
+}
+
+.series-timeline-meta {
+	margin-bottom: 0.25rem;
+	min-height: 2rem;
+	padding-top: 0.25rem;
+	font-size: 0.9rem;
+	color: $gray-600;
+}
+
+.series-timeline-part {
+	font-weight: 800;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: $dark;
+}
+
+.related-posts {
+	border-top: 1px solid $gray-300;
+	padding-top: 1.5rem;
+}
+
+.search-results mark {
+	padding: 0 0.1em;
+}
+
+.navbar-search {
+	display: flex;
+	align-items: center;
+	margin: 0.5rem 0;
+
+	.form-control {
+		width: 10rem;
+	}
+
+	.navbar-search-submit {
+		background: none;
+		border: none;
+		color: $dark;
+		padding: 6px 10px;
+
+		&:hover { color: $primary; }
+	}
+
+	// Desktop navbar has no room for the field: the icon alone opens /cerca/
+	@media only screen and (min-width: 992px) {
+		margin: 0 0 0 0.5rem;
+
+		.form-control {
+			display: none;
+		}
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	#mainNav:not(.is-fixed) .navbar-search-submit {
+		color: $light;
+	}
+}

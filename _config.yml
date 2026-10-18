@@ -79,6 +79,16 @@ goat-counter:
 
 jekyll_tidy:
   compress_html: false
+  # JSON, not HTML: htmlbeautifier would mangle it
+  exclude:
+    - search.json
+
+# Elenchi paginati, pagine dei tag e delle serie: _plugins/blog_archive.rb
+pagination:
+  per_page: 10
+tag_path: /tag/
+series_path: /serie/
+related_posts: 3
 
 emoji:
   src: "/assets/img"

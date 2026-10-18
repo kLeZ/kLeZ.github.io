@@ -1,0 +1,41 @@
+{%- comment -%}
+Contenuto della pagina /serie/<id>/ generata da _plugins/blog_archive.rb:
+riepilogo con date e arco di tempo, poi le parti come linea temporale.
+{%- endcomment -%}
+{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+{%- assign series = site.data.series_index[page.series_id] -%}
+<p class="series-meta text-muted">{% include series-meta.html series=series %}</p>
+{%- if series.description -%}
+{{ series.description | markdownify }}
+{%- endif -%}
+<ol class="series-timeline">
+	{%- for post in series.posts -%}
+	{%- assign gap = series.gaps[forloop.index0] -%}
+	<li class="series-timeline-item">
+		<article>
+			<p class="series-timeline-meta">
+				<span class="series-timeline-part">{{ loc.series_part_label | replace: '%num%', forloop.index }}</span>
+				&middot; <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | local_date }}</time>
+				{%- unless forloop.first -%}
+				{%- if gap == 0 -%}
+				<span class="series-timeline-gap"> &middot; {{ loc.series_gap_same_day }}</span>
+				{%- else -%}
+				{%- assign gap_text = gap | span_label -%}
+				<span class="series-timeline-gap"> &middot; {{ loc.series_gap | replace: '%span%', gap_text }}</span>
+				{%- endif -%}
+				{%- endunless -%}
+			</p>
+			<h2 class="h4 mb-2"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+			{%- if site.show_excerpts -%}
+			<p class="mb-0">{{ post.excerpt | plain_text: "no_headings" | truncatewords: 45 }}</p>
+			{%- endif -%}
+		</article>
+	</li>
+	{%- endfor -%}
+	{%- if series.parts and series.parts > series.count -%}
+	{%- assign next_num = series.count | plus: 1 -%}
+	<li class="series-timeline-item series-timeline-pending">
+		<p class="series-timeline-meta mb-0"><span class="series-timeline-part">{{ loc.series_part_label | replace: '%num%', next_num }}{% if next_num < series.parts %}&ndash;{{ series.parts }}{% endif %}</span> &middot; {{ loc.series_upcoming }}</p>
+	</li>
+	{%- endif -%}
+</ol>

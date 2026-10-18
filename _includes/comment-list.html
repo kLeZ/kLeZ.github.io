@@ -6,8 +6,7 @@
 			<div class="col-md-2 text-center">
 				{%- include avatar.html base_url=include.avatar_url email=comment.email name=comment.name -%}
 				<div class="d-flex flex-column mt-2">
-					<small class="text-secondary text-center">{{ comment.date | date: '%a, %d %b %Y' }}</small>
-					<small class="text-secondary text-center">{{ comment.date | date: '%H:%M:%S' }}</small>
+					<small class="text-secondary text-center">{{ comment.date | local_date: "time" }}</small>
 				</div>
 			</div>
 			<div class="col-md-10">

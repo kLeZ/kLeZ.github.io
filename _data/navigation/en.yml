@@ -2,8 +2,19 @@
   url: /build.html
   relative: true
 - title: Posts
-  url: /blog
-  relative: true
+  sublinks:
+      - title: All posts
+        url: /blog
+        relative: true
+      - title: Tags
+        url: /tag/by-letter
+        relative: true
+      - title: Series
+        url: /serie
+        relative: true
+      - title: Search
+        url: /cerca
+        relative: true
 - title: About me
   sublinks:
       - title: About

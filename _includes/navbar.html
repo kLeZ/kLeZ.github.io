@@ -57,6 +57,12 @@
 					{%- endif -%}
 				{%- endfor -%}
 			</ul>
+			{%- include lang-prefix.html -%}
+			<form class="navbar-search" role="search" action="{{ '/cerca/' | prepend: lang_prefix | relative_url }}" method="get">
+				<label class="sr-only" for="navbar-search-q">{{ loc.search_title }}</label>
+				<input class="form-control form-control-sm" type="search" id="navbar-search-q" name="q" placeholder="{{ loc.search_placeholder }}" />
+				<button class="navbar-search-submit" type="submit" aria-label="{{ loc.search }}" title="{{ loc.search }}"><i class="fas fa-search" aria-hidden="true"></i></button>
+			</form>
 			<button class="theme-toggle" type="button" title="{{ loc.theme.toggle }}" aria-label="{{ loc.theme.toggle }}" data-label-system="{{ loc.theme.auto }}" data-label-light="{{ loc.theme.light }}" data-label-dark="{{ loc.theme.dark }}">
 				<i class="fas fa-adjust theme-icon"></i>
 				<span class="theme-label">{{ loc.theme.auto }}</span>

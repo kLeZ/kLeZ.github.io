@@ -190,6 +190,82 @@
 		color: $dark-text-muted !important;
 	}
 
+	// Pagination, series, search (_archive.scss)
+	.pagination {
+		.page-link {
+			background-color: $dark-bg-elevated;
+			border-color: $dark-border;
+			color: $dark-primary;
+		}
+
+		.page-item.active .page-link {
+			background-color: $dark-primary;
+			border-color: $dark-primary;
+			color: $dark-bg;
+		}
+
+		.page-item.disabled .page-link {
+			background-color: $dark-bg-elevated;
+			color: $dark-text-muted;
+		}
+	}
+
+	.series-box {
+		border-color: $dark-border;
+		border-left-color: $dark-primary;
+
+		.series-parts a[aria-current] { color: $dark-text-heading; }
+	}
+
+	.series-chain,
+	.related-posts { border-top-color: $dark-border; }
+
+	.tag-columns {
+		column-rule-color: $dark-border;
+
+		li { border-bottom-color: $dark-border; }
+
+		.tag-count {
+			background-color: $dark-bg-elevated;
+			color: $dark-text;
+		}
+	}
+
+	.tag-sort .nav-link.active {
+		background-color: $dark-primary;
+		color: $dark-bg;
+	}
+
+	.series-timeline::before { border-left-color: $dark-border; }
+
+	.series-timeline-item::before {
+		background-color: $dark-bg;
+		border-color: $dark-primary;
+		color: $dark-primary;
+	}
+
+	.series-timeline-pending::before {
+		border-color: $dark-text-muted;
+		color: $dark-text-muted;
+	}
+
+	.series-timeline-part { color: $dark-text-heading; }
+
+	.form-control {
+		background-color: $dark-bg-sunken;
+		border-color: $dark-border;
+		color: $dark-text;
+
+		&::placeholder { color: $dark-text-muted; }
+	}
+
+	.navbar-search .navbar-search-submit { color: $dark-text; }
+
+	mark {
+		background-color: $dark-primary;
+		color: $dark-bg;
+	}
+
 	// Blockquotes
 	blockquote:not(.content) {
 		background-color: $dark-bg-elevated;

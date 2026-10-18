@@ -1,0 +1,22 @@
+---
+lang: it
+layout: page
+title: Serie
+permalink: /serie/
+---
+{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+<p>{{ loc.series_intro }}</p>
+<ul class="series-index list-unstyled">
+	{%- for entry in site.data.series_index -%}
+	{%- assign s = entry[1] -%}
+	<li>
+		<article class="card my-4">
+			<section class="card-body">
+				<h2 class="card-title h4"><a href="{{ s.url | relative_url }}">{{ s.title | escape }}</a></h2>
+				<p class="card-subtitle text-muted mb-2">{% include series-meta.html series=s %}</p>
+				{%- if s.description -%}{{ s.description | markdownify | replace: '<p>', '<p class="card-text">' }}{%- endif -%}
+			</section>
+		</article>
+	</li>
+	{%- endfor -%}
+</ul>

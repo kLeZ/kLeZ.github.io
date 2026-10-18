@@ -43,6 +43,10 @@ Write these files in **English** and keep them human-readable.
   tool does not announce itself (Git doesn't sign "Made with Git").
 - **Never commit build artifacts.** `_site/`, `vendor/`, `.bundle/`,
   `.jekyll-cache/`, etc. are git-ignored — keep them that way.
+- **No external services at runtime.** Search, pagination, tags and series are
+  built by Jekyll (`_plugins/blog_archive.rb`) or run in the browser on static
+  files. Third-party JS/CSS is vendored under `assets/<lib>/` with its licence,
+  not loaded from a CDN. See CONTEXT.md, "Blog indexes".
 - **Keep `Gemfile.lock` stable.** Don't let an incidental `bundle install`
   bump locked versions; revert unintended lockfile drift before committing.
 - Match the surrounding style of files you touch.

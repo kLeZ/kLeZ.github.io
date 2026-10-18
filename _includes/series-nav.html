@@ -1,0 +1,58 @@
+{%- comment -%}
+Collegamenti tra gli articoli di una serie (front matter `series: <id>`, metadati in
+_data/series.yml, elenco calcolato da _plugins/blog_archive.rb).
+Parametri: position = "top" (elenco completo delle parti) | "bottom" (precedente/successiva).
+{%- endcomment -%}
+{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+{%- assign series = site.data.series_index[page.series] -%}
+{%- if series -%}
+{%- assign idx = nil -%}
+{%- for p in series.posts -%}{%- if p.url == page.url -%}{%- assign idx = forloop.index0 -%}{%- endif -%}{%- endfor -%}
+{%- assign total = series.parts | default: series.count -%}
+{%- assign num = idx | plus: 1 -%}
+{%- assign part_label = loc.series_part | replace: '%num%', num | replace: '%total%', total -%}
+{%- if include.position == "top" -%}
+<aside class="series-box my-4" aria-labelledby="series-title">
+	<details>
+		<summary>
+			<span id="series-title">{{ loc.series }}: {{ series.title | escape }}</span>
+			<span class="text-muted">({{ part_label }})</span>
+		</summary>
+		<nav aria-label="{{ loc.series_all }}">
+			<ol class="series-parts mb-0">
+				{%- for p in series.posts -%}
+				{%- if forloop.index0 == idx -%}
+				<li><a href="{{ p.url | relative_url }}" aria-current="page">{{ p.title | escape }}</a> <span class="sr-only">({{ loc.series_current }})</span></li>
+				{%- else -%}
+				<li><a href="{{ p.url | relative_url }}">{{ p.title | escape }}</a></li>
+				{%- endif -%}
+				{%- endfor -%}
+			</ol>
+			<p class="mt-2 mb-0"><a href="{{ series.url | relative_url }}">{{ loc.series_overview }}</a></p>
+		</nav>
+	</details>
+</aside>
+{%- elsif include.position == "bottom" -%}
+{%- assign prev_i = idx | minus: 1 -%}
+{%- assign next_i = idx | plus: 1 -%}
+{%- if idx > 0 -%}{%- assign prev_post = series.posts[prev_i] -%}{%- else -%}{%- assign prev_post = nil -%}{%- endif -%}
+{%- assign next_post = series.posts[next_i] -%}
+<nav class="series-chain my-5" aria-label="{{ loc.series }}: {{ series.title | escape }}">
+	<ul class="list-unstyled d-flex flex-wrap justify-content-between mb-0">
+		{%- if prev_post -%}
+		<li class="series-prev">
+			<a href="{{ prev_post.url | relative_url }}" rel="prev"><span class="series-chain-label"><span aria-hidden="true">&laquo;</span> {{ loc.series_previous }}</span> <span class="series-chain-title">{{ prev_post.title | escape }}</span></a>
+		</li>
+		{%- endif -%}
+		<li class="series-overview">
+			<a href="{{ series.url | relative_url }}">{{ loc.series_overview }} ({{ part_label }})</a>
+		</li>
+		{%- if next_post -%}
+		<li class="series-next">
+			<a href="{{ next_post.url | relative_url }}" rel="next"><span class="series-chain-label">{{ loc.series_next }} <span aria-hidden="true">&raquo;</span></span> <span class="series-chain-title">{{ next_post.title | escape }}</span></a>
+		</li>
+		{%- endif -%}
+	</ul>
+</nav>
+{%- endif -%}
+{%- endif -%}

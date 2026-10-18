@@ -11,7 +11,7 @@ permalink: /build.html
 		<h3>Commit Info</h3>
 		<small class="text-muted">
 			<a href="{{ site.repo }}/commit/{{ commit.long_sha }}" target="_blank">{{ commit.short_sha }}</a> on
-			<time datetime="{{ commit.commit_date | date_to_xmlschema }}">{{ commit.commit_date | date_to_string }}</time>
+			<time datetime="{{ commit.commit_date | date_to_xmlschema }}">{{ commit.commit_date | local_date }}</time>
 		</small>
 		{{ commit.message | markdownify }}
 	</div>

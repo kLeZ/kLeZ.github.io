@@ -7,7 +7,7 @@
 		</div>
 		<div class="row">
 			<div class="col text-left">
-				<small class="text-muted">{{ loc.last_build }} <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date_to_rfc822 }}</time></small>
+				<small class="text-muted">{{ loc.last_build }} <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | local_date: "time" }}</time></small>
 			</div>
 			<div class="col text-right">
 				<small class="text-muted"><a href="{{ '/privacy/' | relative_url }}" class="text-secondary">{{ loc.privacy }}</a> &middot; {{ site.copyright }}</small>

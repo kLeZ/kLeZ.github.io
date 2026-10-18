@@ -10,7 +10,7 @@
 				</a>
 				<cite class="card-subtitle mb-2 text-muted">
 					<i class="fa fa-calendar-alt"></i>
-					<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%a, %e %b %Y %H:%M:%S' }}</time>
+					<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | local_date }}</time>
 				</cite>
 				{%- if site.show_excerpts -%}
 				{{ post.excerpt | strip | replace: '<p>', '<p class="card-text">' }}
@@ -25,7 +25,7 @@
 			</section>
 			{%- unless post.tags.size == 0 -%}
 			<footer class="card-footer">
-				<small class="text-muted">{{ loc.tags }} {{ post.tags | sort | join: ", " }}</small>
+				{% include tag-list.html tags=post.tags %}
 			</footer>
 			{%- endunless -%}
 		</article>
