@@ -32,9 +32,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN git clone https://github.com/rbenv/rbenv.git $RBENV_ROOT \
     && git clone https://github.com/rbenv/ruby-build.git $RBENV_ROOT/plugins/ruby-build
 
-# Ruby 3.2.3 — Jekyll 3.9.x non funziona con Ruby 3.3+ (incompatibilità logger API).
+# Ruby allineato a .ruby-version (Jekyll 4.4 richiede Ruby >= 2.7).
 # Per migrare: cambia RUBY_VERSION e aggiorna .ruby-version + Gemfile.lock.
-ARG RUBY_VERSION=3.2.3
+ARG RUBY_VERSION=3.3.6
 RUN rbenv install $RUBY_VERSION && rbenv global $RUBY_VERSION
 
 # Bundler pinnato alla versione dichiarata in Gemfile.lock (BUNDLED WITH 2.4.10)

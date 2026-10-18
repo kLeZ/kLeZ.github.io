@@ -49,11 +49,13 @@ Write these files in **English** and keep them human-readable.
   not loaded from a CDN. See CONTEXT.md, "Blog indexes".
 - **Keep `Gemfile.lock` stable.** Don't let an incidental `bundle install`
   bump locked versions; revert unintended lockfile drift before committing.
+  If your default Bundler is newer than 2.4.10 it rewrites `BUNDLED WITH`:
+  use `bundle _2.4.10_ install` (`gem install bundler -v 2.4.10` once).
 - Match the surrounding style of files you touch.
 
 ## Environment setup
 
-Requirements: Ruby `3.2.x` (NOT 3.3+, see CONTEXT.md), Bundler, Node.js,
+Requirements: Ruby `3.3.x` (`.ruby-version`), Bundler 2.4.10, Node.js,
 Python 3, and a **UTF-8 locale**.
 
 ```bash
@@ -65,14 +67,15 @@ export LANG=C.UTF-8 LC_ALL=C.UTF-8         # required for html-proofer/Nokogiri
 
 On **Claude Code on the web**, the SessionStart hook
 (`.claude/hooks/session-start.sh`) does all of the above automatically:
-it pins Ruby 3.2.6 via rbenv, sets the UTF-8 locale, initializes submodules,
+it pins Ruby 3.3.6 via rbenv, sets the UTF-8 locale, initializes submodules,
 runs `bundle install`, and persists `RBENV_VERSION`/`LANG`/`LC_ALL` for the
 session. It only runs when `CLAUDE_CODE_REMOTE=true`. If you change the build,
 dependencies, or required env, **update that hook too**.
 
 On **terminal** (vim, nano, etc.), workspace setup is fully automatic:
 `.devcontainer/init.sh` runs as Docker ENTRYPOINT after volume mount and handles
-submodule init + `bundle install` without any manual steps. Use `make`:
+submodule init + `bundle install` without any manual steps (`bundle check` on every
+start, so a changed `Gemfile.lock` or Ruby version is picked up). Use `make`:
 ```bash
 make build    # first time or after Dockerfile changes (~5-10 min, compiles Ruby)
 make shell    # interactive shell
@@ -110,7 +113,7 @@ See CONTEXT.md for full workflow details for each client.
 
 ## Common commands
 
-All commands assume the environment above (UTF-8 locale + Ruby 3.2.x).
+All commands assume the environment above (UTF-8 locale + Ruby 3.3.x).
 
 | Task                 | Command                                                  |
 | -------------------- | -------------------------------------------------------- |

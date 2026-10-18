@@ -47,11 +47,15 @@ if [ -f .gitmodules ] && [ ! -e _plugins/premonition/.git ]; then
     as_dev git submodule update --init --recursive
 fi
 
-# Installa gem solo se vendor/bundle non esiste ancora
-# (vendor/bundle persiste nel workspace montato: il costo è solo al primo avvio)
-if [ ! -d vendor/bundle ]; then
-    echo "[klez-init] Prima installazione gem — qualche minuto..."
-    as_dev bundle config set --local path vendor/bundle
+# Gem: `bundle check` verifica che ci sia tutto ciò che chiede Gemfile.lock per il
+# Ruby corrente (le gem stanno in vendor/bundle/ruby/<versione>/). Non basta che
+# vendor/bundle esista: dopo un cambio di Ruby o di Gemfile.lock (es. un cambio di
+# branch) la cartella c'è ma le gem giuste no, e `jekyll` risulta "command not found".
+# vendor/bundle persiste nel workspace montato: l'installazione costa solo quando
+# serve davvero, il controllo circa un secondo.
+as_dev bundle config set --local path vendor/bundle
+if ! as_dev bundle check >/dev/null 2>&1; then
+    echo "[klez-init] Installazione gem (prima volta, o Gemfile.lock/Ruby cambiati) — qualche minuto..."
     as_dev bundle install
 fi
 

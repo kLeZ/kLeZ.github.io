@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "variables" as *;
+
 // Styling for the post page
 .post-preview {
 	>a {
@@ -25,7 +28,7 @@
 		font-size: 18px;
 		font-style: italic;
 		margin-top: 0;
-		color: lighten($dark, 33);
+		color: color.adjust($dark, $lightness: 33%);
 
 		>a {
 			text-decoration: none;

@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "variables" as *;
+@use "mixins" as *;
+
 // Global styling for this template
 body {
 	font-size: 20px;
@@ -101,7 +105,7 @@ div.badge-bin {
 	$opacities: 0 15 25 30 35 50 60 65 75 80 85 100;
 	@each $opacity in $opacities {
 		&.opacity-#{$opacity} {
-			opacity: $opacity / 100;
+			opacity: math.div($opacity, 100);
 		}
 	}
 

@@ -37,6 +37,7 @@ comments:
 sass:
   sass_dir: _sass
   style: compressed
+  sourcemap: never
 
 include:
   - _pages
@@ -55,8 +56,11 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      permalink: /:year/:month/:day/:title/
       post: true
+
+# Post permalink. Kept here, not in `defaults`: polyglot's {% I18n_Headers %}
+# reads page.permalink and would print the unexpanded pattern.
+permalink: /:year/:month/:day/:title/
 
 show_excerpts: true
 excerpt_separator: "{% include more.html %}"
@@ -100,7 +104,6 @@ plugins:
   - jekyll-katex
   - liquid_reading_time
   - liquid_pluralize
-  - jekyll-git_metadata
   - jekyll-seo-tag
   - jemoji
   - jekyll-postfiles

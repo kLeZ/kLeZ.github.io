@@ -57,13 +57,24 @@ Implications:
 
 ## Toolchain
 
-- **Ruby**: project pins `3.2.3` via `.ruby-version`; CI uses `3.2.0`. Any
-  Ruby `3.2.x` works. **Ruby `3.3+` does NOT work** with the pinned
-  Jekyll 3.9.x (a `logger` API change breaks `jekyll`).
+- **Ruby**: `3.3.6`, pinned in `.ruby-version` and used by CI, the dev
+  container and the Claude Code hook. Jekyll 4.4 needs Ruby >= 2.7; 3.3 is the
+  version tested here.
 - **Bundler / gems**: declared in `Gemfile`, locked in `Gemfile.lock`
-  (`BUNDLED WITH 2.4.10`). Jekyll 3.9.3 + plugins (feed, sitemap, katex,
-  seo-tag, jemoji, tidy, git_metadata, postfiles, ...). `html-proofer` is used
-  for link/asset testing.
+  (`BUNDLED WITH 2.4.10`). Jekyll 4.4.1 + plugins (feed, sitemap, katex,
+  seo-tag 2.9, jemoji, tidy, postfiles, polyglot 1.14, ...). `html-proofer` is
+  used for link/asset testing. Bundler 4 rewrites `BUNDLED WITH`: run
+  `bundle _2.4.10_ …` when a newer Bundler is the default.
+- **Sass**: Dart Sass via `jekyll-sass-converter` 3 (`sass-embedded`). The
+  sources use the module system (`@use`, `sass:color`, `sass:math`): every
+  partial in `_sass/bootkyll/` loads `variables`/`mixins` itself, and
+  `_sass/bootkyll.scss` lists the partials in cascade order. No `@import`, no
+  global colour functions: the build prints no deprecation warnings. Source maps
+  are off (`sass.sourcemap: never`).
+- **Local plugins** in `_plugins/`: `blog_archive.rb` (see "Blog indexes"),
+  `git_metadata.rb` (`site.git.last_commit` for `/build.html`, replacing the
+  unmaintained `jekyll-git_metadata` gem, which required Jekyll 3) and
+  `polyglot_canonical.rb` (see Known gotchas).
 - **Git submodules** (`.gitmodules`): two Jekyll plugins live as submodules
   under `_plugins/` and MUST be initialized before building:
   - `_plugins/premonition` (https://github.com/kLeZ/premonition.git)
@@ -78,7 +89,20 @@ Implications:
   read as US-ASCII, Nokogiri throws `Encoding::InvalidByteSequenceError`, and
   the proofer silently checks **0 links** while still exiting `0`. Always run
   with `LANG=C.UTF-8 LC_ALL=C.UTF-8` (or another UTF-8 locale).
-- **Ruby 3.3+ incompatibility** — see Toolchain above.
+- **Post permalink lives in the top-level `permalink:`** of `_config.yml`, not
+  in `defaults`. polyglot's `{% I18n_Headers %}` reads `page.permalink`; with
+  the pattern in `defaults` it printed `/:year/:month/:day/:title/` literally
+  in the canonical and `hreflang` links.
+- **polyglot rewrites the canonical link.** In 1.14.0, `{% I18n_Headers %}`
+  writes the right canonical (IT URL for untranslated pages under `/en/`, with
+  `fallback_canonical_to_default_lang: true`), then the URL-relativizing pass
+  prefixes it with `/en/` anyway: its exclusion list covers only the
+  `hreflang` links. `_plugins/polyglot_canonical.rb` hides the canonical from
+  that pass. seo-tag's own canonical is off (`{% seo canonical=false %}`) to
+  avoid two canonical links.
+- **`jekyll doctor`** still fails with polyglot 1.14: doctor reads the site
+  without going through polyglot's `Site#process`, so `languages` is still nil
+  when the coordination hook runs. `_scripts/build` runs it non-fatally.
 - **`jekyll-tidy` + seo-tag `image`.** Setting `image:` in front matter makes
   `jekyll-seo-tag` emit JSON-LD that `jekyll-tidy`'s htmlbeautifier rejects
   (`Unmatched sequence`), breaking the build. The default `og:image` is therefore
@@ -205,8 +229,12 @@ VSCodium e Emacs (TRAMP). Tutti partono dalla stessa immagine Docker.
   `Gemfile.lock`.
 - **Setup automatico** (`ENTRYPOINT`): Docker monta i volumi *prima* di eseguire
   l'ENTRYPOINT. `.devcontainer/init.sh` gira ad ogni avvio e in modo idempotente
-  inizializza i submodule e installa i gem (solo se mancanti). Nessun comando
-  manuale richiesto.
+  inizializza i submodule e controlla le gem con `bundle check`: le installa al
+  primo avvio e ogni volta che `Gemfile.lock` o la versione di Ruby cambiano (le gem
+  stanno in `vendor/bundle/ruby/<versione>/`, quindi un `vendor/bundle` già presente
+  non basta). Nessun comando manuale richiesto. Con il daemon già avviato (`make up`)
+  il controllo avviene solo al suo avvio: dopo un cambio di branch che tocca il
+  `Gemfile.lock`, `make down && make up`.
 - **Permessi / UID-GID**: l'ENTRYPOINT parte come root, **riconcilia l'uid/gid
   dell'utente `dev` a quelli dell'host** (`HOST_UID`/`HOST_GID`, default 1000) e poi
   **scende a `dev` via `gosu`** (con `HOME=/home/dev`) sia per il setup sia per il
@@ -321,7 +349,7 @@ Per fermare il container: `make down`.
 
 A SessionStart hook (`.claude/hooks/session-start.sh`, registered in
 `.claude/settings.json`) prepares the toolchain for remote web sessions: it
-pins Ruby 3.2.6 via rbenv, sets a UTF-8 locale, initializes submodules, and
+pins Ruby 3.3.6 via rbenv, sets a UTF-8 locale, initializes submodules, and
 runs `bundle install`. It only runs when `CLAUDE_CODE_REMOTE=true`. See
 [`AGENTS.md`](AGENTS.md) for how to work in this environment.
 

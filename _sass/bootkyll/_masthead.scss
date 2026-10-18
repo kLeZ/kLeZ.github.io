@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "variables" as *;
+@use "mixins" as *;
+
 // Styling for the masthead
 .landing-page {
 	header.masthead {
@@ -42,7 +46,7 @@ header.masthead {
 	}
 
 	background: no-repeat center center;
-	background-color: lighten($dark, 33);
+	background-color: color.adjust($dark, $lightness: 33%);
 	background-attachment: scroll;
 	position: relative;
 

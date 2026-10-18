@@ -1,19 +1,18 @@
 @charset "utf-8";
 
-// Import partials.
-@import
-	"bootkyll/variables",
-	"bootkyll/mixins",
-	"bootkyll/global",
-	"bootkyll/accessibility",
-	"bootkyll/navbar",
-	"bootkyll/masthead",
-	"bootkyll/post",
-	"bootkyll/blockquote",
-	"bootkyll/contact",
-	"bootkyll/archive",
-	"bootkyll/footer",
-	"bootkyll/bootstrap-overrides",
-	"bootkyll/syntax-highlighting-monokai",
-	"../_plugins/premonition/stylesheet/premonition",
-	"bootkyll/dark-mode";
+// Partials, in cascade order.
+@use "bootkyll/variables";
+@use "bootkyll/mixins";
+@use "bootkyll/global";
+@use "bootkyll/accessibility";
+@use "bootkyll/navbar";
+@use "bootkyll/masthead";
+@use "bootkyll/post";
+@use "bootkyll/blockquote";
+@use "bootkyll/contact";
+@use "bootkyll/archive";
+@use "bootkyll/footer";
+@use "bootkyll/bootstrap-overrides";
+@use "bootkyll/syntax-highlighting-monokai";
+@use "../_plugins/premonition/stylesheet/premonition";
+@use "bootkyll/dark-mode";
