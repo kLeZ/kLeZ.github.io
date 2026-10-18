@@ -13,10 +13,9 @@ fi
 cd "$CLAUDE_PROJECT_DIR"
 
 # --- Ruby version -----------------------------------------------------------
-# The project pins Ruby 3.2.x (.ruby-version says 3.2.3). Jekyll 3.9.x is
-# incompatible with Ruby 3.3+ (logger API change), and the container ships
-# Ruby 3.2.6 via rbenv, so we pin to that for the whole session.
-RUBY_VERSION_TO_USE="3.2.6"
+# The project pins Ruby 3.3.6 (.ruby-version), which the container ships via
+# rbenv; pin it for the whole session.
+RUBY_VERSION_TO_USE="3.3.6"
 if command -v rbenv >/dev/null 2>&1; then
   eval "$(rbenv init - bash)"
   export RBENV_VERSION="$RUBY_VERSION_TO_USE"

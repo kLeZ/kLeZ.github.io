@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "variables" as *;
+@use "mixins" as *;
+
 // Dark Mode Theme
 // Applied via [data-theme="dark"] on <html>
 // Supports three modes: light (default), dark, and system (auto via prefers-color-scheme)
@@ -37,7 +41,7 @@
 	#mainNav:not(.is-fixed) .theme-toggle,
 	#mainNav:not(.is-fixed) .lang-toggle {
 		color: $light;
-		&:hover { color: fade-out($light, 0.2); }
+		&:hover { color: color.adjust($light, $alpha: -0.2); }
 	}
 
 	#mainNav.is-fixed .theme-toggle,
@@ -96,7 +100,7 @@
 		#mainNav:not(.is-fixed) {
 			.navbar-brand {
 				color: $light;
-				&:focus, &:hover { color: fade-out($light, 0.2); }
+				&:focus, &:hover { color: color.adjust($light, $alpha: -0.2); }
 			}
 			.navbar-nav > li.nav-item > a { color: $light; }
 		}
@@ -104,7 +108,7 @@
 		.theme-toggle { color: $light; }
 		#mainNav:not(.is-fixed) .theme-toggle {
 			color: $light;
-			&:hover { color: fade-out($light, 0.2); }
+			&:hover { color: color.adjust($light, $alpha: -0.2); }
 		}
 
 		#mainNav.is-fixed {
@@ -182,7 +186,7 @@
 	}
 
 	.card-footer {
-		background-color: darken($dark-bg-elevated, 2%);
+		background-color: color.adjust($dark-bg-elevated, $lightness: -2%);
 		border-top-color: $dark-border;
 	}
 
@@ -278,8 +282,8 @@
 		background-color: $primary;
 		border-color: $primary;
 		&:hover, &:focus, &:active {
-			background-color: darken($primary, 7.5) !important;
-			border-color: darken($primary, 7.5) !important;
+			background-color: color.adjust($primary, $lightness: -7.5%) !important;
+			border-color: color.adjust($primary, $lightness: -7.5%) !important;
 		}
 	}
 
@@ -288,8 +292,8 @@
 		border-color: $dark-primary;
 		color: $dark-bg;
 		&:hover, &:focus {
-			background-color: darken($dark-primary, 7.5);
-			border-color: darken($dark-primary, 7.5);
+			background-color: color.adjust($dark-primary, $lightness: -7.5%);
+			border-color: color.adjust($dark-primary, $lightness: -7.5%);
 			color: $dark-bg;
 		}
 	}
@@ -310,7 +314,7 @@
 
 	// Forms
 	.floating-label-form-group {
-		border-bottom-color: lighten($dark-border, 5%);
+		border-bottom-color: color.adjust($dark-border, $lightness: 5%);
 
 		input, textarea {
 			color: $dark-text;

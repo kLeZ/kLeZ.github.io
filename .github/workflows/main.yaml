@@ -24,7 +24,7 @@ on:
   workflow_dispatch:
 
 env:
-  RUBY_VERSION: 3.2.0
+  RUBY_VERSION: 3.3.6
   JEKYLL_ENV: 'production'
   NOKOGIRI_USE_SYSTEM_LIBRARIES: true
 

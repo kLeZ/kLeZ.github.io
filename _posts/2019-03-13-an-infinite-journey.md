@@ -31,10 +31,9 @@ Forse anche un progetto implicito, quello che il web non è più così mio nemic
 
 Andando indietro trovo post in cui sono galvanizzato per aver messo i miei siti e i miei servizi a casa mia, altri post in cui si evince che ho iniziato progetti che poi purtroppo sono morti (FPM), altri post invece sono un po' più personali perché in quel momento mi sentivo di condividere le mie parole col mondo (mondo che in realtà probabilmente non ha mai letto queste cose, all'infuori forse di amici e parenti stretti).
 
-[^1]: [Cosa sono e come si usano i feed RSS]
+[^1]: [Cosa sono e come si usano i feed RSS](https://www.espertoweb.it/articolo.php?id_articolo=rss)
 
 [Olandese Volante]: https://it.wikipedia.org/wiki/Olandese_Volante
 [Deep Purple MKII]: https://it.wikipedia.org/wiki/Deep_Purple#I_classici_(1970-1975)
 [Jekyll]: https://jekyllrb.com/
 [RSS]: https://it.wikipedia.org/wiki/RSS
-[Cosa sono e come si usano i feed RSS]: https://www.espertoweb.it/articolo.php?id_articolo=rss

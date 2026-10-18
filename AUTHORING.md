@@ -466,5 +466,7 @@ safe in every language and gives you build-time validation that the file exists.
   `_scripts/build`.
 - `sitemap.xml` lists only default-language (IT) URLs; English pages are discovered
   via the `hreflang` alternates emitted in each page's `<head>`.
-- Untranslated pages served as IT fallback under `/en/` keep a self-canonical;
-  `hreflang` signals the language relationship to search engines.
+- Untranslated pages served as IT fallback under `/en/` have a canonical pointing
+  to the Italian URL (`fallback_canonical_to_default_lang`) and list only the
+  `it`/`x-default` alternates; translated pages are self-canonical and list both
+  languages.

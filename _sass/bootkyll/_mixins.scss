@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "variables" as *;
+
 // Mixins
 // Bootstrap Button Variant
 @mixin button-variant($color, $background, $border) {
@@ -8,29 +11,29 @@
 	&.focus,
 	&:focus {
 		color: $color;
-		border-color: darken($border, 25%);
-		background-color: darken($background, 10%);
+		border-color: color.adjust($border, $lightness: -25%);
+		background-color: color.adjust($background, $lightness: -10%);
 	}
 
 	&:hover {
 		color: $color;
-		border-color: darken($border, 12%);
-		background-color: darken($background, 10%);
+		border-color: color.adjust($border, $lightness: -12%);
+		background-color: color.adjust($background, $lightness: -10%);
 	}
 
 	&.active,
 	&:active,
 	.open>&.dropdown-toggle {
 		color: $color;
-		border-color: darken($border, 12%);
-		background-color: darken($background, 10%);
+		border-color: color.adjust($border, $lightness: -12%);
+		background-color: color.adjust($background, $lightness: -10%);
 
 		&.focus,
 		&:focus,
 		&:hover {
 			color: $color;
-			border-color: darken($border, 25%);
-			background-color: darken($background, 17%);
+			border-color: color.adjust($border, $lightness: -25%);
+			background-color: color.adjust($background, $lightness: -17%);
 		}
 	}
 
