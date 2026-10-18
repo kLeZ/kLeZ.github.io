@@ -95,6 +95,11 @@
 	padding-left: 1.5rem;
 }
 
+.related-posts {
+	border-top: 1px solid $gray-300;
+	padding-top: 1.5rem;
+}
+
 .search-results mark {
 	padding: 0 0.1em;
 }
@@ -117,8 +122,13 @@
 		&:hover { color: $primary; }
 	}
 
+	// Desktop navbar has no room for the field: the icon alone opens /cerca/
 	@media only screen and (min-width: 992px) {
 		margin: 0 0 0 0.5rem;
+
+		.form-control {
+			display: none;
+		}
 	}
 }
 

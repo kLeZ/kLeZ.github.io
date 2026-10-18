@@ -1,0 +1,29 @@
+{%- comment -%}
+Gli ultimi articoli che condividono almeno un tag con quello corrente
+(page.related_by_tag, calcolato da _plugins/blog_archive.rb).
+{%- endcomment -%}
+{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+{%- if page.related_by_tag.size > 0 -%}
+<aside class="related-posts my-5" aria-labelledby="related-title">
+	<h2 id="related-title" class="h4">{{ loc.related_title }}</h2>
+	<ul class="list-unstyled row">
+		{%- for post in page.related_by_tag -%}
+		<li class="col-md-4 mb-3">
+			<article class="card h-100">
+				<section class="card-body">
+					<h3 class="card-title h5"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+					<p class="card-subtitle text-muted mb-0">
+						<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%e %b %Y' | strip }}</time>
+					</p>
+				</section>
+				{%- if post.tags.size > 0 -%}
+				<footer class="card-footer">
+					{%- include tag-list.html tags=post.tags -%}
+				</footer>
+				{%- endif -%}
+			</article>
+		</li>
+		{%- endfor -%}
+	</ul>
+</aside>
+{%- endif -%}

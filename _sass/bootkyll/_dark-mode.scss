@@ -217,7 +217,8 @@
 		.series-parts a[aria-current] { color: $dark-text-heading; }
 	}
 
-	.series-chain { border-top-color: $dark-border; }
+	.series-chain,
+	.related-posts { border-top-color: $dark-border; }
 
 	.form-control {
 		background-color: $dark-bg-sunken;

@@ -145,6 +145,11 @@ service is involved.
     `site.data.series_index` feeds `_includes/series-nav.html` (in the post
     layout: full list of parts at the top, previous/next chain at the bottom),
     the per-series page `/serie/<id>/` and the overview `_pages/serie.html`.
+  - **Related posts.** Each post gets `related_by_tag`: the most recent posts
+    sharing at least one tag with it (tags compared by slug), excluding itself
+    and the other parts of its series. `_includes/related-posts.html` shows
+    them under the article; how many is `related_posts` in `_config.yml`
+    (default 3, `0` hides the block).
   - **Polyglot.** Each language is built in its own process after polyglot has
     dropped the other language's documents. A `post_read` hook with priority
     `:high` records tags and series of *all* post files first, so a tag that
@@ -152,7 +157,8 @@ service is involved.
     switcher always has a target), and a translation without `series:` stays in
     its original's series.
 - **Search** (`/cerca/`, `_pages/cerca.html`): a plain GET form (`q`, `tag`),
-  also in the navbar. `search.json` holds title, date, tags, excerpt and full
+  also in the navbar (on desktop only the icon, which opens `/cerca/`; the
+  field shows in the collapsed mobile menu). `search.json` holds title, date, tags, excerpt and full
   plain text of every post of the active language (`/search.json`,
   `/en/search.json`; excluded from `jekyll-tidy`). `assets/search.js` indexes it
   with **MiniSearch** 7.2.0 (vendored and minified, `assets/minisearch/`, MIT): prefix + fuzzy

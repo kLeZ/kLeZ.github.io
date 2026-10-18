@@ -7,6 +7,7 @@
 # - one paginated page per tag at `/tag/<slug>/`, plus `site.data.tag_index`
 #   for the tag overview page;
 # - one page per series at `/serie/<id>/`, plus `site.data.series_index`;
+# - `related_by_tag` on every post (latest posts sharing a tag);
 # - Liquid filters `tag_url`, `tag_slug` and `plain_text` (search.json).
 #
 # Under jekyll-polyglot every language is built in its own process after the
@@ -19,6 +20,7 @@
 #     per_page: 10
 #   tag_path: /tag/
 #   series_path: /serie/
+#   related_posts: 3
 
 require "nokogiri"
 
@@ -121,6 +123,7 @@ module Klez
       paginate_pages
       tag_pages
       series_pages
+      related_posts
     end
 
     private
@@ -219,6 +222,24 @@ module Klez
       index.each do |s|
         data = { "layout" => "page", "title" => format(title, s["title"]), "series_id" => s["id"] }
         @site.pages << Klez::GeneratedPage.new(@site, s["url"], data, "{% include series-page.html %}\n")
+      end
+    end
+
+    # `related_by_tag` on every post: the most recent posts sharing at least one
+    # tag (compared by slug), without the post itself and the other parts of its
+    # series, which the series navigation already links.
+    def related_posts
+      limit = @site.config["related_posts"]
+      limit = 3 unless limit.is_a?(Integer) && limit >= 0
+      slugs = @posts.to_h do |p|
+        [p, Array(p.data["tags"]).compact.map { |t| Klez::BlogArchive.slug(t) }.reject(&:empty?).uniq]
+      end
+      @posts.each do |post|
+        mine = slugs[post]
+        series = post.data["series"]
+        post.data["related_by_tag"] = @posts.lazy.select do |other|
+          other != post && (series.nil? || other.data["series"] != series) && (slugs[other] & mine).any?
+        end.first(limit)
       end
     end
   end
