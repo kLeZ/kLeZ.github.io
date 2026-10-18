@@ -2,10 +2,15 @@ timezone: Europe/Rome
 lang: it
 locale: it_IT
 
-# Lingue (_plugins/i18n.rb): IT alla root, EN sotto /en/. Lingua e URL dei file
-# inglesi arrivano dai defaults qui sotto (cartelle _posts/en e _pages/en).
+# Lingue (_plugins/i18n.rb): la prima di default alla root, le altre sotto /<lingua>/.
+# Ogni lingua ha il suo _data/locales/<lingua>.yml; i file tradotti stanno in
+# _posts/<lingua>/ e _pages/<lingua>/, che ne danno lingua e prefisso dell'URL.
 languages: ["it", "en"]
 default_lang: "it"
+# Lingue in cui jekyll-polyglot pubblicava una copia di ogni pagina: a quegli URL
+# restano dei redirect verso l'originale o la traduzione. Una lingua aggiunta dopo
+# non va messa qui.
+i18n_legacy_languages: ["it", "en"]
 title: Alessandro 'kLeZ' Accardo personal website
 description: >-
   This is the personal website of an Italian developer once called 'kLeZ'.
@@ -54,20 +59,8 @@ defaults:
     values:
       layout: "post"
       post: true
-  - scope:
-      path: "_posts/en"
-      type: "posts"
-    values:
-      lang: en
-      locale: en
-      permalink: /en/:year/:month/:day/:title/
-  - scope:
-      path: "_pages/en"
-    values:
-      lang: en
-      locale: en
 
-# Permalink dei post italiani; gli inglesi hanno il loro nei defaults.
+# Permalink dei post; quelli in _posts/<lingua>/ lo ricevono sotto /<lingua>/.
 permalink: /:year/:month/:day/:title/
 
 show_excerpts: true

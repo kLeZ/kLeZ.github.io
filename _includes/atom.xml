@@ -1,11 +1,13 @@
 {%- comment -%}
 Feed Atom (RFC 4287), al posto di jekyll-feed che non filtra per lingua.
-Parametri: lang = "it" | "en" | vuoto (tutte le lingue, ogni versione di ogni post).
+Parametri: lang = codice di una lingua | vuoto (tutte le lingue, ogni versione di
+ogni post). I feed per lingua (/<lingua>/feed.xml) li genera _plugins/i18n.rb.
 {%- endcomment -%}
 {%- assign loc = site.data.locales[page.lang] | default: site.data.locales[site.default_lang] -%}
 {%- if include.lang -%}
 {%- assign feed_posts = site.posts | where: "lang", include.lang -%}
-{%- assign feed_title = loc.feed_lang[include.lang] -%}
+{%- assign feed_lang_name = include.lang | language_name: page.lang -%}
+{%- assign feed_title = loc.feed_lang | replace: '%s', feed_lang_name -%}
 {%- else -%}
 {%- assign feed_posts = site.posts -%}
 {%- assign feed_title = loc.feed_all -%}

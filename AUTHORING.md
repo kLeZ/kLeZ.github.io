@@ -72,7 +72,8 @@ date: 2026-05-31 14:37:42+02:00   # added by publish; keep tz offset
 - **`date`** — full timestamp with timezone offset; `publish` fills it in.
 - **`toc:`** — set to a path to render a table-of-contents aside (optional).
 - **`lang:`** — only set if a *single page* is in another language; the site
-  default is `it` (from `_config.yml`).
+  default is `it` (from `_config.yml`), and files under a language folder
+  (`_posts/en/`, `_pages/en/`) take that folder's language whatever they say.
 - **`image:`** — optional Open Graph image for that post; otherwise the site
   default (`/assets/img/home-bg.jpg`) is used.
 
@@ -84,12 +85,19 @@ Posts in parts share a `series:` id; the id is declared once in
 ```yaml
 social-media-considered-harmful:
   title: "Social media considered harmful. Forse..."
-  title_en: "Social media considered harmful. Maybe..."
   description: >-
     Testo introduttivo in Markdown per la pagina /serie/<id>/.
-  description_en: >-
-    Introduction in Markdown for /en/serie/<id>/.
   parts: 5        # optional: planned parts, while the series is still running
+```
+
+The English title and description go in `_data/locales/en.yml`:
+
+```yaml
+series_translations:
+  social-media-considered-harmful:
+    title: "Social media considered harmful. Maybe..."
+    description: >-
+      Introduction in Markdown for /en/serie/<id>/.
 ```
 
 Parts are ordered by publication `date`. The post layout then shows the list
@@ -410,13 +418,31 @@ show Italian-only posts with an "In Italian" badge (and vice versa), and the old
 - The English variety is **British** (UK spelling/idiom, no Americanisms) — enforced by
   the translation prompt. Everything technical (URL, `html lang`, `hreflang`, `og:locale`,
   switcher) stays the generic `en`; only the prose register is British. The switcher shows
-  flags (Union Jack for English, tricolore for Italian) from `_data/languages.yml`.
+  flags (Union Jack for English, tricolore for Italian) from `language.flag` in
+  `_data/locales/<lang>.yml`.
 
 ### Language convention & direction (`lang` is mandatory)
 
 Every page/post carries an explicit `lang: it|en`. **Convention: root = Italian files,
 `_posts/en/` (and `_pages/en/`) = English files — always**, regardless of which language an
-article was *written* in first.
+article was *written* in first. For the site the folder is what counts (a file
+under `_posts/en/` is English whatever its front matter says); `translate` reads
+`lang` to pick the direction.
+
+### Adding a language
+
+1. Add its code to `languages:` in `_config.yml` (not to `i18n_legacy_languages`).
+2. Create `_data/locales/<lang>.yml`, starting from `en.yml`: `language`
+   (flag, name, link labels, `og:locale`), `language_names`, the interface strings,
+   `page_translations` (titles of home, blog, tags, series, search) and
+   `series_translations`.
+3. Optionally `_data/navigation/<lang>.yml` (otherwise the Italian menu is used) and
+   `assets/img/flags/<flag>.svg`.
+4. Put the translated files in `_posts/<lang>/` and `_pages/<lang>/`.
+
+Nothing else changes: pages, layouts and the other locale files stay as they are
+(they show the new language under its own name until their `language_names` lists
+it). `_scripts/translate` only knows Italian and English.
 
 `translate` is **bidirectional** and picks the direction from the source file's `lang`:
 
@@ -510,5 +536,5 @@ broken links.
 ### Known limitations
 
 - Series titles and descriptions come from `_data/series.yml`: English pages use
-  `title_en`/`description_en`, falling back to the Italian text when they are
-  missing. Add both when you create a series.
+  `series_translations` in `_data/locales/en.yml`, falling back to the Italian
+  text when an entry is missing. Add both when you create a series.

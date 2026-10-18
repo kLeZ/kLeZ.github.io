@@ -13,7 +13,7 @@ direbbe né che è cliccabile né dove porta.
 		{%- for lng in site.languages -%}
 		{%- assign version = page.translations[lng] -%}
 		{%- if version -%}
-		{%- assign meta = site.data.languages[lng] -%}
+		{%- assign meta = site.data.locales[lng].language -%}
 		<li>
 			{%- if lng == page.lang -%}
 			<a class="post-language current" href="{{ version.url | relative_url }}" hreflang="{{ lng }}" aria-current="page">
