@@ -2,14 +2,10 @@ timezone: Europe/Rome
 lang: it
 locale: it_IT
 
-# Multilingua (jekyll-polyglot): IT alla root, EN sotto /en/
+# Lingue (_plugins/i18n.rb): IT alla root, EN sotto /en/. Lingua e URL dei file
+# inglesi arrivano dai defaults qui sotto (cartelle _posts/en e _pages/en).
 languages: ["it", "en"]
 default_lang: "it"
-exclude_from_localization:
-  ["assets", "favicon.ico", "robots.txt", "manifest.webmanifest", ".well-known"]
-parallel_localization: true
-# I contenuti non tradotti (fallback) puntano in canonical alla versione IT: niente duplicate content
-fallback_canonical_to_default_lang: true
 title: Alessandro 'kLeZ' Accardo personal website
 description: >-
   This is the personal website of an Italian developer once called 'kLeZ'.
@@ -51,15 +47,27 @@ defaults:
         name: kLeZ
         twitter: kLeZhAcK
       header_background_url: /assets/img/home-bg.jpg
+      lang: it
   - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
       post: true
+  - scope:
+      path: "_posts/en"
+      type: "posts"
+    values:
+      lang: en
+      locale: en
+      permalink: /en/:year/:month/:day/:title/
+  - scope:
+      path: "_pages/en"
+    values:
+      lang: en
+      locale: en
 
-# Post permalink. Kept here, not in `defaults`: polyglot's {% I18n_Headers %}
-# reads page.permalink and would print the unexpanded pattern.
+# Permalink dei post italiani; gli inglesi hanno il loro nei defaults.
 permalink: /:year/:month/:day/:title/
 
 show_excerpts: true
@@ -83,9 +91,10 @@ goat-counter:
 
 jekyll_tidy:
   compress_html: false
-  # JSON, not HTML: htmlbeautifier would mangle it
+  # JSON and Atom, not HTML: htmlbeautifier would mangle them
   exclude:
     - search.json
+    - _pages/feeds/*.xml
 
 # Elenchi paginati, pagine dei tag e delle serie: _plugins/blog_archive.rb
 pagination:
@@ -93,12 +102,13 @@ pagination:
 tag_path: /tag/
 series_path: /serie/
 related_posts: 3
+# Voci per ciascun feed Atom (/feed.xml, /it/feed.xml, /en/feed.xml)
+feed_posts_limit: 10
 
 emoji:
   src: "/assets/img"
 
 plugins:
-  - jekyll-feed
   - jekyll-sitemap
   - jekyll-tidy
   - jekyll-katex
@@ -107,7 +117,6 @@ plugins:
   - jekyll-seo-tag
   - jemoji
   - jekyll-postfiles
-  - jekyll-polyglot
 
 # Defaults. IF you want to change the exclude make sure you keep those sane defaults
 exclude:

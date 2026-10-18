@@ -1,7 +1,7 @@
-{%- assign lang = site.active_lang | default: site.lang -%}
+{%- assign lang = page.lang | default: site.default_lang -%}
 {%- assign loc = site.data.locales[lang] -%}
 <!doctype html>
-<html lang="{{ page.lang | default: lang | default: "en" }}">
+<html lang="{{ lang }}">
 	{% include head.html %}
 
 	{%- assign classes_arr = " " | split: " " -%}

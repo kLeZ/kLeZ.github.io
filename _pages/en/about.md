@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About me
-permalink: /about/
+permalink: /en/about/
 lang: en
 locale: en
 source_sha: 7a242d792f256e99

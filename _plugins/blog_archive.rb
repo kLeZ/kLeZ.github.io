@@ -5,14 +5,14 @@
 # - pagination of every page whose front matter sets `paginate: true`
 #   (page 1 keeps its permalink, page N lives at `<permalink>page/N/`);
 # - one paginated page per tag at `/tag/<slug>/`, plus `site.data.tag_index`
-#   for the tag overview page;
+#   and `site.data.tag_ranking` for the tag overview pages;
 # - one page per series at `/serie/<id>/`, plus `site.data.series_index`;
 # - `related_by_tag` on every post (latest posts sharing a tag);
 # - Liquid filters `tag_url`, `tag_slug`, `plain_text`, `local_date`, `span_label`.
 #
-# Under jekyll-polyglot every language is built in its own process after the
-# documents have been coordinated, so `site.posts` already holds the posts of
-# the active language (and the default-language fallbacks).
+# Everything is built once per language from `site.data.i18n.posts[lang]`
+# (_plugins/i18n.rb): non-default languages live under /<lang>/ and the data
+# above is keyed by language (`site.data.tag_index.en`).
 #
 # Settings (all optional) in _config.yml:
 #
@@ -28,33 +28,27 @@ module Klez
   module BlogArchive
     DEFAULT_PER_PAGE = 10
 
-    class << self
-      # Tags and series of every post file of every language, recorded before
-      # jekyll-polyglot drops the posts of the other languages: [{url, tags, series}].
-      attr_writer :all_posts
-
-      def all_posts
-        @all_posts || []
-      end
-    end
-
     module_function
 
     def slug(name)
       Jekyll::Utils.slugify(name.to_s, :mode => "latin")
     end
 
-    def tag_path(site)
-      dir_path(site.config["tag_path"] || "/tag/")
+    def tag_path(site, lang = nil)
+      "#{Klez::I18n.prefix(site, lang || Klez::I18n.default_lang(site))}#{dir_path(site.config["tag_path"] || "/tag/")}"
     end
 
-    def series_path(site)
-      dir_path(site.config["series_path"] || "/serie/")
+    def series_path(site, lang = nil)
+      "#{Klez::I18n.prefix(site, lang || Klez::I18n.default_lang(site))}#{dir_path(site.config["series_path"] || "/serie/")}"
     end
 
-    def tag_url(site, name)
+    def tag_url(site, name, lang = nil)
       s = slug(name)
-      s.empty? ? nil : "#{tag_path(site)}#{s}/"
+      s.empty? ? nil : "#{tag_path(site, lang)}#{s}/"
+    end
+
+    def locale(site, lang)
+      site.data.dig("locales", lang.to_s) || site.data.dig("locales", Klez::I18n.default_lang(site)) || {}
     end
 
     def dir_path(path)
@@ -110,7 +104,8 @@ module Klez
 
   class BlogArchiveGenerator < Jekyll::Generator
     safe true
-    # Before jekyll-sitemap and jekyll-feed (priority :lowest).
+    # After _plugins/i18n.rb's early pass (:highest), before its late pass (:low)
+    # and before jekyll-sitemap (:lowest).
     priority :high
 
     LIST = "{% include posts.html posts=paginator.posts %}\n{% include pagination.html %}\n"
@@ -118,30 +113,32 @@ module Klez
 
     def generate(site)
       @site = site
-      @posts = site.posts.docs.reverse
-      @loc = site.data.dig("locales", site.active_lang || site.config["lang"]) || {}
-      seo_message
-      paginate_pages
-      tag_pages
-      series_pages
-      related_posts
+      %w(tag_index tag_ranking series_index).each { |k| site.data[k] = {} }
+      views = site.data.dig("i18n", "posts") || {}
+      paginate_pages(views)
+      views.each do |lang, posts|
+        @lang = lang
+        @posts = posts
+        @loc = Klez::BlogArchive.locale(site, lang)
+        tag_pages
+        series_pages
+      end
+      related_posts(views)
     end
 
     private
 
-    def seo_message
-      message = @loc["seo_page_of"]
-      @site.config["seo_paginator_message"] = message if message
-    end
-
-    def paginate_pages
+    def paginate_pages(views)
       @site.pages.select { |p| p.data["paginate"] }.each do |page|
+        posts = views[Klez::I18n.lang_of(@site, page)] || []
         base = Klez::BlogArchive.dir_path(page.url.sub(%r!index\.html\z!, ""))
         size = Klez::BlogArchive.per_page(@site, page.data["paginate"])
-        Klez::BlogArchive.each_page(@posts, size, base) do |_, pg|
+        Klez::BlogArchive.each_page(posts, size, base) do |_, pg|
           target = page
           if pg["page"] > 1
-            target = Jekyll::Page.new(@site, @site.source, File.dirname(page.relative_path), page.name)
+            target = Klez::I18n.reread(@site, page)
+            target.data.merge!(page.data.slice("lang", "locale", "title", "i18n_key"))
+            target.data["i18n_key"] = "#{Klez::I18n.key_of(@site, page)}#page-#{pg["page"]}"
             target.data["permalink"] = pg["pages"][pg["page"] - 1]["path"]
             target.data["sitemap"] = false
             @site.pages << target
@@ -151,33 +148,29 @@ module Klez
       end
     end
 
-    def tag_pages
-      index = tag_groups(@posts.map { |p| [p, p.data["tags"]] }).map { |url, g| tag_entry(url, g) }
-      index.sort_by! { |t| [t["name"].unicode_normalize(:nfd).downcase, t["name"]] }
-      @site.data["tag_index"] = index
-      # Same tags, most used first (alphabetical among equals): /tag/by-n-posts/
-      @site.data["tag_ranking"] = index.each_with_index.sort_by { |t, i| [-t["count"], i] }.map(&:first)
+    def page_data(extra)
+      { "layout" => "page", "lang" => @lang,
+        "locale" => @site.data.dig("languages", @lang, "locale") || @lang, }.merge(extra)
+    end
 
-      # Tags used only by another language version of a post still get a page
-      # (outside the index and the sitemap), so the language switcher of every
-      # tag page has a target.
-      by_url = @posts.each_with_object({}) { |p, h| h[p.url] = p }
-      known = index.map { |t| t["url"] }
-      others = Klez::BlogArchive.all_posts.map { |e| [by_url[e["url"]], e["tags"]] }.select(&:first)
-      extra = tag_groups(others).reject { |url, _| known.include?(url) }.map { |url, g| tag_entry(url, g) }
+    def tag_pages
+      index = tag_groups.map { |url, g| tag_entry(url, g) }
+      index.sort_by! { |t| [t["name"].unicode_normalize(:nfd).downcase, t["name"]] }
+      @site.data["tag_index"][@lang] = index
+      # Same tags, most used first (alphabetical among equals): /tag/by-n-posts/
+      @site.data["tag_ranking"][@lang] = index.each_with_index.sort_by { |t, i| [-t["count"], i] }.map(&:first)
 
       # Overview pages live next to the tag pages (_pages/tag-*.html)
-      (index + extra).select { |t| RESERVED_TAG_SLUGS.include?(t["slug"]) }.each do |t|
+      index.select { |t| RESERVED_TAG_SLUGS.include?(t["slug"]) }.each do |t|
         Jekyll.logger.warn "BlogArchive:", "tag #{t["name"].inspect} collides with the tag overview #{t["url"]}"
       end
 
       title = @loc["tag_title"] || "Tag: %s"
-      (index + extra).each do |tag|
-        listed = known.include?(tag["url"])
+      index.each do |tag|
         Klez::BlogArchive.each_page(tag["posts"], Klez::BlogArchive.per_page(@site), tag["url"]) do |_, pg|
           url = pg["pages"][pg["page"] - 1]["path"]
-          data = { "layout" => "page", "title" => format(title, tag["name"]), "tag" => tag["name"],
-                   "sitemap" => listed && pg["page"] == 1, }
+          data = page_data("title" => format(title, tag["name"]), "tag" => tag["name"],
+                           "sitemap" => pg["page"] == 1, "i18n_key" => "tag:#{tag["slug"]}:#{pg["page"]}")
           page = Klez::GeneratedPage.new(@site, url, data, LIST)
           page.pager = pg
           @site.pages << page
@@ -185,12 +178,12 @@ module Klez
       end
     end
 
-    # [[post, tags], ...] -> { tag_url => { "names" => {spelling => uses}, "posts" => [...] } }
-    def tag_groups(pairs)
+    # { tag_url => { "names" => {spelling => uses}, "posts" => [...] } }
+    def tag_groups
       groups = {}
-      pairs.each do |post, tags|
-        Array(tags).compact.uniq.each do |tag|
-          url = Klez::BlogArchive.tag_url(@site, tag)
+      @posts.each do |post|
+        Array(post.data["tags"]).compact.uniq.each do |tag|
+          url = Klez::BlogArchive.tag_url(@site, tag, @lang)
           next unless url
 
           g = (groups[url] ||= { "names" => Hash.new(0), "posts" => [] })
@@ -210,55 +203,56 @@ module Klez
     end
 
     def series_pages
-      # A translation without `series` stays in the series of its original.
-      inherited = Klez::BlogArchive.all_posts.select { |e| e["series"] }.to_h { |e| [e["url"], e["series"]] }
-      @posts.each { |p| p.data["series"] ||= inherited[p.url] }
-
       meta = @site.data["series"] || {}
       groups = @posts.reverse.select { |p| p.data["series"] }.group_by { |p| p.data["series"].to_s }
       index = groups.map do |id, posts|
         info = meta[id] || {}
-        url = "#{Klez::BlogArchive.series_path(@site)}#{Klez::BlogArchive.slug(id)}/"
+        url = "#{Klez::BlogArchive.series_path(@site, @lang)}#{Klez::BlogArchive.slug(id)}/"
         # gaps[i]: whole days between part i and part i-1 (nil for the first part)
         gaps = posts.each_cons(2).map { |a, b| ((b.date - a.date) / 86_400).floor }.unshift(nil)
-        { "id" => id, "title" => info["title"] || id, "description" => info["description"],
+        { "id" => id, "title" => info["title_#{@lang}"] || info["title"] || id,
+          "description" => info["description_#{@lang}"] || info["description"],
           "parts" => info["parts"], "url" => url, "posts" => posts, "count" => posts.size,
           "date" => posts.last.date, "first_date" => posts.first.date, "last_date" => posts.last.date,
           "gaps" => gaps, }
       end
       index.sort_by! { |s| s["date"] }.reverse!
-      @site.data["series_index"] = index.each_with_object({}) { |s, h| h[s["id"]] = s }
+      @site.data["series_index"][@lang] = index.each_with_object({}) { |s, h| h[s["id"]] = s }
 
       title = @loc["series_title"] || "Series: %s"
       index.each do |s|
-        data = { "layout" => "page", "title" => format(title, s["title"]), "series_id" => s["id"] }
+        data = page_data("title" => format(title, s["title"]), "series_id" => s["id"],
+                         "i18n_key" => "series:#{s["id"]}")
         @site.pages << Klez::GeneratedPage.new(@site, s["url"], data, "{% include series-page.html %}\n")
       end
     end
 
-    # `related_by_tag` on every post: the most recent posts sharing at least one
-    # tag (compared by slug), without the post itself and the other parts of its
-    # series, which the series navigation already links.
-    def related_posts
+    # `related_by_tag` on every post: the most recent posts of its language's
+    # list sharing at least one tag (compared by slug), without the post itself,
+    # its translations and the other parts of its series, which the series
+    # navigation already links.
+    def related_posts(views)
       limit = @site.config["related_posts"]
       limit = 3 unless limit.is_a?(Integer) && limit >= 0
-      slugs = @posts.to_h do |p|
-        [p, Array(p.data["tags"]).compact.map { |t| Klez::BlogArchive.slug(t) }.reject(&:empty?).uniq]
+      slugs = Hash.new do |h, p|
+        h[p] = Array(p.data["tags"]).compact.map { |t| Klez::BlogArchive.slug(t) }.reject(&:empty?).uniq
       end
-      @posts.each do |post|
-        mine = slugs[post]
+      @site.posts.docs.each do |post|
+        candidates = views[Klez::I18n.lang_of(@site, post)] || []
+        key = Klez::I18n.key_of(@site, post)
         series = post.data["series"]
-        post.data["related_by_tag"] = @posts.lazy.select do |other|
-          other != post && (series.nil? || other.data["series"] != series) && (slugs[other] & mine).any?
+        post.data["related_by_tag"] = candidates.lazy.select do |other|
+          Klez::I18n.key_of(@site, other) != key &&
+            (series.nil? || other.data["series"] != series) && (slugs[other] & slugs[post]).any?
         end.first(limit)
       end
     end
   end
 
   module BlogArchiveFilters
-    # {{ tag | tag_url | relative_url }}
-    def tag_url(input)
-      Klez::BlogArchive.tag_url(@context.registers[:site], input)
+    # {{ tag | tag_url: page.lang | relative_url }}
+    def tag_url(input, lang = nil)
+      Klez::BlogArchive.tag_url(@context.registers[:site], input, lang)
     end
 
     # {{ tag | tag_slug }}
@@ -267,8 +261,8 @@ module Klez
     end
 
     # {{ post.date | local_date }} -> "21 febbraio 2010", month names from
-    # `months` in _data/locales/<lang>.yml (Jekyll's date filter and polyglot
-    # are English only). {{ site.time | local_date: "time" }} adds ", 02:59".
+    # `months` in _data/locales/<lang>.yml of the page being rendered (Jekyll's
+    # date filter is English only). {{ site.time | local_date: "time" }} adds ", 02:59".
     def local_date(input, mode = nil)
       return input if input.nil? || input.to_s.empty?
 
@@ -310,25 +304,17 @@ module Klez
     private
 
     def locale
-      site = @context.registers[:site]
-      site.data.dig("locales", site.active_lang || site.config["lang"]) || {}
+      page = @context.registers[:page]
+      Klez::BlogArchive.locale(@context.registers[:site], page && page["lang"])
     end
   end
 end
 
-# Priority :high runs this before jekyll-polyglot's coordination hook (:normal).
-Jekyll::Hooks.register :site, :post_read, :priority => :high do |site|
-  lang_segments = site.respond_to?(:document_url_regex) ? site.document_url_regex : nil
-  Klez::BlogArchive.all_posts = site.posts.docs.map do |doc|
-    # Built by hand: Document#url memoizes, and polyglot changes the permalink afterwards.
-    url = Jekyll::URL.new(
-      :template     => doc.url_template,
-      :placeholders => doc.url_placeholders,
-      :permalink    => doc.permalink
-    ).to_s
-    url = url.gsub(lang_segments, "/") if lang_segments
-    { "url" => url, "tags" => doc.data["tags"], "series" => doc.data["series"] }
-  end
+# jekyll-seo-tag reads the "Pagina N di M" title prefix from the site config at
+# render time: set it to the language of each page before rendering it.
+Jekyll::Hooks.register :pages, :pre_render do |page|
+  message = Klez::BlogArchive.locale(page.site, Klez::I18n.lang_of(page.site, page))["seo_page_of"]
+  page.site.config["seo_paginator_message"] = message if message
 end
 
 Liquid::Template.register_filter(Klez::BlogArchiveFilters)

@@ -1,0 +1,22 @@
+{%- comment -%}
+Pagina di reindirizzamento statica (GitHub Pages non ha redirect lato server):
+meta refresh immediato, canonical verso la destinazione, noindex, e un link
+visibile per chi ha il refresh disattivato. `redirect_to` è un percorso del sito,
+localizzato nella lingua della pagina se quella versione esiste.
+{%- endcomment -%}
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign loc = site.data.locales[lang] -%}
+{%- assign target = page.redirect_to | i18n_url: lang | relative_url -%}
+<!doctype html>
+<html lang="{{ lang }}">
+	<head>
+		<meta charset="utf-8" />
+		<title>{{ loc.redirect_title }}</title>
+		<meta http-equiv="refresh" content="0; url={{ target }}" />
+		<meta name="robots" content="noindex" />
+		<link rel="canonical" href="{{ target | absolute_url }}" />
+	</head>
+	<body>
+		<p>{{ loc.redirect_text }} <a href="{{ target }}">{{ target | absolute_url }}</a></p>
+	</body>
+</html>

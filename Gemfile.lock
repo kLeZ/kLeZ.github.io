@@ -76,13 +76,9 @@ GEM
       safe_yaml (~> 1.0)
       terminal-table (>= 1.8, < 4.0)
       webrick (~> 1.7)
-    jekyll-feed (0.17.0)
-      jekyll (>= 3.7, < 5.0)
     jekyll-katex (1.0.0)
       execjs (~> 2.7)
       jekyll (>= 3.6, < 5.0)
-    jekyll-polyglot (1.14.0)
-      jekyll (>= 4.0, >= 3.0)
     jekyll-postfiles (3.1.0)
       jekyll (>= 3.8.6, < 5)
     jekyll-sass-converter (3.1.0)
@@ -162,9 +158,7 @@ DEPENDENCIES
   execjs
   html-proofer
   jekyll (~> 4.4)
-  jekyll-feed
   jekyll-katex
-  jekyll-polyglot (~> 1.14)
   jekyll-postfiles
   jekyll-seo-tag
   jekyll-sitemap

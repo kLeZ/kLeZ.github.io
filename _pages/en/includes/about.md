@@ -9,7 +9,7 @@ I was saying, it's all very nice, but I'm just another person who writes a blog 
 But then: _what the hell are you doing here?_ I'll explain right away (so to speak). There's probably an article that interests you, or you've spoken to me, we've met, or you've known me all your life, and you want to browse what seems to be the closest thing to a web space that's entirely mine.  
 
 So let the party begin, raise the articles, and let's hope there's at least one that you'll appreciate. The day of comments will come, but this is not that day, because the only valid option is Disqus, but it's harmful to privacy, and I care about this thing - those who know me know and suffer.  
-In the meantime, I'll be _extremely grateful_, and I'll be _extremely happy_ to know what you think of me and what I write through [one of my contacts](/contatti/). _Oh, please, write to me even if you feel like insulting me. **It's nice** in a way, too._
+In the meantime, I'll be _extremely grateful_, and I'll be _extremely happy_ to know what you think of me and what I write through [one of my contacts]({% link _pages/en/contatti.md %}). _Oh, please, write to me even if you feel like insulting me. **It's nice** in a way, too._
 
 If you ever want to know more about me (_recruiters, anyone?_) I can recommend you to read my [curriculum], here on these pages.
 

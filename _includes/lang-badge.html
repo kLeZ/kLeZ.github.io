@@ -1,0 +1,7 @@
+{%- comment -%}
+Etichetta "In italiano" / "In English" per un contenuto in una lingua diversa da
+quella della pagina. Parametri: lang.
+{%- endcomment -%}
+{%- assign badge_loc = site.data.locales[page.lang] | default: site.data.locales[site.default_lang] -%}
+{%- assign badge_meta = site.data.languages[include.lang] -%}
+<p class="lang-badge small mb-2"><img class="flag" src="{{ '/assets/img/flags/' | append: badge_meta.flag | append: '.svg' | relative_url }}" alt="" width="20" height="15" /> {{ badge_loc.written_in[include.lang] }}</p>

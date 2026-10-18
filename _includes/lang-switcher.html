@@ -1,26 +1,34 @@
 {%- comment -%}
-Language switcher (jekyll-polyglot) come dropdown: bandiera + nome lingua, così è
-distinguibile anche con tritanopia (le bandiere da sole non bastano).
-static_href impedisce che gli href vengano relativizzati alla lingua attiva.
+Selettore della lingua nella navbar: bandiera + nome lingua, così è distinguibile
+anche con tritanopia (le bandiere da sole non bastano). Porta alla traduzione della
+pagina corrente (page.translations, _plugins/i18n.rb); se la pagina non è tradotta
+porta alla home di quella lingua.
 {%- endcomment -%}
 {%- if site.languages.size > 1 -%}
-{%- assign cur = site.data.languages[site.active_lang] -%}
-{%- assign cur_flag = cur.flag | default: site.active_lang -%}
-{%- assign cur_name = cur.name | default: site.active_lang -%}
+{%- assign cur_lang = page.lang | default: site.default_lang -%}
+{%- assign cur = site.data.languages[cur_lang] -%}
 <div class="lang-switcher dropdown">
-	<button class="lang-toggle dropdown-toggle" type="button" id="langDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="{{ cur_name }}">
-		<img class="flag" src="{{ '/assets/img/flags/' | append: cur_flag | append: '.svg' | relative_url }}" alt="" />
-		<span class="lang-name">{{ site.active_lang | upcase }}</span>
+	<button class="lang-toggle dropdown-toggle" type="button" id="langDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="{{ cur.name | default: cur_lang }}">
+		<img class="flag" src="{{ '/assets/img/flags/' | append: cur.flag | append: '.svg' | relative_url }}" alt="" />
+		<span class="lang-name">{{ cur_lang | upcase }}</span>
 	</button>
 	<div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
 		{%- for lng in site.languages -%}
 			{%- assign meta = site.data.languages[lng] -%}
-			{%- assign flag = meta.flag | default: lng -%}
-			{%- assign name = meta.name | default: lng -%}
-			{%- if lng == site.default_lang -%}{%- assign prefix = '' -%}{%- else -%}{%- assign prefix = '/' | append: lng -%}{%- endif -%}
-			{%- assign active = '' -%}{%- if lng == site.active_lang -%}{%- assign active = ' active' -%}{%- endif -%}
-			<a class="dropdown-item lang-item{{ active }}" {% static_href %}href="{{ prefix }}{{ page.url }}"{% endstatic_href %} hreflang="{{ lng }}" aria-label="{{ name }}"{% if lng == site.active_lang %} aria-current="true"{% endif %}>
-				<img class="flag" src="{{ '/assets/img/flags/' | append: flag | append: '.svg' | relative_url }}" alt="" />
+			{%- assign version = page.translations[lng] -%}
+			{%- if version -%}
+				{%- assign target = version.url -%}
+				{%- assign label = meta.name -%}
+			{%- elsif lng == cur_lang -%}
+				{%- assign target = page.url -%}
+				{%- assign label = meta.name -%}
+			{%- else -%}
+				{%- assign target = '/' | i18n_url: lng -%}
+				{%- assign label = meta.home -%}
+			{%- endif -%}
+			{%- assign active = '' -%}{%- if lng == cur_lang -%}{%- assign active = ' active' -%}{%- endif -%}
+			<a class="dropdown-item lang-item{{ active }}" href="{{ target | relative_url }}" hreflang="{{ lng }}" lang="{{ lng }}" aria-label="{{ label }}"{% if lng == cur_lang %} aria-current="true"{% endif %}>
+				<img class="flag" src="{{ '/assets/img/flags/' | append: meta.flag | append: '.svg' | relative_url }}" alt="" />
 				<span class="lang-name">{{ lng | upcase }}</span>
 			</a>
 		{%- endfor -%}

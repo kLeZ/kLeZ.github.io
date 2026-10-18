@@ -6,35 +6,35 @@ Ogni ordinamento è una pagina statica (_pages/tag-*.html):
   /tag/by-letter/desc/  alfabetico Z-A
   /tag/by-n-posts/      per numero di articoli, decrescente (site.data.tag_ranking)
 {%- endcomment -%}
-{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+{%- assign loc = site.data.locales[page.lang] | default: site.data.locales[site.default_lang] -%}
 {%- assign alpha = false -%}{%- if include.order == 'alpha' -%}{%- assign alpha = true -%}{%- endif -%}
 <p>{{ loc.tags_intro }}</p>
 <nav class="tag-sort mb-4" aria-label="{{ loc.tags_sort_label }}">
 	<span class="tag-sort-label">{{ loc.tags_sort_label }}:</span>
 	<ul class="nav nav-pills d-inline-flex flex-wrap">
 		<li class="nav-item">
-			<a class="nav-link{% if alpha %} active{% endif %}" href="{{ '/tag/by-letter/' | relative_url }}"{% if alpha and include.dir != 'desc' %} aria-current="page"{% endif %}>{{ loc.tags_sort_alpha }}</a>
+			<a class="nav-link{% if alpha %} active{% endif %}" href="{{ '/tag/by-letter/' | i18n_url: page.lang | relative_url }}"{% if alpha and include.dir != 'desc' %} aria-current="page"{% endif %}>{{ loc.tags_sort_alpha }}</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link{% unless alpha %} active{% endunless %}" href="{{ '/tag/by-n-posts/' | relative_url }}"{% unless alpha %} aria-current="page"{% endunless %}>{{ loc.tags_sort_count }}</a>
+			<a class="nav-link{% unless alpha %} active{% endunless %}" href="{{ '/tag/by-n-posts/' | i18n_url: page.lang | relative_url }}"{% unless alpha %} aria-current="page"{% endunless %}>{{ loc.tags_sort_count }}</a>
 		</li>
 	</ul>
 	{%- if alpha %}
 	<ul class="nav nav-pills d-inline-flex tag-sort-dir">
 		<li class="nav-item">
-			<a class="nav-link{% if include.dir != 'desc' %} active{% endif %}" href="{{ '/tag/by-letter/' | relative_url }}" aria-label="{{ loc.tags_sort_asc }}"{% if include.dir != 'desc' %} aria-current="page"{% endif %}>A&ndash;Z</a>
+			<a class="nav-link{% if include.dir != 'desc' %} active{% endif %}" href="{{ '/tag/by-letter/' | i18n_url: page.lang | relative_url }}" aria-label="{{ loc.tags_sort_asc }}"{% if include.dir != 'desc' %} aria-current="page"{% endif %}>A&ndash;Z</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link{% if include.dir == 'desc' %} active{% endif %}" href="{{ '/tag/by-letter/desc/' | relative_url }}" aria-label="{{ loc.tags_sort_desc }}"{% if include.dir == 'desc' %} aria-current="page"{% endif %}>Z&ndash;A</a>
+			<a class="nav-link{% if include.dir == 'desc' %} active{% endif %}" href="{{ '/tag/by-letter/desc/' | i18n_url: page.lang | relative_url }}" aria-label="{{ loc.tags_sort_desc }}"{% if include.dir == 'desc' %} aria-current="page"{% endif %}>Z&ndash;A</a>
 		</li>
 	</ul>
 	{%- endif %}
 </nav>
 {%- if alpha -%}
-{%- if include.dir == 'desc' -%}{%- assign tags = site.data.tag_index | reverse -%}{%- else -%}{%- assign tags = site.data.tag_index -%}{%- endif -%}
+{%- if include.dir == 'desc' -%}{%- assign tags = site.data.tag_index[page.lang] | reverse -%}{%- else -%}{%- assign tags = site.data.tag_index[page.lang] -%}{%- endif -%}
 <ul class="tag-columns">
 {%- else -%}
-{%- assign tags = site.data.tag_ranking -%}
+{%- assign tags = site.data.tag_ranking[page.lang] -%}
 <ol class="tag-columns tag-ranking">
 {%- endif -%}
 	{%- for tag in tags -%}

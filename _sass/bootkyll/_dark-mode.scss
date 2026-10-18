@@ -224,6 +224,31 @@
 	.series-chain,
 	.related-posts { border-top-color: $dark-border; }
 
+	.post-languages-label,
+	.lang-badge { color: $dark-text-muted; }
+
+	.post-language {
+		border-color: $dark-primary;
+		color: $dark-primary;
+
+		&:hover,
+		&:focus {
+			background-color: $dark-primary;
+			color: $dark-bg;
+		}
+
+		&:focus-visible { outline-color: $dark-text; }
+
+		&.current {
+			border-color: $dark-border;
+			background-color: $dark-bg-elevated;
+			color: $dark-text;
+
+			&:hover,
+			&:focus { background-color: $dark-border; color: $dark-text; }
+		}
+	}
+
 	.tag-columns {
 		column-rule-color: $dark-border;
 

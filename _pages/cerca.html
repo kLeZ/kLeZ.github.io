@@ -4,11 +4,12 @@ layout: page
 title: Cerca
 permalink: /cerca/
 search: true
+localize: true
+title_en: Search
 ---
-{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
-{%- include lang-prefix.html -%}
+{%- assign loc = site.data.locales[page.lang] | default: site.data.locales[site.default_lang] -%}
 <section id="search" class="search-page">
-	<form class="search-form my-4" role="search" action="{{ '/cerca/' | prepend: lang_prefix | relative_url }}" method="get">
+	<form class="search-form my-4" role="search" action="{{ page.url | relative_url }}" method="get">
 		<div class="form-row align-items-end">
 			<div class="col-md-7 mb-2">
 				<label for="search-q">{{ loc.search_label }}</label>
@@ -18,7 +19,7 @@ search: true
 				<label for="search-tag">{{ loc.search_tag_label }}</label>
 				<select class="form-control" id="search-tag" name="tag">
 					<option value="">{{ loc.all_tags }}</option>
-					{%- for tag in site.data.tag_index -%}
+					{%- for tag in site.data.tag_index[page.lang] -%}
 					<option value="{{ tag.slug }}">{{ tag.name }} ({{ tag.count }})</option>
 					{%- endfor -%}
 				</select>
@@ -29,11 +30,11 @@ search: true
 		</div>
 	</form>
 	<noscript>
-		<p>{{ loc.search_noscript }} <a href="{{ '/tag/by-letter/' | relative_url }}">{{ loc.tags_title }}</a></p>
+		<p>{{ loc.search_noscript }} <a href="{{ '/tag/by-letter/' | i18n_url: page.lang | relative_url }}">{{ loc.tags_title }}</a></p>
 	</noscript>
 	<div id="search-results" aria-live="polite"
-		data-index="{{ '/search.json' | prepend: lang_prefix | relative_url }}"
-		data-tag-base="{{ '/tag/' | prepend: lang_prefix | relative_url }}"
+		data-index="{{ '/search.json' | i18n_url: page.lang | relative_url }}"
+		data-tag-base="{{ '/tag/' | i18n_url: page.lang | relative_url }}"
 		data-loading="{{ loc.search_loading }}"
 		data-error="{{ loc.search_error }}"
 		data-empty="{{ loc.search_empty }}"

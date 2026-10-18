@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 	<div class="container">
-		<a class="navbar-brand" href="/">{{ site.data.author.brand }}</a>
+		<a class="navbar-brand" href="{{ '/' | i18n_url: page.lang | relative_url }}">{{ site.data.author.brand }}</a>
 		<a class="navbar-brand" href="{{ site.build.server }}" target="_blank">
 			<img src="{{ site.build.status }}" alt="build status badge" />
 		</a>
@@ -17,7 +17,7 @@
 					{%- endif -%}
 					{%- assign url = link.url -%}
 					{%- if link.relative -%}
-						{%- assign url = link.url | relative_url -%}
+						{%- assign url = link.url | i18n_url: page.lang | relative_url -%}
 					{%- endif -%}
 					{%- if link.sublinks -%}
 						<li class="nav-item dropdown {{ class }}">
@@ -37,7 +37,7 @@
 										{%- endif -%}
 										{%- assign suburl = sublink.url -%}
 										{%- if sublink.relative -%}
-											{%- assign suburl = sublink.url | relative_url -%}
+											{%- assign suburl = sublink.url | i18n_url: page.lang | relative_url -%}
 										{%- endif -%}
 										<a class="dropdown-item {{ class }}" href="{{ suburl }}">{{ sublink.title }}</a>
 									{% endif %}
@@ -57,8 +57,7 @@
 					{%- endif -%}
 				{%- endfor -%}
 			</ul>
-			{%- include lang-prefix.html -%}
-			<form class="navbar-search" role="search" action="{{ '/cerca/' | prepend: lang_prefix | relative_url }}" method="get">
+			<form class="navbar-search" role="search" action="{{ '/cerca/' | i18n_url: page.lang | relative_url }}" method="get">
 				<label class="sr-only" for="navbar-search-q">{{ loc.search_title }}</label>
 				<input class="form-control form-control-sm" type="search" id="navbar-search-q" name="q" placeholder="{{ loc.search_placeholder }}" />
 				<button class="navbar-search-submit" type="submit" aria-label="{{ loc.search }}" title="{{ loc.search }}"><i class="fas fa-search" aria-hidden="true"></i></button>

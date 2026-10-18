@@ -5,5 +5,8 @@ layout: default
 	<header>
 		<h1 id="title">{{ page.title | escape }}</h1>
 	</header>
+	{%- unless page.paginator or page.tag or page.series_id or page.localize -%}
+	{%- include post-languages.html -%}
+	{%- endunless -%}
 	{{ content }}
 </article>

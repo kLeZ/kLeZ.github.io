@@ -12,7 +12,8 @@
 
 - Site language: Italian (it). Author also reads/writes English.
 - Canonical URL: {{ site.url }}
-- Atom feed: {{ '/feed.xml' | absolute_url }}
+- Atom feeds: {{ '/feed.xml' | absolute_url }} (all languages), {{ '/it/feed.xml' | absolute_url }} (Italian), {{ '/en/feed.xml' | absolute_url }} (English)
+- English pages live under {{ '/en/' | absolute_url }}; each page links its other-language version.
 - Sitemap: {{ '/sitemap.xml' | absolute_url }}
 
 ## Key pages
@@ -25,7 +26,7 @@
 - [Search index]({{ '/search.json' | absolute_url }}): JSON with the full plain text of every post.
 
 ## Recent posts
-{% assign recent = site.posts | slice: 0, 15 -%}
+{% assign recent = site.data.i18n.posts[site.default_lang] | slice: 0, 15 -%}
 {% for post in recent -%}
 - [{{ post.title | strip }}]({{ post.url | absolute_url }}){% if post.date %} — {{ post.date | date: "%Y-%m-%d" }}{% endif %}
 {% endfor %}

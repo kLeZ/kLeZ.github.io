@@ -3,11 +3,13 @@ lang: it
 layout: page
 title: Serie
 permalink: /serie/
+localize: true
+title_en: Series
 ---
-{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+{%- assign loc = site.data.locales[page.lang] | default: site.data.locales[site.default_lang] -%}
 <p>{{ loc.series_intro }}</p>
 <ul class="series-index list-unstyled">
-	{%- for entry in site.data.series_index -%}
+	{%- for entry in site.data.series_index[page.lang] -%}
 	{%- assign s = entry[1] -%}
 	<li>
 		<article class="card my-4">

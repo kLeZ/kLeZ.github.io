@@ -129,56 +129,60 @@ LINK_TAG_RE = re.compile(r"\{%-?\s*link\s+(\S+?)\s*-?%\}")
 POSTURL_TAG_RE = re.compile(r"\{%-?\s*post_url\s+(\S+?)\s*-?%\}")
 
 
-def _page_permalink(repo_path):
-    p = ROOT / repo_path.lstrip("/")
-    if p.exists():
-        fm, _, _ = split_front_matter(p.read_text(encoding="utf-8"))
-        if fm and fm.get("permalink"):
-            return fm["permalink"]
+def _counterpart(path: str, tgt_lang: str):
+    """Percorso (relativo alla radice) della versione di `path` nella lingua di arrivo,
+    se esiste: _posts/x.md <-> _posts/en/x.md. None se non c'è."""
+    parts = list(Path(path).parts)
+    if len(parts) < 2:
+        return None
+    if tgt_lang == DEFAULT_LANG:
+        if parts[1] != "en":
+            return None
+        del parts[1]
+    else:
+        if parts[1] == tgt_lang:
+            return None
+        parts.insert(1, tgt_lang)
+    cand = Path(*parts)
+    return str(cand) if (ROOT / cand).exists() else None
+
+
+def _post_file(name):
+    for ext in (".md", ".markdown", ".html"):
+        hits = list((ROOT / "_posts").glob(f"{name}{ext}"))
+        if hits:
+            return str(hits[0].relative_to(ROOT))
     return None
 
 
-def _post_permalink(name):
-    matches = []
-    for ext in (".md", ".markdown", ".html"):
-        matches += list((ROOT / "_posts").glob(f"{name}{ext}"))
-    if not matches:
-        return None
-    fm, _, _ = split_front_matter(matches[0].read_text(encoding="utf-8"))
-    if fm and fm.get("permalink"):
-        return fm["permalink"]
-    m = re.match(r"(\d{4})-(\d{2})-(\d{2})-(.+)", name)
-    if not m:
-        return None
-    y, mo, d, title = m.groups()
-    slug = (fm or {}).get("slug") or title
-    return f"/{y}/{mo}/{d}/{slug}/"
-
-
-def resolve_liquid_links(text):
-    """Converte {% link %}/{% post_url %} in URL-permalink site-relative: nel build EN
-    polyglot li prefissa a /en/ e per i target non tradotti scatta il fallback. Evita
-    che i tag risolvano un documento sorgente IT assente dal set di lingua EN."""
+def resolve_liquid_links(text, tgt_lang):
+    """Fa puntare {% link %}/{% post_url %} alla versione nella lingua di arrivo quando
+    esiste (_plugins/i18n.rb non riscrive i link: un link alla pagina italiana resta
+    italiano). Senza traduzione il tag resta com'è e porta all'originale."""
     warnings = []
 
     def link_sub(m):
         path = m.group(1)
-        if path.startswith("/"):  # asset statico (/media/...): {% link %} sicuro, lascialo
+        if path.startswith("/"):  # asset statico (/media/...): uguale in ogni lingua
             return m.group(0)
-        if path.startswith("_posts/"):  # post: permalink basato sulla data
-            pl = _post_permalink(Path(path).stem)
-        else:  # pagina: permalink dal front matter
-            pl = _page_permalink(path)
-        if pl:
-            return pl
-        warnings.append(f"link non risolto: {{% link {path} %}} (target senza permalink)")
+        other = _counterpart(path, tgt_lang)
+        if other:
+            return m.group(0).replace(path, other)
+        if not (ROOT / path).exists():
+            warnings.append(f"link non risolto: {{% link {path} %}} (file inesistente)")
         return m.group(0)
 
     def post_sub(m):
-        pl = _post_permalink(m.group(1))
-        if pl:
-            return pl
-        warnings.append(f"post_url non risolto: {m.group(1)}")
+        name = m.group(1)
+        src = _post_file(name)
+        if not src:
+            warnings.append(f"post_url non risolto: {name}")
+            return m.group(0)
+        other = _counterpart(src, tgt_lang)
+        if other:
+            # post_url accetta la sottocartella: {% post_url en/2026-01-01-x %}
+            sub = "/".join(Path(other).parts[1:-1] + (Path(other).stem,))
+            return m.group(0).replace(name, sub)
         return m.group(0)
 
     text = POSTURL_TAG_RE.sub(post_sub, LINK_TAG_RE.sub(link_sub, text))
@@ -393,10 +397,9 @@ def translate_file(src: Path, model, api_key, force, dry_run):
         return
 
     system_prompt = build_prompt(src_lang, tgt_lang)
-    # pre-risolvi i tag {% link %}/{% post_url %} NELLA SORGENTE: così il modello non li
-    # vede e non può corromperli (es. perdere il '%}'); diventano URL che polyglot
-    # prefissa per lingua e che fanno fallback per i target non ancora tradotti.
-    src_for_llm, warns = resolve_liquid_links(src_text)
+    # pre-risolvi i tag {% link %}/{% post_url %} NELLA SORGENTE verso la versione nella
+    # lingua di arrivo, quando esiste (vedi resolve_liquid_links).
+    src_for_llm, warns = resolve_liquid_links(src_text, tgt_lang)
     src_for_llm = collapse_citation_originals(src_for_llm, tgt_lang)
     out_text = call_llm(system_prompt, src_for_llm, model, api_key)
     problems = guards(src_for_llm, out_text)
@@ -417,6 +420,11 @@ def translate_file(src: Path, model, api_key, force, dry_run):
             if isinstance(v, str):
                 fm[k] = normalize_typography(v)
         fm["lang"] = tgt_lang
+        # permalink esplicito (pagine): la traduzione vive sotto /<lingua>/, l'italiano alla
+        # radice. I post non ne hanno: il loro URL inglese viene dai defaults di _config.yml.
+        if isinstance(fm.get("permalink"), str):
+            bare = re.sub(r"^/en(?=/)", "", fm["permalink"])
+            fm["permalink"] = bare if tgt_lang == DEFAULT_LANG else f"/{tgt_lang}{bare}"
         if tgt_lang == "en":
             fm["locale"] = "en"  # generico: niente en_US/en_GB (solo il registro è UK)
         else:

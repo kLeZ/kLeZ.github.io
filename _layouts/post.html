@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+{%- assign loc = site.data.locales[page.lang] | default: site.data.locales[site.default_lang] -%}
 <article itemscope itemtype="http://schema.org/BlogPosting">
 	<header>
 		<h2>{{ page.title | escape }}</h2>
@@ -12,6 +12,7 @@ layout: default
 			{%- endif -%}
 		</small>
 	</header>
+	{%- include post-languages.html -%}
 	{%- include series-nav.html position="top" -%}
 	<section itemprop="articleBody">
 		{{ content }}

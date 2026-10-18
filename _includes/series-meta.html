@@ -2,7 +2,7 @@
 Riga di riepilogo di una serie: numero di articoli, date di inizio/fine e arco
 di tempo, parti pubblicate su quelle previste. Parametri: series.
 {%- endcomment -%}
-{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+{%- assign loc = site.data.locales[page.lang] | default: site.data.locales[site.default_lang] -%}
 {%- assign s = include.series -%}
 {%- if s.count == 1 -%}{%- assign count_label = loc.posts_count_one -%}{%- else -%}{%- assign count_label = loc.posts_count_other | replace: '%count%', s.count -%}{%- endif -%}
 {%- assign first_s = s.first_date | date: '%s' | plus: 0 -%}

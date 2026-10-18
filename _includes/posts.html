@@ -1,19 +1,26 @@
-{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+{%- assign loc = site.data.locales[page.lang] | default: site.data.locales[site.default_lang] -%}
 {%- if include.posts.size > 0 -%}
 <div class="row">
 	<div class="col-xl-10 col-lg-12 mx-auto">
 		{%- for post in include.posts -%}
+		{%- comment -%} Post scritto in un'altra lingua (nessuna traduzione in quella della pagina) {%- endcomment -%}
+		{%- assign foreign = false -%}{%- if post.lang != page.lang -%}{%- assign foreign = true -%}{%- endif -%}
 		<article class="card my-5 mx-0">
 			<section class="card-body">
-				<a href="{{ post.url | relative_url }}" class="card-link">
+				<a href="{{ post.url | relative_url }}" class="card-link"{% if foreign %} lang="{{ post.lang }}" hreflang="{{ post.lang }}"{% endif %}>
 					<h2 class="card-title">{{ post.title | escape }}</h2>
 				</a>
 				<cite class="card-subtitle mb-2 text-muted">
 					<i class="fa fa-calendar-alt"></i>
 					<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | local_date }}</time>
 				</cite>
+				{%- if foreign -%}
+				{%- include lang-badge.html lang=post.lang -%}
+				{%- endif -%}
 				{%- if site.show_excerpts -%}
+				{%- if foreign %}<div lang="{{ post.lang }}">{% endif -%}
 				{{ post.excerpt | strip | replace: '<p>', '<p class="card-text">' }}
+				{%- if foreign %}</div>{% endif -%}
 				{%- endif -%}
 				{%- if post.content contains "<!--more-->" -%}
 				<div class="row justify-content-end text-right">

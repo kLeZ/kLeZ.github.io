@@ -76,3 +76,15 @@ tags_sort_alpha: "Alfabetico"
 tags_sort_count: "Per numero di articoli"
 tags_sort_asc: "Dalla A alla Z"
 tags_sort_desc: "Dalla Z alla A"
+# Lingue (_plugins/i18n.rb)
+available_in: "Questo articolo è disponibile in:"
+current_version: "questa pagina"
+written_in:
+  it: "In italiano"
+  en: "In inglese"
+redirect_title: "Pagina spostata"
+redirect_text: "Questa pagina si trova ora qui:"
+feed_all: "tutti gli articoli, in tutte le lingue"
+feed_lang:
+  it: "articoli in italiano"
+  en: "articoli in inglese"

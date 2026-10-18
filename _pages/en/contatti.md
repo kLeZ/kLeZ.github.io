@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Contact
-permalink: /contatti/
+permalink: /en/contatti/
 lang: en
 locale: en
 source_sha: 0933fab5cb22ea48
