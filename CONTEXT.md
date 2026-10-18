@@ -79,7 +79,9 @@ Implications:
   under `_plugins/` and MUST be initialized before building:
   - `_plugins/premonition` (https://github.com/kLeZ/premonition.git)
   - `_plugins/SgEExt` (https://github.com/HorlogeSkynet/SgEExt.git)
-- **Node.js** is used by some build steps; **Python 3** is used by the emoji
+- **Node.js** is used by some build steps; **Python 3** is used by the
+  translator (`_scripts/translate`: Ollama, any local OpenAI-compatible server or
+  OpenRouter; see AUTHORING.md) and by the emoji
   extractor (`_scripts/emojis` → `SgEExt/sgeext.py`).
 
 ### Known gotchas

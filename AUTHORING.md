@@ -432,24 +432,58 @@ round-trip corruption. Until a translation exists, the page lives in its languag
 
 ### Running the translator
 
-```bash
-pip install requests pyyaml
-export OPENROUTER_API_KEY="sk-or-..."          # free account on openrouter.ai
-# optional: default is "openrouter/free" (auto-router, never 404s on a dead slug).
-# For higher quality, pick a specific free model — verify it on openrouter.ai/models
-# (Free filter), e.g. deepseek/deepseek-r1:free or meta-llama/llama-4-maverick:free.
-export TRANSLATE_MODEL="deepseek/deepseek-r1:free"
+Three backends, picked with `TRANSLATE_BACKEND`:
 
+| Backend | Where it runs | Cost | Default model |
+| ------- | ------------- | ---- | ------------- |
+| `ollama` | your machine (Ollama) | free, no limits | `qwen2.5:7b` |
+| `openai` | your machine, any server with the OpenAI chat API (LM Studio, llama.cpp `llama-server`, Janas, vLLM) | free, no limits | whatever the server loads |
+| `openrouter` (default) | OpenRouter's free models | free, daily request limits | `openrouter/free` |
+
+```bash
+pip install requests pyyaml        # or the distribution packages (python3-requests, python3-PyYAML)
+
+# Local, with Ollama (recommended for translating everything)
+ollama pull qwen2.5:7b
+export TRANSLATE_BACKEND=ollama
+# export TRANSLATE_MODEL=gemma3:12b   # better prose, slower: does not fit a 6 GB GPU and spills to RAM
+./_scripts/translate --pending --dry-run   # list the Italian posts still to translate
+./_scripts/translate --pending --limit 5   # the 5 most recent
+./_scripts/translate --pending             # all of them; safe to stop and restart
+
+# Local, another OpenAI-compatible server
+export TRANSLATE_BACKEND=openai
+export TRANSLATE_API_URL=http://localhost:8080/v1/chat/completions
+
+# Hosted, OpenRouter free models
+export OPENROUTER_API_KEY="sk-or-..."          # free account on openrouter.ai
 ./_scripts/translate _pages/about.md _pages/privacy.md
-./_scripts/translate --dry-run _pages/cv.md    # show what it would do, no API call
 ./_scripts/translate --force _pages/about.md   # re-translate even if unchanged
 ```
 
+- **Pieces.** Small local models truncate or summarise long inputs, so with `ollama`
+  and `openai` each file is translated in pieces: the front matter separately (only
+  `title`, `subtitle`, `description`, `summary`, `excerpt` go to the model), then the
+  body in pieces of about 6000 characters, split between paragraphs and preferably
+  at headings, never inside a code block. `--chunk-chars N` changes the size; `0`
+  sends the whole file (the default with `openrouter`).
+- **Context window.** Ollama keeps a small context by default and truncates without
+  saying so; the script asks for `num_ctx` 8192 (`TRANSLATE_NUM_CTX`), which fits a
+  7B model in 6 GB of VRAM. A response cut short raises an error instead of being
+  written. With `openai` the context is set on the server.
+- **`--pending`** goes through the Italian posts in `_posts/`, newest first, and
+  translates the ones without an up-to-date translation. A failure skips to the
+  next post; a summary at the end lists translated, to-review and failed files.
+  Run it again to retry: finished posts are skipped (see "Idempotency").
+- **Running it from the dev container**: Python, `requests` and PyYAML are in the
+  image, but Ollama on the host is not reachable from the container by default.
+  Run the script on the host.
 - The prompt and glossary live in `_scripts/i18n/`. Add technical terms to
   `glossary.yml` to keep them consistent (or untranslated) across all content.
 - **Guards**: after translating, the script checks that headings, links, code
-  blocks and `$$` math match the source. On failure it retries once, then writes
-  the file with `translation_review: true` so you can spot it.
+  blocks, `$$` math and Liquid tags match the source, piece by piece. A piece that
+  fails is retried once; if it still fails the file is written with
+  `translation_review: true` so you can spot it.
 - **Idempotency**: the English file stores a `source_sha`. Re-running skips files
   whose Italian source hasn't changed, so your manual fixes are preserved. It also
   skips English files that lack a `source_sha` (assumed hand-edited).

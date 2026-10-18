@@ -1,22 +1,36 @@
 #!/usr/bin/env python3
 """
-Traduce i contenuti del sito da italiano a inglese usando un LLM hosted (OpenRouter).
+Traduce i contenuti del sito tra italiano e inglese con un LLM: locale via Ollama (gratis,
+nessun limite) oppure hosted via OpenRouter (modelli gratuiti, con limiti giornalieri).
 
 Filosofia: lo script è sottile, il valore sta nel prompt (_scripts/i18n/prompt.md) e nel
 glossario (_scripts/i18n/glossary.yml). La traduzione gira a "commit-time": l'output sono
 file statici nel repo, niente chiamate di rete a runtime nel sito.
 
 Prerequisiti:
-    pip install requests pyyaml
+    pip install requests pyyaml          # oppure i pacchetti della distribuzione
+    # Ollama (locale):
+    export TRANSLATE_BACKEND=ollama
+    export TRANSLATE_MODEL=qwen2.5:7b    # default per Ollama; `ollama pull` prima
+    # altro server locale con API in stile OpenAI (LM Studio, llama.cpp, Janas, ...):
+    export TRANSLATE_BACKEND=openai
+    export TRANSLATE_API_URL=http://localhost:8080/v1/chat/completions
+    # OpenRouter (hosted):
     export OPENROUTER_API_KEY="sk-or-..."        # account gratuito su openrouter.ai
     # opzionale: default 'openrouter/free' (router auto). Per più qualità imposta uno slug
-    # specifico verificato su https://openrouter.ai/models (filtro Free), es.:
-    export TRANSLATE_MODEL="deepseek/deepseek-r1:free"
+    # specifico verificato su https://openrouter.ai/models (filtro Free).
 
 Uso:
     _scripts/translate _pages/about.md _pages/privacy.md
     _scripts/translate --force _pages/cv.md
     _scripts/translate --dry-run _pages/contatti.md
+    _scripts/translate --pending              # tutti i post italiani non ancora tradotti
+    _scripts/translate --pending --limit 5    # solo i 5 più recenti
+
+Pezzi: con i backend locali (ollama, openai) il file viene tradotto a pezzi (front matter a parte, corpo diviso tra
+blocchi, mai dentro codice o citazioni) perché i modelli locali piccoli troncano i testi
+lunghi. Con OpenRouter il file va intero, salvo --chunk-chars. Le guardie di struttura
+girano su ogni pezzo, con un nuovo tentativo per il pezzo che fallisce.
 
 Direzione: dipende dal `lang` del file sorgente. Convenzione: root = italiani, en/ = inglesi.
     it (root)        -> en  : _posts/x.md           -> _posts/en/x.md
@@ -35,6 +49,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 try:
@@ -55,7 +70,22 @@ LANG_NAME_TGT = {"it": "Italian", "en": "British English"}
 # quando un singolo slug :free sparisce. Override con TRANSLATE_MODEL / --model.
 # Per più qualità imposta uno slug specifico (verifica su https://openrouter.ai/models,
 # filtro "Free"), es. deepseek/deepseek-r1:free o meta-llama/llama-4-maverick:free.
-DEFAULT_MODEL = os.environ.get("TRANSLATE_MODEL", "openrouter/free")
+BACKEND = os.environ.get("TRANSLATE_BACKEND", "openrouter")
+OLLAMA_URL = os.environ.get("OLLAMA_HOST", "http://localhost:11434").rstrip("/")
+if not OLLAMA_URL.startswith("http"):
+    OLLAMA_URL = "http://" + OLLAMA_URL  # OLLAMA_HOST può essere solo host:porta
+# Ollama tiene di default una finestra di contesto piccola e tronca in silenzio: la
+# fissiamo. 8192 token stanno insieme a un modello 7B quantizzato in 6 GB di VRAM.
+OLLAMA_NUM_CTX = int(os.environ.get("TRANSLATE_NUM_CTX", "8192"))
+# "openai": qualsiasi server locale con l'API chat/completions di OpenAI (LM Studio,
+# llama.cpp server, Janas, vLLM, ...). Il modello lo decide spesso il server stesso.
+OPENAI_URL = os.environ.get("TRANSLATE_API_URL", "http://localhost:8080/v1/chat/completions")
+DEFAULT_MODELS = {"openrouter": "openrouter/free", "ollama": "qwen2.5:7b", "openai": "local"}
+DEFAULT_MODEL = os.environ.get("TRANSLATE_MODEL") or DEFAULT_MODELS.get(BACKEND, "openrouter/free")
+# Dimensione massima di un pezzo (caratteri). ~6000 caratteri sono ~1500-2000 token di
+# ingresso e altrettanti di uscita: dentro num_ctx con il prompt di sistema.
+DEFAULT_CHUNK_CHARS = {"ollama": 6000, "openai": 6000}.get(BACKEND, 0)
+FM_TRANSLATABLE = ("title", "subtitle", "description", "summary", "excerpt")
 
 FM_RE = re.compile(r"^---\n(.*?)\n---\n?(.*)$", re.DOTALL)
 SHA_COMMENT_RE = re.compile(r"<!--\s*source_sha:\s*([0-9a-f]+)\s*-->")
@@ -289,7 +319,90 @@ def build_prompt(src_lang, tgt_lang):
             .replace("{{GLOSSARY}}", "\n".join(lines) if lines else "(none)"))
 
 
+class TranslateError(Exception):
+    """Errore del backend: interrompe il file corrente, non l'intero giro --pending."""
+
+
 def call_llm(system_prompt, file_text, model, api_key):
+    if BACKEND == "ollama":
+        content = _call_ollama(system_prompt, file_text, model)
+    elif BACKEND == "openai":
+        content = _call_openai_compatible(system_prompt, file_text, model)
+    else:
+        content = _call_openrouter(system_prompt, file_text, model, api_key)
+    # modelli "ragionanti" (deepseek-r1, qwen3, ...) possono anteporre il ragionamento
+    content = re.sub(r"^\s*<think>.*?</think>\s*", "", content, flags=re.DOTALL)
+    # rimuove la cornice ```...``` che il modello a volte mette attorno all'output, solo se
+    # la sorgente non comincia con un blocco di codice: altrimenti si perderebbe la riga
+    # di chiusura di un blocco vero in fondo al testo
+    if content.startswith("```") and not file_text.lstrip().startswith("```"):
+        content = re.sub(r"^```[a-z]*\n", "", content)
+        content = re.sub(r"\n```\s*$", "", content)
+    return content
+
+
+def _call_ollama(system_prompt, text, model):
+    try:
+        resp = requests.post(
+            f"{OLLAMA_URL}/api/chat",
+            json={
+                "model": model,
+                "stream": False,
+                "keep_alive": "30m",  # il modello resta caricato tra un pezzo e l'altro
+                "options": {"temperature": 0.2, "num_ctx": OLLAMA_NUM_CTX},
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": text},
+                ],
+            },
+            timeout=900,
+        )
+    except requests.ConnectionError:
+        raise TranslateError(f"Ollama non raggiungibile su {OLLAMA_URL}: è avviato? (ollama serve)")
+    if not resp.ok:
+        try:
+            detail = resp.json().get("error") or resp.text
+        except ValueError:
+            detail = resp.text
+        hint = f"\nScarica il modello con: ollama pull {model}" if resp.status_code == 404 else ""
+        raise TranslateError(f"Errore Ollama {resp.status_code}: {detail}{hint}")
+    data = resp.json()
+    if data.get("done_reason") == "length":
+        raise TranslateError("risposta troncata (num_ctx troppo piccolo): alza TRANSLATE_NUM_CTX "
+                             "o abbassa --chunk-chars")
+    return data["message"]["content"].strip()
+
+
+def _call_openai_compatible(system_prompt, text, model):
+    headers = {"Content-Type": "application/json"}
+    if os.environ.get("TRANSLATE_API_KEY"):
+        headers["Authorization"] = f"Bearer {os.environ['TRANSLATE_API_KEY']}"
+    try:
+        resp = requests.post(
+            OPENAI_URL,
+            headers=headers,
+            json={
+                "model": model,
+                "temperature": 0.2,
+                "stream": False,
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": text},
+                ],
+            },
+            timeout=900,
+        )
+    except requests.ConnectionError:
+        raise TranslateError(f"server non raggiungibile su {OPENAI_URL} (TRANSLATE_API_URL)")
+    if not resp.ok:
+        raise TranslateError(f"Errore {resp.status_code} da {OPENAI_URL}: {resp.text[:500]}")
+    choice = resp.json()["choices"][0]
+    if choice.get("finish_reason") == "length":
+        raise TranslateError("risposta troncata: aumenta il contesto del server o abbassa --chunk-chars")
+    return choice["message"]["content"].strip()
+
+
+def _call_openrouter(system_prompt, file_text, model, api_key):
     resp = requests.post(
         API_URL,
         headers={
@@ -323,12 +436,60 @@ def call_llm(system_prompt, file_text, model, api_key):
             hint = "\nControlla OPENROUTER_API_KEY."
         elif resp.status_code == 429:
             hint = "\nRate limit del tier free raggiunto: riprova più tardi o cambia modello."
-        sys.exit(f"Errore OpenRouter {resp.status_code}: {detail}{hint}")
-    content = resp.json()["choices"][0]["message"]["content"].strip()
-    # rimuove eventuali code fence che il modello potrebbe aver aggiunto attorno all'output
-    content = re.sub(r"^```[a-z]*\n", "", content)
-    content = re.sub(r"\n```$", "", content)
-    return content
+        raise TranslateError(f"Errore OpenRouter {resp.status_code}: {detail}{hint}")
+    return resp.json()["choices"][0]["message"]["content"].strip()
+
+
+def split_blocks(body):
+    """Divide il corpo in blocchi separati da righe vuote, senza mai tagliare dentro un
+    blocco di codice: concatenati restituiscono esattamente il testo originale."""
+    blocks, cur, in_fence = [], [], False
+    for line in body.splitlines(keepends=True):
+        if line.lstrip().startswith("```"):
+            in_fence = not in_fence
+        cur.append(line)
+        if not in_fence and line.strip() == "":
+            blocks.append("".join(cur))
+            cur = []
+    if cur:
+        blocks.append("".join(cur))
+    return blocks
+
+
+def chunk_body(body, max_chars):
+    """Raggruppa i blocchi in pezzi di al più max_chars (un blocco più lungo resta intero).
+    Oltre metà della dimensione, un titolo (#) apre un pezzo nuovo: i pezzi seguono le
+    sezioni quando possibile."""
+    if max_chars <= 0 or len(body) <= max_chars:
+        return [body]
+    chunks, cur = [], ""
+    for block in split_blocks(body):
+        starts_section = block.lstrip().startswith("#")
+        if cur and (len(cur) + len(block) > max_chars or (starts_section and len(cur) > max_chars // 2)):
+            chunks.append(cur)
+            cur = ""
+        cur += block
+    if cur:
+        chunks.append(cur)
+    return chunks
+
+
+def translate_text(system_prompt, text, model, api_key, label):
+    """Traduce un pezzo con un nuovo tentativo se le guardie falliscono. Conserva le
+    righe vuote iniziali e finali del pezzo, che il modello tende a normalizzare.
+    Ritorna (testo, problemi residui)."""
+    if not text.strip():
+        return text, []
+    lead = text[: len(text) - len(text.lstrip("\n"))]
+    trail = text[len(text.rstrip("\n")):]
+    out, problems = None, []
+    for attempt in (1, 2):
+        out = call_llm(system_prompt, text.strip("\n"), model, api_key)
+        problems = guards(text, out)
+        if not problems:
+            break
+        print(f"    {label}: guardie fallite (tentativo {attempt}) -> " + "; ".join(problems))
+    return lead + out.strip("\n") + trail, problems
 
 
 def guards(src_text, out_text):
@@ -359,7 +520,8 @@ def guards(src_text, out_text):
     return problems
 
 
-def translate_file(src: Path, model, api_key, force, dry_run):
+def translate_file(src: Path, model, api_key, force, dry_run, chunk_chars=0):
+    """Ritorna 'done', 'review' (tradotto, guardie KO), 'skipped' o 'dry-run'."""
     src_text = src.read_text(encoding="utf-8")
     src_fm, _, _ = split_front_matter(src_text)
     has_fm = src_fm is not None
@@ -379,7 +541,7 @@ def translate_file(src: Path, model, api_key, force, dry_run):
             src = new_src
     else:
         print(f"  ! {src}: lang '{src_lang}' non supportato, salto")
-        return
+        return "skipped"
 
     dst = target_path(src) if tgt_lang == "en" else to_it_path(src)
 
@@ -387,26 +549,54 @@ def translate_file(src: Path, model, api_key, force, dry_run):
         ex_sha, manual = existing_sha(dst)
         if manual:
             print(f"  ! {dst}: file senza source_sha (originale o editato a mano), salto")
-            return
+            return "skipped"
         if ex_sha == sha:
             print(f"  = {src.name}: invariato, salto (usa --force per ritradurre)")
-            return
+            return "skipped"
 
-    print(f"  > {src} -> {dst}  [{model}]  ({src_lang}->{tgt_lang})")
+    print(f"  > {src.relative_to(ROOT)} -> {dst.relative_to(ROOT)}  [{BACKEND}:{model}]  ({src_lang}->{tgt_lang})")
     if dry_run:
-        return
+        return "dry-run"
 
     system_prompt = build_prompt(src_lang, tgt_lang)
     # pre-risolvi i tag {% link %}/{% post_url %} NELLA SORGENTE verso la versione nella
     # lingua di arrivo, quando esiste (vedi resolve_liquid_links).
     src_for_llm, warns = resolve_liquid_links(src_text, tgt_lang)
     src_for_llm = collapse_citation_originals(src_for_llm, tgt_lang)
-    out_text = call_llm(system_prompt, src_for_llm, model, api_key)
-    problems = guards(src_for_llm, out_text)
-    if problems:
-        print("    retry: guardie fallite -> " + "; ".join(problems))
-        out_text = call_llm(system_prompt, src_for_llm, model, api_key)
-        problems = guards(src_for_llm, out_text)
+
+    if chunk_chars > 0:
+        # front matter a parte (solo le chiavi da tradurre), corpo a pezzi
+        fm_in, _, body_in = split_front_matter(src_for_llm)
+        problems = []
+        out_fm = None
+        if fm_in is not None:
+            out_fm = dict(fm_in)
+            sub = {k: fm_in[k] for k in FM_TRANSLATABLE if isinstance(fm_in.get(k), str)}
+            if sub:
+                fm_text = "---\n" + yaml.safe_dump(sub, allow_unicode=True, sort_keys=False) + "---\n"
+                fm_out_text, p = translate_text(system_prompt, fm_text, model, api_key, "front matter")
+                problems += p
+                tr, _, _ = split_front_matter(fm_out_text.strip() + "\n")
+                for k in sub:
+                    if isinstance((tr or {}).get(k), str):
+                        out_fm[k] = tr[k]
+                    else:
+                        problems.append(f"front matter: '{k}' non tradotto")
+        parts = chunk_body(body_in, chunk_chars)
+        out_parts = []
+        for i, part in enumerate(parts, 1):
+            label = f"pezzo {i}/{len(parts)}"
+            print(f"    {label} ({len(part)} caratteri)")
+            out_part, p = translate_text(system_prompt, part, model, api_key, label)
+            problems += [f"{label}: {x}" for x in p]
+            out_parts.append(out_part)
+        body_out = "".join(out_parts)
+        if out_fm is not None:
+            out_text = "---\n" + yaml.safe_dump(out_fm, allow_unicode=True, sort_keys=False) + "---\n" + body_out
+        else:
+            out_text = body_out
+    else:
+        out_text, problems = translate_text(system_prompt, src_for_llm, model, api_key, "file")
 
     if has_fm:
         # forza lang/locale/source_sha nel front matter dell'output
@@ -453,27 +643,52 @@ def translate_file(src: Path, model, api_key, force, dry_run):
 
     dst.parent.mkdir(parents=True, exist_ok=True)
     dst.write_text(rendered, encoding="utf-8")
+    return "review" if problems else "done"
+
+
+def pending_posts():
+    """Post italiani alla radice di _posts/, dal più recente: quelli già tradotti e
+    invariati li salta translate_file."""
+    out = []
+    for f in sorted((ROOT / "_posts").glob("*.md"), reverse=True):
+        fm, _, _ = split_front_matter(f.read_text(encoding="utf-8"))
+        if fm is not None and (fm.get("lang") or DEFAULT_LANG) == DEFAULT_LANG:
+            out.append(f)
+    return out
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Traduce contenuti IT<->EN via LLM (OpenRouter); "
-                                 "la direzione dipende dal 'lang' del file sorgente.")
-    ap.add_argument("files", nargs="+", help="file sorgente .md da tradurre")
-    ap.add_argument("--model", default=DEFAULT_MODEL, help=f"slug modello OpenRouter (default: {DEFAULT_MODEL})")
+    ap = argparse.ArgumentParser(description="Traduce contenuti IT<->EN via LLM (Ollama, server locale "
+                                 "OpenAI-compatibile o OpenRouter, "
+                                 "variabile TRANSLATE_BACKEND); la direzione dipende dal 'lang' "
+                                 "del file sorgente.")
+    ap.add_argument("files", nargs="*", help="file sorgente .md da tradurre")
+    ap.add_argument("--pending", action="store_true",
+                    help="tutti i post italiani senza traduzione aggiornata, dal più recente")
+    ap.add_argument("--limit", type=int, default=0, help="con --pending: al più N file tradotti")
+    ap.add_argument("--model", default=DEFAULT_MODEL, help=f"modello (default: {DEFAULT_MODEL})")
+    ap.add_argument("--chunk-chars", type=int, default=DEFAULT_CHUNK_CHARS,
+                    help="dimensione massima dei pezzi in caratteri; 0 = file intero "
+                         f"(default per {BACKEND}: {DEFAULT_CHUNK_CHARS})")
     ap.add_argument("--force", action="store_true", help="ritraduce anche se invariato")
     ap.add_argument("--dry-run", action="store_true", help="mostra cosa farebbe senza chiamare l'LLM")
     args = ap.parse_args()
+    if not args.files and not args.pending:
+        ap.error("indica dei file oppure --pending")
+    if BACKEND not in DEFAULT_MODELS:
+        sys.exit(f"TRANSLATE_BACKEND '{BACKEND}' non supportato: usa ollama, openai oppure openrouter.")
 
     api_key = os.environ.get("OPENROUTER_API_KEY")
-    if not api_key and not args.dry_run:
-        sys.exit("Imposta OPENROUTER_API_KEY (account gratuito su https://openrouter.ai).")
+    if BACKEND == "openrouter" and not api_key and not args.dry_run:
+        sys.exit("Imposta OPENROUTER_API_KEY (account gratuito su https://openrouter.ai) "
+                 "oppure usa TRANSLATE_BACKEND=ollama.")
 
     # espande la lista con i partial referenziati (include_relative, right_content, toc)
     worklist = []
-    for f in args.files:
-        src = Path(f).resolve()
+    sources = [Path(f).resolve() for f in args.files] + (pending_posts() if args.pending else [])
+    for src in sources:
         if not src.exists():
-            print(f"  ! {f}: non trovato, salto")
+            print(f"  ! {src}: non trovato, salto")
             continue
         if src not in worklist:
             worklist.append(src)
@@ -483,9 +698,35 @@ def main():
                 print(f"  + accodo partial referenziato: {ref.relative_to(ROOT)}")
                 worklist.append(ref)
 
-    print(f"Modello: {args.model}")
+    print(f"Backend: {BACKEND}  modello: {args.model}  pezzi: "
+          + (f"{args.chunk_chars} caratteri" if args.chunk_chars > 0 else "file intero"))
+    results = {"done": [], "review": [], "skipped": [], "failed": [], "dry-run": []}
+    translated = 0
     for src in worklist:
-        translate_file(src, args.model, api_key, args.force, args.dry_run)
+        if args.limit and translated >= args.limit:
+            break
+        start = time.monotonic()
+        try:
+            outcome = translate_file(src, args.model, api_key, args.force, args.dry_run, args.chunk_chars)
+        except TranslateError as e:
+            print(f"    ✗ {e}")
+            outcome = "failed"
+            if not args.pending:
+                results["failed"].append(src)
+                break
+        results[outcome].append(src)
+        if outcome in ("done", "review", "dry-run"):
+            translated += 1
+        if outcome in ("done", "review"):
+            print(f"    ok in {time.monotonic() - start:.0f} s")
+
+    print("\nRiepilogo: " + ", ".join(f"{k} {len(v)}" for k, v in results.items() if v))
+    for f in results["review"]:
+        print(f"  da rivedere (translation_review): {f.relative_to(ROOT)}")
+    for f in results["failed"]:
+        print(f"  fallito: {f.relative_to(ROOT)}")
+    if results["failed"]:
+        sys.exit(1)
 
 
 if __name__ == "__main__":

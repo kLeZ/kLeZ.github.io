@@ -125,6 +125,7 @@ All commands assume the environment above (UTF-8 locale + Ruby 3.3.x).
 | New draft            | `bash ./_scripts/draft "My Post Title"`                  |
 | Publish drafts       | `bash ./_scripts/publish`                                |
 | Regenerate emojis    | `bash ./_scripts/emojis`                                 |
+| Translate (local)    | `TRANSLATE_BACKEND=ollama ./_scripts/translate --pending` |
 
 Notes on `_scripts/`:
 - `build` — runs `jekyll doctor`, then builds. In CI (`CI=true`) it writes

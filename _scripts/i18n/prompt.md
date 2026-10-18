@@ -5,7 +5,9 @@ preserve that register and tone; do not flatten it into corporate prose.
 {{REGISTER}}
 
 ## Input
-A single Markdown file. It MAY start with a YAML front matter block delimited by `---`.
+A single Markdown file, or one consecutive part of a longer one (long files are sent in
+parts). It MAY start with a YAML front matter block delimited by `---`. Translate exactly
+what you receive: do not complete, summarise or continue the text.
 
 ## What to translate
 - The Markdown body prose.
@@ -42,6 +44,6 @@ A single Markdown file. It MAY start with a YAML front matter block delimited by
 {{GLOSSARY}}
 
 ## Output
-Return the COMPLETE file (front matter included, if it was present) fully localized to
+Return the COMPLETE input (front matter included, if it was present) fully localized to
 {{TARGET_LANG}}. Output ONLY the file content — no explanations, no surrounding code fences.
 If you are unsure about a term, keep the original source token rather than guessing.
