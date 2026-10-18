@@ -152,6 +152,8 @@ The original renders smaller, in italics and muted, under a thin rule, with a ba
 
 The translation is idiomatic, not literal: with the original right below it, it can be interpretive and should read as natural Italian. No calques. In a technical context use the technical jargon ("everybody went through it", said of shared system code, is "era eseguito da tutti"). Mark stress with italics when the spoken reading would otherwise change the meaning ("il lobbying non c'entra *niente* con le mazzette"). Do not repeat the translation in the paragraph right after the quote.
 
+The `translate` script handles these blocks: when the original is already in the target language (an English quote in a post translated into English), it drops the Italian translation and the IAL before calling the model and keeps only the original; otherwise the prompt tells the model to keep the original and its IAL verbatim.
+
 ### Math (KaTeX)
 
 Inline `$...$` and display `$$...$$` are rendered by `jekyll-katex` at build

@@ -219,6 +219,40 @@ def normalize_typography(text):
     return "\n".join(out)
 
 
+CITATION_ORIGINAL = re.compile(r'^>\s*\{:\s*\.citation-original\s+lang="([a-z-]+)"\s*\}\s*$')
+
+
+def collapse_citation_originals(text, tgt_lang):
+    """Nelle citazioni con il testo originale sotto la traduzione (vedi AUTHORING.md,
+    "Quotes in another language"), se l'originale è già nella lingua di arrivo tiene solo
+    quello: via la traduzione, la riga '>' vuota e l'IAL. Altrimenti lascia tutto."""
+    lines = text.split("\n")
+    i = 0
+    while i < len(lines):
+        m = CITATION_ORIGINAL.match(lines[i])
+        if not m or m.group(1) != tgt_lang:
+            i += 1
+            continue
+        # risali l'originale fino alla riga '>' vuota che lo separa dalla traduzione
+        j = i - 1
+        while j >= 0 and lines[j].strip() not in (">", ""):
+            j -= 1
+        if j < 0 or lines[j].strip() != ">":
+            i += 1
+            continue
+        # risali la traduzione fino all'intestazione del blocco o a un'altra riga vuota
+        k = j - 1
+        while k >= 0 and lines[k].strip() not in (">", "") and not lines[k].startswith("> citation"):
+            k -= 1
+        if k < 0 or not lines[k].startswith("> citation"):
+            i += 1
+            continue
+        del lines[i]
+        del lines[k + 1:j + 1]
+        i = k + 1
+    return "\n".join(lines)
+
+
 def existing_sha(dst: Path):
     """Ritorna (source_sha_salvato | None, manuale?). 'manuale' = file EN senza sha
     (probabilmente scritto/editato a mano) -> da non sovrascrivere."""
@@ -363,6 +397,7 @@ def translate_file(src: Path, model, api_key, force, dry_run):
     # vede e non può corromperli (es. perdere il '%}'); diventano URL che polyglot
     # prefissa per lingua e che fanno fallback per i target non ancora tradotti.
     src_for_llm, warns = resolve_liquid_links(src_text)
+    src_for_llm = collapse_citation_originals(src_for_llm, tgt_lang)
     out_text = call_llm(system_prompt, src_for_llm, model, api_key)
     problems = guards(src_for_llm, out_text)
     if problems:

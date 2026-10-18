@@ -23,6 +23,9 @@ A single Markdown file. It MAY start with a YAML front matter block delimited by
 - Math: inline `$...$` and display `$$...$$` (KaTeX) — keep verbatim.
 - Proper nouns; brand, product, project, and library names.
 - The glossary terms below: render them EXACTLY as instructed.
+- A quote in its original language: inside a `> citation` block, the paragraph followed by a
+  `> {: .citation-original lang="xx"}` line, and that line itself. Keep both verbatim; translate
+  only the paragraph above them.
 
 ## Formatting rules (must hold)
 - Keep the document structure identical: same number and level of headings, same list
