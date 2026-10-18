@@ -84,8 +84,11 @@ Posts in parts share a `series:` id; the id is declared once in
 ```yaml
 social-media-considered-harmful:
   title: "Social media considered harmful. Forse..."
+  title_en: "Social media considered harmful. Maybe..."
   description: >-
     Testo introduttivo in Markdown per la pagina /serie/<id>/.
+  description_en: >-
+    Introduction in Markdown for /en/serie/<id>/.
   parts: 5        # optional: planned parts, while the series is still running
 ```
 
@@ -469,4 +472,5 @@ broken links.
 ### Known limitations
 
 - Series titles and descriptions come from `_data/series.yml`: English pages use
-  `title_en`/`description_en` when set, the Italian text otherwise.
+  `title_en`/`description_en`, falling back to the Italian text when they are
+  missing. Add both when you create a series.

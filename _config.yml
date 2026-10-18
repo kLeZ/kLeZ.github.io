@@ -130,12 +130,18 @@ exclude:
   - blog-vector-icon-27.jpg
   - staticman.yml
   - LICENSE
+  # Documentazione e istruzioni per chi lavora sul repo (persone e agenti)
   - README.md
+  - CLAUDE.md
   - AGENTS.md
   - CONTEXT.md
   - AUTHORING.md
   - SPEC-AUDIT.md
   - ACCESS-FILES.md
+  # Ambiente di sviluppo
   - docker-compose.yml
+  - docker-compose.override.yml
   - Makefile
-  - _pages/include/
+  # Frammenti letti da include_relative, non pagine
+  - _pages/includes/
+  - _pages/en/includes/

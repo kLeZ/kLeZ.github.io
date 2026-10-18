@@ -1,25 +1,39 @@
 # Serie di articoli. La chiave è l'id usato nel front matter dei post (`series: <id>`)
-# e diventa l'URL /serie/<id>/. Campi:
-#   title        titolo della serie (obbligatorio)
-#   description  testo introduttivo in Markdown, mostrato nella pagina della serie
-#   parts        numero di parti previste, se la serie è ancora in corso
+# e diventa l'URL /serie/<id>/ (/en/serie/<id>/ in inglese). Campi:
+#   title           titolo della serie (obbligatorio)
+#   title_en        titolo per le pagine inglesi (se manca, si usa title)
+#   description     testo introduttivo in Markdown, mostrato nella pagina della serie
+#   description_en  descrizione per le pagine inglesi (se manca, si usa description)
+#   parts           numero di parti previste, se la serie è ancora in corso
 # Le parti sono ordinate per data di pubblicazione.
 
 social-media-considered-harmful:
   title: "Social media considered harmful. Forse..."
+  title_en: "Social media considered harmful. Maybe..."
   description: >-
     Cinque puntate, una a settimana, su come i social network sono costruiti per creare
     dipendenza e su cosa sapevano le aziende che li gestiscono.
+  description_en: >-
+    Five instalments, one a week, on how social networks are built to be addictive
+    and on what the companies running them knew.
   parts: 5
 
 viaggio-chomsky-llm:
   title: "Il viaggio: da Chomsky a un'architettura AGI"
+  title_en: "The journey: from Chomsky to an AGI architecture"
   description: >-
     Una conversazione partita dalla critica di Noam Chomsky agli LLM e arrivata, tappa
     dopo tappa, a una proposta di architettura.
+  description_en: >-
+    A conversation that started from Noam Chomsky's critique of LLMs and arrived,
+    stage by stage, at a proposed architecture.
 
 narrativa-per-tutti-dd:
   title: "Narrativa per tutti! - Il D&D"
+  title_en: "Storytelling for everyone! - D&D"
   description: >-
     La storia della campagna di Dungeons & Dragons che i miei giocatori stavano vivendo,
     raccontata a puntate sul vecchio blog.
+  description_en: >-
+    The story of the Dungeons & Dragons campaign my players were living through,
+    told in instalments on the old blog.

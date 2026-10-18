@@ -96,6 +96,12 @@ Implications:
   `jekyll-seo-tag` emit JSON-LD that `jekyll-tidy`'s htmlbeautifier rejects
   (`Unmatched sequence`), breaking the build. The default `og:image` is therefore
   added manually in `_includes/head.html`, not via a seo-tag `image` default.
+- **Repo files are published unless excluded.** Jekyll copies every file that
+  is not a dotfile, an `_underscore` folder or listed under `exclude:` in
+  `_config.yml`. New docs, agent instructions (`CLAUDE.md`, `AGENTS.md`, ...)
+  or tooling files at the root must be added there, or they end up on the site.
+  Fragments read with `include_relative` (`_pages/includes/`,
+  `_pages/en/includes/`) are excluded too: `include_relative` still reads them.
 - **Dotfiles aren't published.** Jekyll skips paths starting with `.`, so
   `/.well-known/` is served only because `.well-known` is listed under
   `include:` in `_config.yml`. See [`ACCESS-FILES.md`](ACCESS-FILES.md).
