@@ -9,12 +9,13 @@ permalink: /serie/
 <ul class="series-index list-unstyled">
 	{%- for entry in site.data.series_index -%}
 	{%- assign s = entry[1] -%}
-	{%- if s.count == 1 -%}{%- assign count_label = loc.posts_count_one -%}{%- else -%}{%- assign count_label = loc.posts_count_other | replace: '%count%', s.count -%}{%- endif -%}
-	<li class="my-4">
-		<article>
-			<h2 class="h4 mb-1"><a href="{{ s.url | relative_url }}">{{ s.title | escape }}</a></h2>
-			<p class="text-muted mb-1">{{ count_label }}{% if s.parts and s.parts > s.count %} &ndash; {{ loc.series_published | replace: '%num%', s.count | replace: '%total%', s.parts }}{% endif %}</p>
-			{%- if s.description -%}{{ s.description | markdownify }}{%- endif -%}
+	<li>
+		<article class="card my-4">
+			<section class="card-body">
+				<h2 class="card-title h4"><a href="{{ s.url | relative_url }}">{{ s.title | escape }}</a></h2>
+				<p class="card-subtitle text-muted mb-2">{% include series-meta.html series=s %}</p>
+				{%- if s.description -%}{{ s.description | markdownify | replace: '<p>', '<p class="card-text">' }}{%- endif -%}
+			</section>
 		</article>
 	</li>
 	{%- endfor -%}

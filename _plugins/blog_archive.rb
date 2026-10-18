@@ -8,7 +8,7 @@
 #   for the tag overview page;
 # - one page per series at `/serie/<id>/`, plus `site.data.series_index`;
 # - `related_by_tag` on every post (latest posts sharing a tag);
-# - Liquid filters `tag_url`, `tag_slug` and `plain_text` (search.json).
+# - Liquid filters `tag_url`, `tag_slug`, `plain_text`, `local_date`, `span_label`.
 #
 # Under jekyll-polyglot every language is built in its own process after the
 # documents have been coordinated, so `site.posts` already holds the posts of
@@ -154,6 +154,8 @@ module Klez
       index = tag_groups(@posts.map { |p| [p, p.data["tags"]] }).map { |url, g| tag_entry(url, g) }
       index.sort_by! { |t| [t["name"].unicode_normalize(:nfd).downcase, t["name"]] }
       @site.data["tag_index"] = index
+      # Same tags, most used first (alphabetical among equals): /tag/classifica/
+      @site.data["tag_ranking"] = index.each_with_index.sort_by { |t, i| [-t["count"], i] }.map(&:first)
 
       # Tags used only by another language version of a post still get a page
       # (outside the index and the sitemap), so the language switcher of every
@@ -162,6 +164,11 @@ module Klez
       known = index.map { |t| t["url"] }
       others = Klez::BlogArchive.all_posts.map { |e| [by_url[e["url"]], e["tags"]] }.select(&:first)
       extra = tag_groups(others).reject { |url, _| known.include?(url) }.map { |url, g| tag_entry(url, g) }
+
+      ranking_url = "#{Klez::BlogArchive.tag_path(@site)}classifica/"
+      if (index + extra).any? { |t| t["url"] == ranking_url }
+        Jekyll.logger.warn "BlogArchive:", "tag page #{ranking_url} collides with the tag ranking page"
+      end
 
       title = @loc["tag_title"] || "Tag: %s"
       (index + extra).each do |tag|
@@ -211,9 +218,12 @@ module Klez
       index = groups.map do |id, posts|
         info = meta[id] || {}
         url = "#{Klez::BlogArchive.series_path(@site)}#{Klez::BlogArchive.slug(id)}/"
+        # gaps[i]: whole days between part i and part i-1 (nil for the first part)
+        gaps = posts.each_cons(2).map { |a, b| ((b.date - a.date) / 86_400).floor }.unshift(nil)
         { "id" => id, "title" => info["title"] || id, "description" => info["description"],
           "parts" => info["parts"], "url" => url, "posts" => posts, "count" => posts.size,
-          "date" => posts.last.date, }
+          "date" => posts.last.date, "first_date" => posts.first.date, "last_date" => posts.last.date,
+          "gaps" => gaps, }
       end
       index.sort_by! { |s| s["date"] }.reverse!
       @site.data["series_index"] = index.each_with_object({}) { |s, h| h[s["id"]] = s }
@@ -255,12 +265,46 @@ module Klez
       Klez::BlogArchive.slug(input)
     end
 
-    # Rendered HTML to plain text for the search index: drops scripts and
-    # styles, decodes entities, collapses whitespace.
-    def plain_text(input)
+    # {{ post.date | local_date }} -> "21 febbraio 2010", month names from
+    # `months` in _data/locales/<lang>.yml (Jekyll's date filter is English only).
+    def local_date(input)
+      date = Jekyll::Utils.parse_date(input.to_s) unless input.respond_to?(:month)
+      date ||= input
+      months = locale["months"]
+      return date.strftime("%-d %b %Y") unless months.is_a?(Array) && months.size == 12
+
+      "#{date.day} #{months[date.month - 1]} #{date.year}"
+    end
+
+    # {{ days | span_label }} -> "8 giorni", "4 mesi", "2 anni"
+    def span_label(days)
+      days = days.to_i
+      n, unit =
+        if days < 60 then [days, "days"]
+        elsif days < 730 then [(days / 30.44).round, "months"]
+        else [(days / 365.25).round, "years"]
+        end
+      key = n == 1 ? "span_#{unit}_one" : "span_#{unit}_other"
+      (locale[key] || "%count% #{unit}").sub("%count%", n.to_s)
+    end
+
+    # Rendered HTML to plain text (search index, series excerpts): drops
+    # scripts and styles, keeps block elements apart, decodes entities,
+    # collapses whitespace. {{ html | plain_text: "no_headings" }} also drops
+    # h1-h6, which read as run-on sentences in a short excerpt.
+    def plain_text(input, mode = nil)
       fragment = Nokogiri::HTML::DocumentFragment.parse(input.to_s)
       fragment.css("script, style").each(&:remove)
+      fragment.css("h1, h2, h3, h4, h5, h6").each(&:remove) if mode == "no_headings"
+      fragment.css("p, li, h1, h2, h3, h4, h5, h6, blockquote, div, br, tr").each { |n| n.after(" ") }
       fragment.text.gsub(%r!\s+!, " ").strip
+    end
+
+    private
+
+    def locale
+      site = @context.registers[:site]
+      site.data.dig("locales", site.active_lang || site.config["lang"]) || {}
     end
   end
 end

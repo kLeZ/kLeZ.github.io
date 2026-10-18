@@ -1,0 +1,21 @@
+{%- comment -%}
+Riga di riepilogo di una serie: numero di articoli, date di inizio/fine e arco
+di tempo, parti pubblicate su quelle previste. Parametri: series.
+{%- endcomment -%}
+{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+{%- assign s = include.series -%}
+{%- if s.count == 1 -%}{%- assign count_label = loc.posts_count_one -%}{%- else -%}{%- assign count_label = loc.posts_count_other | replace: '%count%', s.count -%}{%- endif -%}
+{%- assign first_s = s.first_date | date: '%s' | plus: 0 -%}
+{%- assign last_s = s.last_date | date: '%s' | plus: 0 -%}
+{%- assign span_days = last_s | minus: first_s | divided_by: 86400 -%}
+{%- assign first_day = s.first_date | date: '%Y-%m-%d' -%}
+{%- assign last_day = s.last_date | date: '%Y-%m-%d' -%}
+{{ count_label }} &middot;
+{% if first_day == last_day -%}
+<time datetime="{{ s.first_date | date_to_xmlschema }}">{{ s.first_date | local_date }}</time>{% if s.count > 1 %}, {{ loc.series_same_day }}{% endif %}
+{%- else -%}
+{%- assign range = loc.date_range | split: '%s' -%}
+{{ range[0] }}<time datetime="{{ s.first_date | date_to_xmlschema }}">{{ s.first_date | local_date }}</time>{{ range[1] }}<time datetime="{{ s.last_date | date_to_xmlschema }}">{{ s.last_date | local_date }}</time>{{ range[2] }}
+{%- if span_days > 0 -%}{%- assign span_text = span_days | span_label -%}, {{ loc.series_span | replace: '%span%', span_text }}{%- endif -%}
+{%- endif -%}
+{%- if s.parts and s.parts > s.count %} &middot; {{ loc.series_published | replace: '%num%', s.count | replace: '%total%', s.parts }}{% endif -%}

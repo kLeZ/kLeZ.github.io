@@ -1,0 +1,37 @@
+{%- comment -%}
+Elenco di tutti i tag in colonne. Parametri: order = "alpha" (site.data.tag_index,
+pagina /tag/) | "count" (site.data.tag_ranking, pagina /tag/classifica/).
+Le due pagine sono statiche e si collegano a vicenda.
+{%- endcomment -%}
+{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+<p>{{ loc.tags_intro }}</p>
+<nav class="tag-sort mb-4" aria-label="{{ loc.tags_sort_label }}">
+	<span class="tag-sort-label">{{ loc.tags_sort_label }}:</span>
+	<ul class="nav nav-pills d-inline-flex">
+		<li class="nav-item">
+			<a class="nav-link{% if include.order == 'alpha' %} active{% endif %}" href="{{ '/tag/' | relative_url }}"{% if include.order == 'alpha' %} aria-current="page"{% endif %}>{{ loc.tags_sort_alpha }}</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link{% if include.order == 'count' %} active{% endif %}" href="{{ '/tag/classifica/' | relative_url }}"{% if include.order == 'count' %} aria-current="page"{% endif %}>{{ loc.tags_sort_count }}</a>
+		</li>
+	</ul>
+</nav>
+{%- if include.order == 'count' -%}
+{%- assign tags = site.data.tag_ranking -%}
+<ol class="tag-columns tag-ranking">
+{%- else -%}
+{%- assign tags = site.data.tag_index -%}
+<ul class="tag-columns">
+{%- endif -%}
+	{%- for tag in tags -%}
+	{%- if tag.count == 1 -%}{%- assign count_label = loc.posts_count_one -%}{%- else -%}{%- assign count_label = loc.posts_count_other | replace: '%count%', tag.count -%}{%- endif -%}
+	<li>
+		<a href="{{ tag.url | relative_url }}" rel="tag">{{ tag.name }}</a>
+		<span class="tag-count" aria-hidden="true">{{ tag.count }}</span><span class="sr-only">({{ count_label }})</span>
+	</li>
+	{%- endfor -%}
+{%- if include.order == 'count' -%}
+</ol>
+{%- else -%}
+</ul>
+{%- endif -%}
