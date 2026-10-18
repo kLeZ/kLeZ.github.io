@@ -13,7 +13,7 @@ Gli ultimi articoli che condividono almeno un tag con quello corrente
 				<section class="card-body">
 					<h3 class="card-title h5"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
 					<p class="card-subtitle text-muted mb-0">
-						<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%e %b %Y' | strip }}</time>
+						<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | local_date }}</time>
 					</p>
 				</section>
 				{%- if post.tags.size > 0 -%}

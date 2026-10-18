@@ -114,6 +114,7 @@ module Klez
     priority :high
 
     LIST = "{% include posts.html posts=paginator.posts %}\n{% include pagination.html %}\n"
+    RESERVED_TAG_SLUGS = %w(by-letter by-n-posts).freeze
 
     def generate(site)
       @site = site
@@ -154,7 +155,7 @@ module Klez
       index = tag_groups(@posts.map { |p| [p, p.data["tags"]] }).map { |url, g| tag_entry(url, g) }
       index.sort_by! { |t| [t["name"].unicode_normalize(:nfd).downcase, t["name"]] }
       @site.data["tag_index"] = index
-      # Same tags, most used first (alphabetical among equals): /tag/classifica/
+      # Same tags, most used first (alphabetical among equals): /tag/by-n-posts/
       @site.data["tag_ranking"] = index.each_with_index.sort_by { |t, i| [-t["count"], i] }.map(&:first)
 
       # Tags used only by another language version of a post still get a page
@@ -165,9 +166,9 @@ module Klez
       others = Klez::BlogArchive.all_posts.map { |e| [by_url[e["url"]], e["tags"]] }.select(&:first)
       extra = tag_groups(others).reject { |url, _| known.include?(url) }.map { |url, g| tag_entry(url, g) }
 
-      ranking_url = "#{Klez::BlogArchive.tag_path(@site)}classifica/"
-      if (index + extra).any? { |t| t["url"] == ranking_url }
-        Jekyll.logger.warn "BlogArchive:", "tag page #{ranking_url} collides with the tag ranking page"
+      # Overview pages live next to the tag pages (_pages/tag-*.html)
+      (index + extra).select { |t| RESERVED_TAG_SLUGS.include?(t["slug"]) }.each do |t|
+        Jekyll.logger.warn "BlogArchive:", "tag #{t["name"].inspect} collides with the tag overview #{t["url"]}"
       end
 
       title = @loc["tag_title"] || "Tag: %s"
@@ -266,14 +267,20 @@ module Klez
     end
 
     # {{ post.date | local_date }} -> "21 febbraio 2010", month names from
-    # `months` in _data/locales/<lang>.yml (Jekyll's date filter is English only).
-    def local_date(input)
-      date = Jekyll::Utils.parse_date(input.to_s) unless input.respond_to?(:month)
-      date ||= input
-      months = locale["months"]
-      return date.strftime("%-d %b %Y") unless months.is_a?(Array) && months.size == 12
+    # `months` in _data/locales/<lang>.yml (Jekyll's date filter and polyglot
+    # are English only). {{ site.time | local_date: "time" }} adds ", 02:59".
+    def local_date(input, mode = nil)
+      return input if input.nil? || input.to_s.empty?
 
-      "#{date.day} #{months[date.month - 1]} #{date.year}"
+      date = input.respond_to?(:month) ? input : Jekyll::Utils.parse_date(input.to_s)
+      months = locale["months"]
+      text =
+        if months.is_a?(Array) && months.size == 12
+          "#{date.day} #{months[date.month - 1]} #{date.year}"
+        else
+          date.strftime("%-d %b %Y")
+        end
+      mode == "time" ? "#{text}, #{date.strftime("%H:%M")}" : text
     end
 
     # {{ days | span_label }} -> "8 giorni", "4 mesi", "2 anni"

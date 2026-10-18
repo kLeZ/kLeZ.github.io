@@ -29,7 +29,7 @@ search: true
 		</div>
 	</form>
 	<noscript>
-		<p>{{ loc.search_noscript }} <a href="{{ '/tag/' | relative_url }}">{{ loc.tags_title }}</a></p>
+		<p>{{ loc.search_noscript }} <a href="{{ '/tag/by-letter/' | relative_url }}">{{ loc.tags_title }}</a></p>
 	</noscript>
 	<div id="search-results" aria-live="polite"
 		data-index="{{ '/search.json' | prepend: lang_prefix | relative_url }}"

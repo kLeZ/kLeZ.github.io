@@ -1,27 +1,41 @@
 {%- comment -%}
-Elenco di tutti i tag in colonne. Parametri: order = "alpha" (site.data.tag_index,
-pagina /tag/) | "count" (site.data.tag_ranking, pagina /tag/classifica/).
-Le due pagine sono statiche e si collegano a vicenda.
+Elenco di tutti i tag in colonne, con il selettore dell'ordinamento. Parametri:
+order = "alpha" | "count", dir = "asc" | "desc" (solo per "alpha").
+Ogni ordinamento è una pagina statica (_pages/tag-*.html):
+  /tag/by-letter/       alfabetico A-Z  (site.data.tag_index)
+  /tag/by-letter/desc/  alfabetico Z-A
+  /tag/by-n-posts/      per numero di articoli, decrescente (site.data.tag_ranking)
 {%- endcomment -%}
 {%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+{%- assign alpha = false -%}{%- if include.order == 'alpha' -%}{%- assign alpha = true -%}{%- endif -%}
 <p>{{ loc.tags_intro }}</p>
 <nav class="tag-sort mb-4" aria-label="{{ loc.tags_sort_label }}">
 	<span class="tag-sort-label">{{ loc.tags_sort_label }}:</span>
-	<ul class="nav nav-pills d-inline-flex">
+	<ul class="nav nav-pills d-inline-flex flex-wrap">
 		<li class="nav-item">
-			<a class="nav-link{% if include.order == 'alpha' %} active{% endif %}" href="{{ '/tag/' | relative_url }}"{% if include.order == 'alpha' %} aria-current="page"{% endif %}>{{ loc.tags_sort_alpha }}</a>
+			<a class="nav-link{% if alpha %} active{% endif %}" href="{{ '/tag/by-letter/' | relative_url }}"{% if alpha and include.dir != 'desc' %} aria-current="page"{% endif %}>{{ loc.tags_sort_alpha }}</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link{% if include.order == 'count' %} active{% endif %}" href="{{ '/tag/classifica/' | relative_url }}"{% if include.order == 'count' %} aria-current="page"{% endif %}>{{ loc.tags_sort_count }}</a>
+			<a class="nav-link{% unless alpha %} active{% endunless %}" href="{{ '/tag/by-n-posts/' | relative_url }}"{% unless alpha %} aria-current="page"{% endunless %}>{{ loc.tags_sort_count }}</a>
 		</li>
 	</ul>
+	{%- if alpha %}
+	<ul class="nav nav-pills d-inline-flex tag-sort-dir">
+		<li class="nav-item">
+			<a class="nav-link{% if include.dir != 'desc' %} active{% endif %}" href="{{ '/tag/by-letter/' | relative_url }}" aria-label="{{ loc.tags_sort_asc }}"{% if include.dir != 'desc' %} aria-current="page"{% endif %}>A&ndash;Z</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link{% if include.dir == 'desc' %} active{% endif %}" href="{{ '/tag/by-letter/desc/' | relative_url }}" aria-label="{{ loc.tags_sort_desc }}"{% if include.dir == 'desc' %} aria-current="page"{% endif %}>Z&ndash;A</a>
+		</li>
+	</ul>
+	{%- endif %}
 </nav>
-{%- if include.order == 'count' -%}
+{%- if alpha -%}
+{%- if include.dir == 'desc' -%}{%- assign tags = site.data.tag_index | reverse -%}{%- else -%}{%- assign tags = site.data.tag_index -%}{%- endif -%}
+<ul class="tag-columns">
+{%- else -%}
 {%- assign tags = site.data.tag_ranking -%}
 <ol class="tag-columns tag-ranking">
-{%- else -%}
-{%- assign tags = site.data.tag_index -%}
-<ul class="tag-columns">
 {%- endif -%}
 	{%- for tag in tags -%}
 	{%- if tag.count == 1 -%}{%- assign count_label = loc.posts_count_one -%}{%- else -%}{%- assign count_label = loc.posts_count_other | replace: '%count%', tag.count -%}{%- endif -%}
@@ -30,8 +44,8 @@ Le due pagine sono statiche e si collegano a vicenda.
 		<span class="tag-count" aria-hidden="true">{{ tag.count }}</span><span class="sr-only">({{ count_label }})</span>
 	</li>
 	{%- endfor -%}
-{%- if include.order == 'count' -%}
-</ol>
-{%- else -%}
+{%- if alpha -%}
 </ul>
+{%- else -%}
+</ol>
 {%- endif -%}

@@ -40,6 +40,12 @@
 	background-color: $dark;
 }
 
+.tag-sort-dir {
+	margin-left: 0.5rem;
+	padding-left: 0.5rem;
+	border-left: 1px solid $gray-300;
+}
+
 // Tag overview: two columns on phones and tablets, three on desktop
 .tag-columns {
 	list-style: none;

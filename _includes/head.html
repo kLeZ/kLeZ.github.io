@@ -3,6 +3,11 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	{%- if page.redirect_to %}
+	{%- include lang-prefix.html %}
+	<meta http-equiv="refresh" content="0; url={{ page.redirect_to | prepend: lang_prefix | relative_url }}" />
+	<meta name="robots" content="noindex" />
+	{%- endif %}
 	<meta name="color-scheme" content="light dark" />
 	<meta name="theme-color" content="#f8f9fa" media="(prefers-color-scheme: light)" />
 	<meta name="theme-color" content="#1a1d21" media="(prefers-color-scheme: dark)" />

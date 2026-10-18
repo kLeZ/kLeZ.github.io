@@ -20,7 +20,7 @@
 - [Curriculum Vitae]({{ '/cv' | absolute_url }}): professional experience and skills.
 - [Contacts]({{ '/contatti' | absolute_url }}): how to get in touch.
 - [Blog]({{ '/blog' | absolute_url }}): full list of posts, paginated (`/blog/page/N/`).
-- [Tags]({{ '/tag/' | absolute_url }}): every tag, each linking to `/tag/<slug>/`.
+- [Tags]({{ '/tag/by-letter/' | absolute_url }}): every tag, each linking to `/tag/<slug>/` (also by number of posts: `/tag/by-n-posts/`).
 - [Series]({{ '/serie/' | absolute_url }}): posts published in parts.
 - [Search index]({{ '/search.json' | absolute_url }}): JSON with the full plain text of every post.
 

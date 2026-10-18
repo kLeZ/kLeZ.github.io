@@ -137,13 +137,15 @@ service is involved.
     (`seo_page_of` in `_data/locales/`) and emits `rel=prev/next`.
   - **Tags.** One paginated page per tag at `/tag/<slug>/` (slug: Jekyll
     `slugify`, mode `latin`; spellings differing only in case/accents share a
-    page). `site.data.tag_index` (alphabetical) feeds the overview `/tag/`
-    (`_pages/tag.html`) and the tag filter of the search page;
-    `site.data.tag_ranking` (most used first) feeds `/tag/classifica/`
-    (`_pages/tag-classifica.html`, out of the sitemap). Both pages render
-    `_includes/tag-index.html`: tags in CSS columns (2 on phones and tablets,
-    3 from 992px) with a two-link sort switch, no JavaScript. A tag whose slug
-    is `classifica` would collide with the ranking page; the build warns. Tags in post cards and in
+    page). The overview has one static page per ordering, all rendering
+    `_includes/tag-index.html` (tags in CSS columns: 2 on phones and tablets,
+    3 from 992px; sort switch made of plain links, no JavaScript):
+    `/tag/by-letter/` (A-Z, `site.data.tag_index`, also used by the search
+    filter), `/tag/by-letter/desc/` (Z-A) and `/tag/by-n-posts/` (most used
+    first, `site.data.tag_ranking`); only the first is in the sitemap. `/tag/`
+    itself redirects to `/tag/by-letter/` (`redirect_to` front matter, a
+    meta refresh + `noindex` emitted by `_includes/head.html`). Tags whose
+    slug is `by-letter` or `by-n-posts` would collide; the build warns. Tags in post cards and in
     the post footer link to these pages (`_includes/tag-list.html`).
   - **Series.** Posts with `series: <id>` form a series, ordered by date;
     metadata (title, description, planned `parts`) in `_data/series.yml`.
@@ -176,10 +178,12 @@ service is involved.
   optional tag filter; results are rendered client-side and the URL keeps
   `?q=&tag=`, so searches are linkable. Without JavaScript the page points to
   the tag pages. Both scripts load only on pages with `search: true`.
-- **Dates.** Jekyll's `date` filter prints English month names. The new pages
-  use the plugin's `local_date` filter ("21 febbraio 2010", month names from
-  `months` in `_data/locales/<lang>.yml`) and `span_label` ("8 giorni",
-  "4 mesi"). The older post cards still use `date`.
+- **Dates.** Jekyll's `date` filter prints English month names and polyglot
+  does not localize dates. Every visible date (post header, cards, series,
+  related posts, footer build time, build page) uses the plugin's
+  `local_date` filter ("21 febbraio 2010", `local_date: "time"` adds the hour;
+  month names from `months` in `_data/locales/<lang>.yml`); durations use
+  `span_label` ("8 giorni", "4 mesi"). `datetime` attributes stay ISO 8601.
 - polyglot rewrites only `href` attributes to `/en/…`; URLs in `action`,
   `data-*` and JSON get the language prefix from `_includes/lang-prefix.html`.
 

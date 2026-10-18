@@ -83,8 +83,9 @@ XML list of canonical URLs with `lastmod`. Fully automatic via `jekyll-sitemap`
 — **no maintenance**. New posts/pages appear on the next build. To exclude a
 page, set `sitemap: false` in its front matter. Generated listings follow the same
 rule (`_plugins/blog_archive.rb`): pages 2+ of the paginated lists and of the tag
-pages, the tag ranking `/tag/classifica/` (same tags as `/tag/`), and tag pages
-that exist only for the language switcher, are left out;
+pages, the alternative tag orderings `/tag/by-letter/desc/` and `/tag/by-n-posts/`
+(same tags as `/tag/by-letter/`), the `/tag/` redirect, and tag pages that exist
+only for the language switcher, are left out;
 `search.json` sets `sitemap: false`.
 
 ### 3.3 `feed.xml` *(Atom)*

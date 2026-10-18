@@ -3,5 +3,11 @@ lang: it
 layout: page
 title: Tag
 permalink: /tag/
+sitemap: false
+redirect_to: /tag/by-letter/
 ---
-{% include tag-index.html order="alpha" %}
+{%- comment -%}
+/tag/ non ha un ordinamento proprio: rimanda a quello alfabetico, così chi
+accorcia l'URL di una pagina /tag/<slug>/ non trova un 404.
+{%- endcomment -%}
+<p><a href="{{ page.redirect_to | relative_url }}">{{ page.redirect_to | absolute_url }}</a></p>

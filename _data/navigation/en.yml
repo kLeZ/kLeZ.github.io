@@ -7,7 +7,7 @@
         url: /blog
         relative: true
       - title: Tags
-        url: /tag
+        url: /tag/by-letter
         relative: true
       - title: Series
         url: /serie

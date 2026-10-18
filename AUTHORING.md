@@ -63,7 +63,7 @@ date: 2026-05-31 14:37:42+02:00   # added by publish; keep tz offset
 - **`title`** — required. Rendered as the post heading by the layout, so **do
   not** repeat an `# H1` in the body (see §4).
 - **`tags`** — a YAML list. Use existing tags where possible (overview at
-  `/tag/`): every tag gets a page at `/tag/<slug>/`, and tags that differ only
+  `/tag/by-letter/`): every tag gets a page at `/tag/<slug>/`, and tags that differ only
   in case or accents (`Linux`/`linux`) end up on the same page. Tags also
   drive the "Articoli correlati" block under each post (the 3 most recent
   posts sharing a tag), so a post without tags gets no related posts.
