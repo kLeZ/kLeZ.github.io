@@ -74,7 +74,8 @@ dependencies, or required env, **update that hook too**.
 
 On **terminal** (vim, nano, etc.), workspace setup is fully automatic:
 `.devcontainer/init.sh` runs as Docker ENTRYPOINT after volume mount and handles
-submodule init + `bundle install` without any manual steps. Use `make`:
+submodule init + `bundle install` without any manual steps (`bundle check` on every
+start, so a changed `Gemfile.lock` or Ruby version is picked up). Use `make`:
 ```bash
 make build    # first time or after Dockerfile changes (~5-10 min, compiles Ruby)
 make shell    # interactive shell

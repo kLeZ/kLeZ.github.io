@@ -229,8 +229,12 @@ VSCodium e Emacs (TRAMP). Tutti partono dalla stessa immagine Docker.
   `Gemfile.lock`.
 - **Setup automatico** (`ENTRYPOINT`): Docker monta i volumi *prima* di eseguire
   l'ENTRYPOINT. `.devcontainer/init.sh` gira ad ogni avvio e in modo idempotente
-  inizializza i submodule e installa i gem (solo se mancanti). Nessun comando
-  manuale richiesto.
+  inizializza i submodule e controlla le gem con `bundle check`: le installa al
+  primo avvio e ogni volta che `Gemfile.lock` o la versione di Ruby cambiano (le gem
+  stanno in `vendor/bundle/ruby/<versione>/`, quindi un `vendor/bundle` già presente
+  non basta). Nessun comando manuale richiesto. Con il daemon già avviato (`make up`)
+  il controllo avviene solo al suo avvio: dopo un cambio di branch che tocca il
+  `Gemfile.lock`, `make down && make up`.
 - **Permessi / UID-GID**: l'ENTRYPOINT parte come root, **riconcilia l'uid/gid
   dell'utente `dev` a quelli dell'host** (`HOST_UID`/`HOST_GID`, default 1000) e poi
   **scende a `dev` via `gosu`** (con `HOME=/home/dev`) sia per il setup sia per il
