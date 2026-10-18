@@ -44,6 +44,6 @@ what you receive: do not complete, summarise or continue the text.
 {{GLOSSARY}}
 
 ## Output
-Return the COMPLETE input (front matter included, if it was present) fully localized to
-{{TARGET_LANG}}. Output ONLY the file content — no explanations, no surrounding code fences.
+Return the translation of the whole input (front matter included, if it was present) in
+{{TARGET_LANG}}: every sentence of prose translated, nothing left in {{SOURCE_LANG}}. Output ONLY the file content — no explanations, no surrounding code fences.
 If you are unsure about a term, keep the original source token rather than guessing.

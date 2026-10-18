@@ -44,7 +44,6 @@ SENZA `source_sha` è un originale: non viene mai sovrascritto. Usa --force per 
 """
 
 import argparse
-import difflib
 import hashlib
 import os
 import re
@@ -324,15 +323,27 @@ class TranslateError(Exception):
     """Errore del backend: interrompe il file corrente, non l'intero giro --pending."""
 
 
-def call_llm(system_prompt, file_text, model, api_key):
+def instruction(src_lang, tgt_lang, what="text"):
+    """Richiesta esplicita nel messaggio utente. Con il solo testo da tradurre e le
+    istruzioni nel prompt di sistema, i modelli locali piccoli (qwen2.5:7b) spesso
+    restituiscono la sorgente così com'è."""
+    return (f"Translate the following {what} from {LANG_NAME_SRC[src_lang]} into "
+            f"{LANG_NAME_TGT[tgt_lang]}. Reply with the translation only.")
+
+
+def call_llm(system_prompt, file_text, model, api_key, request=""):
+    text = f"{request}\n\n{file_text}" if request else file_text
     if BACKEND == "ollama":
-        content = _call_ollama(system_prompt, file_text, model)
+        content = _call_ollama(system_prompt, text, model)
     elif BACKEND == "openai":
-        content = _call_openai_compatible(system_prompt, file_text, model)
+        content = _call_openai_compatible(system_prompt, text, model)
     else:
-        content = _call_openrouter(system_prompt, file_text, model, api_key)
+        content = _call_openrouter(system_prompt, text, model, api_key)
     # modelli "ragionanti" (deepseek-r1, qwen3, ...) possono anteporre il ragionamento
     content = re.sub(r"^\s*<think>.*?</think>\s*", "", content, flags=re.DOTALL)
+    # "Here is the translation:" e simili prima del testo
+    content = re.sub(r"^(?:here is|here's|sure|certainly|ecco|certo)\b[^\n]*:[ \t]*\n+", "",
+                     content, flags=re.IGNORECASE)
     # rimuove la cornice ```...``` che il modello a volte mette attorno all'output, solo se
     # la sorgente non comincia con un blocco di codice: altrimenti si perderebbe la riga
     # di chiusura di un blocco vero in fondo al testo
@@ -490,22 +501,38 @@ def chunk_body(body, max_chars):
     return chunks
 
 
-def untranslated(src, out):
-    """Un modello piccolo a volte restituisce la sorgente così com'è. Sopra i 200
-    caratteri di prosa, un'uscita quasi identica all'ingresso è un pezzo non tradotto."""
-    def prose(t):
-        return re.sub(r"```.*?```", "", t, flags=re.DOTALL)
-    a, b = prose(src), prose(out)
-    if len(a.strip()) < 200:
+# Parole funzionali frequenti: in un testo tradotto quelle della lingua di partenza
+# spariscono, mentre titoli, nomi propri e URL possono restare uguali.
+FUNCTION_WORDS = {
+    "it": set("il lo la gli le un una uno di del della dei delle degli che non per con "
+              "sono è nel nella anche come più ma questo questa quando perché".split()),
+    "en": set("the of and to is that it for with as was this are be have not but they "
+              "which from by an or".split()),
+}
+
+
+def untranslated(src, out, src_lang):
+    """Un modello piccolo a volte restituisce la sorgente così com'è. Se l'uscita
+    conserva più di metà delle parole funzionali della lingua di partenza, il pezzo
+    non è stato tradotto. Sotto le 20 occorrenze (un elenco di fonti, un pezzo fatto
+    di codice e link) il controllo non si applica."""
+    words = FUNCTION_WORDS.get(src_lang)
+    if not words:
         return []
-    # confronto sulle parole: italiano e inglese condividono le lettere, non le parole
-    wa, wb = re.findall(r"\w+", a.lower()), re.findall(r"\w+", b.lower())
-    if difflib.SequenceMatcher(None, wa, wb, autojunk=False).ratio() > 0.8:
+
+    def count(t):
+        t = re.sub(r"```.*?```", "", t, flags=re.DOTALL)
+        t = re.sub(r"`[^`]*`|\]\([^)]*\)|https?://\S+", " ", t)
+        return sum(1 for w in re.findall(r"\w+", t.lower()) if w in words)
+    n_src = count(src)
+    if n_src < 20:
+        return []
+    if count(out) > n_src / 2:
         return ["testo quasi identico alla sorgente (non tradotto?)"]
     return []
 
 
-def translate_text(system_prompt, text, model, api_key, label):
+def translate_text(system_prompt, text, model, api_key, label, request="", src_lang=DEFAULT_LANG):
     """Traduce un pezzo con un nuovo tentativo se le guardie falliscono. Conserva le
     righe vuote iniziali e finali del pezzo, che il modello tende a normalizzare.
     Ritorna (testo, problemi residui)."""
@@ -515,12 +542,39 @@ def translate_text(system_prompt, text, model, api_key, label):
     trail = text[len(text.rstrip("\n")):]
     out, problems = None, []
     for attempt in (1, 2):
-        out = call_llm(system_prompt, text.strip("\n"), model, api_key)
-        problems = guards(text, out) + untranslated(text, out)
+        out = call_llm(system_prompt, text.strip("\n"), model, api_key, request)
+        problems = guards(text, out) + untranslated(text, out, src_lang)
         if not problems:
             break
         print(f"    {label}: guardie fallite (tentativo {attempt}) -> " + "; ".join(problems))
+        if any("non tradotto" in p for p in problems):
+            print("      risposta: " + " ".join(out.split())[:160] + " ...")
     return lead + out.strip("\n") + trail, problems
+
+
+def translate_field(key, value, src_lang, tgt_lang, model, api_key):
+    """Un valore del front matter (title, description, ...) tradotto da solo, come testo
+    semplice: chiedere al modello un blocco YAML porta a YAML non valido (titoli con ':'
+    o parentesi spezzati su più righe). Il YAML lo scrive yaml.safe_dump.
+    Ritorna (traduzione | None, problemi)."""
+    system = (f"You translate the {key} of a personal tech blog post from {LANG_NAME_SRC[src_lang]} "
+              f"into {LANG_NAME_TGT[tgt_lang]}. Keep the author's tone, proper nouns and anything "
+              "in backticks. Use plain ASCII punctuation. Reply with the translated text only, "
+              "without quotes, labels or comments.")
+    problem = ""
+    for attempt in (1, 2):
+        out = call_llm(system, value, model, api_key, instruction(src_lang, tgt_lang, key))
+        out = " ".join(out.split()) if "\n" not in value.strip() else out.strip()
+        if len(out) >= 2 and out[0] == out[-1] and out[0] in "\"'" and value[:1] not in "\"'":
+            out = out[1:-1].strip()
+        if not out:
+            problem = "risposta vuota"
+        elif len(out) > 3 * len(value) + 80:
+            problem = "risposta troppo lunga"
+        else:
+            return out, []
+        print(f"    front matter '{key}': {problem} (tentativo {attempt})")
+    return None, [f"front matter: '{key}' non tradotto ({problem})"]
 
 
 def guards(src_text, out_text):
@@ -590,6 +644,7 @@ def translate_file(src: Path, model, api_key, force, dry_run, chunk_chars=0):
         return "dry-run"
 
     system_prompt = build_prompt(src_lang, tgt_lang)
+    request = instruction(src_lang, tgt_lang, "Markdown")
     # pre-risolvi i tag {% link %}/{% post_url %} NELLA SORGENTE verso la versione nella
     # lingua di arrivo, quando esiste (vedi resolve_liquid_links).
     src_for_llm, warns = resolve_liquid_links(src_text, tgt_lang)
@@ -602,23 +657,18 @@ def translate_file(src: Path, model, api_key, force, dry_run, chunk_chars=0):
         out_fm = None
         if fm_in is not None:
             out_fm = dict(fm_in)
-            sub = {k: fm_in[k] for k in FM_TRANSLATABLE if isinstance(fm_in.get(k), str)}
-            if sub:
-                fm_text = "---\n" + yaml.safe_dump(sub, allow_unicode=True, sort_keys=False) + "---\n"
-                fm_out_text, p = translate_text(system_prompt, fm_text, model, api_key, "front matter")
-                problems += p
-                tr, _, _ = split_front_matter(fm_out_text.strip() + "\n")
-                for k in sub:
-                    if isinstance((tr or {}).get(k), str):
-                        out_fm[k] = tr[k]
-                    else:
-                        problems.append(f"front matter: '{k}' non tradotto")
+            for k in FM_TRANSLATABLE:
+                if isinstance(fm_in.get(k), str) and fm_in[k].strip():
+                    value, p = translate_field(k, fm_in[k], src_lang, tgt_lang, model, api_key)
+                    problems += p
+                    if value is not None:
+                        out_fm[k] = value
         parts = chunk_body(body_in, chunk_chars)
         out_parts = []
         for i, part in enumerate(parts, 1):
             label = f"pezzo {i}/{len(parts)}"
             print(f"    {label} ({len(part)} caratteri)")
-            out_part, p = translate_text(system_prompt, part, model, api_key, label)
+            out_part, p = translate_text(system_prompt, part, model, api_key, label, request, src_lang)
             problems += [f"{label}: {x}" for x in p]
             out_parts.append(out_part)
         body_out = "".join(out_parts)
@@ -627,7 +677,7 @@ def translate_file(src: Path, model, api_key, force, dry_run, chunk_chars=0):
         else:
             out_text = body_out
     else:
-        out_text, problems = translate_text(system_prompt, src_for_llm, model, api_key, "file")
+        out_text, problems = translate_text(system_prompt, src_for_llm, model, api_key, "file", request, src_lang)
 
     # un testo rimasto nella lingua di partenza non va scritto: finirebbe pubblicato
     # come traduzione. Meglio un fallimento, che --pending riprova al giro successivo.
@@ -637,7 +687,11 @@ def translate_file(src: Path, model, api_key, force, dry_run, chunk_chars=0):
 
     if has_fm:
         # forza lang/locale/source_sha nel front matter dell'output
-        fm, _, body = split_front_matter(out_text)
+        try:
+            fm, _, body = split_front_matter(out_text)
+        except yaml.YAMLError as e:
+            raise TranslateError(f"il modello ha restituito un front matter non valido ({e.problem}): "
+                                 "file non scritto (riprova, o usa --chunk-chars)")
         if fm is None:  # il modello ha perso il front matter: ricostruisci dalla sorgente
             fm, body = dict(src_fm), out_text
         body = normalize_typography(body)
@@ -663,7 +717,10 @@ def translate_file(src: Path, model, api_key, force, dry_run, chunk_chars=0):
     else:
         # partial senza front matter (es. _pages/includes/*.md): niente YAML iniettato,
         # sha tracciato in un commento HTML (invisibile nel render).
-        fm_out, _, b = split_front_matter(out_text)
+        try:
+            fm_out, _, b = split_front_matter(out_text)
+        except yaml.YAMLError:
+            fm_out, b = None, out_text
         body = b if fm_out is not None else out_text  # rimuovi front matter indebito
         body = normalize_typography(body)
         marker = f"<!-- source_sha: {sha} -->\n"

@@ -488,9 +488,10 @@ export OPENROUTER_API_KEY="sk-or-..."          # free account on openrouter.ai
 ```
 
 - **Pieces.** Small local models truncate or summarise long inputs, so with `ollama`
-  and `openai` each file is translated in pieces: the front matter separately (only
-  `title`, `subtitle`, `description`, `summary`, `excerpt` go to the model), then the
-  body in pieces of about 6000 characters, split between paragraphs and preferably
+  and `openai` each file is translated in pieces: first the front matter values
+  `title`, `subtitle`, `description`, `summary`, `excerpt`, one at a time as plain
+  text (the script writes the YAML, so a title with `:` or brackets cannot break
+  it), then the body in pieces of about 6000 characters, split between paragraphs and preferably
   at headings, never inside a code block. `--chunk-chars N` changes the size; `0`
   sends the whole file (the default with `openrouter`).
 - **Context window.** Ollama keeps a small context by default and truncates without
@@ -509,9 +510,17 @@ export OPENROUTER_API_KEY="sk-or-..."          # free account on openrouter.ai
 - **Guards**: after translating, the script checks that headings, links, code
   blocks, `$$` math and Liquid tags match the source, piece by piece. A piece that
   fails is retried once; if it still fails the file is written with
-  `translation_review: true` so you can spot it. A piece that comes back almost
-  identical to the source (small models sometimes echo it) is retried too, and if
-  it is still untranslated the file is **not** written and counts as failed.
+  `translation_review: true` so you can spot it. A piece that comes back still in
+  the source language (small models sometimes echo it) is retried too, and if it
+  is still untranslated the file is **not** written and counts as failed; the start
+  of the model's reply is printed so you can see what it did. "Untranslated" means
+  that more than half of the source language's function words (*il*, *che*,
+  *della*... / *the*, *of*, *which*...) are still there; pieces with few of them,
+  such as a list of sources made of English titles and URLs, are not checked.
+  Every request also says "Translate the following ... into British English" in
+  the user message, not only in the system prompt: with the instruction only in
+  the system prompt, `qwen2.5:7b` answered a piece of Italian prose by inventing a
+  front matter and copying the Italian text after it.
 - **Runaway output**: with Ollama the reply is capped (`num_predict`, about 1.5x
   the piece) so a looping model fails fast instead of generating for minutes.
 - **Idempotency**: the English file stores a `source_sha`. Re-running skips files
