@@ -420,7 +420,10 @@ Nothing else changes: pages, layouts and the other locale files stay as they are
 
 ```bash
 export OPENROUTER_API_KEY=...        # https://openrouter.ai/settings/keys
-_scripts/translate _posts/2026-10-20-new-post.md       # into every other language
+make translate _posts/2026-10-20-new-post.md           # in the dev container
+make translate _posts/2026-10-20-new-post.md OPTS=-n   # options go in OPTS: make would take -n for itself
+
+_scripts/translate _posts/2026-10-20-new-post.md       # the same, run directly; into every other language
 _scripts/translate -t en _posts/2026-10-20-new-post.md # only into English
 _scripts/translate -n _posts/*.md                      # dry run: what would be translated or skipped
 _scripts/translate -f _pages/about.md                  # again, even if the source has not changed
@@ -428,7 +431,7 @@ _scripts/translate -f _pages/about.md                  # again, even if the sour
 TRANSLATE_ADAPTER=claude _scripts/translate _posts/en/2013-07-30-x.md   # via Claude Code instead of OpenRouter
 ```
 
-`translate` takes the files to translate and translates each into every other language in `languages:`. It is meant for one new article at a time, or for a list of posts you pick: the ones you never want translated you just never pass. Run it on the host: it needs `bash`, `curl`, `jq`, [`yq`](https://github.com/mikefarah/yq) v4 (mikefarah's, not the Python `yq` that some distributions package under the same name), `perl` and Python 3 with PyYAML, and the dev container has no `jq` or `yq`. Each run prints, per file, the model's token usage and cost and the time taken, and at the end how many files were translated, need review, were skipped or failed. It exits non-zero if any failed.
+`translate` takes the files to translate and translates each into every other language in `languages:`. It is meant for one new article at a time, or for a list of posts you pick: the ones you never want translated you just never pass. It needs `bash`, `curl`, `jq`, [`yq`](https://github.com/mikefarah/yq) v4 (mikefarah's, not the Python `yq` that some distributions package under the same name), `perl` and Python 3 with PyYAML, all in the dev container. `make translate` runs it there and passes `OPENROUTER_API_KEY` and the `TRANSLATE_*` variables from your shell (by name, so the key does not show up in the command line). `translate-claude` needs the `claude` CLI and its login, which the container does not have: use it on the host. Each run prints, per file, the model's token usage and cost and the time taken, and at the end how many files were translated, need review, were skipped or failed. It exits non-zero if any failed.
 
 It is a bash script that runs small programs in `_scripts/i18n/`, each with a usage line at the top:
 
