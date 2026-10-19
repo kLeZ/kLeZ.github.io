@@ -66,6 +66,9 @@ DEFAULT_LANG = "it"   # lingua di default (root); le altre vanno sotto /<lang>/
 # nomi leggibili per il prompt (target 'en' = inglese britannico, vedi register.en.md)
 LANG_NAME_SRC = {"it": "Italian", "en": "English"}
 LANG_NAME_TGT = {"it": "Italian", "en": "British English"}
+# codici per i modelli di sola traduzione (TranslateGemma), che li vogliono nel prompt
+LANG_CODE_SRC = {"it": "it", "en": "en"}
+LANG_CODE_TGT = {"it": "it", "en": "en-GB"}
 # Router automatico OpenRouter: sceglie un modello free disponibile, così non va in 404
 # quando un singolo slug :free sparisce. Override con TRANSLATE_MODEL / --model.
 # Per più qualità imposta uno slug specifico (verifica su https://openrouter.ai/models,
@@ -331,8 +334,35 @@ def instruction(src_lang, tgt_lang, what="text"):
             f"{LANG_NAME_TGT[tgt_lang]}. Reply with the translation only.")
 
 
-def call_llm(system_prompt, file_text, model, api_key, request=""):
-    text = f"{request}\n\n{file_text}" if request else file_text
+def is_mt_model(model):
+    """Modelli addestrati solo a tradurre, con un formato di richiesta fisso."""
+    return "translategemma" in model.lower()
+
+
+def mt_prompt(src_lang, tgt_lang, text):
+    """Il formato di TranslateGemma (https://ollama.com/library/translategemma): un solo
+    messaggio utente, niente prompt di sistema, due righe vuote prima del testo."""
+    s, t = LANG_NAME_SRC[src_lang], LANG_NAME_TGT[tgt_lang]
+    sc, tc = LANG_CODE_SRC[src_lang], LANG_CODE_TGT[tgt_lang]
+    return (f"You are a professional {s} ({sc}) to {t} ({tc}) translator. Your goal is to "
+            f"accurately convey the meaning and nuances of the original {s} text while adhering "
+            f"to {t} grammar, vocabulary, and cultural sensitivities.\n"
+            f"Produce only the {t} translation, without any additional explanations or "
+            f"commentary. Please translate the following {s} text into {t}:\n\n\n{text}")
+
+
+def _messages(system_prompt, text):
+    return ([{"role": "system", "content": system_prompt}] if system_prompt else []) + \
+        [{"role": "user", "content": text}]
+
+
+def call_llm(system_prompt, file_text, model, api_key, request="", pair=None):
+    """pair = (lingua di partenza, lingua di arrivo): con un modello di sola traduzione
+    sostituisce prompt di sistema e richiesta con il formato del modello."""
+    if pair and is_mt_model(model):
+        system_prompt, text = None, mt_prompt(pair[0], pair[1], file_text)
+    else:
+        text = f"{request}\n\n{file_text}" if request else file_text
     if BACKEND == "ollama":
         content = _call_ollama(system_prompt, text, model)
     elif BACKEND == "openai":
@@ -369,10 +399,7 @@ def _call_ollama(system_prompt, text, model):
                 # il contesto: meglio un errore subito che un quarto d'ora e un testo rotto.
                 "options": {"temperature": 0.2, "num_ctx": OLLAMA_NUM_CTX,
                             "num_predict": max(512, len(text) // 2)},
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": text},
-                ],
+                "messages": _messages(system_prompt, text),
             },
             timeout=900,
         )
@@ -389,8 +416,8 @@ def _call_ollama(system_prompt, text, model):
         raise TranslateError(f"Errore Ollama {resp.status_code}: {detail}{hint}")
     data = resp.json()
     if data.get("done_reason") == "length":
-        raise TranslateError("risposta troncata (num_ctx troppo piccolo): alza TRANSLATE_NUM_CTX "
-                             "o abbassa --chunk-chars")
+        raise TranslateError("risposta troncata (limite di uscita num_predict o contesto num_ctx): "
+                             "alza TRANSLATE_NUM_CTX o abbassa --chunk-chars")
     return data["message"]["content"].strip()
 
 
@@ -406,10 +433,7 @@ def _call_openai_compatible(system_prompt, text, model):
                 "model": model,
                 "temperature": 0.2,
                 "stream": False,
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": text},
-                ],
+                "messages": _messages(system_prompt, text),
             },
             timeout=900,
         )
@@ -461,10 +485,7 @@ def _post_openrouter(system_prompt, file_text, model, api_key):
         json={
             "model": model,
             "temperature": 0.2,
-            "messages": [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": file_text},
-            ],
+            "messages": _messages(system_prompt, file_text),
         },
         timeout=180,
     )
@@ -542,7 +563,7 @@ def untranslated(src, out, src_lang):
     return []
 
 
-def translate_text(system_prompt, text, model, api_key, label, request="", src_lang=DEFAULT_LANG):
+def translate_text(system_prompt, text, model, api_key, label, request="", pair=(DEFAULT_LANG, "en")):
     """Traduce un pezzo con un nuovo tentativo se le guardie falliscono. Conserva le
     righe vuote iniziali e finali del pezzo, che il modello tende a normalizzare.
     Ritorna (testo, problemi residui)."""
@@ -552,8 +573,8 @@ def translate_text(system_prompt, text, model, api_key, label, request="", src_l
     trail = text[len(text.rstrip("\n")):]
     out, problems = None, []
     for attempt in (1, 2):
-        out = call_llm(system_prompt, text.strip("\n"), model, api_key, request)
-        problems = guards(text, out) + untranslated(text, out, src_lang)
+        out = call_llm(system_prompt, text.strip("\n"), model, api_key, request, pair)
+        problems = guards(text, out) + untranslated(text, out, pair[0])
         if not problems:
             break
         print(f"    {label}: guardie fallite (tentativo {attempt}) -> " + "; ".join(problems))
@@ -573,7 +594,8 @@ def translate_field(key, value, src_lang, tgt_lang, model, api_key):
               "without quotes, labels or comments.")
     problem = ""
     for attempt in (1, 2):
-        out = call_llm(system, value, model, api_key, instruction(src_lang, tgt_lang, key))
+        out = call_llm(system, value, model, api_key, instruction(src_lang, tgt_lang, key),
+                       (src_lang, tgt_lang))
         out = " ".join(out.split()) if "\n" not in value.strip() else out.strip()
         if len(out) >= 2 and out[0] == out[-1] and out[0] in "\"'" and value[:1] not in "\"'":
             out = out[1:-1].strip()
@@ -678,7 +700,7 @@ def translate_file(src: Path, model, api_key, force, dry_run, chunk_chars=0):
         for i, part in enumerate(parts, 1):
             label = f"pezzo {i}/{len(parts)}"
             print(f"    {label} ({len(part)} caratteri)")
-            out_part, p = translate_text(system_prompt, part, model, api_key, label, request, src_lang)
+            out_part, p = translate_text(system_prompt, part, model, api_key, label, request, (src_lang, tgt_lang))
             problems += [f"{label}: {x}" for x in p]
             out_parts.append(out_part)
         body_out = "".join(out_parts)
@@ -687,7 +709,8 @@ def translate_file(src: Path, model, api_key, force, dry_run, chunk_chars=0):
         else:
             out_text = body_out
     else:
-        out_text, problems = translate_text(system_prompt, src_for_llm, model, api_key, "file", request, src_lang)
+        out_text, problems = translate_text(system_prompt, src_for_llm, model, api_key, "file", request,
+                                         (src_lang, tgt_lang))
 
     # un testo rimasto nella lingua di partenza non va scritto: finirebbe pubblicato
     # come traduzione. Meglio un fallimento, che --pending riprova al giro successivo.

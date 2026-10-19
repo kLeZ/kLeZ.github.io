@@ -472,7 +472,7 @@ pip install requests pyyaml        # or the distribution packages (python3-reque
 # Local, with Ollama (recommended for translating everything)
 ollama pull qwen2.5:7b
 export TRANSLATE_BACKEND=ollama
-# export TRANSLATE_MODEL=gemma3:12b   # better prose, slower: does not fit a 6 GB GPU and spills to RAM
+# export TRANSLATE_MODEL=translategemma:12b   # translation-only model: better prose, ~5x slower on a 6 GB GPU (spills to RAM)
 ./_scripts/translate --pending --dry-run   # list the Italian posts still to translate
 ./_scripts/translate --pending --limit 5   # the 5 most recent
 ./_scripts/translate --pending             # all of them; safe to stop and restart
@@ -521,6 +521,8 @@ export OPENROUTER_API_KEY="sk-or-..."          # free account on openrouter.ai
   the user message, not only in the system prompt: with the instruction only in
   the system prompt, `qwen2.5:7b` answered a piece of Italian prose by inventing a
   front matter and copying the Italian text after it.
+- **Translation-only models**: when the model name contains `translategemma`, every request uses that model's own prompt format (one user message naming the languages as `Italian (it)` and `British English (en-GB)`, no system prompt, two blank lines before the text), so the rules in `prompt.md` and the glossary are not sent; the guards still apply. Tried on the Margaret Hamilton post with an RTX 3060 6 GB: `translategemma:12b` took 1324 s (vs 141 s for `qwen2.5:7b`) and wrote the most fluent English of the models tried, with some mistakes left to fix by hand ("Your daughter" for "Sua figlia", US dates); `translategemma:4b` dropped a heading and a link and then looped, so the file was not written. `qwen3.5:9b` was slower than `qwen2.5:7b` and reversed the meaning of a sentence.
+- **Thinking models** (`qwen3.5`, `deepseek-r1`): the script sends `think: false`, otherwise the reasoning uses up the reply limit before any translation.
 - **Runaway output**: with Ollama the reply is capped (`num_predict`, about 1.5x
   the piece) so a looping model fails fast instead of generating for minutes.
 - **Idempotency**: the English file stores a `source_sha`. Re-running skips files
