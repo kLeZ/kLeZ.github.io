@@ -30,11 +30,14 @@
 	<link rel="alternate" hreflang="x-default" href="{{ default_version.url | absolute_url }}" />
 	{%- endif %}
 	{%- endif %}
-	{%- comment -%} Feed Atom: tutte le lingue, poi uno per lingua {%- endcomment %}
-	<link rel="alternate" type="application/atom+xml" title="{{ loc.feed_all }}" href="{{ '/feed.xml' | absolute_url }}" />
+	{%- comment -%} Feed Atom e RSS: tutte le lingue, poi uno per lingua {%- endcomment %}
+	<link rel="alternate" type="application/atom+xml" title="{{ loc.feed_all }} (Atom)" href="{{ '/feed.xml' | absolute_url }}" />
+	<link rel="alternate" type="application/rss+xml" title="{{ loc.feed_all }} (RSS)" href="{{ '/rss.xml' | absolute_url }}" />
 	{%- for lng in site.languages %}
 	{%- assign lng_name = lng | language_name: page.lang %}
-	<link rel="alternate" type="application/atom+xml" hreflang="{{ lng }}" title="{{ loc.feed_lang | replace: '%s', lng_name }}" href="{{ '/' | append: lng | append: '/feed.xml' | absolute_url }}" />
+	{%- assign lng_title = loc.feed_lang | replace: '%s', lng_name %}
+	<link rel="alternate" type="application/atom+xml" hreflang="{{ lng }}" title="{{ lng_title }} (Atom)" href="{{ '/' | append: lng | append: '/feed.xml' | absolute_url }}" />
+	<link rel="alternate" type="application/rss+xml" hreflang="{{ lng }}" title="{{ lng_title }} (RSS)" href="{{ '/' | append: lng | append: '/rss.xml' | absolute_url }}" />
 	{%- endfor %}
 	<script>
 		(function() {

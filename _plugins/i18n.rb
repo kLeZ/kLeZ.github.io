@@ -21,7 +21,8 @@
 #   index) are cloned for each other language under /<lang>/; the clone takes
 #   its title (and any other field) from `page_translations["<url>"]` in
 #   that language's locale file.
-# - One Atom feed per language at /<lang>/feed.xml (_includes/atom.xml).
+# - Two feeds per language: Atom at /<lang>/feed.xml (_includes/atom.xml) and
+#   RSS 2.0 at /<lang>/rss.xml (_includes/rss.xml).
 # - `site.data.i18n.posts[lang]`: one entry per post, newest first, in that
 #   language when a version exists, otherwise in the language it was written in.
 # - Posts and pages without a version in some language get a redirect stub at
@@ -122,13 +123,16 @@ module Klez
     end
   end
 
+  # format: "atom" (/<lang>/feed.xml) or "rss" (/<lang>/rss.xml)
   class I18nFeed < Jekyll::PageWithoutAFile
-    def initialize(site, lang)
-      # dir/name give relative_path _pages/feeds/<lang>.xml (jekyll_tidy exclude)
-      super(site, site.source, "_pages/feeds", "#{lang}.xml")
-      data.merge!("layout" => nil, "permalink" => "/#{lang}/feed.xml", "lang" => lang,
+    FILES = { "atom" => "feed.xml", "rss" => "rss.xml" }.freeze
+
+    def initialize(site, lang, format)
+      # dir/name give relative_path _pages/feeds/<lang>-<format>.xml (jekyll_tidy exclude)
+      super(site, site.source, "_pages/feeds", "#{lang}-#{format}.xml")
+      data.merge!("layout" => nil, "permalink" => "/#{lang}/#{FILES.fetch(format)}", "lang" => lang,
                   "sitemap" => false)
-      self.content = %({% include atom.xml lang="#{lang}" %}\n)
+      self.content = %({% include #{format}.xml lang="#{lang}" %}\n)
     end
   end
 
@@ -145,7 +149,9 @@ module Klez
       @default = I18n.default_lang(site)
       @others = I18n.languages(site) - [@default]
       folder_languages
-      I18n.languages(site).each { |lang| site.pages << I18nFeed.new(site, lang) }
+      I18n.languages(site).product(I18nFeed::FILES.keys).each do |lang, format|
+        site.pages << I18nFeed.new(site, lang, format)
+      end
       clone_localized_pages
       groups = post_groups
       share_series(groups)

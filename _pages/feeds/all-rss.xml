@@ -1,0 +1,7 @@
+---
+layout: null
+permalink: /rss.xml
+lang: it
+sitemap: false
+---
+{% include rss.xml %}

@@ -84,7 +84,7 @@ goat-counter:
 
 jekyll_tidy:
   compress_html: false
-  # JSON and Atom, not HTML: htmlbeautifier would mangle them
+  # JSON, Atom and RSS, not HTML: htmlbeautifier would mangle them
   exclude:
     - search.json
     - _pages/feeds/*.xml
@@ -95,7 +95,7 @@ pagination:
 tag_path: /tag/
 series_path: /serie/
 related_posts: 3
-# Voci per ciascun feed Atom (/feed.xml, /it/feed.xml, /en/feed.xml)
+# Voci per ciascun feed Atom (/feed.xml, /<lingua>/feed.xml) e RSS (/rss.xml, /<lingua>/rss.xml)
 feed_posts_limit: 10
 
 emoji:
