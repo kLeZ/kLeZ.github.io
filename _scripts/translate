@@ -361,6 +361,9 @@ def _call_ollama(system_prompt, text, model):
                 "model": model,
                 "stream": False,
                 "keep_alive": "30m",  # il modello resta caricato tra un pezzo e l'altro
+                # niente ragionamento (qwen3.5, deepseek-r1...): consumerebbe tutto num_predict
+                # prima della risposta; i modelli che non ragionano ignorano l'opzione
+                "think": False,
                 # num_predict: tetto all'uscita (~1,5 volte l'ingresso, ~3 caratteri per
                 # token). Un modello piccolo può entrare in loop e generare fino a riempire
                 # il contesto: meglio un errore subito che un quarto d'ora e un testo rotto.
