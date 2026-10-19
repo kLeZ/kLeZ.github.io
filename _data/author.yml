@@ -27,9 +27,17 @@ social:
     icon:
       type: fa
       value: fab fa-telegram
+  # Feed: un pulsante per formato con l'elenco delle lingue (_includes/feed-menu.html).
+  # Font Awesome non ha un'icona Atom: entrambi usano quella dei feed, con il nome accanto.
   - name: rss
     readonly: true
-    instance: /feed.xml
+    feed: rss
+    icon:
+      type: fa
+      value: fa fa-rss
+  - name: atom
+    readonly: true
+    feed: atom
     icon:
       type: fa
       value: fa fa-rss

@@ -71,13 +71,16 @@ RUN mkdir -p /var/run/sshd \
     && sed -i 's/^#\?PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config \
     && echo "AllowUsers dev" >> /etc/ssh/sshd_config
 
-# PATH rbenv + locale per tutte le sessioni shell.
+# PATH rbenv + locale + umask per tutte le sessioni shell.
 # /etc/profile.d/ è letto solo da shell login; le sessioni non-login (SSH senza -l,
 # docker exec, VSCodium terminal) richiedono /etc/bash.bashrc e ~/.bashrc.
+# umask 022: 'docker exec' (terminali di VS Code, TRAMP /docker:, make shell nel
+# daemon) parte con 0000 e i file nuovi uscirebbero scrivibili da tutti.
 RUN printf 'export RBENV_ROOT=/usr/local/rbenv\n\
 export PATH=/usr/local/rbenv/bin:/usr/local/rbenv/shims:/workspace/_scripts:$PATH\n\
 export LANG=C.UTF-8\n\
-export LC_ALL=C.UTF-8\n' > /etc/profile.d/klez-dev.sh \
+export LC_ALL=C.UTF-8\n\
+umask 022\n' > /etc/profile.d/klez-dev.sh \
     && for f in /etc/bash.bashrc /home/dev/.bashrc /root/.bashrc; do \
          printf '\n. /etc/profile.d/klez-dev.sh\n' >> "$f"; \
        done

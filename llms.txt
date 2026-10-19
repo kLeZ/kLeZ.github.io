@@ -13,6 +13,7 @@
 - Site language: Italian (it). Author also reads/writes English.
 - Canonical URL: {{ site.url }}
 - Atom feeds: {{ '/feed.xml' | absolute_url }} (all languages), {{ '/it/feed.xml' | absolute_url }} (Italian), {{ '/en/feed.xml' | absolute_url }} (English)
+- RSS 2.0 feeds: {{ '/rss.xml' | absolute_url }} (all languages), {{ '/it/rss.xml' | absolute_url }} (Italian), {{ '/en/rss.xml' | absolute_url }} (English)
 - English pages live under {{ '/en/' | absolute_url }}; each page links its other-language version.
 - Sitemap: {{ '/sitemap.xml' | absolute_url }}
 

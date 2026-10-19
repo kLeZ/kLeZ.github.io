@@ -1,6 +1,9 @@
 <ul class="list-inline text-center">
 	{%- for acct in include.networks -%}
 		<li class="list-inline-item">
+		{%- if acct.feed -%}
+			{%- include feed-menu.html format=acct.feed icon=acct.icon.value -%}
+		{%- else -%}
 		{%- assign base_url = "" -%}
 		{%- if acct.instance -%}
 			{%- assign base_url = acct.instance -%}
@@ -23,6 +26,7 @@
 				<span class="username">{{ acct.display | escape }}</span>
 			{% endunless %}
 			</a>
+		{%- endif -%}
 		</li>
 	{%- endfor -%}
 </ul>

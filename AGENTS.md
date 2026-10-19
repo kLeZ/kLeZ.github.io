@@ -93,7 +93,11 @@ can run them bare: `serve`, `draft "Title"`, `publish`, `build`, `emojis`, `tran
 `AUTO_SERVE=1` (daemon / devcontainer) Jekyll serve starts in the background at
 container start (output in the container logs: `make logs`). When the daemon is already running, `make
 shell/draft/publish/emojis` run *inside* it (`docker compose exec`) to avoid a second
-container clashing on port 4000. `make verify` and `make translate` route the same way. One-time: if old root-owned `vendor/`, `_site/`,
+container clashing on port 4000. `make verify` and `make translate` route the same way. `docker exec`
+starts processes with umask `0000` (seen with Docker 29 / runc 1.5), so files
+created that way would be world-writable: the Makefile wraps the command in
+`umask 022`, and `/etc/profile.d/klez-dev.sh` (sourced by every bash in the image)
+sets it for interactive shells (VS Code terminals, TRAMP, `make shell`). One-time: if old root-owned `vendor/`, `_site/`,
 `.jekyll-cache/`, `.bundle/` exist, remove them once
 (`sudo rm -rf vendor _site .jekyll-cache .bundle`) — they're git-ignored and regenerated.
 

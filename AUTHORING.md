@@ -414,7 +414,7 @@ The site is multilingual via `_plugins/i18n.rb` (details in [`CONTEXT.md`](CONTE
 3. Optionally `_data/navigation/<lang>.yml` (otherwise the Italian menu is used), `assets/img/flags/<flag>.svg`, and `_scripts/i18n/register.<lang>.md` with notes on the variety and register of that language for the translator.
 4. Translate files into it with `_scripts/translate`, or put translated files in `_posts/<lang>/` and `_pages/<lang>/` by hand.
 
-Nothing else changes: pages, layouts and the other locale files stay as they are (they show the new language under its own name until their `language_names` lists it).
+Nothing else changes: pages, layouts and the other locale files stay as they are (they show the new language under its own name until their `language_names` lists it). The language gets its feeds (`/<lang>/feed.xml`, `/<lang>/rss.xml`) and its entry in the footer feed menus by itself.
 
 ### Running the translator
 

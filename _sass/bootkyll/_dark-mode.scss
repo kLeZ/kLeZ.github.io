@@ -141,6 +141,10 @@
 		border-color: $dark-border;
 	}
 
+	.dropdown-divider {
+		border-top-color: $dark-border;
+	}
+
 	.dropdown-item {
 		color: $dark-text;
 		&:hover, &:focus {
@@ -330,6 +334,7 @@
 
 		.copyright { color: $dark-text-muted; }
 		.svg-icon { fill: $dark-text-muted; color: $dark-text-muted; }
+		.feed-menu .btn { color: $dark-text-muted; }
 	}
 
 	// Scroll to top
