@@ -442,7 +442,9 @@ under `_posts/en/` is English whatever its front matter says); `translate` reads
 
 Nothing else changes: pages, layouts and the other locale files stay as they are
 (they show the new language under its own name until their `language_names` lists
-it). `_scripts/translate` only knows Italian and English.
+it). The language gets its feeds (`/<lang>/feed.xml`, `/<lang>/rss.xml`) and its
+entry in the footer feed menus by itself. `_scripts/translate` only knows Italian
+and English.
 
 `translate` is **bidirectional** and picks the direction from the source file's `lang`:
 

@@ -12,7 +12,7 @@ ogni post). I feed per lingua (/<lingua>/feed.xml) li genera _plugins/i18n.rb.
 {%- assign feed_posts = site.posts -%}
 {%- assign feed_title = loc.feed_all -%}
 {%- endif -%}
-{%- assign feed_posts = feed_posts | slice: 0, site.feed_posts_limit -%}
+{%- if site.feed_posts_limit -%}{%- assign feed_posts = feed_posts | slice: 0, site.feed_posts_limit -%}{%- endif -%}
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"{% if include.lang %} xml:lang="{{ include.lang }}"{% endif %}>
 	<title>{{ site.data.author.name | xml_escape }} &#8211; {{ feed_title | xml_escape }}</title>

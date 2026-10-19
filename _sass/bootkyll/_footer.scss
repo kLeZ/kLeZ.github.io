@@ -22,6 +22,11 @@ footer.site-footer {
 	.list-inline {
 		margin: 0;
 		padding: 0;
+
+		// Sotto i 576px le icone, con i due pulsanti dei feed, devono stare su una riga
+		@media (max-width: 575.98px) {
+			.list-inline-item:not(:last-child) { margin-right: 0.2rem; }
+		}
 	}
 
 	.copyright {
@@ -35,5 +40,51 @@ footer.site-footer {
 		height: 22px;
 		fill: #{color.adjust($dark, $lightness: 30%)};
 		color: #{color.adjust($dark, $lightness: 30%)};
+	}
+
+	// Feed: pulsante diviso per formato (_includes/feed-menu.html), allineato alle
+	// altre icone; la freccia apre l'elenco delle lingue
+	.feed-menu {
+		vertical-align: middle;
+
+		.btn {
+			padding: 0 2px;
+			line-height: 1;
+			color: #{color.adjust($dark, $lightness: 30%)};
+			text-decoration: none;
+			box-shadow: none;
+		}
+
+		.feed-format {
+			margin-left: 3px;
+			font-size: 12px;
+			font-weight: 800;
+			letter-spacing: 0.5px;
+			text-transform: none;
+			vertical-align: middle;
+		}
+
+		.dropdown-toggle-split {
+			padding: 0 4px 0 1px;
+		}
+
+		.dropdown-item {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+
+		.flag,
+		.flag-placeholder {
+			width: 20px;
+			flex-shrink: 0;
+			text-align: center;
+		}
+
+		.flag {
+			height: auto;
+			border: 1px solid rgba($black, 0.15);
+			border-radius: 2px;
+		}
 	}
 }

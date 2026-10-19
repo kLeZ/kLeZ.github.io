@@ -1,6 +1,7 @@
 {%- comment -%}
 Feed RSS 2.0 (https://www.rssboard.org/rss-specification), accanto ad Atom
-(_includes/atom.xml) per i lettori che leggono solo RSS. Stessi post e stesso limite.
+(_includes/atom.xml) per i lettori che leggono solo RSS. Stessi post, tutti salvo
+`feed_posts_limit`.
 Parametri: lang = codice di una lingua | vuoto (tutte le lingue, ogni versione di
 ogni post). I feed per lingua (/<lingua>/rss.xml) li genera _plugins/i18n.rb.
 RSS non ha una lingua per voce: quella di ogni post va in dc:language.
@@ -14,7 +15,7 @@ RSS non ha una lingua per voce: quella di ogni post va in dc:language.
 {%- assign feed_posts = site.posts -%}
 {%- assign feed_title = loc.feed_all -%}
 {%- endif -%}
-{%- assign feed_posts = feed_posts | slice: 0, site.feed_posts_limit -%}
+{%- if site.feed_posts_limit -%}{%- assign feed_posts = feed_posts | slice: 0, site.feed_posts_limit -%}{%- endif -%}
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<channel>
