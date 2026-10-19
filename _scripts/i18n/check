@@ -1,0 +1,69 @@
+#!/usr/bin/env python3
+"""Usage: check SOURCE TRANSLATION
+
+Structure checks on a translation against the text that was sent to the model. Prints
+one line per problem and exits 1 if there is any, 0 otherwise.
+- The same number of headings, links, code fences, $$ and Liquid tags.
+- Every number of the source is still there (missing ones only: the translation may
+  write "Sessantotto" as '68; thousands and decimal separators are ignored, URLs are
+  skipped).
+- A front matter, if the translation has one, is valid YAML.
+"""
+
+import re
+import sys
+from collections import Counter
+
+import yaml
+
+FM = re.compile(r"\A---\n(.*?)\n---\n?(.*)\Z", re.DOTALL)
+COUNTS = {
+    "headings": (r"^#{1,6}\s", re.M),
+    "links": (r"\]\(", 0),
+    "code fences": (r"^\s*```", re.M),
+    "$$": (r"\$\$", 0),
+    "Liquid {% %} tags": (r"\{%", 0),
+    "Liquid {{ }} tags": (r"\{\{", 0),
+}
+
+
+def split(text):
+    m = FM.match(text)
+    return (m.group(1), m.group(2)) if m else (None, text)
+
+
+def numbers(body):
+    body = re.sub(r"\]\([^)]*\)|https?://\S+", " ", body)
+    body = re.sub(r"(?<=\d)[.,'](?=\d)", "", body)
+    return Counter(re.findall(r"\d+", body))
+
+
+def main():
+    if len(sys.argv) != 3:
+        sys.exit("usage: check SOURCE TRANSLATION")
+    src_fm, src = split(open(sys.argv[1], encoding="utf-8").read())
+    out_fm, out = split(open(sys.argv[2], encoding="utf-8").read())
+    problems = []
+    for name, (pattern, flags) in COUNTS.items():
+        a, b = len(re.findall(pattern, src, flags)), len(re.findall(pattern, out, flags))
+        if a != b:
+            problems.append(f"{name}: {a} in the source, {b} in the translation")
+    missing = numbers(src) - numbers(out)
+    if missing:
+        problems.append("numbers missing: " + ", ".join(sorted(missing.elements())))
+    if src_fm is not None:
+        if out_fm is None:
+            problems.append("front matter missing")
+        else:
+            try:
+                if not isinstance(yaml.safe_load(out_fm), dict):
+                    problems.append("front matter is not a mapping")
+            except yaml.YAMLError as e:
+                problems.append(f"front matter is not valid YAML: {getattr(e, 'problem', e)}")
+    for p in problems:
+        print(p)
+    sys.exit(1 if problems else 0)
+
+
+if __name__ == "__main__":
+    main()

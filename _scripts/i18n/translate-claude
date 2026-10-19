@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# Usage: translate-claude SRC TGT < text > translation
+# Translation adapter for the Claude Code CLI (`claude -p`), on the CLI's own login
+# (subscription or API key). Same contract as translate-openrouter: text on stdin, only
+# the translation on stdout, non-zero exit on any failure.
+#   TRANSLATE_MODEL      Claude model id or alias (default below)
+#   TRANSLATE_REASONING  effort level, default medium. The same word means less here than in
+#                        translate-openrouter: with --effort low Opus does not think at all
+#                        (0 thinking tokens, and it misses the hard jokes), medium thinks
+#                        about as much as OpenRouter's low or medium
+# The CLI runs from an empty directory with no setting sources, tools or MCP servers:
+# otherwise it adds the user's and the project's CLAUDE.md and settings (about 15k tokens,
+# including "reply in Italian") to the prompt. What is left is a few hundred tokens of
+# environment info.
+# Token usage and the list-price cost go to stderr.
+set -euo pipefail
+
+src=${1:?usage: translate-claude SRC TGT}
+tgt=${2:?usage: translate-claude SRC TGT}
+model=${TRANSLATE_MODEL:-claude-opus-5-5}
+here=$(cd "$(dirname "$0")" && pwd)
+system=$("$here/prompt" "$src" "$tgt")
+work=$(mktemp -d)
+trap 'rm -rf "$work"' EXIT
+
+response=$(cd "$work" && claude -p \
+    --model "$model" \
+    --effort "${TRANSLATE_REASONING:-medium}" \
+    --system-prompt "$system" \
+    --tools "" --setting-sources "" --strict-mcp-config --no-session-persistence \
+    --output-format json)
+
+if [[ $(jq -r '.is_error' <<<"$response") != false || $(jq -r '.stop_reason' <<<"$response") != end_turn ]]; then
+    echo "translate-claude: $(jq -c '{subtype, stop_reason, result: (.result // "" | .[:500])}' <<<"$response")" >&2
+    exit 1
+fi
+jq -r '"translate-claude: \(.modelUsage | keys | join(",")): \(.usage.input_tokens + .usage.cache_creation_input_tokens + .usage.cache_read_input_tokens) in, \(.usage.output_tokens) out (\(.usage.output_tokens_details.thinking_tokens // 0) thinking), list price $\(.total_cost_usd)"' <<<"$response" >&2
+jq -r '.result' <<<"$response"

@@ -81,6 +81,7 @@ make build    # first time or after Dockerfile changes (~5-10 min, compiles Ruby
 make shell    # interactive shell
 make serve    # Jekyll serve → http://localhost:4000
 make verify   # Jekyll build + htmlproofer in-container (no draft side effects)
+make translate _posts/<file>.md   # LLM translation into the other languages (OPTS="-n" for a dry run)
 ```
 
 **File ownership.** The entrypoint reconciles the container `dev` user's UID/GID to
@@ -88,11 +89,11 @@ the host's (`HOST_UID`/`HOST_GID`, default 1000 — the `Makefile` exports them 
 `id -u`/`id -g`) and runs both setup and the command as `dev` via `gosu`. So every
 generated file (`vendor/`, `_site/`, `_drafts/*.draft`, …) is host-owned on every
 path. The `_scripts/` helpers are on the container `PATH`, so inside the container you
-can run them bare: `serve`, `draft "Title"`, `publish`, `build`, `emojis`. With
+can run them bare: `serve`, `draft "Title"`, `publish`, `build`, `emojis`, `translate`. With
 `AUTO_SERVE=1` (daemon / devcontainer) Jekyll serve starts in the background at
 container start (output in the container logs: `make logs`). When the daemon is already running, `make
 shell/draft/publish/emojis` run *inside* it (`docker compose exec`) to avoid a second
-container clashing on port 4000. `make verify` routes the same way. One-time: if old root-owned `vendor/`, `_site/`,
+container clashing on port 4000. `make verify` and `make translate` route the same way. One-time: if old root-owned `vendor/`, `_site/`,
 `.jekyll-cache/`, `.bundle/` exist, remove them once
 (`sudo rm -rf vendor _site .jekyll-cache .bundle`) — they're git-ignored and regenerated.
 
@@ -125,6 +126,7 @@ All commands assume the environment above (UTF-8 locale + Ruby 3.3.x).
 | New draft            | `bash ./_scripts/draft "My Post Title"`                  |
 | Publish drafts       | `bash ./_scripts/publish`                                |
 | Regenerate emojis    | `bash ./_scripts/emojis`                                 |
+| Translate a post     | `make translate _posts/<file>.md` or `./_scripts/translate _posts/<file>.md` (`-n` dry run) |
 
 Notes on `_scripts/`:
 - `build` — runs `jekyll doctor`, then builds. In CI (`CI=true`) it writes
@@ -137,6 +139,7 @@ Notes on `_scripts/`:
 - `publish` — promotes `_drafts/*.draft` into dated `_posts/` entries.
 - `emojis` — extracts emoji shortcodes from posts into `assets/img/emoji/`
   (Python 3 + the SgEExt submodule).
+- `translate` — translates the given files into every other site language via an LLM (OpenRouter by default, `OPENROUTER_API_KEY`); the output is content for the owner to review, never committed by an agent on its own. See AUTHORING.md, "Translations".
 
 ## Validating a change before pushing
 

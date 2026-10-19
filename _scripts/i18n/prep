@@ -1,0 +1,115 @@
+#!/usr/bin/env python3
+"""Usage: prep TGT < source > text for the model
+
+Prepares a source file for translation into TGT:
+- {% link %} and {% post_url %} tags point to the TGT version of the page or post when
+  one exists (_plugins/i18n.rb does not rewrite links: a link to the Italian page stays
+  Italian). Without a translation the tag is left as it is and leads to the original.
+- In a quote with its original under the translation (AUTHORING.md, "Quotes in another
+  language"), when the original is already in TGT only the original is kept.
+Unresolved links are reported on stderr.
+"""
+
+import re
+import sys
+from pathlib import Path
+
+import yaml
+
+ROOT = Path(__file__).resolve().parent.parent.parent
+CONFIG = yaml.safe_load((ROOT / "_config.yml").read_text(encoding="utf-8"))
+LANGS = [str(lang) for lang in CONFIG.get("languages", [])]
+DEFAULT = str(CONFIG.get("default_lang") or LANGS[0])
+
+LINK_TAG = re.compile(r"\{%-?\s*link\s+(\S+?)\s*-?%\}")
+POST_URL_TAG = re.compile(r"\{%-?\s*post_url\s+(\S+?)\s*-?%\}")
+CITATION_ORIGINAL = re.compile(r'^>\s*\{:\s*\.citation-original\s+lang="([a-z-]+)"\s*\}\s*$')
+
+
+def counterpart(path, tgt):
+    """Path of the TGT version of `path` (relative to the root) if it exists:
+    _posts/x.md <-> _posts/en/x.md. None otherwise."""
+    parts = list(Path(path).parts)
+    if len(parts) < 2:
+        return None
+    if parts[1] in LANGS and parts[1] != DEFAULT:
+        del parts[1]
+    if tgt != DEFAULT:
+        parts.insert(1, tgt)
+    cand = Path(*parts)
+    return str(cand) if str(cand) != path and (ROOT / cand).exists() else None
+
+
+def post_file(name):
+    for ext in (".md", ".markdown", ".html"):
+        hits = list((ROOT / "_posts").glob(f"{name}{ext}"))
+        if hits:
+            return str(hits[0].relative_to(ROOT))
+    return None
+
+
+def resolve_links(text, tgt):
+    def link_sub(m):
+        path = m.group(1)
+        if path.startswith("/"):  # static asset (/media/...): the same in every language
+            return m.group(0)
+        other = counterpart(path, tgt)
+        if other:
+            return m.group(0).replace(path, other)
+        if not (ROOT / path).exists():
+            print(f"prep: unresolved {{% link {path} %}} (no such file)", file=sys.stderr)
+        return m.group(0)
+
+    def post_sub(m):
+        name = m.group(1)
+        src = post_file(name)
+        if not src:
+            print(f"prep: unresolved {{% post_url {name} %}}", file=sys.stderr)
+            return m.group(0)
+        other = counterpart(src, tgt)
+        if other:
+            # post_url takes the subfolder: {% post_url en/2026-01-01-x %}
+            sub = "/".join(Path(other).parts[1:-1] + (Path(other).stem,))
+            return m.group(0).replace(name, sub)
+        return m.group(0)
+
+    return POST_URL_TAG.sub(post_sub, LINK_TAG.sub(link_sub, text))
+
+
+def collapse_citation_originals(text, tgt):
+    lines = text.split("\n")
+    i = 0
+    while i < len(lines):
+        m = CITATION_ORIGINAL.match(lines[i])
+        if not m or m.group(1) != tgt:
+            i += 1
+            continue
+        # up the original to the empty '>' line that separates it from the translation
+        j = i - 1
+        while j >= 0 and lines[j].strip() not in (">", ""):
+            j -= 1
+        if j < 0 or lines[j].strip() != ">":
+            i += 1
+            continue
+        # up the translation to the block header or another empty line
+        k = j - 1
+        while k >= 0 and lines[k].strip() not in (">", "") and not lines[k].startswith("> citation"):
+            k -= 1
+        if k < 0 or not lines[k].startswith("> citation"):
+            i += 1
+            continue
+        del lines[i]
+        del lines[k + 1:j + 1]
+        i = k + 1
+    return "\n".join(lines)
+
+
+def main():
+    if len(sys.argv) != 2 or sys.argv[1] not in LANGS:
+        sys.exit(f"usage: prep TGT < source  (TGT one of {' '.join(LANGS)})")
+    tgt = sys.argv[1]
+    sys.stdout.write(collapse_citation_originals(resolve_links(sys.stdin.read(), tgt), tgt))
+
+
+if __name__ == "__main__":
+    main()

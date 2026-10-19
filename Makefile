@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: build shell serve draft publish emojis verify up down logs help
+.PHONY: build shell serve draft publish emojis translate verify up down logs help
 
 COMPOSE = docker compose
 
@@ -12,12 +12,26 @@ export HOST_GID := $(shell id -g)
 # comandi DENTRO di esso: un solo container, nessun conflitto sulla porta 4000.
 # 'exec' salta l'ENTRYPOINT, quindi forziamo --user dev + HOME esplicita.
 DAEMON := $(shell $(COMPOSE) ps -q daemon 2>/dev/null)
+# Variabili della traduzione passate dall'host al container: '-e NOME' senza valore
+# prende il valore dall'ambiente, così la chiave non compare sulla riga di comando.
+TRANSLATE_ENV = $(foreach v,OPENROUTER_API_KEY TRANSLATE_ADAPTER TRANSLATE_MODEL TRANSLATE_REASONING TRANSLATE_PROVIDER TRANSLATE_MAX_TOKENS TRANSLATE_REPLAY,-e $(v))
 ifeq ($(DAEMON),)
   IN       = $(COMPOSE) run --rm dev
   IN_PORTS = $(COMPOSE) run --rm --service-ports dev
+  IN_TRANSLATE = $(COMPOSE) run --rm $(TRANSLATE_ENV) dev
 else
   IN       = $(COMPOSE) exec --user dev -e HOME=/home/dev daemon
   IN_PORTS = $(COMPOSE) exec --user dev -e HOME=/home/dev daemon
+  IN_TRANSLATE = $(COMPOSE) exec --user dev -e HOME=/home/dev $(TRANSLATE_ENV) daemon
+endif
+
+# make translate FILE...: i file dopo 'translate' sono argomenti, non target da costruire
+ifeq (translate,$(firstword $(MAKECMDGOALS)))
+  TRANSLATE_FILES := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+  ifneq ($(TRANSLATE_FILES),)
+    .PHONY: $(TRANSLATE_FILES)
+    $(eval $(TRANSLATE_FILES):;@:)
+  endif
 endif
 
 ## — Immagine ——————————————————————————————————————————————
@@ -58,6 +72,10 @@ publish: ## Promuove i draft in _posts/ con data corrente
 
 emojis: ## Rigenera le emoji da _posts/ (richiede Python 3 + SgEExt)
 	$(IN) emojis
+
+translate: ## Traduce nelle altre lingue:  make translate _posts/x.md  [OPTS="-n|-f|-t en"]
+	@test -n "$(strip $(TRANSLATE_FILES) $(FILE))" || { echo 'Uso: make translate FILE... [OPTS="-n -f -t LANG"]'; exit 2; }
+	$(IN_TRANSLATE) translate $(OPTS) $(TRANSLATE_FILES) $(FILE)
 
 verify: ## Jekyll build + htmlproofer nel container (nessun side effect sui draft)
 	$(IN) bash -lc "bundle exec jekyll build && bundle exec htmlproofer ./_site --disable-external"
