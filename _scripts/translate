@@ -114,6 +114,11 @@ for ((i = 0; i < ${#files[@]}; i++)); do
         skipped+=("$src")
         continue
     fi
+    if has_front_matter "$src" && [[ $(yq --front-matter=extract '.localize // false' "$src") == true ]]; then
+        echo "! $src has localize: true: _plugins/i18n.rb builds it in every language (title in page_translations of _data/locales/<lang>.yml), skipped"
+        skipped+=("$src")
+        continue
+    fi
     src_lang=$(lang_folder "$src")
     if [[ -z $src_lang ]]; then
         src_lang=$default
