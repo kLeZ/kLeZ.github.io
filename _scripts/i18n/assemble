@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# Usage: assemble SRC_LANG SOURCE TRANSLATION SHA > translated file
+# Builds the translated file: the source's front matter, with only the translated values
+# of title, subtitle, description, summary and excerpt taken from the model's reply (the
+# rest of the model's YAML is never used), plus `source_sha`; then the translated body.
+# `lang` and `locale` are dropped: _plugins/i18n.rb takes them from the language folder.
+# A permalink loses the /SRC_LANG prefix, which the plugin adds back for the language
+# the file lands in. A file without front matter gets `<!-- source_sha: ... -->` instead.
+# A field the model did not translate keeps the source value and is reported on stderr.
+set -euo pipefail
+
+src_lang=${1:?usage: assemble SRC_LANG SOURCE TRANSLATION SHA}
+src=${2:?usage: assemble SRC_LANG SOURCE TRANSLATION SHA}
+out=${3:?usage: assemble SRC_LANG SOURCE TRANSLATION SHA}
+sha=${4:?usage: assemble SRC_LANG SOURCE TRANSLATION SHA}
+root=$(cd "$(dirname "$0")/../.." && pwd)
+default=$(yq '.default_lang // .languages[0]' "$root/_config.yml")
+
+has_front_matter() { [[ $(head -n 1 "$1") == --- ]]; }
+body() { awk 'NR == 1 && $0 != "---" { nofm = 1 } nofm || done { print; next } NR > 1 && $0 == "---" { done = 1 }' "$1"; }
+
+if ! has_front_matter "$src"; then
+    echo "<!-- source_sha: $sha -->"
+    body "$out"
+    exit
+fi
+
+translated='{}'
+if has_front_matter "$out"; then
+    translated=$(yq --front-matter=extract -o=json '.' "$out" 2>/dev/null) || translated='{}'
+fi
+
+fm=$(yq --front-matter=extract 'del(.lang) | del(.locale)' "$src")
+if [[ $src_lang != "$default" ]]; then
+    fm=$(P="/$src_lang/" yq 'select(has("permalink")) |= (.permalink |= sub("^" + strenv(P), "/"))' <<<"$fm")
+fi
+for key in title subtitle description summary excerpt; do
+    [[ $(K=$key yq '.[strenv(K)] | type' <<<"$fm") == '!!str' ]] || continue
+    value=$(K=$key jq -r '.[env.K] // "" | strings' <<<"$translated")
+    if [[ -n $value ]]; then
+        fm=$(K=$key V=$value yq '.[strenv(K)] = strenv(V)' <<<"$fm")
+    else
+        echo "front matter: '$key' not translated, kept the source's" >&2
+    fi
+done
+fm=$(S=$sha yq '.source_sha = strenv(S)' <<<"$fm")
+
+# yq keeps the document start marker it read with the front matter
+printf -- '---\n%s\n---\n' "${fm#---$'\n'}"
+body "$out"

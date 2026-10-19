@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Usage: prompt SRC TGT
+# Prints the system prompt for translating from SRC to TGT (language codes, e.g. it en):
+# prompt.md with the language names, the target register and the glossary filled in.
+# Language names come from language_names in _data/locales/en.yml, so a new language
+# needs no change here; register.<TGT>.md is optional.
+set -euo pipefail
+
+src=${1:?usage: prompt SRC TGT}
+tgt=${2:?usage: prompt SRC TGT}
+here=$(cd "$(dirname "$0")" && pwd)
+root=$(cd "$here/../.." && pwd)
+
+name() {
+    local n
+    n=$(yq ".language_names.\"$1\" // \"\"" "$root/_data/locales/en.yml")
+    [[ -n $n ]] || { echo "prompt: no language_names.$1 in _data/locales/en.yml" >&2; exit 1; }
+    echo "$n"
+}
+
+register=""
+[[ -f $here/register.$tgt.md ]] && register=$(<"$here/register.$tgt.md")
+
+# glossary.yml: `keep` are left as they are; `terms` are Italian -> English renderings,
+# used as they are for it->en and inverted for en->it
+glossary=$(yq -r '.keep[] | "- Keep verbatim: " + .' "$here/glossary.yml")
+case "$src-$tgt" in
+    it-en) glossary+=$'\n'$(yq -r ".terms | to_entries[] | \"- Render '\" + .key + \"' as '\" + .value + \"'\"" "$here/glossary.yml") ;;
+    en-it) glossary+=$'\n'$(yq -r ".terms | to_entries[] | \"- Render '\" + .value + \"' as '\" + .key + \"'\"" "$here/glossary.yml") ;;
+esac
+
+SOURCE_LANG=$(name "$src") TARGET_LANG=$(name "$tgt") REGISTER=$register GLOSSARY=$glossary \
+    perl -pe 's/\{\{(SOURCE_LANG|TARGET_LANG|REGISTER|GLOSSARY)\}\}/$ENV{$1}/g' "$here/prompt.md"

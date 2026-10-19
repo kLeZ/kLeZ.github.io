@@ -79,8 +79,8 @@ Implications:
   under `_plugins/` and MUST be initialized before building:
   - `_plugins/premonition` (https://github.com/kLeZ/premonition.git)
   - `_plugins/SgEExt` (https://github.com/HorlogeSkynet/SgEExt.git)
-- **Node.js** is used by some build steps; **Python 3** is used by the emoji
-  extractor (`_scripts/emojis` → `SgEExt/sgeext.py`).
+- **Node.js** is used by some build steps; **Python 3** is used by the emoji extractor (`_scripts/emojis` → `SgEExt/sgeext.py`) and by parts of the translator.
+- **Translator** (`_scripts/translate`, not part of the build): a bash script that runs small stdin/stdout programs in `_scripts/i18n/` and calls an LLM through an adapter (`translate-openrouter` by default, `translate-claude` for the Claude Code CLI). It needs `curl`, `jq`, mikefarah's `yq` v4 (installed in the dev image from the GitHub release, checksum pinned: Debian's `yq` package is a different program), `perl` and Python 3 with PyYAML; `make translate FILE...` runs it in the container. `translate-claude` needs the `claude` CLI, so it runs on the host only. See AUTHORING.md, "Translations".
 
 ### Known gotchas
 
@@ -329,11 +329,12 @@ make serve          # Jekyll serve → http://localhost:4000
 make draft TITLE="Titolo"   # nuovo draft
 make publish        # promuovi draft in _posts/
 make verify         # Jekyll build + htmlproofer nel container (nessun side effect sui draft)
+make translate _posts/x.md  # traduzione LLM nelle altre lingue (OPTS="-n" prova a vuoto)
 make help           # lista tutti i target
 ```
 
 Se il container daemon è già attivo (`make up` / VSCodium / Emacs), `make
-shell/draft/publish/emojis/verify` vengono **eseguiti dentro quel container** (`docker
+shell/draft/publish/emojis/verify/translate` vengono **eseguiti dentro quel container** (`docker
 compose exec`, non un nuovo container) per evitare il conflitto sulla porta 4000;
 `make serve` segnala che il server è già su grazie all'auto-serve.
 

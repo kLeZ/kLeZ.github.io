@@ -9,7 +9,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
 # Dipendenze di sistema:
 #   build-essential + lib*: compilazione Ruby via rbenv
 #   nodejs: richiesto da execjs gem
-#   python3: richiesto da _scripts/emojis (SgEExt/sgeext.py)
+#   python3: richiesto da _scripts/emojis (SgEExt/sgeext.py) e da _scripts/translate
+#   jq: richiesto da _scripts/translate (adattatore OpenRouter)
 #   openssh-client: per git submodule update su HTTPS/SSH
 #   openssh-server: modalità daemon SSH per VSCodium open-remote-ssh
 #   sudo: operazioni privilegiate dall'utente dev
@@ -21,12 +22,26 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libyaml-dev libffi-dev \
     nodejs \
     python3 python3-pip python3-requests python3-yaml \
+    jq \
     openssh-client \
     openssh-server \
     sudo \
     gosu \
     && rm -rf /var/lib/apt/lists/* \
     && git config --system --add safe.directory '*'
+
+# yq di mikefarah (v4), richiesto da _scripts/translate. Non da apt: il pacchetto
+# Debian "yq" è un altro programma, in Python, con un'altra sintassi.
+ARG YQ_VERSION=v4.53.3
+RUN arch=$(dpkg --print-architecture) \
+    && case "$arch" in \
+         amd64) sum=fa52a4e758c63d38299163fbdd1edfb4c4963247918bf9c1c5d31d84789eded4 ;; \
+         arm64) sum=578648e463a11c1b6db6010cbf41eafed6bee79466fcffa1bb446672cf7945ea ;; \
+         *) echo "yq: architettura $arch non prevista" >&2; exit 1 ;; \
+       esac \
+    && curl -fsSLo /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_${arch}" \
+    && echo "$sum  /usr/local/bin/yq" | sha256sum -c - \
+    && chmod +x /usr/local/bin/yq
 
 # rbenv + ruby-build (system-wide, accessibile a tutti gli utenti)
 RUN git clone https://github.com/rbenv/rbenv.git $RBENV_ROOT \

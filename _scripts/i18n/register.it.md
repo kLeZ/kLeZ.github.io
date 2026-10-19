@@ -5,3 +5,4 @@
   settore quando sono lo standard de facto (vedi glossario), senza forzare traduzioni goffe.
 - Usa punteggiatura, maiuscole e accenti italiani corretti (à è é ì ò ù); non inventare
   contenuti né aggiungere commenti.
+- I testi inglesi di questo blog li ha scritti l'autore, che è italiano e non madrelingua inglese: l'inglese spesso dice meno di quello che l'autore intendeva, in tono e sottotesto. Restituisci l'intenzione nella voce italiana dell'autore, che è più ironica e colloquiale, ma solo dove il sorgente la lascia intendere: non aggiungere battute, giudizi o contenuti che nel sorgente non ci sono.

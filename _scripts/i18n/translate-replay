@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Usage: TRANSLATE_REPLAY=file translate-replay SRC TGT < text > translation
+# Test adapter: ignores the text and prints a saved model reply, so the rest of the
+# pipeline (clean, assemble, check) can be tried without calling a model.
+set -euo pipefail
+cat >/dev/null
+cat "${TRANSLATE_REPLAY:?TRANSLATE_REPLAY is not set}"

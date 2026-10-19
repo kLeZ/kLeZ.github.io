@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+# Usage: translate-openrouter SRC TGT < text > translation
+# Translation adapter for OpenRouter (https://openrouter.ai). Reads the text to translate
+# on stdin, writes only the translation on stdout; exits non-zero on any failure, so the
+# caller never writes a partial file.
+#   OPENROUTER_API_KEY   required
+#   TRANSLATE_MODEL      OpenRouter model id (default below)
+#   TRANSLATE_PROVIDER   optional: pin one provider, no fallbacks (open-weight models are
+#                        served by several hosts with different quantizations)
+#   TRANSLATE_REASONING  reasoning effort, default low: about 900 reasoning tokens on Opus 5.5
+#                        for 7 short passages; medium spent about 2500 and gave no better
+#                        adaptations in the tests. Reasoning tokens are billed and add latency
+#   TRANSLATE_MAX_TOKENS cap on the reply, reasoning included (default: about twice the
+#                        input in tokens plus 4000): a runaway reply on a $50/M model
+#                        must not empty the credit
+# Cost and token usage go to stderr.
+set -euo pipefail
+
+src=${1:?usage: translate-openrouter SRC TGT}
+tgt=${2:?usage: translate-openrouter SRC TGT}
+: "${OPENROUTER_API_KEY:?OPENROUTER_API_KEY is not set}"
+model=${TRANSLATE_MODEL:-anthropic/claude-opus-5.5}
+here=$(cd "$(dirname "$0")" && pwd)
+text=$(cat)
+max_tokens=${TRANSLATE_MAX_TOKENS:-$(( ${#text} / 2 + 4000 ))}
+
+request=$(jq -n \
+    --arg model "$model" \
+    --arg system "$("$here/prompt" "$src" "$tgt")" \
+    --arg text "$text" \
+    --arg effort "${TRANSLATE_REASONING:-low}" \
+    --arg provider "${TRANSLATE_PROVIDER:-}" \
+    --argjson max "$max_tokens" \
+    '{model: $model,
+      messages: [{role: "system", content: $system}, {role: "user", content: $text}],
+      reasoning: {effort: $effort, exclude: true},
+      max_tokens: $max,
+      usage: {include: true}}
+     + (if $provider == "" then {} else {provider: {order: [$provider], allow_fallbacks: false}} end)')
+
+response=""
+for attempt in 1 2 3; do
+    status=0
+    response=$(curl -sS --max-time 600 -w '\n%{http_code}' https://openrouter.ai/api/v1/chat/completions \
+        -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+        -H "Content-Type: application/json" \
+        -H "HTTP-Referer: https://klez.me" -H "X-Title: klez.me i18n" \
+        -d "$request") || status=$?
+    code=${response##*$'\n'}
+    response=${response%$'\n'*}
+    # retry only what can go away by itself: network errors, rate limits, server errors
+    if [[ $status -ne 0 || $code == 429 || $code == 5* ]]; then
+        echo "translate-openrouter: attempt $attempt failed (curl $status, HTTP $code)" >&2
+        sleep $((attempt * 10))
+        continue
+    fi
+    break
+done
+
+if [[ ${code:-} != 200 ]]; then
+    echo "translate-openrouter: HTTP ${code:-none}: $(jq -r '.error.message? // .' <<<"$response" 2>/dev/null | head -c 500)" >&2
+    exit 1
+fi
+finish=$(jq -r '.choices[0].finish_reason // ""' <<<"$response")
+if [[ $finish != stop ]]; then
+    echo "translate-openrouter: finish_reason '$finish' (truncated or refused)" >&2
+    exit 1
+fi
+jq -r '"translate-openrouter: \(.model) via \(.provider // "?"): \(.usage.prompt_tokens) in, \(.usage.completion_tokens) out (\(.usage.completion_tokens_details.reasoning_tokens // 0) reasoning), $\(.usage.cost)"' <<<"$response" >&2
+jq -j '.choices[0].message.content' <<<"$response"
