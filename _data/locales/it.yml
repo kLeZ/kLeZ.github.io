@@ -1,4 +1,23 @@
 # Stringhe di interfaccia — italiano (lingua di default)
+# Lingua (_plugins/i18n.rb): selettore nella navbar, blocco lingue dei post, etichette.
+# Per aggiungere una lingua bastano il suo codice in `languages` (_config.yml) e un
+# file come questo; i contenuti tradotti vanno in _posts/<lingua>/ e _pages/<lingua>/.
+#   flag    bandiera, assets/img/flags/<flag>.svg
+#   name    nome della lingua, nella lingua stessa
+#   read    testo del link verso la versione in questa lingua, nella lingua stessa
+#   home    testo del link alla home di questa lingua (pagina non tradotta)
+#   locale  og:locale delle pagine in questa lingua
+language:
+  flag: it
+  name: Italiano
+  read: Leggi in italiano
+  home: Italiano (home page)
+  locale: it_IT
+# Nomi delle lingue in italiano, per written_in e feed_lang. Una lingua che manca
+# qui compare con il suo nome (language.name del suo file).
+language_names:
+  it: italiano
+  en: inglese
 skip_to_content: "Salta al contenuto"
 reading_time_one: "Questo articolo richiede 1 minuto di lettura."
 reading_time_other: "Questo articolo richiede %count% minuti di lettura."
@@ -76,3 +95,11 @@ tags_sort_alpha: "Alfabetico"
 tags_sort_count: "Per numero di articoli"
 tags_sort_asc: "Dalla A alla Z"
 tags_sort_desc: "Dalla Z alla A"
+# Lingue (_plugins/i18n.rb)
+available_in: "Questo articolo è disponibile in:"
+current_version: "questa pagina"
+written_in: "In %s"
+redirect_title: "Pagina spostata"
+redirect_text: "Questa pagina si trova ora qui:"
+feed_all: "tutti gli articoli, in tutte le lingue"
+feed_lang: "articoli in %s"

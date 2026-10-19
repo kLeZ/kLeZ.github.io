@@ -1,0 +1,45 @@
+{%- comment -%}
+Feed Atom (RFC 4287), al posto di jekyll-feed che non filtra per lingua.
+Parametri: lang = codice di una lingua | vuoto (tutte le lingue, ogni versione di
+ogni post). I feed per lingua (/<lingua>/feed.xml) li genera _plugins/i18n.rb.
+{%- endcomment -%}
+{%- assign loc = site.data.locales[page.lang] | default: site.data.locales[site.default_lang] -%}
+{%- if include.lang -%}
+{%- assign feed_posts = site.posts | where: "lang", include.lang -%}
+{%- assign feed_lang_name = include.lang | language_name: page.lang -%}
+{%- assign feed_title = loc.feed_lang | replace: '%s', feed_lang_name -%}
+{%- else -%}
+{%- assign feed_posts = site.posts -%}
+{%- assign feed_title = loc.feed_all -%}
+{%- endif -%}
+{%- assign feed_posts = feed_posts | slice: 0, site.feed_posts_limit -%}
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"{% if include.lang %} xml:lang="{{ include.lang }}"{% endif %}>
+	<title>{{ site.data.author.name | xml_escape }} &#8211; {{ feed_title | xml_escape }}</title>
+	<subtitle>{{ site.description | xml_escape }}</subtitle>
+	<id>{{ page.url | absolute_url | xml_escape }}</id>
+	<link href="{{ page.url | absolute_url }}" rel="self" type="application/atom+xml" />
+	<link href="{{ '/' | i18n_url: include.lang | absolute_url }}" rel="alternate" type="text/html" />
+	<updated>{{ site.time | date_to_xmlschema }}</updated>
+	<generator uri="https://jekyllrb.com/" version="{{ jekyll.version }}">Jekyll</generator>
+	<author>
+		<name>{{ site.data.author.name | xml_escape }}</name>
+		<uri>{{ '/' | absolute_url }}</uri>
+	</author>
+	<rights>{{ site.copyright | xml_escape }}</rights>
+	{%- for post in feed_posts %}
+	<entry xml:lang="{{ post.lang }}">
+		<title type="html">{{ post.title | xml_escape }}</title>
+		<link href="{{ post.url | absolute_url }}" rel="alternate" type="text/html" hreflang="{{ post.lang }}" />
+		<id>{{ post.url | absolute_url | xml_escape }}</id>
+		<published>{{ post.date | date_to_xmlschema }}</published>
+		<updated>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</updated>
+		<author><name>{{ post.author.name | default: site.data.author.name | xml_escape }}</name></author>
+		{%- for tag in post.tags %}
+		<category term="{{ tag | xml_escape }}" />
+		{%- endfor %}
+		<summary type="html">{{ post.excerpt | strip_html | normalize_whitespace | xml_escape }}</summary>
+		<content type="html" xml:base="{{ post.url | absolute_url | xml_escape }}">{{ post.content | xml_escape }}</content>
+	</entry>
+	{%- endfor %}
+</feed>

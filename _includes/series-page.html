@@ -2,8 +2,8 @@
 Contenuto della pagina /serie/<id>/ generata da _plugins/blog_archive.rb:
 riepilogo con date e arco di tempo, poi le parti come linea temporale.
 {%- endcomment -%}
-{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
-{%- assign series = site.data.series_index[page.series_id] -%}
+{%- assign loc = site.data.locales[page.lang] | default: site.data.locales[site.default_lang] -%}
+{%- assign series = site.data.series_index[page.lang][page.series_id] -%}
 <p class="series-meta text-muted">{% include series-meta.html series=series %}</p>
 {%- if series.description -%}
 {{ series.description | markdownify }}

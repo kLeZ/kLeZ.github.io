@@ -1,4 +1,48 @@
 # Interface strings — English
+# Language (_plugins/i18n.rb); field reference in it.yml. The 'gb' flag (Union
+# Jack) is an aesthetic choice, matching the British English of the translations.
+language:
+  flag: gb
+  name: English
+  read: Read in English
+  home: English (home page)
+  locale: en
+# Language names in English, for written_in and feed_lang.
+language_names:
+  it: Italian
+  en: English
+# Titles of the pages cloned under /en/ (`localize: true`), by their Italian URL.
+# Any field given here overrides the front matter of the English copy.
+page_translations:
+  /blog/:
+    title: Blog
+  /serie/:
+    title: Series
+  /tag/by-letter/:
+    title: Tags
+  /tag/by-letter/desc/:
+    title: Tags
+  /tag/by-n-posts/:
+    title: Tags
+  /cerca/:
+    title: Search
+# Series titles and descriptions (_data/series.yml has the Italian ones).
+series_translations:
+  social-media-considered-harmful:
+    title: "Social media considered harmful. Maybe..."
+    description: >-
+      Five instalments, one a week, on how social networks are built to be addictive
+      and on what the companies running them knew.
+  viaggio-chomsky-llm:
+    title: "The journey: from Chomsky to an AGI architecture"
+    description: >-
+      A conversation that started from Noam Chomsky's critique of LLMs and arrived,
+      stage by stage, at a proposed architecture.
+  narrativa-per-tutti-dd:
+    title: "Storytelling for everyone! - D&D"
+    description: >-
+      The story of the Dungeons & Dragons campaign my players were living through,
+      told in instalments on the old blog.
 skip_to_content: "Skip to content"
 reading_time_one: "This article will take 1 minute to read."
 reading_time_other: "This article will take %count% minutes to read."
@@ -76,3 +120,11 @@ tags_sort_alpha: "Alphabetical"
 tags_sort_count: "By number of posts"
 tags_sort_asc: "From A to Z"
 tags_sort_desc: "From Z to A"
+# Languages (_plugins/i18n.rb)
+available_in: "This post is available in:"
+current_version: "this page"
+written_in: "In %s"
+redirect_title: "Page moved"
+redirect_text: "This page now lives here:"
+feed_all: "every post, in every language"
+feed_lang: "posts in %s"

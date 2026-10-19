@@ -102,7 +102,10 @@
 				if (i < doc.tags.length - 1) tags.appendChild(document.createTextNode(","));
 			});
 			var body = el("section", { class: "card-body" }, [
-				el("h2", { class: "card-title h4" }, [el("a", { href: doc.url }, [doc.title])]),
+				// lang/hreflang when the post is in another language than the page
+				el("h2", { class: "card-title h4" }, [el("a", doc.lang && doc.lang !== lang
+					? { href: doc.url, lang: doc.lang, hreflang: doc.lang }
+					: { href: doc.url }, [doc.title])]),
 				el("p", { class: "card-subtitle mb-2 text-muted" }, [
 					el("time", { datetime: doc.date }, [dateFormat.format(new Date(doc.date))])
 				]),

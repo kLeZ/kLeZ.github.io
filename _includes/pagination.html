@@ -2,7 +2,7 @@
 Navigazione tra le pagine di un elenco paginato (vedi _plugins/blog_archive.rb).
 Mostra sempre prima e ultima pagina e due pagine per lato attorno a quella corrente.
 {%- endcomment -%}
-{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
+{%- assign loc = site.data.locales[page.lang] | default: site.data.locales[site.default_lang] -%}
 {%- if paginator and paginator.total_pages > 1 -%}
 {%- assign cur = paginator.page -%}
 {%- assign last = paginator.total_pages -%}

@@ -3,8 +3,8 @@ Collegamenti tra gli articoli di una serie (front matter `series: <id>`, metadat
 _data/series.yml, elenco calcolato da _plugins/blog_archive.rb).
 Parametri: position = "top" (elenco completo delle parti) | "bottom" (precedente/successiva).
 {%- endcomment -%}
-{%- assign loc = site.data.locales[site.active_lang] | default: site.data.locales[site.lang] -%}
-{%- assign series = site.data.series_index[page.series] -%}
+{%- assign loc = site.data.locales[page.lang] | default: site.data.locales[site.default_lang] -%}
+{%- assign series = site.data.series_index[page.lang][page.series] -%}
 {%- if series -%}
 {%- assign idx = nil -%}
 {%- for p in series.posts -%}{%- if p.url == page.url -%}{%- assign idx = forloop.index0 -%}{%- endif -%}{%- endfor -%}

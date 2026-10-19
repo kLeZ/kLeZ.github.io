@@ -1,0 +1,36 @@
+{%- comment -%}
+Lingue in cui è disponibile la pagina, sotto titolo e sottotitolo. Compare solo se
+le versioni sono più di una e le elenca tutte, quella corrente compresa. Ogni voce
+è un link testuale ("Leggi in italiano" / "Read in English", nella lingua di
+destinazione e con il suo `lang`) con la bandiera accanto: la bandiera da sola non
+direbbe né che è cliccabile né dove porta.
+{%- endcomment -%}
+{%- if page.translations.size > 1 -%}
+{%- assign loc = site.data.locales[page.lang] | default: site.data.locales[site.default_lang] -%}
+<nav class="post-languages my-3" aria-labelledby="post-languages-label">
+	<span id="post-languages-label" class="post-languages-label">{{ loc.available_in }}</span>
+	<ul class="post-languages-list">
+		{%- for lng in site.languages -%}
+		{%- assign version = page.translations[lng] -%}
+		{%- if version -%}
+		{%- assign meta = site.data.locales[lng].language -%}
+		<li>
+			{%- if lng == page.lang -%}
+			<a class="post-language current" href="{{ version.url | relative_url }}" hreflang="{{ lng }}" aria-current="page">
+				<img class="flag" src="{{ '/assets/img/flags/' | append: meta.flag | append: '.svg' | relative_url }}" alt="" width="24" height="18" />
+				<span lang="{{ lng }}">{{ meta.read }}</span>
+				<span class="post-language-note">({{ loc.current_version }})</span>
+			</a>
+			{%- else -%}
+			<a class="post-language" href="{{ version.url | relative_url }}" hreflang="{{ lng }}" rel="alternate">
+				<img class="flag" src="{{ '/assets/img/flags/' | append: meta.flag | append: '.svg' | relative_url }}" alt="" width="24" height="18" />
+				<span lang="{{ lng }}">{{ meta.read }}</span>
+				<i class="fas fa-arrow-right" aria-hidden="true"></i>
+			</a>
+			{%- endif -%}
+		</li>
+		{%- endif -%}
+		{%- endfor -%}
+	</ul>
+</nav>
+{%- endif -%}

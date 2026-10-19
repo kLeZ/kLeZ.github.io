@@ -1,9 +1,10 @@
 # Serie di articoli. La chiave è l'id usato nel front matter dei post (`series: <id>`)
-# e diventa l'URL /serie/<id>/. Campi:
+# e diventa l'URL /serie/<id>/ (/en/serie/<id>/ in inglese). Campi:
 #   title        titolo della serie (obbligatorio)
 #   description  testo introduttivo in Markdown, mostrato nella pagina della serie
 #   parts        numero di parti previste, se la serie è ancora in corso
-# Le parti sono ordinate per data di pubblicazione.
+# Le parti sono ordinate per data di pubblicazione. Titoli e descrizioni nelle altre
+# lingue stanno in _data/locales/<lingua>.yml, sotto `series_translations`.
 
 social-media-considered-harmful:
   title: "Social media considered harmful. Forse..."

@@ -2,14 +2,15 @@ timezone: Europe/Rome
 lang: it
 locale: it_IT
 
-# Multilingua (jekyll-polyglot): IT alla root, EN sotto /en/
+# Lingue (_plugins/i18n.rb): la prima di default alla root, le altre sotto /<lingua>/.
+# Ogni lingua ha il suo _data/locales/<lingua>.yml; i file tradotti stanno in
+# _posts/<lingua>/ e _pages/<lingua>/, che ne danno lingua e prefisso dell'URL.
 languages: ["it", "en"]
 default_lang: "it"
-exclude_from_localization:
-  ["assets", "favicon.ico", "robots.txt", "manifest.webmanifest", ".well-known"]
-parallel_localization: true
-# I contenuti non tradotti (fallback) puntano in canonical alla versione IT: niente duplicate content
-fallback_canonical_to_default_lang: true
+# Lingue in cui jekyll-polyglot pubblicava una copia di ogni pagina: a quegli URL
+# restano dei redirect verso l'originale o la traduzione. Una lingua aggiunta dopo
+# non va messa qui.
+i18n_legacy_languages: ["it", "en"]
 title: Alessandro 'kLeZ' Accardo personal website
 description: >-
   This is the personal website of an Italian developer once called 'kLeZ'.
@@ -51,6 +52,7 @@ defaults:
         name: kLeZ
         twitter: kLeZhAcK
       header_background_url: /assets/img/home-bg.jpg
+      lang: it
   - scope:
       path: ""
       type: "posts"
@@ -58,8 +60,7 @@ defaults:
       layout: "post"
       post: true
 
-# Post permalink. Kept here, not in `defaults`: polyglot's {% I18n_Headers %}
-# reads page.permalink and would print the unexpanded pattern.
+# Permalink dei post; quelli in _posts/<lingua>/ lo ricevono sotto /<lingua>/.
 permalink: /:year/:month/:day/:title/
 
 show_excerpts: true
@@ -83,9 +84,10 @@ goat-counter:
 
 jekyll_tidy:
   compress_html: false
-  # JSON, not HTML: htmlbeautifier would mangle it
+  # JSON and Atom, not HTML: htmlbeautifier would mangle them
   exclude:
     - search.json
+    - _pages/feeds/*.xml
 
 # Elenchi paginati, pagine dei tag e delle serie: _plugins/blog_archive.rb
 pagination:
@@ -93,12 +95,13 @@ pagination:
 tag_path: /tag/
 series_path: /serie/
 related_posts: 3
+# Voci per ciascun feed Atom (/feed.xml, /it/feed.xml, /en/feed.xml)
+feed_posts_limit: 10
 
 emoji:
   src: "/assets/img"
 
 plugins:
-  - jekyll-feed
   - jekyll-sitemap
   - jekyll-tidy
   - jekyll-katex
@@ -107,7 +110,6 @@ plugins:
   - jekyll-seo-tag
   - jemoji
   - jekyll-postfiles
-  - jekyll-polyglot
 
 # Defaults. IF you want to change the exclude make sure you keep those sane defaults
 exclude:
@@ -121,12 +123,18 @@ exclude:
   - blog-vector-icon-27.jpg
   - staticman.yml
   - LICENSE
+  # Documentazione e istruzioni per chi lavora sul repo (persone e agenti)
   - README.md
+  - CLAUDE.md
   - AGENTS.md
   - CONTEXT.md
   - AUTHORING.md
   - SPEC-AUDIT.md
   - ACCESS-FILES.md
+  # Ambiente di sviluppo
   - docker-compose.yml
+  - docker-compose.override.yml
   - Makefile
-  - _pages/include/
+  # Frammenti letti da include_relative, non pagine
+  - _pages/includes/
+  - _pages/en/includes/
