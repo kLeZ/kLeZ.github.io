@@ -12,12 +12,15 @@ export HOST_GID := $(shell id -g)
 # comandi DENTRO di esso: un solo container, nessun conflitto sulla porta 4000.
 # 'exec' salta l'ENTRYPOINT, quindi forziamo --user dev + HOME esplicita.
 DAEMON := $(shell $(COMPOSE) ps -q daemon 2>/dev/null)
+# 'docker exec' parte con umask 0000 (Docker 29 / runc 1.5), non 022 come 'run':
+# i file creati nel daemon uscirebbero rw-rw-rw-. Il comando passa da qui.
+UMASK = sh -c 'umask 022 && exec "$$@"' sh
 ifeq ($(DAEMON),)
   IN       = $(COMPOSE) run --rm dev
   IN_PORTS = $(COMPOSE) run --rm --service-ports dev
 else
-  IN       = $(COMPOSE) exec --user dev -e HOME=/home/dev daemon
-  IN_PORTS = $(COMPOSE) exec --user dev -e HOME=/home/dev daemon
+  IN       = $(COMPOSE) exec --user dev -e HOME=/home/dev daemon $(UMASK)
+  IN_PORTS = $(COMPOSE) exec --user dev -e HOME=/home/dev daemon $(UMASK)
 endif
 
 ## — Immagine ——————————————————————————————————————————————
