@@ -125,7 +125,7 @@ All commands assume the environment above (UTF-8 locale + Ruby 3.3.x).
 | New draft            | `bash ./_scripts/draft "My Post Title"`                  |
 | Publish drafts       | `bash ./_scripts/publish`                                |
 | Regenerate emojis    | `bash ./_scripts/emojis`                                 |
-| Translate (local)    | `TRANSLATE_BACKEND=ollama ./_scripts/translate --pending` |
+| Translate a post     | `./_scripts/translate _posts/<file>.md` (host only; `-n` dry run) |
 
 Notes on `_scripts/`:
 - `build` — runs `jekyll doctor`, then builds. In CI (`CI=true`) it writes
@@ -138,6 +138,7 @@ Notes on `_scripts/`:
 - `publish` — promotes `_drafts/*.draft` into dated `_posts/` entries.
 - `emojis` — extracts emoji shortcodes from posts into `assets/img/emoji/`
   (Python 3 + the SgEExt submodule).
+- `translate` — translates the given files into every other site language via an LLM (OpenRouter by default, `OPENROUTER_API_KEY`); the output is content for the owner to review, never committed by an agent on its own. See AUTHORING.md, "Translations".
 
 ## Validating a change before pushing
 

@@ -1,860 +1,192 @@
-#!/usr/bin/env python3
-"""
-Traduce i contenuti del sito tra italiano e inglese con un LLM: locale via Ollama (gratis,
-nessun limite) oppure hosted via OpenRouter (modelli gratuiti, con limiti giornalieri).
+#!/usr/bin/env bash
+# Usage: translate [-n] [-f] [-t LANG] FILE...
+# Translates each FILE into every other language in `languages:` (_config.yml), or only
+# into LANG. The source language is the file's language folder (_posts/en/x.md is
+# English), otherwise the site's default language. An English file written at the root
+# with `lang: en` is first moved (git mv) into its language folder.
+#   -n  dry run: print what would be translated or skipped, call no model
+#   -f  translate again even if the source has not changed since the last translation
+# Environment:
+#   TRANSLATE_ADAPTER  which _scripts/i18n/translate-<adapter> calls the model: openrouter
+#                      (default), claude, replay; each adapter documents its own variables
+#
+# Each translation goes through small programs in _scripts/i18n/, all reading and
+# writing files or stdin/stdout:
+#   prep TGT        links to the TGT versions, quotes whose original is already in TGT
+#   translate-*     the model (the prompt comes from `prompt SRC TGT`)
+#   clean           ASCII punctuation, no fence around the reply, one final newline
+#   assemble        source front matter + translated fields + source_sha, translated body
+#   check           structure and numbers against the source; problems mark the file
+#                   with `translation_review: true`
+#
+# A file with `source_sha` is a translation: it is regenerated when its source changes.
+# A file without it is an original and is never overwritten, not even with -f.
+set -euo pipefail
 
-Filosofia: lo script è sottile, il valore sta nel prompt (_scripts/i18n/prompt.md) e nel
-glossario (_scripts/i18n/glossary.yml). La traduzione gira a "commit-time": l'output sono
-file statici nel repo, niente chiamate di rete a runtime nel sito.
+usage() { sed -n '2,12p' "$0" | sed 's/^# \{0,1\}//' >&2; exit 2; }
 
-Prerequisiti:
-    pip install requests pyyaml          # oppure i pacchetti della distribuzione
-    # Ollama (locale):
-    export TRANSLATE_BACKEND=ollama
-    export TRANSLATE_MODEL=qwen2.5:7b    # default per Ollama; `ollama pull` prima
-    # altro server locale con API in stile OpenAI (LM Studio, llama.cpp, Janas, ...):
-    export TRANSLATE_BACKEND=openai
-    export TRANSLATE_API_URL=http://localhost:8080/v1/chat/completions
-    # OpenRouter (hosted):
-    export OPENROUTER_API_KEY="sk-or-..."        # account gratuito su openrouter.ai
-    # opzionale: default 'openrouter/free' (router auto). Per più qualità imposta uno slug
-    # specifico verificato su https://openrouter.ai/models (filtro Free).
+dry=0 force=0 only=""
+while getopts nft: opt; do
+    case $opt in
+        n) dry=1 ;;
+        f) force=1 ;;
+        t) only=$OPTARG ;;
+        *) usage ;;
+    esac
+done
+shift $((OPTIND - 1))
+(( $# )) || usage
 
-Uso:
-    _scripts/translate _pages/about.md _pages/privacy.md
-    _scripts/translate --force _pages/cv.md
-    _scripts/translate --dry-run _pages/contatti.md
-    _scripts/translate --pending              # tutti i post italiani non ancora tradotti
-    _scripts/translate --pending --limit 5    # solo i 5 più recenti
+root=$(cd "$(dirname "$0")/.." && pwd)
+i18n=$root/_scripts/i18n
+adapter=$i18n/translate-${TRANSLATE_ADAPTER:-openrouter}
+[[ -x $adapter ]] || { echo "translate: no adapter $adapter" >&2; exit 2; }
+files=()
+for f in "$@"; do
+    [[ -f $f ]] || { echo "translate: $f: no such file" >&2; exit 2; }
+    files+=("$(realpath --relative-to="$root" "$f")")
+done
+cd "$root"
+mapfile -t langs < <(yq '.languages[]' _config.yml)
+default=$(yq '.default_lang // .languages[0]' _config.yml)
+[[ -z $only || " ${langs[*]} " == *" $only "* ]] || { echo "translate: $only is not in languages: ${langs[*]}" >&2; exit 2; }
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
 
-Pezzi: con i backend locali (ollama, openai) il file viene tradotto a pezzi (front matter a parte, corpo diviso tra
-blocchi, mai dentro codice o citazioni) perché i modelli locali piccoli troncano i testi
-lunghi. Con OpenRouter il file va intero, salvo --chunk-chars. Le guardie di struttura
-girano su ogni pezzo, con un nuovo tentativo per il pezzo che fallisce.
+is_lang() { [[ " ${langs[*]} " == *" $1 "* ]]; }
+has_front_matter() { [[ $(head -n 1 "$1") == --- ]]; }
 
-Direzione: dipende dal `lang` del file sorgente. Convenzione: root = italiani, en/ = inglesi.
-    it (root)        -> en  : _posts/x.md           -> _posts/en/x.md
-    en (en/)         -> it  : _posts/en/x.md        -> _posts/x.md
-    en alla root     -> it  : _posts/x.md (lang:en) viene PRIMA spostato (git mv) in
-                              _posts/en/x.md, poi l'IT viene generato a _posts/x.md
-
-Idempotenza: nel front matter della traduzione viene salvato `source_sha`. Se la sorgente
-non è cambiata il file viene saltato (così le tue correzioni manuali restano). Un file
-SENZA `source_sha` è un originale: non viene mai sovrascritto. Usa --force per forzare.
-"""
-
-import argparse
-import hashlib
-import os
-import re
-import subprocess
-import sys
-import time
-from pathlib import Path
-
-try:
-    import requests
-    import yaml
-except ImportError:
-    sys.exit("Mancano dipendenze: pip install requests pyyaml")
-
-ROOT = Path(__file__).resolve().parent.parent
-PROMPT_FILE = ROOT / "_scripts" / "i18n" / "prompt.md"
-GLOSSARY_FILE = ROOT / "_scripts" / "i18n" / "glossary.yml"
-API_URL = "https://openrouter.ai/api/v1/chat/completions"
-DEFAULT_LANG = "it"   # lingua di default (root); le altre vanno sotto /<lang>/
-# nomi leggibili per il prompt (target 'en' = inglese britannico, vedi register.en.md)
-LANG_NAME_SRC = {"it": "Italian", "en": "English"}
-LANG_NAME_TGT = {"it": "Italian", "en": "British English"}
-# codici per i modelli di sola traduzione (TranslateGemma), che li vogliono nel prompt
-LANG_CODE_SRC = {"it": "it", "en": "en"}
-LANG_CODE_TGT = {"it": "it", "en": "en-GB"}
-# Router automatico OpenRouter: sceglie un modello free disponibile, così non va in 404
-# quando un singolo slug :free sparisce. Override con TRANSLATE_MODEL / --model.
-# Per più qualità imposta uno slug specifico (verifica su https://openrouter.ai/models,
-# filtro "Free"), es. deepseek/deepseek-r1:free o meta-llama/llama-4-maverick:free.
-BACKEND = os.environ.get("TRANSLATE_BACKEND", "openrouter")
-OLLAMA_URL = os.environ.get("OLLAMA_HOST", "http://localhost:11434").rstrip("/")
-if not OLLAMA_URL.startswith("http"):
-    OLLAMA_URL = "http://" + OLLAMA_URL  # OLLAMA_HOST può essere solo host:porta
-# Ollama tiene di default una finestra di contesto piccola e tronca in silenzio: la
-# fissiamo. 8192 token stanno insieme a un modello 7B quantizzato in 6 GB di VRAM.
-OLLAMA_NUM_CTX = int(os.environ.get("TRANSLATE_NUM_CTX", "8192"))
-# "openai": qualsiasi server locale con l'API chat/completions di OpenAI (LM Studio,
-# llama.cpp server, Janas, vLLM, ...). Il modello lo decide spesso il server stesso.
-OPENAI_URL = os.environ.get("TRANSLATE_API_URL", "http://localhost:8080/v1/chat/completions")
-DEFAULT_MODELS = {"openrouter": "openrouter/free", "ollama": "qwen2.5:7b", "openai": "local"}
-DEFAULT_MODEL = os.environ.get("TRANSLATE_MODEL") or DEFAULT_MODELS.get(BACKEND, "openrouter/free")
-# Dimensione massima di un pezzo (caratteri). ~6000 caratteri sono ~1500-2000 token di
-# ingresso e altrettanti di uscita: dentro num_ctx con il prompt di sistema.
-DEFAULT_CHUNK_CHARS = {"ollama": 6000, "openai": 6000}.get(BACKEND, 0)
-FM_TRANSLATABLE = ("title", "subtitle", "description", "summary", "excerpt")
-
-FM_RE = re.compile(r"^---\n(.*?)\n---\n?(.*)$", re.DOTALL)
-SHA_COMMENT_RE = re.compile(r"<!--\s*source_sha:\s*([0-9a-f]+)\s*-->")
-INCLUDE_REL_RE = re.compile(r"include_relative\s+(\S+)")
-# chiavi di front matter che puntano a partial markdown da tradurre anch'essi
-REF_FM_KEYS = ("right_content", "left_content", "toc")
-
-
-def split_front_matter(text):
-    """Restituisce (fm_dict|None, fm_raw|None, body)."""
-    m = FM_RE.match(text)
-    if not m:
-        return None, None, text
-    fm_raw, body = m.group(1), m.group(2)
-    return yaml.safe_load(fm_raw) or {}, fm_raw, body
-
-
-def source_sha(text):
-    return hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
-
-
-def target_path(src: Path) -> Path:
-    """Percorso EN: inserisce 'en' dopo la cartella radice della collection (it -> en)."""
-    rel = src.relative_to(ROOT)
-    parts = list(rel.parts)
-    parts.insert(1, "en")
-    return ROOT / Path(*parts)
-
-
-def is_en_path(src: Path) -> bool:
-    parts = src.relative_to(ROOT).parts
-    return len(parts) > 1 and parts[1] == "en"
-
-
-def to_it_path(src: Path) -> Path:
-    """Percorso IT (root): toglie il segmento 'en' se presente (en -> it)."""
-    parts = list(src.relative_to(ROOT).parts)
-    if len(parts) > 1 and parts[1] == "en":
-        del parts[1]
-    return ROOT / Path(*parts)
-
-
-def git_mv(src: Path, dst: Path):
-    dst.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        subprocess.run(["git", "mv", str(src), str(dst)], cwd=ROOT, check=True,
-                       capture_output=True)
-        return "git mv"
-    except Exception:
-        os.rename(src, dst)
-        return "rename"
-
-
-def referenced_files(src: Path, fm, body):
-    """File partial referenziati dalla sorgente (include_relative + chiavi front matter),
-    da tradurre anch'essi. Risolti relativamente alla cartella del sorgente."""
-    refs = set(INCLUDE_REL_RE.findall(body))
-    for key in REF_FM_KEYS:
-        val = (fm or {}).get(key)
-        if isinstance(val, str) and val.endswith(".md"):
-            refs.add(val)
-    out = []
-    for r in refs:
-        p = (src.parent / r).resolve()
-        if p.exists() and p not in out:
-            out.append(p)
-    return out
-
-
-LINK_TAG_RE = re.compile(r"\{%-?\s*link\s+(\S+?)\s*-?%\}")
-POSTURL_TAG_RE = re.compile(r"\{%-?\s*post_url\s+(\S+?)\s*-?%\}")
-
-
-def _counterpart(path: str, tgt_lang: str):
-    """Percorso (relativo alla radice) della versione di `path` nella lingua di arrivo,
-    se esiste: _posts/x.md <-> _posts/en/x.md. None se non c'è."""
-    parts = list(Path(path).parts)
-    if len(parts) < 2:
-        return None
-    if tgt_lang == DEFAULT_LANG:
-        if parts[1] != "en":
-            return None
-        del parts[1]
-    else:
-        if parts[1] == tgt_lang:
-            return None
-        parts.insert(1, tgt_lang)
-    cand = Path(*parts)
-    return str(cand) if (ROOT / cand).exists() else None
-
-
-def _post_file(name):
-    for ext in (".md", ".markdown", ".html"):
-        hits = list((ROOT / "_posts").glob(f"{name}{ext}"))
-        if hits:
-            return str(hits[0].relative_to(ROOT))
-    return None
-
-
-def resolve_liquid_links(text, tgt_lang):
-    """Fa puntare {% link %}/{% post_url %} alla versione nella lingua di arrivo quando
-    esiste (_plugins/i18n.rb non riscrive i link: un link alla pagina italiana resta
-    italiano). Senza traduzione il tag resta com'è e porta all'originale."""
-    warnings = []
-
-    def link_sub(m):
-        path = m.group(1)
-        if path.startswith("/"):  # asset statico (/media/...): uguale in ogni lingua
-            return m.group(0)
-        other = _counterpart(path, tgt_lang)
-        if other:
-            return m.group(0).replace(path, other)
-        if not (ROOT / path).exists():
-            warnings.append(f"link non risolto: {{% link {path} %}} (file inesistente)")
-        return m.group(0)
-
-    def post_sub(m):
-        name = m.group(1)
-        src = _post_file(name)
-        if not src:
-            warnings.append(f"post_url non risolto: {name}")
-            return m.group(0)
-        other = _counterpart(src, tgt_lang)
-        if other:
-            # post_url accetta la sottocartella: {% post_url en/2026-01-01-x %}
-            sub = "/".join(Path(other).parts[1:-1] + (Path(other).stem,))
-            return m.group(0).replace(name, sub)
-        return m.group(0)
-
-    text = POSTURL_TAG_RE.sub(post_sub, LINK_TAG_RE.sub(link_sub, text))
-    return text, warnings
-
-
-# Regola generale: punteggiatura ASCII. Gli LLM "abbelliscono" con caratteri tipografici
-# Unicode (smart quote, en/em dash, ellissi, spazi non-breaking); qui li riportiamo ad
-# ASCII in modo deterministico. NB: solo PUNTEGGIATURA — le lettere accentate (à è é ì ò ù)
-# non sono nella tabella e restano intatte.
-TYPOGRAPHY_MAP = {
-    "‘": "'", "’": "'", "‚": "'", "‛": "'",  # single quotes
-    "“": '"', "”": '"', "„": '"', "‟": '"',  # double quotes
-    "′": "'", "″": '"',                                  # prime, double prime
-    "«": '"', "»": '"',                                  # guillemets « »
-    "–": "-", "‒": "-",                                  # en dash, figure dash
-    "—": "--", "―": "--",                                # em dash, horizontal bar
-    "…": "...",                                               # ellipsis
-    " ": " ", " ": " ", " ": " ", " ": " ",    # special spaces
-    "﻿": "",                                                  # BOM / zero-width nbsp
+# language folder right below the top folder (_posts/en/x.md), empty if none
+lang_folder() {
+    local rest=${1#*/} first
+    [[ $rest == */* ]] || return 0
+    first=${rest%%/*}
+    if is_lang "$first" && [[ $first != "$default" ]]; then echo "$first"; fi
 }
 
-
-def normalize_typography(text):
-    """Sostituisce la punteggiatura tipografica con ASCII. Salta i blocchi di codice
-    fenced (``` ) per non alterare il codice verbatim."""
-    out, in_fence = [], False
-    for line in text.split("\n"):
-        if line.lstrip().startswith("```"):
-            in_fence = not in_fence
-            out.append(line)
-            continue
-        if not in_fence:
-            for k, v in TYPOGRAPHY_MAP.items():
-                if k in line:
-                    line = line.replace(k, v)
-        out.append(line)
-    return "\n".join(out)
-
-
-CITATION_ORIGINAL = re.compile(r'^>\s*\{:\s*\.citation-original\s+lang="([a-z-]+)"\s*\}\s*$')
-
-
-def collapse_citation_originals(text, tgt_lang):
-    """Nelle citazioni con il testo originale sotto la traduzione (vedi AUTHORING.md,
-    "Quotes in another language"), se l'originale è già nella lingua di arrivo tiene solo
-    quello: via la traduzione, la riga '>' vuota e l'IAL. Altrimenti lascia tutto."""
-    lines = text.split("\n")
-    i = 0
-    while i < len(lines):
-        m = CITATION_ORIGINAL.match(lines[i])
-        if not m or m.group(1) != tgt_lang:
-            i += 1
-            continue
-        # risali l'originale fino alla riga '>' vuota che lo separa dalla traduzione
-        j = i - 1
-        while j >= 0 and lines[j].strip() not in (">", ""):
-            j -= 1
-        if j < 0 or lines[j].strip() != ">":
-            i += 1
-            continue
-        # risali la traduzione fino all'intestazione del blocco o a un'altra riga vuota
-        k = j - 1
-        while k >= 0 and lines[k].strip() not in (">", "") and not lines[k].startswith("> citation"):
-            k -= 1
-        if k < 0 or not lines[k].startswith("> citation"):
-            i += 1
-            continue
-        del lines[i]
-        del lines[k + 1:j + 1]
-        i = k + 1
-    return "\n".join(lines)
-
-
-def existing_sha(dst: Path):
-    """Ritorna (source_sha_salvato | None, manuale?). 'manuale' = file EN senza sha
-    (probabilmente scritto/editato a mano) -> da non sovrascrivere."""
-    if not dst.exists():
-        return None, False
-    text = dst.read_text(encoding="utf-8")
-    fm, _, _ = split_front_matter(text)
-    if fm is not None:
-        return fm.get("source_sha"), ("source_sha" not in fm)
-    m = SHA_COMMENT_RE.search(text)
-    return (m.group(1) if m else None), (m is None)
-
-
-def build_prompt(src_lang, tgt_lang):
-    prompt = PROMPT_FILE.read_text(encoding="utf-8")
-    register = (ROOT / "_scripts" / "i18n" / f"register.{tgt_lang}.md").read_text(encoding="utf-8")
-    gloss = yaml.safe_load(GLOSSARY_FILE.read_text(encoding="utf-8")) or {}
-    lines = []
-    for term in gloss.get("keep", []):
-        lines.append(f"- Keep verbatim: {term}")
-    # glossario terms: definito IT->EN; per EN->IT lo invertiamo
-    terms = (gloss.get("terms") or {})
-    pairs = terms.items() if tgt_lang == "en" else [(v, k) for k, v in terms.items()]
-    for a, b in pairs:
-        lines.append(f"- Render '{a}' as '{b}'")
-    return (prompt
-            .replace("{{SOURCE_LANG}}", LANG_NAME_SRC[src_lang])
-            .replace("{{TARGET_LANG}}", LANG_NAME_TGT[tgt_lang])
-            .replace("{{REGISTER}}", register.strip())
-            .replace("{{GLOSSARY}}", "\n".join(lines) if lines else "(none)"))
-
-
-class TranslateError(Exception):
-    """Errore del backend: interrompe il file corrente, non l'intero giro --pending."""
-
-
-def instruction(src_lang, tgt_lang, what="text"):
-    """Richiesta esplicita nel messaggio utente. Con il solo testo da tradurre e le
-    istruzioni nel prompt di sistema, i modelli locali piccoli (qwen2.5:7b) spesso
-    restituiscono la sorgente così com'è."""
-    return (f"Translate the following {what} from {LANG_NAME_SRC[src_lang]} into "
-            f"{LANG_NAME_TGT[tgt_lang]}. Reply with the translation only.")
-
-
-def is_mt_model(model):
-    """Modelli addestrati solo a tradurre, con un formato di richiesta fisso."""
-    return "translategemma" in model.lower()
-
-
-def mt_prompt(src_lang, tgt_lang, text):
-    """Il formato di TranslateGemma (https://ollama.com/library/translategemma): un solo
-    messaggio utente, niente prompt di sistema, due righe vuote prima del testo."""
-    s, t = LANG_NAME_SRC[src_lang], LANG_NAME_TGT[tgt_lang]
-    sc, tc = LANG_CODE_SRC[src_lang], LANG_CODE_TGT[tgt_lang]
-    return (f"You are a professional {s} ({sc}) to {t} ({tc}) translator. Your goal is to "
-            f"accurately convey the meaning and nuances of the original {s} text while adhering "
-            f"to {t} grammar, vocabulary, and cultural sensitivities.\n"
-            f"Produce only the {t} translation, without any additional explanations or "
-            f"commentary. Please translate the following {s} text into {t}:\n\n\n{text}")
-
-
-def _messages(system_prompt, text):
-    return ([{"role": "system", "content": system_prompt}] if system_prompt else []) + \
-        [{"role": "user", "content": text}]
-
-
-def call_llm(system_prompt, file_text, model, api_key, request="", pair=None):
-    """pair = (lingua di partenza, lingua di arrivo): con un modello di sola traduzione
-    sostituisce prompt di sistema e richiesta con il formato del modello."""
-    if pair and is_mt_model(model):
-        system_prompt, text = None, mt_prompt(pair[0], pair[1], file_text)
-    else:
-        text = f"{request}\n\n{file_text}" if request else file_text
-    if BACKEND == "ollama":
-        content = _call_ollama(system_prompt, text, model)
-    elif BACKEND == "openai":
-        content = _call_openai_compatible(system_prompt, text, model)
-    else:
-        content = _call_openrouter(system_prompt, text, model, api_key)
-    # modelli "ragionanti" (deepseek-r1, qwen3, ...) possono anteporre il ragionamento
-    content = re.sub(r"^\s*<think>.*?</think>\s*", "", content, flags=re.DOTALL)
-    # "Here is the translation:" e simili prima del testo
-    content = re.sub(r"^(?:here is|here's|sure|certainly|ecco|certo)\b[^\n]*:[ \t]*\n+", "",
-                     content, flags=re.IGNORECASE)
-    # rimuove la cornice ```...``` che il modello a volte mette attorno all'output, solo se
-    # la sorgente non comincia con un blocco di codice: altrimenti si perderebbe la riga
-    # di chiusura di un blocco vero in fondo al testo
-    if content.startswith("```") and not file_text.lstrip().startswith("```"):
-        content = re.sub(r"^```[a-z]*\n", "", content)
-        content = re.sub(r"\n```\s*$", "", content)
-    return content
-
-
-def _call_ollama(system_prompt, text, model):
-    try:
-        resp = requests.post(
-            f"{OLLAMA_URL}/api/chat",
-            json={
-                "model": model,
-                "stream": False,
-                "keep_alive": "30m",  # il modello resta caricato tra un pezzo e l'altro
-                # niente ragionamento (qwen3.5, deepseek-r1...): consumerebbe tutto num_predict
-                # prima della risposta; i modelli che non ragionano ignorano l'opzione
-                "think": False,
-                # num_predict: tetto all'uscita (~1,5 volte l'ingresso, ~3 caratteri per
-                # token). Un modello piccolo può entrare in loop e generare fino a riempire
-                # il contesto: meglio un errore subito che un quarto d'ora e un testo rotto.
-                "options": {"temperature": 0.2, "num_ctx": OLLAMA_NUM_CTX,
-                            "num_predict": max(512, len(text) // 2)},
-                "messages": _messages(system_prompt, text),
-            },
-            timeout=900,
-        )
-    except requests.ConnectionError:
-        raise TranslateError(f"Ollama non raggiungibile su {OLLAMA_URL}: è avviato? (ollama serve)")
-    except requests.RequestException as e:
-        raise TranslateError(f"Ollama: {e}")
-    if not resp.ok:
-        try:
-            detail = resp.json().get("error") or resp.text
-        except ValueError:
-            detail = resp.text
-        hint = f"\nScarica il modello con: ollama pull {model}" if resp.status_code == 404 else ""
-        raise TranslateError(f"Errore Ollama {resp.status_code}: {detail}{hint}")
-    data = resp.json()
-    if data.get("done_reason") == "length":
-        raise TranslateError("risposta troncata (limite di uscita num_predict o contesto num_ctx): "
-                             "alza TRANSLATE_NUM_CTX o abbassa --chunk-chars")
-    return data["message"]["content"].strip()
-
-
-def _call_openai_compatible(system_prompt, text, model):
-    headers = {"Content-Type": "application/json"}
-    if os.environ.get("TRANSLATE_API_KEY"):
-        headers["Authorization"] = f"Bearer {os.environ['TRANSLATE_API_KEY']}"
-    try:
-        resp = requests.post(
-            OPENAI_URL,
-            headers=headers,
-            json={
-                "model": model,
-                "temperature": 0.2,
-                "stream": False,
-                "messages": _messages(system_prompt, text),
-            },
-            timeout=900,
-        )
-    except requests.ConnectionError:
-        raise TranslateError(f"server non raggiungibile su {OPENAI_URL} (TRANSLATE_API_URL)")
-    except requests.RequestException as e:
-        raise TranslateError(f"{OPENAI_URL}: {e}")
-    if not resp.ok:
-        raise TranslateError(f"Errore {resp.status_code} da {OPENAI_URL}: {resp.text[:500]}")
-    choice = resp.json()["choices"][0]
-    if choice.get("finish_reason") == "length":
-        raise TranslateError("risposta troncata: aumenta il contesto del server o abbassa --chunk-chars")
-    return choice["message"]["content"].strip()
-
-
-def _call_openrouter(system_prompt, file_text, model, api_key):
-    try:
-        resp = _post_openrouter(system_prompt, file_text, model, api_key)
-    except requests.RequestException as e:
-        raise TranslateError(f"OpenRouter: {e}")
-    if not resp.ok:
-        # estrae il messaggio diagnostico di OpenRouter invece di un HTTPError grezzo
-        try:
-            detail = resp.json().get("error", {}).get("message") or resp.text
-        except ValueError:
-            detail = resp.text
-        hint = ""
-        if resp.status_code == 404:
-            hint = ("\nModello '%s' non trovato/non disponibile. Verifica lo slug su "
-                    "https://openrouter.ai/models (filtro Free) o usa TRANSLATE_MODEL=openrouter/free."
-                    % model)
-        elif resp.status_code in (401, 403):
-            hint = "\nControlla OPENROUTER_API_KEY."
-        elif resp.status_code == 429:
-            hint = "\nRate limit del tier free raggiunto: riprova più tardi o cambia modello."
-        raise TranslateError(f"Errore OpenRouter {resp.status_code}: {detail}{hint}")
-    return resp.json()["choices"][0]["message"]["content"].strip()
-
-
-def _post_openrouter(system_prompt, file_text, model, api_key):
-    return requests.post(
-        API_URL,
-        headers={
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json",
-            "HTTP-Referer": "https://klez.me",
-            "X-Title": "klez.me i18n",
-        },
-        json={
-            "model": model,
-            "temperature": 0.2,
-            "messages": _messages(system_prompt, file_text),
-        },
-        timeout=180,
-    )
-
-
-def split_blocks(body):
-    """Divide il corpo in blocchi separati da righe vuote, senza mai tagliare dentro un
-    blocco di codice: concatenati restituiscono esattamente il testo originale."""
-    blocks, cur, in_fence = [], [], False
-    for line in body.splitlines(keepends=True):
-        if line.lstrip().startswith("```"):
-            in_fence = not in_fence
-        cur.append(line)
-        if not in_fence and line.strip() == "":
-            blocks.append("".join(cur))
-            cur = []
-    if cur:
-        blocks.append("".join(cur))
-    return blocks
-
-
-def chunk_body(body, max_chars):
-    """Raggruppa i blocchi in pezzi di al più max_chars (un blocco più lungo resta intero).
-    Oltre metà della dimensione, un titolo (#) apre un pezzo nuovo: i pezzi seguono le
-    sezioni quando possibile. Un titolo non chiude mai un pezzo: rimasto in fondo senza
-    testo dopo, il modello lo scarta (succedeva con "## Fonti" seguito da un elenco lungo)."""
-    if max_chars <= 0 or len(body) <= max_chars:
-        return [body]
-    chunks, cur = [], []
-    for block in split_blocks(body):
-        size = sum(map(len, cur))
-        starts_section = block.lstrip().startswith("#")
-        if cur and (size + len(block) > max_chars or (starts_section and size > max_chars // 2)):
-            keep = len(cur)
-            while keep and cur[keep - 1].lstrip().startswith("#"):
-                keep -= 1
-            # solo titoli nel pezzo: restano attaccati al blocco, anche oltre il limite
-            if keep:
-                chunks.append("".join(cur[:keep]))
-                cur = cur[keep:]
-        cur.append(block)
-    if cur:
-        chunks.append("".join(cur))
-    return chunks
-
-
-# Parole funzionali frequenti: in un testo tradotto quelle della lingua di partenza
-# spariscono, mentre titoli, nomi propri e URL possono restare uguali.
-FUNCTION_WORDS = {
-    "it": set("il lo la gli le un una uno di del della dei delle degli che non per con "
-              "sono è nel nella anche come più ma questo questa quando perché".split()),
-    "en": set("the of and to is that it for with as was this are be have not but they "
-              "which from by an or".split()),
+target_path() {
+    local rel=$1 tgt=$2 top rest
+    top=${rel%%/*} rest=${rel#*/}
+    [[ -n $(lang_folder "$rel") ]] && rest=${rest#*/}
+    if [[ $tgt == "$default" ]]; then echo "$top/$rest"; else echo "$top/$tgt/$rest"; fi
 }
 
+# the source_sha a translation was made from; nothing for an original
+stored_sha() {
+    if has_front_matter "$1"; then
+        yq --front-matter=extract '.source_sha // ""' "$1"
+    else
+        sed -n 's/^<!--[[:space:]]*source_sha:[[:space:]]*\([0-9a-f]*\)[[:space:]]*-->.*/\1/p' "$1" | head -n 1
+    fi
+}
 
-def untranslated(src, out, src_lang):
-    """Un modello piccolo a volte restituisce la sorgente così com'è. Se l'uscita
-    conserva più di metà delle parole funzionali della lingua di partenza, il pezzo
-    non è stato tradotto. Sotto le 20 occorrenze (un elenco di fonti, un pezzo fatto
-    di codice e link) il controllo non si applica."""
-    words = FUNCTION_WORDS.get(src_lang)
-    if not words:
-        return []
+# same hash as the Python translator that wrote the existing translations
+sha_of() { python3 -c 'import hashlib, sys; print(hashlib.sha256(open(sys.argv[1], encoding="utf-8").read().encode()).hexdigest()[:16])' "$1"; }
 
-    def count(t):
-        t = re.sub(r"```.*?```", "", t, flags=re.DOTALL)
-        t = re.sub(r"`[^`]*`|\]\([^)]*\)|https?://\S+", " ", t)
-        return sum(1 for w in re.findall(r"\w+", t.lower()) if w in words)
-    n_src = count(src)
-    if n_src < 20:
-        return []
-    if count(out) > n_src / 2:
-        return ["testo quasi identico alla sorgente (non tradotto?)"]
-    return []
+# partials the file pulls in (include_relative, right_content/left_content/toc), to be
+# translated with it
+partials() {
+    local dir ref
+    dir=$(dirname "$1")
+    {
+        grep -o 'include_relative[[:space:]]\+[^[:space:]%]\+' "$1" | awk '{ print $2 }' || true
+        if has_front_matter "$1"; then
+            yq --front-matter=extract '[.right_content, .left_content, .toc][] | select(type == "!!str" and test("\.md$"))' "$1"
+        fi
+    } | while read -r ref; do
+        if [[ -f $dir/$ref ]]; then realpath --relative-to="$root" "$dir/$ref"; fi
+    done | sort -u
+}
 
+flag_review() {
+    if has_front_matter "$1"; then
+        yq -i --front-matter=process '.translation_review = true' "$1"
+    else
+        sed -i '1a <!-- translation_review -->' "$1"
+    fi
+}
 
-def translate_text(system_prompt, text, model, api_key, label, request="", pair=(DEFAULT_LANG, "en")):
-    """Traduce un pezzo con un nuovo tentativo se le guardie falliscono. Conserva le
-    righe vuote iniziali e finali del pezzo, che il modello tende a normalizzare.
-    Ritorna (testo, problemi residui)."""
-    if not text.strip():
-        return text, []
-    lead = text[: len(text) - len(text.lstrip("\n"))]
-    trail = text[len(text.rstrip("\n")):]
-    out, problems = None, []
-    for attempt in (1, 2):
-        out = call_llm(system_prompt, text.strip("\n"), model, api_key, request, pair)
-        problems = guards(text, out) + untranslated(text, out, pair[0])
-        if not problems:
-            break
-        print(f"    {label}: guardie fallite (tentativo {attempt}) -> " + "; ".join(problems))
-        if any("non tradotto" in p for p in problems):
-            print("      risposta: " + " ".join(out.split())[:160] + " ...")
-    return lead + out.strip("\n") + trail, problems
+done_=() review=() skipped=() failed=()
+for ((i = 0; i < ${#files[@]}; i++)); do
+    src=${files[i]}
+    if [[ -n $(stored_sha "$src") ]]; then
+        echo "! $src has source_sha: it is a translation, translate its source instead"
+        skipped+=("$src")
+        continue
+    fi
+    src_lang=$(lang_folder "$src")
+    if [[ -z $src_lang ]]; then
+        src_lang=$default
+        declared=""
+        has_front_matter "$src" && declared=$(yq --front-matter=extract '.lang // ""' "$src")
+        if [[ -n $declared && $declared != "$default" ]]; then
+            is_lang "$declared" || { echo "! $src: lang '$declared' is not in languages, skipped"; skipped+=("$src"); continue; }
+            moved=${src%%/*}/$declared/${src#*/}
+            echo "~ $src has lang: $declared, moving it to $moved"
+            if (( ! dry )); then
+                mkdir -p "$(dirname "$moved")"
+                git mv "$src" "$moved"
+                src=$moved
+            fi
+            src_lang=$declared
+        fi
+    fi
+    while read -r p; do
+        [[ -z $p || " ${files[*]} " == *" $p "* ]] && continue
+        echo "+ $p, included by $src"
+        files+=("$p")
+    done < <(partials "$src")
 
+    sha=$(sha_of "$src")
+    for tgt in "${langs[@]}"; do
+        [[ $tgt == "$src_lang" || ( -n $only && $tgt != "$only" ) ]] && continue
+        dst=$(target_path "$src" "$tgt")
+        if [[ -f $dst ]]; then
+            stored=$(stored_sha "$dst")
+            if [[ -z $stored ]]; then
+                echo "= $dst has no source_sha: it is an original, skipped"
+                skipped+=("$dst")
+                continue
+            fi
+            if [[ $stored == "$sha" ]] && (( ! force )); then
+                echo "= $dst is up to date"
+                skipped+=("$dst")
+                continue
+            fi
+        fi
+        echo "> $src -> $dst ($src_lang -> $tgt, ${TRANSLATE_ADAPTER:-openrouter})"
+        (( dry )) && continue
 
-def translate_field(key, value, src_lang, tgt_lang, model, api_key):
-    """Un valore del front matter (title, description, ...) tradotto da solo, come testo
-    semplice: chiedere al modello un blocco YAML porta a YAML non valido (titoli con ':'
-    o parentesi spezzati su più righe). Il YAML lo scrive yaml.safe_dump.
-    Ritorna (traduzione | None, problemi)."""
-    system = (f"You translate the {key} of a personal tech blog post from {LANG_NAME_SRC[src_lang]} "
-              f"into {LANG_NAME_TGT[tgt_lang]}. Keep the author's tone, proper nouns and anything "
-              "in backticks. Use plain ASCII punctuation. Reply with the translated text only, "
-              "without quotes, labels or comments.")
-    problem = ""
-    for attempt in (1, 2):
-        out = call_llm(system, value, model, api_key, instruction(src_lang, tgt_lang, key),
-                       (src_lang, tgt_lang))
-        out = " ".join(out.split()) if "\n" not in value.strip() else out.strip()
-        if len(out) >= 2 and out[0] == out[-1] and out[0] in "\"'" and value[:1] not in "\"'":
-            out = out[1:-1].strip()
-        if not out:
-            problem = "risposta vuota"
-        elif len(out) > 3 * len(value) + 80:
-            problem = "risposta troppo lunga"
-        else:
-            return out, []
-        print(f"    front matter '{key}': {problem} (tentativo {attempt})")
-    return None, [f"front matter: '{key}' non tradotto ({problem})"]
-
-
-def guards(src_text, out_text):
-    """Controlli di struttura: ritorna lista di problemi (vuota = ok)."""
-    problems = []
-
-    def count(pattern, text, flags=0):
-        return len(re.findall(pattern, text, flags))
-
-    checks = {
-        "code fence (```)": r"^```",
-        "heading": r"^#{1,6}\s",
-        "link": r"\]\(",
-        "display math ($$)": r"\$\$",
-    }
-    for name, pat in checks.items():
-        flags = re.MULTILINE if pat.startswith("^") else 0
-        if count(pat, src_text, flags) != count(pat, out_text, flags):
-            problems.append(f"conteggio '{name}' diverso dalla sorgente")
-    # delimitatori display math bilanciati
-    if out_text.count("$$") % 2 != 0:
-        problems.append("delimitatori $$ non bilanciati")
-    # integrità tag Liquid: il modello a volte corrompe {% ... %} (es. perde '%}')
-    if out_text.count("{%") != out_text.count("%}"):
-        problems.append("tag Liquid non bilanciati ({% vs %})")
-    elif src_text.count("{%") != out_text.count("{%"):
-        problems.append("numero di tag Liquid {% diverso dalla sorgente")
-    return problems
-
-
-def translate_file(src: Path, model, api_key, force, dry_run, chunk_chars=0):
-    """Ritorna 'done', 'review' (tradotto, guardie KO), 'skipped' o 'dry-run'."""
-    src_text = src.read_text(encoding="utf-8")
-    src_fm, _, _ = split_front_matter(src_text)
-    has_fm = src_fm is not None
-    sha = source_sha(src_text)
-
-    # direzione dalla lingua del sorgente: it -> en (target en/), en -> it (target root)
-    src_lang = (src_fm or {}).get("lang") or DEFAULT_LANG
-    if src_lang == DEFAULT_LANG:
-        tgt_lang = "en"
-    elif src_lang == "en":
-        tgt_lang = "it"
-        # un EN scritto alla root va collocato sotto en/ (root resta agli italiani)
-        if not is_en_path(src):
-            new_src = target_path(src)
-            print(f"  ~ sposto sorgente EN: {src.relative_to(ROOT)} -> {new_src.relative_to(ROOT)}"
-                  + ("" if dry_run else f" ({git_mv(src, new_src)})"))
-            src = new_src
-    else:
-        print(f"  ! {src}: lang '{src_lang}' non supportato, salto")
-        return "skipped"
-
-    dst = target_path(src) if tgt_lang == "en" else to_it_path(src)
-
-    if dst.exists() and not force:
-        ex_sha, manual = existing_sha(dst)
-        if manual:
-            print(f"  ! {dst}: file senza source_sha (originale o editato a mano), salto")
-            return "skipped"
-        if ex_sha == sha:
-            print(f"  = {src.name}: invariato, salto (usa --force per ritradurre)")
-            return "skipped"
-
-    print(f"  > {src.relative_to(ROOT)} -> {dst.relative_to(ROOT)}  [{BACKEND}:{model}]  ({src_lang}->{tgt_lang})")
-    if dry_run:
-        return "dry-run"
-
-    system_prompt = build_prompt(src_lang, tgt_lang)
-    request = instruction(src_lang, tgt_lang, "Markdown")
-    # pre-risolvi i tag {% link %}/{% post_url %} NELLA SORGENTE verso la versione nella
-    # lingua di arrivo, quando esiste (vedi resolve_liquid_links).
-    src_for_llm, warns = resolve_liquid_links(src_text, tgt_lang)
-    src_for_llm = collapse_citation_originals(src_for_llm, tgt_lang)
-
-    if chunk_chars > 0:
-        # front matter a parte (solo le chiavi da tradurre), corpo a pezzi
-        fm_in, _, body_in = split_front_matter(src_for_llm)
-        problems = []
-        out_fm = None
-        if fm_in is not None:
-            out_fm = dict(fm_in)
-            for k in FM_TRANSLATABLE:
-                if isinstance(fm_in.get(k), str) and fm_in[k].strip():
-                    value, p = translate_field(k, fm_in[k], src_lang, tgt_lang, model, api_key)
-                    problems += p
-                    if value is not None:
-                        out_fm[k] = value
-        parts = chunk_body(body_in, chunk_chars)
-        out_parts = []
-        for i, part in enumerate(parts, 1):
-            label = f"pezzo {i}/{len(parts)}"
-            print(f"    {label} ({len(part)} caratteri)")
-            out_part, p = translate_text(system_prompt, part, model, api_key, label, request, (src_lang, tgt_lang))
-            problems += [f"{label}: {x}" for x in p]
-            out_parts.append(out_part)
-        body_out = "".join(out_parts)
-        if out_fm is not None:
-            out_text = "---\n" + yaml.safe_dump(out_fm, allow_unicode=True, sort_keys=False) + "---\n" + body_out
-        else:
-            out_text = body_out
-    else:
-        out_text, problems = translate_text(system_prompt, src_for_llm, model, api_key, "file", request,
-                                         (src_lang, tgt_lang))
-
-    # un testo rimasto nella lingua di partenza non va scritto: finirebbe pubblicato
-    # come traduzione. Meglio un fallimento, che --pending riprova al giro successivo.
-    if any("non tradotto" in p for p in problems):
-        raise TranslateError("il modello ha restituito il testo non tradotto: file non scritto "
-                             "(prova un modello più grande)")
-
-    if has_fm:
-        # forza lang/locale/source_sha nel front matter dell'output
-        try:
-            fm, _, body = split_front_matter(out_text)
-        except yaml.YAMLError as e:
-            raise TranslateError(f"il modello ha restituito un front matter non valido ({e.problem}): "
-                                 "file non scritto (riprova, o usa --chunk-chars)")
-        if fm is None:  # il modello ha perso il front matter: ricostruisci dalla sorgente
-            fm, body = dict(src_fm), out_text
-        body = normalize_typography(body)
-        # normalizza anche i valori stringa del front matter PRIMA del dump yaml (così
-        # gli apostrofi tornati ASCII vengono correttamente quotati da yaml).
-        for k, v in fm.items():
-            if isinstance(v, str):
-                fm[k] = normalize_typography(v)
-        fm["lang"] = tgt_lang
-        # permalink esplicito (pagine): la traduzione vive sotto /<lingua>/, l'italiano alla
-        # radice. I post non ne hanno: il loro URL inglese viene dai defaults di _config.yml.
-        if isinstance(fm.get("permalink"), str):
-            bare = re.sub(r"^/en(?=/)", "", fm["permalink"])
-            fm["permalink"] = bare if tgt_lang == DEFAULT_LANG else f"/{tgt_lang}{bare}"
-        if tgt_lang == "en":
-            fm["locale"] = "en"  # generico: niente en_US/en_GB (solo il registro è UK)
-        else:
-            fm.pop("locale", None)  # IT: nessun locale per-pagina (default del sito)
-        fm["source_sha"] = sha
-        if problems:
-            fm["translation_review"] = True
-        rendered = "---\n" + yaml.safe_dump(fm, allow_unicode=True, sort_keys=False) + "---\n" + body
-    else:
-        # partial senza front matter (es. _pages/includes/*.md): niente YAML iniettato,
-        # sha tracciato in un commento HTML (invisibile nel render).
-        try:
-            fm_out, _, b = split_front_matter(out_text)
-        except yaml.YAMLError:
-            fm_out, b = None, out_text
-        body = b if fm_out is not None else out_text  # rimuovi front matter indebito
-        body = normalize_typography(body)
-        marker = f"<!-- source_sha: {sha} -->\n"
-        if problems:
-            marker += "<!-- translation_review -->\n"
-        rendered = marker + body
-
-    rendered = rendered.rstrip("\n") + "\n"  # esattamente una blank line in coda
-
-    for w in warns:
-        print(f"    ⚠ {w}")
-    if problems:
-        print("    ⚠ guardie ancora KO: marcato translation_review")
-
-    dst.parent.mkdir(parents=True, exist_ok=True)
-    dst.write_text(rendered, encoding="utf-8")
-    return "review" if problems else "done"
-
-
-def pending_posts():
-    """Post italiani alla radice di _posts/, dal più recente: quelli già tradotti e
-    invariati li salta translate_file."""
-    out = []
-    for f in sorted((ROOT / "_posts").glob("*.md"), reverse=True):
-        fm, _, _ = split_front_matter(f.read_text(encoding="utf-8"))
-        if fm is not None and (fm.get("lang") or DEFAULT_LANG) == DEFAULT_LANG:
-            out.append(f)
-    return out
-
-
-def main():
-    ap = argparse.ArgumentParser(description="Traduce contenuti IT<->EN via LLM (Ollama, server locale "
-                                 "OpenAI-compatibile o OpenRouter, "
-                                 "variabile TRANSLATE_BACKEND); la direzione dipende dal 'lang' "
-                                 "del file sorgente.")
-    ap.add_argument("files", nargs="*", help="file sorgente .md da tradurre")
-    ap.add_argument("--pending", action="store_true",
-                    help="tutti i post italiani senza traduzione aggiornata, dal più recente")
-    ap.add_argument("--limit", type=int, default=0, help="con --pending: al più N file tradotti")
-    ap.add_argument("--model", default=DEFAULT_MODEL, help=f"modello (default: {DEFAULT_MODEL})")
-    ap.add_argument("--chunk-chars", type=int, default=DEFAULT_CHUNK_CHARS,
-                    help="dimensione massima dei pezzi in caratteri; 0 = file intero "
-                         f"(default per {BACKEND}: {DEFAULT_CHUNK_CHARS})")
-    ap.add_argument("--force", action="store_true", help="ritraduce anche se invariato")
-    ap.add_argument("--dry-run", action="store_true", help="mostra cosa farebbe senza chiamare l'LLM")
-    args = ap.parse_args()
-    if not args.files and not args.pending:
-        ap.error("indica dei file oppure --pending")
-    if BACKEND not in DEFAULT_MODELS:
-        sys.exit(f"TRANSLATE_BACKEND '{BACKEND}' non supportato: usa ollama, openai oppure openrouter.")
-
-    api_key = os.environ.get("OPENROUTER_API_KEY")
-    if BACKEND == "openrouter" and not api_key and not args.dry_run:
-        sys.exit("Imposta OPENROUTER_API_KEY (account gratuito su https://openrouter.ai) "
-                 "oppure usa TRANSLATE_BACKEND=ollama.")
-
-    # espande la lista con i partial referenziati (include_relative, right_content, toc)
-    worklist = []
-    sources = [Path(f).resolve() for f in args.files] + (pending_posts() if args.pending else [])
-    for src in sources:
-        if not src.exists():
-            print(f"  ! {src}: non trovato, salto")
+        start=$SECONDS
+        "$i18n/prep" "$tgt" < "$src" > "$tmp/in"
+        if ! "$adapter" "$src_lang" "$tgt" < "$tmp/in" > "$tmp/reply"; then
+            echo "  failed: nothing written"
+            failed+=("$dst")
             continue
-        if src not in worklist:
-            worklist.append(src)
-        fm, _, body = split_front_matter(src.read_text(encoding="utf-8"))
-        for ref in referenced_files(src, fm, body):
-            if ref not in worklist:
-                print(f"  + accodo partial referenziato: {ref.relative_to(ROOT)}")
-                worklist.append(ref)
+        fi
+        "$i18n/clean" < "$tmp/reply" > "$tmp/out"
+        if ! warnings=$("$i18n/assemble" "$src_lang" "$src" "$tmp/out" "$sha" 2>&1 > "$tmp/final"); then
+            echo "  assemble failed: $warnings"
+            failed+=("$dst")
+            continue
+        fi
+        problems=$("$i18n/check" "$tmp/in" "$tmp/final") || true
+        problems=$(printf '%s\n%s\n' "$warnings" "$problems" | sed '/^$/d')
+        if [[ -n $problems ]]; then
+            flag_review "$tmp/final"
+            sed 's/^/  ! /' <<<"$problems"
+            review+=("$dst")
+        else
+            done_+=("$dst")
+        fi
+        mkdir -p "$(dirname "$dst")"
+        mv "$tmp/final" "$dst"
+        echo "  written in $((SECONDS - start)) s"
+    done
+done
 
-    print(f"Backend: {BACKEND}  modello: {args.model}  pezzi: "
-          + (f"{args.chunk_chars} caratteri" if args.chunk_chars > 0 else "file intero"))
-    results = {"done": [], "review": [], "skipped": [], "failed": [], "dry-run": []}
-    translated = 0
-    for src in worklist:
-        if args.limit and translated >= args.limit:
-            break
-        start = time.monotonic()
-        try:
-            outcome = translate_file(src, args.model, api_key, args.force, args.dry_run, args.chunk_chars)
-        except TranslateError as e:
-            print(f"    ✗ {e}")
-            outcome = "failed"
-            if not args.pending:
-                results["failed"].append(src)
-                break
-        results[outcome].append(src)
-        if outcome in ("done", "review", "dry-run"):
-            translated += 1
-        if outcome in ("done", "review"):
-            print(f"    ok in {time.monotonic() - start:.0f} s")
-
-    print("\nRiepilogo: " + ", ".join(f"{k} {len(v)}" for k, v in results.items() if v))
-    for f in results["review"]:
-        print(f"  da rivedere (translation_review): {f.relative_to(ROOT)}")
-    for f in results["failed"]:
-        print(f"  fallito: {f.relative_to(ROOT)}")
-    if results["failed"]:
-        sys.exit(1)
-
-
-if __name__ == "__main__":
-    main()
+echo
+echo "translated ${#done_[@]}, to review ${#review[@]}, skipped ${#skipped[@]}, failed ${#failed[@]}"
+for f in "${review[@]}"; do echo "  to review (translation_review: true): $f"; done
+for f in "${failed[@]}"; do echo "  failed: $f"; done
+(( ${#failed[@]} == 0 ))

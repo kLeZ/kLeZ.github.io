@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+"""Usage: clean < model output > cleaned output
+
+Deterministic fixes to what the model returns:
+- drops a code fence wrapped around the whole reply (```markdown ... ```);
+- replaces typographic punctuation (curly quotes, en/em dashes, ellipsis, special spaces)
+  with ASCII outside fenced code blocks; accented letters are left alone;
+- ends the text with exactly one newline.
+"""
+
+import re
+import sys
+
+TYPOGRAPHY = {
+    "‘": "'", "’": "'", "‚": "'", "‛": "'",
+    "“": '"', "”": '"', "„": '"', "‟": '"',
+    "′": "'", "″": '"',
+    "«": '"', "»": '"',
+    "–": "-", "‒": "-", "‑": "-", "‐": "-",
+    "—": "--", "―": "--",
+    "…": "...",
+    " ": " ", " ": " ", " ": " ", " ": " ",
+    "﻿": "",
+}
+WRAPPED = re.compile(r"\A\s*```[\w-]*\n(.*)\n```\s*\Z", re.DOTALL)
+
+
+def main():
+    text = sys.stdin.read()
+    m = WRAPPED.match(text)
+    if m and "\n```" not in m.group(1):
+        text = m.group(1)
+    out, in_fence = [], False
+    for line in text.split("\n"):
+        if line.lstrip().startswith("```"):
+            in_fence = not in_fence
+        elif not in_fence:
+            for k, v in TYPOGRAPHY.items():
+                line = line.replace(k, v)
+        out.append(line)
+    sys.stdout.write("\n".join(out).rstrip("\n") + "\n")
+
+
+if __name__ == "__main__":
+    main()

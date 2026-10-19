@@ -79,10 +79,8 @@ Implications:
   under `_plugins/` and MUST be initialized before building:
   - `_plugins/premonition` (https://github.com/kLeZ/premonition.git)
   - `_plugins/SgEExt` (https://github.com/HorlogeSkynet/SgEExt.git)
-- **Node.js** is used by some build steps; **Python 3** is used by the
-  translator (`_scripts/translate`: Ollama, any local OpenAI-compatible server or
-  OpenRouter; see AUTHORING.md) and by the emoji
-  extractor (`_scripts/emojis` → `SgEExt/sgeext.py`).
+- **Node.js** is used by some build steps; **Python 3** is used by the emoji extractor (`_scripts/emojis` → `SgEExt/sgeext.py`) and by parts of the translator.
+- **Translator** (`_scripts/translate`, not part of the build): a bash script that runs small stdin/stdout programs in `_scripts/i18n/` and calls an LLM through an adapter (`translate-openrouter` by default, `translate-claude` for the Claude Code CLI). It needs `curl`, `jq`, mikefarah's `yq` v4, `perl` and Python 3 with PyYAML, and runs on the host (the dev container has no `jq`/`yq`). See AUTHORING.md, "Translations".
 
 ### Known gotchas
 
