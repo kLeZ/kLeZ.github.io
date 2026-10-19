@@ -1,0 +1,323 @@
+---
+title: "Ho rotto il BIOS cercando di aggiustare GRUB"
+tags:
+- linux
+- opensuse
+- uefi
+- selinux
+- firmware
+##date: __CURRENT_DATE
+---
+
+Venerdì sera ho migrato un portatile da openSUSE Leap 15.6 a Leap 16.0. Sabato sera il portatile aveva di nuovo un sistema che partiva, SELinux in enforcing e un tasto F2 che apriva il BIOS. In mezzo ho perso, nell'ordine, il boot, le chiavette USB, il Setup del firmware e il menu di avvio.
+
+Il Setup e il menu di avvio me li ha restituiti un CRC32 nascosto in una variabile UEFI che quasi nessuno guarda.
+
+{% include more.html %}
+
+Il portatile è un Lenovo V15-ADA: Ryzen 3 3250U, 8 GB di RAM, un NVMe SK Hynix da 256 GB, firmware Insyde E8CN27WW. Il disco ha `/boot` separato in ext2, l'ESP in FAT, swap e una root Btrfs con i soliti subvolume di openSUSE. Niente di esotico. Con openSUSE, Btrfs e Secure Boot avevo già litigato [nel 2013]({% post_url en/2013-08-01-a-nightmare-to-remember-not-the-dream-theaters-song-btrfs-vs-me-pt1 %}), e a quanto pare non abbiamo ancora finito.
+
+Tutta la giornata l'ho passata a ragionare con Claude, il modello linguistico di Anthropic: io con le mani sul portatile e il telefono per fotografare lo schermo, lui a leggere le foto e proporre la mossa successiva. Ci torno in fondo.
+
+## L'errore che non era un errore
+
+La migrazione l'ho fatta con `opensuse-migration-tool`, lo strumento ufficiale. Il primo avvio di Leap 16 va a buon fine, ma prima di caricare il kernel GRUB stampa questo:
+
+```text
+errore: ../../grub-core/fs/btrfs.c:303:not a Btrfs filesystem.
+  Avvio di "openSUSE Leap 16.0" in corso
+
+Loading Linux 6.12.0-160000.38-default ...
+Loading initial ramdisk ...
+```
+
+Una riga che comincia con `errore`, subito dopo un salto di versione maggiore. Ho pensato che GRUB fosse rotto.
+
+Non lo era. Con ogni probabilità è una `search` che prova a leggere come Btrfs una partizione che Btrfs non è, fallisce e passa alla successiva: le due righe sotto dicono che kernel e initrd vengono caricati regolarmente. Non ho verificato quale riga del `grub.cfg` la produca, ma il sistema partiva.
+
+Io però ho lanciato `update-bootloader --reinit`, che rigenera la configurazione del bootloader e lo reinstalla sull'ESP. Al riavvio successivo il sistema non è più partito.
+
+## Una shell di emergenza senza shell
+
+systemd arriva a metà strada e si ferma su `/boot`:
+
+```text
+[FAILED] Failed to mount /boot.
+See 'systemctl status boot.mount' for details.
+[DEPEND] Dependency failed for /boot/efi.
+[DEPEND] Dependency failed for Local File Systems.
+```
+
+Segue l'emergency mode, che chiede la password di root. La password viene accettata, poi `sulogin` dice che non può eseguire né `/bin/bash` né `/bin/sh`. Ctrl-D riprova il boot e torna lì.
+
+Per modificare la riga del kernel dal menu di GRUB serviva il menu, e io avevo `GRUB_TIMEOUT=0`. GRUB mostra comunque un messaggio, "Please press 't' to show the boot menu on this console", che sembra una via d'uscita e non lo è: è una voce nascosta che SUSE aggiunge al menu per passare alla console di testo, e funziona solo quando il menu è visibile. Con il timeout a zero non lo è mai. Esc e Shift tenuti premuti non hanno cambiato niente.
+
+Restava la chiavetta.
+
+## Le chiavette tornano sul disco
+
+Ho scritto su una chiavetta la ISO offline di Leap 16 (4,2 GB), ho premuto F12 all'accensione e ho scelto la USB. Il portatile ha stampato qualcosa di illeggibile per mezzo secondo e poi ha avviato openSUSE dal disco, fino alla stessa emergency mode di prima.
+
+Stessa cosa con altre live, e alla fine anche con SystemRescue.
+
+La prima ipotesi era Secure Boot, magari con SBAT: Leap 16 porta uno shim più recente, che può revocare bootloader più vecchi e far rifiutare le live. Ho disabilitato Secure Boot nel Setup e ho riavviato. Secure Boot era di nuovo abilitato.
+
+Il Setup aveva ignorato il salvataggio. E nell'elenco delle voci di boot c'era roba strana: quattro voci `opensuse-secureboot` identiche, e nomi ripetuti a cascata, "USB HDD: VendorCo ProductCode VendorCo ProductCode VendorCo..." e il nome del disco ripetuto decine di volte.
+
+## La NVRAM era piena
+
+Le variabili UEFI (voci di boot, ordine di avvio, impostazioni, chiavi di Secure Boot) stanno in una piccola regione della flash del firmware. È piccola davvero, e su molti firmware lo spazio liberato da una variabile cancellata si recupera solo quando il firmware decide di compattare la regione.
+
+La mia ricostruzione, che dentro il firmware non posso verificare, è questa. Scegliere un dispositivo da F12 richiede una scrittura in NVRAM (con ogni probabilità la variabile `BootNext`); se la scrittura fallisce, il firmware segue il `BootOrder` normale, cioè il disco. L'impostazione di Secure Boot è una variabile anche lei: se non riesce a scriverla, al riavvio rilegge quella vecchia. Quattro voci duplicate, nomi corrotti, impostazioni che non si salvano: il quadro era quello di una NVRAM satura.
+
+Non ho misurato lo spazio libero, quindi la prova è indiretta. Ho smontato il fondo del portatile, scollegato la batteria interna e tolto l'NVMe. Senza disco il firmware non aveva più niente su cui ripiegare, e SystemRescue è partita al primo colpo.
+
+Da lì, con `efibootmgr`, ho cominciato a fare pulizia.
+
+## Ho pulito troppo
+
+Ho cancellato le voci `opensuse-secureboot` duplicate, quelle con i nomi corrotti e un po' di altre che non riconoscevo. Ricordo di aver tolto `Boot000A`, `000B`, `000C` e una serie tra `0011` e `0016`, forse anche `0017` e `0018`. È rimasta solo `Boot0000`, la voce di openSUSE. Tra quelle che non riconoscevo c'erano il Setup e il menu di avvio del firmware, e non se n'è accorto nessuno dei due.
+
+Da quel momento F2 ed F12 bloccavano il firmware sul logo Lenovo. Nessun beep, ventola su di giri, nient'altro. Con il disco rimontato il blocco arrivava anche premendo F12 senza chiavetta.
+
+Il Setup però esisteva ancora. Da SystemRescue (senza disco, perché con il disco montato il firmware ripiegava sempre su openSUSE) bastava:
+
+```bash
+systemctl reboot --firmware-setup
+```
+
+Questo comando non passa da nessuna voce di boot: imposta un bit nella variabile `OsIndications`, e al riavvio è il firmware stesso a entrare nel Setup. E nel Setup ci entrava. Il codice era intatto. Mancavano i puntatori.
+
+Su molti Lenovo, e su questo di sicuro, il Setup e il menu di avvio sono registrati in NVRAM come voci `Boot####` di tipo applicazione, con un percorso del tipo `FvFile(<GUID>)` che punta a un modulo dentro il firmware. Ne avevo cancellate un paio. F9 (Setup Defaults) e F10 non le hanno ricreate.
+
+La specifica UEFI prevede proprio questo caso. Un tasto rapido che punta a una voce inesistente va ignorato:
+
+> citation "UEFI Specification 2.10, 3.1.6" [https://uefi.org/specs/UEFI/2.10/03_Boot_Manager.html#launching-boot-load-options-using-hot-keys]
+> Se i CRC-32 non coincidono, l'opzione del tasto viene ignorata.
+>
+> If the CRC-32s do not match this value, then this key option is ignored.
+> {: .citation-original lang="en"}
+
+Il firmware Insyde di questo portatile, invece, si pianta.
+
+## Il sistema, intanto
+
+Il guasto al boot era ancora lì, e per lavorarci serviva la chiavetta con il disco montato. Da SystemRescue senza disco ho salvato l'output di `efibootmgr -v` e ho cancellato anche `Boot0000`, togliendo al firmware l'unica alternativa. Rimontato l'NVMe, il firmware ha avviato la chiavetta.
+
+Da SystemRescue, montando la root Btrfs senza opzioni si ottiene il subvolume di default, che su openSUSE è lo snapshot attivo. `/var` è un subvolume a parte e va montato da solo:
+
+```bash
+mount /dev/nvme0n1p4 /mnt
+mount -o subvol=@/var /dev/nvme0n1p4 /mnt/var
+```
+
+Journal persistente non ce n'era: il sistema usa rsyslog e `/var/log/journal` non esiste. In `/var/log/boot.log` c'era la conferma del `Failed to mount /boot`, e il `fstab` era corretto (gli UUID coincidevano con `blkid`, attento a non confonderli con i PARTUUID come ho fatto io all'inizio).
+
+Il kernel di Leap 16 non ha il driver ext2. Ha `CONFIG_EXT4_USE_FOR_EXT2=y`: le partizioni ext2 le monta il driver ext4, che è un modulo (`ext4.ko.zst`) da caricare al momento del mount. Le subvolume Btrfs montavano perché il driver btrfs sta già nell'initrd.
+
+Poi ho contato i rifiuti di SELinux nell'audit log del boot fallito:
+
+```bash
+grep -c 'avc: denied' /mnt/var/log/audit/audit.log
+0
+```
+
+Zero. Ho passato un bel pezzo a cercare altrove: `/bin` e `/sbin` che mi aspettavo fossero symlink a `/usr` e qui sono directory vere, `modprobe` che forse non si trova, l'usrmerge fatto a metà. I binari c'erano tutti.
+
+Finché Claude non ha proposto di cambiare pattern:
+
+```bash
+grep -c 'type=AVC' /mnt/var/log/audit/audit.log
+373
+```
+
+Nell'audit log, dopo `avc:` ci sono *due* spazi.
+
+## SELinux senza etichette
+
+SELinux assegna a ogni file un'etichetta (il *contesto*), salvata negli attributi estesi del filesystem, e la policy decide chi può fare cosa in base alle etichette. Un file che un'etichetta non ce l'ha risulta `unlabeled_t`.
+
+Le note di rilascio di Leap 16 dicono che, finita la migrazione, il tool propone di passare da AppArmor a SELinux. Sul mio sistema `/etc/selinux/config` diceva `SELINUX=enforcing`. Il filesystem, però, nessuno l'aveva etichettato. Lo si vede appena il sistema parte in permissive, dove i rifiuti vengono registrati senza bloccare niente:
+
+```text
+avc:  denied  { entrypoint } for comm="(systemd)" path="/usr/lib/systemd/systemd"
+  scontext=unconfined_u:unconfined_r:unconfined_t:s0
+  tcontext=system_u:object_r:unlabeled_t:s0 tclass=file permissive=1
+
+avc:  denied  { module_load } for comm="modprobe"
+  path="/usr/lib/modules/6.12.0-160000.38-default/kernel/sound/core/snd-seq-device.ko.zst"
+  scontext=system_u:system_r:kernel_t:s0
+  tcontext=system_u:object_r:unlabeled_t:s0 tclass=system permissive=1
+```
+
+E `ls -Z /usr/lib/systemd/systemd` rispondeva con un punto interrogativo.
+
+La catena è questa:
+
+1. `systemd` non ha l'etichetta `init_exec_t`, quindi all'avvio PID 1 non passa nel dominio `init_t` e resta in `kernel_t`, insieme a tutto quello che lancia.
+2. In enforcing, `kernel_t` non può caricare un modulo `unlabeled_t`. Niente `ext4.ko`, quindi niente mount di `/boot`.
+3. `sulogin` non può eseguire `/bin/bash`, che è `unlabeled_t` anche lui. Ecco la shell di emergenza senza shell.
+
+`audit2why`, davanti a questi rifiuti, suggerisce di usare `audit2allow` per generare un modulo di policy che li permetta. Sarebbe stato il modo sbagliato di sistemare il problema: alla policy non mancava nessuna regola, ai file mancavano le etichette.
+
+Su `/` c'era anche un `/.autorelabel`, il file che dovrebbe far rietichettare tutto al boot successivo. Era datato 23 luglio, quasi tre mesi prima della migrazione, e nessuno l'aveva mai consumato. Secondo un thread del forum di openSUSE, su MicroOS il relabel si attiva con `/etc/selinux/.autorelabel`, non con `/.autorelabel`. Se valga anche per Leap 16 non l'ho verificato.
+
+Il relabel l'ho fatto a mano. Prima, da SystemRescue, SELinux in permissive e il menu di GRUB di nuovo visibile:
+
+```bash
+sed -i 's/^SELINUX=enforcing/SELINUX=permissive/' /mnt/etc/selinux/config
+sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=5/' /mnt/etc/default/grub
+mount /dev/nvme0n1p1 /mnt/boot
+mount /dev/nvme0n1p2 /mnt/boot/efi
+for d in dev proc sys run; do mount --rbind /$d /mnt/$d; done
+chroot /mnt grub2-mkconfig -o /boot/grub2/grub.cfg
+efibootmgr -c -d /dev/nvme0n1 -p 2 -L opensuse-secureboot -l '\EFI\opensuse\shim.efi'
+```
+
+Poi, dal sistema finalmente avviato:
+
+```bash
+restorecon -RF -e /.snapshots -e /boot/efi /
+rm -f /.autorelabel
+reboot
+```
+
+Fuori gli snapshot, che sono tanti e non vanno toccati, e l'ESP, che è FAT e le etichette non le può avere. Al riavvio `ps -Z -p 1` mostrava `init_t` e i rifiuti su file `unlabeled_t` erano zero. Ho rimesso `enforcing`, riavviato, e `ausearch -m avc -ts boot` non ha trovato niente.
+
+Perché il primo avvio dopo la migrazione sia andato a buon fine, e il guasto sia comparso solo dopo `update-bootloader --reinit`, non l'ho capito. Le righe del kernel registrate in `/var/log/messages`, per quello che ho guardato, sono uguali prima e dopo. Qualcosa è cambiato, e non so cosa.
+
+## Il CRC nella tastiera
+
+Il sistema partiva. F2 ed F12 no.
+
+I tasti rapidi del firmware sono variabili `Key####`, e quelle non le avevo toccate. La struttura è nella specifica UEFI, sezione 3.1.6:
+
+```c
+typedef struct _EFI_KEY_OPTION {
+  EFI_BOOT_KEY_DATA  KeyData;
+  UINT32             BootOptionCrc;
+  UINT16             BootOption;
+  // EFI_INPUT_KEY   Keys[];
+} EFI_KEY_OPTION;
+```
+
+`BootOption` è il numero della voce di boot da lanciare. `BootOptionCrc` è il CRC32 dell'intera voce. Ecco l'inizio di `Key0000`, letto da `/sys/firmware/efi/efivars` (i primi quattro byte sono gli attributi della variabile, che il kernel antepone):
+
+```text
+07 00 00 00  00 00 00 40  65 51 24 76  0a 00  0c 00 00 00
+attributi    KeyData      CRC          Boot   F2
+```
+
+CRC `0x76245165`, voce `Boot000A`, tasto F2 (scan code `0x0C`). In coda, sempre dentro `Key0000`, Insyde ci ha messo anche una stringa: "Press <F2> to enter Setup, <F12> to enter MultiBoot Menu. Please Wait...". Le altre due:
+
+| Variabile | Tasto | Voce     | CRC32      |
+| --------- | ----- | -------- | ---------- |
+| `Key0000` | F2    | Boot000A | `76245165` |
+| `Key0001` | F12   | Boot000B | `a79047d5` |
+| `Key0002` | Esc   | Boot000C | `748d0198` |
+
+Il firmware mi aveva lasciato, per ogni voce cancellata, un'impronta. Con l'impronta si può costruire una voce candidata e sapere con certezza se è quella giusta, prima di scriverla in NVRAM.
+
+Una voce di boot (`EFI_LOAD_OPTION`) è fatta di quattro pezzi: attributi, lunghezza del percorso, descrizione in UTF-16, percorso del dispositivo. Per un'applicazione del firmware il percorso è un nodo `FvFile` con il GUID del modulo. Le incognite sono quindi tre: attributi (pochi valori plausibili), descrizione ("Setup"? "Boot Menu"? "MultiBoot Menu"?) e GUID.
+
+I GUID dei moduli stanno nell'immagine del firmware. Leggere la flash con `flashrom -p internal -r` non ha funzionato (nessun dispositivo trovato), ma Lenovo distribuisce l'aggiornamento del BIOS come eseguibile Windows, e l'eseguibile si apre con `7z`. Dentro c'è `BIOS.cap`, 8,6 MB, l'immagine del BIOS con un'intestazione capsule davanti. UEFIExtract (dal progetto UEFITool) ne tira fuori l'elenco dei moduli: 432 GUID.
+
+Lo script per la ricerca l'ha scritto Claude, in pochi minuti, e prima di darmelo l'ha provato su dati sintetici costruiti apposta. Il cuore è un ciclo:
+
+```python
+import struct, uuid, zlib
+
+def load_option(attrs, desc, guid):
+    fvfile = struct.pack("<BBH", 0x04, 0x06, 20) + uuid.UUID(guid).bytes_le
+    path = fvfile + b"\x7f\xff\x04\x00"  # FvFile(GUID) + End
+    return (struct.pack("<IH", attrs, len(path))
+            + desc.encode("utf-16-le") + b"\0\0" + path)
+
+targets = {0x76245165: "Boot000A", 0xa79047d5: "Boot000B", 0x748d0198: "Boot000C"}
+
+for attrs in (0x0, 0x1, 0x8, 0x9, 0x100, 0x101, 0x108, 0x109):
+    for desc in descrizioni:   # "Setup", "Boot Menu", ...
+        for guid in guids:     # i 432 GUID di UEFIExtract
+            crc = zlib.crc32(load_option(attrs, desc, guid))
+            if crc in targets:
+                print(targets[crc], hex(attrs), desc, guid)
+```
+
+Lo script vero prova anche una variante con dati opzionali in coda. Con 20 descrizioni candidate sono 138.240 combinazioni, e finiscono in pochi secondi:
+
+```text
+FOUND crc=76245165 MATCH Key0000 -> Boot000A attrs=0x1 desc='Setup'
+      path=FvFile(721c8b66-426c-4e86-8e99-3457c46ab0b9)
+FOUND crc=a79047d5 MATCH Key0001 -> Boot000B attrs=0x1 desc='Boot Menu'
+      path=FvFile(86488440-41bb-42c7-93ac-450fbf7766bf)
+```
+
+Il GUID del Setup è lo stesso che compare nelle voci "Setup" dei ThinkPad. E i moduli venivano dal BIOS E8CN41WW, scaricato apposta, mentre le voci originali le aveva create il mio E8CN27WW: il CRC conferma che tra le due versioni quei GUID non sono cambiati.
+
+Prima di scrivere qualsiasi cosa ho fatto il backup di tutte le variabili. `cp` su efivarfs fallisce con "Operazione di seek non consentita", perché il filesystem non supporta il seek; `cat` legge in sequenza e funziona:
+
+```bash
+cd /sys/firmware/efi/efivars
+for f in *; do cat "$f" > ~/efivars-backup/"$f"; done
+```
+
+Poi ho scritto le due voci, con gli attributi della variabile (`07 00 00 00`) davanti al contenuto e un'unica `write()`, come vuole efivarfs. Al riavvio F2 ha aperto il Setup. Al riavvio dopo, F12 ha aperto il menu di avvio.
+
+## Esc resta orfano
+
+`Boot000C`, quella del tasto Esc, non è uscita.
+
+Ho allargato la ricerca un pezzo alla volta. 3.091 descrizioni candidate, quasi tutte stringhe UTF-16 trovate nei moduli decompressi, con 14 combinazioni di attributi: 37 milioni di candidati. Percorsi `FvVol/FvFile` con tutte le coppie di GUID: 60 milioni. I GUID letti direttamente dagli header dei file nel binario, per prendere anche i volumi che UEFIExtract segnalava come `unaligned volume` e forse saltava: 3.200 GUID e 277 milioni di candidati. Percorsi `File(\EFI\...)` come quello della voce "Lenovo Recovery System" che il firmware aveva ricreato da solo. Il bit `0x80` negli attributi, che la specifica non definisce e che il firmware ha messo sulla voce del disco ricreata da lui, insieme ai 16 byte di dati opzionali che quella voce si porta dietro.
+
+Niente.
+
+O la voce conteneva qualcosa che dal firmware non si ricava, per esempio il percorso hardware di un dispositivo, o puntava a un modulo che c'era nel 27WW e nel 41WW non c'è più. Il CRC dice solo se una risposta è giusta. Non aiuta a trovarla.
+
+## Un firmware di vetro
+
+Riguardando la giornata dall'alto, il problema non è che io abbia cancellato due voci. Il problema è che cancellarle si potesse, e che le conseguenze fossero quelle.
+
+Su questo portatile le voci con cui il firmware apre il proprio Setup e le voci che il sistema operativo aggiunge per avviarsi stanno nella stessa lista, con lo stesso formato e gli stessi permessi. A distinguerle c'è solo il percorso: `FvFile(...)` da una parte, `HD(...)/File(...)` dall'altra. `efibootmgr -B`, da root, cancella le une e le altre senza fare domande, perché per la specifica sono la stessa cosa.
+
+La lista sta in una memoria piccola che si riempie. La riempiono i bootloader che aggiungono voci a ogni reinstallazione, la riempie il firmware con le voci dei dispositivi che vede, e su questo modello la riempie anche con nomi che si ripetono a cascata. Quando è piena il firmware non lo dice: l'impostazione di Secure Boot non si salva, la scelta fatta con F12 non viene rispettata, e sullo schermo non compare niente che spieghi perché.
+
+Non è una novità. Nel 2013 alcuni portatili Samsung non si accendevano più quando la NVRAM superava la metà dello spazio, e da allora il kernel Linux controlla lo spazio libero prima di scriverci. Tredici anni dopo, questo firmware con la NVRAM piena almeno si accende. Si limita a non salvare quello che gli chiedi, senza dirtelo.
+
+Per uscirne ho dovuto sapere che esiste `OsIndications`, smontare il fondo del portatile e togliere il disco, leggere la struttura di `EFI_KEY_OPTION` nella specifica, estrarre un'immagine del firmware da un eseguibile Windows e lanciare qualche milione di tentativi. Chi non ha voglia o modo di fare tutto questo porta il portatile in assistenza e si sente dire che il BIOS è rotto. Il caso di Winraid, stesso BIOS E8CN su un IdeaPad 3, si chiude proprio con il consiglio di contattare Lenovo.
+
+## Un modello linguistico, con criterio
+
+Claude conosceva la struttura delle variabili `Key####`, ha visto che il CRC poteva fare da verifica e ha scritto lo script che la sfruttava; da solo starei ancora a scriverlo. Ha anche sbagliato strada più di una volta (Secure Boot e SBAT, l'usrmerge, il `grep` con uno spazio in meno), e nessuno dei due si è accorto in tempo che stavamo cancellando il Setup.
+
+Ha funzionato dove le risposte si potevano controllare. Il CRC è il caso ideale: ogni voce ricostruita la confermava il firmware stesso, prima che scrivessi un solo byte. Dove il controllo non c'era l'ho messo io, con le mani sul portatile e le decisioni che toccavano a me: togliere il disco, cancellare `Boot0000` per costringere il firmware a partire dalla chiavetta, scegliere i tentativi invece del flash da WinPE, fermarmi su Esc. Usato senza criterio, lo stesso modello mi avrebbe fatto generare un modulo SELinux con `audit2allow`, e avrei chiamato il problema risolto.
+
+## Dannati superficiali
+
+Le due voci le ho cancellate io, e lo dico senza attenuanti: `efibootmgr -v` le mostrava, bastava leggerle. Ma un firmware progettato con un *minimo* di cura non si fa togliere il Setup da chi fa pulizia nella lista di boot.
+
+Tu, progettista di Lenovo (o di Insyde: Insyde scrive il firmware, Lenovo lo configura e ci mette il logo, e la colpa se la dividono in una proporzione che non conosco), come ti è venuto in mente di mettere il tasto del BIOS in una lista che il sistema operativo può cancellare? Di legarlo a un CRC, e poi, quando il CRC non torna, piantare la macchina invece di ignorare il tasto come dice la specifica che dovresti implementare?
+
+Le alternative c'erano tutte, e costavano poco:
+
+- **Tasti nel firmware**: F2 gestito dal codice del firmware senza passare da una variabile. È quello che succede con `OsIndications`, che infatti ha funzionato anche a lista vuota.
+- **Ricostruzione**: al boot, se mancano le voci del firmware, rimetterle. Sui ThinkPad, a sentire chi ci ha provato, le cancelli e al boot successivo sono di nuovo lì. Quindi in Lenovo qualcuno lo sa fare.
+- **Default veri**: F9 che rimette a posto anche le voci, non solo le impostazioni.
+- **Un tasto fisico**: un pulsante o un foro con la graffetta che porta al Setup senza leggere niente dalla NVRAM. Molti IdeaPad il pulsante ce l'hanno, il Novo, ma su Winraid chi ha lo stesso BIOS racconta che dal menu Novo la voce "BIOS Setup" lo rimanda al menu di avvio. Il bottone di emergenza passa dallo stesso punto fragile.
+- **Errori visibili**: se la NVRAM è piena, scriverlo. Una riga sullo schermo.
+
+Niente di tutto questo è difficile. Era più comodo trattare il Setup come una voce di boot qualunque, perché la specifica lo permette, e non pensare a cosa succede quando qualcuno la cancella. Si chiama superficialità, e la paga chi il portatile lo usa.
+
+Ci sono voluti un sabato, un cacciavite, la specifica UEFI, un modello linguistico e 138.240 tentativi per rimettere F2 al suo posto. Esc, all'accensione, continua a non fare niente.
+
+## Fonti
+
+- UEFI Forum, [UEFI Specification 2.10, Boot Manager](https://uefi.org/specs/UEFI/2.10/03_Boot_Manager.html), sezioni 3.1.3 (Load Options) e 3.1.6 (Launching Boot#### Load Options Using Hot Keys)
+- openSUSE, [Leap 16.0 Release Notes](https://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/16.0/html/release-notes-leap-160/), sezione su AppArmor e SELinux dopo la migrazione
+- openSUSE Forums, ["Press 't' to show menu on this console"](https://forums.opensuse.org/t/press-t-to-show-menu-on-this-console/165019)
+- openSUSE Forums, [Selinux causes system to fail during boot](https://forums.opensuse.org/t/selinux-causes-system-to-fail-during-boot/194254), stesso sintomo di `sulogin` su un'altra macchina, con un'altra causa
+- openSUSE Forums, [Selinux full autorelabel on every upgrade](https://forums.opensuse.org/t/selinux-full-autorelabel-on-every-upgrade/194213), per `/etc/selinux/.autorelabel`
+- Gavin Clarke, [articolo sui portatili Samsung bloccati dalla NVRAM piena](https://www.theregister.com/2013/03/22/uefi_boot_memory_full/), The Register, 22 marzo 2013
+- Fedora Discussion, [Numerous boot options in efibootmgr](https://discussion.fedoraproject.org/t/numerous-boot-options-in-efibootmgr-is-this-normal/140273), con le voci `FvFile` di Setup e Boot Menu di un ThinkPad, che il firmware ricrea se le cancelli
+- Winraid, [BIOS Setup Access on Lenovo IdeaPad 3 15ADA05](https://winraid.level1techs.com/t/problem-bios-setup-access-on-lenovo-ideapad-3-15ada05/118373), stesso BIOS E8CN, stesso sintomo su F2 e sul menu Novo, senza soluzione
+- Lenovo, [download per IdeaPad 3 15ADA05](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/3-series/ideapad-3-15ada05/downloads), che condivide il BIOS con il V15-ADA
+- LongSoft, [UEFITool e UEFIExtract](https://github.com/LongSoft/UEFITool)
