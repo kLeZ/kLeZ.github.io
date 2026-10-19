@@ -486,18 +486,25 @@ def split_blocks(body):
 def chunk_body(body, max_chars):
     """Raggruppa i blocchi in pezzi di al più max_chars (un blocco più lungo resta intero).
     Oltre metà della dimensione, un titolo (#) apre un pezzo nuovo: i pezzi seguono le
-    sezioni quando possibile."""
+    sezioni quando possibile. Un titolo non chiude mai un pezzo: rimasto in fondo senza
+    testo dopo, il modello lo scarta (succedeva con "## Fonti" seguito da un elenco lungo)."""
     if max_chars <= 0 or len(body) <= max_chars:
         return [body]
-    chunks, cur = [], ""
+    chunks, cur = [], []
     for block in split_blocks(body):
+        size = sum(map(len, cur))
         starts_section = block.lstrip().startswith("#")
-        if cur and (len(cur) + len(block) > max_chars or (starts_section and len(cur) > max_chars // 2)):
-            chunks.append(cur)
-            cur = ""
-        cur += block
+        if cur and (size + len(block) > max_chars or (starts_section and size > max_chars // 2)):
+            keep = len(cur)
+            while keep and cur[keep - 1].lstrip().startswith("#"):
+                keep -= 1
+            # solo titoli nel pezzo: restano attaccati al blocco, anche oltre il limite
+            if keep:
+                chunks.append("".join(cur[:keep]))
+                cur = cur[keep:]
+        cur.append(block)
     if cur:
-        chunks.append(cur)
+        chunks.append("".join(cur))
     return chunks
 
 

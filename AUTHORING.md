@@ -492,7 +492,7 @@ export OPENROUTER_API_KEY="sk-or-..."          # free account on openrouter.ai
   `title`, `subtitle`, `description`, `summary`, `excerpt`, one at a time as plain
   text (the script writes the YAML, so a title with `:` or brackets cannot break
   it), then the body in pieces of about 6000 characters, split between paragraphs and preferably
-  at headings, never inside a code block. `--chunk-chars N` changes the size; `0`
+  at headings, never inside a code block, and a heading always goes with the text after it (alone at the end of a piece, the model dropped it). `--chunk-chars N` changes the size; `0`
   sends the whole file (the default with `openrouter`).
 - **Context window.** Ollama keeps a small context by default and truncates without
   saying so; the script asks for `num_ctx` 8192 (`TRANSLATE_NUM_CTX`), which fits a
