@@ -1,0 +1,76 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// Kramdown footnotes: <div class="footnotes" role="doc-endnotes"><ol><li id="fn:N">...
+// A box of their own at the end of the text, smaller and muted, under a label
+// that follows the page language.
+.footnotes {
+	margin: 3rem 0 2rem;
+	padding: 0.75rem 1.25rem;
+	border: 1px solid $gray-300;
+	border-top: 3px solid $secondary;
+	border-radius: 0.25rem;
+	background-color: $white;
+	color: $gray-700;
+	font-size: 0.8em;
+
+	&::before {
+		content: "Note";
+		content: "Note" / "";
+		display: block;
+		margin-bottom: 0.5rem;
+		color: $gray-700;
+		font-size: 0.75rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		@include sans-serif-font;
+	}
+
+	&:lang(en)::before {
+		content: "Notes";
+		content: "Notes" / "";
+	}
+
+	ol {
+		margin: 0;
+		padding-left: 1.5em;
+	}
+
+	li {
+		margin-bottom: 0.5rem;
+		scroll-margin-top: 6rem;
+
+		&::marker {
+			color: $gray-700;
+			font-weight: 700;
+			@include sans-serif-font;
+		}
+
+		&:target {
+			background-color: rgba($primary, 0.1);
+			border-radius: 0.125rem;
+		}
+	}
+
+	p {
+		margin: 0;
+		line-height: 1.45;
+	}
+
+	.reversefootnote {
+		margin-left: 0.25em;
+		text-decoration: none;
+	}
+}
+
+// Keeps the note reference from stretching the line height.
+sup[id^="fnref:"] {
+	line-height: 0;
+
+	a {
+		padding: 0 0.1em;
+		text-decoration: none;
+		@include sans-serif-font;
+	}
+}

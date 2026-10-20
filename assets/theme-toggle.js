@@ -9,7 +9,7 @@
 		light: "fa-sun",
 		dark: "fa-moon"
 	};
-	// Fallback labels (EN); i template localizzano via data-label-* sul bottone.
+	// Fallback labels (EN); the templates localize them with data-label-<mode> on the button.
 	var LABELS = {
 		system: "Auto",
 		light: "Light",
@@ -17,8 +17,7 @@
 	};
 
 	function labelFor(btn, mode) {
-		var attr = { system: "data-label-system", light: "data-label-light", dark: "data-label-dark" };
-		return btn.getAttribute(attr[mode]) || LABELS[mode];
+		return btn.dataset["label" + mode.charAt(0).toUpperCase() + mode.slice(1)] || LABELS[mode];
 	}
 
 	function getStoredPreference() {
@@ -64,9 +63,7 @@
 			var label = btn.querySelector(".theme-label");
 
 			if (icon) {
-				// Remove all theme icons
-				icon.classList.remove("fa-sun", "fa-moon", "fa-adjust");
-				// Add current icon
+				MODES.forEach(function (m) { icon.classList.remove(ICONS[m]); });
 				icon.classList.add(ICONS[mode]);
 			}
 			var text = labelFor(btn, mode);

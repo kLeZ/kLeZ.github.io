@@ -15,7 +15,7 @@ layout: default
 	{%- include post-languages.html -%}
 	{%- include series-nav.html position="top" -%}
 	<section itemprop="articleBody">
-		{{ content }}
+		{{ content | heading_anchors }}
 	</section>
 	{%- if page.tags.size > 0 or page.series -%}
 	<footer>

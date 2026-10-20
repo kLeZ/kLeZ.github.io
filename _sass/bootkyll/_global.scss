@@ -3,6 +3,13 @@
 @use "mixins" as *;
 
 // Global styling for this template
+
+// Smooth jumps to anchors, footnotes and the top of the page (#scroller);
+// _accessibility.scss turns it off for prefers-reduced-motion.
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	font-size: 20px;
 	color: $dark;

@@ -13,3 +13,4 @@ vendor/
 .devcontainer/Dockerfile.codium-temp
 .devcontainer/entrypoint.sh
 __pycache__/
+_brainstorm/

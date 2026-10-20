@@ -8,5 +8,5 @@ layout: default
 	{%- unless page.paginator or page.tag or page.series_id or page.localize -%}
 	{%- include post-languages.html -%}
 	{%- endunless -%}
-	{{ content }}
+	{{ content | heading_anchors }}
 </article>

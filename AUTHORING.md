@@ -190,6 +190,22 @@ The translation is idiomatic, not literal: with the original right below it, it 
 
 The `translate` script handles these blocks: when the original is already in the target language (an English quote in a post translated into English), it drops the Italian translation and the IAL before calling the model and keeps only the original; otherwise the prompt tells the model to keep the original and its IAL verbatim.
 
+### Footnotes
+
+Kramdown footnotes: a `[^1]` marker in the text and the definition, one paragraph on one line, anywhere in the file (by convention at the end):
+
+```markdown
+Ho fatto ordine in quella *mazzumàja*[^1].
+
+[^1]: **mazzumàja**: voce del dialetto civitavecchiese, [...]. Vedi Autore, [Titolo](https://example.org/source), Testata, 30 luglio 2024.
+```
+
+Kramdown renders every note at the end of the post, in `<div class="footnotes">`. The style lives in `_sass/bootkyll/_footnotes.scss`: a bordered box of its own, smaller and muted, under a "Note" label ("Notes" on English pages, via `:lang(en)`), with the note you jumped to highlighted. A new site language needs its own `:lang()` label there.
+
+### Heading anchors
+
+Every `##`-`######` heading gets a "§" link to itself before its text (hanging in the left margin on wide screens), shown when the heading is hovered (always, dimmed, on touch screens), so a reader can copy the link to a section. Nothing to write: `_plugins/heading_anchors.rb` adds it at build time to the ids kramdown generates from the heading text, so changing a heading changes its link. To keep a stable link, set the id by hand with an IAL: `## Un titolo {#id-stabile}`. Style in `_sass/bootkyll/_heading-anchors.scss`, label for screen readers in `heading_anchor` of `_data/locales/<lang>.yml`.
+
 ### Math (KaTeX)
 
 Inline `$...$` and display `$$...$$` are rendered by `jekyll-katex` at build
@@ -200,7 +216,7 @@ time. `throw_error: true` — bad LaTeX fails the build, so check your formulas.
 Use `:shortcode:` emoji (e.g. `:rocket:`). Emoji are **self-hosted**: after
 introducing a new shortcode, regenerate the images with
 `bash ./_scripts/emojis` (needs Python 3 + the SgEExt submodule), which writes
-to `assets/img/emoji/`.
+to `assets/img/emoji/`. It collects the shortcodes from `_posts/` (translations included) and `_drafts/`, so a draft previews with its emoji too. Times such as `12:34:56` also match the pattern and show up as "not found" warnings: harmless.
 
 ### Code
 

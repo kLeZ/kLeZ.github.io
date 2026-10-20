@@ -306,6 +306,25 @@
 		color: $dark-text;
 	}
 
+	// Heading anchors
+	.heading-anchor {
+		color: $dark-text-muted;
+		&:hover, &:focus { color: $dark-primary; }
+	}
+
+	// Footnotes
+	.footnotes {
+		background-color: $dark-bg-elevated;
+		border-color: $dark-border;
+		border-top-color: $dark-text-muted;
+		color: $dark-text-muted;
+
+		&::before,
+		li::marker { color: $dark-text; }
+
+		li:target { background-color: rgba($dark-primary, 0.15); }
+	}
+
 	// Buttons
 	.btn-primary {
 		background-color: $primary;

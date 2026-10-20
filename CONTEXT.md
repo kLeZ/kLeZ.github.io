@@ -72,9 +72,12 @@ Implications:
   global colour functions: the build prints no deprecation warnings. Source maps
   are off (`sass.sourcemap: never`).
 - **Local plugins** in `_plugins/`: `i18n.rb` (see "Languages"),
-  `blog_archive.rb` (see "Blog indexes") and `git_metadata.rb`
+  `blog_archive.rb` (see "Blog indexes"), `git_metadata.rb`
   (`site.git.last_commit` for `/build.html`, replacing the unmaintained
-  `jekyll-git_metadata` gem, which required Jekyll 3).
+  `jekyll-git_metadata` gem, which required Jekyll 3) and `heading_anchors.rb`
+  (Liquid filter: a "§" link before every h2-h6 with an id, applied to
+  `content` in the post, page and profile-page layouts, no JavaScript; feeds
+  and excerpts, which use `post.content`, stay without).
 - **Git submodules** (`.gitmodules`): two Jekyll plugins live as submodules
   under `_plugins/` and MUST be initialized before building:
   - `_plugins/premonition` (https://github.com/kLeZ/premonition.git)
@@ -115,7 +118,7 @@ _drafts/           Unpublished drafts (*.draft via _scripts/draft)
 _includes/         Liquid partials
 _layouts/          Page layouts
 _pages/            Standalone pages
-_plugins/          Ruby plugins (i18n, blog_archive, git_metadata) + submodules (premonition, SgEExt)
+_plugins/          Ruby plugins (i18n, blog_archive, git_metadata, heading_anchors) + submodules (premonition, SgEExt)
 _posts/            Published blog posts
 _sass/             Sass sources (compiled, style: compressed)
 _scripts/          Build/dev helper scripts (see AGENTS.md)

@@ -37,6 +37,9 @@
       - title: PassMan
         url: https://klez.me/PassMan
         relative: false
+      - title: Contapapà
+        url: /apps/contapapa.html
+        relative: true
 - title: Events
   url: /eventi
   relative: true

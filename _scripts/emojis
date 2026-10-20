@@ -2,4 +2,5 @@
 # Esegue dalla radice del repo anche se invocato come 'emojis' dal PATH.
 cd "$(dirname "$(readlink -f "$0")")/.."
 
-python3 _plugins/SgEExt/sgeext.py -l $(grep -hREo ':[a-z1-9_-]+:' _posts/*.md | sort | uniq | cut -d ':' -f 2) -d assets/img/emoji/
+# Shortcodes from posts (translations in _posts/<lang>/ included) and drafts.
+python3 _plugins/SgEExt/sgeext.py -l $(grep -rhEo ':[a-z0-9_+-]+:' _posts _drafts | sort -u | cut -d ':' -f 2) -d assets/img/emoji/

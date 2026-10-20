@@ -1,0 +1,38 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// "§" links added before headings by _plugins/heading_anchors.rb. They hang in
+// the left margin, so the heading text stays aligned with the paragraphs, and
+// move inline on narrow screens, where there is no margin to hang into.
+// Hidden until the heading is hovered or the link has focus; always shown
+// where there is no hover.
+.heading-anchor {
+	display: inline-block;
+	width: 0.9em;
+	margin-left: -0.9em;
+	color: $secondary;
+	font-weight: 400;
+	text-decoration: none;
+	opacity: 0;
+	transition: opacity 0.15s;
+	@include serif-font;
+
+	&:hover,
+	&:focus {
+		color: $primary;
+		text-decoration: none;
+	}
+
+	:is(h2, h3, h4, h5, h6):hover > &,
+	&:focus-visible { opacity: 1; }
+
+	@media (hover: none) { opacity: 0.6; }
+
+	@media only screen and (max-width: 767.98px) {
+		width: auto;
+		margin-left: 0;
+		margin-right: 0.3em;
+	}
+}
+
+:is(h2, h3, h4, h5, h6):has(> .heading-anchor) { scroll-margin-top: 5rem; }
