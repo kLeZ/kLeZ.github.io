@@ -85,9 +85,12 @@ jobs:
         run: touch "_site/$(echo "deployed at `LANG=en_US date '+%a %b %d %H.%M.%S %Z %Y'` by GitHub Actions")"
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: _site/
+          # Dalla v4 i file e le cartelle col punto restano fuori di default:
+          # servono per .well-known/ (security.txt).
+          include-hidden-files: true
 
   deploy:
     runs-on: ubuntu-latest
@@ -100,4 +103,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

@@ -40,7 +40,7 @@ manual `workflow_dispatch`):
 
 1. **build** job — checks out the repo (with submodules), sets up Ruby, runs
    `bundle install`, then `./_scripts/build`, and uploads `_site/` with
-   `actions/upload-pages-artifact`.
+   `actions/upload-pages-artifact` (`include-hidden-files: true`, otherwise `.well-known/` is left out of the published site).
 2. **deploy** job — publishes that artifact with `actions/deploy-pages` to the
    `github-pages` environment. Nothing is committed back to the repo.
 
