@@ -1,7 +1,7 @@
 {
   "name": "klez.me Jekyll",
 
-  // Build da Dockerfile locale (debian:bookworm-slim + rbenv + Ruby 3.3.6).
+  // Build da Dockerfile locale (debian:bookworm-slim + rbenv + il Ruby di .ruby-version).
   // Il context è la radice del progetto (..): necessario per COPY .devcontainer/init.sh.
   //
   // NOTA: questa configurazione è per VS Code standard / devcontainer CLI.

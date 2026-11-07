@@ -1,0 +1,12 @@
+# Licenza dei contenuti del sito, mostrata nel footer (_includes/footer.html).
+#   name       nome ufficiale della licenza in questa lingua
+#   url        testo della licenza (rel="license")
+#   badge      immagine del badge, copiata in locale (originale:
+#              https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png)
+#   badge_alt  testo alternativo del badge
+# Le altre lingue stanno in _data/license/<lingua>.yml; un campo che lì manca si
+# prende da qui. La frase che contiene il nome è `license_text` nel file di locale.
+name: "Creative Commons Attribuzione - Non commerciale - Non opere derivate 4.0 Internazionale"
+url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+badge: /assets/img/license/by-nc-nd-4.0-88x31.png
+badge_alt: "Licenza Creative Commons"

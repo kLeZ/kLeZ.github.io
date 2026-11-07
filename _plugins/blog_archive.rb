@@ -6,7 +6,9 @@
 #   (page 1 keeps its permalink, page N lives at `<permalink>page/N/`);
 # - one paginated page per tag at `/tag/<slug>/`, plus `site.data.tag_index`
 #   and `site.data.tag_ranking` for the tag overview pages;
-# - one page per series at `/serie/<id>/`, plus `site.data.series_index`;
+# - one page per series at `/serie/<id>/`, plus `site.data.series_index`
+#   (metadata from `_data/series/<lang>.yml`, missing fields from the default
+#   language's file);
 # - `related_by_tag` on every post (latest posts sharing a tag);
 # - Liquid filters `tag_url`, `tag_slug`, `plain_text`, `local_date`, `span_label`.
 #
@@ -204,9 +206,11 @@ module Klez
 
     def series_pages
       meta = @site.data["series"] || {}
+      base = meta[Klez::I18n.default_lang(@site)] || {}
+      own = meta[@lang] || {}
       groups = @posts.reverse.select { |p| p.data["series"] }.group_by { |p| p.data["series"].to_s }
       index = groups.map do |id, posts|
-        info = (meta[id] || {}).merge(Klez::I18n.locale(@site, @lang).dig("series_translations", id) || {})
+        info = (base[id] || {}).merge(own[id] || {})
         url = "#{Klez::BlogArchive.series_path(@site, @lang)}#{Klez::BlogArchive.slug(id)}/"
         # gaps[i]: whole days between part i and part i-1 (nil for the first part)
         gaps = posts.each_cons(2).map { |a, b| ((b.date - a.date) / 86_400).floor }.unshift(nil)

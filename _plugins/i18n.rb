@@ -4,8 +4,9 @@
 #
 # A language is an entry in `languages:` (_config.yml) plus its
 # `_data/locales/<lang>.yml`: interface strings, `language` (flag, name,
-# locale...), titles of the localized pages (`page_translations`) and of
-# the series (`series_translations`). Nothing else in the site names a language.
+# locale...). Titles of the localized pages are in `_data/pages/<lang>.yml`, series
+# titles and descriptions in `_data/series/<lang>.yml` (_plugins/blog_archive.rb).
+# Nothing else in the site names a language.
 #
 # - Every page and document has `lang`: `default_lang` (via the `_config.yml`
 #   defaults), or the language folder it sits in (`_posts/en/x.md`,
@@ -19,8 +20,8 @@
 #   the pairing. `page.translations` maps each language to {url, title, lang}.
 # - Pages with `localize: true` (home, blog, tags, series, search and its
 #   index) are cloned for each other language under /<lang>/; the clone takes
-#   its title (and any other field) from `page_translations["<url>"]` in
-#   that language's locale file.
+#   its title (and any other field) from `site.data.pages[lang]["<url>"]`
+#   (`_data/pages/<lang>.yml`).
 # - Two feeds per language: Atom at /<lang>/feed.xml (_includes/atom.xml) and
 #   RSS 2.0 at /<lang>/rss.xml (_includes/rss.xml).
 # - `site.data.i18n.posts[lang]`: one entry per post, newest first, in that
@@ -33,6 +34,8 @@
 # - Liquid filter `i18n_url`: {{ '/blog/' | i18n_url: page.lang }} is the
 #   localized path when that page exists, the path itself otherwise.
 #   `language_name`: {{ 'en' | language_name: page.lang }} is "inglese".
+# - `site.description` follows the language of the page being rendered
+#   (`site_description` in the locale file), see the hook at the bottom.
 
 module Klez
   module I18n
@@ -182,7 +185,7 @@ module Klez
           clone = I18n.reread(@site, page)
           clone.data["lang"] = lang
           clone.data["permalink"] = "#{I18n.prefix(@site, lang)}#{page.url}"
-          clone.data.merge!(I18n.locale(@site, lang).dig("page_translations", page.url) || {})
+          clone.data.merge!(@site.data.dig("pages", lang, page.url) || {})
           clone.data["locale"] = I18n.meta(@site, lang)["locale"] || lang
           clone.data["i18n_key"] = I18n.key_of(@site, page)
           @site.pages << clone
@@ -284,3 +287,15 @@ module Klez
 end
 
 Liquid::Template.register_filter(Klez::I18nFilters)
+
+# `site.description` in the language of the item being rendered, from
+# `site_description` in its locale (default language's as fallback). jekyll-seo-tag
+# only knows a site-level description (meta/og description of pages without one,
+# <title> of pages without a title), so it is reset before every render; the
+# header, the feeds and the manifest read the same value.
+Jekyll::Hooks.register [:pages, :documents], :pre_render do |item|
+  site = item.site
+  lang = Klez::I18n.lang_of(site, item)
+  site.config["description"] = Klez::I18n.locale(site, lang)["site_description"] ||
+                               Klez::I18n.locale(site, Klez::I18n.default_lang(site))["site_description"]
+end

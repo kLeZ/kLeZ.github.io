@@ -1,0 +1,4 @@
+# Site content licence — English. Field reference in it.yml; a field missing here
+# (e.g. `url`, `badge`) is taken from it.yml.
+name: "Creative Commons Attribution - NonCommercial - NoDerivatives 4.0 International License"
+badge_alt: "Creative Commons License"

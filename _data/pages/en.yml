@@ -1,0 +1,16 @@
+# Pages cloned under /en/ (`localize: true`), by their Italian URL. Any field
+# given here overrides the front matter of the English copy; the Italian front
+# matter is the default (_plugins/i18n.rb).
+
+/blog/:
+  title: Blog
+/serie/:
+  title: Series
+/tag/by-letter/:
+  title: Tags
+/tag/by-letter/desc/:
+  title: Tags
+/tag/by-n-posts/:
+  title: Tags
+/cerca/:
+  title: Search

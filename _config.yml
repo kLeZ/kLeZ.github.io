@@ -12,8 +12,8 @@ default_lang: "it"
 # non va messa qui.
 i18n_legacy_languages: ["it", "en"]
 title: Alessandro 'kLeZ' Accardo personal website
-description: >-
-  This is the personal website of an Italian developer once called 'kLeZ'.
+# description: per lingua, `site_description` in _data/locales/<lingua>.yml
+# (_plugins/i18n.rb la copia in site.description prima di ogni render).
 baseurl: ""
 url: https://klez.me
 copyright: Copyright © Alessandro 'kLeZ' Accardo 2019

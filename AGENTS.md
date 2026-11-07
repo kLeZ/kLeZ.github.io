@@ -67,7 +67,7 @@ export LANG=C.UTF-8 LC_ALL=C.UTF-8         # required for html-proofer/Nokogiri
 
 On **Claude Code on the web**, the SessionStart hook
 (`.claude/hooks/session-start.sh`) does all of the above automatically:
-it pins Ruby 3.3.6 via rbenv, sets the UTF-8 locale, initializes submodules,
+it pins the Ruby of `.ruby-version` via rbenv (installing it if missing), sets the UTF-8 locale, initializes submodules,
 runs `bundle install`, and persists `RBENV_VERSION`/`LANG`/`LC_ALL` for the
 session. It only runs when `CLAUDE_CODE_REMOTE=true`. If you change the build,
 dependencies, or required env, **update that hook too**.
@@ -81,6 +81,7 @@ make build    # first time or after Dockerfile changes (~5-10 min, compiles Ruby
 make shell    # interactive shell
 make serve    # Jekyll serve → http://localhost:4000
 make verify   # Jekyll build + htmlproofer in-container (no draft side effects)
+make ci       # what the CI "build" job runs (CI=true, production), same Ruby, no commit needed
 make translate _posts/<file>.md   # LLM translation into the other languages (OPTS="-n" for a dry run)
 ```
 
@@ -165,7 +166,7 @@ bundle exec jekyll doctor \
   `master` + PR (`base: master`). Mixed content+source counts as source. The
   agent follows the owner's explicit per-change instruction; it does not decide
   the flow on its own.
-- CI runs only on push to `master`, so PRs won't show project CI status — verify
+- CI runs only on push to `master`, so PRs won't show project CI status — verify (`make ci` runs the CI build job in the dev container, with the same Ruby)
   locally instead (see above).
 - **No tool/AI attribution anywhere** — commits, PR titles/bodies, content. No
   `Co-Authored-By`, no "Generated with Claude Code", no 🤖.

@@ -79,8 +79,7 @@ date: 2026-05-31 14:37:42+02:00   # added by publish; keep tz offset
 
 ### Series
 
-Posts in parts share a `series:` id; the id is declared once in
-`_data/series.yml`:
+Posts in parts share a `series:` id; the id is declared once in `_data/series/it.yml` (the default language):
 
 ```yaml
 social-media-considered-harmful:
@@ -90,14 +89,13 @@ social-media-considered-harmful:
   parts: 5        # optional: planned parts, while the series is still running
 ```
 
-The English title and description go in `_data/locales/en.yml`:
+The English title and description go in `_data/series/en.yml`, under the same id; fields left out there (typically `parts`) are taken from `it.yml`:
 
 ```yaml
-series_translations:
-  social-media-considered-harmful:
-    title: "Social media considered harmful. Maybe..."
-    description: >-
-      Introduction in Markdown for /en/serie/<id>/.
+social-media-considered-harmful:
+  title: "Social media considered harmful. Maybe..."
+  description: >-
+    Introduction in Markdown for /en/serie/<id>/.
 ```
 
 Parts are ordered by publication `date`. The post layout then shows the list
@@ -426,7 +424,7 @@ The site is multilingual via `_plugins/i18n.rb` (details in [`CONTEXT.md`](CONTE
 ### Adding a language
 
 1. Add its code to `languages:` in `_config.yml` (not to `i18n_legacy_languages`).
-2. Create `_data/locales/<lang>.yml`, starting from `en.yml`: `language` (flag, name, link labels, `og:locale`), `language_names`, the interface strings, `page_translations` (titles of home, blog, tags, series, search) and `series_translations`. Add the language to `language_names` in `en.yml` too: the translation prompt takes the language names from there.
+2. Create `_data/locales/<lang>.yml`, starting from `en.yml`: `language` (flag, name, link labels, `og:locale`), `language_names`, `site_description` (the site subtitle) and the interface strings, including `license_text`. Then create `_data/pages/<lang>.yml` (titles of home, blog, tags, series, search, by Italian URL), `_data/series/<lang>.yml` (series titles and descriptions) and `_data/license/<lang>.yml` (licence name and badge text). Add the language to `language_names` in `en.yml` too: the translation prompt takes the language names from there.
 3. Optionally `_data/navigation/<lang>.yml` (otherwise the Italian menu is used), `assets/img/flags/<flag>.svg`, and `_scripts/i18n/register.<lang>.md` with notes on the variety and register of that language for the translator.
 4. Translate files into it with `_scripts/translate`, or put translated files in `_posts/<lang>/` and `_pages/<lang>/` by hand.
 
@@ -468,7 +466,7 @@ It is a bash script that runs small programs in `_scripts/i18n/`, each with a us
 - **The prompt** (`_scripts/i18n/prompt.md`) asks for an adaptation, the way a dubbing adapter works on a comedy: what each sentence does, not its words; jokes, irony, subtext and register kept; idioms and cultural references replaced by ones that do the same job in the target language; facts, numbers, names and positions unchanged, nothing added or removed. `register.en.md` sets British English; `register.it.md` notes that the English originals were written by a non-native speaker, so the Italian may restore the intended tone where the English implies it. `glossary.yml` holds terms kept verbatim (`keep`) and fixed Italian/English renderings (`terms`).
 - **The whole file goes to the model** in one request, front matter included: that is what was tested. Of the front matter that comes back only the five fields above are used; everything else, and the YAML itself, comes from the source.
 - **Review flag.** When `check` finds a problem, or a front matter field came back untranslated, the file is still written, with `translation_review: true` (`<!-- translation_review -->` in a file without front matter), and the problems are printed. Remove the flag after you have checked.
-- **Idempotency.** A translation stores the `source_sha` of the original it was made from (in a `<!-- source_sha: ... -->` comment for a file without front matter, such as an include). A translation whose original has not changed is skipped, so your fixes to it stay until the original changes; `-f` translates it again. A file **without** `source_sha` is an original, or a translation you took over: it is never overwritten, not even with `-f`. A file with `source_sha` is never used as a source, and neither is a page with `localize: true` (home, blog, tags, series, search): `_plugins/i18n.rb` already builds it in every language, so a translated copy would land on the same URL; its title goes in `page_translations` of `_data/locales/<lang>.yml`.
+- **Idempotency.** A translation stores the `source_sha` of the original it was made from (in a `<!-- source_sha: ... -->` comment for a file without front matter, such as an include). A translation whose original has not changed is skipped, so your fixes to it stay until the original changes; `-f` translates it again. A file **without** `source_sha` is an original, or a translation you took over: it is never overwritten, not even with `-f`. A file with `source_sha` is never used as a source, and neither is a page with `localize: true` (home, blog, tags, series, search): `_plugins/i18n.rb` already builds it in every language, so a translated copy would land on the same URL; its title goes in `_data/pages/<lang>.yml`.
 - **Partials.** A page that pulls in other Markdown files (`include_relative`, `right_content`, `left_content`, `toc`, as about and cv do) has them translated too.
 - **Not handled**: plain internal URLs (`[...](/2026/08/27/x/)`) are not rewritten to the translated post; they lead to the original, which is correct but not ideal (use `{% post_url %}`, which is rewritten). Tags stay in the original language.
 
@@ -484,6 +482,4 @@ broken links.
 
 ### Known limitations
 
-- Series titles and descriptions come from `_data/series.yml`: English pages use
-  `series_translations` in `_data/locales/en.yml`, falling back to the Italian
-  text when an entry is missing. Add both when you create a series.
+- Series titles and descriptions come from `_data/series/<lang>.yml`: English pages use `_data/series/en.yml`, falling back to the Italian text of `_data/series/it.yml` when an entry or a field is missing. Add both when you create a series.

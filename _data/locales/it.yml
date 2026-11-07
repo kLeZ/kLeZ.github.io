@@ -18,6 +18,9 @@ language:
 language_names:
   it: italiano
   en: inglese
+# Sottotitolo del sito (header, meta description, feed, manifest): site.description
+# lo prende da qui nella lingua della pagina (_plugins/i18n.rb).
+site_description: "Il sito personale di uno sviluppatore. /nick kLeZ, da sempre."
 skip_to_content: "Salta al contenuto"
 reading_time_one: "Questo articolo richiede 1 minuto di lettura."
 reading_time_other: "Questo articolo richiede %count% minuti di lettura."
@@ -25,11 +28,7 @@ scroll_top: "Torna all'inizio della pagina"
 heading_anchor: "Link a questa sezione"
 last_build: "Ultima build il"
 privacy: "Privacy"
-cc_license_alt: "Licenza Creative Commons"
-license_html: >-
-  Quest'opera è distribuita con licenza <a rel="license"
-  href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative
-  Commons Attribuzione - Non commerciale - Non opere derivate 4.0 Internazionale</a>.
+license_text: "Quest'opera è distribuita con licenza %s."
 read_more: "Continua a leggere"
 tags: "Tag:"
 posted_on: "Pubblicato il"

@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: build shell serve draft publish emojis translate verify up down logs help
+.PHONY: build shell serve draft publish emojis translate verify ci up down logs help
 
 COMPOSE = docker compose
 
@@ -83,10 +83,18 @@ translate: ## Traduce nelle altre lingue:  make translate _posts/x.md  [OPTS="-n
 verify: ## Jekyll build + htmlproofer nel container (nessun side effect sui draft)
 	$(IN) bash -lc "bundle exec jekyll build && bundle exec htmlproofer ./_site --disable-external"
 
+# Stesso script e stesse variabili del job "build" della CI, nel container (che ha il
+# Ruby di .ruby-version, lo stesso della CI). Non esegue il YAML del workflow.
+# _scripts/build con CI=true riscrive _data/ci-status.yml (tracciato): lo ripristiniamo.
+ci: ## Build come la CI (CI=true, JEKYLL_ENV=production) senza commit né push
+	@bak=$$(mktemp) && cp _data/ci-status.yml "$$bak"; \
+	$(IN) env CI=true JEKYLL_ENV=production NOKOGIRI_USE_SYSTEM_LIBRARIES=true ./_scripts/build; \
+	rc=$$?; cp "$$bak" _data/ci-status.yml; rm -f "$$bak"; exit $$rc
+
 ## — Aiuto ————————————————————————————————————————————————
 
 help: ## Mostra questo messaggio
 	@echo "Uso: make <target>"
 	@echo ""
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
-	  | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-12s\033[0m %s\n", $$1, $$2}'
+		| awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-12s\033[0m %s\n", $$1, $$2}'

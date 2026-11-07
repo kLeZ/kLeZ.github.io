@@ -11,38 +11,7 @@ language:
 language_names:
   it: Italian
   en: English
-# Titles of the pages cloned under /en/ (`localize: true`), by their Italian URL.
-# Any field given here overrides the front matter of the English copy.
-page_translations:
-  /blog/:
-    title: Blog
-  /serie/:
-    title: Series
-  /tag/by-letter/:
-    title: Tags
-  /tag/by-letter/desc/:
-    title: Tags
-  /tag/by-n-posts/:
-    title: Tags
-  /cerca/:
-    title: Search
-# Series titles and descriptions (_data/series.yml has the Italian ones).
-series_translations:
-  social-media-considered-harmful:
-    title: "Social media considered harmful. Maybe..."
-    description: >-
-      Five instalments, one a week, on how social networks are built to be addictive
-      and on what the companies running them knew.
-  viaggio-chomsky-llm:
-    title: "The journey: from Chomsky to an AGI architecture"
-    description: >-
-      A conversation that started from Noam Chomsky's critique of LLMs and arrived,
-      stage by stage, at a proposed architecture.
-  narrativa-per-tutti-dd:
-    title: "Storytelling for everyone! - D&D"
-    description: >-
-      The story of the Dungeons & Dragons campaign my players were living through,
-      told in instalments on the old blog.
+site_description: "The personal website of an Italian developer. /nick kLeZ, since forever."
 skip_to_content: "Skip to content"
 reading_time_one: "This article will take 1 minute to read."
 reading_time_other: "This article will take %count% minutes to read."
@@ -50,11 +19,7 @@ scroll_top: "Scroll to the top of the page"
 heading_anchor: "Link to this section"
 last_build: "Last build on"
 privacy: "Privacy"
-cc_license_alt: "Creative Commons License"
-license_html: >-
-  This work is licensed under a <a rel="license"
-  href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="text-secondary">Creative
-  Commons Attribution - NonCommercial - NoDerivatives 4.0 International License</a>.
+license_text: "This work is licensed under a %s."
 read_more: "Read more"
 tags: "Tags:"
 posted_on: "Posted on"

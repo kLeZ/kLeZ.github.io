@@ -13,11 +13,12 @@ fi
 cd "$CLAUDE_PROJECT_DIR"
 
 # --- Ruby version -----------------------------------------------------------
-# The project pins Ruby 3.3.6 (.ruby-version), which the container ships via
-# rbenv; pin it for the whole session.
-RUBY_VERSION_TO_USE="3.3.6"
+# The project pins Ruby in .ruby-version (the same version CI uses); pin it for
+# the whole session, installing it via rbenv/ruby-build if the container lacks it.
+RUBY_VERSION_TO_USE="$(cat .ruby-version)"
 if command -v rbenv >/dev/null 2>&1; then
   eval "$(rbenv init - bash)"
+  rbenv install --skip-existing "$RUBY_VERSION_TO_USE"
   export RBENV_VERSION="$RUBY_VERSION_TO_USE"
 fi
 

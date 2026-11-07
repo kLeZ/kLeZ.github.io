@@ -47,10 +47,10 @@ RUN arch=$(dpkg --print-architecture) \
 RUN git clone https://github.com/rbenv/rbenv.git $RBENV_ROOT \
     && git clone https://github.com/rbenv/ruby-build.git $RBENV_ROOT/plugins/ruby-build
 
-# Ruby allineato a .ruby-version (Jekyll 4.4 richiede Ruby >= 2.7).
-# Per migrare: cambia RUBY_VERSION e aggiorna .ruby-version + Gemfile.lock.
-ARG RUBY_VERSION=3.3.6
-RUN rbenv install $RUBY_VERSION && rbenv global $RUBY_VERSION
+# Ruby letto da .ruby-version, la stessa versione della CI (Jekyll 4.4 richiede
+# Ruby >= 2.7). Per migrare: cambia .ruby-version e ricostruisci (make build).
+COPY .ruby-version /tmp/.ruby-version
+RUN v="$(cat /tmp/.ruby-version)" && rbenv install "$v" && rbenv global "$v"
 
 # Bundler pinnato alla versione dichiarata in Gemfile.lock (BUNDLED WITH 2.4.10)
 RUN gem install bundler:2.4.10 --no-document

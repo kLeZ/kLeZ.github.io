@@ -1,0 +1,20 @@
+# Series — English titles and descriptions, by series id. Field reference in it.yml;
+# a field missing here (e.g. `parts`) is taken from it.yml.
+
+social-media-considered-harmful:
+  title: "Social media considered harmful. Maybe..."
+  description: >-
+    Five long-form posts, one a week, on how social networks are built
+    to be addictive and on what the companies running them knew.
+
+viaggio-chomsky-llm:
+  title: "The journey: from Chomsky to an AGI architecture"
+  description: >-
+    A conversation that started from Noam Chomsky's critique of LLMs and arrived,
+    stage by stage, at a proposed architecture.
+
+narrativa-per-tutti-dd:
+  title: "Storytelling for everyone! - D&D"
+  description: >-
+    The story of the Dungeons & Dragons campaign my players were living through,
+    told in instalments on the old blog.

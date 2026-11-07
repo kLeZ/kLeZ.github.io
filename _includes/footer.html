@@ -15,9 +15,15 @@
 		</div>
 		<div class="row">
 			<div class="col text-center">
-				<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="{{ loc.cc_license_alt }}" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />
+				{%- comment -%} Licenza: _data/license/<lingua>.yml, campi mancanti dalla lingua di default {%- endcomment -%}
+				{%- assign lic = site.data.license[site.default_lang] -%}
+				{%- assign lic_lang = site.data.license[page.lang] -%}
+				{%- assign lic_name = lic_lang.name | default: lic.name -%}
+				{%- assign lic_url = lic_lang.url | default: lic.url -%}
+				{%- capture lic_link -%}<a rel="license" href="{{ lic_url }}" class="text-secondary">{{ lic_name }}</a>{%- endcapture %}
+				<a rel="license" href="{{ lic_url }}"><img alt="{{ lic_lang.badge_alt | default: lic.badge_alt }}" style="border-width:0" src="{{ lic_lang.badge | default: lic.badge | relative_url }}" /></a><br />
 				<small class="text-muted">
-					{{ loc.license_html }}
+					{{ loc.license_text | replace: '%s', lic_link }}
 				</small>
 			</div>
 		</div>

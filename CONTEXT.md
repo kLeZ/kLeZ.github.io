@@ -57,9 +57,7 @@ Implications:
 
 ## Toolchain
 
-- **Ruby**: `3.3.6`, pinned in `.ruby-version` and used by CI, the dev
-  container and the Claude Code hook. Jekyll 4.4 needs Ruby >= 2.7; 3.3 is the
-  version tested here.
+- **Ruby**: `3.3.13`, pinned in `.ruby-version`, the single source of the version: CI (`ruby/setup-ruby` without `ruby-version`), the dev container (the Dockerfile copies the file) and the Claude Code hook all read it, so local and CI run the same Ruby. Newer GitHub runner images ship only the latest patch of each series: when a new 3.3 patch is out, CI fails at "Set up Ruby" naming it; bump `.ruby-version` and run `make build`. Jekyll 4.4 needs Ruby >= 2.7; 3.3 is the version tested here.
 - **Bundler / gems**: declared in `Gemfile`, locked in `Gemfile.lock`
   (`BUNDLED WITH 2.4.10`). Jekyll 4.4.1 + plugins (sitemap, katex, seo-tag
   2.9, jemoji, tidy, postfiles, ...). `html-proofer` is
@@ -151,8 +149,8 @@ Jekyll process builds both (`_plugins/i18n.rb`, no gem; jekyll-polyglot was
 removed).
 
 - **A language** is its code in `languages:` (`_config.yml`) plus
-  `_data/locales/<lang>.yml` (interface strings, `language` metadata, titles of
-  the cloned pages and of the series) and, optionally,
+  `_data/locales/<lang>.yml` (interface strings, `language` metadata),
+  `_data/pages/<lang>.yml` (titles of the cloned pages), `_data/series/<lang>.yml` (series titles and descriptions; missing ones fall back to the default language's) and, optionally,
   `_data/navigation/<lang>.yml` (menu; falls back to the default language's)
   and a flag in `assets/img/flags/`. No page, layout or other config names a
   language. Adding one was tested with a throw-away `fr`: home, blog, tags,
@@ -179,8 +177,8 @@ removed).
   flag + text in the target language, current one marked `aria-current`).
 - **Interface pages** with `localize: true` (home, blog, tag overviews, series,
   search page and `search.json`) are cloned under each other language's
-  prefix; the clone's title comes from `page_translations["<url>"]` in that
-  language's locale file (any field given there overrides the front matter). Generated pages (pagination, tags, series) are built per
+  prefix; the clone's title comes from the `<url>` entry of `_data/pages/<lang>.yml`
+  (any field given there overrides the front matter). Generated pages (pagination, tags, series) are built per
   language by `blog_archive.rb`.
 - **Listings** use `site.data.i18n.posts[lang]`: one entry per post, newest
   first, in the page's language when that version exists, otherwise in the
@@ -210,7 +208,7 @@ removed).
 - **Sitemap**: `jekyll-sitemap` now lists both languages.
 - **Strings**: interface text and language metadata (flag, name, link
   labels, `og:locale`) in `_data/locales/<lang>.yml`, menus in
-  `_data/navigation/<lang>.yml`. Templates read them with `page.lang`. Names of
+  `_data/navigation/<lang>.yml`, the content licence (name, URL, badge) in `_data/license/<lang>.yml`. The site subtitle is `site_description` in the locale: a pre-render hook in `i18n.rb` copies it into `site.description` for the page being rendered, because jekyll-seo-tag only reads a site-level description; the header, the feeds and the manifest use the same value. Templates read them with `page.lang`. Names of
   other languages come from `language_names` in the page's locale, else from
   that language's own `language.name` (filter `language_name`), so a new
   language works before the existing locale files know its name.
@@ -242,8 +240,7 @@ service is involved.
     slug is `by-letter` or `by-n-posts` would collide; the build warns. Tags in post cards and in
     the post footer link to these pages (`_includes/tag-list.html`).
   - **Series.** Posts with `series: <id>` form a series, ordered by date;
-    metadata (title, description, planned `parts`) in `_data/series.yml`;
-    other languages in `series_translations` of their locale file.
+    metadata (title, description, planned `parts`) in `_data/series/<lang>.yml`, missing fields taken from the default language's file (`it.yml`).
     `site.data.series_index[lang]` feeds `_includes/series-nav.html` (in the post
     layout: full list of parts at the top, previous/next chain at the bottom),
     the per-series page `/serie/<id>/` and the overview `_pages/serie.html`.
@@ -332,6 +329,7 @@ make serve          # Jekyll serve → http://localhost:4000
 make draft TITLE="Titolo"   # nuovo draft
 make publish        # promuovi draft in _posts/
 make verify         # Jekyll build + htmlproofer nel container (nessun side effect sui draft)
+make ci             # build come la CI (CI=true, JEKYLL_ENV=production), stesso Ruby, senza commit
 make translate _posts/x.md  # traduzione LLM nelle altre lingue (OPTS="-n" prova a vuoto)
 make help           # lista tutti i target
 ```
@@ -425,7 +423,7 @@ Per fermare il container: `make down`.
 
 A SessionStart hook (`.claude/hooks/session-start.sh`, registered in
 `.claude/settings.json`) prepares the toolchain for remote web sessions: it
-pins Ruby 3.3.6 via rbenv, sets a UTF-8 locale, initializes submodules, and
+pins the Ruby of `.ruby-version` via rbenv (installing it if missing), sets a UTF-8 locale, initializes submodules, and
 runs `bundle install`. It only runs when `CLAUDE_CODE_REMOTE=true`. See
 [`AGENTS.md`](AGENTS.md) for how to work in this environment.
 
