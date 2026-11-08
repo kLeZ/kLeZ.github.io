@@ -4,13 +4,11 @@ date: 2010-02-21 21:44:10+01:00
 layout: post
 slug: narrativa-per-tutti-il-dd-parte-1
 title: Narrativa per tutti! - Il D&D parte 1
-categories:
-- RPG
 series: narrativa-per-tutti-dd
 tags:
-- d&d
-- importato dal vecchio blog
-- narrativa
+- giochi-di-ruolo
+- dnd
+category: narrativa
 ---
 
 Salve, oggi il mio intento è quello di addentrarvi nel fantastico mondo del fantastico (che non è il parco giochi di Lunghezza ma un gioco di parole), cioè la cara vecchia fantasia, che da bambini ci accompagna come una fedele amica e che poi alcuni abbandonano, come un cucciolo troppo cresciuto, sull'autostrada dei loro ricordi d'infanzia.  

@@ -5,7 +5,8 @@
 # A language is an entry in `languages:` (_config.yml) plus its
 # `_data/locales/<lang>.yml`: interface strings, `language` (flag, name,
 # locale...). Titles of the localized pages are in `_data/pages/<lang>.yml`, series
-# titles and descriptions in `_data/series/<lang>.yml` (_plugins/blog_archive.rb).
+# titles and descriptions in `_data/series/<lang>.yml`, tag names in `_data/tags/<lang>.yml`
+# (_plugins/blog_archive.rb).
 # Nothing else in the site names a language.
 #
 # - Every page and document has `lang`: `default_lang` (via the `_config.yml`
@@ -140,7 +141,7 @@ module Klez
   end
 
   # Runs first: applies folder languages, adds the feeds, clones localized
-  # pages, copies `series` across translations, builds the per-language post
+  # pages, copies `series`, `tags` and `category` to translations, builds the per-language post
   # lists used by _plugins/blog_archive.rb.
   class I18nEarlyGenerator < Jekyll::Generator
     safe true
@@ -157,7 +158,7 @@ module Klez
       end
       clone_localized_pages
       groups = post_groups
-      share_series(groups)
+      share_fields(groups)
       site.data["i18n"] = { "posts" => post_views(groups) }
     end
 
@@ -199,12 +200,25 @@ module Klez
       end
     end
 
-    # A translation without `series` stays in the series of its original.
-    def share_series(groups)
+    # Language-neutral fields: a translation without `series` stays in the
+    # series of its original, one without `tags` or `category` has the
+    # original's (tags are ids, see _plugins/blog_archive.rb). Jekyll sets
+    # `tags` and `categories` to [] when missing, so empty counts as missing.
+    SHARED_FIELDS = %w(series tags category categories).freeze
+
+    def share_fields(groups)
       groups.each_value do |versions|
-        series = versions.values.map { |d| d.data["series"] }.compact.first
-        versions.each_value { |d| d.data["series"] ||= series } if series
+        SHARED_FIELDS.each do |field|
+          value = versions.values.map { |d| d.data[field] }.find { |v| present?(v) }
+          next unless value
+
+          versions.each_value { |d| d.data[field] = value unless present?(d.data[field]) }
+        end
       end
+    end
+
+    def present?(value)
+      !(value.nil? || (value.respond_to?(:empty?) && value.empty?))
     end
 
     def post_views(groups)

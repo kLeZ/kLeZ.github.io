@@ -4,12 +4,11 @@ date: 2010-10-11 16:19:18+01:00
 layout: post
 slug: progetto-complicato
 title: Progetto complicato
-categories:
-- Linux
-- Package Management
 tags:
-- Freax
-- importato dal vecchio blog
+- linux
+- freax
+- gestione-pacchetti
+category: diario
 ---
 
 Salve a tutti i miei lettori, credo che oggi convenga parlare chiaro e tondo sul progetto freax.

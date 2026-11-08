@@ -2,11 +2,10 @@
 lang: it
 title: La sostanza dell'intelligenza
 tags:
-- riflessione
-- rant
-- senso della vita
 - filosofia
+- intelligenza
 date: 2024-08-29 18:08:37+02:00
+category: rant
 ---
 
 Certe volte capita di non poter fare a meno di essere cinici, di essere sinceri, di essere razionali ma allo stesso tempo intercettati da un turbine di emozioniforti che fanno scaturire un'urgenza di specificare, in chiaro, cosa va e cosa no (soprattutto cosa no) di una determinata affermazione o di un determinato comportamento.

@@ -2,9 +2,10 @@
 lang: it
 title: "Spaghetti Code: It's **that** bad"
 tags:
-- spaghetti code
-- bad practices
+- sviluppo-software
+- qualita-del-codice
 date: 2019-03-28 13:25:43+01:00
+category: riflessione
 ---
 
 Ho sempre lottato contro le cattive pratiche, chi mi conosce lo sa.  

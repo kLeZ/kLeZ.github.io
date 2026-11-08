@@ -1,0 +1,188 @@
+# Tag dei post. La chiave è l'id scritto nel front matter (`tags: [linux, git]`):
+# la forma slug dell'etichetta italiana al momento della creazione (minuscole, senza
+# accenti, parole separate da "-"), che poi non cambia più. L'id non compare nel sito:
+# etichetta e URL (/tag/<slug di name>/) vengono da questo file, e per le altre lingue
+# da _data/tags/<lingua>.yml, dove ogni id deve avere la sua voce. Campi:
+#   name         etichetta mostrata nel sito; il suo slug è l'URL della pagina del tag
+#   description  testo breve mostrato nella pagina del tag (facoltativo)
+#   theme        true per i temi, i filoni larghi del blog (solo in questo file)
+# Regole per scegliere i tag: AUTHORING.md, "Tags".
+
+# Temi
+politica:
+  name: "politica"
+  theme: true
+sviluppo-software:
+  name: "sviluppo software"
+  theme: true
+filosofia:
+  name: "filosofia"
+  theme: true
+ia:
+  name: "IA"
+  theme: true
+linux:
+  name: "Linux"
+  theme: true
+questo-blog:
+  name: "questo blog"
+  theme: true
+lavoro:
+  name: "lavoro"
+  theme: true
+societa:
+  name: "società"
+  theme: true
+sicurezza-e-privacy:
+  name: "sicurezza e privacy"
+  theme: true
+software-libero:
+  name: "software libero"
+  theme: true
+scienza:
+  name: "scienza"
+  theme: true
+musica:
+  name: "musica"
+  theme: true
+giochi-di-ruolo:
+  name: "giochi di ruolo"
+  theme: true
+
+# Tag specifici
+accessibilita:
+  name: "accessibilità"
+adb:
+  name: "ADB"
+algoritmi:
+  name: "algoritmi"
+android:
+  name: "Android"
+autistici-inventati:
+  name: "Autistici/Inventati"
+bash:
+  name: "Bash"
+big-tech:
+  name: "big tech"
+btrfs:
+  name: "Btrfs"
+cinema:
+  name: "cinema"
+colloqui:
+  name: "colloqui di lavoro"
+copyright:
+  name: "copyright"
+devops:
+  name: "DevOps"
+disinformazione:
+  name: "disinformazione"
+dnd:
+  name: "D&D"
+elezioni:
+  name: "elezioni"
+emacs:
+  name: "Emacs"
+fascismo:
+  name: "fascismo"
+formazione:
+  name: "formazione"
+freax:
+  name: "Freax"
+fsfe:
+  name: "FSFE"
+gaza:
+  name: "Gaza"
+gestione-pacchetti:
+  name: "gestione dei pacchetti"
+git:
+  name: "Git"
+github:
+  name: "GitHub"
+grub:
+  name: "GRUB"
+heroku:
+  name: "Heroku"
+ihc:
+  name: "IHC"
+intelligenza:
+  name: "intelligenza"
+istruzione:
+  name: "istruzione"
+java:
+  name: "Java"
+jekyll:
+  name: "Jekyll"
+lfs:
+  name: "LFS"
+lisp:
+  name: "Lisp"
+literate-programming:
+  name: "literate programming"
+llm:
+  name: "LLM"
+lutto:
+  name: "lutto"
+machine-learning:
+  name: "machine learning"
+marx:
+  name: "Marx"
+metal:
+  name: "metal"
+opensuse:
+  name: "openSUSE"
+org-mode:
+  name: "Org mode"
+osint:
+  name: "OSINT"
+password:
+  name: "password"
+qualita-del-codice:
+  name: "qualità del codice"
+radicalizzazione:
+  name: "radicalizzazione"
+ransomware:
+  name: "ransomware"
+sanzioni:
+  name: "sanzioni"
+selinux:
+  name: "SELinux"
+social-network:
+  name: "social network"
+sorveglianza:
+  name: "sorveglianza"
+sovranita-digitale:
+  name: "sovranità digitale"
+spam:
+  name: "spam"
+spring:
+  name: "Spring"
+star-wars:
+  name: "Star Wars"
+staticman:
+  name: "Staticman"
+statistica:
+  name: "statistica"
+stime:
+  name: "stime"
+storia:
+  name: "storia"
+systemd:
+  name: "systemd"
+tasse:
+  name: "tasse"
+tdd:
+  name: "TDD"
+teoria-musicale:
+  name: "teoria musicale"
+travis-ci:
+  name: "Travis CI"
+truffe:
+  name: "truffe"
+uefi:
+  name: "UEFI"
+unione-europea:
+  name: "Unione europea"
+viaggi:
+  name: "viaggi"
+web:
+  name: "web"

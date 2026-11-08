@@ -3,10 +3,12 @@ lang: it
 title: "Social media considered harmful. Forse... (4/5): Un social umano"
 series: social-media-considered-harmful
 tags:
-- big-tech
-- società
+- societa
 - politica
+- big-tech
+- social-network
 date: 2026-11-07 11:31:43+00:00
+category: saggio
 ---
 
 Nel 2018 Facebook provò a rendere il suo feed più sano, premiando le "interazioni sociali significative" fra amici e parenti, e tre anni dopo i suoi documenti interni hanno raccontato che aveva ottenuto il contrario, cioè un feed che dava più voce ai più arrabbiati. Chi progetta software questa storia la capisce al volo, perché nel mio mestiere c'è un modo di dire che la riassume in una riga: "quando ottimizzi per una metrica, questa perde di valore".

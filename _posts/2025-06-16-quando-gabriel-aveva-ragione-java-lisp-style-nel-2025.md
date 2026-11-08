@@ -2,11 +2,11 @@
 lang: it
 title: "Quando Gabriel Aveva Ragione: Java Lisp-Style nel 2025"
 tags:
-- linguaggi
-- saggi brevi
+- sviluppo-software
 - java
 - lisp
 date: 2025-06-16 15:49:11+02:00
+category: saggio
 ---
 
 Oggi parlo di evoluzione dei linguaggi di programmazione, tema a me caro, chi mi conosce di persona sa quanto mi diverta seguire l'evoluzione tecnica degli strumenti che uso quotidianamente. L'occasione me l'ha data la rilettura di un pezzo di Richard Gabriel del 2003, ["The Art of Lisp & Writing"](https://www.dreamsongs.com/ArtOfLisp.html), che inizialmente avevo catalogato come "ennesima difesa d'ufficio di Lisp da parte di un fan sfegatato". Poi ho scoperto un dettaglio che cambia tutto: l'articolo è stato scritto come introduzione al libro "Successful Lisp" di David Lamkins nel 2003.

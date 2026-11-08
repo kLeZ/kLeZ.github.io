@@ -1,8 +1,12 @@
 ---
 lang: en
 title: "Using The Eisenhower Matrix In Emacs Org-Mode"
-tags: 
+tags:
+- lavoro
+- emacs
+- org-mode
 date: 2019-10-22 16:18:35+02:00
+category: segnalazione
 ---
 
 Riporto integralmente l'articolo di Tom Purl che parla dell'integrazione della matrice di Eisenhower in Emacs Org-Mode.

@@ -1,8 +1,12 @@
 ---
 lang: it
 title: "DevOps: 2 anni dopo"
-tags: 
+tags:
+- sviluppo-software
+- lavoro
+- devops
 date: 2019-05-04 18:56:31+02:00
+category: saggio
 ---
 
 Oggi parlo di *DevOps*, argomento a me caro, chi mi conosce di persona sa quanto posso essere un *serial killer di **cabbasisi*** su questo argomento.

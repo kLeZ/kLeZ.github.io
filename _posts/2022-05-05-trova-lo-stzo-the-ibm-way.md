@@ -1,8 +1,11 @@
 ---
 lang: it
 title: "Trova lo st***zo! The IBM Way!"
-tags: 
+tags:
+- lavoro
+- colloqui
 date: 2022-05-05 12:00:50+02:00
+category: segnalazione
 ---
 
 Oggi leggevo un brevissimo articolo, che però ci tengo a condividere con i miei (pochi[ssimi]) lettori. Forse lo condivido solo per me stesso perché ho una pessima memoria selettiva, che però seleziona un po' come gli pare.

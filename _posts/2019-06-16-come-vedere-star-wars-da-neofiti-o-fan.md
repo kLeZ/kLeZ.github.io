@@ -1,8 +1,11 @@
 ---
 lang: it
 title: "Come vedere Star Wars da neofiti o fan"
-tags: 
+tags:
+- cinema
+- star-wars
 date: 2019-06-16 17:19:14+02:00
+category: guida
 ---
 
 Sono un *fan* di Guerre Stellari, probabilmente lo saprai.  

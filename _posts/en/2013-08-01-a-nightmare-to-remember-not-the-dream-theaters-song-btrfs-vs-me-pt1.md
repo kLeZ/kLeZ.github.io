@@ -3,16 +3,12 @@ lang: en
 date: 2013-08-01 17:42:35+01:00
 layout: post
 slug: a-nightmare-to-remember-not-the-dream-theaters-song-btrfs-vs-me-pt1
-title: A nightmare to remember -- not the Dream Theater's song -- [BTRFS vs. me -
-  pt1]
-categories:
-- Issues
+title: A nightmare to remember -- not the Dream Theater's song -- [BTRFS vs. me - pt1]
 tags:
+- linux
+- opensuse
 - btrfs
-- change root partition
-- Linux
-- migrate filesystem
-- openSuSE
+category: disavventura
 ---
 
 Today I want to say a few words about BTRFS. Firstly I want to say that **this filesystem is awesome for functionalities**, I will use it as my filesystem again as soon as it will become stable. But, It is not yet stable, I tried and I fallen in front of his horrible performances.

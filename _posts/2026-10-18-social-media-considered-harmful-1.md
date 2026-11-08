@@ -3,10 +3,12 @@ lang: it
 title: "Social media considered harmful. Forse... (1/5): Loro sapevano"
 series: social-media-considered-harmful
 tags:
-- big-tech
-- società
+- societa
 - politica
+- big-tech
+- social-network
 date: 2026-10-18 02:25:52+02:00
+category: saggio
 ---
 
 Il 1° ottobre il Pew Research Center ha pubblicato un sondaggio, fatto in 37 paesi e territori, su più di 45.000 persone. Il titolo dice che nel mondo cresce il numero di persone convinte che i social stiano facendo male alla democrazia.

@@ -2,12 +2,12 @@
 lang: en
 title: "Slop, trust, and a three-line patch"
 tags:
-- open-source
-- ai-slop
-- trust
-- maintainership
+- software-libero
+- ia
+- llm
 date: 2026-06-28 02:46:01+02:00
 description: "A real bug, a three-line fix, and a one-line rejection: what reaching for 'AI slop' as a reflex gets wrong about verification, scale, and trust in open source."
+category: riflessione
 ---
 
 A maintainer closed my patch with one sentence: "Sorry, but this sounds like AI slop." The patch was three lines of Go. It fixed a real authentication bug, it shipped with a debug log that pinned the cause, and a week later a stranger running a different account setup cloned my fork, built it, and reported back that it worked. None of that counted. What counted was the smell.

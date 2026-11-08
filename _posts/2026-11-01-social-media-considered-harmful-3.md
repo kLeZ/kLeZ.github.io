@@ -3,10 +3,12 @@ lang: it
 title: "Social media considered harmful. Forse... (3/5): Come sopravvivere"
 series: social-media-considered-harmful
 tags:
-- big-tech
-- società
+- societa
 - politica
+- big-tech
+- social-network
 date: 2026-11-01 01:59:30+01:00
+category: saggio
 ---
 
 Nelle prime due puntate ho raccontato che [lo sapevano]({% link _posts/2026-10-18-social-media-considered-harmful-1.md %}), e che chi ha provato a [fermarli]({% link _posts/2026-10-23-social-media-considered-harmful-2.md %}) ci è riuscito poco: qualche giuria sì, le leggi quasi mai. Intanto, mentre i tribunali fanno il loro corso e i parlamenti discutono, i social restano esattamente quelli che sono, e stanno in tasca ai genitori e ai figli, stasera come ieri sera.

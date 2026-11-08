@@ -1,14 +1,7 @@
 ---
 title: "I've got nothing to hide"
-tags:
-  - privacy
-  - sorveglianza
-  - sanzioni
-  - giornalismo
-  - propaganda
-  - rant
 date: 2026-09-01 12:49:38+00:00
-source_sha: 98340087d17811b0
+source_sha: 163788163db632c2
 ---
 
 "I've got nothing to hide": I've heard it so many times that it took me a while to realise it isn't a position. It's a symptom.

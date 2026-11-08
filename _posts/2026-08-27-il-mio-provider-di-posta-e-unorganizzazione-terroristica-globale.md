@@ -1,12 +1,13 @@
 ---
 title: "Il mio provider di posta è un'organizzazione terroristica globale"
 tags:
-- privacy
-- sorveglianza
-- software-libero
-- rant
+- sicurezza-e-privacy
+- politica
+- autistici-inventati
 - sanzioni
+- sorveglianza
 date: 2026-08-27 09:33:09+00:00
+category: rant
 ---
 
 Oggi parlo di una cosa che mi ha fatto sputare il caffè.

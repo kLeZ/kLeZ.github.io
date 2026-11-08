@@ -1,14 +1,7 @@
 ---
 title: "Techbros and the silicon dragon"
-tags:
-  - AI
-  - LLM
-  - filosofia
-  - politica
-  - sorveglianza
-  - rant
 date: 2026-09-19 13:39:46+00:00
-source_sha: e87373069f3fc385
+source_sha: 12a2e4a70a0e16bf
 ---
 
 I'm a techie with a passion, the sort who likes to keep informed and to read. Maybe I suffer from information bulimia, but I'll admit I don't forget what I take in when it interests me, when it lights up that inner LED, the warning light that says "oh, oh, there's something tasty!" (Yes, my little inner voice, like Hacker News, Lobsters and the other channels I follow, is *bri'ish*.) Either way, reading this much, keeping this informed, keeping up with the topics I care about doesn't bother me in the slightest, bulimia or not.

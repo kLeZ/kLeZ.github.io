@@ -4,12 +4,9 @@ date: 2010-03-07 11:47:49+01:00
 layout: post
 slug: babbo-natale-non-esiste-dimostrazione-scientifica-o-quasi
 title: BABBO NATALE NON ESISTE (Dimostrazione scientifica.... o quasi)
-categories:
-- Riflessioni
 tags:
-- divertente
-- importato dal vecchio blog
-- riportato da altri
+- scienza
+category: umorismo
 ---
 
 Esiste Babbo Natale ? Decidetelo voi

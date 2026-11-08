@@ -3,11 +3,11 @@ lang: it
 title: "L'Epifania Cosmica: Quando l'Intelligenza Diventa Infinita"
 series: viaggio-chomsky-llm
 tags:
-- AI
-- LLM
-- Architettura
-- Pensiero Profondo
+- ia
+- filosofia
+- llm
 date: 2025-05-26 12:24:26+02:00
+category: narrativa
 ---
 
 *Quarta tappa del nostro viaggio. Ma questa non è una tappa qualsiasi - è il momento in cui la strada finisce e inizia il volo.*

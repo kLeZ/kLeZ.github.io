@@ -4,10 +4,9 @@ date: 2010-02-16 14:24:06+01:00
 layout: post
 slug: il-mio-personale-wordpress
 title: Il mio personale WordPress
-categories:
-- Diario
 tags:
-- importato dal vecchio blog
+- questo-blog
+category: diario
 ---
 
 Salve a chiunque stia leggendo questo articolo, questo è il mio primo post nel mio blog.

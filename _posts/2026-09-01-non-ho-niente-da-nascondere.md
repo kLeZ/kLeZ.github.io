@@ -1,13 +1,13 @@
 ---
 title: "Non ho niente da nascondere"
 tags:
-- privacy
-- sorveglianza
+- sicurezza-e-privacy
+- politica
+- autistici-inventati
 - sanzioni
-- giornalismo
-- propaganda
-- rant
+- sorveglianza
 date: 2026-09-01 12:49:38+00:00
+category: rant
 ---
 
 "Io non ho niente da nascondere" me lo sono sentito dire talmente tante volte che ci ho messo un po' a capire che non è una posizione. È un sintomo.

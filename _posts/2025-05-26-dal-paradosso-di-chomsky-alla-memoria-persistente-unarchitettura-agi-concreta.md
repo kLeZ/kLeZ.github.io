@@ -3,11 +3,11 @@ lang: it
 title: "Dal Paradosso di Chomsky alla Memoria Persistente: Un'Architettura AGI Concreta"
 series: viaggio-chomsky-llm
 tags:
-- AI
-- LLM
-- Architettura
-- Pensiero Profondo
+- ia
+- filosofia
+- llm
 date: 2025-05-26 15:50:35+02:00
+category: narrativa
 ---
 
 ## Il Cambio di Paradigma che Cambia Tutto

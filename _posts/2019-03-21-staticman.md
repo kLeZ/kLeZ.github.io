@@ -2,11 +2,11 @@
 lang: it
 title: Adventures with Staticman
 tags:
+- questo-blog
+- software-libero
 - staticman
-- commenting system
-- poor organization
-- open source
 date: 2019-03-21 21:22:45+01:00
+category: disavventura
 ---
 
 Oggi mi dedico a parlare di [Staticman](https://staticman.net), un sistema di gestione dei commenti open source basato su _node.js_.

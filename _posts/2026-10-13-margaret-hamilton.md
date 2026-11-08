@@ -2,11 +2,10 @@
 lang: it
 title: "Margaret Hamilton. Cosa porta all'ingegneria, perché è una figura importante (e non perché è una donna)"
 tags:
-- ingegneria-del-software
-- informatica
+- sviluppo-software
 - storia
-- società
 date: 2026-10-13 13:24:31+02:00
+category: saggio
 ---
 
 Margaret Hamilton è morta il 30 settembre, a 90 anni. Il MIT l'ha scritto una settimana dopo, e da allora è tornata a girare quella foto: lei giovane, gli occhiali grandi, in piedi accanto a una pila di carta alta quanto lei. La didascalia che di solito le attaccano dice che quello è il codice che ha portato l'uomo sulla Luna, e che l'ha scritto lei.

@@ -4,13 +4,11 @@ date: 2010-06-21 09:56:08+01:00
 layout: post
 slug: narrativa-per-tutti-il-dd-parte-3
 title: Narrativa per tutti! – Il D&D parte 3
-categories:
-- RPG
 series: narrativa-per-tutti-dd
 tags:
-- d&d
-- importato dal vecchio blog
-- narrativa
+- giochi-di-ruolo
+- dnd
+category: narrativa
 ---
 
 Continua anche se con molto stacco la serie di post di narrativa riguardanti in particolare il D&D (Dungeons & Dragons) gioco di ruolo cartaceo creato nel '73.

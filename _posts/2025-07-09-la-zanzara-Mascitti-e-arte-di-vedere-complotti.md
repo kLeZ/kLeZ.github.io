@@ -2,12 +2,11 @@
 lang: it
 title: "La Zanzara, Mascitti e l'Arte di Vedere Complotti Dove Non Ci Sono"
 tags:
-- metodo scientifico
-- rant
-- someone's wrong on the internet
+- scienza
 - statistica
-- correlation is not causation
+- disinformazione
 date: 2025-07-09 01:42:00+02:00
+category: rant
 ---
 
 Ieri mattina stavo scrollando LinkedIn - già, lo so, pessima idea - quando un mio contatto condivide l'articolo di Maurizio Mascitti "Oltre Telemeloni". Apro, vedo due grafici, e sento quella sensazione familiare di quando qualcuno sta per sparare una cazzata metodologica grossa come una casa.

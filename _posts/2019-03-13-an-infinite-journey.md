@@ -1,6 +1,9 @@
 ---
 lang: it
 title: "The kLeZ reboot: an infinite journey"
+tags:
+- questo-blog
+category: diario
 ---
 
 ## TL; DR

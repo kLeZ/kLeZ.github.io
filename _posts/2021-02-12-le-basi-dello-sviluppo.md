@@ -1,8 +1,11 @@
 ---
 lang: it
 title: "Le basi dello sviluppo"
-tags: 
+tags:
+- sviluppo-software
+- qualita-del-codice
 date: 2021-02-12 16:16:59+01:00
+category: saggio
 ---
 
 Ultimamente mi trovo spesso a leggere di sviluppatori che non conoscono determinati acronimi, o che si ritrovano a chiamarsi "sviluppatori" senza sapere cosa effettivamente significhi sviluppare software.

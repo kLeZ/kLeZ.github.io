@@ -2,10 +2,10 @@
 lang: it
 title: "Git submodules: una feature spettacolare e sottovalutata"
 tags:
-    - best practice
-    - git
-    - modularity
+- sviluppo-software
+- git
 date: 2019-04-11 08:07:47+02:00
+category: guida
 ---
 
 Oggi parlo di Git, e in particolare di una feature di questo indispensabile strumento che spesso viene sottovalutata o non considerata a dovere nell'organizzazione del codice.

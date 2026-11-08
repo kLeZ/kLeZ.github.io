@@ -1,8 +1,11 @@
 ---
 lang: it
 title: "PyTorch, la promessa del deep learning?"
-tags: 
+tags:
+- ia
+- machine-learning
 date: 2019-10-17 10:42:30+02:00
+category: saggio
 ---
 
 Recentemente mi sono appassionato al *Machine Learning*.

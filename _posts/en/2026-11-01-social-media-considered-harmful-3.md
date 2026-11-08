@@ -1,12 +1,8 @@
 ---
 title: "Social media considered harmful. Maybe... (3/5): How to survive"
 series: social-media-considered-harmful
-tags:
-  - big-tech
-  - società
-  - politica
 date: 2026-11-01 01:59:30+01:00
-source_sha: 989a679505827323
+source_sha: 1bee738db7640705
 ---
 
 In the first two instalments I explained that [they knew]({% link _posts/en/2026-10-18-social-media-considered-harmful-1.md %}), and that those who tried to [stop them]({% link _posts/en/2026-10-23-social-media-considered-harmful-2.md %}) didn't get very far: the odd jury, yes, laws hardly ever. Meanwhile, as the courts take their course and parliaments debate, social media stay exactly what they are, and they sit in the pockets of parents and children, tonight just like last night.

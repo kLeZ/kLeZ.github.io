@@ -1,8 +1,12 @@
 ---
 lang: it
 title: Transazioni distribuite saghe e code
-tags: spring eventi
+tags:
+- sviluppo-software
+- java
+- spring
 date: 2019-07-27 12:56:10+02:00
+category: guida
 ---
 
 Venerdì scorso ho tenuto un *talk* interno alla mia azienda sulle basi (molto basi) del framework Spring.  

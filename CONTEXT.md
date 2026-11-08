@@ -150,7 +150,7 @@ removed).
 
 - **A language** is its code in `languages:` (`_config.yml`) plus
   `_data/locales/<lang>.yml` (interface strings, `language` metadata),
-  `_data/pages/<lang>.yml` (titles of the cloned pages), `_data/series/<lang>.yml` (series titles and descriptions; missing ones fall back to the default language's) and, optionally,
+  `_data/pages/<lang>.yml` (titles of the cloned pages), `_data/series/<lang>.yml` (series titles and descriptions; missing ones fall back to the default language's), `_data/tags/<lang>.yml` (a name for every tag id; a missing one falls back to the default language's, with a warning) and, optionally,
   `_data/navigation/<lang>.yml` (menu; falls back to the default language's)
   and a flag in `assets/img/flags/`. No page, layout or other config names a
   language. Adding one was tested with a throw-away `fr`: home, blog, tags,
@@ -208,7 +208,7 @@ removed).
 - **Sitemap**: `jekyll-sitemap` now lists both languages.
 - **Strings**: interface text and language metadata (flag, name, link
   labels, `og:locale`) in `_data/locales/<lang>.yml`, menus in
-  `_data/navigation/<lang>.yml`, the content licence (name, URL, badge) in `_data/license/<lang>.yml`. The site subtitle is `site_description` in the locale: a pre-render hook in `i18n.rb` copies it into `site.description` for the page being rendered, because jekyll-seo-tag only reads a site-level description; the header, the feeds and the manifest use the same value. Templates read them with `page.lang`. Names of
+  `_data/navigation/<lang>.yml`, tag names in `_data/tags/<lang>.yml`, the content licence (name, URL, badge) in `_data/license/<lang>.yml`. The site subtitle is `site_description` in the locale: a pre-render hook in `i18n.rb` copies it into `site.description` for the page being rendered, because jekyll-seo-tag only reads a site-level description; the header, the feeds and the manifest use the same value. Templates read them with `page.lang`. Names of
   other languages come from `language_names` in the page's locale, else from
   that language's own `language.name` (filter `language_name`), so a new
   language works before the existing locale files know its name.
@@ -227,18 +227,7 @@ service is involved.
     `_config.yml` (or `paginate: <n>` on the page). Pages after the first are out
     of the sitemap; `jekyll-seo-tag` adds "Pagina N di M" to their title
     (`seo_page_of` in `_data/locales/`) and emits `rel=prev/next`.
-  - **Tags.** One paginated page per tag at `/tag/<slug>/` (slug: Jekyll
-    `slugify`, mode `latin`; spellings differing only in case/accents share a
-    page). The overview has one static page per ordering, all rendering
-    `_includes/tag-index.html` (tags in CSS columns: 2 on phones and tablets,
-    3 from 992px; sort switch made of plain links, no JavaScript):
-    `/tag/by-letter/` (A-Z, `site.data.tag_index[lang]`, also used by the
-    search filter), `/tag/by-letter/desc/` (Z-A) and `/tag/by-n-posts/` (most
-    used first, `site.data.tag_ranking[lang]`); only the first is in the
-    sitemap. `/tag/` itself redirects to `/tag/by-letter/` (`layout:
-    redirect`). Tags whose
-    slug is `by-letter` or `by-n-posts` would collide; the build warns. Tags in post cards and in
-    the post footer link to these pages (`_includes/tag-list.html`).
+  - **Tags.** Posts list tag ids in `tags:`; `_data/tags/<lang>.yml` gives each id its `name` and optional `description` in that language, and `_data/tags/it.yml` marks the themes (`theme: true`). Rules for choosing tags in AUTHORING.md, "Tags". A tag as written is reduced to its id by Jekyll `slugify` (mode `latin`), so `Linux` is `linux`. One paginated page per tag and language at `/tag/<slug of name>/` (`/en/tag/<slug of the English name>/`), with the description at the top and as meta description; pages are paired across languages by `i18n_key` `tag:<id>:<page>`, so the language switcher and `hreflang` link `/tag/sicurezza-e-privacy/` to `/en/tag/security-and-privacy/`. The build warns about tags missing from a language file (the default language's name and URL are used) or not written as their id, and stops when two ids share a slug in a language or a slug is `by-letter` or `by-n-posts`. Filters: `tag_infos` (a list of ids to sorted hashes with id, name, slug, url, description, theme), `tag_url`, `tag_name`, all in the page's language unless given one. The overview has one static page per ordering, all rendering `_includes/tag-index.html` (tags in CSS columns: 2 on phones and tablets, 3 from 992px; sort switch made of plain links, no JavaScript): `/tag/by-letter/` (A-Z, `site.data.tag_index[lang]`, also used by the search filter), `/tag/by-letter/desc/` (Z-A) and `/tag/by-n-posts/` (most used first, `site.data.tag_ranking[lang]`); only the first is in the sitemap. `/tag/` itself redirects to `/tag/by-letter/` (`layout: redirect`). Tags in post cards and in the post footer link to these pages (`_includes/tag-list.html`); the feeds carry them as `<category>` (Atom: `term` the id, `label` the name). `category` (Jekyll's key, one value: the kind of text) is in the front matter but not used by any template yet.
   - **Series.** Posts with `series: <id>` form a series, ordered by date;
     metadata (title, description, planned `parts`) in `_data/series/<lang>.yml`, missing fields taken from the default language's file (`it.yml`).
     `site.data.series_index[lang]` feeds `_includes/series-nav.html` (in the post
@@ -249,15 +238,8 @@ service is involved.
     articoli · dal … al …, nell'arco di 4 mesi", and the series page shows the
     parts as a vertical timeline with date and gap per part, plus a placeholder
     for the parts still to come when `parts` is set.
-  - **Related posts.** Each post gets `related_by_tag`: the most recent posts
-    of its language's list sharing at least one tag with it (tags compared by
-    slug), excluding itself, its translations and the other parts of its
-    series. `_includes/related-posts.html` shows
-    them under the article; how many is `related_posts` in `_config.yml`
-    (default 3, `0` hides the block).
-  - **Per language.** Everything above is built once per language from
-    `site.data.i18n.posts[lang]` (non-default languages under `/<lang>/`), and
-    a translation without `series:` stays in its original's series.
+  - **Related posts.** Each post gets `related_by_tag`: the posts of its language's list sharing at least one tag id with it, ranked by the sum over the shared tags of log(N / n) (N posts in the list, n with that tag: a rare tag counts more than a theme), newest first among equal scores; excluded are the post itself, its translations and the other parts of its series. `_includes/related-posts.html` shows them under the article; how many is `related_posts` in `_config.yml` (default 3, `0` hides the block).
+  - **Per language.** Everything above is built once per language from `site.data.i18n.posts[lang]` (non-default languages under `/<lang>/`). A translation without `series:`, `tags` or `category` takes its original's (`_plugins/i18n.rb`), so translations carry no tags of their own.
 - **Search** (`/cerca/`, `_pages/cerca.html`): a plain GET form (`q`, `tag`),
   also in the navbar (on desktop only the icon, which opens `/cerca/`; the
   field shows in the collapsed mobile menu). `search.json` holds title, date, tags, excerpt and full

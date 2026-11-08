@@ -4,14 +4,11 @@ date: 2010-07-08 21:27:12+01:00
 layout: post
 slug: altre-idee-per-fpm
 title: Altre idee per FPM
-categories:
-- Diario
-- Linux
-- Package Management
-- Riflessioni
 tags:
-- Freax
-- importato dal vecchio blog
+- linux
+- freax
+- gestione-pacchetti
+category: diario
 ---
 
 Ciao a tutti, oggi vorrei condividere con voi alcune idee che mi sono venute in mente riguardo a fpm.

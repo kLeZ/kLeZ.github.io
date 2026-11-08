@@ -1,8 +1,12 @@
 ---
 lang: it
 title: "Il dilemma del calcolo delle stime"
-tags: 
+tags:
+- sviluppo-software
+- lavoro
+- stime
 date: 2022-03-25 09:39:26+00:00
+category: saggio
 ---
 
 Di norma direi che il calcolo delle stime è qualcosa che facciamo tutti i giorni e che quindi almeno sulla carta ogni programmatore dovrebbe saper farlo.

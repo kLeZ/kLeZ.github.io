@@ -1,12 +1,7 @@
 ---
 title: "Margaret Hamilton. What she brought to engineering, and why she matters (and not because she was a woman)"
-tags:
-  - ingegneria-del-software
-  - informatica
-  - storia
-  - società
 date: 2026-10-13 13:24:31+02:00
-source_sha: 98393b4cd4965cb0
+source_sha: c192ba56b237fe9d
 ---
 
 Margaret Hamilton died on 30 September, aged 90. MIT announced it a week later, and since then that photo has been doing the rounds again: her, young, big glasses, standing next to a stack of paper as tall as she is. The caption usually stuck on it says that this is the code that put man on the Moon, and that she wrote it.

@@ -1,11 +1,7 @@
 ---
 title: "Gabonzo Robot and the Industrial Genocide: When Reality Outdoes Satire"
-tags:
-  - rant
-  - Gaza
-  - genocidio
 date: 2025-07-15 01:05:00+02:00
-source_sha: c204db8c0eaa88fa
+source_sha: 4ad5a5efd4e0081a
 ---
 
 *A Nanowar of Steel song becomes the perfect metaphor for understanding what is happening in Gaza, and why I can't sleep at night any more.*

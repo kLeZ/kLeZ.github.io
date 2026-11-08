@@ -1,12 +1,8 @@
 ---
 title: "Social media considered harmful. Maybe... (1/5): They knew"
 series: social-media-considered-harmful
-tags:
-  - big-tech
-  - società
-  - politica
 date: 2026-10-18 02:25:52+02:00
-source_sha: 6625cddaed900f71
+source_sha: 6c96851b4dd7efdf
 ---
 
 On 1 October the Pew Research Center published a survey, carried out in 37 countries and territories, of more than 45,000 people. The headline says that around the world a growing number of people are convinced social media is harming democracy.

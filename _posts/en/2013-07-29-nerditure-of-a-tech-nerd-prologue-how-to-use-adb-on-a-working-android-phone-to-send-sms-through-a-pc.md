@@ -4,13 +4,11 @@ date: 2013-07-29 17:38:37+01:00
 layout: post
 slug: nerditure-of-a-tech-nerd-prologue-how-to-use-adb-on-a-working-android-phone-to-send-sms-through-a-pc
 title: 'Nerditure of a tech-nerd: Prologue [How to use ADB on a working Android phone to send sms through a PC]'
-categories:
-- Android
 tags:
-- adb
 - android
+- adb
 - bash
-- sms
+category: guida
 ---
 
 Hey all, this is the very first post of my blog and I want to thank myself for having decided, finally.

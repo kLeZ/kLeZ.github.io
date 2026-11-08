@@ -1,8 +1,12 @@
 ---
 lang: it
 title: IHC e ransomware
-tags: ihc ransomware talk hackers camping
+tags:
+- sicurezza-e-privacy
+- ihc
+- ransomware
 date: 2019-03-19 21:23:01+01:00
+category: cronaca
 ---
 
 Sono profondamente in ritardo, lo so.  

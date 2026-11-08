@@ -4,9 +4,10 @@ tags:
 - linux
 - opensuse
 - uefi
+- grub
 - selinux
-- firmware
 date: 2026-10-20 13:59:23+00:00
+category: disavventura
 ---
 
 Questa è la storia di un venerdì sera in cui volevo solo vedere un film sul portatile di mia moglie, nel lettone con tutta la famiglia. E invece i dannati servizi di streaming, se non sei aggiornato alle cazzo di beta dei cazzo di browser, che deve immancabilmente essere Google Chrome, non Chromium, non Opera, non i vari miei browser più strani, come Falkon o Konqueror, ma nemmeno Firefox eh, non partono nemmeno. Non ci sono web standard o DRM abilitati e funzionanti che tengano. **Perché no**, e basta. Non chiedere, fatti gli affari tuoi. E paga un abbonamento sempre più alto per un servizio sempre più scadente pieno di serie e film di qualità discutibile. Sono 50 euro, grazie.

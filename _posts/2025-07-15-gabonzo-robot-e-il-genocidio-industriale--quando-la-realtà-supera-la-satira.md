@@ -2,10 +2,10 @@
 lang: it
 title: "Gabonzo Robot e il Genocidio Industriale: Quando la Realtà Supera la Satira"
 tags:
-- rant
-- Gaza
-- genocidio
+- politica
+- gaza
 date: 2025-07-15 01:05:00+02:00
+category: rant
 ---
 
 *Una canzone dei Nanowar of Steel diventa la perfetta metafora per capire cosa sta succedendo a Gaza, e perché non riesco più a dormire la notte.*

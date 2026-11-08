@@ -4,12 +4,10 @@ date: 2010-06-18 10:19:37+01:00
 layout: post
 slug: riflessioni-sul-pensiero-degli-esseri-umani
 title: Riflessioni sul pensiero degli esseri umani
-categories:
-- Riflessioni
 tags:
-- evoluzione
-- importato dal vecchio blog
-- società
+- filosofia
+- intelligenza
+category: riflessione
 ---
 
 Ciao a tutti! Oggi voglio esporre una mia piccola riflessione, una di quelle che faccio al bagno, sulla tazza del gabinetto.

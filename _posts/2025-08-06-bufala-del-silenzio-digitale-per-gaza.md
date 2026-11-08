@@ -2,10 +2,11 @@
 lang: it
 title: "Bufala del \"Silenzio Digitale per Gaza\""
 tags:
+- politica
 - gaza
-- bufala
-- rant
+- disinformazione
 date: 2025-08-06 20:15:17+02:00
+category: rant
 ---
 
 Eccoci qui. È la terza volta da maggio che mi arriva questo benedetto messaggio WhatsApp sul "silenzio digitale per Gaza" nella chat di famiglia. La terza. Maggio, luglio, e ora di nuovo. Ogni volta devo sprecare mezz'ora a spiegare perché è una bufala colossale, e ogni volta mi sento rispondere "eh ma alla fine qualcosa fai, anche se poco, meglio di niente".

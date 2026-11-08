@@ -1,15 +1,7 @@
 ---
 title: "If the tree falls and nobody listens"
-tags:
-  - radicalizzazione
-  - dissenso
-  - deumanizzazione
-  - fascismo
-  - filosofia
-  - politica
-  - big-tech
 date: 2026-11-01 01:59:30+01:00
-source_sha: 2b4f5d73554b2e58
+source_sha: de1fb2aefda0f77d
 ---
 
 A few days ago I watched a video about Calla Walsh, a twenty-two-year-old American woman who in six years went from Democratic Party election campaigns to the stages of Iranian state television. The video came from an Italian channel about communication, and at one point its author stops to state his method: this isn't a geopolitics video, he says, he deals with communication, and his aim is to give us the tools to form our own opinion. It's a purpose I respect, and that is exactly why it annoyed me to watch it betrayed minute after minute. It starts with the title, keywords in capitals, about the child prodigy who now celebrates dead Americans. It carries on through the almost sole source of the story, a profile published by The Free Press that he himself calls "beautiful". And it ends with an inaccuracy that whoever made the video could have checked in five minutes, even written in an on-screen caption (Walsh was born in 2004, not 2005).

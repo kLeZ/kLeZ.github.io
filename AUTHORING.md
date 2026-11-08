@@ -56,17 +56,15 @@ title: "Il titolo del post"
 tags:
 - software-libero
 - linux
+category: saggio
 date: 2026-05-31 14:37:42+02:00   # added by publish; keep tz offset
 ---
 ```
 
 - **`title`** — required. Rendered as the post heading by the layout, so **do
   not** repeat an `# H1` in the body (see §4).
-- **`tags`** — a YAML list. Use existing tags where possible (overview at
-  `/tag/by-letter/`): every tag gets a page at `/tag/<slug>/`, and tags that differ only
-  in case or accents (`Linux`/`linux`) end up on the same page. Tags also
-  drive the "Articoli correlati" block under each post (the 3 most recent
-  posts sharing a tag), so a post without tags gets no related posts.
+- **`tags`** — a YAML list of tag ids: what the post is about. See "Tags" below.
+- **`category`** — one value: what kind of text the post is. See "Tags" below.
 - **`series:`** — optional series id, for posts published in parts. See
   "Series" below.
 - **`date`** — full timestamp with timezone offset; `publish` fills it in.
@@ -76,6 +74,25 @@ date: 2026-05-31 14:37:42+02:00   # added by publish; keep tz offset
   (`_posts/en/`, `_pages/en/`) take that folder's language whatever they say.
 - **`image:`** — optional Open Graph image for that post; otherwise the site
   default (`/assets/img/home-bg.jpg`) is used.
+
+### Tags
+
+Tags say what a post is about; `category` says what kind of text it is. Tone, format and provenance (rant, essay, repost) never go in the tags.
+
+A tag in `tags:` is an **id**, never shown on the site. Its name, optional description and URL come from `_data/tags/<lang>.yml`, one file per language: the id `sicurezza-e-privacy` is "sicurezza e privacy" at `/tag/sicurezza-e-privacy/` and "security and privacy" at `/en/tag/security-and-privacy/` (the URL is the slug of the name in that language). The ids, with the themes first, are the taxonomy: look there before making a new one.
+
+1. The id is the slug of the Italian name at the time the tag is created: lowercase, no accents, words separated by `-` (`sovranita-digitale`, `qualita-del-codice`). Once created it does not change. Renaming a tag means changing its `name`, which changes its URL; the old URL is not redirected.
+2. Singular, except things plural by nature (`big-tech`). Proper nouns and technologies in their usual form, lowercase in the id (`java`, `opensuse`, `org-mode`).
+3. Each post has 1 or 2 **themes** (the ids with `theme: true` in `it.yml`: the broad threads of the blog, such as `politica`, `sviluppo-software`, `linux`) and 0 to 4 specific tags, 5 or 6 in all. A post that fits no theme can go without one.
+4. Make a new specific tag for a proper noun or a technology, or when it is likely to come back. A tag used once is allowed.
+5. No tag that repeats a series: the series navigation already links its parts.
+6. A new tag goes into `_data/tags/it.yml` **and** into every other language's file (`en.yml`), in the same commit as the post. The build warns about a tag missing from a language file (that language then shows the Italian name and URL), about a tag not written as its id (`Linux` for `linux`: it still works), and stops when two ids get the same URL in a language or a tag takes the URL of a tag overview page (`by-letter`, `by-n-posts`).
+
+Tags drive the "Articoli correlati" block under each post: the posts sharing the most and rarest tags with it, a rare tag counting more than a theme (see CONTEXT.md, "Related posts"). A post without tags gets no related posts.
+
+`category` is Jekyll's own key, one value per post. The site does not show it yet: it keeps the kind of each post for when categories get their own pages. Values in use: `saggio` (long, structured, argued or explained, with sources), `riflessione` (personal reasoning, less structured than an essay), `rant`, `diario` (personal life and news about the blog), `disavventura` (the story of a technical mishap and how it ended), `segnalazione` (relaying or reposting someone else's article, study or campaign), `guida` (how to do something, step by step), `narrativa` (a story), `cronaca` (an account of an event), `umorismo` (jokes). Do not use `categories`.
+
+A translation has no `tags` or `category` of its own: it inherits its original's (`_plugins/i18n.rb`), and `translate` does not write them.
 
 ### Series
 
@@ -424,7 +441,7 @@ The site is multilingual via `_plugins/i18n.rb` (details in [`CONTEXT.md`](CONTE
 ### Adding a language
 
 1. Add its code to `languages:` in `_config.yml` (not to `i18n_legacy_languages`).
-2. Create `_data/locales/<lang>.yml`, starting from `en.yml`: `language` (flag, name, link labels, `og:locale`), `language_names`, `site_description` (the site subtitle) and the interface strings, including `license_text`. Then create `_data/pages/<lang>.yml` (titles of home, blog, tags, series, search, by Italian URL), `_data/series/<lang>.yml` (series titles and descriptions) and `_data/license/<lang>.yml` (licence name and badge text). Add the language to `language_names` in `en.yml` too: the translation prompt takes the language names from there.
+2. Create `_data/locales/<lang>.yml`, starting from `en.yml`: `language` (flag, name, link labels, `og:locale`), `language_names`, `site_description` (the site subtitle) and the interface strings, including `license_text`. Then create `_data/pages/<lang>.yml` (titles of home, blog, tags, series, search, by Italian URL), `_data/series/<lang>.yml` (series titles and descriptions), `_data/tags/<lang>.yml` (a name for every tag id of `_data/tags/it.yml`) and `_data/license/<lang>.yml` (licence name and badge text). Add the language to `language_names` in `en.yml` too: the translation prompt takes the language names from there.
 3. Optionally `_data/navigation/<lang>.yml` (otherwise the Italian menu is used), `assets/img/flags/<flag>.svg`, and `_scripts/i18n/register.<lang>.md` with notes on the variety and register of that language for the translator.
 4. Translate files into it with `_scripts/translate`, or put translated files in `_posts/<lang>/` and `_pages/<lang>/` by hand.
 
@@ -455,7 +472,7 @@ It is a bash script that runs small programs in `_scripts/i18n/`, each with a us
 | `translate-openrouter SRC TGT`, `translate-claude SRC TGT`, `translate-replay SRC TGT` | the adapters: text on stdin, translation on stdout, a failure exits non-zero and nothing is written |
 | `prompt SRC TGT` | the system prompt the adapters send: `prompt.md` with the language names, `register.<TGT>.md` and `glossary.yml` filled in |
 | `clean` | ASCII punctuation, no code fence around the whole reply, one final newline |
-| `assemble` | the source's front matter with the translated `title`, `subtitle`, `description`, `summary`, `excerpt` and a `source_sha`, then the translated body |
+| `assemble` | the source's front matter, without `tags` and `category` (inherited from the source), with the translated `title`, `subtitle`, `description`, `summary`, `excerpt` and a `source_sha`, then the translated body |
 | `check` | headings, links, code fences, `$$` and Liquid tags as many as in the source, no number of the source missing, valid front matter |
 
 - **Adapters.** `TRANSLATE_ADAPTER` picks one: `openrouter` (default), `claude`, `replay`. Adding another provider or harness (Ollama, opencode, another API) means writing one `translate-<name>` script with the same contract.
@@ -466,9 +483,9 @@ It is a bash script that runs small programs in `_scripts/i18n/`, each with a us
 - **The prompt** (`_scripts/i18n/prompt.md`) asks for an adaptation, the way a dubbing adapter works on a comedy: what each sentence does, not its words; jokes, irony, subtext and register kept; idioms and cultural references replaced by ones that do the same job in the target language; facts, numbers, names and positions unchanged, nothing added or removed. `register.en.md` sets British English; `register.it.md` notes that the English originals were written by a non-native speaker, so the Italian may restore the intended tone where the English implies it. `glossary.yml` holds terms kept verbatim (`keep`) and fixed Italian/English renderings (`terms`).
 - **The whole file goes to the model** in one request, front matter included: that is what was tested. Of the front matter that comes back only the five fields above are used; everything else, and the YAML itself, comes from the source.
 - **Review flag.** When `check` finds a problem, or a front matter field came back untranslated, the file is still written, with `translation_review: true` (`<!-- translation_review -->` in a file without front matter), and the problems are printed. Remove the flag after you have checked.
-- **Idempotency.** A translation stores the `source_sha` of the original it was made from (in a `<!-- source_sha: ... -->` comment for a file without front matter, such as an include). A translation whose original has not changed is skipped, so your fixes to it stay until the original changes; `-f` translates it again. A file **without** `source_sha` is an original, or a translation you took over: it is never overwritten, not even with `-f`. A file with `source_sha` is never used as a source, and neither is a page with `localize: true` (home, blog, tags, series, search): `_plugins/i18n.rb` already builds it in every language, so a translated copy would land on the same URL; its title goes in `_data/pages/<lang>.yml`.
+- **Idempotency.** A translation stores the `source_sha` of the original it was made from (in a `<!-- source_sha: ... -->` comment for a file without front matter, such as an include). A translation whose original has not changed is skipped, so your fixes to it stay until the original changes; `-f` translates it again. A file **without** `source_sha` is an original, or a translation you took over: it is never overwritten, not even with `-f`. A file with `source_sha` is never used as a source, and neither is a page with `localize: true` (home, blog, tags, series, search): `_plugins/i18n.rb` already builds it in every language, so a translated copy would land on the same URL; its title goes in `_data/pages/<lang>.yml`. The hash covers the whole source file, front matter included: changing the tags of a translated original makes its translations look out of date. Tags are not meant to change routinely; when they do, set each translation's `source_sha` to the first 16 hex digits of `sha256sum` of its new source (the files have no CR), then check with `_scripts/translate -n` that they read "up to date".
 - **Partials.** A page that pulls in other Markdown files (`include_relative`, `right_content`, `left_content`, `toc`, as about and cv do) has them translated too.
-- **Not handled**: plain internal URLs (`[...](/2026/08/27/x/)`) are not rewritten to the translated post; they lead to the original, which is correct but not ideal (use `{% post_url %}`, which is rewritten). Tags stay in the original language.
+- **Not handled**: plain internal URLs (`[...](/2026/08/27/x/)`) are not rewritten to the translated post; they lead to the original, which is correct but not ideal (use `{% post_url %}`, which is rewritten).
 
 ### Cross-references
 

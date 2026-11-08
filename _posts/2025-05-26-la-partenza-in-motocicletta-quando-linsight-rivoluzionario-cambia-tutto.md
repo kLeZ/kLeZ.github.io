@@ -3,11 +3,11 @@ lang: it
 title: "La Partenza in Motocicletta: Quando l'Insight Rivoluzionario Cambia Tutto"
 series: viaggio-chomsky-llm
 tags:
-- AI
-- LLM
-- Architettura
-- Pensiero Profondo
+- ia
+- filosofia
+- llm
 date: 2025-05-26 10:17:24+02:00
+category: narrativa
 ---
 
 *Terza tappa, ma in realtà è qui che il viaggio vero inizia. È il momento in cui smetti di leggere la mappa e inizi a disegnarla tu stesso.*

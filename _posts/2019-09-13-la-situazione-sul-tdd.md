@@ -1,8 +1,12 @@
 ---
 lang: it
 title: "La situazione sul TDD"
-tags: 
+tags:
+- sviluppo-software
+- qualita-del-codice
+- tdd
 date: 2019-09-13 19:00:57+02:00
+category: saggio
 ---
 
 Il TDD è una di quelle metodologie che più spesso viene bistrattata qui in Italia. Spesso si sente definire questo approccio come *troppo costoso* o peggio come *fallimentare*.  

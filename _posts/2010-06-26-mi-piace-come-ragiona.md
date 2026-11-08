@@ -4,12 +4,7 @@ date: 2010-06-26 23:08:11+01:00
 layout: post
 slug: mi-piace-come-ragiona
 title: '...mi piace come ragiona'
-categories:
-- Riflessioni
-tags:
-- divertente
-- importato dal vecchio blog
-- riportato da altri
+category: umorismo
 ---
 
 {% include more.html %}

@@ -2,13 +2,12 @@
 lang: it
 title: "Techbros e il drago di silicio"
 tags:
-- AI
-- LLM
-- filosofia
+- ia
 - politica
+- big-tech
 - sorveglianza
-- rant
 date: 2026-09-19 13:39:46+00:00
+category: rant
 ---
 
 Sono un tecnico appassionato, uno a cui piace tenersi informato e leggere. Forse soffro di bulimia informativa, ma ammetto che non dimentico le informazioni che acquisisco quando mi interessano, quando accendono quel LED interiore, la spia che dice "oh, oh, there's something tasty!" (Oh, oh, c'è qualcosa di succoso! Ma la mia vocina interiore, come Hacker News, Lobsters e altri canali che seguo, è *bri'ish*). In ogni caso, leggere così tanto, informarmi così tanto, stare al passo con gli argomenti che mi interessano non mi dispiace affatto, bulimia o meno che sia.

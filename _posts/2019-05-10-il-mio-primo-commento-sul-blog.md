@@ -1,8 +1,12 @@
 ---
 lang: it
 title: "Il mio primo commento sul blog!"
-tags: 
+tags:
+- questo-blog
+- staticman
+- spam
 date: 2019-05-10 08:17:31+02:00
+category: diario
 ---
 
 Sarò breve, ma non troppo, come al solito.

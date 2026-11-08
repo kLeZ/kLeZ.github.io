@@ -3,10 +3,9 @@ lang: it
 title: "Il linguaggio musicale: un'analisi qualitativa complessa, tra tecnica, psicologia, emotività e passione"
 tags:
 - musica
-- analisi
-- teoria musicale
-- indagine olistica
+- teoria-musicale
 date: 2025-07-09 18:44:25+02:00
+category: saggio
 ---
 
 Sono sempre stato un appassionato di musica. Sono stato un musicista (autodidatta, ovviamente) e come tutti gli adolescenti che ascoltano rock e metal, ho avuto qualche band con cui per un breve periodo sono andato in giro a strimpellare.  

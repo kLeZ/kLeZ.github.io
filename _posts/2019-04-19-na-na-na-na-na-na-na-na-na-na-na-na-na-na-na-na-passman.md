@@ -1,8 +1,11 @@
 ---
 lang: it
 title: "Na na na na na na na na na na na na na na na na, PassMan!"
-tags: 
+tags:
+- sicurezza-e-privacy
+- password
 date: 2019-04-19 20:11:14+02:00
+category: diario
 ---
 
 Oggi che è venerdì voglio raccontare una storia divertente che mi riguarda direttamente, prendetela leggera.

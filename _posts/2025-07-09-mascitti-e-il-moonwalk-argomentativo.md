@@ -2,12 +2,11 @@
 lang: it
 title: "Mascitti e il Moonwalk Argomentativo"
 tags:
-- metodo scientifico
-- rant
-- someone's wrong on the internet
+- scienza
 - statistica
-- correlation is not causation
+- disinformazione
 date: 2025-07-09 11:32:00+02:00
+category: rant
 ---
 
 #### _Ovvero, quando "Strumento di Propaganda" Diventa "Possibile Investimento"_

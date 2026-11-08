@@ -3,7 +3,8 @@
 # Builds the translated file: the source's front matter, with only the translated values
 # of title, subtitle, description, summary and excerpt taken from the model's reply (the
 # rest of the model's YAML is never used), plus `source_sha`; then the translated body.
-# `lang` and `locale` are dropped: _plugins/i18n.rb takes them from the language folder.
+# `lang` and `locale` are dropped: _plugins/i18n.rb takes them from the language folder;
+# so are `tags` and `category`, which a translation inherits from its source.
 # A permalink loses the /SRC_LANG prefix, which the plugin adds back for the language
 # the file lands in. A file without front matter gets `<!-- source_sha: ... -->` instead.
 # A field the model did not translate keeps the source value and is reported on stderr.
@@ -30,7 +31,7 @@ if has_front_matter "$out"; then
     translated=$(yq --front-matter=extract -o=json '.' "$out" 2>/dev/null) || translated='{}'
 fi
 
-fm=$(yq --front-matter=extract 'del(.lang) | del(.locale)' "$src")
+fm=$(yq --front-matter=extract 'del(.lang) | del(.locale) | del(.tags) | del(.category) | del(.categories)' "$src")
 if [[ $src_lang != "$default" ]]; then
     fm=$(P="/$src_lang/" yq 'select(has("permalink")) |= (.permalink |= sub("^" + strenv(P), "/"))' <<<"$fm")
 fi

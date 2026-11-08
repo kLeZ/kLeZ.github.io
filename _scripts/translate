@@ -15,7 +15,8 @@
 #   prep TGT        links to the TGT versions, quotes whose original is already in TGT
 #   translate-*     the model (the prompt comes from `prompt SRC TGT`)
 #   clean           ASCII punctuation, no fence around the reply, one final newline
-#   assemble        source front matter + translated fields + source_sha, translated body
+#   assemble        source front matter (without tags and category, which translations
+#                   inherit) + translated fields + source_sha, translated body
 #   check           structure and numbers against the source; problems mark the file
 #                   with `translation_review: true`
 #

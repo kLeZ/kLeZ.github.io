@@ -1,12 +1,7 @@
 ---
 title: "The court that doesn't exist"
-tags:
-  - sanzioni
-  - diritto internazionale
-  - politica
-  - sovranità digitale
 date: 2026-08-31 21:31:19+02:00
-source_sha: 7e031399ed139801
+source_sha: 722ff25fd1a38f2c
 ---
 
 If an Italian association wanted to seriously challenge the OFAC designation it has just had slapped on it, who would it turn to? The short answer is: nobody. Not because it's hard, but because the court where you'd go doesn't exist.

@@ -2,12 +2,12 @@
 lang: it
 title: "Il mio sito mentiva sulla sua lingua"
 tags:
+- questo-blog
 - web
-- standard
 - jekyll
-- lavoro
-- accessibilità
+- accessibilita
 date: 2026-06-27 16:50:37+00:00
+category: disavventura
 ---
 
 Per anni il mio sito ha dichiarato di essere in inglese. `<html lang="en">`, in cima a ogni pagina, su un blog che scrivo in italiano da quando avevo vent'anni.

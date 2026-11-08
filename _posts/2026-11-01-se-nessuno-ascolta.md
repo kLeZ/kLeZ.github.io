@@ -2,14 +2,13 @@
 lang: it
 title: "Se l'albero cade e nessuno ascolta"
 tags:
-- radicalizzazione
-- dissenso
-- deumanizzazione
-- fascismo
-- filosofia
 - politica
+- filosofia
 - big-tech
+- radicalizzazione
+- fascismo
 date: 2026-11-01 01:59:30+01:00
+category: saggio
 ---
 
 Qualche giorno fa ho visto un video su Calla Walsh, una ragazza americana di ventidue anni che in sei anni è passata dalle campagne elettorali del Partito democratico ai palchi della televisione di Stato iraniana. Il video veniva da un canale italiano che si occupa di comunicazione, e il suo autore a un certo punto si ferma per dichiarare il metodo: non è un video di geopolitica, dice, lui si occupa di comunicazione, e il suo scopo è darci gli strumenti per farci un'opinione. È un proposito che rispetto, e proprio per questo mi ha dato fastidio vederlo tradito un minuto dopo l'altro, a partire dal titolo, con le parole chiave in maiuscolo, sulla bambina prodigio che oggi festeggia gli americani morti, passando per la fonte quasi unica del racconto, un ritratto pubblicato da The Free Press che lui stesso definisce "bellissimo", fino a un'inesattezza che chi ha preparato il video avrebbe potuto controllare in cinque minuti, scritta perfino in sovrimpressione (Walsh è nata nel 2004, non nel 2005).

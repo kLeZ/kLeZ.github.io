@@ -4,13 +4,11 @@ date: 2010-03-01 16:14:11+01:00
 layout: post
 slug: narrativa-per-tutti-il-dd-parte-2
 title: Narrativa per tutti! - Il D&D parte 2
-categories:
-- RPG
 series: narrativa-per-tutti-dd
 tags:
-- d&d
-- importato dal vecchio blog
-- narrativa
+- giochi-di-ruolo
+- dnd
+category: narrativa
 ---
 
 La storia inizia più o meno con la fine della Grande Guerra, quella scoppiata tra tutte le razze gli uni contro gli altri. Vinsero gli elfi, o perlomeno furono quelli che conquistarono un più vasto territorio, isolandosi completamente dal resto del mondo e allontanando, con la forza se necessario, le altre razze.

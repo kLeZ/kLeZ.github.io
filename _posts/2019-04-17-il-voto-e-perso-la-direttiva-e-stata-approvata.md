@@ -1,8 +1,12 @@
 ---
 lang: it
 title: "Il voto è perso, la direttiva è stata approvata"
-tags: 
+tags:
+- politica
+- copyright
+- unione-europea
 date: 2019-04-17 09:17:47+02:00
+category: cronaca
 ---
 
 Ok, il voto è stato perso, il bilancio non è piacevole ma almeno l'Italia ha votato contro la norma (non in modo compatto purtroppo).

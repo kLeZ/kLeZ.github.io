@@ -1,11 +1,12 @@
 ---
 title: "Il foro che non esiste"
 tags:
-- sanzioni
-- diritto internazionale
 - politica
-- sovranità digitale
+- autistici-inventati
+- sanzioni
+- sovranita-digitale
 date: 2026-08-31 21:31:19+02:00
+category: saggio
 ---
 
 Se un'associazione italiana volesse contestare sul serio la designazione OFAC che si è vista appioppare, a chi si rivolge? La risposta breve è: a nessuno. Non perché sia difficile, ma perché il foro dove andare non esiste.

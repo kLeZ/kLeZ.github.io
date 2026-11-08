@@ -1,12 +1,8 @@
 ---
 title: "Social media considered harmful. Maybe... (4/5): A human social network"
 series: social-media-considered-harmful
-tags:
-  - big-tech
-  - società
-  - politica
 date: 2026-11-07 11:31:43+00:00
-source_sha: 4df71893a97196df
+source_sha: 7152f559375f865a
 ---
 
 In 2018 Facebook tried to make its feed healthier by rewarding "meaningful social interactions" between friends and family, and three years later its internal documents revealed that it had achieved the opposite: a feed that gave a louder voice to the angriest. Anyone who designs software gets this story instantly, because in my line of work there's a saying that sums it up in one line: "when you optimise for a metric, it loses its value".

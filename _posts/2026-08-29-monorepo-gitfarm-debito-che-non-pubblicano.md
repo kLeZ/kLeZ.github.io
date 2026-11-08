@@ -1,11 +1,11 @@
 ---
 title: "Monorepo, GitFarm e il debito che non pubblicano"
 tags:
-- architettura
+- sviluppo-software
 - big-tech
 - git
-- ingegneria-del-software
 date: 2026-08-29 13:34:42+00:00
+category: saggio
 ---
 
 Sabato mattina, caffè, InfoQ. Uber ha costruito GitFarm, un servizio che esegue le operazioni git al posto del client. Nessun clone locale: si chiama una API gRPC, dall'altra parte c'è un repository già pronto, e torna solo il risultato dell'operazione. Il motivo sta nei numeri che pubblicano loro. Clonare il monorepo Go di Uber richiede circa quindici minuti, sei core, 32 GB di memoria e più di 40 GB di disco.

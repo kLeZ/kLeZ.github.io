@@ -1,14 +1,9 @@
 ---
 lang: en
 title: The sitemap that reports itself
-tags:
-- security
-- osint
-- scam
-- hacking
 date: 2026-09-17 10:20:00+02:00
 locale: en
-source_sha: 0117e3a10f730e32
+source_sha: 1dc380da7c709562
 ---
 
 On Saturday 12 September, after dinner, I opened my inbox and found an email that had arrived at 22:39. Subject `Medium Risk: Sensitive Paths Disclosed via Sitemap on https://klez.me`, sender "White Hat 66" (`hsafe240@gmail.com`). Inside was a security report about my blog, complete with *severity*, *bug name*, *PoC URL*, *impact* and *suggested fix*, and at the bottom a request for a reward. My first reaction was a defiant grin, and the urge to track the guy down and give him a piece of my mind.

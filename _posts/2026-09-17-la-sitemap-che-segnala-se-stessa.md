@@ -2,11 +2,11 @@
 lang: it
 title: "La sitemap che segnala se stessa"
 tags:
-- sicurezza
+- sicurezza-e-privacy
 - osint
-- scam
-- hacking
+- truffe
 date: 2026-09-17 10:20:00+02:00
+category: cronaca
 ---
 
 Sabato 12 settembre, dopo cena, ho aperto la posta e ci ho trovato una mail arrivata alle 22:39. Oggetto `Medium Risk: Sensitive Paths Disclosed via Sitemap on https://klez.me`, mittente "White Hat 66" (`hsafe240@gmail.com`). Dentro c'era un report di sicurezza sul mio blog, con *severity*, *bug name*, *PoC URL*, *impact* e *suggested fix*, e in fondo la richiesta di un premio. La prima reazione è stata un ghigno di sfida, e la voglia di trovare il tizio per dirgliene quattro.

@@ -1,0 +1,166 @@
+# Post tags — English names, by tag id. Field reference in it.yml. Every id in it.yml
+# needs an entry here: its name is shown on English pages and its slug is the URL
+# (/en/tag/<slug of name>/). `theme` is read from it.yml only.
+
+politica:
+  name: "politics"
+sviluppo-software:
+  name: "software development"
+filosofia:
+  name: "philosophy"
+ia:
+  name: "AI"
+linux:
+  name: "Linux"
+questo-blog:
+  name: "this blog"
+lavoro:
+  name: "work"
+societa:
+  name: "society"
+sicurezza-e-privacy:
+  name: "security and privacy"
+software-libero:
+  name: "free software"
+scienza:
+  name: "science"
+musica:
+  name: "music"
+giochi-di-ruolo:
+  name: "role-playing games"
+accessibilita:
+  name: "accessibility"
+adb:
+  name: "ADB"
+algoritmi:
+  name: "algorithms"
+android:
+  name: "Android"
+autistici-inventati:
+  name: "Autistici/Inventati"
+bash:
+  name: "Bash"
+big-tech:
+  name: "big tech"
+btrfs:
+  name: "Btrfs"
+cinema:
+  name: "film"
+colloqui:
+  name: "job interviews"
+copyright:
+  name: "copyright"
+devops:
+  name: "DevOps"
+disinformazione:
+  name: "disinformation"
+dnd:
+  name: "D&D"
+elezioni:
+  name: "elections"
+emacs:
+  name: "Emacs"
+fascismo:
+  name: "fascism"
+formazione:
+  name: "training"
+freax:
+  name: "Freax"
+fsfe:
+  name: "FSFE"
+gaza:
+  name: "Gaza"
+gestione-pacchetti:
+  name: "package management"
+git:
+  name: "Git"
+github:
+  name: "GitHub"
+grub:
+  name: "GRUB"
+heroku:
+  name: "Heroku"
+ihc:
+  name: "IHC"
+intelligenza:
+  name: "intelligence"
+istruzione:
+  name: "education"
+java:
+  name: "Java"
+jekyll:
+  name: "Jekyll"
+lfs:
+  name: "LFS"
+lisp:
+  name: "Lisp"
+literate-programming:
+  name: "literate programming"
+llm:
+  name: "LLM"
+lutto:
+  name: "grief"
+machine-learning:
+  name: "machine learning"
+marx:
+  name: "Marx"
+metal:
+  name: "metal"
+opensuse:
+  name: "openSUSE"
+org-mode:
+  name: "Org mode"
+osint:
+  name: "OSINT"
+password:
+  name: "passwords"
+qualita-del-codice:
+  name: "code quality"
+radicalizzazione:
+  name: "radicalisation"
+ransomware:
+  name: "ransomware"
+sanzioni:
+  name: "sanctions"
+selinux:
+  name: "SELinux"
+social-network:
+  name: "social media"
+sorveglianza:
+  name: "surveillance"
+sovranita-digitale:
+  name: "digital sovereignty"
+spam:
+  name: "spam"
+spring:
+  name: "Spring"
+star-wars:
+  name: "Star Wars"
+staticman:
+  name: "Staticman"
+statistica:
+  name: "statistics"
+stime:
+  name: "estimates"
+storia:
+  name: "history"
+systemd:
+  name: "systemd"
+tasse:
+  name: "taxes"
+tdd:
+  name: "TDD"
+teoria-musicale:
+  name: "music theory"
+travis-ci:
+  name: "Travis CI"
+truffe:
+  name: "scams"
+uefi:
+  name: "UEFI"
+unione-europea:
+  name: "European Union"
+viaggi:
+  name: "travel"
+web:
+  name: "web"

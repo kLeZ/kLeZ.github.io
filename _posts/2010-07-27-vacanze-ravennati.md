@@ -4,10 +4,9 @@ date: 2010-07-27 12:56:15+01:00
 layout: post
 slug: vacanze-ravennati
 title: Vacanze Ravennati
-categories:
-- Diario
 tags:
-- importato dal vecchio blog
+- viaggi
+category: diario
 ---
 
 Oggi già che ho un attimo di pausa voglio scrivere della bellissima vacanza passata con la mia lei a Ravenna, città d'arte bizantina molto bella. Giacché un viaggio inizia con una partenza e finisce con un rientro, direi che è il caso di cominciare dall'inizio, la partenza.

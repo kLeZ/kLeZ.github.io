@@ -2,12 +2,12 @@
 lang: it
 title: "La Cucchiaiata della Verità - Perché Investire negli Altri (Anche se Non Ti Piace)"
 tags:
-- società
+- societa
+- politica
 - istruzione
 - tasse
-- filosofia
-- quora
 date: 2025-04-20 12:32:45+02:00
+category: rant
 ---
 
 {% include more.html %}

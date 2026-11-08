@@ -1,8 +1,12 @@
 ---
 lang: it
 title: Aggiornamenti sulla direttiva Europea per il copyright
-tags: saveyourinternet copyright Europa
+tags:
+- politica
+- copyright
+- unione-europea
 date: 2019-04-09 08:40:04+02:00
+category: rant
 ---
 
 Tra i commenti che ho espresso nel primo giorno e mezzo sulla questione, uno fra tutti esprime la mia perplessità e rabbia.

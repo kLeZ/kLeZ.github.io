@@ -3,10 +3,11 @@ lang: it
 title: "Il software che non puoi smontare"
 tags:
 - linux
+- software-libero
 - systemd
 - lfs
-- software-libero
 date: 2026-02-03 14:37:42+02:00
+category: saggio
 ---
 
 Nel 2010 scrivevo su questo blog che volevo costruirmi una distro Linux da zero con LFS. Avevo vent'anni e pensavo che capire come funziona un sistema fosse un mio diritto. Bastava volerlo. Mi scarico i sorgenti, compilo tutto a mano, alla fine ho qualcosa di mio che capisco pezzo per pezzo. "Un'avventura ricca di difficoltà ma anche di insegnamenti utili e esperienza", scrivevo.

@@ -1,13 +1,7 @@
 ---
 title: "My email provider is a global terrorist organisation"
-tags:
-  - privacy
-  - sorveglianza
-  - software-libero
-  - rant
-  - sanzioni
 date: 2026-08-27 09:33:09+00:00
-source_sha: 1669f5c4d2cb013b
+source_sha: 1a3deda783942cb0
 ---
 
 Today I'm talking about something that made me spit out my coffee.

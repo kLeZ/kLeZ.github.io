@@ -4,13 +4,11 @@ date: 2010-05-23 11:29:26+01:00
 layout: post
 slug: omaggi-a-una-leggenda-dellheavy-metal
 title: Omaggi a una leggenda dell'Heavy Metal
-categories:
-- Diario
 tags:
-- cordoglio
-- importato dal vecchio blog
 - musica
-- sfogo
+- metal
+- lutto
+category: diario
 ---
 
 Ciao a tutti, oggi scrivo per ricordare, perché la memoria non vada a finire nel cesso, perché i ricordi non si affievoliscano, oggi sono qui per ricordare una leggenda dell'heavy: R. J. Dio.

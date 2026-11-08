@@ -2,10 +2,11 @@
 lang: it
 title: "Java: quando il codice racconta 30 anni di errori e rivoluzioni"
 tags:
+- sviluppo-software
 - java
-- filosofia
-- evoluzione
+- storia
 date: 2025-08-05 14:43:55+02:00
+category: saggio
 ---
 
 Oggi voglio raccontarvi una storia. Non una di quelle storie edificanti sui "pionieri visionari" che troviamo nei manuali, ma la storia vera e cruda di come Java sia passato da linguaggio che ti odiava cordialmente a linguaggio che cerca almeno di capirti. È la storia di 30 anni di errori, testardaggine, rivoluzioni silenziose e quello che alla fine si rivela essere il più grande esperimento di ingegneria sociale mai tentato su 9 milioni di programmatori.

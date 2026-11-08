@@ -1,13 +1,7 @@
 ---
 title: "I broke the BIOS trying to fix GRUB"
-tags:
-  - linux
-  - opensuse
-  - uefi
-  - selinux
-  - firmware
 date: 2026-10-20 13:59:23+00:00
-source_sha: 25c7087f05c83e16
+source_sha: 380bee10741634fb
 ---
 
 This is the story of a Friday night when all I wanted was to watch a film on my wife's laptop, in the big bed with the whole family. Instead, the bloody streaming services won't even start unless you're up to date with the fucking betas of the fucking browsers, which must invariably be Google Chrome. Not Chromium, not Opera, not any of my weirder browsers like Falkon or Konqueror, and not Firefox either, mind you. Web standards and DRM, enabled and working, count for nothing. **Because no**, end of story. Don't ask, mind your own business. And pay an ever higher subscription for an ever worse service, stuffed with series and films of questionable quality. That'll be 50 euros, thanks.

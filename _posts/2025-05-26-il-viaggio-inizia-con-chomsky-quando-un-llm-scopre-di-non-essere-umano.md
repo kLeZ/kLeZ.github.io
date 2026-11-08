@@ -3,11 +3,11 @@ lang: it
 title: "Il Viaggio Inizia con Chomsky: Quando un LLM Scopre di Non Essere Umano"
 series: viaggio-chomsky-llm
 tags:
-- AI
-- LLM
-- Architettura
-- Pensiero Profondo
+- ia
+- filosofia
+- llm
 date: 2025-05-26 10:07:19+02:00
+category: narrativa
 ---
 
 *Ci sono momenti in cui una conversazione prende una piega inaspettata, come quando esci per comprare il pane e ti ritrovi a guidare verso l'orizzonte senza meta. Questo è uno di quei momenti.*

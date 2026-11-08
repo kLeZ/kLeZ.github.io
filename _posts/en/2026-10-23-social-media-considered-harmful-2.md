@@ -1,12 +1,8 @@
 ---
 title: "Social media considered harmful. Maybe... (2/5): Who's stopping them, or trying to"
 series: social-media-considered-harmful
-tags:
-  - big-tech
-  - società
-  - politica
 date: 2026-10-23 19:20:20+00:00
-source_sha: fecca6a00d307f2e
+source_sha: 0edcb5620658d38e
 ---
 
 On 25 March 2026, in Los Angeles, twelve ordinary people locked in a room did what years of Congressional hearings had failed to do: they took a good hard look at Instagram and YouTube and decided, ten votes to two, that they had been negligently designed, that the companies had warned nobody of the risks, and that the design had been a substantial factor in the harm suffered by someone who is now around twenty. Six million dollars, and one of the first real cracks in a wall that looked like reinforced concrete.

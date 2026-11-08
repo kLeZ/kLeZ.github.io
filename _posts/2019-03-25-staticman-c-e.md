@@ -1,8 +1,12 @@
 ---
 lang: it
 title: Staticman c'è!
-tags: staticman heroku
+tags:
+- questo-blog
+- staticman
+- heroku
 date: 2019-03-25 09:30:00+01:00
+category: disavventura
 ---
 
 Ecco lo sperato secondo articolo su [Staticman](https://staticman.net), finalmente ho qualcosa da scrivere!

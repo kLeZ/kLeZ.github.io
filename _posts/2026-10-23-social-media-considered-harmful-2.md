@@ -3,10 +3,12 @@ lang: it
 title: "Social media considered harmful. Forse... (2/5): Chi li ferma, o ci prova"
 series: social-media-considered-harmful
 tags:
-- big-tech
-- società
+- societa
 - politica
+- big-tech
+- social-network
 date: 2026-10-23 19:20:20+00:00
+category: saggio
 ---
 
 Il 25 marzo 2026, a Los Angeles, dodici persone comuni chiuse in una stanza hanno fatto quello che anni di audizioni al Congresso non erano riusciti a fare: hanno guardato bene Instagram e YouTube e hanno deciso, dieci voti contro due, che erano stati progettati con negligenza, che le aziende non avevano avvertito nessuno dei rischi, e che quel progetto aveva contribuito in modo determinante al danno subito da una persona che oggi ha circa vent'anni. Sei milioni di dollari, e una delle prime crepe vere in un muro che sembrava di cemento armato.

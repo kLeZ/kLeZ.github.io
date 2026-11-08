@@ -1,8 +1,11 @@
 ---
 lang: it
 title: "Il recruiter e l'informatico"
-tags: 
+tags:
+- lavoro
+- colloqui
 date: 2021-04-23 12:58:01+02:00
+category: rant
 ---
 
 Oggi vorrei raccontare una storia.

@@ -3,11 +3,11 @@ lang: it
 title: "Demolire i Guardrail: Quando le Categorie Diventano Prigioni Intellettuali"
 series: viaggio-chomsky-llm
 tags:
-- AI
-- LLM
-- Architettura
-- Pensiero Profondo
+- ia
+- filosofia
+- llm
 date: 2025-05-26 10:11:25+02:00
+category: narrativa
 ---
 
 *Seconda tappa del nostro viaggio. Il paesaggio sta cambiando e quelle che sembravano montagne invalicabili iniziano a rivelarsi per quello che sono: miraggi concettuali.*

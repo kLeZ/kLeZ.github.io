@@ -4,13 +4,11 @@ date: 2013-07-30 02:05:47+01:00
 layout: post
 slug: secureboot-the-last-microsoft-weapon-to-keep-its-users-locked-on-windows-8
 title: SecureBoot [The last Microsoft weapon to keep its users locked on Windows... 8]
-categories:
-- Issues
 tags:
-- Linux
-- openSuSE
-- Repair
-- SecureBoot
+- linux
+- opensuse
+- uefi
+category: disavventura
 ---
 
 Tonight let's talk a little about SecureBoot.

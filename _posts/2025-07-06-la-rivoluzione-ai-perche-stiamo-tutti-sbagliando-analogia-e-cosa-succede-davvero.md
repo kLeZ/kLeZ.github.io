@@ -2,11 +2,11 @@
 lang: it
 title: "La Rivoluzione AI: Perché Stiamo Tutti Sbagliando Analogia (E Cosa Succede Davvero)"
 tags:
-- AI
-- rivoluzione industriale
-- analogie
-- riflessioni
+- ia
+- societa
+- storia
 date: 2025-07-06 14:30:42+02:00
+category: riflessione
 ---
 
 *Ovvero: come l'intelligenza artificiale sta riscrivendo le regole dell'economia più velocemente di quanto i nostri cervelli analogici riescano a capire (forse)*

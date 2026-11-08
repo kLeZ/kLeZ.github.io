@@ -1,8 +1,11 @@
 ---
 lang: it
 title: "FLOSSness di una distro Android"
-tags: 
+tags:
+- software-libero
+- android
 date: 2019-05-27 20:37:41+02:00
+category: saggio
 ---
 
 Da molto tempo ormai sono un utilizzatore di *Android* in versioni alternative alle *ROM* cosiddette *stock*.

@@ -1,8 +1,12 @@
 ---
 lang: it
 title: "FizzBuzz e l'ottimizzazione"
-tags: 
+tags:
+- sviluppo-software
+- algoritmi
+- colloqui
 date: 2022-03-25 19:57:13+00:00
+category: guida
 ---
 
 Oggi vorrei parlarvi di un algoritmo.

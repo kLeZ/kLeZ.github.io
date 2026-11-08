@@ -1,8 +1,10 @@
 ---
 lang: it
 title: Il revisionismo del ritardo cronico
-tags: 
+tags:
+- lavoro
 date: 2019-07-19 19:50:00+02:00
+category: riflessione
 ---
 
 Qualche sera fa ragionavo sul mio pregresso lavorativo, e nello specifico mi concentravo sull'ambiente di lavoro. Il _trigger_ è stato il treno che ho preso quella sera, **Ostiense, 20.40**, che non è proprio il massimo della vita, questo posso dirlo, perché mi porta a casa alle 21.45 circa.
