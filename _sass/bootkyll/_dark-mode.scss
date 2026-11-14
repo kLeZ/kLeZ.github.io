@@ -396,6 +396,11 @@
 
 	// Tables
 	table, .table { color: $dark-text; }
+	[itemprop="articleBody"] > table {
+		th, td { border-bottom-color: $dark-border; }
+		thead th { border-bottom-color: $dark-text-muted; }
+		tbody tr:nth-of-type(odd) { background-color: rgba($white, 0.03); }
+	}
 	.table-bordered {
 		border-color: $dark-border;
 		td, th { border-color: $dark-border; }

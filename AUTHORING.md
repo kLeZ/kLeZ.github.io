@@ -103,7 +103,7 @@ social-media-considered-harmful:
   title: "Social media considered harmful. Forse..."
   description: >-
     Testo introduttivo in Markdown per la pagina /serie/<id>/.
-  parts: 5        # optional: planned parts, while the series is still running
+  parts: 5        # optional: planned parts; kept after the series ends, it documents the total
 ```
 
 The English title and description go in `_data/series/en.yml`, under the same id; fields left out there (typically `parts`) are taken from `it.yml`:
@@ -137,6 +137,8 @@ Resto dell'articolo...
 
 `show_excerpts: true` and `excerpt_separator: "{% include more.html %}"` are set
 globally — everything **before** the separator is the excerpt.
+
+Keep the excerpt to one or two plain paragraphs: no `citation` blocks, formulas or tables before the separator, because the post lists show the excerpt as plain text and a quote box renders badly there. Put the cut right after the hook.
 
 ---
 
@@ -205,6 +207,10 @@ The translation is idiomatic, not literal: with the original right below it, it 
 
 The `translate` script handles these blocks: when the original is already in the target language (an English quote in a post translated into English), it drops the Italian translation and the IAL before calling the model and keeps only the original; otherwise the prompt tells the model to keep the original and its IAL verbatim.
 
+### Tables
+
+Plain Markdown tables get the site style (`_sass/bootkyll/_post.scss`, dark variant in `_dark-mode.scss`): cell padding, a rule under the header and between rows, light zebra striping, digits of equal width, sideways scrolling on narrow screens. Right-align numeric columns in the separator row (`|---:|`). The style applies only to tables placed directly in the post body; tables in code blocks keep their own.
+
 ### Footnotes
 
 Kramdown footnotes: a `[^1]` marker in the text and the definition, one paragraph on one line, anywhere in the file (by convention at the end):
@@ -223,8 +229,9 @@ Every `##`-`######` heading gets a "§" link to itself before its text (hanging 
 
 ### Math (KaTeX)
 
-Inline `$...$` and display `$$...$$` are rendered by `jekyll-katex` at build
-time. `throw_error: true` — bad LaTeX fails the build, so check your formulas.
+Math is rendered by `jekyll-katex` at build time, but only inside its Liquid tags: plain `$...$` in the Markdown is left as raw text, because kramdown has no math engine configured. Wrap the paragraphs that contain math in a `{% katexmm %}` ... `{% endkatexmm %}` block (blank line before and after each tag): inside it, inline `$...$` and display `$$...$$` are rendered, and a literal dollar is written `\$`. A single expression can also use `{% katex %}...{% endkatex %}` (add `display` for a display formula). `throw_error: true` — bad LaTeX fails the build, so check your formulas.
+
+In a post, a formula never carries the argument alone. The prose says first, in plain words, what the formula does; every symbol is defined, every parameter described (what it is, its unit, what changes if it grows); every step a non-mathematical reader would trip on (a derivative, a sum, a normalisation) is explained in a sentence. A reader who skips all the formulas must still follow the whole reasoning.
 
 ### Emoji
 
@@ -250,19 +257,25 @@ echo "ciao"
 The blog is first-person, Italian, direct and opinionated. Looking at existing
 posts, the recognisable traits are:
 
-- **Personal and political** — free software, hacker culture, anti-Big-Tech;
-  arguments grounded in personal anecdotes ("mi è capitato l'anno scorso…").
-- **Short, punchy paragraphs.** One idea each. Frequent one-line paragraphs for
-  emphasis.
-- **Direct address to the reader** ("Lo so cosa stai pensando.") and rhetorical
-  questions that the post then answers.
-- **Emphasis with `*italics*`**; occasional strong language for effect — kept
-  deliberate, not gratuitous.
+- **Personal and political** — free software, hacker culture, anti-Big-Tech; arguments grounded in personal anecdotes ("mi è capitato l'anno scorso…").
+- **Short paragraphs, not dry ones.** One idea each, one-line paragraphs where a line has to land. In long essays the sentences flow and carry warmth and judgment: a run of clipped, aseptic sentences reads as a report, and the author rejected exactly that ("frasi troppo corte, asciutte, asettiche").
+- **Rhetorical questions** that the post then answers. Direct address to the reader in small doses only (see "Shared foundation").
+- **Emphasis with `*italics*`**; occasional strong language for effect — kept deliberate, not gratuitous.
 - **Sources quoted** with `citation` premonition blocks, linking the original; foreign-language quotes translated into Italian, with the original below (see "Quotes in another language").
 - A clear arc: hook → what happened → why it matters *to you* → broader point.
 
-When an agent writes "in kLeZ's style", match *this* — concrete, opinionated,
-Italian, human. Don't flatten it into neutral corporate prose.
+When an agent writes "in kLeZ's style", match *this* — concrete, opinionated, Italian, human. Don't flatten it into neutral corporate prose.
+
+### Drafting with an agent
+
+How the author works with an agent on a post, so that a new session picks it up without the old chat:
+
+- Talk first, write later. The topic, the thesis and the structure are discussed until the author says to draft; nothing is written before that.
+- Working notes live in `_brainstorm/<YYYY-MM-topic>/` (git-ignored): the author's positions, decisions, verified facts with their sources, the facts still to check, a `CONTEXT.org` with the state of the work. They are temporary. When the post is out, whatever is useful beyond it (style rules, ways of working) moves into this file, and the folder is deleted.
+- Paragraphs that only the author can write (personal experience, what happened to him, his friends) are left as visible slots in the draft, never invented.
+- With every draft or rewrite the agent lists its own images and judgments for the author to keep or cut, and the facts it wrote from memory. Before a rewrite pass it keeps a copy of the previous version.
+- Check a draft with the drafts built into a throwaway directory: `docker compose run --rm dev bash -lc "bundle exec jekyll build --drafts -d /tmp/sd && bundle exec htmlproofer /tmp/sd --disable-external"`.
+- Commits only when the author asks (see `AGENTS.md`).
 
 ### Style
 
@@ -284,11 +297,21 @@ When a post mixes registers, they are segregated by section, not blended inside 
 
 First person singular, always. The writer is present, takes a position and says so.
 
-The reader is addressed as "tu", a single person, not an audience. "Lo so cosa stai pensando", "guarda meglio lo strumento". Never "il lettore", never "si potrebbe osservare".
+Direct address is a spice, not the base: "è la dose che fa il veleno". By default write indirectly and impersonally ("si", "chi usa i social", "chi ha figli", "chi vuole leggere"), and never "voi". A "tu" is fine where it does real work: practical advice the reader can act on ("la cosa più efficace che puoi fare"), a line that speaks to someone who recognises themselves in the problem, the author's own quoted lines. The reader must not become a mute partner in a dialogue, called in when nobody needs them. Never "il lettore", never "si potrebbe osservare".
 
-Spoken lexicon, written syntax. Short sentences, short paragraphs, one-line paragraphs where the line has to land. The sentences are built, not dumped: the spoken quality lives in the word choice and the rhythm, not in broken grammar.
+Spoken lexicon, written syntax. Short paragraphs, one-line paragraphs where the line has to land. The sentences are built, not dumped: the spoken quality lives in the word choice and the rhythm, not in broken grammar.
 
-No authorial stage directions. Do not explain your own word choices, do not announce what you are about to do, do not comment on your own text while writing it. If a word is deliberate, it shows.
+No authorial stage directions. Do not explain your own word choices, do not announce what you are about to do, do not comment on your own text while writing it. If a word is deliberate, it shows. Phrases that were cut for this reason: "non te li scrivo", "ti anticipo", "ci torno in fondo", "come vedremo fra poco", "come ho anticipato", "va detto con onestà", "merita due parole", "un'ultima cosa", "non lo dico solo io", "tutto quello che ho scritto finora", "preferisco dirlo io prima che lo dica qualcun altro", "quello che segue è la mia lettura". No reveal after a colon either: a negation or an announcement followed by a colon and the punchline ("Su un punto sono stato testardo: volevo...", "funzionerebbe così: ...") becomes one plain sentence, or uses "perché". A colon before a bare list of verbs is an English construction: avoid it.
+
+Hypothetical things are written in the conditional. When a post describes something that does not exist (a design, a proposal, a different rule), the design is in the conditional ("le istanze pagherebbero"), the verified facts around it stay in the indicative, and a little doubt is dosed in ("secondo me", "credo", "almeno nelle intenzioni") without drowning the proposal.
+
+One superlative of difficulty per piece, or per series. "The hardest part", "the most delicate choice" can be said once, where it is true; several competing superlatives cancel each other out.
+
+Words. In the sense of Goodhart's law, *measure* is "metrica", never "misura" ("misura" is the one taken with a ruler).
+
+Rights are read with a European eye. Privacy and data protection are rights, like water or the emergency room, not products sold at a premium; Italian and European readers are the audience. Foreign, especially American, advice and categories are not carried over verbatim: check what frame an argument or an objection assumes before using it. The same applies to sources (see "Sources").
+
+Length: about 15 minutes of reading is the usual post. A long essay or a series instalment is 3,000-3,500 words, 4,500 at most.
 
 Openings are conversational and state the subject immediately: "Oggi parlo di evoluzione dei linguaggi di programmazione, tema a me caro". Hook, then the excerpt separator.
 
@@ -333,6 +356,22 @@ Personal attacks target public conduct and rest on a documented fact. The fact d
 Power is described in monarchic vocabulary: rulers *regnano*, subjects bow to the king, the sanctioned party is *sgradita al Re*. The metaphor is used, never explained.
 
 Enemies are named. Proud Boys, Truth, Fox, the NRA. Prudent circumlocutions get replaced with the name.
+
+#### Bite ("graffiante")
+
+When the author asks for bite, polite wit is not enough. "Graffiante" means a crude, physical image, spoken language, and mockery aimed straight at the target's judgment or conduct, the way it would be said at the bar to someone who deserves it. The verified fact stays underneath; the image is what makes it sting.
+
+The author's own example, from the last part of the social media series. The tepid version: "negli Stati Uniti, dove il pronto soccorso si paga davvero, evidentemente non fa lo stesso effetto". His version: "negli Stati Uniti, dove devi pagare anche per non schiattare male su un marciapiede, evidentemente non hanno spirito di auto-preservazione."
+
+Lines that passed at that level, each on a checked fact:
+
+- Lobbying: a sum that Meta "spende in poco più di un mese a Bruxelles per farsi lisciare il pelo dai legislatori".
+- CEOs who "piagnucolano il mea culpa in diretta davanti al Congresso americano, con la faccia da cane bastonato", then go back to the office "a segare ogni correzione" that would lower engagement.
+- Self-paid oversight: "il modo californiano di chiedere all'oste se il vino è buono"; auditors paid by the audited as "far scegliere e pagare l'arbitro alla squadra di casa, e poi fingere di stupirsi se i rigori li fischia sempre dalla stessa parte".
+- Users as "carne al banco, senza nemmeno la percentuale sul venduto"; a EUR 200M fine that "a Menlo Park non scomoda nemmeno il commercialista, la ritrovano sotto i cuscini del divano".
+- Corporate ethics as "un comunicato stampa, scritto dal marketing, limato dagli avvocati e smentito dalla trimestrale successiva"; privacy sold as "un optional da listino [...] che chi ha i soldi si compra e gli altri si attaccano al tram".
+
+Lines that were judged tepid and rewritten: "e poi stupirsi dei rigori", "una specie rara, lo so, ma non ancora estinta", "solo con un nome più simpatico". Clever is not the same as biting. Local references help (the forfettario threshold, the oste and his wine, the tram), because they sound like the author and not like a translated columnist.
 
 #### Takedown
 
@@ -395,6 +434,12 @@ Always separate the established fact from the conclusion someone hangs on it: "H
 Verify first, insult after. A partisan piece survives only if the facts are unassailable.
 
 Numbers, dates and legal citations exact. Statute names, article numbers, case citations, percentages to the reported figure.
+
+Which sources: primary first (laws, rulings, official reports, the company's own filings and press releases), then established outlets. Law-firm blogs, partisan sites and SEO pages are never cited, even when they summarise a ruling well: find the court, the authority or a newspaper instead. Opinion and satire posts can open a piece as a hook, never carry a fact. Italian and European sources are preferred; American ones are fine for facts, and avoided when they bring advice or categories that do not fit an Italian reader.
+
+Quotes are reproduced to the letter, in the original and in the translation's meaning: no merging two sentences, no tightening that changes what was said.
+
+Anything written from memory is checked before the post goes out. What cannot be checked is cut, or stated as the author's own reading ("secondo me", "la mia lettura") with the weakness visible in the text.
 
 #### Never
 

@@ -110,6 +110,7 @@ Implications:
 ## Directory layout (on `master`)
 
 ```
+_brainstorm/       Temporary working notes for posts in progress (git-ignored, see AUTHORING.md "Drafting with an agent")
 _config.yml        Jekyll configuration (site metadata, plugins, sass, katex...)
 _data/             Site data (incl. CI status written during build)
 _drafts/           Unpublished drafts (*.draft via _scripts/draft)
