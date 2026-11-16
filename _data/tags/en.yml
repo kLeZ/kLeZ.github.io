@@ -36,6 +36,8 @@ algoritmi:
   name: "algorithms"
 android:
   name: "Android"
+architettura-software:
+  name: "software architecture"
 autistici-inventati:
   name: "Autistici/Inventati"
 bash:
