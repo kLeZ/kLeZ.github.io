@@ -72,6 +72,8 @@ Per decenni, però, piegarlo aveva un prezzo. Chiunque abbia provato a usarlo su
 
 ![Grafico scherzoso delle curve di apprendimento degli editor. Il Blocco note resta piatto in basso; VS Code sale dolcemente; vi è un muro verticale con la nota "prima devi uscire da vi"; Emacs sale facendo una serie di riccioli all'indietro, con la nota "stavi configurando Emacs"; Emacs con un agente, tratteggiato, sale ripido e senza riccioli fin quasi in cima.]({% link media/2026-11-15/saggio/curve-di-apprendimento.svg %}){: .img-fluid }
 
+*Disegnato per questo post, liberamente ispirato al meme sulle curve di apprendimento degli editor che gira in rete da anni. Misurato a occhio, come ogni benchmark serio.*
+
 Gli agenti il prezzo del biglietto l'hanno abbattuto, e il valore l'hanno lasciato dov'era. Se piegare un programma ti costa dieci minuti invece di un weekend, ci guadagna di più il software che si lascia piegare di più, e da cinquant'anni nessun software si lascia piegare quanto Emacs. La plasmabilità, che era il suo difetto da spiegare ai colleghi, nell'epoca in cui qualunque programma si può riscrivere da zero diventa un superpotere: tutti gli altri li rifai, lui lo cambi.
 
 L'autore direbbe, e in parte lo dice citando l'articolo *The Emacsification of Software*, che a quel punto ognuno avrà il suo piccolo Emacs e si farà generare il visualizzatore di Markdown come piace a lui, il client di posta come piace a lui, ed Emacs perderà l'esclusiva. È l'obiezione più seria di tutto il testo, ed è esattamente quello che succede ai programmi che non si lasciano piegare: ArtCraft ne è l'esempio più fresco. Secondo me, però, la risposta sta nella differenza tra un programma e un ambiente.

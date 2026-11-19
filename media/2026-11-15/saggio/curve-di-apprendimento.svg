@@ -26,5 +26,4 @@
   <!-- Emacs with an agent -->
   <path d="M100 445 C 150 300, 200 180, 760 150" fill="none" stroke="#9b2c2c" stroke-width="3" stroke-dasharray="9 6"/>
   <text x="470" y="140" font-size="14" fill="#9b2c2c" font-weight="bold">Emacs con un agente</text>
-  <text x="410" y="510" text-anchor="middle" font-size="11" fill="#888">Liberamente ispirato al meme sulle curve di apprendimento degli editor. Misurato a occhio, come ogni benchmark serio.</text>
 </svg>

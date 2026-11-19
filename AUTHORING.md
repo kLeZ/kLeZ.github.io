@@ -26,8 +26,11 @@ bash ./_scripts/serve            # livereload, includes --drafts
 # 3. Publish: promote every _drafts/*.draft into a dated _posts/ entry:
 bash ./_scripts/publish
 #    -> renames to _posts/YYYY-MM-DD-<slug>.md, substitutes today's date,
-#       and un-comments the `date:` line.
+#       un-comments the `date:` line and moves the draft's media from
+#       media/next/ to media/YYYY-MM-DD/ (see below).
 ```
+
+A draft keeps its media in a folder of its own under `media/next/` (`media/next/<slug>/`, or one folder shared by a group of drafts written together, like `media/next/guide/`), never loose in `media/next/` and never in a dated folder: the date of a post is the day it is published, not the day it was written. `publish` moves every file the draft references under `media/next/` to `media/<publication day>/` with the same relative path, together with its `-dark` twin and its `.puml` source if they exist, and rewrites the references in the post. Files no draft references stay in `media/next/`.
 
 Notes:
 
@@ -175,6 +178,29 @@ Use Liquid tags so paths are validated at build time (htmlproofer checks them):
 ```
 
 Always provide **alt text** for images (accessibility + SEO).
+
+### Light and dark images
+
+An image can have a dark-theme twin: put `<name>-dark.<ext>` next to `<name>.<ext>` and write the Markdown as usual, pointing at the light one. `_plugins/themed_images.rb` turns every image with a twin into a `<picture>` whose dark source follows the system preference, and `assets/theme-toggle.js` makes it follow the theme toggle too. No markup to add: the file is the opt-in. Feeds keep the light image.
+
+### Diagrams
+
+Diagrams are PlantUML. The source (`<name>.puml`) lives next to the SVGs (in `media/next/` while the post is a draft, see "The draft → post flow"), and starts with the shared style, by a path relative to the diagram:
+
+```plantuml
+@startuml
+!include ../../../_includes/plantuml/common.iuml
+left to right direction
+actor "Io" as me
+file "$b('config.org', 'il documento')" as org
+rectangle "$b('Registro dei modelli', 'un posto solo')" as reg <<io>>
+rectangle "$b('Una sessione', 'identica ovunque')" as out <<esito>>
+@enduml
+```
+
+`_includes/plantuml/common.iuml` sets the site palette (a dark one under `-DDARK`), rounded shapes, grey arrows and the "awesome" actors. `$b('Title', 'line', 'line', 'line')` writes a bold title over up to three smaller grey lines. `<<io>>` marks the one central element (thick border), `<<esito>>` the outcomes (green). Activity diagrams (a sequence of steps with decisions) get the same look: steps as boxes, decisions and partitions with the file border, notes in the cloud colours, start and end nodes in the actor colour; colour an outcome step with `$ok_bg:` in front of its label. In labels, `--` is creole strikethrough: escape command-line options as `~--option`. Guillemets at the start of an arrow label are read as a stereotype and vanish: write them as `<U+00AB>` and `<U+00BB>`.
+
+Render with `./_scripts/diagrams [file.puml|dir ...]` (default: all of `media/`), which writes `<name>.svg` and, for diagrams that include the shared style, `<name>-dark.svg`. It needs `plantuml` on the host; the dev image does not have it. Commit the `.puml` together with both SVGs.
 
 ### Admonitions (premonition plugin)
 

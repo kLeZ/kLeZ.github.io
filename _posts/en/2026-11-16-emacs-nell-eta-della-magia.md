@@ -58,7 +58,9 @@ Emacs sits at the other end. Every function can be redefined while it's running,
 
 For decades, though, bending it came at a price. Anyone who has tried to use it seriously knows the learning curve, the one in the memes where the line goes straight up and then curls back on itself. Loads of people gave up, because to get it to do things you had to learn Elisp, wade through the manual, throw your weekends away on configuration and accept that your editor would be a never-ending building site. The advantage Emacs users claimed was real, but it was the advantage of those who'd paid for the ticket, and most people, quite rightly, had better things to do.
 
-![Tongue-in-cheek chart of editor learning curves. Notepad stays flat at the bottom; VS Code rises gently; vi is a vertical wall with the note "first you have to exit vi"; Emacs climbs in a series of backward loops, with the note "you were configuring Emacs"; Emacs with an agent, dashed, climbs steeply and without loops almost to the top.]({% link media/2026-11-15/saggio/curve-di-apprendimento.svg %}){: .img-fluid }
+![Tongue-in-cheek chart of editor learning curves. Notepad stays flat at the bottom; VS Code rises gently; vi is a vertical wall with the note "first you have to exit vi"; Emacs climbs in a series of backward loops, with the note "you were configuring Emacs"; Emacs with an agent, dashed, climbs steeply and without loops almost to the top.]({% link media/2026-11-15/saggio/learning-curves.svg %}){: .img-fluid }
+
+*Drawn for this post, loosely based on the editor learning curves meme that has been going around for years. Measured by eye, like every serious benchmark.*
 
 Agents have slashed the ticket price and left the value where it was. If bending a program costs you ten minutes instead of a weekend, the software that bends the most stands to gain the most, and for fifty years no software has bent like Emacs. Malleability, the flaw you used to have to explain to colleagues, becomes a superpower in an age when any program can be rewritten from scratch: all the others you redo, this one you change.
 

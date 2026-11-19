@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 520" width="820" height="520" font-family="sans-serif">
+  <rect width="820" height="520" fill="#1A1D21"/>
+  <text x="410" y="36" text-anchor="middle" font-size="22" font-weight="bold" fill="#E1E4E8">Editor learning curves, 2026 edition</text>
+  <!-- axes -->
+  <line x1="80" y1="450" x2="770" y2="450" stroke="#E1E4E8" stroke-width="2"/>
+  <line x1="80" y1="450" x2="80" y2="70" stroke="#E1E4E8" stroke-width="2"/>
+  <polygon points="770,450 760,445 760,455" fill="#E1E4E8"/>
+  <polygon points="80,70 75,80 85,80" fill="#E1E4E8"/>
+  <text x="425" y="485" text-anchor="middle" font-size="15" fill="#E1E4E8">time spent using it</text>
+  <text x="40" y="260" text-anchor="middle" font-size="15" fill="#E1E4E8" transform="rotate(-90 40 260)">how much you know</text>
+  <!-- Notepad -->
+  <path d="M90 430 Q 200 405 760 400" fill="none" stroke="#9CA3AF" stroke-width="3"/>
+  <text x="640" y="392" font-size="14" fill="#9CA3AF">Notepad</text>
+  <!-- VS Code -->
+  <path d="M90 440 C 200 300, 330 260, 760 250" fill="none" stroke="#63A4E8" stroke-width="3"/>
+  <text x="650" y="240" font-size="14" fill="#63A4E8">VS Code</text>
+  <!-- vi -->
+  <path d="M95 445 L 120 120 L 760 110" fill="none" stroke="#3CB371" stroke-width="3"/>
+  <text x="640" y="102" font-size="14" fill="#3CB371">vi</text>
+  <text x="128" y="200" font-size="12" fill="#3CB371">(first you have to exit vi)</text>
+  <!-- Emacs: spiral that goes back on itself -->
+  <path d="M100 445 C 160 380, 230 300, 300 300 C 380 300, 380 380, 320 380 C 260 380, 250 300, 330 250 C 420 195, 470 260, 430 290 C 390 320, 360 230, 450 200 C 540 170, 600 210, 560 230 C 520 250, 520 195, 610 200"
+        fill="none" stroke="#F07878" stroke-width="3"/>
+  <text x="616" y="205" font-size="14" fill="#F07878">Emacs</text>
+  <text x="300" y="402" font-size="12" fill="#F07878">(you were configuring Emacs)</text>
+  <!-- Emacs with an agent -->
+  <path d="M100 445 C 150 300, 200 180, 760 150" fill="none" stroke="#F07878" stroke-width="3" stroke-dasharray="9 6"/>
+  <text x="470" y="140" font-size="14" fill="#F07878" font-weight="bold">Emacs with an agent</text>
+</svg>

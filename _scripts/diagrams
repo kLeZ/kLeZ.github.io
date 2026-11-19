@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Render PlantUML diagrams into a light and a dark SVG:
+#   <name>.puml -> <name>.svg and <name>-dark.svg (rendered with -DDARK=1)
+# Arguments: .puml files or directories (searched recursively). Default: the
+# repository's media/.
+# The dark variant is what _plugins/themed_images.rb swaps in with the site theme.
+# Only diagrams that include _includes/plantuml/common.iuml get one (the others
+# have no dark palette); a stale <name>-dark.svg of such a diagram is removed.
+# On a syntax error the existing SVGs are left untouched and the script fails.
+set -euo pipefail
+
+command -v plantuml >/dev/null || { echo "plantuml not found in PATH" >&2; exit 1; }
+
+[ $# -gt 0 ] || set -- "$(dirname "$0")/../media"
+
+# render DIR NAME OUT [PLANTUML OPTIONS...]: DIR/NAME.puml -> DIR/OUT, atomically.
+# -pipe resolves !include relative to the working directory, hence the cd.
+render() {
+	local dir=$1 name=$2 out=$3
+	shift 3
+	if (cd "$dir" && plantuml -tsvg -failfast "$@" -pipe < "$name.puml" > "$out.tmp"); then
+		mv "$dir/$out.tmp" "$dir/$out"
+	else
+		rm -f "$dir/$out.tmp"
+		echo "error in $dir/$name.puml, $out not changed" >&2
+		return 1
+	fi
+}
+
+find "$@" -name '*.puml' -print0 | while IFS= read -r -d '' src; do
+	dir=$(dirname "$src")
+	name=$(basename "$src" .puml)
+	render "$dir" "$name" "$name.svg"
+	if grep -q 'plantuml/common\.iuml' "$src"; then
+		render "$dir" "$name" "$name-dark.svg" -DDARK=1
+		echo "$dir/$name.svg $dir/$name-dark.svg"
+	else
+		rm -f "$dir/$name-dark.svg"
+		echo "$dir/$name.svg"
+	fi
+done

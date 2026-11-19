@@ -45,13 +45,7 @@ manual `workflow_dispatch`):
    `github-pages` environment. Nothing is committed back to the repo.
 
 Implications:
-- **Branching follows a content/source matrix** (see
-  [`AGENTS.md`](AGENTS.md#golden-rules)): pure blog content (`_posts/`,
-  `_drafts/`, `_xp/`, `_pages/`, content assets) authored on the owner's own
-  machine is committed directly to `master`; site-source/feature/fix changes — or
-  any change not originating from the owner's machine (e.g. Claude Code on the
-  web) — go on a short-lived branch off `master` + PR. Mixed content+source
-  counts as source.
+- **Branching follows where the change is made** (see [`AGENTS.md`](AGENTS.md#golden-rules)): on the owner's own machine, content and site source alike are edited directly and committed to `master`; from the cloud (Claude Code on the web or the Claude app) every change goes on a short-lived branch off `master` + PR.
 - The CI workflow does **not** run on `pull_request` events, only on push to
   `master`. PRs therefore show no project CI status — that is expected.
 
@@ -75,7 +69,16 @@ Implications:
   `jekyll-git_metadata` gem, which required Jekyll 3) and `heading_anchors.rb`
   (Liquid filter: a "§" link before every h2-h6 with an id, applied to
   `content` in the post, page and profile-page layouts, no JavaScript; feeds
-  and excerpts, which use `post.content`, stay without).
+  and excerpts, which use `post.content`, stay without) and `themed_images.rb`
+  (Liquid filter chained after it in the same layouts: an `<img>` whose source
+  tree holds a `<name>-dark.<ext>` twin becomes a `<picture>` with a dark
+  `<source>` on `(prefers-color-scheme: dark)`; `assets/theme-toggle.js`
+  rewrites that `media` when the reader forces light or dark).
+- **Diagrams** are PlantUML sources (`*.puml`) next to their SVGs under
+  `media/`, sharing the look in `_includes/plantuml/common.iuml` (site palette,
+  light and dark variant, also for activity diagrams). `_scripts/diagrams` renders `<name>.svg` and
+  `<name>-dark.svg`; it needs `plantuml` on the host (not in the dev image).
+  See AUTHORING.md, "Diagrams".
 - **Git submodules** (`.gitmodules`): two Jekyll plugins live as submodules
   under `_plugins/` and MUST be initialized before building:
   - `_plugins/premonition` (https://github.com/kLeZ/premonition.git)
@@ -114,10 +117,11 @@ _brainstorm/       Temporary working notes for posts in progress (git-ignored, s
 _config.yml        Jekyll configuration (site metadata, plugins, sass, katex...)
 _data/             Site data (incl. CI status written during build)
 _drafts/           Unpublished drafts (*.draft via _scripts/draft)
+media/next/        Media of the drafts; _scripts/publish moves them to media/<day>/
 _includes/         Liquid partials
 _layouts/          Page layouts
 _pages/            Standalone pages
-_plugins/          Ruby plugins (i18n, blog_archive, git_metadata, heading_anchors) + submodules (premonition, SgEExt)
+_plugins/          Ruby plugins (i18n, blog_archive, git_metadata, heading_anchors, themed_images) + submodules (premonition, SgEExt)
 _posts/            Published blog posts
 _sass/             Sass sources (compiled, style: compressed)
 _scripts/          Build/dev helper scripts (see AGENTS.md)

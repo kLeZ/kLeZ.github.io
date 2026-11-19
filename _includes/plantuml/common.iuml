@@ -1,0 +1,150 @@
+' Shared look for the blog's PlantUML diagrams: site palette, rounded shapes,
+' bold titles with smaller grey descriptions.
+'
+' Include it with a path relative to the diagram, e.g. from media/<date>/<dir>/:
+'   !include ../../../_includes/plantuml/common.iuml
+' Render with _scripts/diagrams, which writes <name>.svg (light) and
+' <name>-dark.svg (rendered with -DDARK=1). Pages swap the two with the theme:
+' see _plugins/themed_images.rb.
+'
+' Labels: $b('Title', 'line', 'line', 'line') gives a bold title and up to three
+' smaller description lines. Stereotypes: <<io>> marks the central element
+' (thick border), <<esito>> marks an outcome (green).
+
+!ifdef DARK
+' Dark palette: _sass/bootkyll/_variables.scss, $dark-*
+!$bg = "#1A1D21"
+!$text = "#E1E4E8"
+!$muted = "#9CA3AF"
+!$arrow = "#8B98A1"
+!$box_bg = "#1D3A42"
+!$box_border = "#39B5CF"
+!$io_bg = "#24525E"
+!$io_border = "#6FD3E8"
+!$ok_bg = "#1D3527"
+!$ok_border = "#3CB371"
+!$file_bg = "#22262B"
+!$file_border = "#4E8C9C"
+!$cloud_bg = "#22262B"
+!$cloud_border = "#6B7C86"
+!$actor = "#39B5CF"
+!else
+' Light palette: _sass/bootkyll/_variables.scss, $teal and greys
+!$bg = "#FFFFFF"
+!$text = "#1F2D33"
+!$muted = "#5F6B73"
+!$arrow = "#7A8A93"
+!$box_bg = "#E3F1F4"
+!$box_border = "#0085A1"
+!$io_bg = "#C6E5EC"
+!$io_border = "#006A80"
+!$ok_bg = "#E8F5EC"
+!$ok_border = "#3A9D5D"
+!$file_bg = "#FFFFFF"
+!$file_border = "#8FB9C4"
+!$cloud_bg = "#F3F6F8"
+!$cloud_border = "#8FA3AE"
+!$actor = "#0085A1"
+!endif
+
+skinparam backgroundColor $bg
+skinparam shadowing false
+skinparam defaultFontName "sans-serif"
+skinparam defaultFontSize 14
+skinparam defaultFontColor $text
+skinparam roundCorner 14
+skinparam nodesep 30
+skinparam ranksep 70
+skinparam padding 2
+skinparam actorStyle awesome
+
+skinparam ArrowColor $arrow
+skinparam ArrowThickness 1.4
+skinparam ArrowFontColor $muted
+skinparam ArrowFontSize 12
+
+skinparam actor {
+  BackgroundColor $actor
+  BorderColor $actor
+  FontColor $text
+  FontStyle bold
+}
+skinparam rectangle {
+  BackgroundColor $box_bg
+  BorderColor $box_border
+  BorderThickness 1.5
+  FontColor $text
+}
+skinparam rectangle<<io>> {
+  BackgroundColor $io_bg
+  BorderColor $io_border
+  BorderThickness 2.5
+  StereotypeFontSize 0
+}
+skinparam rectangle<<esito>> {
+  BackgroundColor $ok_bg
+  BorderColor $ok_border
+  StereotypeFontSize 0
+}
+skinparam file {
+  BackgroundColor $file_bg
+  BorderColor $file_border
+  BorderThickness 1.5
+  FontColor $text
+}
+skinparam cloud {
+  BackgroundColor $cloud_bg
+  BorderColor $cloud_border
+  FontColor $text
+}
+' Activity diagrams: steps like rectangles, decisions like files, notes like
+' clouds, start and end nodes in the actor colour.
+skinparam activity {
+  BackgroundColor $box_bg
+  BorderColor $box_border
+  BorderThickness 1.5
+  FontColor $text
+  DiamondBackgroundColor $file_bg
+  DiamondBorderColor $file_border
+  DiamondFontColor $text
+}
+skinparam partition {
+  BorderColor $file_border
+  FontColor $text
+}
+skinparam note {
+  BackgroundColor $cloud_bg
+  BorderColor $cloud_border
+  FontColor $text
+}
+<style>
+activityDiagram {
+  circle {
+    BackgroundColor $actor
+    LineColor $actor
+  }
+}
+</style>
+skinparam footer {
+  FontColor $muted
+  FontSize 11
+}
+hide stereotype
+
+!function $d($x)
+!return "\n<size:12><color:" + $muted + ">" + $x + "</color></size>"
+!endfunction
+
+!function $b($t, $l1="", $l2="", $l3="")
+!$r = "<b>" + $t + "</b>"
+!if ($l1 != "")
+!$r = $r + $d($l1)
+!endif
+!if ($l2 != "")
+!$r = $r + $d($l2)
+!endif
+!if ($l3 != "")
+!$r = $r + $d($l3)
+!endif
+!return $r
+!endfunction

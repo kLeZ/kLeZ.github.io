@@ -21,11 +21,7 @@ Working on this repo (humans and AI agents alike)? Start here:
 
 Note: `master` is the single long-lived branch — it holds the Jekyll source and
 is the default branch. Pushing to it builds the site and publishes it to GitHub
-Pages via GitHub Actions (Pages Source = "GitHub Actions"). Pure blog content
-written on the owner's own machine is committed straight to `master`; source or
-feature changes — and anything not coming from the owner's machine — go on a
-short-lived branch off `master` with a PR. See [`AGENTS.md`](AGENTS.md) for the
-full convention.
+Pages via GitHub Actions (Pages Source = "GitHub Actions"). Changes made on the owner's own machine, content or source, are committed straight to `master`; changes made from the cloud (Claude Code on the web or the Claude app) go on a short-lived branch off `master` with a PR. See [`AGENTS.md`](AGENTS.md) for the full convention.
 
 [Jekyll]: https://jekyllrb.com/
 [GitHub-Actions]: https://github.com/features/actions

@@ -50,9 +50,25 @@
 		return mode;
 	}
 
+	// Images with a dark twin are <picture>s (see _plugins/themed_images.rb) whose dark
+	// <source> follows the system preference; a forced mode overrides its media query.
+	var DARK_SOURCE_MEDIA = {
+		system: "(prefers-color-scheme: dark)",
+		light: "not all",
+		dark: "all"
+	};
+
+	function applyThemedImages(mode) {
+		var sources = document.querySelectorAll("source[data-theme-dark]");
+		for (var i = 0; i < sources.length; i++) {
+			sources[i].setAttribute("media", DARK_SOURCE_MEDIA[mode] || DARK_SOURCE_MEDIA.system);
+		}
+	}
+
 	function applyTheme(mode) {
 		var resolved = resolveTheme(mode);
 		document.documentElement.setAttribute("data-theme", resolved);
+		applyThemedImages(mode);
 	}
 
 	function updateToggleButton(mode) {

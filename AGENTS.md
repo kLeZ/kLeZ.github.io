@@ -26,18 +26,7 @@ Write these files in **English** and keep them human-readable.
 
 ## Golden rules
 
-- **Branching follows a content/source matrix.** `master` is the single
-  long-lived branch and holds the source. **Pure blog content** (`_posts/`,
-  `_drafts/`, `_xp/`, `_pages/`, and content assets) authored **on the owner's
-  own machine** is committed **directly to `master`**. **Everything else** —
-  any change to site source (layouts, includes, sass, `_config.yml`, `_plugins/`,
-  `_scripts/`, `.github/`, `.devcontainer/`, `docker-compose.yml`, these docs,
-  `Gemfile`, discovery files) **or any change that does not originate from the
-  owner's machine** (e.g. Claude Code on the web) — goes on a **short-lived
-  branch off `master` + PR** (`base: master`). A change mixing content with
-  source counts as source. The agent does **not** auto-classify or auto-detect
-  context: the owner says "commit directly" or "branch + PR" per change. See
-  [Git & PR conventions](#git--pr-conventions).
+- **Branching follows where the agent runs.** `master` is the single long-lived branch and holds the source. **On the owner's own machine** (a local session: the owner is at the keyboard and checks the work in the working tree) the agent edits content and site source alike directly in the working tree, without asking which flow to use, and commits to `master` when asked. **In the cloud** (Claude Code on the web or from the Claude app, `CLAUDE_CODE_REMOTE=true`, where the owner may be on a phone and cannot check the working tree) every change goes on a **short-lived branch off `master` + PR** (`base: master`). See [Git & PR conventions](#git--pr-conventions).
 - **Never add tool/AI attribution.** No `Co-Authored-By`, no "Generated with
   Claude Code", no 🤖 — not in commits, not in PR bodies, not in content. The
   tool does not announce itself (Git doesn't sign "Made with Git").
@@ -132,6 +121,7 @@ All commands assume the environment above (UTF-8 locale + Ruby 3.3.x).
 | Publish drafts       | `bash ./_scripts/publish`                                |
 | Regenerate emojis    | `bash ./_scripts/emojis`                                 |
 | Translate a post     | `make translate _posts/<file>.md` or `./_scripts/translate _posts/<file>.md` (`-n` dry run) |
+| Render diagrams      | `./_scripts/diagrams [FILE.puml or DIR ...]` (host, needs `plantuml`) |
 
 Notes on `_scripts/`:
 - `build` — runs `jekyll doctor`, then builds. In CI (`CI=true`) it writes
@@ -141,10 +131,11 @@ Notes on `_scripts/`:
 - `draft` — scaffolds `_drafts/<slug>.md.draft` from `_templates/post.md`, prints the
   path, and opens it in an editor only if `$JEKYLL_EDITOR` or `$EDITOR` is set
   (otherwise open it from your attached IDE).
-- `publish` — promotes `_drafts/*.draft` into dated `_posts/` entries.
+- `publish` — promotes `_drafts/*.draft` into dated `_posts/` entries and moves the media they reference from `media/next/` to `media/<publication day>/` (with `-dark` twins and `.puml` sources), rewriting the links.
 - `emojis` — extracts emoji shortcodes from posts into `assets/img/emoji/`
   (Python 3 + the SgEExt submodule).
 - `translate` — translates the given files into every other site language via an LLM (OpenRouter by default, `OPENROUTER_API_KEY`); the output is content for the owner to review, never committed by an agent on its own. See AUTHORING.md, "Translations".
+- `diagrams` — renders PlantUML sources under `media/` (or the given files and directories) into `<name>.svg` and, when they include `_includes/plantuml/common.iuml`, `<name>-dark.svg`; the dark twin is swapped in by theme (`_plugins/themed_images.rb`). Needs `plantuml`, so it runs on the host. See AUTHORING.md, "Diagrams".
 
 ## Validating a change before pushing
 
@@ -160,12 +151,7 @@ bundle exec jekyll doctor \
 
 ## Git & PR conventions
 
-- **Apply the branching matrix from "Golden rules".** Pure blog content from the
-  owner's machine → commit straight to `master`. Source/feature/fix changes, or
-  anything not originating from the owner's machine → short-lived branch off
-  `master` + PR (`base: master`). Mixed content+source counts as source. The
-  agent follows the owner's explicit per-change instruction; it does not decide
-  the flow on its own.
+- **Apply the branching rule from "Golden rules".** Local session on the owner's machine: edit directly, commit to `master` when asked. Cloud session (`CLAUDE_CODE_REMOTE=true`): short-lived branch off `master` + PR (`base: master`) for every change.
 - CI runs only on push to `master`, so PRs won't show project CI status — verify (`make ci` runs the CI build job in the dev container, with the same Ruby)
   locally instead (see above).
 - **No tool/AI attribution anywhere** — commits, PR titles/bodies, content. No

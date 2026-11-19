@@ -2,10 +2,32 @@
 # Esegue dalla radice del repo anche se invocato come 'publish' dal PATH.
 cd "$(dirname "$(readlink -f "$0")")/.."
 
+day=$(date '+%Y-%m-%d')
+
 for f in `ls _drafts/*.draft`;
 do
 	current_date="$(date '+%Y-%m-%d %H:%M:%S%:z')"
 	sed -i "s/__CURRENT_DATE/${current_date}/" $f;
 	sed -i "s/##date:/date:/" $f
-	mv ${f} _posts/`date '+%Y-%m-%d'`-`basename ${f%.draft}`
+
+	# I media della bozza stanno in media/next/ e passano con lei in media/<giorno>/,
+	# con lo stesso percorso relativo; con ogni file vanno il gemello -dark e il
+	# sorgente .puml, se ci sono.
+	for src in $(grep -oE 'media/next/[^ )"%}]+' "$f" | sort -u); do
+		base="${src%.*}"
+		ext="${src##*.}"
+		for x in "$src" "$base-dark.$ext" "$base.puml"; do
+			if [ -e "$x" ]; then
+				dest="media/$day/${x#media/next/}"
+				mkdir -p "$(dirname "$dest")"
+				mv "$x" "$dest"
+			fi
+		done
+	done
+	sed -i "s|media/next/|media/$day/|g" $f
+
+	mv ${f} _posts/$day-`basename ${f%.draft}`
 done
+
+# Le sottocartelle di media/next/ rimaste vuote se ne vanno; media/next/ resta.
+find media/next -mindepth 1 -type d -empty -delete 2>/dev/null

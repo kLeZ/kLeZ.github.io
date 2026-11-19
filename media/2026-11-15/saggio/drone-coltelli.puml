@@ -1,14 +1,14 @@
 @startuml
-!include ../guide/_common.iuml
+!include ../../../_includes/plantuml/common.iuml
 left to right direction
 actor "Io" as me
-rectangle "Claude Code\n(un programma a riga di comando)" as cc
-rectangle "shell" as sh
-rectangle "cat, sed, grep, find" as unix
-rectangle "git, glab, gh" as vcs
-rectangle "curl, jq" as web
-rectangle "emacsclient --eval" as ec
-rectangle "Emacs già acceso\n(i miei task in Org)" as emacs
+rectangle "$b('Claude Code', 'un programma a riga di comando')" as cc <<io>>
+rectangle "$b('shell')" as sh
+rectangle "$b('cat, sed, grep, find')" as unix
+rectangle "$b('git, glab, gh')" as vcs
+rectangle "$b('curl, jq')" as web
+rectangle "$b('emacsclient --eval')" as ec
+rectangle "$b('Emacs già acceso', 'i miei task in Org')" as emacs <<esito>>
 me --> cc : "fammi questa cosa"
 cc --> sh : tab-return
 sh --> unix

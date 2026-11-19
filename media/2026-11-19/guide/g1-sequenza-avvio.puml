@@ -1,0 +1,33 @@
+@startuml
+!include ../../../_includes/plantuml/common.iuml
+
+start
+:$b("emacs ~--fg-daemon ~--no-site-file", "lanciato dall'unità systemd");
+if (~--no-site-file?) then (no)
+  :$b("site-start.el", "della distribuzione");
+  note right
+    Viene prima di early-init.el:
+    da lì non si può più fermare.
+  end note
+else (sì)
+endif
+:$b("early-init.el", "toglie site-lisp dal load-path", "GC al massimo", "package.el spento");
+:$b("init.el", "(require 'org)", "org-babel-load-file su config.org");
+if (config.org più nuovo di config.el?) then (sì)
+  :$b("tangle", "estrae i blocchi in config.el");
+else (no)
+endif
+partition "config.el, nell'ordine dei capitoli" {
+  :$b("Prologo", "GC a 100 MB", "registra l'ora di partenza");
+  :$b("Bootstrap", "straight.el e use-package");
+  :$b("Capitoli per area", "ogni use-package passa da straight");
+  note right
+    Un pacchetto mai clonato
+    viene clonato al commit
+    scritto nel lockfile.
+  end note
+  :$b("Epilogo", "GC a 800 kB", "misura del tempo su emacs-startup-hook");
+}
+$ok_bg:$b("emacs-startup-hook", "Emacs caricato in N secondi", "con M garbage collections");
+stop
+@enduml
